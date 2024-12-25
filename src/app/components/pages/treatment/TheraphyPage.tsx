@@ -1,5 +1,5 @@
 const TherapyPage = () => {
-  return <div>TherapyPage</div>;
+  return <div className="bg-red">TherapyPage</div>;
 };
 
 export default TherapyPage;
