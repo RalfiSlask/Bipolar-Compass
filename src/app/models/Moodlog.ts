@@ -1,4 +1,5 @@
-export class MoodLog {
+import { IMoodLog } from '../types/moodlog';
+export class MoodLog implements IMoodLog {
   constructor(
     public user_id: string = '',
     public date: string = new Date().toISOString(),

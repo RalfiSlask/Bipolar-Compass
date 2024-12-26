@@ -1,7 +1,8 @@
+import { IUser } from '../types/user';
 import { Profile } from './Profile';
 import { Settings } from './Settings';
 
-export class User {
+export class User implements IUser {
   readonly created_at: string = new Date().toISOString();
   isVerified: boolean = false;
   profile: Profile;

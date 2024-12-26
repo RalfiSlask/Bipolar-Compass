@@ -1,4 +1,6 @@
-export class Medication {
+import { IMedication, IReminder } from '../types/medication';
+
+export class Medication implements IMedication {
   constructor(
     public name: string = '',
     public dosage: string = '',
@@ -8,7 +10,7 @@ export class Medication {
   ) {}
 }
 
-export class Reminder {
+export class Reminder implements IReminder {
   constructor(
     public enabled: boolean = false,
     public method: string = '',

@@ -1,4 +1,6 @@
-export class Diary {
+import { IDiary, IDiaryImage } from '../types/diary';
+
+export class Diary implements IDiary {
   constructor(
     public user_id: string = '',
     public title: string = '',
@@ -15,7 +17,7 @@ export class Diary {
   }
 }
 
-export class DiaryImage {
+export class DiaryImage implements IDiaryImage {
   constructor(
     public url: string = '',
     public ai_generated_text: string = '',

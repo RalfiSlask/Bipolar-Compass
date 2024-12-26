@@ -1,4 +1,5 @@
-export class Relative {
+import { IRelative } from '../types/relative';
+export class Relative implements IRelative {
   constructor(
     public email: string = '',
     public email_enabled: boolean = false,

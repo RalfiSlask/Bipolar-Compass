@@ -1,4 +1,6 @@
-export class ConversationLog {
+import { IConversationLog, IAiConversation, IAiImage } from '../types/ai';
+
+export class ConversationLog implements IConversationLog {
   constructor(
     public role: string = '',
     public content: string = '',
@@ -6,7 +8,7 @@ export class ConversationLog {
   ) {}
 }
 
-export class AiImage {
+export class AiImage implements IAiImage {
   constructor(
     public user_id: string = '',
     public week: string = '',
@@ -16,7 +18,7 @@ export class AiImage {
   ) {}
 }
 
-export class AiConversation {
+export class AiConversation implements IAiConversation {
   constructor(
     public user_id: string = '',
     public conversation_log: ConversationLog[],
