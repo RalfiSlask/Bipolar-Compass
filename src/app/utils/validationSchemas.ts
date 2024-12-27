@@ -10,6 +10,7 @@ export const registrationValidationSchema = Yup.object({
   password: Yup.string()
     .min(2, 'Lösenord måste vara åtminstone 8 karaktärer')
     .required('Lösenord är obligatoriskt'),
+  acceptTerms: Yup.bool().oneOf([true], 'Du måste godkänna villkoren'),
 });
 
 export const signInValidationSchema = Yup.object({
