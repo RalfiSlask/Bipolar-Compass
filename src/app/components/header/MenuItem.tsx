@@ -24,7 +24,7 @@ const MenuItem = ({ menuItem }: IMenuItemProps) => {
 
   return (
     <div
-      className="relative flex w-[200px] cursor-pointer"
+      className="relative flex cursor-pointer"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
