@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
 import {
-  IMovieOrSeriesResponse,
   IMovieOrSeriesResponseData,
+  IMovieOrSeriesResponse,
 } from '../types/api/movieTypes';
 
 const useFetchMovies = (movieTitle: string) => {
