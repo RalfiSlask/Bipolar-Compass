@@ -8,7 +8,8 @@ export interface IUser {
   password: string;
   created_at: string;
   isVerified: boolean;
-  verificationCode?: string;
+  verificationToken?: string;
+  tokenExpires?: Date;
   profile: IProfile;
   settings: ISettings;
 }
