@@ -1,0 +1,1677 @@
+{
+  "movies": [
+    {
+      "_id": "61e5953fcffb8f2faa460b61",
+      "id": "tt11702252",
+      "ratingsSummary": {
+        "aggregateRating": 6.2,
+        "voteCount": 713,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": null,
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "The Year Between",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "The Year Between",
+        "__typename": "TitleText"
+      },
+      "releaseYear": null,
+      "releaseDate": null,
+      "runtime": null,
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Clemence Miller is coming home to live in her family's basement after dropping out of her sophomore year of college with a newly diagnosed mental illness. Having to face her battered relationships and responsibilities of adulthood, she is driving everyone around her, well, crazy.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5b054a66e5964234cc017",
+      "id": "tt1969062",
+      "ratingsSummary": {
+        "aggregateRating": 6.9,
+        "voteCount": 17245,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3560698112",
+        "width": 1382,
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjA2NzQ0Njk5MV5BMl5BanBnXkFtZTgwOTQzOTMyNTE@._V1_.jpg",
+        "caption": {
+          "plainText": "Mark Ruffalo, Zoe Saldana, Imogene Wolodarsky, and Ashley Aufderheide in Infinitely Polar Bear (2014)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Infinitely Polar Bear",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Infinitely Polar Bear",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2014,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 18,
+        "month": 6,
+        "year": 2015,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 5400,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "A father struggling with bipolar disorder tries to win back his wife by attempting to take full responsibility of their two young, spirited daughters, who don't make the overwhelming task any easier.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e583cae1a8ddbd9641e995",
+      "id": "tt0325055",
+      "ratingsSummary": {
+        "aggregateRating": 6.3,
+        "voteCount": 11396,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2731113216",
+        "width": 1125,
+        "height": 1600,
+        "url": "https://m.media-amazon.com/images/M/MV5BODY2ZDNiODktYWU2Yy00OTdmLWI3YmUtMTllODY4NTlhMzNkXkEyXkFqcGdeQXVyMTMxMTY0OTQ@._V1_.jpg",
+        "caption": {
+          "plainText": "Gwyneth Paltrow in Sylvia (2003)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Sylvia",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Sylvia",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2003,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 24,
+        "month": 6,
+        "year": 2004,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6600,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Story of the relationship between poets Edward James \"Ted\" Hughes (Daniel Craig) and Sylvia Plath (Gwyneth Paltrow).",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e59e67a66e5964234853b1",
+      "id": "tt1327819",
+      "ratingsSummary": {
+        "aggregateRating": 7.8,
+        "voteCount": 2369,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3767404544",
+        "width": 220,
+        "height": 323,
+        "url": "https://m.media-amazon.com/images/M/MV5BZDhkMjJiNWItNjQ5NS00NjZhLThlNDctZTNjYTNlYzY3YzAzXkEyXkFqcGdeQXVyMTIxMDUyOTI@._V1_.jpg",
+        "caption": {
+          "plainText": "Boy Interrupted (2009)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Documentary",
+            "id": "Documentary",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Boy Interrupted",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Boy Interrupted",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2009,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 5,
+        "month": 9,
+        "year": 2009,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 5520,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Filmmaker Dana Perry documents the life of her son, Evan, a 15-year-old who committed suicide.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58dddd735dff3f9443fe1",
+      "id": "tt1045658",
+      "ratingsSummary": {
+        "aggregateRating": 7.7,
+        "voteCount": 752732,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2321852672",
+        "width": 1382,
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTM2MTI5NzA3MF5BMl5BanBnXkFtZTcwODExNTc0OA@@._V1_.jpg",
+        "caption": {
+          "plainText": "Bradley Cooper and Jennifer Lawrence in Silver Linings Playbook (2012)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Silver Linings Playbook",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Silver Linings Playbook",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2012,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 28,
+        "month": 2,
+        "year": 2013,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 7320,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": {
+        "currentRank": 464,
+        "rankChange": {
+          "changeDirection": "UP",
+          "difference": 379,
+          "__typename": "MeterRankChange"
+        },
+        "__typename": "TitleMeterRanking"
+      },
+      "plot": {
+        "plotText": {
+          "plainText": "After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58183909c2ca7814167c9",
+      "id": "tt0113729",
+      "ratingsSummary": {
+        "aggregateRating": 5.3,
+        "voteCount": 7124,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3448716288",
+        "width": 500,
+        "height": 772,
+        "url": "https://m.media-amazon.com/images/M/MV5BOThlOGJjYWEtMGFmOS00ZjBlLWIwZmUtNzdlNjIxNTU2NDcwL2ltYWdlXkEyXkFqcGdeQXVyNjg4NzYzMzA@._V1_.jpg",
+        "caption": {
+          "plainText": "Drew Barrymore and Chris O'Donnell in Mad Love (1995)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Mad Love",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Mad Love",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 1995,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 26,
+        "month": 5,
+        "year": 1995,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 5580,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "The wild and sexy story of two passionate young people who take to the road for the incredible adventure of their lives.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58307ef99b1c54341bd53",
+      "id": "tt0252684",
+      "ratingsSummary": {
+        "aggregateRating": 7.1,
+        "voteCount": 10219,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm1672517888",
+        "width": 350,
+        "height": 511,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjE2OTU4MTY5N15BMl5BanBnXkFtZTYwODA3NTQ3._V1_.jpg",
+        "caption": {
+          "plainText": "Don Cheadle, Zooey Deschanel, and Joseph Gordon-Levitt in Manic (2001)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Manic",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Manic",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2001,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 23,
+        "month": 5,
+        "year": 2003,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6000,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "After attacking another player with a bat during baseball at school, Lyle's sent to the psych ward. He meets other teenagers with problems. Will group therapy help?",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5b287e1a8ddbd964d4c1f",
+      "id": "tt2192016",
+      "ratingsSummary": {
+        "aggregateRating": 7.4,
+        "voteCount": 6659,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2570839296",
+        "width": 2764,
+        "height": 4082,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjQzNjIxOTI4OF5BMl5BanBnXkFtZTgwMzQwNTg5NzE@._V1_.jpg",
+        "caption": {
+          "plainText": "Cliff Curtis in The Dark Horse (2014)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "The Dark Horse",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "The Dark Horse",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2014,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 7,
+        "month": 5,
+        "year": 2015,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 7440,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "A brilliant but troubled New Zealand chess champion finds purpose by teaching underprivileged children about the rules of chess and life.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58196971a4a15d6416baf",
+      "id": "tt0117631",
+      "ratingsSummary": {
+        "aggregateRating": 7.6,
+        "voteCount": 57433,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2446446081",
+        "width": 2362,
+        "height": 3543,
+        "url": "https://m.media-amazon.com/images/M/MV5BNTNlZDhkNTMtYTExYS00NGRiLTlhZTItM2JlOWQ3MzE4YzdhXkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_.jpg",
+        "caption": {
+          "plainText": "Shine (1996)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Music",
+            "id": "Music",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Shine",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Shine",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 1996,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 6,
+        "month": 2,
+        "year": 1997,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6300,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Pianist David Helfgott, driven by his father and teachers, has a breakdown. Years later he returns to the piano, to popular if not critical acclaim.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5b190971a4a15d64d0f81",
+      "id": "tt2090582",
+      "ratingsSummary": {
+        "aggregateRating": 6.8,
+        "voteCount": 308,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3309818368",
+        "width": 375,
+        "height": 500,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjA2NTQ5NDYyOF5BMl5BanBnXkFtZTgwNDEzNjA2MDE@._V1_.jpg",
+        "caption": {
+          "plainText": "Of Two Minds (2012)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Documentary",
+            "id": "Documentary",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "News",
+            "id": "News",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Of Two Minds",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Of Two Minds",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2012,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": null,
+        "month": null,
+        "year": 2012,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 5340,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Of Two Minds explores the extraordinary lives, struggles and successes of three unique and compelling people living with bipolar disorder in America today. Through a combination of intimate verité and revealing interviews, we experience what it feels like to be bipolar - from exquisite feelings of grandiosity and sensuality to the depths of despair and depression. A journey from the painful to the painfully funny, Of Two Minds puts a human face on the illness, opening an engaging, harrowing and perception-changing view on those all around us who live in bipolar's shadows...our sisters and brothers, parents and friends, and ourselves.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5a57bb597b91eb94a17a5",
+      "id": "tt1450321",
+      "ratingsSummary": {
+        "aggregateRating": 7,
+        "voteCount": 117998,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3702061312",
+        "width": 1382,
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjE2NTgyMzM0NV5BMl5BanBnXkFtZTgwNzkwNDE1MzE@._V1_.jpg",
+        "caption": {
+          "plainText": "James McAvoy in Filth (2013)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Action",
+            "id": "Action",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Crime",
+            "id": "Crime",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Filth",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Filth",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2013,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 13,
+        "month": 6,
+        "year": 2016,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 5820,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": {
+        "currentRank": 3296,
+        "rankChange": {
+          "changeDirection": "DOWN",
+          "difference": 605,
+          "__typename": "MeterRankChange"
+        },
+        "__typename": "TitleMeterRanking"
+      },
+      "plot": {
+        "plotText": {
+          "plainText": "A corrupt, junkie cop with bipolar disorder attempts to manipulate his way through a promotion in order to win back his wife and daughter while also fighting his own inner demons.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58153971a4a15d6415f17",
+      "id": "tt0100395",
+      "ratingsSummary": {
+        "aggregateRating": 6.7,
+        "voteCount": 20073,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm4069911552",
+        "width": 966,
+        "height": 1477,
+        "url": "https://m.media-amazon.com/images/M/MV5BMjE0ODAzOTU4MV5BMl5BanBnXkFtZTgwMDY5Mzk4NjE@._V1_.jpg",
+        "caption": {
+          "plainText": "Shirley MacLaine and Meryl Streep in Postcards from the Edge (1990)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Postcards from the Edge",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Postcards from the Edge",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 1990,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 22,
+        "month": 2,
+        "year": 1991,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6060,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "A substance-addicted actress tries to look on the bright side even as she is forced to move back in with her mother to avoid unemployment.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5854d8a5a6a599f424311",
+      "id": "tt0465538",
+      "ratingsSummary": {
+        "aggregateRating": 7.2,
+        "voteCount": 176538,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3871706368",
+        "width": 1390,
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTc0NTU5MjI2MV5BMl5BanBnXkFtZTcwMTg5NTQzMw@@._V1_.jpg",
+        "caption": {
+          "plainText": "George Clooney in Michael Clayton (2007)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Crime",
+            "id": "Crime",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Mystery",
+            "id": "Mystery",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Thriller",
+            "id": "Thriller",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Michael Clayton",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Michael Clayton",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2007,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 25,
+        "month": 10,
+        "year": 2007,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 7140,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": {
+        "currentRank": 2457,
+        "rankChange": {
+          "changeDirection": "UP",
+          "difference": 221,
+          "__typename": "MeterRankChange"
+        },
+        "__typename": "TitleMeterRanking"
+      },
+      "plot": {
+        "plotText": {
+          "plainText": "A law firm brings in its \"fixer\" to remedy the situation after a lawyer has a breakdown while representing a chemical company that he knows is guilty in a multibillion-dollar class action suit.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58341b597b91eb941cb93",
+      "id": "tt0274558",
+      "ratingsSummary": {
+        "aggregateRating": 7.5,
+        "voteCount": 142986,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3369703680",
+        "width": 485,
+        "height": 653,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTIwMjQ4MDUxMV5BMl5BanBnXkFtZTYwMjUxMTM3._V1_.jpg",
+        "caption": {
+          "plainText": "Nicole Kidman, Julianne Moore, and Meryl Streep in The Hours (2002)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "The Hours",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "The Hours",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2002,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 20,
+        "month": 3,
+        "year": 2003,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6600,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": {
+        "currentRank": 2428,
+        "rankChange": {
+          "changeDirection": "UP",
+          "difference": 359,
+          "__typename": "MeterRankChange"
+        },
+        "__typename": "TitleMeterRanking"
+      },
+      "plot": {
+        "plotText": {
+          "plainText": "The story of how the novel \"Mrs. Dalloway\" affects three generations of women, all of whom, in one way or another, have had to deal with suicide in their lives.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5d8c7b597b91eb956722d",
+      "id": "tt6828390",
+      "ratingsSummary": {
+        "aggregateRating": 6.9,
+        "voteCount": 17100,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm672499457",
+        "width": 1012,
+        "height": 1500,
+        "url": "https://m.media-amazon.com/images/M/MV5BNDIzMGZlNGQtNWFlMC00NDc1LTliNmQtNDA3ODRlYzhjMGNmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+        "caption": {
+          "plainText": "Peter Sarsgaard, James Norton, and Vanessa Kirby in Mr. Jones (2019)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Thriller",
+            "id": "Thriller",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Mr. Jones",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Mr. Jones",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2019,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 16,
+        "month": 6,
+        "year": 2020,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 8460,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": {
+        "currentRank": 2166,
+        "rankChange": {
+          "changeDirection": "UP",
+          "difference": 1057,
+          "__typename": "MeterRankChange"
+        },
+        "__typename": "TitleMeterRanking"
+      },
+      "plot": {
+        "plotText": {
+          "plainText": "A Welsh journalist breaks the news in the western media of the famine in Ukraine in the early 1930s.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5b499e1a8ddbd964dcc69",
+      "id": "tt2429278",
+      "ratingsSummary": {
+        "aggregateRating": 4.3,
+        "voteCount": 331,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2795835392",
+        "width": 1382,
+        "height": 2048,
+        "url": "https://m.media-amazon.com/images/M/MV5BZTQ3MTc1OTAtNjMxNy00MTc1LTlkZDktNjcyYzJiZWQxOTM0XkEyXkFqcGdeQXVyMzM0OTM4MTQ@._V1_.jpg",
+        "caption": {
+          "plainText": "The Ghost and the Whale (2017)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Mystery",
+            "id": "Mystery",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Thriller",
+            "id": "Thriller",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "The Ghost and the Whale",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "The Ghost and the Whale",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2017,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 1,
+        "month": 6,
+        "year": 2017,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6300,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "In the town of Bodega Bay, Joseph went to sea with the love of his life and returned alone. The mystery deepens upon Joseph's exoneration in her disappearance, while a reporter stirs the pot of suspicion and the wrath of a vengeful family.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e5b694ef99b1c5434e3a35",
+      "id": "tt2848324",
+      "ratingsSummary": {
+        "aggregateRating": 6.2,
+        "voteCount": 2781,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm2428756224",
+        "width": 2764,
+        "height": 4096,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTc1NTE0MTAzNV5BMl5BanBnXkFtZTgwNzczNzU0NzE@._V1_.jpg",
+        "caption": {
+          "plainText": "Touched with Fire (2015)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Touched with Fire",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Touched with Fire",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2015,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 10,
+        "month": 5,
+        "year": 2017,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6360,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Two bipolar patients meet in a psychiatric hospital and begin a romance that brings out all of the beauty and horror of their condition.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58176e1a8ddbd964165b3",
+      "id": "tt0109306",
+      "ratingsSummary": {
+        "aggregateRating": 6.4,
+        "voteCount": 8368,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm4261839872",
+        "width": 682,
+        "height": 1023,
+        "url": "https://m.media-amazon.com/images/M/MV5BNTQ1NTA3MTU5Ml5BMl5BanBnXkFtZTcwMzc3NDcyNA@@._V1_.jpg",
+        "caption": {
+          "plainText": "Tommy Lee Jones and Jessica Lange in Blue Sky (1994)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Romance",
+            "id": "Romance",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Blue Sky",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Blue Sky",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 1994,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 16,
+        "month": 9,
+        "year": 1994,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6060,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "Jessica Lange stars in a period drama about a family moving to a military base, and she quickly becomes part of a cover-up involving nuclear bomb tests.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e58159971a4a15d6416045",
+      "id": "tt0100873",
+      "ratingsSummary": {
+        "aggregateRating": 6.9,
+        "voteCount": 4262,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm3357750016",
+        "width": 580,
+        "height": 849,
+        "url": "https://m.media-amazon.com/images/M/MV5BZjkyYmUxNTYtMGU3ZC00OWM0LTkyMjktMWQxYjUyNjQ5NjQzXkEyXkFqcGdeQXVyNDkzNTM2ODg@._V1_.jpg",
+        "caption": {
+          "plainText": "Vincent & Theo (1990)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "Vincent & Theo",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "Vincent & Theo",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 1990,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 27,
+        "month": 4,
+        "year": 1990,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 8400,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "The familiar tragic story of Vincent van Gogh is broadened by focusing as well on his brother Theodore, who helped support Vincent. The movie also provides a nice view of the locations which Vincent painted.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    },
+    {
+      "_id": "61e592e5971a4a15d6457941",
+      "id": "tt1130080",
+      "ratingsSummary": {
+        "aggregateRating": 6.5,
+        "voteCount": 68300,
+        "__typename": "RatingsSummary"
+      },
+      "episodes": null,
+      "primaryImage": {
+        "id": "rm1666222080",
+        "width": 261,
+        "height": 385,
+        "url": "https://m.media-amazon.com/images/M/MV5BMTc4MDIyMTM3NV5BMl5BanBnXkFtZTcwNDQ2Nzg2Mg@@._V1_.jpg",
+        "caption": {
+          "plainText": "The Informant! (2009)",
+          "__typename": "Markdown"
+        },
+        "__typename": "Image"
+      },
+      "titleType": {
+        "text": "Movie",
+        "id": "movie",
+        "isSeries": false,
+        "isEpisode": false,
+        "__typename": "TitleType"
+      },
+      "genres": {
+        "genres": [
+          {
+            "text": "Biography",
+            "id": "Biography",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Comedy",
+            "id": "Comedy",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Crime",
+            "id": "Crime",
+            "__typename": "Genre"
+          },
+          {
+            "text": "Drama",
+            "id": "Drama",
+            "__typename": "Genre"
+          }
+        ],
+        "__typename": "Genres"
+      },
+      "titleText": {
+        "text": "The Informant!",
+        "__typename": "TitleText"
+      },
+      "originalTitleText": {
+        "text": "The Informant!",
+        "__typename": "TitleText"
+      },
+      "releaseYear": {
+        "year": 2009,
+        "endYear": null,
+        "__typename": "YearRange"
+      },
+      "releaseDate": {
+        "day": 29,
+        "month": 10,
+        "year": 2009,
+        "__typename": "ReleaseDate"
+      },
+      "runtime": {
+        "seconds": 6480,
+        "__typename": "Runtime"
+      },
+      "series": null,
+      "meterRanking": null,
+      "plot": {
+        "plotText": {
+          "plainText": "The U.S. government decides to go after an agro-business giant with a price-fixing accusation, based on the evidence submitted by their star witness, vice president-turned-informant Mark Whitacre.",
+          "__typename": "Markdown"
+        },
+        "language": {
+          "id": "en-US",
+          "__typename": "DisplayableLanguage"
+        },
+        "__typename": "Plot"
+      }
+    }
+  ]
+}
