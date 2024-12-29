@@ -1,3 +1,10 @@
+export interface IMovieOrSeriesResponse {
+  page: number;
+  next?: string;
+  entries: number;
+  results: IMovieOrSeriesResponseData[];
+}
+
 export interface IMovieOrSeriesResponseData {
   _id: string;
   id: string;
