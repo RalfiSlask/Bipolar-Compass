@@ -1,17 +1,6 @@
 {
   "menuItems": [
     {
-      "id": 1,
-      "title": "Behandling",
-      "slug": "behandling",
-      "submenuItems": [
-        { "id": 11, "title": "Medicin", "slug": "medicin" },
-        { "id": 12, "title": "Självhjalp", "slug": "sjalvhjalp" },
-        { "id": 13, "title": "Terapi", "slug": "terapi" },
-        { "id": 14, "title": "Krisplan", "slug": "krisplan" }
-      ]
-    },
-    {
       "id": 2,
       "title": "Bipolaritet",
       "slug": "bipolaritet",
@@ -21,41 +10,142 @@
           "title": "Vad är bipolaritet",
           "slug": "vad-ar-bipolaritet"
         },
-        { "id": 22, "title": "Diagnoser", "slug": "diagnoser" },
-        { "id": 23, "title": "Symptom", "slug": "symptom" },
-        { "id": 24, "title": "FAQ", "slug": "vanliga-fragor" },
-        { "id": 25, "title": "Anhoriga", "slug": "anhoriga" }
+        {
+          "id": 22,
+          "title": "Diagnoser",
+          "slug": "diagnoser"
+        },
+        {
+          "id": 23,
+          "title": "Symptom",
+          "slug": "symptom"
+        },
+        {
+          "id": 24,
+          "title": "FAQ",
+          "slug": "vanliga-fragor"
+        }
       ]
     },
     {
       "id": 3,
-      "title": "Resurser",
-      "slug": "resurser",
-      "submenuItems": [
-        { "id": 31, "title": "Multimedia", "slug": "multimedia" },
-        { "id": 32, "title": "Artiklar", "slug": "artiklar" },
-        { "id": 33, "title": "Verktyg", "slug": "verktyg" }
-      ]
+      "title": "Anhöriga",
+      "slug": "anhoriga",
+      "submenuItems": []
     },
     {
       "id": 4,
-      "title": "Forskning",
-      "slug": "forskning",
+      "title": "Behandling",
+      "slug": "behandling",
       "submenuItems": [
-        { "id": 41, "title": "Senaste", "slug": "senaste" },
-        { "id": 42, "title": "Vardgivare", "slug": "vardgivare" },
-        { "id": 43, "title": "Rapporter", "slug": "rapporter" }
+        {
+          "id": 41,
+          "title": "Medicin",
+          "slug": "medicin"
+        },
+        {
+          "id": 42,
+          "title": "Självhjälp",
+          "slug": "sjalvhjalp"
+        },
+        {
+          "id": 43,
+          "title": "Terapi",
+          "slug": "terapi"
+        },
+        {
+          "id": 44,
+          "title": "Krisplan",
+          "slug": "krisplan"
+        }
       ]
     },
     {
       "id": 5,
+      "title": "Resurser",
+      "slug": "resurser",
+      "submenuItems": [
+        {
+          "id": 51,
+          "title": "Multimedia",
+          "slug": "multimedia",
+          "submenuItems": [
+            {
+              "id": 511,
+              "title": "Filmer",
+              "slug": "filmer"
+            },
+            {
+              "id": 512,
+              "title": "Musik",
+              "slug": "Podcasts"
+            },
+            {
+              "id": 513,
+              "title": "Videor",
+              "slug": "Videor"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "title": "Artiklar",
+          "slug": "artiklar"
+        },
+        {
+          "id": 53,
+          "title": "Verktyg",
+          "slug": "verktyg"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Forskning",
+      "slug": "forskning",
+      "submenuItems": [
+        {
+          "id": 61,
+          "title": "Senaste",
+          "slug": "senaste"
+        },
+        {
+          "id": 62,
+          "title": "Vårdgivare",
+          "slug": "vardgivare"
+        },
+        {
+          "id": 63,
+          "title": "Rapporter",
+          "slug": "rapporter"
+        }
+      ]
+    },
+    {
+      "id": 7,
       "title": "Om oss",
       "slug": "om-oss",
       "submenuItems": [
-        { "id": 51, "title": "Vision", "slug": "vision" },
-        { "id": 52, "title": "Kontakt", "slug": "kontakt" },
-        { "id": 53, "title": "Cookies", "slug": "cookies" },
-        { "id": 54, "title": "GDPR", "slug": "gdpr" }
+        {
+          "id": 71,
+          "title": "Vision",
+          "slug": "vision"
+        },
+        {
+          "id": 72,
+          "title": "Kontakt",
+          "slug": "kontakt"
+        },
+        {
+          "id": 73,
+          "title": "Cookies",
+          "slug": "cookies"
+        },
+        {
+          "id": 74,
+          "title": "GDPR",
+          "slug": "gdpr"
+        }
       ]
     }
   ]
