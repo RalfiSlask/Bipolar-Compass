@@ -51,6 +51,8 @@ export interface IImage {
 export interface IGenreList {
   genres: IGenre[] | null;
   __typename: string;
+  id?: string;
+  meterRanking?: null;
 }
 
 export interface IGenre {
