@@ -1,58 +1,6 @@
 {
   "movies": [
     {
-      "_id": "61e5953fcffb8f2faa460b61",
-      "id": "tt11702252",
-      "ratingsSummary": {
-        "aggregateRating": 6.2,
-        "voteCount": 713,
-        "__typename": "RatingsSummary"
-      },
-      "episodes": null,
-      "primaryImage": null,
-      "titleType": {
-        "text": "Movie",
-        "id": "movie",
-        "isSeries": false,
-        "isEpisode": false,
-        "__typename": "TitleType"
-      },
-      "genres": {
-        "genres": [
-          {
-            "text": "Drama",
-            "id": "Drama",
-            "__typename": "Genre"
-          }
-        ],
-        "__typename": "Genres"
-      },
-      "titleText": {
-        "text": "The Year Between",
-        "__typename": "TitleText"
-      },
-      "originalTitleText": {
-        "text": "The Year Between",
-        "__typename": "TitleText"
-      },
-      "releaseYear": null,
-      "releaseDate": null,
-      "runtime": null,
-      "series": null,
-      "meterRanking": null,
-      "plot": {
-        "plotText": {
-          "plainText": "Clemence Miller is coming home to live in her family's basement after dropping out of her sophomore year of college with a newly diagnosed mental illness. Having to face her battered relationships and responsibilities of adulthood, she is driving everyone around her, well, crazy.",
-          "__typename": "Markdown"
-        },
-        "language": {
-          "id": "en-US",
-          "__typename": "DisplayableLanguage"
-        },
-        "__typename": "Plot"
-      }
-    },
-    {
       "_id": "61e5b054a66e5964234cc017",
       "id": "tt1969062",
       "ratingsSummary": {
@@ -82,8 +30,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
@@ -92,8 +40,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -126,7 +74,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "A father struggling with bipolar disorder tries to win back his wife by attempting to take full responsibility of their two young, spirited daughters, who don't make the overwhelming task any easier.",
+          "plainText": "En far som kämpar med bipolär sjukdom försöker vinna tillbaka sin fru genom att ta fullt ansvar för sina två unga, livliga döttrar, som inte gör den överväldigande uppgiften lättare.",
           "__typename": "Markdown"
         },
         "language": {
@@ -166,8 +114,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -176,8 +124,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -210,7 +158,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Story of the relationship between poets Edward James \"Ted\" Hughes (Daniel Craig) and Sylvia Plath (Gwyneth Paltrow).",
+          "plainText": "Berättelsen om relationen mellan poeterna Edward James \"Ted\" Hughes (Daniel Craig) och Sylvia Plath (Gwyneth Paltrow).",
           "__typename": "Markdown"
         },
         "language": {
@@ -250,13 +198,13 @@
       "genres": {
         "genres": [
           {
-            "text": "Documentary",
-            "id": "Documentary",
+            "text": "Dokumentär",
+            "id": "Dokumentär",
             "__typename": "Genre"
           },
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -294,7 +242,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Filmmaker Dana Perry documents the life of her son, Evan, a 15-year-old who committed suicide.",
+          "plainText": "Filmskaparen Dana Perry dokumenterar livet för sin son, Evan, en 15-åring som tog sitt eget liv.",
           "__typename": "Markdown"
         },
         "language": {
@@ -334,8 +282,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
@@ -344,8 +292,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -386,7 +334,7 @@
       },
       "plot": {
         "plotText": {
-          "plainText": "After a stint in a mental institution, former teacher Pat Solitano moves back in with his parents and tries to reconcile with his ex-wife. Things get more challenging when Pat meets Tiffany, a mysterious girl with problems of her own.",
+          "plainText": "Efter en tid på ett mentalsjukhus flyttar den tidigare läraren Pat Solitano tillbaka till sina föräldrar och försöker försonas med sin ex-fru. Saker blir mer komplicerade när Pat möter Tiffany, en mystisk kvinna med egna problem.",
           "__typename": "Markdown"
         },
         "language": {
@@ -426,8 +374,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
@@ -436,8 +384,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -470,7 +418,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "The wild and sexy story of two passionate young people who take to the road for the incredible adventure of their lives.",
+          "plainText": "Den vilda och sexiga historien om två passionerade unga människor som ger sig ut på en otrolig resa.",
           "__typename": "Markdown"
         },
         "language": {
@@ -544,7 +492,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "After attacking another player with a bat during baseball at school, Lyle's sent to the psych ward. He meets other teenagers with problems. Will group therapy help?",
+          "plainText": "Efter att ha attackerat en annan spelare med ett slagträ under en basebollmatch på skolan skickas Lyle till en psykiatrisk avdelning. Där möter han andra tonåringar med problem. Kan gruppterapi hjälpa?",
           "__typename": "Markdown"
         },
         "language": {
@@ -584,8 +532,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -623,7 +571,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "A brilliant but troubled New Zealand chess champion finds purpose by teaching underprivileged children about the rules of chess and life.",
+          "plainText": "En briljant men plågad schackmästare från Nya Zeeland finner mening genom att lära underprivilegierade barn reglerna för schack och livet.",
           "__typename": "Markdown"
         },
         "language": {
@@ -663,8 +611,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -673,13 +621,13 @@
             "__typename": "Genre"
           },
           {
-            "text": "Music",
-            "id": "Music",
+            "text": "Musik",
+            "id": "Musik",
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -712,7 +660,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Pianist David Helfgott, driven by his father and teachers, has a breakdown. Years later he returns to the piano, to popular if not critical acclaim.",
+          "plainText": "Pianisten David Helfgott, driven av sin far och sina lärare, får ett sammanbrott. Många år senare återvänder han till pianot och får populär men inte kritisk framgång.",
           "__typename": "Markdown"
         },
         "language": {
@@ -752,13 +700,13 @@
       "genres": {
         "genres": [
           {
-            "text": "Documentary",
-            "id": "Documentary",
+            "text": "Dokumentär",
+            "id": "Dokumentär",
             "__typename": "Genre"
           },
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -767,8 +715,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "News",
-            "id": "News",
+            "text": "Nyheter",
+            "id": "Nyheter",
             "__typename": "Genre"
           }
         ],
@@ -801,7 +749,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Of Two Minds explores the extraordinary lives, struggles and successes of three unique and compelling people living with bipolar disorder in America today. Through a combination of intimate verité and revealing interviews, we experience what it feels like to be bipolar - from exquisite feelings of grandiosity and sensuality to the depths of despair and depression. A journey from the painful to the painfully funny, Of Two Minds puts a human face on the illness, opening an engaging, harrowing and perception-changing view on those all around us who live in bipolar's shadows...our sisters and brothers, parents and friends, and ourselves.",
+          "plainText": "Of Two Minds utforskar de extraordinära liv, kamper och framgångar för tre unika och engagerande människor som lever med bipolär sjukdom i dagens Amerika.",
           "__typename": "Markdown"
         },
         "language": {
@@ -846,13 +794,13 @@
             "__typename": "Genre"
           },
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
-            "text": "Crime",
-            "id": "Crime",
+            "text": "Kriminal",
+            "id": "Kriminal",
             "__typename": "Genre"
           },
           {
@@ -898,7 +846,7 @@
       },
       "plot": {
         "plotText": {
-          "plainText": "A corrupt, junkie cop with bipolar disorder attempts to manipulate his way through a promotion in order to win back his wife and daughter while also fighting his own inner demons.",
+          "plainText": "En korrupt, missbrukande polis med bipolär sjukdom försöker manipulera sig till en befordran för att vinna tillbaka sin fru och dotter samtidigt som han kämpar med sina egna inre demoner.",
           "__typename": "Markdown"
         },
         "language": {
@@ -938,8 +886,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
@@ -977,7 +925,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "A substance-addicted actress tries to look on the bright side even as she is forced to move back in with her mother to avoid unemployment.",
+          "plainText": "En substansberoende skådespelerska försöker se det ljusa i tillvaron, även när hon tvingas flytta tillbaka till sin mamma för att undvika arbetslöshet.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1017,8 +965,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Crime",
-            "id": "Crime",
+            "text": "Kriminal",
+            "id": "Kriminal",
             "__typename": "Genre"
           },
           {
@@ -1027,8 +975,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Mystery",
-            "id": "Mystery",
+            "text": "Mystisk",
+            "id": "Mystisk",
             "__typename": "Genre"
           },
           {
@@ -1074,7 +1022,7 @@
       },
       "plot": {
         "plotText": {
-          "plainText": "A law firm brings in its \"fixer\" to remedy the situation after a lawyer has a breakdown while representing a chemical company that he knows is guilty in a multibillion-dollar class action suit.",
+          "plainText": "En advokatfirma kallar in sin 'fixare' för att lösa situationen efter att en advokat får ett sammanbrott medan han representerar ett kemiföretag som han vet är skyldigt i en miljardklass-action.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1119,8 +1067,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -1161,7 +1109,7 @@
       },
       "plot": {
         "plotText": {
-          "plainText": "The story of how the novel \"Mrs. Dalloway\" affects three generations of women, all of whom, in one way or another, have had to deal with suicide in their lives.",
+          "plainText": "Berättelsen om hur romanen 'Mrs. Dalloway' påverkar tre generationer av kvinnor, som alla på något sätt har haft att göra med självmord i sina liv.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1201,8 +1149,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -1253,7 +1201,7 @@
       },
       "plot": {
         "plotText": {
-          "plainText": "A Welsh journalist breaks the news in the western media of the famine in Ukraine in the early 1930s.",
+          "plainText": "En walesisk journalist avslöjar nyheten i västmedierna om hungersnöden i Ukraina på 1930-talet.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1298,8 +1246,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Mystery",
-            "id": "Mystery",
+            "text": "Mystisk",
+            "id": "Mystisk",
             "__typename": "Genre"
           },
           {
@@ -1337,7 +1285,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "In the town of Bodega Bay, Joseph went to sea with the love of his life and returned alone. The mystery deepens upon Joseph's exoneration in her disappearance, while a reporter stirs the pot of suspicion and the wrath of a vengeful family.",
+          "plainText": "I staden Bodega Bay gick Joseph till sjöss med sitt livs kärlek och återvände ensam. Mysteriet fördjupas efter att Joseph friats från misstankar kring hennes försvinnande, medan en reporter rör om i grytan av misstankar.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1382,8 +1330,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -1416,7 +1364,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Two bipolar patients meet in a psychiatric hospital and begin a romance that brings out all of the beauty and horror of their condition.",
+          "plainText": "Två bipolära patienter möts på en psykiatrisk klinik och inleder en romans som framkallar både skönheten och skräcken i deras tillstånd.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1461,8 +1409,8 @@
             "__typename": "Genre"
           },
           {
-            "text": "Romance",
-            "id": "Romance",
+            "text": "Romans",
+            "id": "Romans",
             "__typename": "Genre"
           }
         ],
@@ -1495,7 +1443,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "Jessica Lange stars in a period drama about a family moving to a military base, and she quickly becomes part of a cover-up involving nuclear bomb tests.",
+          "plainText": "Jessica Lange spelar i ett perioddrama om en familj som flyttar till en militärbas, där hon snabbt blir en del av en mörkläggning som involverar kärnvapentest.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1535,8 +1483,8 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
@@ -1574,7 +1522,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "The familiar tragic story of Vincent van Gogh is broadened by focusing as well on his brother Theodore, who helped support Vincent. The movie also provides a nice view of the locations which Vincent painted.",
+          "plainText": "Den välkända tragiska historien om Vincent van Gogh breddas genom att även fokusera på hans bror Theodore, som hjälpte till att stötta Vincent. Filmen ger också en fin vy över platserna som Vincent målade.",
           "__typename": "Markdown"
         },
         "language": {
@@ -1614,18 +1562,18 @@
       "genres": {
         "genres": [
           {
-            "text": "Biography",
-            "id": "Biography",
+            "text": "Biografi",
+            "id": "Biografi",
             "__typename": "Genre"
           },
           {
-            "text": "Comedy",
-            "id": "Comedy",
+            "text": "Komedi",
+            "id": "Komedi",
             "__typename": "Genre"
           },
           {
-            "text": "Crime",
-            "id": "Crime",
+            "text": "Kriminal",
+            "id": "Kriminal",
             "__typename": "Genre"
           },
           {
@@ -1663,7 +1611,7 @@
       "meterRanking": null,
       "plot": {
         "plotText": {
-          "plainText": "The U.S. government decides to go after an agro-business giant with a price-fixing accusation, based on the evidence submitted by their star witness, vice president-turned-informant Mark Whitacre.",
+          "plainText": "Den amerikanska regeringen bestämmer sig för att gå efter en jordbruksjätte med en anklagelse om prisöverenskommelser, baserat på bevis som lämnats in av deras stjärnvittne, vice vd:n som blivit informatör.",
           "__typename": "Markdown"
         },
         "language": {
