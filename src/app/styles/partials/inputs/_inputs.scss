@@ -1,0 +1,44 @@
+@use '../../variables/variables' as *;
+
+.primary-input {
+  border: 1px solid $green-text;
+  padding: 6px 16px;
+  border-radius: 10px;
+  background-color: white;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:focus {
+    border: 1px solid $green-dark;
+  }
+  &:disabled:hover {
+    background-color: white;
+  }
+  &:hover {
+    background-color: lightgray;
+  }
+}
+
+.secondary-input {
+  width: 100%;
+  height: 100%;
+  background-color: $beige;
+  padding: 10px;
+  border-radius: 6px;
+  height: 44px;
+}
+
+.time-input {
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(48%) sepia(13%) saturate(1080%) hue-rotate(118deg)
+      brightness(95%) contrast(86%);
+    cursor: pointer;
+  }
+
+  &::-webkit-time-picker-indicator {
+    filter: invert(48%) sepia(13%) saturate(1080%) hue-rotate(118deg)
+      brightness(95%) contrast(86%);
+    cursor: pointer;
+  }
+}

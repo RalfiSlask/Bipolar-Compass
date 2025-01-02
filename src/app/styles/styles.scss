@@ -1,0 +1,11 @@
+@use './variables/variables';
+@use './partials/base';
+@use './vendor/reset';
+@use './partials/buttons/buttons';
+@use './partials/headings/headings';
+@use './partials/inputs/inputs';
+@use './partials/checkboxes/checkboxes';
+@use './partials/dropdowns/dropdowns';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

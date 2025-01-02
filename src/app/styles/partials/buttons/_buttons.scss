@@ -1,0 +1,40 @@
+@use '../../variables/variables' as *;
+
+.primary-button {
+  color: $green-text;
+  background-color: $yellow-light;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  &:hover {
+    background-color: $yellow-dark;
+  }
+  width: fit-content;
+  min-width: 100px;
+}
+
+.secondary-button {
+  color: $green-text;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  border: 1px solid $green-text;
+  &:hover {
+    border: 1px solid $green-dark;
+  }
+  width: fit-content;
+}
+
+.tertiary-button {
+  padding: 10px 24px;
+  border-radius: 12px;
+  background-color: $green-dark;
+  color: $yellow-light;
+  display: inline-block;
+  &:hover {
+    background-color: $green-light;
+  }
+  width: fit-content;
+  min-width: 100px;
+}

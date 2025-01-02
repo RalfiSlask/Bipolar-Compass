@@ -1,0 +1,38 @@
+:root {
+  --font-xl: clamp(2.5rem, 5vw, 3rem);
+  --font-lg: clamp(2rem, 4.5vw, 2.5rem);
+  --font-md: clamp(1.8rem, 4vw, 2rem);
+  --font-sm: clamp(1.4rem, 3.5vw, 1.5rem);
+  --font-xs: clamp(1.2rem, 3vw, 1.2rem);
+}
+
+.h-xl {
+  font-family: var(--font-playfair), serif;
+  font-size: var(--font-xl);
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.h-lg {
+  font-size: var(--font-lg);
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.h-md {
+  font-size: var(--font-md);
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.h-sm {
+  font-size: var(--font-sm);
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.h-xs {
+  font-size: var(--font-xs);
+  font-weight: bold;
+  line-height: 1.6;
+}
