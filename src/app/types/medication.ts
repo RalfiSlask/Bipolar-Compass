@@ -1,7 +1,9 @@
 export interface IMedication {
   name: string;
-  dosage: string;
+  dosage: number;
+  doseUnit: string;
   frequency: string;
+  times: string[];
   notes: string;
   reminder: IReminder;
 }
@@ -9,5 +11,5 @@ export interface IMedication {
 export interface IReminder {
   enabled: boolean;
   method: string;
-  time: string;
+  times: string[];
 }

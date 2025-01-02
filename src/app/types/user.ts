@@ -5,7 +5,7 @@ export interface IUser {
   id?: string;
   name: string;
   email: string;
-  password: string;
+  password?: string;
   created_at: string;
   isVerified: boolean;
   verificationToken?: string;
