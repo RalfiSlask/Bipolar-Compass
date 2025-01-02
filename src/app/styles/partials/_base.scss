@@ -1,0 +1,29 @@
+@use '../variables/variables' as *;
+
+html,
+body {
+  font-family: var(--font-inter), sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: $beige;
+  color: $dark-text;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+.main-container {
+  flex: 1 0 auto;
+}
+
+p {
+  font-family: var(--font-inter), sans-serif;
+}
