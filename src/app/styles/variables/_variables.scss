@@ -1,0 +1,34 @@
+// Colors
+
+// Quaternary colors (orange tones)
+$quaternary-light: #f5be99;
+$quaternary-medium: #e58748;
+$quaternary-dark: #c5672d;
+
+// Yellow tones
+$yellow-light: #fcd961;
+$yellow-dark: #f4c31f;
+
+// Green tones
+$green-text: #012f2c;
+$green-light: #045346;
+$green-dark: #033a35;
+
+// Neutral tones
+$beige: #f8f4ed;
+$footer-color: #1a1f20;
+$dark-text: #232426;
+
+// Debugging mode
+$debugging: false;
+$dark-text: #232426;
+
+// Debugging mode
+
+$debugging: false;
+
+div {
+  @if ($debugging) {
+    border: 1px solid hotpink;
+  }
+}
