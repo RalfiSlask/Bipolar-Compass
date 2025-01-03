@@ -21,6 +21,7 @@
     "nodemailer": "^6.9.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "sass": "^1.83.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {
