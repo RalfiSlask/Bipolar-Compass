@@ -1,4 +1,5 @@
 export interface IMedication {
+  category: string;
   name: string;
   dosage: number;
   doseUnit: string;
