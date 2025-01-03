@@ -1,13 +1,10 @@
-import { NextResponse } from 'next/server';
-import {
-  getCollection,
-  getVerificationCodeAsString,
-} from '../../utils/helpers';
+import { NextRequest, NextResponse } from 'next/server';
+import { getCollection } from '../../utils/databaseUtils';
 import bcrypt from 'bcryptjs';
-import { emailTransporter } from '@/app/lib/nodemailer';
 import { User } from '@/app/models/User';
+import { sendVerificationEmail } from '@/app/utils/emailUtils';
 
-export const POST = async (req: Request): Promise<NextResponse> => {
+export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const collection = await getCollection('thesis', 'users');
     const { name, email, password } = await req.json();
@@ -21,23 +18,25 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     }
 
     // We create the new user
-    const verificationCode = getVerificationCodeAsString();
     const encryptedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User(name, email, encryptedPassword, verificationCode);
-
-    // Here we send the verification email
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: 'Verifiera din e-postadress',
-      text: `Hej!, använd denna kod för att verifiera diit konto: ${verificationCode}`,
-    };
-
-    const mailResult = await emailTransporter.sendMail(mailOptions);
-    console.log('mail result: ', mailResult);
+    const newUser = new User(name, email, encryptedPassword);
+    const serializedUser = newUser.toJSON();
 
     try {
-      const insertResult = await collection.insertOne(newUser);
+      await sendVerificationEmail({
+        verificationToken: newUser.verificationToken!,
+        email: newUser.email,
+      });
+    } catch (error) {
+      console.error('Verification email could not be sent:', error);
+      return NextResponse.json(
+        { error: 'Could not send verification email' },
+        { status: 500 }
+      );
+    }
+
+    try {
+      const insertResult = await collection.insertOne(serializedUser);
       console.log('User successfully inserted into database:', insertResult);
     } catch (error) {
       console.error('Error inserting user into database:', error);
@@ -47,13 +46,13 @@ export const POST = async (req: Request): Promise<NextResponse> => {
       );
     }
     return NextResponse.json(
-      { message: 'Användare skapad, logga in krävs' },
+      { message: 'User created, verification link sent' },
       { status: 201 }
     );
   } catch (error) {
     console.error('An error occurred during user creation:', error);
     return NextResponse.json(
-      { error: 'Fel vid skapande av användare' },
+      { error: 'Error when creating user' },
       { status: 500 }
     );
   }
