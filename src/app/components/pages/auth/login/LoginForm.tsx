@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { signIn } from 'next-auth/react';
-import { Formik, Field, Form, ErrorMessage, FormikValues } from 'formik';
-import { signInValidationSchema } from '@/app/utils/validationSchemas';
-import { useRouter } from 'next/navigation';
+import Spinner from '@/app/components/shared/Spinner';
 import { ILoginFormValues } from '@/app/types/auth';
+import { signInValidationSchema } from '@/app/utils/validationSchemas';
+import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const LoginForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
@@ -49,32 +50,87 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       validateOnChange={false}
     >
-      {({ isValid }) => (
-        <>
-          <Form>
-            <div>
-              <label htmlFor="email">Email</label>
-              <Field className="text-black" name="email" type="email" />
-              <ErrorMessage name="email" component="div" className="error" />
+      {({ isValid, errors, touched }) => (
+        <Form noValidate className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="email" className="font-medium text-primary-dark">
+              E-postadress
+            </label>
+            <Field
+              className={`primary-input ${
+                errors.email && touched.email ? 'border-red-500' : ''
+              }`}
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              aria-required="true"
+              aria-invalid={errors.email && touched.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+            />
+            <div className="min-h-[20px]">
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="text-red-600 text-sm"
+                id="email-error"
+              />
             </div>
+          </div>
 
-            <div>
-              <label htmlFor="password">Lösenord</label>
-              <Field className="text-black" name="password" type="password" />
-              <ErrorMessage name="password" component="div" className="error" />
+          <div className="flex flex-col gap-2">
+            <label htmlFor="password" className="font-medium text-primary-dark">
+              Lösenord
+            </label>
+            <Field
+              className={`primary-input w-full ${
+                errors.password && touched.password ? 'border-red-500' : ''
+              }`}
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              aria-required="true"
+              aria-invalid={
+                errors.password && touched.password ? 'true' : 'false'
+              }
+              aria-describedby={errors.password ? 'password-error' : undefined}
+            />
+            <div className="min-h-[20px]">
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="text-red-600 text-sm"
+                id="password-error"
+              />
             </div>
+          </div>
 
-            <button
-              className=""
-              type="submit"
-              disabled={isSubmitting || !isValid}
-            >
-              {isSubmitting ? 'Loggar in...' : 'Logga in'}
-            </button>
+          <button
+            type="submit"
+            className={`w-full tertiary-button cursor-pointer ${
+              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={isSubmitting || !isValid}
+            aria-busy={isSubmitting}
+          >
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <Spinner /> Loggar in...
+              </span>
+            ) : (
+              'Logga in'
+            )}
+          </button>
 
-            {formError && <p className="error">{formError}</p>}
-          </Form>
-        </>
+          <div className="min-h-[20px]">
+            {formError && (
+              <div role="alert" className="text-red-600 text-sm">
+                {formError}
+              </div>
+            )}
+          </div>
+        </Form>
       )}
     </Formik>
   );
