@@ -8,8 +8,15 @@ export const registrationValidationSchema = Yup.object({
     .email('Felaktigt e-mail format')
     .required('E-mail är obligatoriskt'),
   password: Yup.string()
-    .min(2, 'Lösenord måste vara åtminstone 8 karaktärer')
-    .required('Lösenord är obligatoriskt'),
+    .required('Lösenord är obligatoriskt')
+    .min(8, 'Lösenord måste vara åtminstone 8 tecken')
+    .matches(/[A-Z]/, 'Lösenordet måste innehålla minst en stor bokstav')
+    .matches(/[a-z]/, 'Lösenordet måste innehålla minst en liten bokstav')
+    .matches(/[0-9]/, 'Lösenordet måste innehålla minst en siffra')
+    .matches(
+      /[^A-Za-z0-9]/,
+      'Lösenordet måste innehålla minst ett specialtecken'
+    ),
   acceptTerms: Yup.bool().oneOf([true], 'Du måste godkänna villkoren'),
 });
 
@@ -85,4 +92,21 @@ export const medicineValidationSchema = Yup.object({
 export const relativeValidationSchema = Yup.object().shape({
   email: Yup.string().email('Ogiltig e-postadress').required('E-post krävs'),
   email_frequency: Yup.string().required('Frekvens krävs'),
+});
+
+export const passwordChangeValidationSchema = Yup.object({
+  currentPassword: Yup.string().required('Nuvarande lösenord krävs'),
+  newPassword: Yup.string()
+    .required('Nytt lösenord krävs')
+    .min(8, 'Lösenord måste vara åtminstone 8 tecken')
+    .matches(/[A-Z]/, 'Lösenordet måste innehålla minst en stor bokstav')
+    .matches(/[a-z]/, 'Lösenordet måste innehålla minst en liten bokstav')
+    .matches(/[0-9]/, 'Lösenordet måste innehålla minst en siffra')
+    .matches(
+      /[^A-Za-z0-9]/,
+      'Lösenordet måste innehålla minst ett specialtecken'
+    ),
+  confirmNewPassword: Yup.string()
+    .required('Du måste bekräfta det nya lösenordet')
+    .oneOf([Yup.ref('newPassword')], 'Lösenorden matchar inte'),
 });
