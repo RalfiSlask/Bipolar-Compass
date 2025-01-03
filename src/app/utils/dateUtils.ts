@@ -9,3 +9,12 @@ export const getFormattedTimeFromSeconds = (seconds: number | null) => {
     minutes > 0 ? `${minutes}m` : ''
   }`.trim();
 };
+
+export const getCreateDateAsMonthDayAndYear = (date: string) => {
+  const dateObj = new Date(date);
+  return dateObj.toLocaleDateString('sv-SE', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+};
