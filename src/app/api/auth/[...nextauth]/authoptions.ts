@@ -1,10 +1,10 @@
-import { NextAuthOptions, Session } from 'next-auth';
-import { JWT } from 'next-auth/jwt';
-import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import clientPromise from '@/app/lib/mongodb';
-import { Adapter } from 'next-auth/adapters';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import bcrypt from 'bcryptjs';
+import { NextAuthOptions, Session } from 'next-auth';
+import { Adapter } from 'next-auth/adapters';
+import { JWT } from 'next-auth/jwt';
+import CredentialsProvider from 'next-auth/providers/credentials';
 /* import { NextApiHandler } from 'next'; */
 
 interface ICustomUser {
@@ -95,16 +95,32 @@ export const authOptions: NextAuthOptions = {
       session: Session;
       token: ICustomToken;
     }) {
-      if (session.user && token.id) {
-        (session.user as ICustomUser).id = token.id;
+      if (session.user && token) {
+        (session.user as ICustomUser).id = token.id as string;
+        (session.user as ICustomUser).email = token.email;
         (session.user as ICustomUser).isVerified = token.isVerified ?? false;
       }
       return session as ICustomSession;
     },
 
-    async jwt({ token, user }: { token: ICustomToken; user?: ICustomUser }) {
+    async jwt({
+      token,
+      user,
+      trigger,
+      session,
+    }: {
+      token: ICustomToken;
+      user?: ICustomUser;
+      trigger?: 'update' | 'signIn' | 'signUp';
+      session?: ICustomSession;
+    }) {
+      if (trigger === 'update' && session) {
+        return { ...token, ...session.user };
+      }
+
       if (user) {
         token.id = user.id;
+        token.email = user.email;
         token.isVerified = user.isVerified;
       }
       return token;
