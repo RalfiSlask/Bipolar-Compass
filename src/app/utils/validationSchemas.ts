@@ -53,12 +53,36 @@ export const medicineValidationSchema = Yup.object({
       is: (category: string) => !!category,
       then: (schema) => schema.required('Välj en medicin för vald kategori'),
     }),
-  dosage: Yup.string()
+  dosage: Yup.number()
     .required('Dosering är obligatoriskt')
-    .min(1, 'Ange en giltig dosering'),
-  frequency: Yup.string()
-    .required('Frekvens är obligatoriskt')
-    .min(1, 'Ange en giltig frekvens'),
+    .moreThan(0, 'Dosering måste vara större än 0'),
+  doseUnit: Yup.string()
+    .required('Välj en enhet')
+    .oneOf(['mg', 'ml', 'tabletter', 'droppar']),
+  frequency: Yup.string().required('Frekvens är obligatoriskt'),
+  times: Yup.array().when('frequency', {
+    is: (frequency: string) =>
+      frequency && frequency !== 'as_needed' && frequency !== '',
+    then: (schema) =>
+      schema
+        .of(
+          Yup.string()
+            .required('Tidpunkt måste anges')
+            .matches(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, 'Ogiltig tidpunkt')
+        )
+        .test('all-times-filled', 'Alla tidpunkter måste fyllas i', (value) =>
+          value?.every((time) => !!time)
+        ),
+  }),
   notes: Yup.string().max(500, 'Anteckningar får inte överstiga 500 tecken'),
-  reminder: Yup.boolean(),
+  reminder: Yup.object().shape({
+    enabled: Yup.boolean(),
+    method: Yup.string(),
+    times: Yup.array().of(Yup.string()),
+  }),
+});
+
+export const relativeValidationSchema = Yup.object().shape({
+  email: Yup.string().email('Ogiltig e-postadress').required('E-post krävs'),
+  email_frequency: Yup.string().required('Frekvens krävs'),
 });
