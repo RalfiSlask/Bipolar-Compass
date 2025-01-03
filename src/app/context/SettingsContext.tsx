@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, useState } from 'react';
+import { IRelative } from '../types/relative';
 import { IUser } from '../types/user';
 
 interface IFormValues {
@@ -13,6 +14,11 @@ interface ISettingsContext {
     values: IFormValues,
     originalEmail: string
   ) => Promise<IUser>;
+  deleteAccount: (email: string) => Promise<void>;
+  saveRelativesSettings: (
+    relatives: IRelative[],
+    email: string
+  ) => Promise<void>;
 }
 
 export const SettingsContext = createContext<ISettingsContext | undefined>(
@@ -47,8 +53,36 @@ export const SettingsProvider = ({
     }
   };
 
+  const deleteAccount = async (email: string): Promise<void> => {
+    try {
+      await axios.delete('/api/settings/delete', {
+        data: { email },
+      });
+    } catch (err) {
+      console.error('could not delete account: ', err);
+      throw new Error('Kunde inte ta bort kontot');
+    }
+  };
+
+  const saveRelativesSettings = async (
+    relatives: IRelative[],
+    email: string
+  ): Promise<void> => {
+    try {
+      await axios.put('/api/settings/save/relatives', {
+        relatives,
+        email,
+      });
+    } catch (err) {
+      console.error('could not save settings: ', err);
+      throw new Error('Kunde inte spara anhöriginställningarna');
+    }
+  };
+
   const settingsData = {
-    saveProfileSettings: saveProfileSettings,
+    saveProfileSettings,
+    deleteAccount,
+    saveRelativesSettings,
   };
 
   return (
