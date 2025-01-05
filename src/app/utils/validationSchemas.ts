@@ -38,7 +38,7 @@ export const userSettingsValidationSchema = Yup.object({
     .max(110, 'Ålder kan inte vara större än 110')
     .required('Ålder är obligatoriskt'),
   gender: Yup.string()
-    .oneOf(['Ej valt', 'Man', 'Kvinna'], 'Ogiltigt kön val')
+    .oneOf(['Ej valt', 'Man', 'Kvinna', 'Annat', 'Vill ej ange'], 'Ogiltigt kön val')
     .required('Kön är obligatoriskt'),
 });
 export const userPasswordValidationSchema = Yup.object({
