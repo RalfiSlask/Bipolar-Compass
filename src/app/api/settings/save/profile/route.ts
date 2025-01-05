@@ -7,27 +7,64 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
     const { values, originalEmail } = await req.json();
     const { email, age, gender } = values;
 
-    const user = await collection.findOne({ email: originalEmail });
+    console.log('API Route - Received data:', {
+      originalEmail,
+      newEmail: email,
+      age,
+      gender,
+    });
 
-    if (!user) {
+    if (email !== originalEmail) {
+      console.log(
+        'API Route - Email change detected, checking for duplicates...'
+      );
+      const existingUser = await collection.findOne({ email: email });
+      if (existingUser) {
+        console.log('API Route - Duplicate email found:', email);
+        return NextResponse.json(
+          { message: 'Email already exists' },
+          { status: 400 }
+        );
+      }
+      console.log(
+        'API Route - No duplicate email found, proceeding with update'
+      );
+    }
+
+    console.log('API Route - Updating user...', {
+      findBy: { email: originalEmail },
+      updateWith: {
+        email,
+        'profile.age': age,
+        'profile.gender': gender,
+      },
+    });
+
+    await collection.updateOne(
+      { email: originalEmail },
+      {
+        $set: {
+          email: email,
+          'profile.age': age,
+          'profile.gender': gender,
+        },
+      }
+    );
+
+    const updatedUser = await collection.findOne({ email: email });
+    console.log('API Route - User after update:', updatedUser);
+
+    if (!updatedUser) {
+      console.log('API Route - Updated user not found!');
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
-    const updatedUser = {
-      ...user,
-      email: email,
-      profile: {
-        ...user.profile,
-        age,
-        gender,
-      },
-    };
-
-    await collection.updateOne({ email: originalEmail }, { $set: updatedUser });
-
-    return NextResponse.json({ message: 'Profile settings saved' });
+    return NextResponse.json({
+      message: 'Profile settings saved',
+      user: updatedUser,
+    });
   } catch (error) {
-    console.error('Error saving settings: ', error);
+    console.error('API Route - Error saving settings:', error);
     return NextResponse.json(
       { message: 'Error saving settings' },
       { status: 500 }
