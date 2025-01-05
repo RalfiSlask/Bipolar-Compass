@@ -1,9 +1,8 @@
 import { medicineCategories } from '@/app/data/medications';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IMedication } from '@/app/types/medication';
-import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
-import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import AntiDepressantMedicationMessage from './AntiDepressantMedicationMessage';
@@ -14,13 +13,15 @@ import MedicineDosage from './MedicineDosage';
 import MedicineFrequencyDropdown from './MedicineFrequencyDropdown';
 import YourMedications from './YourMedications';
 
-interface IMedicineSettingsProps {
-  userData: IUser;
-}
+const MedicineSettings = () => {
+  const { user, saveMedicationSettings } = useSettingsContext();
 
-const MedicineSettings = ({ userData }: IMedicineSettingsProps) => {
+  if (!user) {
+    throw new Error('Användardata saknas');
+  }
+
   const [medications, setMedicines] = useState<IMedication[]>(
-    userData.profile.medications
+    user.profile.medications
   );
   const [isAddingMedicine, setIsAddingMedicine] = useState(false);
 
@@ -37,12 +38,8 @@ const MedicineSettings = ({ userData }: IMedicineSettingsProps) => {
 
   const saveSettings = async (newMedicines: IMedication[]) => {
     try {
-      const response = await axios.put('/api/settings/save/medications', {
-        medications: newMedicines,
-        email: userData.email,
-      });
+      await saveMedicationSettings(newMedicines, user.email);
       setMedicines(newMedicines);
-      console.log('response from server: ', response.data);
     } catch (err) {
       console.error('could not save medications: ', err);
     }

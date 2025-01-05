@@ -1,18 +1,18 @@
 import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IRelative } from '@/app/types/relative';
-import { IUser } from '@/app/types/user';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 
-interface IRelativesSettingsProps {
-  userData: IUser;
-}
+const RelativesSettings = () => {
+  const { user, saveRelativesSettings } = useSettingsContext();
 
-const RelativesSettings = ({ userData }: IRelativesSettingsProps) => {
-  const [relatives, setRelatives] = useState(userData.settings.relatives);
+  if (!user) {
+    throw new Error('Användardata saknas');
+  }
+
+  const [relatives, setRelatives] = useState(user.settings.relatives);
   const [isAddingRelative, setIsAddingRelative] = useState(false);
-  const { saveRelativesSettings } = useSettingsContext();
 
   const initialValues: IRelative = {
     email: '',
@@ -23,7 +23,7 @@ const RelativesSettings = ({ userData }: IRelativesSettingsProps) => {
   const handleSubmit = async (values: IRelative) => {
     const newRelatives = [...relatives, values];
     try {
-      await saveRelativesSettings(newRelatives, userData.email);
+      await saveRelativesSettings(newRelatives, user.email);
       setRelatives(newRelatives);
     } catch (err) {
       console.error('could not save settings: ', err);
