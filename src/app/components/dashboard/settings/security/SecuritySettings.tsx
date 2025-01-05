@@ -1,15 +1,14 @@
-import { IUser } from '@/app/types/user';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { useState } from 'react';
 import ChangePasswordForm from './ChangePasswordForm';
 import EraseAccountModal from './EraseAccountModal';
 
-interface ISecurityProps {
-  userData: IUser;
-}
-
-const SecuritySettings = ({ userData }: ISecurityProps) => {
+const SecuritySettings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const email = userData.email;
+  const context = useSettingsContext();
+
+  const { user } = context;
+  const email = user?.email || '';
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -28,7 +27,7 @@ const SecuritySettings = ({ userData }: ISecurityProps) => {
       </h2>
 
       <div className="flex flex-col gap-4">
-        <ChangePasswordForm userData={userData} />
+        <ChangePasswordForm />
         <div className="p-6 border bg-white rounded-lg shadow-sm">
           <h3 className="text-xl font-semibold mb-4">Ta bort konto</h3>
           <div className="space-y-4">
