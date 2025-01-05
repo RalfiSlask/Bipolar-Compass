@@ -7,96 +7,59 @@ import NotificationsSettings from '@/app/components/dashboard/settings/notificat
 import ProfileSettings from '@/app/components/dashboard/settings/profile/ProfileSettings';
 import RelativesSettings from '@/app/components/dashboard/settings/relatives/RelativesSettings';
 import SecuritySettings from '@/app/components/dashboard/settings/security/SecuritySettings';
-import Spinner from '@/app/components/shared/Spinner';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { SettingsProvider } from '@/app/context/SettingsContext';
-import { IUser } from '@/app/types/user';
-import axios from 'axios';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
-interface IUserResponse {
-  user: IUser;
-}
-
-const SettingsPage = () => {
-  const [user, setUser] = useState<IUser | null>(null);
+const SettingsPageContent = () => {
   const { data: session } = useSession();
-  const isUserVerified = session?.user?.isVerified;
-  const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('profile');
-
+  const context = useSettingsContext();
+  const { fetchUserData } = context;
   const email = session?.user?.email;
+  const isUserVerified = session?.user?.isVerified;
 
   useEffect(() => {
-    if (!email) return;
-
-    const fetchUserData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await axios.post<IUserResponse>(`/api/settings/`, {
-          email,
-        });
-        if (response && response.data) {
-          setUser(response.data.user);
-        }
-      } catch (err) {
-        setUser(null);
-        console.error('error in fetching data: ', err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, [email]);
+    if (email) {
+      console.log('Fetching user data for email:', email);
+      fetchUserData(email);
+    }
+  }, [email, fetchUserData]);
 
   const changeActiveTab = (tab: string) => {
     setActiveTab(tab);
   };
 
-  if (!user) return <Spinner />;
-
   return (
     <section className="flex flex-col h-screen md:pl-[200px] lg:pl-[300px] w-full">
-      <DashboardSidebar email={user?.email ? user.email : ''} />
+      <DashboardSidebar email={email || ''} />
       <DashboardSettingsNavigation
         activeTab={activeTab}
         changeActiveTab={changeActiveTab}
       />
-      <SettingsProvider userData={user}>
-        <div className="h-full pt-10">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <div className="flex flex-col gap-10">
-              {user ? (
-                <div>
-                  {activeTab === 'profile' && (
-                    <ProfileSettings userData={user} />
-                  )}
-                  {activeTab === 'security' && (
-                    <SecuritySettings userData={user} />
-                  )}
-                  {activeTab === 'relatives' && (
-                    <RelativesSettings userData={user} />
-                  )}
-                  {activeTab === 'notifications' && (
-                    <NotificationsSettings userData={user} />
-                  )}
-                  {activeTab === 'medicines' && (
-                    <MedicineSettings userData={user} />
-                  )}
-                </div>
-              ) : (
-                <p>Kunde inte hämta användardata.</p>
-              )}
-              {isUserVerified && <VerficationMessage />}
-            </div>
-          )}
+      <div className="h-full pt-10">
+        <div className="flex flex-col gap-10">
+          <div>
+            {activeTab === 'profile' && <ProfileSettings />}
+            {activeTab === 'security' && <SecuritySettings />}
+            {activeTab === 'relatives' && <RelativesSettings />}
+            {activeTab === 'notifications' && <NotificationsSettings />}
+            {activeTab === 'medicines' && <MedicineSettings />}
+          </div>
+          {isUserVerified && <VerficationMessage />}
         </div>
-      </SettingsProvider>
+      </div>
     </section>
+  );
+};
+
+const SettingsPage = () => {
+  return (
+    <SettingsProvider>
+      <SettingsPageContent />
+    </SettingsProvider>
   );
 };
 
