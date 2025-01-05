@@ -2,20 +2,20 @@
 
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { SettingsContext } from '@/app/context/SettingsContext';
-import { IUser } from '@/app/types/user';
 import { getCreateDateAsMonthDayAndYear } from '@/app/utils/dateUtils';
 import { userSettingsValidationSchema } from '@/app/utils/validationSchemas';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-interface IProfileSettingsProps {
-  userData: IUser;
+interface IFormValues {
+  email: string;
+  age: number;
+  gender: string;
 }
 
-const ProfileSettings = ({ userData }: IProfileSettingsProps) => {
+const ProfileSettings = () => {
   const { data: session, update: updateSession } = useSession();
-  const [user, setUser] = useState<IUser>(userData);
   const [isEmailChangable, setIsEmailChangable] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -25,16 +25,19 @@ const ProfileSettings = ({ userData }: IProfileSettingsProps) => {
     throw new Error('ProfileSettings måste användas inom en SettingsProvider');
   }
 
-  const { saveProfileSettings } = context;
+  const { user, saveProfileSettings } = context;
 
-  interface IFormValues {
-    email: string;
-    age: number;
-    gender: string;
+  useEffect(() => {
+    console.log('ProfileSettings mounted, user:', user);
+  }, [user]);
+
+  if (!user) {
+    console.log('No user data available');
+    return null;
   }
 
   const initialFormValues: IFormValues = {
-    email: user.email || '',
+    email: user.email,
     age: user.profile?.age || 0,
     gender: user.profile?.gender || 'Ej valt',
   };
@@ -43,9 +46,7 @@ const ProfileSettings = ({ userData }: IProfileSettingsProps) => {
     setIsSaving(true);
     setSaveError(null);
     try {
-      const updatedUser = await saveProfileSettings(values, user.email);
-
-      setUser(updatedUser);
+      await saveProfileSettings(values, user.email);
 
       if (values.email !== user.email) {
         await updateSession({
@@ -57,7 +58,7 @@ const ProfileSettings = ({ userData }: IProfileSettingsProps) => {
         });
       }
     } catch (error) {
-      console.error('error in saving profile settings: ', error);
+      console.error('Error in handleSubmit:', error);
       setSaveError('Kunde inte spara inställningarna. Försök igen senare');
     } finally {
       setIsSaving(false);
@@ -85,120 +86,112 @@ const ProfileSettings = ({ userData }: IProfileSettingsProps) => {
         </div>
       </div>
 
-      {user ? (
-        <Formik
-          enableReinitialize
-          initialValues={initialFormValues}
-          validationSchema={userSettingsValidationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, touched }) => (
-            <Form className="flex flex-col gap-6">
-              {saveError && (
-                <div className="text-red-500 text-sm" role="alert">
-                  {saveError}
+      <Formik
+        enableReinitialize
+        initialValues={initialFormValues}
+        validationSchema={userSettingsValidationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched }) => (
+          <Form className="flex flex-col gap-6">
+            {saveError && (
+              <div className="text-red-500 text-sm" role="alert">
+                {saveError}
+              </div>
+            )}
+            <div className="flex flex-col gap-6">
+              <fieldset>
+                <legend className="font-medium mb-2">E-postadress</legend>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex flex-col gap-2">
+                    <Field
+                      className={`primary-input w-full sm:w-[300px] ${
+                        errors.email && touched.email ? 'border-red-500' : ''
+                      }`}
+                      name="email"
+                      type="email"
+                      id="email"
+                      placeholder="Din e-postadress"
+                      disabled={!isEmailChangable}
+                      aria-invalid={Boolean(errors.email && touched.email)}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="span"
+                      className="text-red-500 text-sm"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    onClick={() => setIsEmailChangable(!isEmailChangable)}
+                  >
+                    {isEmailChangable ? 'Avbryt' : 'Ändra e-post'}
+                  </button>
                 </div>
-              )}
-              <div className="flex flex-col gap-6">
+              </fieldset>
+
+              <div className="flex flex-col sm:flex-row gap-6">
                 <fieldset>
-                  <legend className="font-medium mb-2">E-postadress</legend>
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <div className="flex flex-col gap-2">
-                      <Field
-                        className={`primary-input w-full sm:w-[300px] ${
-                          errors.email && touched.email ? 'border-red-500' : ''
-                        }`}
-                        name="email"
-                        type="email"
-                        id="email"
-                        placeholder="Din e-postadress"
-                        disabled={!isEmailChangable}
-                        aria-invalid={Boolean(errors.email && touched.email)}
-                      />
-                      <ErrorMessage
-                        name="email"
-                        component="span"
-                        className="text-red-500 text-sm"
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      onClick={() => setIsEmailChangable(!isEmailChangable)}
-                    >
-                      {isEmailChangable ? 'Avbryt' : 'Ändra e-post'}
-                    </button>
+                  <legend className="font-medium mb-2">Ålder</legend>
+                  <div className="flex flex-col gap-2">
+                    <Field
+                      className={`primary-input w-full sm:w-[100px] ${
+                        errors.age && touched.age ? 'border-red-500' : ''
+                      }`}
+                      name="age"
+                      type="number"
+                      id="age"
+                      min={0}
+                      max={110}
+                      aria-invalid={Boolean(errors.age && touched.age)}
+                    />
+                    <ErrorMessage
+                      name="age"
+                      component="span"
+                      className="text-red-500 text-sm"
+                    />
                   </div>
                 </fieldset>
 
-                <div className="flex flex-col sm:flex-row gap-6">
-                  <fieldset>
-                    <legend className="font-medium mb-2">Ålder</legend>
-                    <div className="flex flex-col gap-2">
-                      <Field
-                        className={`primary-input w-full sm:w-[100px] ${
-                          errors.age && touched.age ? 'border-red-500' : ''
-                        }`}
-                        name="age"
-                        type="number"
-                        id="age"
-                        min={0}
-                        max={110}
-                        aria-invalid={Boolean(errors.age && touched.age)}
-                      />
-                      <ErrorMessage
-                        name="age"
-                        component="span"
-                        className="text-red-500 text-sm"
-                      />
-                    </div>
-                  </fieldset>
-
-                  <fieldset>
-                    <legend className="font-medium mb-2">Kön</legend>
-                    <div className="flex flex-col gap-2">
-                      <Field
-                        as="select"
-                        className={`primary-input w-full sm:w-[160px] ${
-                          errors.gender && touched.gender
-                            ? 'border-red-500'
-                            : ''
-                        }`}
-                        name="gender"
-                        id="gender"
-                        aria-invalid={Boolean(errors.gender && touched.gender)}
-                      >
-                        <option value="Ej valt">Ej valt</option>
-                        <option value="Man">Man</option>
-                        <option value="Kvinna">Kvinna</option>
-                        <option value="Annat">Annat</option>
-                        <option value="Vill ej ange">Vill ej ange</option>
-                      </Field>
-                      <ErrorMessage
-                        name="gender"
-                        component="span"
-                        className="text-red-500 text-sm"
-                      />
-                    </div>
-                  </fieldset>
-                </div>
+                <fieldset>
+                  <legend className="font-medium mb-2">Kön</legend>
+                  <div className="flex flex-col gap-2">
+                    <Field
+                      as="select"
+                      className={`primary-input w-full sm:w-[160px] ${
+                        errors.gender && touched.gender ? 'border-red-500' : ''
+                      }`}
+                      name="gender"
+                      id="gender"
+                      aria-invalid={Boolean(errors.gender && touched.gender)}
+                    >
+                      <option value="Ej valt">Ej valt</option>
+                      <option value="Man">Man</option>
+                      <option value="Kvinna">Kvinna</option>
+                      <option value="Annat">Annat</option>
+                      <option value="Vill ej ange">Vill ej ange</option>
+                    </Field>
+                    <ErrorMessage
+                      name="gender"
+                      component="span"
+                      className="text-red-500 text-sm"
+                    />
+                  </div>
+                </fieldset>
               </div>
+            </div>
 
-              <button
-                type="submit"
-                className="w-full sm:w-auto tertiary-button"
-                disabled={isSaving}
-              >
-                {isSaving ? 'Sparar...' : 'Spara ändringar'}
-              </button>
-            </Form>
-          )}
-        </Formik>
-      ) : (
-        <p className="text-center text-red-500" role="alert">
-          Kunde inte hämta användardata. Försök igen senare.
-        </p>
-      )}
+            <button
+              type="submit"
+              className="w-full sm:w-auto tertiary-button"
+              disabled={isSaving}
+            >
+              {isSaving ? 'Sparar...' : 'Spara ändringar'}
+            </button>
+          </Form>
+        )}
+      </Formik>
     </section>
   );
 };
