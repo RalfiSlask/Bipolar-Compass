@@ -1,20 +1,22 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getCollection } from '../../utils/databaseUtils';
-import bcrypt from 'bcryptjs';
 import { User } from '@/app/models/User';
 import { sendVerificationEmail } from '@/app/utils/emailUtils';
+import bcrypt from 'bcryptjs';
+import { NextRequest, NextResponse } from 'next/server';
+import { getCollection } from '../../utils/databaseUtils';
 
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const collection = await getCollection('thesis', 'users');
     const { name, email, password } = await req.json();
-    console.log('Request body:', { name, email, password });
 
     // We check if email already exists
     const emailAlreadyUsed = await collection.findOne({ email });
     if (emailAlreadyUsed) {
       console.log('Email is already in use');
-      return NextResponse.json({ error: 'Email finns redan' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'E-posten är redan använd.' },
+        { status: 400 }
+      );
     }
 
     // We create the new user
