@@ -24,18 +24,9 @@
 }
 
 .primary-checkbox:checked {
-  background-color: $green-dark;
+  background-color: $primary-dark;
 }
 
 .primary-checkbox:checked::after {
   transform: translateX(1.25rem);
-}
-
-.primary-checkbox:hover {
-  background-color: #d1d5db;
-}
-
-.primary-checkbox:focus {
-  outline: 2px solid $green-light;
-  outline-offset: 2px;
 }

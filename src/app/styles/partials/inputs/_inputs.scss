@@ -1,7 +1,7 @@
 @use '../../variables/variables' as *;
 
 .primary-input {
-  border: 1px solid $green-text;
+  border: 1px solid $primary-medium;
   padding: 6px 16px;
   border-radius: 10px;
   background-color: white;
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   &:focus {
-    border: 1px solid $green-dark;
+    border: 1px solid $primary-dark;
   }
   &:disabled:hover {
     background-color: white;
