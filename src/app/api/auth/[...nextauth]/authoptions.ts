@@ -1,34 +1,14 @@
 import clientPromise from '@/app/lib/mongodb';
+import {
+  ICustomSession,
+  ICustomToken,
+  ICustomUser,
+} from '@/app/types/authoptions';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import bcrypt from 'bcryptjs';
 import { NextAuthOptions, Session } from 'next-auth';
 import { Adapter } from 'next-auth/adapters';
-import { JWT } from 'next-auth/jwt';
 import CredentialsProvider from 'next-auth/providers/credentials';
-/* import { NextApiHandler } from 'next'; */
-
-interface ICustomUser {
-  id: string;
-  name?: string | null;
-  email?: string | null;
-  isVerified?: boolean;
-}
-
-interface ICustomToken extends JWT {
-  id?: string;
-  isVerified?: boolean;
-}
-
-interface ICustomSession extends Session {
-  user: {
-    id: string;
-    name: string | null;
-    email: string | null;
-    image: string | null;
-    isVerified: boolean;
-  };
-  expires: string;
-}
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise) as Adapter,
