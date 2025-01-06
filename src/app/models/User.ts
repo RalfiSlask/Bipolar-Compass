@@ -1,7 +1,7 @@
+import crypto from 'crypto';
 import { IUser } from '../types/user';
 import { Profile } from './Profile';
 import { Settings } from './Settings';
-import crypto from 'crypto';
 
 export class User implements IUser {
   readonly created_at: string = new Date().toISOString();
@@ -17,7 +17,6 @@ export class User implements IUser {
   ) {
     this.profile = new Profile();
     this.settings = new Settings();
-
     this.generateVerificationToken();
   }
 
