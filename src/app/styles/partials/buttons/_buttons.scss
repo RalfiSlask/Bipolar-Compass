@@ -1,40 +1,63 @@
 @use '../../variables/variables' as *;
 
 .primary-button {
-  color: $green-text;
-  background-color: $yellow-light;
+  color: $primary-dark;
+  background-color: $tertiary-light;
   font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 12px;
   display: inline-block;
   &:hover {
-    background-color: $yellow-dark;
+    background-color: $tertiary-dark;
   }
   width: fit-content;
   min-width: 100px;
 }
 
 .secondary-button {
-  color: $green-text;
-  padding: 10px 20px;
-  border-radius: 10px;
-  display: inline-block;
-  border: 1px solid $green-text;
-  &:hover {
-    border: 1px solid $green-dark;
-  }
-  width: fit-content;
-}
-
-.tertiary-button {
-  padding: 10px 24px;
+  color: $primary-medium;
+  padding: 12px 24px;
   border-radius: 12px;
-  background-color: $green-dark;
-  color: $yellow-light;
   display: inline-block;
+  border: 1px solid $primary-medium;
   &:hover {
-    background-color: $green-light;
+    border: 1px solid $primary-dark;
   }
   width: fit-content;
   min-width: 100px;
+}
+
+.tertiary-button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  background-color: $primary-dark;
+  color: $tertiary-light;
+  display: inline-block;
+  &:hover {
+    background-color: $primary-light;
+  }
+  width: fit-content;
+  min-width: 100px;
+}
+
+.quartiary-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  display: inline-block;
+  width: fit-content;
+  min-width: 100px;
+  background-color: $primary-light;
+  color: $primary-dark;
+
+  &:hover {
+    background-color: $primary-medium;
+    color: white;
+  }
+
+  &.active {
+    background-color: $primary-medium;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
 }
