@@ -1,0 +1,91 @@
+@use '../../variables/variables' as *;
+
+.sidebar {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  will-change: transform;
+
+  &--closed {
+    transform: translateX(-100%);
+
+    @media (min-width: 768px) {
+      transform: translateX(-200px);
+    }
+    @media (min-width: 1024px) {
+      transform: translateX(-300px);
+    }
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+}
+
+.dashboard-content {
+  transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: padding-left;
+  padding-left: 0;
+
+  @media (min-width: 768px) {
+    padding-left: 200px;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 300px;
+  }
+
+  .sidebar--closed ~ & {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar--open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+}
+
+.open-sidebar-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 40;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: $primary-dark;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $primary-medium;
+    transform: scale(1.05);
+  }
+}
+
+.sidebar-toggle {
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: $primary-dark;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $primary-medium;
+    transform: scale(1.05);
+  }
+}
