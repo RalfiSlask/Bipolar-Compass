@@ -25,11 +25,30 @@ export const getCreateDateAsMonthDayAndYear = (date: string) => {
   });
 };
 
-export function getWeekNumber(date: Date): number {
+export const getWeekNumber = (date: Date): number => {
   const d = new Date(
     Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
   );
   d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
   return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
-}
+};
+
+export const getWeekDates = (date: Date): string[] => {
+  const monday = new Date(date);
+  monday.setDate(date.getDate() - (date.getDay() || 7) + 1); // Få måndagens datum
+
+  const weekDates = [];
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(monday);
+    currentDate.setDate(monday.getDate() + i);
+    weekDates.push(
+      currentDate.toLocaleDateString('sv-SE', {
+        day: 'numeric',
+        month: 'numeric',
+      })
+    );
+  }
+
+  return weekDates;
+};
