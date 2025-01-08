@@ -24,6 +24,7 @@
     "podcast-api": "^2.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "recharts": "^2.15.0",
     "sass": "^1.83.0",
     "spotify-web-api-js": "^1.5.2",
     "yup": "^1.6.1"
