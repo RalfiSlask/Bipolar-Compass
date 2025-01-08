@@ -1,4 +1,8 @@
-import { IMoodTrackerWeek } from '@/app/types/moodtracker';
+import { MoodtrackerWeek } from '@/app/models/Moodtracker';
+import {
+  IMoodTrackerDocument,
+  IMoodTrackerWeek,
+} from '@/app/types/moodtracker';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -11,23 +15,30 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       'mood_tracker_weeks'
     );
 
-    const existingEntry = await moodTrackerCollection.findOne({
+    const existingEntry = (await moodTrackerCollection.findOne({
       user_id,
       week_number: weekData.week_number,
       year: weekData.year,
-    });
+    })) as IMoodTrackerDocument | null;
 
     const now = new Date().toISOString();
 
     if (existingEntry) {
+      const updatedWeekData: IMoodTrackerWeek = {
+        id: existingEntry._id.toString(),
+        user_id: existingEntry.user_id,
+        week_number: existingEntry.week_number,
+        year: existingEntry.year,
+        created_at: existingEntry.created_at,
+        updated_at: now,
+        mood_values: weekData.mood_values,
+      };
+
+      const updatedWeek = new MoodtrackerWeek(updatedWeekData);
+
       await moodTrackerCollection.updateOne(
         { _id: existingEntry._id },
-        {
-          $set: {
-            mood_values: weekData.mood_values,
-            updated_at: now,
-          },
-        }
+        { $set: updatedWeek }
       );
     } else {
       const newWeekData: IMoodTrackerWeek = {
@@ -40,7 +51,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         mood_values: weekData.mood_values,
       };
 
-      await moodTrackerCollection.insertOne(newWeekData);
+      const newWeek = new MoodtrackerWeek(newWeekData);
+      await moodTrackerCollection.insertOne(newWeek);
     }
 
     return NextResponse.json({ success: true });
