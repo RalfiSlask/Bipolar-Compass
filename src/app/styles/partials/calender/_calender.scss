@@ -1,0 +1,22 @@
+@use '../../variables/variables' as *;
+.fc-daygrid-day-frame {
+  position: relative;
+}
+
+.diary-add-btn {
+  opacity: 0 !important;
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  background-color: $primary-dark;
+  border-radius: 4px;
+  padding: 2px 12px;
+  left: 4px;
+  font-size: 14px;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.fc-daygrid-day-frame:hover .diary-add-btn {
+  opacity: 1 !important;
+}
