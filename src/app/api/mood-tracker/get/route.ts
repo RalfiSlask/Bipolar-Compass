@@ -1,4 +1,7 @@
+import { MoodtrackerWeek } from '@/app/models/Moodtracker';
+import { IMoodTrackerWeek } from '@/app/types/moodtracker';
 import { getCollection } from '@/app/utils/databaseUtils';
+import { Document, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
@@ -12,11 +15,11 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       );
     }
 
-
     const moodTrackerCollection = await getCollection(
       'thesis',
       'mood_tracker_weeks'
     );
+
     const query = {
       user_id,
       ...(week && year ? { week_number: week, year } : {}),
@@ -28,9 +31,24 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       .limit(1)
       .toArray();
 
+    if (moodTrackerData[0]) {
+      const mongoDoc = moodTrackerData[0] as WithId<Document>;
+      const weekData: IMoodTrackerWeek = {
+        id: mongoDoc._id.toString(),
+        user_id: mongoDoc.user_id,
+        week_number: mongoDoc.week_number,
+        year: mongoDoc.year,
+        created_at: mongoDoc.created_at,
+        updated_at: mongoDoc.updated_at,
+        mood_values: mongoDoc.mood_values,
+      };
 
-    return NextResponse.json(moodTrackerData[0] || null);
+      return NextResponse.json(new MoodtrackerWeek(weekData));
+    }
+
+    return NextResponse.json(null);
   } catch (err) {
+    console.error('Error fetching mood tracker data:', err);
     return NextResponse.json({ error: err }, { status: 500 });
   }
 };
