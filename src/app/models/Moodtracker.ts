@@ -13,24 +13,69 @@ export class DayValue implements IDayValue {
   id: DayId;
   name: string;
   value: number;
+  date: string;
 
   constructor(day: IDayValue) {
     this.id = day.id;
     this.name = day.name;
     this.value = day.value;
+    this.date = day.date || '';
   }
 
   static createDefaultWeek(): DayValue[] {
+    const currentDate = new Date();
+    const monday = new Date(currentDate);
+    monday.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
+
     const defaultDays: IDayValue[] = [
-      { id: 'monday' as DayId, name: 'Måndag', value: 0 },
-      { id: 'tuesday' as DayId, name: 'Tisdag', value: 0 },
-      { id: 'wednesday' as DayId, name: 'Onsdag', value: 0 },
-      { id: 'thursday' as DayId, name: 'Torsdag', value: 0 },
-      { id: 'friday' as DayId, name: 'Fredag', value: 0 },
-      { id: 'saturday' as DayId, name: 'Lördag', value: 0 },
-      { id: 'sunday' as DayId, name: 'Söndag', value: 0 },
+      {
+        id: 'monday' as DayId,
+        name: 'Måndag',
+        value: 0,
+        date: this.formatDate(monday),
+      },
+      {
+        id: 'tuesday' as DayId,
+        name: 'Tisdag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
+      {
+        id: 'wednesday' as DayId,
+        name: 'Onsdag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
+      {
+        id: 'thursday' as DayId,
+        name: 'Torsdag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
+      {
+        id: 'friday' as DayId,
+        name: 'Fredag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
+      {
+        id: 'saturday' as DayId,
+        name: 'Lördag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
+      {
+        id: 'sunday' as DayId,
+        name: 'Söndag',
+        value: 0,
+        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
+      },
     ];
     return defaultDays.map((day) => new DayValue(day));
+  }
+
+  private static formatDate(date: Date): string {
+    return date.toISOString().split('T')[0];
   }
 }
 
@@ -43,15 +88,24 @@ export class MoodValue implements IMoodValue {
   constructor(moodValue: IMoodValue) {
     this.id = moodValue.id;
     this.moodName = moodValue.moodName;
-    this.valueForDays = moodValue.valueForDays.map(
-      (day) => new DayValue(day as IDayValue)
-    );
+    if (!moodValue.valueForDays[0]?.date) {
+      this.valueForDays = DayValue.createDefaultWeek();
+    } else {
+      this.valueForDays = moodValue.valueForDays.map(
+        (day) => new DayValue(day as IDayValue)
+      );
+    }
     this.yAxis = moodValue.yAxis;
   }
 
   static createDefaultMoodValues(): MoodValue[] {
+    const defaultDays = DayValue.createDefaultWeek();
     return moodTrackerValuesData.moodValues.map(
-      (mood) => new MoodValue(mood as IMoodValue)
+      (mood) =>
+        new MoodValue({
+          ...(mood as IMoodValue),
+          valueForDays: defaultDays,
+        })
     );
   }
 }
