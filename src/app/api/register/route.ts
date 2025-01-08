@@ -1,3 +1,4 @@
+import { MoodtrackerWeek } from '@/app/models/Moodtracker';
 import { User } from '@/app/models/User';
 import { sendVerificationEmail } from '@/app/utils/emailUtils';
 import bcrypt from 'bcryptjs';
@@ -34,9 +35,8 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       const userResult = await usersCollection.insertOne(serializedUser);
       const userId = userResult.insertedId.toString();
 
-      // Update moodtracker with user-ID and save it
-      newUser.moodtracker.user_id = userId;
-      await moodTrackerCollection.insertOne(newUser.moodtracker);
+      const initialMoodTracker = MoodtrackerWeek.createDefault(userId);
+      await moodTrackerCollection.insertOne(initialMoodTracker);
 
       // Send verification email
       await sendVerificationEmail({
