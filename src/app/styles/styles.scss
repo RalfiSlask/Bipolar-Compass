@@ -6,6 +6,8 @@
 @use './partials/inputs/inputs';
 @use './partials/checkboxes/checkboxes';
 @use './partials/dropdowns/dropdowns';
+@use './partials/sidebar/sidebar';
+@use './partials/calender/calender';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
