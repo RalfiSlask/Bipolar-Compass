@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.7.4",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
     "@types/bcryptjs": "^2.4.6",
     "@types/nodemailer": "^6.4.17",
     "axios": "^1.7.9",
@@ -31,9 +36,10 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/fullcalendar": "^3.8.0",
     "@types/next-auth": "^3.13.0",
     "@types/node": "^20",
-    "@types/react": "^19",
+    "@types/react": "^19.0.3",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.2",
