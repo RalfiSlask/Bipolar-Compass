@@ -1,12 +1,9 @@
-import React from 'react';
+import { ICustomSession } from '@/app/types/authoptions';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useSession, signOut } from 'next-auth/react';
 
 const LoginNavigation = () => {
-  const { data: session /* status */ } = useSession();
-
-  console.log('this is the session: ', session);
-
+  const { data: session } = useSession() as { data: ICustomSession | null };
   const handleSignOut = async () => {
     try {
       await signOut({ callbackUrl: '/' });
@@ -16,11 +13,14 @@ const LoginNavigation = () => {
   };
 
   return (
-    <div className="bg-green-100 w-full h-32 flex items-center justify-end px-12">
+    <div className="flex items-center justify-end pr-2">
       {session ? (
         <button onClick={handleSignOut}>Logga ut</button>
       ) : (
-        <Link href="/konto/logga-in">Logga in</Link>
+        <div className="flex gap-4 items-center">
+          <Link href="/konto/logga-in">Logga in</Link>
+          <Link href="/konto/registrera">Registrera</Link>
+        </div>
       )}
     </div>
   );
