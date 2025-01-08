@@ -1,14 +1,18 @@
 export interface IDiary {
   user_id: string;
-  title: string;
-  notes: string;
-  image: IDiaryImage;
+  notes: INote[];
   created_at: string;
   updated_at: string;
 }
 
+export interface INote {
+  date: string;
+  title: string;
+  description: string;
+  image: IDiaryImage;
+}
+
 export interface IDiaryImage {
   url: string;
-  ai_generated_text: string;
   created_at: string;
 }
