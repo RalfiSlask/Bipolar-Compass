@@ -55,47 +55,35 @@
         },
         {
           "id": 44,
-          "title": "Krisplan",
-          "slug": "krisplan"
+          "title": "Verktyg & Dokument",
+          "slug": "dokument"
         }
       ]
     },
     {
       "id": 5,
-      "title": "Resurser",
-      "slug": "resurser",
+      "title": "Multimedia",
+      "slug": "multimedia",
       "submenuItems": [
         {
           "id": 51,
-          "title": "Multimedia",
-          "slug": "multimedia",
-          "submenuItems": [
-            {
-              "id": 511,
-              "title": "Filmer",
-              "slug": "filmer"
-            },
-            {
-              "id": 512,
-              "title": "Musik",
-              "slug": "Podcasts"
-            },
-            {
-              "id": 513,
-              "title": "Videor",
-              "slug": "Videor"
-            }
-          ]
+          "title": "Filmer",
+          "slug": "filmer"
         },
         {
           "id": 52,
-          "title": "Artiklar",
-          "slug": "artiklar"
+          "title": "Podcasts",
+          "slug": "podcasts"
         },
         {
           "id": 53,
-          "title": "Verktyg",
-          "slug": "verktyg"
+          "title": "Musik",
+          "slug": "musik"
+        },
+        {
+          "id": 54,
+          "title": "Videor",
+          "slug": "videor"
         }
       ]
     },
@@ -132,19 +120,14 @@
           "slug": "vision"
         },
         {
-          "id": 72,
-          "title": "Kontakt",
-          "slug": "kontakt"
-        },
-        {
           "id": 73,
-          "title": "Cookies",
-          "slug": "cookies"
+          "title": "Villkor",
+          "slug": "villkor"
         },
         {
           "id": 74,
-          "title": "GDPR",
-          "slug": "gdpr"
+          "title": "Integritetspolicy",
+          "slug": "integritetspolicy"
         }
       ]
     }
