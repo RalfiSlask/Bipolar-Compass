@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongodb';
+
 export interface IConversationLog {
   role: string;
   content: string;
@@ -13,6 +15,7 @@ export interface IAiImage {
 }
 
 export interface IAiConversation {
+  _id?: ObjectId;
   user_id: string;
   conversation_log: IConversationLog[];
   created_at: string;
