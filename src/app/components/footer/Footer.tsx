@@ -77,7 +77,6 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* About & Contact */}
           <div className="flex flex-col gap-6">
             <h2 className="text-lg font-semibold text-tertiary-light">
               Om oss
@@ -90,7 +89,7 @@ const Footer = () => {
                 Vision
               </Link>
               <Link
-                href="/om-oss/kontakt"
+                href="/kontakt"
                 className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
               >
                 Kontakt
@@ -105,10 +104,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent my-10" />
 
-        {/* Medical Disclaimer */}
         <div className="mb-6">
           <p className="text-xs text-gray-400 text-left max-w-2xl">
             Vårt innehåll utgör inte medicinsk rådgivning. För diagnos och
@@ -117,26 +114,19 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Legal Links & Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-sm text-gray-400">
             © {currentYear} Bipolär Kompassen. All rights reserved.
           </p>
           <div className="flex gap-8">
             <Link
-              href="/om-oss/cookies"
+              href="/om-oss/villkor"
               className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
             >
-              Cookies
+              Villkor
             </Link>
             <Link
-              href="/om-oss/gdpr"
-              className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
-            >
-              GDPR
-            </Link>
-            <Link
-              href="/integritetspolicy"
+              href="/om-oss/integritetspolicy"
               className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
             >
               Integritetspolicy
