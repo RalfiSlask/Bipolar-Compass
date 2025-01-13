@@ -1,19 +1,22 @@
 'use client';
 
-import LoginNavigation from './LoginNavigation';
-import Navbar from './Navbar';
 import { usePathname } from 'next/navigation';
+import OverNavigation from './OverNavigation';
+import UnderNavigation from './UnderNavigation';
 
 const Header = () => {
   const pathname = usePathname();
   const isAccountPage = pathname.startsWith('/konto');
+  const isDashboardPage = pathname.startsWith('/min-sida');
 
-  if (isAccountPage) return null;
+  if (isAccountPage || isDashboardPage) return null;
 
   return (
-    <header className="bg-slate-300 h-40 w-screen flex flex-col justify-between items-end text-black">
-      <LoginNavigation />
-      <Navbar />
+    <header className="w-screen gap-4 border-b-2 border-primary-medium shadow-sm bg-white flex flex-col items-center text-black">
+      <div className="w-full flex flex-col items-center">
+        <OverNavigation />
+        <UnderNavigation />
+      </div>
     </header>
   );
 };
