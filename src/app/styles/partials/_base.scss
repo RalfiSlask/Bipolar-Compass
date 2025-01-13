@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: $beige;
+  background-color: white;
   color: $dark-text;
 }
 
@@ -27,4 +27,5 @@ footer {
 p {
   font-family: var(--font-inter), sans-serif;
   color: #374151;
+  line-height: 1.625;
 }
