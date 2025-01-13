@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
-import { Providers } from './providers/Providers';
-import Header from './components/header/Header';
-import './styles/styles.css';
 import { Inter, Playfair_Display } from 'next/font/google';
+import Breadcrumbs from './components/Breadcrumbs';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
+import { Providers } from './providers/Providers';
+import './styles/styles.scss';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -27,14 +29,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="sv" className={`${inter.variable} ${playfair.variable}`}>
       <body>
         <Providers>
           <Header />
-          <main className="flex flex-1 justify-center h-full px-2 sm:px-4 md:px-8">
-            {children}
-          </main>
-          <footer>Fotnot</footer>
+          <div className="main-container flex flex-col px-6 md:px-8 h-full container mx-auto max-w-[1440px]">
+            <Breadcrumbs />
+            <main className="flex flex-1 justify-center h-full py-10 w-full">
+              {children}
+            </main>
+          </div>
+          <Footer />
         </Providers>
       </body>
     </html>
