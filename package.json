@@ -26,6 +26,7 @@
     "next": "15.1.2",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.9.16",
+    "openai": "^4.78.1",
     "podcast-api": "^2.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -33,6 +34,7 @@
     "recharts": "^2.15.0",
     "sass": "^1.83.0",
     "spotify-web-api-js": "^1.5.2",
+    "uuid": "^11.0.5",
     "yup": "^1.6.1"
   },
   "devDependencies": {
