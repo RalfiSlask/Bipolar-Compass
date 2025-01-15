@@ -1,4 +1,5 @@
 import useSettingsContext from '@/app/hooks/useSettingsContext';
+import Link from 'next/link';
 import { useState } from 'react';
 import ChangePasswordForm from './ChangePasswordForm';
 import EraseAccountModal from './EraseAccountModal';
@@ -28,6 +29,14 @@ const SecuritySettings = () => {
 
       <div className="flex flex-col gap-4">
         <ChangePasswordForm />
+        <p className="text-center text-sm my-4">
+          <Link
+            href="/konto/glomt-losenord"
+            className="font-medium text-primary-dark hover:text-primary transition-colors"
+          >
+            Har du glömt ditt lösenord?
+          </Link>
+        </p>
         <div className="p-6 border bg-white rounded-lg shadow-sm">
           <h3 className="text-xl font-semibold mb-4">Ta bort konto</h3>
           <div className="space-y-4">
