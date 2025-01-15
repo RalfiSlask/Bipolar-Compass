@@ -1,7 +1,7 @@
 @use '../../variables/variables' as *;
 
 .primary-input {
-  border: 1px solid $primary-medium;
+  border: 1px solid $primary-border;
   padding: 6px 16px;
   border-radius: 10px;
   background-color: white;
@@ -9,14 +9,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: inherit;
   &:focus {
     border: 1px solid $primary-dark;
+    outline: none;
   }
   &:disabled:hover {
-    background-color: white;
+    background-color: $primary-light;
   }
   &:hover {
-    background-color: lightgray;
+    border: 1px solid $primary-medium;
   }
 }
 
@@ -26,6 +28,16 @@
   padding: 10px;
   border-radius: 6px;
   height: 44px;
+  border: 1px solid $secondary-dark;
+  background-color: white;
+  color: inherit;
+  &:focus {
+    border: 1px solid $primary-border;
+    outline: none;
+  }
+  &:hover {
+    border: 1px solid $tertiary-dark;
+  }
 }
 
 .time-input {
