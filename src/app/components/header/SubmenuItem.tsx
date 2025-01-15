@@ -8,7 +8,11 @@ interface ISubmenuItemProps {
 }
 
 const SubmenuItem = ({ title, route }: ISubmenuItemProps) => {
-  return <Link href={route}>{title}</Link>;
+  return (
+    <Link role="menuitem" href={route}>
+      {title}
+    </Link>
+  );
 };
 
 export default SubmenuItem;
