@@ -18,8 +18,18 @@ const LoginNavigation = () => {
         <button onClick={handleSignOut}>Logga ut</button>
       ) : (
         <div className="flex gap-4 items-center">
-          <Link href="/konto/logga-in">Logga in</Link>
-          <Link href="/konto/registrera">Registrera</Link>
+          <Link
+            href="/konto/logga-in"
+            className="rounded-md primary-button text-white py-2 px-2 text-center"
+          >
+            Logga in
+          </Link>
+          <Link
+            href="/konto/registrera"
+            className="rounded-md border advanced-secondary-button h-10 flex justify-center items-center py-1 px-2"
+          >
+            Registrera
+          </Link>
         </div>
       )}
     </div>
