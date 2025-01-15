@@ -12,13 +12,13 @@ import { getWeekNumber } from '../utils/dateUtils';
 export class DayValue implements IDayValue {
   id: DayId;
   name: string;
-  value: number;
+  value: number | null;
   date: string;
 
   constructor(day: IDayValue) {
     this.id = day.id;
     this.name = day.name;
-    this.value = day.value;
+    this.value = day.value ?? null;
     this.date = day.date || '';
   }
 
@@ -31,43 +31,43 @@ export class DayValue implements IDayValue {
       {
         id: 'monday' as DayId,
         name: 'Måndag',
-        value: 0,
+        value: null,
         date: this.formatDate(monday),
       },
       {
         id: 'tuesday' as DayId,
         name: 'Tisdag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
       {
         id: 'wednesday' as DayId,
         name: 'Onsdag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
       {
         id: 'thursday' as DayId,
         name: 'Torsdag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
       {
         id: 'friday' as DayId,
         name: 'Fredag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
       {
         id: 'saturday' as DayId,
         name: 'Lördag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
       {
         id: 'sunday' as DayId,
         name: 'Söndag',
-        value: 0,
+        value: null,
         date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
       },
     ];

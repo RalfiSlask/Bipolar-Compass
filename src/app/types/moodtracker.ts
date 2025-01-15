@@ -20,7 +20,7 @@ export type MoodId =
 export interface IDayValue {
   id: DayId;
   name: string;
-  value: number;
+  value: number | null;
   date: string;
 }
 
