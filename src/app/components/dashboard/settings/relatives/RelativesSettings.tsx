@@ -31,6 +31,16 @@ const RelativesSettings = () => {
     setIsAddingRelative(false);
   };
 
+  const handleDeleteRelative = async (index: number) => {
+    try {
+      const newRelatives = relatives.filter((_, i) => i !== index);
+      await saveRelativesSettings(newRelatives, user.email);
+      setRelatives(newRelatives);
+    } catch (err) {
+      console.error('could not delete relative: ', err);
+    }
+  };
+
   return (
     <div className="max-w-2xl py-6">
       <h2 className="text-2xl font-semibold mb-6">Anhöriga</h2>
@@ -141,6 +151,12 @@ const RelativesSettings = () => {
                     Status:{' '}
                     {relative.email_enabled ? 'Aktiverad' : 'Inaktiverad'}
                   </p>
+                  <button
+                    className="tertiary-button mt-2"
+                    onClick={() => handleDeleteRelative(index)}
+                  >
+                    Ta bort
+                  </button>
                 </div>
               </div>
             ))}
