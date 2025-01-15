@@ -1,40 +1,55 @@
 'use client';
 
-import RegisterForm from '@/app/components/pages/auth/register/RegisterForm';
+import BipolarLogo from '@/app/components/logo/BipolarLogo';
+import RegisterForm from '../../components/pages/auth/register/RegisterForm';
 
 const RegistrationPage = () => {
   return (
-    <div className="h-full flex flex-col items-center mt-10 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col gap-8">
-          <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold text-primary-dark mb-2">
-              Skapa konto
-            </h1>
-            <p className="text-gray-600">
-              Bli medlem i och få tillgång till alla våra tjänster
+    <section className=" w-full flex justify-center items-center relative h-screen">
+      <div className="flex flex-col items-center px-4 py-12 sm:px-6 lg:px-8 max-w-[300px] sm:max-w-full min-w-[500px] z-10">
+        <div className="flex justify-center mb-8 text-white fixed top-2 left-4">
+          <BipolarLogo />
+        </div>
+
+        <div className="w-full max-w-lg">
+          <div
+            className="bg-white rounded-xl p-8 flex flex-col gap-8 border-2 border-primary-dark/50"
+            style={{
+              boxShadow: `
+                -10px 0 20px -5px rgba(255, 255, 255, 0.3), 
+                10px 0 20px -5px rgba(101, 149, 152, 0.6)
+              `,
+            }}
+          >
+            <div className="flex flex-col items-center">
+              <h1 className="text-3xl font-bold text-primary-dark mb-2">
+                Skapa konto
+              </h1>
+              <p className="text-gray-700">
+                Bli medlem i och få tillgång till alla våra tjänster
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-600"></div>
+              </div>
+            </div>
+            <RegisterForm />
+            <p className="text-center text-sm text-gray-700 mt-4">
+              Har du redan ett konto?{' '}
+              <a
+                href="/konto/logga-in"
+                className="font-medium text-primary-dark hover:text-primary transition-colors"
+              >
+                Logga in här
+              </a>
             </p>
           </div>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
-            </div>
-          </div>
-          <RegisterForm />
-
-          <p className="text-center text-sm text-gray-600 mt-4">
-            Har du redan ett konto?{' '}
-            <a
-              href="/konto/logga-in"
-              className="font-medium text-primary-dark hover:text-primary transition-colors"
-            >
-              Logga in här
-            </a>
-          </p>
         </div>
       </div>
-    </div>
+      <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-b from-white to-primary-medium z-0"></div>
+    </section>
   );
 };
 
