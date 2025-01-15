@@ -4,8 +4,14 @@ import {
   BsGear,
   BsJournalText,
 } from 'react-icons/bs';
+import { FaCompass, FaSignOutAlt } from 'react-icons/fa';
 
 export const dashboardNavigationLinks = [
+  {
+    title: 'Min Sida',
+    href: '/min-sida',
+    icon: <FaCompass className="w-6 h-6 text-primary-dark" />,
+  },
   {
     title: 'Mood Tracker',
     href: '/min-sida/moodtracker',
@@ -25,5 +31,10 @@ export const dashboardNavigationLinks = [
     title: 'Inställningar',
     href: '/min-sida/installningar',
     icon: <BsGear className="w-6 h-6 text-primary-dark" />,
+  },
+  {
+    title: 'Logga ut',
+    href: '/',
+    icon: <FaSignOutAlt className="w-6 h-6 text-primary-dark" />,
   },
 ];
