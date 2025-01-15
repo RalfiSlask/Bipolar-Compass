@@ -30,12 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv" className={`${inter.variable} ${playfair.variable}`}>
-      <body>
+      <body className="h-full">
         <Providers>
           <Header />
-          <div className="main-container flex flex-col px-6 md:px-8 h-full container mx-auto max-w-[1440px]">
+          <div className="main-container flex flex-col h-full min-h-screen">
             <Breadcrumbs />
-            <main className="flex flex-1 justify-center h-full py-10 w-full">
+            <main className="flex flex-1 justify-center items-center w-full">
               {children}
             </main>
           </div>
