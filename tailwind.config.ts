@@ -18,13 +18,17 @@ export default {
         'secondary-light': '#D0E8E6',
         'secondary-dark': '#25424e',
 
-        'tertiary-light': '#fffacd',
-        'tertiary-dark': '#FFD700',
+        'tertiary-light': '#fff5f0',
+        'tertiary-medium': '#EDE8D0',
+        'tertiary-dark': '#aa5535',
 
         'light': '#b0d9d566',
         'dark': '#202020',
 
         'footer-color': '#1a1f20', // Footer dark gray
+        'beige': '#f5f5dc', // Beige color
+        'gray-700': '#374151',
+        'gray-300': '#d1d5db',
       },
     },
   },
