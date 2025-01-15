@@ -1,7 +1,7 @@
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
+import { getFormattedTimeFromSeconds } from '@/app/utils/dateUtils';
 import Image from 'next/image';
 import imdbLogo from '../../../assets/icons/imdb.svg';
-import { getFormattedTimeFromSeconds } from '@/app/utils/dateUtils';
 
 interface IMovieContainerProps {
   movie: IMovieOrSeriesResponseData;
@@ -21,45 +21,44 @@ const MovieContainer = ({ movie }: IMovieContainerProps) => {
   const formattedRuntime = getFormattedTimeFromSeconds(runtimeInSeconds);
 
   return (
-    <div className="flex flex-col md:flex-row gap-4">
-      <div className="w-full max-w-[400px] lg:max-w-[300px] h-auto overflow-hidden">
+    <div className="bg-white rounded-lg overflow-hidden shadow-md">
+      <div className="aspect-[3/4] relative">
         <Image
           src={primaryImage ? primaryImage.url : 'saknar bild'}
           alt={titleText ? titleText.text : 'en film'}
-          width={primaryImage?.width}
-          height={primaryImage?.height}
-          className="object-cover w-full rounded-md"
+          fill
+          className="object-cover"
         />
       </div>
-      <div className="flex flex-col justify-end gap-4 max-w-[400px]">
-        <div className="flex flex-col">
+      <div className="p-6 flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <h2 className="h-sm text-green-dark">{titleText?.text}</h2>
             <p className="text-xl">({releaseDate?.year})</p>
           </div>
-          <div className="flex items-center gap-2">
-            <p>{formattedRuntime}</p>
-            <div className="flex items-center">
-              <Image src={imdbLogo} width={48} height={48} alt="imdb loggan" />
-              <p>{ratingsSummary?.aggregateRating}</p>
+          <div className="flex items-center gap-4">
+            <p className="text-gray-600">{formattedRuntime}</p>
+            <div className="flex items-center gap-1">
+              <Image src={imdbLogo} width={40} height={40} alt="imdb loggan" />
+              <p className="font-medium">{ratingsSummary?.aggregateRating}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            {movieGenres.map((genre) => {
-              return (
-                <div
-                  className="bg-primary-light rounded-md px-2 py-1 text-black "
-                  key={genre.id}
-                >
-                  {genre.text}
-                </div>
-              );
-            })}
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap gap-2">
+            {movieGenres.map((genre) => (
+              <div
+                className="bg-primary-light rounded-md px-3 py-1 text-sm"
+                key={genre.id}
+              >
+                {genre.text}
+              </div>
+            ))}
           </div>
-          <p className="text-lg">{plot?.plotText?.plainText}</p>
+          <p className="text-gray-700 line-clamp-3">
+            {plot?.plotText?.plainText}
+          </p>
         </div>
       </div>
     </div>
