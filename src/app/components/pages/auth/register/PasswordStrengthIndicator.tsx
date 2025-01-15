@@ -107,7 +107,7 @@ const PasswordStrengthIndicator = ({
                 {requirement.met ? (
                   <span className="text-primary-medium">✓</span>
                 ) : (
-                  <span className="text-gray-400">×</span>
+                  <span className="text-red-500">×</span>
                 )}
               </span>
               {requirement.text}

@@ -30,7 +30,7 @@ const Modal = ({
         </ul>
         <button
           onClick={onClose}
-          className="w-full bg-secondary-medium hover:bg-secondary-dark text-white py-2 px-4 rounded transition-colors"
+          className="w-full   text-white py-2 px-4 rounded transition-colors"
         >
           Stäng
         </button>
@@ -43,7 +43,7 @@ const DocumentsPage = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   return (
-    <section className="container max-w-5xl mx-auto p-6 bg-beige min-h-screen">
+    <section className="container max-w-5xl mx-auto p-6  min-h-screen">
       <div className="mb-12 text-center">
         <h2 className="text-3xl font-bold text-primary-dark mb-4">Dokument</h2>
         <p>Här kan du ladda ner formulär för självskattning och information</p>
@@ -76,7 +76,7 @@ const DocumentsPage = () => {
           <a
             href="../pdfs/guide.pdf"
             download="guide.pdf"
-            className="flex-1 flex items-center justify-center gap-2 bg-secondary-medium hover:bg-secondary-dark text-white py-2 px-4 rounded transition-colors"
+            className="flex-1 flex items-center justify-center gap-2   text-white py-2 px-4 rounded transition-colors"
           >
             <HiDownload className="text-xl" />
             <span>Ladda ner</span>
@@ -128,7 +128,7 @@ const DocumentsPage = () => {
                 <a
                   href={form.href}
                   download
-                  className="flex-1 flex items-center justify-center gap-2 bg-secondary-medium hover:bg-secondary-dark text-white py-2 px-4 rounded transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2   text-white py-2 px-4 rounded transition-colors"
                   aria-label={form.ariaLabel}
                 >
                   <HiDownload className="text-xl" />

@@ -1,12 +1,11 @@
-import Spinner from '@/app/components/shared/Spinner';
-import { IRegisterFormValues } from '@/app/types/auth';
-import { registrationValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { IRegisterFormValues } from '../../../../types/auth';
+import { registrationValidationSchema } from '../../../../utils/validationSchemas';
 import PasswordStrengthIndicator from './PasswordStrengthIndicator';
 
 const RegisterForm = () => {
@@ -74,7 +73,7 @@ const RegisterForm = () => {
               Namn
             </label>
             <Field
-              className={`primary-input w-full text-base ${
+              className={`primary-input w-full text-base !bg-white ${
                 errors.name && touched.name ? 'border-red-500' : ''
               }`}
               id="name"
@@ -162,7 +161,7 @@ const RegisterForm = () => {
               <span className="text-sm text-gray-600">
                 Jag godkänner{' '}
                 <Link
-                  href="/om-oss/anvandar-villkor"
+                  href="/om-oss/villkor"
                   className="text-primary-dark hover:underline"
                 >
                   villkoren
@@ -195,7 +194,7 @@ const RegisterForm = () => {
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">
-                <Spinner /> Registrerar...
+                Registrerar...
               </span>
             ) : (
               'Registrera'

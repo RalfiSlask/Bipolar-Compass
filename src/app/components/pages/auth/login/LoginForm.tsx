@@ -1,6 +1,5 @@
 'use client';
 
-import Spinner from '@/app/components/shared/Spinner';
 import { ILoginFormValues } from '@/app/types/auth';
 import { signInValidationSchema } from '@/app/utils/validationSchemas';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
@@ -51,7 +50,7 @@ const LoginForm = () => {
       validateOnChange={false}
     >
       {({ isValid, errors, touched }) => (
-        <Form noValidate className="flex flex-col gap-4">
+        <Form noValidate className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="font-medium text-primary-dark">
               E-postadress
@@ -108,7 +107,7 @@ const LoginForm = () => {
 
           <button
             type="submit"
-            className={`w-full tertiary-button cursor-pointer ${
+            className={`w-full primary-button cursor-pointer ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={isSubmitting || !isValid}
@@ -116,7 +115,7 @@ const LoginForm = () => {
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center gap-2">
-                <Spinner /> Loggar in...
+                Loggar in...
               </span>
             ) : (
               'Logga in'

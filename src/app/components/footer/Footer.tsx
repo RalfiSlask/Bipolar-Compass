@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-lg font-semibold text-tertiary-light">
+            <h2 className="text-lg font-semibold text-tertiary-medium">
               Information
             </h2>
             <nav className="flex flex-col gap-3">
@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-lg font-semibold text-tertiary-light">
+            <h2 className="text-lg font-semibold text-tertiary-medium">
               Resurser
             </h2>
             <nav className="flex flex-col gap-3">
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            <h2 className="text-lg font-semibold text-tertiary-light">
+            <h2 className="text-lg font-semibold text-tertiary-medium">
               Om oss
             </h2>
             <nav className="flex flex-col gap-3">
@@ -121,13 +121,13 @@ const Footer = () => {
           <div className="flex gap-8">
             <Link
               href="/om-oss/villkor"
-              className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
+              className="text-sm text-gray-400 hover:text-tertiary-medium transition-colors duration-200"
             >
               Villkor
             </Link>
             <Link
               href="/om-oss/integritetspolicy"
-              className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
+              className="text-sm text-gray-400 hover:text-tertiary-medium transition-colors duration-200"
             >
               Integritetspolicy
             </Link>

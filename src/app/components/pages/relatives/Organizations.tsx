@@ -13,7 +13,7 @@ const Organizations = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <a
         href="https://balansriks.se/balans-foreningar/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex">
           <Image
@@ -37,7 +37,7 @@ const Organizations = () => {
 
       <a
         href="https://anhorigasriksforbund.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -61,7 +61,7 @@ const Organizations = () => {
 
       <a
         href="https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/foraldralinjen/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -85,7 +85,7 @@ const Organizations = () => {
 
       <a
         href="https://nsph.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -109,7 +109,7 @@ const Organizations = () => {
 
       <a
         href="https://spes.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -133,7 +133,7 @@ const Organizations = () => {
 
       <a
         href="https://www.bris.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -157,7 +157,7 @@ const Organizations = () => {
 
       <a
         href="https://suicidezero.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -181,7 +181,7 @@ const Organizations = () => {
 
       <a
         href="https://anhoriga.se/"
-        className="flex flex-col gap-2 bg-beige p-4 rounded-md max-w-sm h-full hover:bg-beige-dark transition-colors"
+        className="flex flex-col gap-2  p-4 rounded-md max-w-sm h-full  transition-colors"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
