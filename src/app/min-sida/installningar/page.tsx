@@ -1,6 +1,5 @@
 'use client';
 
-import DashboardSidebar from '@/app/components/dashboard/DashboardSidebar';
 import DashboardSettingsNavigation from '@/app/components/dashboard/settings/DashboardSettingsNavigation';
 import MedicineSettings from '@/app/components/dashboard/settings/medication/MedicineSettings';
 import NotificationsSettings from '@/app/components/dashboard/settings/notifications/NotificationsSettings';
@@ -10,11 +9,12 @@ import SecuritySettings from '@/app/components/dashboard/settings/security/Secur
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { SettingsProvider } from '@/app/context/SettingsContext';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
+import { ICustomSession } from '@/app/types/authoptions';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 const SettingsPageContent = () => {
-  const { data: session } = useSession();
+  const { data: session } = useSession() as { data: ICustomSession | null };
   const [activeTab, setActiveTab] = useState('profile');
   const context = useSettingsContext();
   const { fetchUserData } = context;
@@ -33,8 +33,7 @@ const SettingsPageContent = () => {
   };
 
   return (
-    <section className="flex flex-col h-screen md:pl-[200px] lg:pl-[300px] w-full">
-      <DashboardSidebar email={email || ''} />
+    <section className="flex flex-col h-full w-full">
       <DashboardSettingsNavigation
         activeTab={activeTab}
         changeActiveTab={changeActiveTab}
