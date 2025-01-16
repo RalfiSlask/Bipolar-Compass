@@ -17,7 +17,9 @@ const ChangePasswordForm = () => {
   const context = useContext(SettingsContext);
 
   if (!context) {
-    throw new Error('ChangePasswordForm måste användas inom en SettingsProvider');
+    throw new Error(
+      'ChangePasswordForm måste användas inom en SettingsProvider'
+    );
   }
 
   const { user } = context;
@@ -47,7 +49,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-sm">
+    <div className="p-6 bg-white rounded-lg ">
       <h2 className="text-xl font-semibold mb-6">Ändra lösenord</h2>
       <Formik
         initialValues={{

@@ -15,16 +15,16 @@ const DashboardNavigation = () => {
   };
 
   return (
-    <nav className="flex flex-col gap-2 mt-16" role="navigation">
+    <nav className="flex flex-col gap-2 mt-16 w-full px-6" role="navigation">
       {dashboardNavigationLinks.map((link) => (
         <Link
           key={link.href}
           href={link.href}
           onClick={link.title === 'Logga ut' ? handleSignOut : undefined}
-          className={`flex items-center text-base gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 
+          className={`flex items-center w-full text-base gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 
             ${
               path === link.href
-                ? 'bg-primary-dark font-semibold text-tertiary-dark [&_svg]:text-tertiary-dark'
+                ? 'bg-primary-dark font-semibold text-white [&_svg]:text-white'
                 : 'text-primary-dark/80 hover:text-primary-dark [&_svg]:text-primary-dark/80 hover:[&_svg]:text-primary-dark'
             }`}
         >

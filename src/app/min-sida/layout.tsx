@@ -16,14 +16,14 @@ export default function MyPageLayout({
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex min-h-screen h-full w-full">
       <DashboardSidebar
         email={email || ''}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
       />
       <div
-        className={`dashboard-content ${
+        className={`dashboard-content flex justify-center items-center ${
           isSidebarOpen ? 'content--open' : 'content--closed'
         } w-full`}
       >

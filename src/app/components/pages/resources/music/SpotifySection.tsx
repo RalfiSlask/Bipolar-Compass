@@ -79,9 +79,9 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
 
   return (
     <article className="w-full">
-      <div className="bg-gradient-to-br from-gray-900 to-primary-dark shadow-xl p-6 md:p-8 rounded-3xl">
+      <div className="bg-gradient-to-br from-primary-light to-primary-dark shadow-xl p-6 md:p-8 rounded-3xl">
         {!isAuthenticated && (
-          <div className="mb-8 p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700">
+          <div className="mb-8 p-6 bg-primary-dark backdrop-blur-sm rounded-2xl border border-gray-700">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="space-y-2">
                 <h3 className="text-white text-xl font-semibold">
@@ -101,7 +101,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
           {activePlaylist.map((playlist) => (
             <div
               key={playlist.id}
-              className="bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl shadow-inner border border-gray-700"
+              className="bg-primary-dark backdrop-blur-sm p-6 rounded-2xl shadow-inner border border-gray-700"
             >
               <h3 className="text-white text-xl font-semibold mb-4">
                 {playlist.title}

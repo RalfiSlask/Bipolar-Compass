@@ -11,7 +11,7 @@ const DashboardSettingsNavigation = ({
 }: IDashboardSettingsNavigationProps) => {
   return (
     <nav
-      className="border-b border-black"
+      className="border-b border-primary-dark flex justify-center items-center "
       aria-label="Inställningar navigation"
     >
       <ul className="flex gap-8 list-none p-0 m-0">
@@ -22,7 +22,7 @@ const DashboardSettingsNavigation = ({
               className={`py-4 px-2 text-lg border-b-2 transition-colors focus:outline-none focus:ring-2
                 ${
                   activeTab === tab.id
-                    ? 'active border-black'
+                    ? 'active border-primary-dark text-primary-dark'
                     : 'border-transparent'
                 }`}
               aria-current={activeTab === tab.id ? 'page' : undefined}

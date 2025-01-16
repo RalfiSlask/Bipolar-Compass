@@ -8,7 +8,7 @@ const MedicationNotes = () => {
         as="textarea"
         name="notes"
         placeholder="Anteckningar"
-        className="secondary-input min-h-[100px] p-3"
+        className="primary-input min-h-[100px] p-3"
         rows={3}
       />
     </div>

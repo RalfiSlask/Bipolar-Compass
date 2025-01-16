@@ -18,9 +18,9 @@ const YourMedications = ({
             key={index}
             className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
           >
-            <div className="flex justify-between items-start mb-4">
+            <div className="flex justify-between items-start mb-4 border border-gray-200 p-4 rounded-lg">
               <div>
-                <h4 className="text-lg font-medium text-gray-900">
+                <h4 className="text-lg font-medium text-dark">
                   {medicine.name || 'Namnlös medicin'}
                 </h4>
                 <p className="text-sm text-gray-500 mt-1">
@@ -32,7 +32,7 @@ const YourMedications = ({
               </div>
               <button
                 onClick={() => handleDeleteMedicine(index)}
-                className="text-red-600 hover:text-red-800 transition-colors"
+                className="text-red-500 hover:text-red-800 transition-colors"
                 aria-label="Ta bort medicin"
               >
                 <svg
