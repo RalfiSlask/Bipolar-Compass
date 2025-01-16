@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/app/components/shared/Spinner';
 import { ICustomSession } from '@/app/types/authoptions';
 import { IDiaryEntry, IUserDiary } from '@/app/types/diary';
 import { getMoodEmoji } from '@/app/utils/diaryUtils';
@@ -16,7 +17,7 @@ import { toast } from 'react-hot-toast';
 
 const FullCalendar = dynamic(() => import('@fullcalendar/react'), {
   ssr: false,
-  loading: () => <p>Laddar...</p>,
+  loading: () => <Spinner />,
 });
 
 const DiaryPage = () => {

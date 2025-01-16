@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
+    Bar,
+    BarChart,
+    CartesianGrid,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
 } from 'recharts';
+import Spinner from '../../shared/Spinner';
 
 const YAxisLabels = [
   { id: 12, value: '15-19', label: '15-19', procent: 0.94 },
@@ -44,7 +45,7 @@ const BipolarPrevalence = () => {
   }, []);
 
   if (!isMounted) {
-    return <div className="w-full h-full bg-primary-light/50">Laddar...</div>;
+    return <Spinner />;
   }
 
   return (

@@ -25,6 +25,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import Spinner from '../components/shared/Spinner';
 import { ICustomSession } from '../types/authoptions';
 import { IMoodTrackerWeek } from '../types/moodtracker';
 import { IUser } from '../types/user';
@@ -87,7 +88,7 @@ const MyPage = () => {
       (day) => day.value !== null && day.value >= 0
     );
 
-    /*     if (validDays.length < 7) return null; */
+    if (validDays.length < 7) return null;
 
     const totalSleep = validDays.reduce(
       (sum, day) => sum + (day.value || 0),
@@ -153,7 +154,7 @@ const MyPage = () => {
   ];
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   return (

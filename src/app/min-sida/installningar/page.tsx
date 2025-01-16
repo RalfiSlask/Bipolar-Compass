@@ -6,6 +6,7 @@ import NotificationsSettings from '@/app/components/dashboard/settings/notificat
 import ProfileSettings from '@/app/components/dashboard/settings/profile/ProfileSettings';
 import RelativesSettings from '@/app/components/dashboard/settings/relatives/RelativesSettings';
 import SecuritySettings from '@/app/components/dashboard/settings/security/SecuritySettings';
+import Spinner from '@/app/components/shared/Spinner';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { SettingsProvider } from '@/app/context/SettingsContext';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
@@ -32,6 +33,10 @@ const SettingsPageContent = () => {
     setActiveTab(tab);
   };
 
+  if (!session?.user?.email) {
+    return <Spinner />;
+  }
+
   return (
     <section className="flex flex-col h-full w-full">
       <DashboardSettingsNavigation
@@ -40,7 +45,7 @@ const SettingsPageContent = () => {
       />
       <div className="h-full pt-10">
         <div className="flex flex-col gap-10">
-          <div>
+          <div className="flex justify-center">
             {activeTab === 'profile' && <ProfileSettings />}
             {activeTab === 'security' && <SecuritySettings />}
             {activeTab === 'relatives' && <RelativesSettings />}

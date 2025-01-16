@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/app/components/shared/Spinner';
 import { CHART_COLORS } from '@/app/data/chartColors';
 import { ICustomSession } from '@/app/types/authoptions';
 import { DayId, IMoodTrackerWeek } from '@/app/types/moodtracker';
@@ -205,7 +206,7 @@ const HistoryPage = () => {
   };
 
   if (isLoading) {
-    return <p>Laddar...</p>;
+    return <Spinner />;
   }
 
   return (

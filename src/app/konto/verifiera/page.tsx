@@ -1,6 +1,7 @@
 'use client';
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
+import Spinner from '@/app/components/shared/Spinner';
 import { useResendVerification } from '@/app/hooks/useResendVerification';
 import axios from 'axios';
 import Link from 'next/link';
@@ -48,7 +49,7 @@ const VerificationPage = () => {
   };
 
   if (loading) {
-    return <p>Laddar verifieringsstatus...</p>;
+    return <Spinner />;
   }
 
   return (
