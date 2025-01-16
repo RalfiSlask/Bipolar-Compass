@@ -3,6 +3,6 @@ import { IMedication } from './medication';
 export interface IProfile {
   age: number;
   gender: string;
-  diagnosises: string[];
+  diagnosis: string;
   medications: IMedication[];
 }
