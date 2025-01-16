@@ -39,7 +39,8 @@ const Breadcrumbs = () => {
   if (
     pathname === '/' ||
     pathname.includes('/min-sida') ||
-    pathname.includes('/akut') || pathname.includes('/konto')
+    pathname.includes('/akut') ||
+    pathname.includes('/konto')
   ) {
     return null;
   }
@@ -47,15 +48,21 @@ const Breadcrumbs = () => {
   const breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems);
 
   return (
-    <nav className="py-6" aria-label="Breadcrumb">
-      <ol className="flex">
+    <nav
+      className="py-4 bg-primary-light flex justify-center border-b"
+      aria-label="Breadcrumb"
+    >
+      <ol className="flex max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
         {breadcrumbs.map((breadcrumb, index) => {
           const isLast = index === breadcrumbs.length - 1;
 
           return (
-            <li key={breadcrumb.id} className="flex items-center">
+            <li key={breadcrumb.id} className="flex items-center ">
               {!isLast ? (
-                <Link href={breadcrumb.slug} className="font-bold">
+                <Link
+                  href={`/${breadcrumb.slug}`}
+                  className="font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full"
+                >
                   {breadcrumb.title}
                 </Link>
               ) : (
