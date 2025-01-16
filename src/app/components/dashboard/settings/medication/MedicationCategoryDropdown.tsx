@@ -1,19 +1,29 @@
-import { ErrorMessage, Field } from 'formik';
+import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import { useField } from 'formik';
 
 const MedicationCategoryDropdown = () => {
+  const [field, meta] = useField('category');
+
+  const options = [
+    { value: '', label: 'Välj kategori...' },
+    { value: 'moodStabilizers', label: 'Stämningsstabiliserande' },
+    { value: 'antipsychotics', label: 'Antipsykotiska' },
+    { value: 'antidepressants', label: 'Antidepressiva' },
+  ];
+
   return (
     <>
       <label className="block text-lg font-medium mb-2">Kategori</label>
-      <Field as="select" name="category" className="primary-dropdown">
-        <option value="">Välj kategori...</option>
-        <option value="moodStabilizers">Stämningsstabiliserande</option>
-        <option value="antipsychotics">Antipsykotiska</option>
-        <option value="antidepressants">Antidepressiva</option>
-      </Field>
-      <ErrorMessage
+      <CustomSelect
+        options={options}
+        value={field.value}
+        onChange={(value) =>
+          field.onChange({ target: { name: 'category', value } })
+        }
         name="category"
-        component="div"
-        className="text-red-500 text-sm mt-1"
+        error={meta.error}
+        touched={meta.touched}
+        size="large"
       />
     </>
   );

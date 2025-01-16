@@ -1,62 +1,76 @@
-import { IMedication } from '@/app/types/medication';
-import { ErrorMessage, Field } from 'formik';
+import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import { useField } from 'formik';
 
-const MedicationDosage = ({ values }: { values: IMedication }) => {
+const MedicineDosage = () => {
+  const [doseField, doseMeta] = useField('dosage');
+  const [unitField, unitMeta] = useField('doseUnit');
+
+  const doseUnitOptions = [
+    { value: 'mg', label: 'mg' },
+    { value: 'ml', label: 'ml' },
+    { value: 'tabletter', label: 'tabletter' },
+    { value: 'droppar', label: 'droppar' },
+  ];
+
+  const getMaxValue = () => {
+    switch (unitField.value) {
+      case 'mg':
+        return 2000;
+      case 'ml':
+        return 100;
+      case 'tabletter':
+        return 10;
+      case 'droppar':
+        return 50;
+      default:
+        return 2000;
+    }
+  };
+
+  const getStepValue = () => {
+    switch (unitField.value) {
+      case 'mg':
+        return 0.5;
+      case 'ml':
+        return 0.1;
+      case 'tabletter':
+        return 0.5;
+      case 'droppar':
+        return 1;
+      default:
+        return 0.5;
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4">
       <label className="font-medium">Dosering</label>
       <div className="flex gap-2">
         <div className="flex-1">
-          <Field
+          <input
+            {...doseField}
             type="number"
-            name="dosage"
             placeholder="Mängd"
             min={0}
-            max={
-              values.doseUnit === 'mg'
-                ? 2000
-                : values.doseUnit === 'ml'
-                ? 100
-                : values.doseUnit === 'tabletter'
-                ? 10
-                : values.doseUnit === 'droppar'
-                ? 50
-                : 2000
-            }
-            step={
-              values.doseUnit === 'mg'
-                ? 0.5
-                : values.doseUnit === 'ml'
-                ? 0.1
-                : values.doseUnit === 'tabletter'
-                ? 0.5
-                : values.doseUnit === 'droppar'
-                ? 1
-                : 0.5
-            }
-            className="secondary-input flex-1"
+            max={getMaxValue()}
+            step={getStepValue()}
+            className="primary-input flex-1"
           />
-          <ErrorMessage
-            name="dosage"
-            component="div"
-            className="text-red-500 text-sm mt-1"
-          />
+          {doseMeta.touched && doseMeta.error && (
+            <div className="text-red-500 text-sm mt-1">{doseMeta.error}</div>
+          )}
         </div>
         <div className="flex-1">
-          <Field
-            as="select"
+          <CustomSelect
+            options={doseUnitOptions}
+            value={unitField.value}
+            onChange={(value) =>
+              unitField.onChange({ target: { name: 'doseUnit', value } })
+            }
             name="doseUnit"
-            className="primary-dropdown flex-1"
-          >
-            <option value="mg">mg</option>
-            <option value="ml">ml</option>
-            <option value="tabletter">tabletter</option>
-            <option value="droppar">droppar</option>
-          </Field>
-          <ErrorMessage
-            name="doseUnit"
-            component="div"
-            className="text-red-500 text-sm mt-1"
+            error={unitMeta.error}
+            touched={unitMeta.touched}
+            size="large"
           />
         </div>
       </div>
@@ -64,4 +78,4 @@ const MedicationDosage = ({ values }: { values: IMedication }) => {
   );
 };
 
-export default MedicationDosage;
+export default MedicineDosage;
