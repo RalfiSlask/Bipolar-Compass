@@ -16,27 +16,40 @@ const SecuritySettings = () => {
   };
 
   return (
-    <section className="max-w-2xl p-6" aria-labelledby="security-heading">
+    <div
+      className="max-w-2xl p-6 flex flex-col items-center gap-10"
+      aria-labelledby="security-heading"
+    >
       {isModalOpen && (
         <EraseAccountModal email={email} toggleModal={toggleModal} />
       )}
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full z-20 bg-black bg-opacity-50"></div>
       )}
-      <h2 id="security-heading" className="text-2xl font-semibold mb-8">
-        Säkerhetsinställningar
-      </h2>
+      <div className="flex flex-col gap-3 text-center">
+        <h2
+          id="security-heading"
+          className="text-3xl font-semibold text-primary-dark"
+        >
+          Säkerhet
+        </h2>
+        <p className="text-sm text-gray-600">
+          Inställningar för att hålla din information säker.
+        </p>
+      </div>
 
       <div className="flex flex-col gap-4">
-        <ChangePasswordForm />
-        <p className="text-center text-sm my-4">
-          <Link
-            href="/konto/glomt-losenord"
-            className="font-medium text-primary-dark hover:text-primary transition-colors"
-          >
-            Har du glömt ditt lösenord?
-          </Link>
-        </p>
+        <div className="flex flex-col gap-4 shadow-sm border rounded-lg">
+          <ChangePasswordForm />
+          <p className="text-center text-sm my-4">
+            <Link
+              href="/konto/glomt-losenord"
+              className="font-medium text-primary-dark hover:text-primary transition-colors"
+            >
+              Har du glömt ditt lösenord?
+            </Link>
+          </p>
+        </div>
         <div className="p-6 border bg-white rounded-lg shadow-sm">
           <h3 className="text-xl font-semibold mb-4">Ta bort konto</h3>
           <div className="space-y-4">
@@ -59,7 +72,7 @@ const SecuritySettings = () => {
           )}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
