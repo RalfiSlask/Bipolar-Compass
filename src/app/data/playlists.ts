@@ -19,11 +19,11 @@ export const PLAYLIST_SLEEP = [
     title: 'Deep Sleep',
   },
   {
-    id: '37i9dQZF1DX4DgyXDzlbNz',
-    title: 'Peaceful Piano',
+    id: '34Xv1hxN6wZ2i47QBQmRT9?si=fb32e1a1bd2b4b2a',
+    title: 'Fall Asleep Fast',
   },
   {
-    id: '37i9dQZF1DWXzR2dg7Pcy4',
+    id: '37i9dQZF1DXbcPC6Vvqudd?si=hsN_HK5pRuuVZ5s1HSsk5g',
     title: 'Night Rain',
   },
   {
@@ -46,8 +46,8 @@ export const PLAYLIST_MEDITATION = [
     title: 'Lo-Fi Beats',
   },
   {
-    id: '37i9dQZF1DWUvQoIOFMFUT',
-    title: 'Ambient Relaxation',
+    id: '37i9dQZF1DWXXRO8Hsxc4q?si=69afbc9651c642a5',
+    title: 'Deep Meditation',
   },
   {
     id: '37i9dQZF1DX3Ogo9pFvBkY',
@@ -77,8 +77,8 @@ export const PLAYLIST_ENERGY = [
     title: 'Mood Booster',
   },
   {
-    id: '37i9dQZF1DX84kJlLdo9DT',
-    title: 'Happy Beats',
+    id: '37i9dQZF1EIgG2NEOhqsD7?si=f0b9f8e7904d40d6',
+    title: 'Happy Mix',
   },
   {
     id: '37i9dQZF1DXdPec7aLTmlC',
@@ -100,15 +100,15 @@ export const PLAYLIST_CALM = [
     title: 'Calming Acoustic',
   },
   {
-    id: '37i9dQZF1DX4DgyXDzlbNz',
-    title: 'Peaceful Piano',
+    id: '4Zu3pz16gyh7wBgUsYVfFc?si=83800f9d68cb4915',
+    title: 'Avslappningsmusik',
   },
   {
-    id: '37i9dQZF1DWZ0OzPeadl0h',
-    title: 'Grounding Music',
+    id: '1r4hnyOWexSvylLokn2hUa?si=fe4a83df14b1484e',
+    title: 'Relaxing Music',
   },
   {
-    id: '37i9dQZF1DWUvQoIOFMFUT',
-    title: 'Ambient Relaxation',
+    id: '37i9dQZF1DWVFeEut75IAL?si=a7693e34e47144c3',
+    title: 'Calming Classic',
   },
 ];
