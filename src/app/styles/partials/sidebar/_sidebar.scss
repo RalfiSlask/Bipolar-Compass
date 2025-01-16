@@ -9,7 +9,7 @@
     transform: translateX(-100%);
 
     @media (min-width: 768px) {
-      transform: translateX(-240px);
+      transform: translateX(-320px);
     }
   }
 
@@ -80,8 +80,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   color: $primary-dark;
   transition: all 0.3s ease;
 
