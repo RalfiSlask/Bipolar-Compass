@@ -1,3 +1,5 @@
+import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { medicineCategories } from '@/app/data/medications';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IMedication } from '@/app/types/medication';
@@ -94,115 +96,147 @@ const MedicineSettings = () => {
   };
 
   return (
-    <div className="max-w-2xl py-6">
-      <h2 className="text-2xl font-semibold mb-6">Medicininställningar</h2>
-      {!isAddingMedicine && (
-        <button
-          className="primary-button"
-          onClick={() => setIsAddingMedicine(true)}
+    <div
+      className="max-w-2xl w-full p-6 flex flex-col items-center gap-10"
+      aria-labelledby="medicine-heading"
+    >
+      {!user?.isVerified && <VerficationMessage />}
+      <div className="flex flex-col gap-3 text-center">
+        <h2
+          id="medicine-heading"
+          className={`text-3xl font-semibold ${
+            !user.isVerified ? 'text-gray-400' : 'text-primary-dark'
+          }`}
         >
-          Lägg till ny medicin
-        </button>
-      )}
-      {isAddingMedicine && (
-        <Formik
-          initialValues={initialValues}
-          validationSchema={medicineValidationSchema}
-          onSubmit={handleSubmit}
-          validateOnChange={false}
-          validateOnBlur={false}
-          validateOnMount={false}
+          Mediciner
+        </h2>
+        <p
+          className={`text-sm ${
+            !user.isVerified ? 'text-gray-400' : 'text-gray-600'
+          }`}
         >
-          {({ values }) => (
-            <Form className="flex flex-col gap-6">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex flex-col gap-4">
-                  <MedicationCategoryDropdown />
-                  {values.category === 'antidepressants' && (
-                    <AntiDepressantMedicationMessage />
-                  )}
-                  {values.category && (
-                    <>
-                      <label className="block text-lg font-medium mb-2">
-                        Medicin
-                      </label>
-                      <Field
-                        as="select"
-                        name="name"
-                        className="primary-dropdown"
-                      >
-                        <option value="">Välj medicin...</option>
-                        {medicineCategories[
-                          values.category as keyof typeof medicineCategories
-                        ].map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </Field>
-                    </>
-                  )}
-                </div>
-              </div>
+          Hantera dina mediciner och påminnelser för medicinering.
+        </p>
+      </div>
 
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex flex-col gap-6">
-                  <MedicineDosage values={values} />
-                  <MedicineFrequencyDropdown />
-                  {values.frequency && values.frequency !== 'as_needed' && (
-                    <div className="flex flex-col gap-4">
-                      <label className="font-medium">Tidpunkt</label>
-                      <div className="flex flex-wrap gap-2">
-                        {Array.from({
-                          length: getNumberOfTimes(values.frequency),
-                        }).map((_, index) => (
-                          <div key={index} className="flex flex-col">
-                            <Field
-                              type="time"
-                              name={`times.${index}`}
-                              className="secondary-input w-32 time-input"
-                            />
-                            <ErrorMessage
-                              name={`times.${index}`}
-                              component="div"
-                              className="text-red-500 text-sm mt-1"
-                            />
-                          </div>
-                        ))}
+      <div
+        className={`w-full space-y-6 ${
+          !user.isVerified ? 'opacity-50 pointer-events-none' : ''
+        }`}
+      >
+        {!isAddingMedicine && (
+          <button
+            className="primary-button"
+            onClick={() => setIsAddingMedicine(true)}
+          >
+            Lägg till ny medicin
+          </button>
+        )}
+
+        {isAddingMedicine && (
+          <Formik
+            initialValues={initialValues}
+            validationSchema={medicineValidationSchema}
+            onSubmit={handleSubmit}
+            validateOnChange={false}
+            validateOnBlur={false}
+            validateOnMount={false}
+          >
+            {({ values, setFieldValue, errors, touched }) => (
+              <Form className="flex flex-col gap-6">
+                <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                  <div className="flex flex-col gap-4">
+                    <MedicationCategoryDropdown />
+                    {values.category === 'antidepressants' && (
+                      <AntiDepressantMedicationMessage />
+                    )}
+                    {values.category && (
+                      <>
+                        <label className="block text-lg font-medium mb-2">
+                          Medicin
+                        </label>
+                        <CustomSelect
+                          options={medicineCategories[
+                            values.category as keyof typeof medicineCategories
+                          ].map((option) => ({
+                            value: option.value,
+                            label: option.label,
+                          }))}
+                          value={values.name}
+                          onChange={(value: string) => {
+                            setFieldValue('name', value);
+                          }}
+                          name="name"
+                          error={errors.name}
+                          touched={touched.name}
+                          size="large"
+                          placeholder="Välj medicin..."
+                        />
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                <div className="bg-white p-4 rounded-lg shadow-sm border">
+                  <div className="flex flex-col gap-6">
+                    <MedicineDosage />
+                    <MedicineFrequencyDropdown />
+                    {values.frequency && values.frequency !== 'as_needed' && (
+                      <div className="flex flex-col gap-4">
+                        <label className="font-medium">Tidpunkt</label>
+                        <div className="flex flex-wrap gap-2">
+                          {Array.from({
+                            length: getNumberOfTimes(values.frequency),
+                          }).map((_, index) => (
+                            <div key={index} className="flex flex-col">
+                              <Field
+                                type="time"
+                                name={`times.${index}`}
+                                className="primary-input w-32 time-input"
+                              />
+                              <ErrorMessage
+                                name={`times.${index}`}
+                                component="div"
+                                className="text-red-500 text-sm mt-1"
+                              />
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="flex flex-col gap-6">
-                  <MedicationNotes />
-                  <MedicationReminder />
+                <div className="bg-white p-4 rounded-lg border shadow-sm">
+                  <div className="flex flex-col gap-6">
+                    <MedicationNotes />
+                    <MedicationReminder />
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-4">
-                <button type="submit" className="primary-button">
-                  Lägg till medicin
-                </button>
-                <button
-                  type="button"
-                  className="tertiary-button w-40"
-                  onClick={() => setIsAddingMedicine(false)}
-                >
-                  Avbryt
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      )}
-      {!isAddingMedicine && medications.length > 0 && (
-        <YourMedications
-          medications={medications}
-          handleDeleteMedicine={handleDeleteMedicine}
-        />
-      )}
+                <div className="flex gap-4">
+                  <button type="submit" className="primary-button py-1">
+                    Lägg till medicin
+                  </button>
+                  <button
+                    type="button"
+                    className="tertiary-button w-40"
+                    onClick={() => setIsAddingMedicine(false)}
+                  >
+                    Avbryt
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        )}
+
+        {!isAddingMedicine && medications.length > 0 && (
+          <YourMedications
+            medications={medications}
+            handleDeleteMedicine={handleDeleteMedicine}
+          />
+        )}
+      </div>
     </div>
   );
 };
