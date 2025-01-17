@@ -37,6 +37,7 @@
     "sass": "^1.83.0",
     "spotify-web-api-js": "^1.5.2",
     "uuid": "^11.0.5",
+    "xss": "^1.0.15",
     "yup": "^1.6.1"
   },
   "devDependencies": {
