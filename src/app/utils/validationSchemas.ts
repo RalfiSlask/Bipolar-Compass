@@ -117,3 +117,16 @@ export const passwordChangeValidationSchema = Yup.object({
 export const forgotPasswordValidationSchema = Yup.object({
   email: Yup.string().email('Ogiltig e-postadress').required('E-post krävs'),
 });
+
+export const contactValidationSchema = Yup.object({
+  name: Yup.string()
+    .min(2, 'Namnet måste vara åtminstone 2 bokstäver')
+    .required('Namn är obligatoriskt'),
+  email: Yup.string()
+    .email('Felaktigt e-mail format')
+    .required('E-mail är obligatoriskt'),
+  message: Yup.string()
+    .min(10, 'Meddelandet måste vara minst 10 tecken')
+    .max(1000, 'Meddelandet får inte överstiga 1000 tecken')
+    .required('Meddelande är obligatoriskt'),
+});
