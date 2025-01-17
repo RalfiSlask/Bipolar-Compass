@@ -1,22 +1,100 @@
 @use '../../variables/variables' as *;
-.fc-daygrid-day-frame {
-  position: relative;
+
+:root {
+  --fc-border-color: #a1b8bd;
 }
 
-.diary-add-btn {
-  opacity: 0 !important;
-  position: absolute;
-  bottom: 10px;
-  color: white;
-  background-color: $primary-dark;
-  border-radius: 4px;
-  padding: 2px 12px;
-  left: 4px;
-  font-size: 14px;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 10;
+.fc-daygrid-day-frame {
+  position: relative;
+  min-height: 120px !important;
 }
 
 .fc-daygrid-day-frame:hover .diary-add-btn {
   opacity: 1 !important;
+}
+
+.fc-daygrid-day-frame:hover .fc-daygrid-day-frame {
+  background-color: $primary-light !important;
+}
+
+.diary-entry-preview {
+  height: 33px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  font-size: 0.875rem;
+  background-color: $primary-light;
+}
+
+.have-entry {
+  background-color: $primary-light;
+  border-bottom: 1px solid $primary-border;
+}
+
+.fc-daygrid-day-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.diary-description {
+  font-size: 0.75rem;
+  padding: 0 0.25rem;
+  width: 100%;
+  text-overflow: ellipsis;
+}
+
+.diary-mood {
+  font-size: 1rem;
+}
+
+.diary-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: $primary-dark;
+}
+
+.diary-buttons-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.diary-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: $primary-dark;
+  background: none;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    color: $primary-medium;
+  }
+}
+
+.diary-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ef4444;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.fc-daygrid-day-frame:hover .diary-buttons-container {
+  opacity: 1;
 }
