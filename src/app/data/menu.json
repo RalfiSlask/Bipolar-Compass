@@ -130,6 +130,12 @@
           "slug": "integritetspolicy"
         }
       ]
+    },
+    {
+      "id": 8,
+      "title": "Kontakt",
+      "slug": "kontakt",
+      "submenuItems": []
     }
   ]
 }
