@@ -8,6 +8,7 @@ import {
   PLAYLIST_MEDITATION,
   PLAYLIST_SLEEP,
 } from '@/app/data/playlists';
+import Image from 'next/image';
 import { useState } from 'react';
 
 const MusicPage = () => {
@@ -38,15 +39,29 @@ const MusicPage = () => {
   ];
 
   return (
-    <div className="w-full space-y-12">
-      <div className="max-w-2xl">
-        <h2 className="h-lg font-bold text-primary-dark mb-6">Spellistor</h2>
-        <p className="text-lg">
-          Här finns det samlat spellistor som kan hjälpa dig som är
-          diagnostiserad med bipolär sjukdom. Vare sig du är i remission eller i
-          en deppig fas, så kan du hitta spellistor som kan hjälpa dig. Här
-          finns spellistor som kan hjälpa dig att sova, meditera och mer.
-        </p>
+    <div className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
+      <div className="w-full bg-tertiary-light text-tertiary-dark flex items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10">
+        <div className="flex-1">
+          <h2 className="h-lg font-bold mb-6">Spellistor</h2>
+          <p className="text-xl text-tertiary-dark">
+            Här finns det samlat spellistor som kan hjälpa dig som är
+            diagnostiserad med bipolär sjukdom. Vare sig du är i remission eller
+            i en deppig fas, så kan du hitta spellistor som kan hjälpa dig. Här
+            finns spellistor som kan hjälpa dig att sova, meditera och mer.
+          </p>
+        </div>
+        <div className="flex-1 rounded-lg overflow-hidden w-full">
+          <Image
+            src="/images/music.jpg"
+            alt="kvinna som lyssnar på musik"
+            aria-label="kvinnar som lyssnar på musik"
+            width={1200}
+            height={800}
+            quality={100}
+            className="object-cover rounded-full"
+            priority
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-4 items-center">
