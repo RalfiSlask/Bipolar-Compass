@@ -30,9 +30,9 @@
   height: 44px;
   border: 1px solid $secondary-dark;
   background-color: white;
-  color: inherit;
+  color: $dark-text;
   &:focus {
-    border: 1px solid $primary-border;
+    border: 1px solid $tertiary-medium;
     outline: none;
   }
   &:hover {
