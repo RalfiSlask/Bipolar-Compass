@@ -19,8 +19,8 @@ export default {
         'secondary-dark': '#25424e',
 
         'tertiary-light': '#fff5f0',
-        'tertiary-medium': '#EDE8D0',
-        'tertiary-dark': '#aa5535',
+        'tertiary-medium': '#d6c4a8',
+        'tertiary-dark': '#8f4626',
 
         'light': '#b0d9d566',
         'dark': '#202020',
