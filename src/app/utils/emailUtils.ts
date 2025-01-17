@@ -93,3 +93,36 @@ export const sendForgotPasswordEmail = async ({
     throw new Error('Forgot password email could not be sent');
   }
 };
+
+interface IContactEmail {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export const sendContactEmail = async ({
+  name,
+  email,
+  message,
+}: IContactEmail) => {
+  try {
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: `Nytt kontaktformulär från ${name}`,
+      html: `
+        <h2>Nytt meddelande från kontaktformuläret</h2>
+        <p><strong>Namn:</strong> ${name}</p>
+        <p><strong>E-post:</strong> ${email}</p>
+        <p><strong>Meddelande:</strong></p>
+        <p>${message}</p>
+      `,
+      replyTo: email,
+    };
+
+    await emailTransporter.sendMail(mailOptions);
+  } catch (err) {
+    console.error('Något gick fel när kontaktmeddelandet skulle skickas:', err);
+    throw new Error('Kunde inte skicka kontaktmeddelandet');
+  }
+};
