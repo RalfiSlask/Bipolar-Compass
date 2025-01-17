@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import laughingImage from '../../public/images/about.jpg';
-import homeImage from '../../public/images/hej.png';
+import homeImage from '../../public/images/home-image.png';
 import Chat from './components/chat/Chat';
 import BipolarStatistics from './components/pages/home/BipolarStatistics';
 import MoodTrackerDiaryShowcase from './components/pages/home/MoodTrackerDiaryShowcase';
@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       <BipolarStatistics />
       <div className="w-full flex bg-tertiary-light items-center justify-center pt-20 pb-28 px-10">
-        <div className="w-full flex items-center justify-end max-w-[1440px]">
+        <div className="w-full flex items-center justify-end max-w-[1440px] gap-10">
           <div className="w-full flex text-tertiary-dark flex-1 flex-col gap-4 items-start justify-center">
             <h3 className="text-6xl font-bold">Om oss</h3>
             <p className="text-lg font-medium text-tertiary-dark">
@@ -53,9 +53,9 @@ export default function Home() {
             <Image
               src={laughingImage}
               alt="Bipolar logo"
-              width={800}
-              height={600}
-              className="object-cover aspect-[6/4] rounded-full"
+              width={792}
+              height={527}
+              className="object-cover aspect-[792/527] rounded-full"
             />
           </div>
         </div>
