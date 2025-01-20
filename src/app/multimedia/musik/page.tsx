@@ -1,6 +1,7 @@
 'use client';
 
 import SpotifySection from '@/app/components/pages/resources/music/SpotifySection';
+import Spinner from '@/app/components/shared/Spinner';
 import {
   PLAYLIST_BIPOLAR,
   PLAYLIST_CALM,
@@ -9,7 +10,7 @@ import {
   PLAYLIST_SLEEP,
 } from '@/app/data/playlists';
 import Image from 'next/image';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 
 const MusicPage = () => {
   const [activeTab, setActiveTab] = useState('energi');
@@ -78,7 +79,9 @@ const MusicPage = () => {
           </button>
         ))}
       </div>
-      <SpotifySection activePlaylist={activePlaylist} />
+      <Suspense fallback={<Spinner />}>
+        <SpotifySection activePlaylist={activePlaylist} />
+      </Suspense>
     </section>
   );
 };
