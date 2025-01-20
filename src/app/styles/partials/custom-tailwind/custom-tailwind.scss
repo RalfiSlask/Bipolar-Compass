@@ -15,3 +15,11 @@
 .nav-link {
   @apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full;
 }
+
+.organization-link {
+  @apply flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+    border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+    transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+    after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+    hover:after:w-full;
+}
