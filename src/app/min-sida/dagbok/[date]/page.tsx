@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { IoArrowBack } from 'react-icons/io5';
 
-export const DiaryNote = () => {
+const DiaryNote = () => {
   const router = useRouter();
   const params = useParams();
   const date = params.date as string;
