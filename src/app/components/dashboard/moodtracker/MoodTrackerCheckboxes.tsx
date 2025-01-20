@@ -6,7 +6,8 @@ interface IMoodTrackerCheckboxesProps {
   handleValueChange: (
     moodId: MoodId,
     dayId: DayId,
-    value: number | null
+    level: number | null,
+    date: string
   ) => void;
   disabled: boolean;
 }
@@ -18,32 +19,36 @@ const MoodTrackerCheckboxes = ({
   disabled,
 }: IMoodTrackerCheckboxesProps) => {
   return (
-    <div className="flex flex-col gap-4 items-center">
+    <div className="flex flex-col gap-3 items-center relative">
       {Array.from({ length: mood.yAxis.length }, (_, index) => {
         const level = mood.yAxis.length - 1 - index;
+        const isChecked = day.value === level;
 
         return (
-          <div className="relative h-6" key={`${mood.id}-${day.id}-${index}`}>
+          <div className="relative h-7" key={`${mood.id}-${day.id}-${index}`}>
             <input
-              className={`peer w-6 h-6 appearance-none rounded-full cursor-pointer 
-                    border-2 bg-white
-                    ${
-                      disabled
-                        ? 'cursor-not-allowed bg-gray-200 border-gray-400'
-                        : 'border-primary-medium'
-                    }
-                    ${!disabled && '[&:not(:checked)]:hover:bg-primary-light'}
-                    focus:outline-none focus:ring-2 
-                    focus:ring-primary-dark focus:ring-offset-1
-                    checked:bg-primary-medium checked:border-primary-dark`}
+              className={`peer w-7 h-7 appearance-none rounded-full cursor-pointer 
+                transition-all duration-200 ease-in-out
+                border-2 bg-white
+                ${
+                  disabled
+                    ? 'cursor-not-allowed bg-gray-100 border-gray-300'
+                    : 'border-primary-medium hover:border-primary-dark'
+                }
+                ${!disabled && '[&:not(:checked)]:hover:bg-primary-light'}
+                focus:outline-none focus:ring-2 
+                focus:ring-primary-dark focus:ring-offset-1
+                checked:scale-90
+                checked:bg-primary-medium checked:border-primary-dark`}
               type="checkbox"
               id={`${mood.id}-${day.id}-${index}`}
-              checked={day.value === level}
+              checked={isChecked}
               onChange={(e) => {
                 handleValueChange(
                   mood.id,
                   day.id,
-                  e.target.checked ? level : null
+                  e.target.checked ? level : null,
+                  day.date
                 );
               }}
               aria-label={`Nivå ${level} av ${mood.yAxis.length - 1} för ${
@@ -51,9 +56,15 @@ const MoodTrackerCheckboxes = ({
               } på ${day.name}`}
               disabled={disabled}
             />
+            {isChecked && (
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-2 h-2 bg-white rounded-full" />
+              </div>
+            )}
           </div>
         );
       })}
+      <div className="absolute h-full w-0.5 bg-gray-200 -z-10" />
     </div>
   );
 };
