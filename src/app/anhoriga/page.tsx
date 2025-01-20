@@ -1,37 +1,26 @@
+import Link from 'next/link';
 import Organizations from '../components/pages/relatives/Organizations';
+import PageIntroContainer from '../components/shared/PageIntroContainer';
+import { relativeIntro } from '../data/pageIntros';
 
 const RelativePage = () => {
   return (
-    <section className="max-w-4xl mx-auto py-8 px-4">
-      <h2 className="h-md text-primary-dark mb-12 text-center">
-        För dig som är anhörig till någon med bipolär sjukdom
-      </h2>
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-2">
+      <PageIntroContainer intro={relativeIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <p className="leading-relaxed text-lg">
-            Att stå nära någon som lever med bipolär sjukdom kan vara en
-            känslomässig berg- och dalbana. Många anhöriga känner en blandning
-            av kärlek, frustration, oro och maktlöshet. Att förstå vad din
-            närstående går igenom och vad du själv kan göra är avgörande både
-            för deras välbefinnande och för ditt eget. Här har vi samlat
-            kunskap, råd och resurser som kan hjälpa dig att navigera i en ofta
-            komplex och utmanande situation. Kom ihåg: du är inte ensam.
-          </p>
-        </div>
-
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Vad innebär bipolär sjukdom?
           </h3>
-          <p className="leading-relaxed">
+          <p>
             Bipolär sjukdom är en kronisk psykisk sjukdom som påverkar humöret.
             Det innebär att en person växlar mellan maniska eller hypomaniska
             faser (förhöjt humör och energi) och depressiva faser (nedstämdhet
             och låg energi). Mellan dessa episoder kan personen ofta ha långa
             perioder av stabilitet.
           </p>
-          <p className="leading-relaxed mt-4">
+          <p className=" mt-4">
             Som anhörig är det viktigt att förstå att dessa humörsvängningar
             inte är något din närstående kan kontrollera. Det handlar inte om
             att &quot;ta sig samman&quot; – det är en sjukdom som kräver
@@ -40,8 +29,8 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">Din roll som anhörig</h3>
-          <p className="leading-relaxed mb-6">
+          <h3 className="h-xs text-primary-dark mb-2">Din roll som anhörig</h3>
+          <p>
             Din närstående behöver både kärlek och praktiskt stöd, men din roll
             som anhörig handlar också om att hitta en balans mellan att hjälpa
             andra och ta hand om dig själv. Här är några konkreta sätt du kan
@@ -53,7 +42,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Informera dig om sjukdomen
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Läs på om bipolär sjukdom. Genom att förstå diagnosen kan du
                   få en bättre bild av vad din närstående går igenom och hur du
                   kan stötta.
@@ -63,7 +52,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Var en lyhörd samtalspartner
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Lyssna utan att döma eller försöka &quot;fixa&quot;
                   situationen. Bara att få känna sig hörd kan vara en enorm
                   lättnad för den som mår dåligt.
@@ -73,7 +62,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Hjälp till med struktur och rutiner
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Personer med bipolär sjukdom kan ha svårt att hålla struktur i
                   vardagen, särskilt under sjukdomsperioder. Du kan hjälpa till
                   med att skapa och upprätthålla rutiner för sömn, mat och
@@ -84,7 +73,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Lär dig känna igen tidiga varningstecken
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Många anhöriga blir med tiden bra på att se tecken på att en
                   manisk eller depressiv period är på väg. Tidig intervention
                   kan hjälpa till att förhindra att episoden förvärras.
@@ -94,7 +83,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Uppmuntra till behandling
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Professionell vård är avgörande. Om din närstående tvekar,
                   försök att försiktigt motivera dem att söka hjälp eller följa
                   sin vårdplan.
@@ -104,7 +93,7 @@ const RelativePage = () => {
                 <h4 className="font-semibold mb-2">
                   Sätt gränser för ditt eget välmående
                 </h4>
-                <p className="leading-relaxed">
+                <p>
                   Det är lätt att känna sig ansvarig för att &quot;rädda&quot;
                   någon annan, men du behöver också ta hand om dig själv. Sätt
                   annan, men du behöver också ta hand om dig själv. Sätt gränser
@@ -116,12 +105,10 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Vanliga utmaningar för anhöriga
           </h3>
-          <p className="leading-relaxed mb-6">
-            Som anhörig kan du möta olika svårigheter, till exempel:
-          </p>
+          <p>Som anhörig kan du möta olika svårigheter, till exempel:</p>
           <div className="bg-primary-light/20 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li className="flex gap-2 flex-col">
@@ -151,20 +138,31 @@ const RelativePage = () => {
               </li>
             </ul>
           </div>
+          <p className="mt-4">
+            Det är viktigt att ta hand om själv också! Här kan du hitta mer
+            information om{' '}
+            <Link
+              href="/behandling/sjalv-hjalp"
+              className="nav-link text-primary-dark"
+            >
+              själv hjälp
+            </Link>
+            .
+          </p>
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             När tvångsvård kan bli nödvändig
           </h3>
-          <p className="leading-relaxed">
+          <p>
             I vissa situationer, särskilt när din närstående befinner sig i ett
             maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att
             ansöka om tvångsvård. Detta är ofta en sista utväg när personen inte
             kan förstå sin egen situation eller är en fara för sig själv eller
             andra.
           </p>
-          <p className="leading-relaxed mt-4">
+          <p className="mt-4">
             Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan
             bli aktuellt om följande kriterier är uppfyllda:
           </p>
@@ -186,13 +184,13 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Hur går man tillväga för att ansöka om tvångsvård?
           </h3>
           <div className="flex flex-col gap-6">
             <div>
               <h4 className="font-semibold mb-2">Kontakta sjukvården</h4>
-              <p className="leading-relaxed">
+              <p>
                 Om du misstänker att din närstående behöver tvångsvård ska du
                 kontakta psykiatrin i din region. De flesta regioner har
                 jourmottagningar för psykiatri som är öppna dygnet runt. Om
@@ -201,7 +199,7 @@ const RelativePage = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-2">Beskriv situationen</h4>
-              <p className="leading-relaxed mb-4">
+              <p className=" mb-2">
                 Var tydlig när du pratar med vårdpersonal. Förklara varför du
                 tror att din närstående behöver tvångsvård, till exempel om de:
               </p>
@@ -215,7 +213,7 @@ const RelativePage = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-2">Läkarbedömning</h4>
-              <p className="leading-relaxed">
+              <p>
                 En läkare behöver göra en bedömning för att fastställa om
                 tvångsvård är nödvändig. Om läkaren anser att kriterierna för
                 tvångsvård är uppfyllda, skrivs ett vårdintyg som är grunden för
@@ -224,7 +222,7 @@ const RelativePage = () => {
             </div>
             <div>
               <h4 className="font-semibold mb-2">Beslut om tvångsvård</h4>
-              <p className="leading-relaxed">
+              <p>
                 Efter att personen blivit inlagd måste en chefsöverläkare inom
                 24 timmar besluta om tvångsvården ska fortsätta. Beslutet
                 baseras på vårdintyget och en ny bedömning.
@@ -234,7 +232,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark">
             Att tänka på som anhörig vid tvångsvård
           </h3>
           <div className="bg-primary-light/20 rounded-md p-4">
@@ -268,10 +266,10 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Mobila psykiatriska team och läkarbedömning på plats
           </h3>
-          <p className="leading-relaxed">
+          <p>
             I många regioner i Sverige finns det mobila psykiatriska team som
             kan åka ut till personer i behov av akut psykiatrisk vård. Dessa
             team består vanligtvis av sjuksköterskor, läkare och annan
@@ -282,9 +280,7 @@ const RelativePage = () => {
           <h4 className="font-semibold mt-6 mb-2">
             När kan detta bli aktuellt?
           </h4>
-          <p className="leading-relaxed mb-4">
-            Mobila psykiatriska team kan kallas in när:
-          </p>
+          <p className=" mb-2">Mobila psykiatriska team kan kallas in när:</p>
           <div className="bg-primary-light/20 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
@@ -304,7 +300,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark">
             Hur kontaktar man ett mobilt psykiatriskt team?
           </h3>
           <div className="bg-primary-light/20 rounded-md p-4">
@@ -341,7 +337,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark">
             Vad händer när läkaren kommer till platsen?
           </h3>
           <div className="bg-primary-light/20 rounded-md p-4">
@@ -376,7 +372,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark">
             Vad kan du som anhörig göra under tiden?
           </h3>
           <div className="bg-primary-light/20 rounded-md p-4">
@@ -409,10 +405,10 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Finns det mobila psykiatriska team i hela Sverige?
           </h3>
-          <p className="leading-relaxed">
+          <p>
             Mobila psykiatriska team finns i de flesta regioner, men tillgången
             varierar. Vissa regioner har välutbyggda team som är tillgängliga
             dygnet runt, medan andra har mer begränsade resurser. Det är viktigt
@@ -422,10 +418,10 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Kom ihåg: Du är inte ensam
           </h3>
-          <p className="leading-relaxed">
+          <p>
             Att vara anhörig till någon med bipolär sjukdom kan vara tufft, men
             du är inte ensam i din situation. Genom att söka stöd, bygga kunskap
             och ta hand om dig själv kan du vara en värdefull resurs för din
@@ -434,7 +430,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs text-primary-dark mb-2">
             Organisationer som kan hjälpa dig
           </h3>
           <Organizations />
