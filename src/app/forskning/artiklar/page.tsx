@@ -9,20 +9,21 @@ import FilterGroup from '@/app/components/pages/science/ScienceFilterGroup';
 import ScienceInstituteFilterGroup from '@/app/components/pages/science/ScienceInstituteFilterGroup';
 import SciencePagination from '@/app/components/pages/science/SciencePagination';
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
+import Spinner from '@/app/components/shared/Spinner';
 import {
-  ARTICLE_ATTRIBUTE_FILTERS,
-  LANGUAGE_FILTERS,
-  PUBLICATION_TYPE_FILTERS,
-  SWEDISH_HOSPITALS_FILTERS,
-  SWEDISH_UNIVERSITIES_FILTERS,
-  TEXT_AVAILABILITY_FILTERS,
-  YEARS_OF_PUBLICATION_FILTERS,
+    ARTICLE_ATTRIBUTE_FILTERS,
+    LANGUAGE_FILTERS,
+    PUBLICATION_TYPE_FILTERS,
+    SWEDISH_HOSPITALS_FILTERS,
+    SWEDISH_UNIVERSITIES_FILTERS,
+    TEXT_AVAILABILITY_FILTERS,
+    YEARS_OF_PUBLICATION_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
-  getDateFilterQuery,
-  getFormattedArticles,
-  parseXMLAbstracts,
+    getDateFilterQuery,
+    getFormattedArticles,
+    parseXMLAbstracts,
 } from '@/app/utils/scienceUtils';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -396,7 +397,7 @@ const ScienceArticles = () => {
           <div className="max-w-[600px] relative">
             {isLoading && (
               <div className="absolute inset-0 bg-white/40 flex items-start justify-center pt-8 z-10">
-                <div className="text-gray-700">Laddar artiklar...</div>
+                <Spinner />
               </div>
             )}
 
