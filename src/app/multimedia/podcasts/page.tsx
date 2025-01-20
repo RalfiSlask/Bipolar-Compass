@@ -1,8 +1,10 @@
 'use client';
 
 import PodcastContainer from '@/app/components/pages/resources/PodcastContainer';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
+import { podcastsIntro } from '@/app/data/pageIntros';
 import { IPodcastResult } from '@/app/types/podcast';
 import { useState } from 'react';
 
@@ -12,17 +14,14 @@ const PodcastPage = () => {
   const swedishPodcasts: IPodcastResult = SwedishPodcasts;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
+    <section className="w-full space-y-12 max-w-[1440px] px-4 pt-10 md:px-10 pb-20">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold">Podcasts</h2>
-          <p className="text-lg">
-            Här är några utvalda podcasts där bipolaritet är i fokus
-          </p>
-        </div>
+        <PageIntroContainer intro={podcastsIntro} />
 
         <div className="flex flex-col gap-6">
-          <h3 className="text-2xl font-semibold">Svenska podcasts</h3>
+          <h3 className="text-2xl font-semibold text-primary-dark">
+            {currentTab === 'sv' ? 'Svenska' : 'Engelska'} podcasts
+          </h3>
           <div className="flex gap-2">
             <button
               className={`${

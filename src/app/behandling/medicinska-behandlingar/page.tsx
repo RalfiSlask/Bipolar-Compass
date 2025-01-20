@@ -1,18 +1,22 @@
+import ECT from '@/app/components/pages/treatment/ECT';
+import TMS from '@/app/components/pages/treatment/TMS';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import { medicineIntro } from '@/app/data/pageIntros';
+import { MdElectricBolt, MdWaves } from 'react-icons/md';
+
 const MedicinePage = () => {
   return (
-    <section className="max-w-4xl mx-auto py-8 px-4">
-      <h2 className="h-md text-primary-dark mb-12 text-center">
-        Medicinska behandlingar
-      </h2>
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+      <PageIntroContainer intro={medicineIntro} />
 
       <div className="flex flex-col gap-8">
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Stämningsstabiliserande mediciner
           </h3>
 
           <div className="space-y-6">
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
               </h4>
@@ -25,11 +29,11 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Varför används de?
               </h4>
-              <p className="leading-relaxed mb-4">
+              <p className="mb-4">
                 Stämningsstabiliserare är ofta den första medicinen som
                 ordineras vid bipolär sjukdom eftersom de är beprövade och
                 effektiva för långsiktig stabilitet. De används också i
@@ -57,12 +61,12 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Antipsykotiska mediciner
           </h3>
 
           <div className="space-y-6">
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
               </h4>
@@ -75,7 +79,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Varför används de?
               </h4>
@@ -104,12 +108,12 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Antidepressiva mediciner
           </h3>
 
           <div className="space-y-6">
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
               </h4>
@@ -121,7 +125,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Varför används de?
               </h4>
@@ -152,11 +156,11 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kombination av mediciner
           </h3>
 
-          <div className="space-y-6">
+          <div className="space-y-6 lg:text-lg">
             <p>
               I många fall används en kombination av mediciner från olika
               grupper för att uppnå bästa möjliga effekt. Till exempel kan en
@@ -176,12 +180,12 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kommer medicinen fungera för mig?
           </h3>
 
           <div className="space-y-6">
-            <p>
+            <p className="lg:text-lg">
               Det är naturligt att undra om medicinen kommer att fungera för
               just dig. Behandling av bipolär sjukdom är individuell, och det
               kan ta tid att hitta rätt medicin eller kombination av mediciner.
@@ -189,7 +193,7 @@ const MedicinePage = () => {
               justeringar innan den optimala behandlingen hittas.
             </p>
 
-            <p>
+            <p className="lg:text-lg">
               Din läkare eller psykiater tar hänsyn till din sjukdomshistoria,
               symtom och tidigare erfarenheter för att välja den bästa
               behandlingen. Det är viktigt att ha tålamod och att följa den plan
@@ -208,19 +212,19 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Biverkningar och trygghet vid medicinering
           </h3>
 
           <div className="space-y-6">
-            <p>
+            <p className="lg:text-lg">
               När du påbörjar en ny medicinering är det vanligt att känna viss
               oro för biverkningar. Det är dock viktigt att veta att de flesta
               mediciner är noggrant testade och att majoriteten av användare
               endast upplever milda eller övergående biverkningar.
             </p>
 
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vanligheten av milda biverkningar
               </h4>
@@ -233,7 +237,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div>
+            <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Trygghet i behandlingen
               </h4>
@@ -257,164 +261,140 @@ const MedicinePage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>
 
           <div className="space-y-6">
-            <p>
+            <p className="lg:text-lg">
               Förutom mediciner finns det andra behandlingsmetoder som kan vara
               effektiva vid bipolär sjukdom, särskilt om mediciner inte ger
               tillräcklig effekt eller om symtomen är allvarliga. Två av dessa
               metoder är elektrokonvulsiv behandling (ECT) och transkraniell
               magnetstimulering (TMS).
             </p>
-
-            <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Elektrokonvulsiv behandling (ECT)
+            <ECT />
+            <TMS />
+            <div className="rounded-xl mt-8">
+              <h4 className="font-semibold h-xs lg:text-xl text-primary-dark mb-4">
+                Jämförelse
               </h4>
-
-              <div className="space-y-4">
-                <div>
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    Vad är ECT?
-                  </h5>
-                  <p>
-                    ECT är en behandling där en kontrollerad elektrisk
-                    stimulering av hjärnan framkallar ett kortvarigt epileptiskt
-                    anfall. Behandlingen utförs under narkos och används främst
-                    vid svåra depressioner, mani eller katatoni som inte svarat
-                    på mediciner.
-                  </p>
-                </div>
-
-                <div>
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    Hur fungerar det?
-                  </h5>
-                  <p>
-                    Den exakta mekanismen bakom ECT är inte helt förstådd, men
-                    det tros påverka hjärnans signalsubstanser och öka
-                    plasticiteten i hjärnan. Detta kan hjälpa till att
-                    återställa normal hjärnfunktion och förbättra symtomen.
-                  </p>
-                </div>
-
-                <div className="bg-primary-light/20 rounded-md p-4">
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    När används det?
-                  </h5>
-                  <ul className="flex flex-col gap-2 list-disc list-inside">
-                    <li>
-                      Vid svåra depressioner som inte svarat på mediciner.
-                    </li>
-                    <li>
-                      Vid livshotande tillstånd, som djupa självmordstankar.
-                    </li>
-                    <li>Vid allvarlig mani eller psykos.</li>
-                    <li>
-                      När andra behandlingar inte kan användas, exempelvis under
-                      graviditet.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Transkraniell magnetstimulering (TMS)
-              </h4>
-
-              <div className="space-y-4">
-                <div>
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    Vad är TMS?
-                  </h5>
-                  <p>
-                    TMS är en icke-invasiv behandling där en magnetisk spole
-                    placeras mot skalpen för att stimulera specifika områden i
-                    hjärnan med hjälp av magnetiska pulser. Det är en mildare
-                    behandling än ECT och kräver ingen narkos.
-                  </p>
-                </div>
-
-                <div>
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    Hur fungerar det?
-                  </h5>
-                  <p>
-                    TMS riktar sig mot specifika områden i hjärnan som är
-                    involverade i humörreglering. Genom att stimulera dessa
-                    områden med magnetiska pulser kan aktiviteten öka och bidra
-                    till att lindra symtomen.
-                  </p>
-                </div>
-
-                <div className="bg-primary-light/20 rounded-md p-4">
-                  <h5 className="font-semibold text-primary-dark mb-2">
-                    När används det?
-                  </h5>
-                  <ul className="flex flex-col gap-2 list-disc list-inside">
-                    <li>
-                      Vid måttlig till svår depression, särskilt om mediciner
-                      inte haft effekt.
-                    </li>
-                    <li>
-                      Vid bipolär depression, som ett alternativ till mediciner
-                      eller i kombination med dem.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-primary-light/20 rounded-md p-4">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Jämförelse mellan ECT och TMS
-              </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="font-semibold">Egenskap</div>
-                <div className="font-semibold">ECT</div>
-                <div className="font-semibold">TMS</div>
-
-                <div>Invasivitet</div>
-                <div>Kräver narkos och framkallar ett anfall</div>
-                <div>Icke-invasiv, kräver ingen narkos</div>
-
-                <div>Behandlingstid</div>
-                <div>Kortare behandlingar, oftast 6–12 sessioner</div>
-                <div>Längre behandlingar, ofta 20–30 sessioner</div>
-
-                <div>Effektivitet</div>
-                <div>Mycket effektiv vid svåra fall</div>
-                <div>Effektiv vid måttlig depression</div>
-
-                <div>Biverkningar</div>
-                <div>Övergående minnesproblem och huvudvärk</div>
-                <div>Mild huvudvärk och obehag vid skalpen</div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Att välja rätt behandling
-              </h4>
-              <p>
-                Valet mellan ECT, TMS och mediciner beror på flera faktorer, som
-                symtomens svårighetsgrad, tidigare behandlingserfarenheter och
-                individuella preferenser. ECT används oftast vid mycket
-                allvarliga tillstånd, medan TMS kan vara ett alternativ för
-                personer som inte svarat på mediciner men inte behöver så
-                intensiva insatser som ECT.
+              <p className="lg:text-lg">
+                ECT är en mer intensiv behandling som ger snabbare resultat men
+                kräver narkos och har fler biverkningar. TMS är ett mildare
+                alternativ utan narkos, men behandlingen tar längre tid och
+                effekten kommer mer gradvis. Båda metoderna är värdefulla
+                verktyg i behandlingen av bipolär sjukdom, men används i olika
+                situationer beroende på symtomens svårighetsgrad och patientens
+                individuella behov.
               </p>
-              <p className="leading-relaxed mt-4">
+              <p className="font-semibold primary-dark mt-4 text-primary-dark">
                 Om du överväger någon av dessa behandlingar, prata med din
                 läkare eller psykiater för att få en noggrann utvärdering och
                 planering. Målet är alltid att hitta en behandling som är säker,
                 effektiv och passar dina behov.
               </p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="bg-white/80 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center gap-4 mb-6 border-b border-primary-dark/30 pb-6">
+                  <div className="bg-primary-dark rounded-full p-2 text-white">
+                    <MdElectricBolt size={24} />
+                  </div>
+                  <h4 className="text-2xl font-bold text-primary-dark">ECT</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                    <span className="font-semibold min-w-[120px]">
+                      Invasivitet:
+                    </span>
+                    <span>
+                      Kräver narkos och framkallar ett kontrollerat anfall
+                    </span>
+                  </div>
+
+                  <div className="flex gap-3 p-3">
+                    <span className="font-semibold min-w-[120px]">
+                      Behandlingstid:
+                    </span>
+                    <span>6-12 sessioner under 2-4 veckor</span>
+                  </div>
+
+                  <div className="flex gap-3 p-3">
+                    <span className="font-semibold min-w-[120px]">
+                      Effektivitet:
+                    </span>
+                    <span>Mycket effektiv vid svåra fall, snabb effekt</span>
+                  </div>
+
+                  <div className="flex gap-3 p-3">
+                    <span className="font-semibold min-w-[120px]">
+                      Biverkningar:
+                    </span>
+                    <span>Övergående minnesproblem och huvudvärk</span>
+                  </div>
+
+                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
+                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                    <ul className="list-disc list-inside mt-2 space-y-1">
+                      <li>Svår depression som inte svarar på mediciner</li>
+                      <li>Akuta maniska episoder</li>
+                      <li>När snabb behandlingseffekt krävs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/80 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="flex items-center gap-4 mb-6 border-b border-primary-dark/30 pb-6">
+                  <div className="bg-primary-dark rounded-full p-2 text-white">
+                    <MdWaves size={24} />
+                  </div>
+                  <h4 className="text-2xl font-bold text-primary-dark">TMS</h4>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                    <span className="font-semibold min-w-[120px]">
+                      Invasivitet:
+                    </span>
+                    <span>Icke-invasiv, ingen narkos krävs</span>
+                  </div>
+
+                  <div className="flex gap-3 p-3">
+                    <span className="font-semibold min-w-[120px]">
+                      Behandlingstid:
+                    </span>
+                    <span>20-30 sessioner under 4-6 veckor</span>
+                  </div>
+
+                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                    <span className="font-semibold min-w-[120px]">
+                      Effektivitet:
+                    </span>
+                    <span>Effektiv vid måttlig depression, gradvis effekt</span>
+                  </div>
+
+                  <div className="flex gap-3 p-3">
+                    <span className="font-semibold min-w-[120px]">
+                      Biverkningar:
+                    </span>
+                    <span>
+                      Mild huvudvärk och övergående obehag vid skalpen
+                    </span>
+                  </div>
+
+                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
+                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                    <ul className="list-disc list-inside mt-2 space-y-1">
+                      <li>Måttlig depression som inte svarar på mediciner</li>
+                      <li>När man vill undvika biverkningar från mediciner</li>
+                      <li>För personer som inte kan få ECT</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

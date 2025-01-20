@@ -1,29 +1,20 @@
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import { therapyIntro } from '@/app/data/pageIntros';
+import Image from 'next/image';
+
 const TherapyPage = () => {
   return (
-    <section className="max-w-4xl mx-auto py-8 px-4">
-      <h2 className="h-md text-primary-dark mb-12 text-center">
-        Terapier för Bipolär Sjukdom
-      </h2>
-
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+      <PageIntroContainer intro={therapyIntro} />
       <div className="flex flex-col gap-8">
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <p>
-            Bipolär sjukdom är en komplex diagnos som påverkar både humör och
-            energi. Terapier spelar en avgörande roll i att hantera symtom,
-            förebygga episoder och förbättra livskvaliteten. Här kan du läsa om
-            olika terapiformer som används för att behandla bipolär sjukdom och
-            hur de kan hjälpa dig att skapa en stabil vardag.
-          </p>
-        </div>
-
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            1. Psykoterapi: Samtalsterapi som verktyg
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Psykoterapi: Samtalsterapi som verktyg
           </h3>
 
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Kognitiv beteendeterapi (KBT)
               </h4>
               <div className="space-y-4">
@@ -62,7 +53,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Interpersonell och social rytmterapi (IPSRT)
               </h4>
               <div className="space-y-4">
@@ -95,7 +86,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Psykoedukation
               </h4>
               <div className="space-y-4">
@@ -133,8 +124,8 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            2. Medicinsk behandling i kombination med terapi
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Medicinsk behandling i kombination med terapi
           </h3>
 
           <div className="space-y-6">
@@ -163,13 +154,13 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            3. Gruppterapi och stödgrupper
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Gruppterapi och stödgrupper
           </h3>
 
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Gruppterapi:
               </h4>
               <p>
@@ -180,7 +171,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Stödgrupper:
               </h4>
               <p>
@@ -192,8 +183,8 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            4. Digital terapi och online-stöd
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Digital terapi och online-stöd
           </h3>
 
           <div className="space-y-6">
@@ -202,7 +193,7 @@ const TherapyPage = () => {
             </p>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Appar och digitala program:
               </h4>
               <ul className="flex flex-col gap-2 list-disc list-inside">
@@ -212,7 +203,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Online-terapi:
               </h4>
               <p>
@@ -225,8 +216,8 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            5. Terapival: Hur hittar du rätt?
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Terapival: Hur hittar du rätt?
           </h3>
 
           <div className="space-y-6">
@@ -236,7 +227,7 @@ const TherapyPage = () => {
             </p>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Prata med din läkare eller psykiater:
               </h4>
               <p>
@@ -245,7 +236,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Utforska olika alternativ:
               </h4>
               <p>
@@ -255,7 +246,7 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Fråga om specialisering:
               </h4>
               <p>
@@ -267,27 +258,27 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            6. Självhjälp som komplement till terapi
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
+            Självhjälp som komplement till terapi
           </h3>
 
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Mindfulness:
               </h4>
               <p>Träna dig i att vara närvarande och hantera stress.</p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Dagböcker:
               </h4>
               <p>Följ dina humörsvängningar och upptäck mönster.</p>
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Stöd från närstående:
               </h4>
               <p>
@@ -299,7 +290,7 @@ const TherapyPage = () => {
         </div>
 
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Psykologisk behandling som komplement till läkemedel
           </h3>
 
@@ -313,7 +304,7 @@ const TherapyPage = () => {
             </p>
 
             <div className="bg-primary-light/20 rounded-md p-4">
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Tillgång till terapi i Sverige
               </h4>
               <p>
@@ -327,17 +318,31 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <h3 className="h-xs text-primary-dark mb-4">
-            7. Resurser och hjälp att börja
-          </h3>
-
-          <div className="space-y-6">
+        <div className="bg-primary-light w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
+          <div className="flex-1 h-full flex flex-col gap-4 items-center">
+            <h3 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
+              Resurser och hjälp att börja
+            </h3>
+            <div className="w-full rounded-lg overflow-hidden">
+              <Image
+                src="/images/treatments/therapy.jpg"
+                alt="terapi session"
+                aria-label="terapi session mellan en psykoterapeut och en patient"
+                width={1200}
+                height={800}
+                quality={100}
+                className="object-cover rounded-sm lg:rounded-full"
+                priority
+              />
+            </div>
+          </div>
+          <div className="flex-1 space-y-6 text-primary-dark">
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
+                {' '}
                 Hitta legitimerad psykolog eller psykoterapeut:
-              </h4>
-              <p>
+              </h5>
+              <p className="text-primary-dark">
                 För att hitta en legitimerad psykolog eller psykoterapeut i
                 Sverige kan du använda dig av olika söktjänster som
                 tillhandahålls av yrkesföreningar eller regioner. Det är viktigt
@@ -347,26 +352,34 @@ const TherapyPage = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Hitta terapeuter i Sverige:
-              </h4>
-              <p>
-                Besök din vårdcentral eller kontakta en psykiatrisk mottagning
-                för att få remiss.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-primary-dark mb-3">
+              <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
                 Online-resurser:
-              </h4>
-              <p>
+              </h5>
+              <p className="text-primary-dark">
                 Webbplatser som erbjuder information om terapi och behandling.
+                Om du söker på{' '}
+                <a
+                  href="https://www.1177.se/"
+                  className="nav-link"
+                  target="_blank"
+                  aria-label="1177:s hemsida, allmän sida för vård"
+                >
+                  1177:s hemsida
+                </a>{' '}
+                så kan du läsa mer om terapi och behandling. Om du är ung
+                rekommenderas att du läser mer på{' '}
+                <a
+                  href="https://www.umo.se/att-ta-hjalp/att-prata-med-nagon/att-ga-i-terapi"
+                  className="nav-link"
+                  target="_blank"
+                  aria-label="UMO:s hemsida, tips för unga att söka hjälp"
+                >
+                  UMO:s hemsida.
+                </a>
               </p>
             </div>
           </div>
         </div>
-
         <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
           <div className="bg-primary-light/20 rounded-md p-4">
             <p className=" font-semibold text-primary-dark">

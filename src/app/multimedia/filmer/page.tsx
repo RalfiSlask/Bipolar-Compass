@@ -1,7 +1,9 @@
 'use client';
 
 import MovieContainer from '@/app/components/pages/resources/MovieContainer';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import moviesData from '@/app/data/movies.json';
+import { moviesIntro } from '@/app/data/pageIntros';
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
 import Image from 'next/image';
 
@@ -9,32 +11,22 @@ const MoviesPage = () => {
   const movies: IMovieOrSeriesResponseData[] = moviesData.movies;
 
   return (
-    <section className="container mx-auto px-4 md:px-10 py-8 md:py-12 max-w-[1440px] w-full">
-      <div className="mb-12">
-        <h2 className="h-lg text-primary-dark mb-6">Filmer</h2>
-        <div className="bg-primary-light flex">
-          <div className="w-1 bg-primary-dark"></div>
-          <p className="text-base md:text-lg p-4 md:p-6">
-            Filmer kan ge oss en unik inblick i hur det är att leva med
-            bipolaritet och genom att följa dessa berättelser kan vi både känna
-            igen oss själva och få större empati för andra.
-          </p>
-        </div>
-      </div>
-
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-2">
+      <PageIntroContainer intro={moviesIntro} />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <div className="flex flex-col md:flex-row md:items-center bg-gray-50 rounded-lg overflow-hidden">
-          <div className="md:w-[250px] flex-shrink-0">
+        <div className="flex flex-col md:items-center bg-primary-light rounded-lg overflow-hidden">
+          <div className="flex-1">
             <Image
               src="/images/movies/jennifer-lawrence.webp"
               alt="Jennifer Lawrence"
-              width={250}
-              height={141}
+              width={1500}
+              height={846}
+              quality={100}
               className="object-cover w-full aspect-[1920/1080]"
             />
           </div>
-          <div className="flex flex-col gap-4 p-6 flex-grow">
-            <p className="text-lg italic leading-relaxed">
+          <div className="flex flex-col gap-4 p-6 flex-1">
+            <p className="text-lg italic ">
               &quot;Vi ville visa att dessa karaktärer ej är deras diagnoser.
               Att de är komplexa, bristfälliga och vackra människor.&quot;
             </p>
@@ -45,18 +37,19 @@ const MoviesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center bg-gray-50 rounded-lg overflow-hidden">
-          <div className="md:w-[250px] flex-shrink-0">
+        <div className="flex flex-col md:items-center bg-primary-light rounded-lg overflow-hidden">
+          <div className="flex-1">
             <Image
               src="/images/movies/stephen-fry.webp"
               alt="Stephen Fry"
-              width={250}
-              height={141}
+              width={1500}
+              height={846}
+              quality={100}
               className="object-cover w-full aspect-[1920/1080]"
             />
           </div>
-          <div className="flex flex-col gap-4 p-6 flex-grow">
-            <p className="text-lg italic leading-relaxed">
+          <div className="flex flex-col gap-4 p-6 flex-1">
+            <p className="text-lg italic ">
               &quot;Jag vill inte att någon ska tro att bipolär sjukdom är en
               enkel resa. Men det är en del av vem jag är, och jag skulle inte
               byta bort det.&quot;

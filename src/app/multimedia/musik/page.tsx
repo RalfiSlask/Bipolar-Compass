@@ -39,7 +39,7 @@ const MusicPage = () => {
   ];
 
   return (
-    <div className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
       <div className="w-full bg-tertiary-light text-tertiary-dark flex items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10">
         <div className="flex-1">
           <h2 className="h-lg font-bold mb-6">Spellistor</h2>
@@ -54,11 +54,11 @@ const MusicPage = () => {
           <Image
             src="/images/music.jpg"
             alt="kvinna som lyssnar på musik"
-            aria-label="kvinnar som lyssnar på musik"
+            aria-label="kvinna som lyssnar på musik"
             width={1200}
             height={800}
             quality={100}
-            className="object-cover rounded-full"
+            className="object-cover rounded-sm lg:rounded-full"
             priority
           />
         </div>
@@ -79,7 +79,7 @@ const MusicPage = () => {
         ))}
       </div>
       <SpotifySection activePlaylist={activePlaylist} />
-    </div>
+    </section>
   );
 };
 
