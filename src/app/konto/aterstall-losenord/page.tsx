@@ -2,6 +2,8 @@
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import ResetPasswordForm from '@/app/components/pages/auth/reset-password/ResetPasswordForm';
+import Spinner from '@/app/components/shared/Spinner';
+import { Suspense } from 'react';
 
 const ResetPasswordPage = () => {
   return (
@@ -21,7 +23,9 @@ const ResetPasswordPage = () => {
               `,
             }}
           >
-            <ResetPasswordForm />
+            <Suspense fallback={<Spinner />}>
+              <ResetPasswordForm />
+            </Suspense>
           </div>
         </div>
       </div>
