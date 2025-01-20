@@ -1,13 +1,20 @@
-import crypto from 'crypto';
 import { moodTrackerValuesData } from '../data/moodtracker';
 import {
-  DayId,
-  IDayValue,
-  IMoodTrackerWeek,
-  IMoodValue,
-  MoodId,
+    DayId,
+    IDayValue,
+    IMoodTrackerWeek,
+    IMoodValue,
+    MoodId,
 } from '../types/moodtracker';
 import { getWeekNumber } from '../utils/dateUtils';
+
+function generateUUID(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 export class DayValue implements IDayValue {
   id: DayId;
@@ -22,56 +29,41 @@ export class DayValue implements IDayValue {
     this.date = day.date || '';
   }
 
-  static createDefaultWeek(): DayValue[] {
-    const currentDate = new Date();
-    const monday = new Date(currentDate);
-    monday.setDate(currentDate.getDate() - ((currentDate.getDay() + 6) % 7));
+  static createDefaultWeek(startDate: Date): DayValue[] {
+    const monday = new Date(startDate);
 
-    const defaultDays: IDayValue[] = [
-      {
-        id: 'monday' as DayId,
-        name: 'Måndag',
+    return [
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'saturday',
+      'sunday',
+    ].map((day, index) => {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + index);
+
+      return new DayValue({
+        id: day as DayId,
+        name: this.getDayName(day),
         value: null,
-        date: this.formatDate(monday),
-      },
-      {
-        id: 'tuesday' as DayId,
-        name: 'Tisdag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-      {
-        id: 'wednesday' as DayId,
-        name: 'Onsdag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-      {
-        id: 'thursday' as DayId,
-        name: 'Torsdag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-      {
-        id: 'friday' as DayId,
-        name: 'Fredag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-      {
-        id: 'saturday' as DayId,
-        name: 'Lördag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-      {
-        id: 'sunday' as DayId,
-        name: 'Söndag',
-        value: null,
-        date: this.formatDate(new Date(monday.setDate(monday.getDate() + 1))),
-      },
-    ];
-    return defaultDays.map((day) => new DayValue(day));
+        date: this.formatDate(date),
+      });
+    });
+  }
+
+  private static getDayName(day: string): string {
+    const dayNames: { [key: string]: string } = {
+      monday: 'Måndag',
+      tuesday: 'Tisdag',
+      wednesday: 'Onsdag',
+      thursday: 'Torsdag',
+      friday: 'Fredag',
+      saturday: 'Lördag',
+      sunday: 'Söndag',
+    };
+    return dayNames[day];
   }
 
   private static formatDate(date: Date): string {
@@ -89,7 +81,7 @@ export class MoodValue implements IMoodValue {
     this.id = moodValue.id;
     this.moodName = moodValue.moodName;
     if (!moodValue.valueForDays[0]?.date) {
-      this.valueForDays = DayValue.createDefaultWeek();
+      this.valueForDays = DayValue.createDefaultWeek(new Date());
     } else {
       this.valueForDays = moodValue.valueForDays.map(
         (day) => new DayValue(day as IDayValue)
@@ -99,7 +91,7 @@ export class MoodValue implements IMoodValue {
   }
 
   static createDefaultMoodValues(): MoodValue[] {
-    const defaultDays = DayValue.createDefaultWeek();
+    const defaultDays = DayValue.createDefaultWeek(new Date());
     return moodTrackerValuesData.moodValues.map(
       (mood) =>
         new MoodValue({
@@ -131,19 +123,32 @@ export class MoodtrackerWeek implements IMoodTrackerWeek {
     );
   }
 
-  static createDefault(userId: string): MoodtrackerWeek {
-    const currentDate = new Date();
-    const weekNumber = getWeekNumber(currentDate);
-    const year = currentDate.getFullYear();
+  static createDefault(
+    userId: string,
+    selectedDate: Date = new Date()
+  ): MoodtrackerWeek {
+    const weekNumber = getWeekNumber(selectedDate);
+    const year = selectedDate.getFullYear();
+
+    const monday = new Date(selectedDate);
+    monday.setDate(selectedDate.getDate() - ((selectedDate.getDay() + 6) % 7));
+
+    const defaultDays = DayValue.createDefaultWeek(monday);
 
     return new MoodtrackerWeek({
-      id: crypto.randomUUID(),
+      id: generateUUID(),
       user_id: userId,
       week_number: weekNumber,
       year: year,
-      created_at: currentDate.toISOString(),
-      updated_at: currentDate.toISOString(),
-      mood_values: MoodValue.createDefaultMoodValues(),
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      mood_values: moodTrackerValuesData.moodValues.map(
+        (mood) =>
+          new MoodValue({
+            ...(mood as IMoodValue),
+            valueForDays: defaultDays,
+          })
+      ),
     });
   }
 }
