@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import laughingImage from '../../public/images/about.jpg';
-import homeImage from '../../public/images/home-image.png';
 import Chat from './components/chat/Chat';
 import BipolarStatistics from './components/pages/home/BipolarStatistics';
 import MoodTrackerDiaryShowcase from './components/pages/home/MoodTrackerDiaryShowcase';
@@ -11,25 +10,26 @@ import ThreeSections from './components/pages/home/ThreeSections';
 export default function Home() {
   return (
     <section className="w-full h-full flex flex-col items-center">
-      <div className="w-full home-container flex items-center justify-center relative">
-        <Image
-          src={homeImage}
-          alt="Bipolar logo"
-          width={1440}
-          height={2000}
-          className="object-cover"
-        />
-        <div className="absolute inset-0 flex items-center text-white px-4 md:px-8 max-w-[1440px] mx-auto">
-          <div className="flex flex-col flex-1 gap-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-              Bipolär Kompassen
-            </h2>
-            <p className="text-2xl font-medium">
-              Bipolär Kompassen är en digital hjälpbok för dig som lider av
-              bipolär sjukdom.
-            </p>
-          </div>
+      <div className="w-full h-[calc(100vh-130px)] flex items-center justify-center relative  mx-auto px-4">
+        {/*     <div className="flex-1 flex flex-col gap-4">
+          <h1 className="text-6xl font-bold text-primary-dark">
+            Bipolärkompassne
+          </h1>
+          <p className="text-xl text-primary-dark">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe
+            consectetur perferendis soluta ipsam quis. Voluptatum minus eveniet
+            animi aliquid, laborum nam voluptate culpa deleniti.
+          </p>
         </div>
+        <div className="flex items-end justify-end h-full w-full max-w-[2000px]">
+          <Image
+            src="/images/test.png"
+            alt="testing"
+            width={4910}
+            height={3264}
+            className="object-cover max-h-[90vh] w-auto "
+          />
+        </div> */}
       </div>
       <BipolarStatistics />
       <div className="w-full flex bg-tertiary-light items-center justify-center pt-20 pb-28 px-10">
