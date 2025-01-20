@@ -3,19 +3,7 @@ import PasswordTemplate from '../components/PasswordTemplate';
 import { emailTransporter } from '../lib/nodemailer';
 
 export const getVerificationLink = (token: string): string => {
-  let baseUrl: string;
-
-  if (process.env.NODE_ENV === 'development') {
-    baseUrl = process.env.NEXT_LOCAL_URL || 'http://localhost:3000';
-  } else if (process.env.NODE_ENV === 'production') {
-    baseUrl = process.env.NEXT_PROD_URL || 'https://bipolärkompassen.se';
-  } else {
-    console.warn(
-      'NODE_ENV is not correctly defined. We use fallback local url.'
-    );
-    baseUrl = 'http://localhost:3000';
-  }
-
+  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
   return `${baseUrl}/konto/verifiera?token=${token}`;
 };
 
@@ -50,18 +38,7 @@ export const sendVerificationEmail = async ({
 };
 
 const getResetLink = (token: string): string => {
-  let baseUrl: string;
-
-  if (process.env.NODE_ENV === 'development') {
-    baseUrl = process.env.NEXT_LOCAL_URL || 'http://localhost:3000';
-  } else if (process.env.NODE_ENV === 'production') {
-    baseUrl = process.env.NEXT_PROD_URL || 'https://bipolärkompassen.se';
-  } else {
-    console.warn(
-      'NODE_ENV is not correctly defined. We use fallback local url.'
-    );
-    baseUrl = 'http://localhost:3000';
-  }
+  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
 
   return `${baseUrl}/konto/aterstall-losenord?token=${token}`;
 };
