@@ -13,7 +13,11 @@ const Organizations = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <a
         href="https://balansriks.se/balans-foreningar/"
-        className="organization-link"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
       >
         <div className="h-16 flex items-center">
           <Image
@@ -32,10 +36,17 @@ const Organizations = () => {
           personer med bipolär sjukdom, depression och andra psykiska
           ohälsotillstånd. De erbjuder stöd, information och gemenskap för både
           drabbade och anhöriga.
-        </p>
+        </p> 
       </a>
 
-      <a href="https://anhorigasriksforbund.se/" className="organization-link">
+      <a
+        href="https://anhorigasriksforbund.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={Anhoriga}
@@ -58,7 +69,11 @@ const Organizations = () => {
 
       <a
         href="https://mind.se/stod-kunskap/prata-eller-chatta-med-volontar/foraldralinjen/"
-        className="organization-link"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -80,7 +95,14 @@ const Organizations = () => {
         </p>
       </a>
 
-      <a href="https://nsph.se/" className="organization-link">
+      <a
+        href="https://nsph.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={NSPH}
@@ -101,7 +123,14 @@ const Organizations = () => {
         </p>
       </a>
 
-      <a href="https://spes.se/" className="organization-link">
+      <a
+        href="https://spes.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={SPES}
@@ -122,7 +151,14 @@ const Organizations = () => {
         </p>
       </a>
 
-      <a href="https://www.bris.se/" className="organization-link">
+      <a
+        href="https://www.bris.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={Bris}
@@ -143,7 +179,14 @@ const Organizations = () => {
         </p>
       </a>
 
-      <a href="https://suicidezero.se/" className="organization-link">
+      <a
+        href="https://suicidezero.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={SuicideZero}
@@ -164,7 +207,14 @@ const Organizations = () => {
         </p>
       </a>
 
-      <a href="https://anhoriga.se/" className="organization-link">
+      <a
+        href="https://anhoriga.se/"
+        className="flex flex-col gap-4 p-6 rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+        border border-primary-light/20 shadow-sm hover:shadow-md hover:bg-primary-light/70 
+        transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
+        after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
+        hover:after:w-full"
+      >
         <div className="h-16 flex items-center justify-center">
           <Image
             src={NKA}
