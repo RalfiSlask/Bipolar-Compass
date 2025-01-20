@@ -1,86 +1,85 @@
 'use client';
 
-import MoodTrackerCheckboxes from '@/app/components/dashboard/moodtracker/MoodTrackerCheckboxes';
-import MoodYaxisValues from '@/app/components/dashboard/moodtracker/MoodYaxisValues';
+import MoodTrackerDay from '@/app/components/dashboard/moodtracker/MoodTrackerDay';
+import MoodTrackerWeek from '@/app/components/dashboard/moodtracker/MoodTrackerWeek';
 import Spinner from '@/app/components/shared/Spinner';
-import { moodTrackerValuesData } from '@/app/data/moodtracker';
 import { MoodValue, MoodtrackerWeek } from '@/app/models/Moodtracker';
 import { ICustomSession } from '@/app/types/authoptions';
 import { DayId, IMoodTrackerWeek, MoodId } from '@/app/types/moodtracker';
-import { getWeekDates, getWeekNumber } from '@/app/utils/dateUtils';
+import { getWeekNumber } from '@/app/utils/dateUtils';
 import axios from 'axios';
+import { addDays, isFuture, subDays } from 'date-fns';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
-const moodValuesData = moodTrackerValuesData.moodValues.map(
-  (value) =>
-    new MoodValue({
-      ...value,
-      id: value.id as MoodId,
-      valueForDays: value.valueForDays.map((day) => ({
-        ...day,
-        id: day.id as DayId,
-      })),
-    })
-);
+const initialMoodValues = MoodValue.createDefaultMoodValues();
 
 const MoodTrackerPage = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
-  const [weekDates, setWeekDates] = useState<string[]>([]);
   const [moodTrackerValues, setMoodTrackerValues] =
-    useState<MoodValue[]>(moodValuesData);
+    useState<MoodValue[]>(initialMoodValues);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDayView, setIsDayView] = useState(true);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  useEffect(() => {
-    const currentDate = new Date();
-    const dates = getWeekDates(currentDate);
-    setWeekDates(dates);
-  }, []);
+  const fetchMoodTrackerData = async (date: Date) => {
+    if (!session?.user?.id) return;
 
-  useEffect(() => {
-    const fetchMoodTrackerData = async () => {
-      if (!session?.user?.id) return;
+    try {
+      const week = getWeekNumber(date);
+      const year = date.getFullYear();
 
-      try {
-        const currentDate = new Date();
-        const currentWeek = getWeekNumber(currentDate);
-        const currentYear = currentDate.getFullYear();
+      const response = await axios.post('/api/mood-tracker/get', {
+        user_id: session.user.id,
+        week,
+        year,
+      });
 
-        const response = await axios.post('/api/mood-tracker/get', {
-          user_id: session.user.id,
-          week: currentWeek,
-          year: currentYear,
-        });
-
-        if (response.status === 200) {
-          console.log('this is the response:', response.data);
-          const rawData: IMoodTrackerWeek = response.data;
-          console.log('this is the raw data:', rawData);
+      if (response.status === 200) {
+        const rawData: IMoodTrackerWeek = response.data;
+        if (rawData) {
           const data = new MoodtrackerWeek(rawData);
-          if (data && data.mood_values) {
-            setMoodTrackerValues(
-              data.mood_values.map((value) => new MoodValue(value))
-            );
-          }
+          setMoodTrackerValues(data.mood_values);
+        } else {
+          const defaultWeek = MoodtrackerWeek.createDefault(
+            session.user.id,
+            date
+          );
+          setMoodTrackerValues(defaultWeek.mood_values);
         }
-      } catch (error) {
-        console.error('Failed to fetch mood tracker data:', error);
-      } finally {
-        setIsLoading(false);
       }
-    };
+    } catch (error) {
+      console.error('Failed to fetch mood tracker data:', error);
+      toast.error('Kunde inte hämta information om ditt mående');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    fetchMoodTrackerData();
-  }, [session]);
+  useEffect(() => {
+    fetchMoodTrackerData(selectedDate);
+  }, [session, selectedDate]);
+
+  const handlePreviousDay = () => {
+    const newDate = subDays(selectedDate, 1);
+    setSelectedDate(newDate);
+  };
+
+  const handleNextDay = () => {
+    const nextDay = addDays(selectedDate, 1);
+    if (!isFuture(nextDay)) {
+      setSelectedDate(nextDay);
+    }
+  };
 
   const saveMoodTrackerData = async () => {
     if (!session?.user?.id) return;
 
     try {
-      const currentDate = new Date();
       const weekData = {
-        week_number: getWeekNumber(currentDate),
-        year: currentDate.getFullYear(),
+        week_number: getWeekNumber(selectedDate),
+        year: selectedDate.getFullYear(),
         mood_values: moodTrackerValues,
       };
 
@@ -92,19 +91,27 @@ const MoodTrackerPage = () => {
       if (response.status !== 200) {
         throw new Error('Failed to save mood tracker data');
       }
+
+      toast.success('Ditt mående sparades');
     } catch (err) {
       console.error('Failed to save mood tracker data:', err);
+      toast.error('Kunde inte spara ditt mående');
     }
   };
 
-  const handleValueChange = (moodId: MoodId, dayId: DayId, level: number) => {
+  const handleValueChange = (
+    moodId: MoodId,
+    dayId: DayId,
+    level: number | null,
+    date: string
+  ) => {
     setMoodTrackerValues((prevValues) => {
       return prevValues.map((mood) => {
         if (mood.id === moodId) {
           return {
             ...mood,
             valueForDays: mood.valueForDays.map((day) => {
-              if (day.id === dayId) {
+              if (day.date === date) {
                 return { ...day, value: level };
               }
               return day;
@@ -121,37 +128,48 @@ const MoodTrackerPage = () => {
   }
 
   return (
-    <section className="p-8 bg-beige min-h-screen">
-      <h1 className="text-2xl font-bold text-primary-dark mb-8">Moodtracker</h1>
-      {moodTrackerValues.map((mood) => (
-        <div key={mood.id} className="mb-8">
-          <h2 className="font-semibold mb-4 text-primary-dark">
-            {mood.moodName}
-          </h2>
-          <div className="grid grid-cols-[150px_repeat(7,1fr)] gap-4">
-            <MoodYaxisValues moodValue={mood} />
-            {mood.valueForDays.map((day, index) => (
-              <div key={day.id} className="flex flex-col">
-                <div className="text-sm text-primary-medium text-center mb-4">
-                  {day.name}
-                  <br />
-                  {weekDates[index]}
-                </div>
-
-                {/* Checkboxes */}
-                <MoodTrackerCheckboxes
-                  mood={mood}
-                  day={day}
-                  handleValueChange={handleValueChange}
-                />
-              </div>
-            ))}
-          </div>
+    <section className="w-full px-6 py-12 min-h-screen bg-tertiary-light">
+      <div className="max-w-7xl mx-auto mb-8">
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            className={`px-8 py-2.5 rounded-xl font-medium transition-all duration-300 ${
+              isDayView
+                ? 'bg-primary-dark text-white shadow-lg'
+                : 'bg-white text-primary-dark hover:bg-primary-light'
+            }`}
+            onClick={() => setIsDayView(true)}
+          >
+            Dagvy
+          </button>
+          <button
+            className={`px-8 py-2.5 rounded-xl font-medium transition-all duration-300 ${
+              !isDayView
+                ? 'bg-primary-dark text-white shadow-lg'
+                : 'bg-white text-primary-dark hover:bg-primary-light'
+            }`}
+            onClick={() => setIsDayView(false)}
+          >
+            Veckovy
+          </button>
         </div>
-      ))}
-      <button className="primary-button" onClick={saveMoodTrackerData}>
-        Spara
-      </button>
+      </div>
+      {isDayView ? (
+        <MoodTrackerDay
+          moodTrackerValues={moodTrackerValues}
+          handleValueChange={handleValueChange}
+          saveMoodTrackerData={saveMoodTrackerData}
+          user={session?.user.name || ''}
+          selectedDate={selectedDate}
+          onPreviousDay={handlePreviousDay}
+          onNextDay={handleNextDay}
+        />
+      ) : (
+        <MoodTrackerWeek
+          moodTrackerValues={moodTrackerValues}
+          handleValueChange={handleValueChange}
+          saveMoodTrackerData={saveMoodTrackerData}
+        />
+      )}
     </section>
   );
 };
