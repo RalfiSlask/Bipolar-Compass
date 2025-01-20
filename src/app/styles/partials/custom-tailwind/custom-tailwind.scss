@@ -1,0 +1,17 @@
+@use '../../variables/variables' as *;
+
+.intro-container-brown {
+  @apply w-full flex lg:flex-row bg-tertiary-light text-tertiary-dark flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10;
+}
+
+.intro-container {
+  @apply w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10;
+}
+
+.intro-image {
+  @apply flex-1 rounded-lg overflow-hidden w-full;
+}
+
+.nav-link {
+  @apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full;
+}
