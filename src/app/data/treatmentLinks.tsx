@@ -5,7 +5,7 @@ import { RiMedicineBottleLine } from 'react-icons/ri';
 export const treatmentLinks = [
   {
     title: 'Medicin',
-    href: '/behandling/medicin',
+    href: '/behandling/medicinska-behandlingar',
     description:
       'Läs om olika typer av medicin som kan hjälpa vid bipolär sjukdom',
     icon: (
