@@ -5,14 +5,13 @@ import interactionPlugin from '@fullcalendar/interaction';
 import multiMonthPlugin from '@fullcalendar/multimonth';
 import FullCalendar from '@fullcalendar/react';
 
-
 const Calendar = ({
   dayCellDidMount,
 }: {
   dayCellDidMount: (arg: DayCellMountArg) => void;
 }) => {
   return (
-    <div className="h-full w-full p-4">
+    <div className="h-full w-full">
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin, multiMonthPlugin]}
         initialView="dayGridMonth"
@@ -27,11 +26,34 @@ const Calendar = ({
           week: 'Vecka',
           year: 'År',
         }}
-        multiMonthMaxColumns={3}
+        multiMonthMaxColumns={2}
         selectable={false}
         dayMaxEvents={true}
         weekends={true}
         dayCellDidMount={dayCellDidMount}
+        datesSet={(arg) => {
+          setTimeout(() => {
+            const dayCells = document.querySelectorAll('.fc-daygrid-day');
+            dayCells.forEach((cell) => {
+              const date = cell.getAttribute('data-date');
+              if (date) {
+                const dateObj = new Date(date);
+                dayCellDidMount({
+                  date: dateObj,
+                  el: cell as HTMLElement,
+                  view: arg.view,
+                  dayNumberText: dateObj.getDate().toString(),
+                  isPast: dateObj < new Date(),
+                  isFuture: dateObj > new Date(),
+                  isToday: dateObj.toDateString() === new Date().toDateString(),
+                  isOther: false,
+                  dow: dateObj.getDay(),
+                  isDisabled: false,
+                });
+              }
+            });
+          }, 0);
+        }}
         height="80vh"
       />
     </div>
