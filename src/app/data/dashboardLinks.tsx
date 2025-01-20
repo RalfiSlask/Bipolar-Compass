@@ -4,7 +4,7 @@ import {
   BsGear,
   BsJournalText,
 } from 'react-icons/bs';
-import { FaCompass, FaSignOutAlt } from 'react-icons/fa';
+import { FaCompass, FaPills, FaSignOutAlt, FaUsers } from 'react-icons/fa';
 
 export const dashboardNavigationLinks = [
   {
@@ -26,6 +26,17 @@ export const dashboardNavigationLinks = [
     title: 'Historik',
     href: '/min-sida/historik',
     icon: <BsClockHistory className="w-6 h-6 text-primary-dark" />,
+  },
+
+  {
+    title: 'Anhöriga',
+    href: '/min-sida/anhoriga',
+    icon: <FaUsers className="w-6 h-6 text-primary-dark" />,
+  },
+  {
+    title: 'Mediciner',
+    href: '/min-sida/medicin',
+    icon: <FaPills className="w-6 h-6 text-primary-dark" />,
   },
   {
     title: 'Inställningar',

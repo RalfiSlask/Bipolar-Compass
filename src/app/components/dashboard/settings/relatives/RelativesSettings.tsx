@@ -1,17 +1,22 @@
+import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
-import useSettingsContext from '@/app/hooks/useSettingsContext';
+import { notificationFrequencies } from '@/app/data/notifications';
 import { IRelative } from '@/app/types/relative';
+import { IUser } from '@/app/types/user';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-const RelativesSettings = () => {
-  const { user, saveRelativesSettings } = useSettingsContext();
+interface RelativesSettingsProps {
+  user: IUser;
+  saveRelativesSettings: (relatives: IRelative[]) => Promise<void>;
+}
 
-  if (!user) {
-    throw new Error('Användardata saknas');
-  }
-
+const RelativesSettings = ({
+  user,
+  saveRelativesSettings,
+}: RelativesSettingsProps) => {
   const [relatives, setRelatives] = useState(user.settings.relatives);
   const [isAddingRelative, setIsAddingRelative] = useState(false);
 
@@ -24,27 +29,31 @@ const RelativesSettings = () => {
   const handleSubmit = async (values: IRelative) => {
     const newRelatives = [...relatives, values];
     try {
-      await saveRelativesSettings(newRelatives, user.email);
+      await saveRelativesSettings(newRelatives);
       setRelatives(newRelatives);
     } catch (err) {
-      console.error('could not save settings: ', err);
+      console.error('could not save the settings, ', err);
+      toast.error('Kunde inte spara inställningar');
     }
     setIsAddingRelative(false);
+    toast.success('Anhörig tillagd');
   };
 
   const handleDeleteRelative = async (index: number) => {
     try {
       const newRelatives = relatives.filter((_, i) => i !== index);
-      await saveRelativesSettings(newRelatives, user.email);
+      await saveRelativesSettings(newRelatives);
       setRelatives(newRelatives);
+      toast.success('Anhörig borttagen');
     } catch (err) {
       console.error('could not delete relative: ', err);
+      toast.error('Kunde inte ta bort anhörig');
     }
   };
 
   return (
     <div
-      className="max-w-2xl w-full p-6 flex flex-col items-center gap-10"
+      className="mx-auto max-w-7xl w-full"
       aria-labelledby="relatives-heading"
     >
       {!user?.isVerified && <VerficationMessage />}
@@ -58,7 +67,7 @@ const RelativesSettings = () => {
           Anhöriga
         </h2>
         <p
-          className={`text-sm ${
+          className={` text-secondary-dark ${
             !user.isVerified ? 'text-gray-400' : 'text-gray-600'
           }`}
         >
@@ -86,7 +95,7 @@ const RelativesSettings = () => {
             validationSchema={relativeValidationSchema}
             onSubmit={handleSubmit}
           >
-            {({ errors, touched }) => (
+            {({ values, setFieldValue, errors, touched }) => (
               <Form className="flex flex-col gap-6">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <div className="flex flex-col gap-4">
@@ -96,7 +105,7 @@ const RelativesSettings = () => {
                     <Field
                       type="email"
                       name="email"
-                      className="secondary-input"
+                      className="primary-input"
                       placeholder="namn@exempel.se"
                     />
                     {errors.email && touched.email && (
@@ -107,16 +116,23 @@ const RelativesSettings = () => {
                       <label className="font-medium">
                         Frekvens för utskick
                       </label>
-                      <Field
-                        as="select"
+                      <CustomSelect
+                        options={Object.entries(notificationFrequencies).map(
+                          ([key, value]) => ({
+                            value: key,
+                            label: value,
+                          })
+                        )}
                         name="email_frequency"
-                        className="primary-dropdown"
-                      >
-                        <option value="">Välj frekvens...</option>
-                        <option value="weekly">Varje vecka</option>
-                        <option value="biweekly">Varannan vecka</option>
-                        <option value="monthly">Månadsvis</option>
-                      </Field>
+                        value={values.email_frequency}
+                        onChange={(value: string) => {
+                          setFieldValue('email_frequency', value);
+                        }}
+                        placeholder="Välj frekvens..."
+                        error={errors.email_frequency}
+                        touched={touched.email_frequency}
+                        size="large"
+                      />
                       {errors.email_frequency && touched.email_frequency && (
                         <div className="text-red-500 text-sm">
                           {errors.email_frequency}
@@ -157,10 +173,10 @@ const RelativesSettings = () => {
 
         {!isAddingRelative && relatives.length > 0 && (
           <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="text-xl font-semibold mb-4 text-primary-dark">
               Registrerade anhöriga
             </h3>
-            <div className="grid gap-4">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {relatives.map((relative, index) => (
                 <div
                   key={index}

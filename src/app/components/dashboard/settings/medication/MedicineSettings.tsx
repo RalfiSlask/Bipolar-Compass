@@ -1,12 +1,13 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { medicineCategories } from '@/app/data/medications';
-import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IMedication } from '@/app/types/medication';
+import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import AntiDepressantMedicationMessage from './AntiDepressantMedicationMessage';
 import MedicationCategoryDropdown from './MedicationCategoryDropdown';
 import MedicationNotes from './MedicationNotes';
@@ -15,13 +16,15 @@ import MedicineDosage from './MedicineDosage';
 import MedicineFrequencyDropdown from './MedicineFrequencyDropdown';
 import YourMedications from './YourMedications';
 
-const MedicineSettings = () => {
-  const { user, saveMedicationSettings } = useSettingsContext();
+interface MedicineSettingsProps {
+  user: IUser;
+  saveMedicationSettings: (medications: IMedication[]) => Promise<void>;
+}
 
-  if (!user) {
-    throw new Error('Användardata saknas');
-  }
-
+const MedicineSettings = ({
+  user,
+  saveMedicationSettings,
+}: MedicineSettingsProps) => {
   const [medications, setMedicines] = useState<IMedication[]>(
     user.profile.medications
   );
@@ -40,10 +43,11 @@ const MedicineSettings = () => {
 
   const saveSettings = async (newMedicines: IMedication[]) => {
     try {
-      await saveMedicationSettings(newMedicines, user.email);
+      await saveMedicationSettings(newMedicines);
       setMedicines(newMedicines);
     } catch (err) {
       console.error('could not save medications: ', err);
+      toast.error('Kunde inte spara mediciner');
     }
   };
 
@@ -81,8 +85,10 @@ const MedicineSettings = () => {
       const newMedicines = [...medications, newMedicine];
       await saveSettings(newMedicines);
       setIsAddingMedicine(false);
+      toast.success('Medicin tillagd');
     } catch (error) {
       console.error('could not save medicine:', error);
+      toast.error('Kunde inte spara medicin');
     }
   };
 
@@ -90,14 +96,16 @@ const MedicineSettings = () => {
     try {
       const newMedicines = medications.filter((_, i) => i !== index);
       await saveSettings(newMedicines);
+      toast.success('Medicin borttagen');
     } catch (error) {
       console.error('could not delete medicine:', error);
+      toast.error('Kunde inte ta bort medicin');
     }
   };
 
   return (
     <div
-      className="max-w-2xl w-full p-6 flex flex-col items-center gap-10"
+      className="mx-auto max-w-7xl w-full"
       aria-labelledby="medicine-heading"
     >
       {!user?.isVerified && <VerficationMessage />}
@@ -111,9 +119,7 @@ const MedicineSettings = () => {
           Mediciner
         </h2>
         <p
-          className={`text-sm ${
-            !user.isVerified ? 'text-gray-400' : 'text-gray-600'
-          }`}
+          className={`${!user.isVerified ? 'text-gray-400' : 'text-gray-600'}`}
         >
           Hantera dina mediciner och påminnelser för medicinering.
         </p>

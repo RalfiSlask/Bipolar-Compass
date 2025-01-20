@@ -11,8 +11,8 @@ const YourMedications = ({
 }: YourMedicationsProps) => {
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-semibold mb-4">Dina Mediciner</h3>
-      <div className="grid gap-4">
+      <h3 className="text-xl font-semibold mb-4 text-primary-dark">Dina Mediciner</h3>
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {medications.map((medicine, index) => (
           <div
             key={index}
