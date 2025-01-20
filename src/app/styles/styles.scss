@@ -9,6 +9,8 @@
 @use './partials/sidebar/sidebar';
 @use './partials/calender/calender';
 @use './partials/typingindicator';
+@use './partials/custom-tailwind/custom-tailwind';
+@use './partials/sliders/sliders';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

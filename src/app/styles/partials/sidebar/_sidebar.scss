@@ -9,7 +9,7 @@
     transform: translateX(-100%);
 
     @media (min-width: 768px) {
-      transform: translateX(-320px);
+      transform: translateX(-260px);
     }
   }
 
@@ -28,7 +28,7 @@
 
   &.content--open {
     @media (min-width: 768px) {
-      padding-left: 320px;
+      padding-left: 260px;
       justify-content: flex-start;
     }
   }
