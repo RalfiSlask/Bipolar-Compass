@@ -2,16 +2,24 @@
 
 import PodcastContainer from '@/app/components/pages/resources/PodcastContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import Spinner from '@/app/components/shared/Spinner';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
 import { podcastsIntro } from '@/app/data/pageIntros';
 import { IPodcastResult } from '@/app/types/podcast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PodcastPage = () => {
   const [currentTab, setCurrentTab] = useState<'sv' | 'en'>('sv');
   const englishPodcasts: IPodcastResult = EnglishPodcasts;
+  const [mounted, setMounted] = useState(false);
   const swedishPodcasts: IPodcastResult = SwedishPodcasts;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <Spinner />;
 
   return (
     <section className="w-full space-y-12 max-w-[1440px] px-4 pt-10 md:px-10 pb-20">
