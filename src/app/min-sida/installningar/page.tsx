@@ -1,10 +1,8 @@
 'use client';
 
 import DashboardSettingsNavigation from '@/app/components/dashboard/settings/DashboardSettingsNavigation';
-import MedicineSettings from '@/app/components/dashboard/settings/medication/MedicineSettings';
 import NotificationsSettings from '@/app/components/dashboard/settings/notifications/NotificationsSettings';
 import ProfileSettings from '@/app/components/dashboard/settings/profile/ProfileSettings';
-import RelativesSettings from '@/app/components/dashboard/settings/relatives/RelativesSettings';
 import SecuritySettings from '@/app/components/dashboard/settings/security/SecuritySettings';
 import Spinner from '@/app/components/shared/Spinner';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
@@ -48,9 +46,7 @@ const SettingsPageContent = () => {
           <div className="flex justify-center">
             {activeTab === 'profile' && <ProfileSettings />}
             {activeTab === 'security' && <SecuritySettings />}
-            {activeTab === 'relatives' && <RelativesSettings />}
             {activeTab === 'notifications' && <NotificationsSettings />}
-            {activeTab === 'medicines' && <MedicineSettings />}
           </div>
           {isUserVerified && <VerficationMessage />}
         </div>
