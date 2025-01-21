@@ -30,6 +30,15 @@ export default {
         'gray-700': '#374151',
         'gray-300': '#d1d5db',
       },
+      keyframes: {
+        'modal-slide-up': {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      animation: {
+        'modal-slide-up': 'modal-slide-up 0.3s ease-out',
+      },
     },
   },
   plugins: [],
