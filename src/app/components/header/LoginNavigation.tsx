@@ -1,6 +1,7 @@
 import { ICustomSession } from '@/app/types/authoptions';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const LoginNavigation = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
@@ -15,7 +16,15 @@ const LoginNavigation = () => {
   return (
     <div className="flex items-center justify-end pr-2">
       {session ? (
-        <button onClick={handleSignOut}>Logga ut</button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-2 text-primary-dark"
+          >
+            <FaSignOutAlt className="w-4 h-4" />
+            Logga ut
+          </button>
+        </div>
       ) : (
         <div className="flex gap-4 items-center">
           <Link
