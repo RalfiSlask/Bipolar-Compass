@@ -1,3 +1,5 @@
+import { IoTimeSharp } from 'react-icons/io5';
+
 interface IScienceSortFilterProps {
   handleSortChange: (order: 'newest' | 'oldest' | null) => void;
   sortOrder: 'newest' | 'oldest' | null;
@@ -8,28 +10,42 @@ const ScienceSortFilter = ({
   sortOrder,
 }: IScienceSortFilterProps) => {
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <span className="text-sm text-gray-700">Sortera efter:</span>
-      <button
-        onClick={() => handleSortChange('newest')}
-        className={`px-3 py-1 text-sm rounded-md ${
-          sortOrder === 'newest'
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-        }`}
-      >
-        Nyast först
-      </button>
-      <button
-        onClick={() => handleSortChange('oldest')}
-        className={`px-3 py-1 text-sm rounded-md ${
-          sortOrder === 'oldest'
-            ? 'bg-blue-600 text-white'
-            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-        }`}
-      >
-        Äldst först
-      </button>
+    <div className="flex items-center gap-4">
+      <span className="text-sm text-primary-dark font-medium">
+        Sortera efter:
+      </span>
+      <div className="flex gap-2">
+        <button
+          onClick={() => handleSortChange('newest')}
+          className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md transition-all duration-200 ${
+            sortOrder === 'newest'
+              ? 'bg-primary-medium border border-primary-border text-white shadow-sm'
+              : 'bg-white border border-primary-border text-primary-dark hover:bg-primary-light'
+          }`}
+        >
+          <IoTimeSharp
+            className={`text-lg ${
+              sortOrder === 'newest' ? 'rotate-0' : 'rotate-180'
+            }`}
+          />
+          <span>Nyast först</span>
+        </button>
+        <button
+          onClick={() => handleSortChange('oldest')}
+          className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md transition-all duration-200 ${
+            sortOrder === 'oldest'
+              ? 'bg-primary-medium border border-primary-border text-white shadow-sm'
+              : 'bg-white border border-primary-border text-primary-dark hover:bg-primary-light'
+          }`}
+        >
+          <IoTimeSharp
+            className={`text-lg ${
+              sortOrder === 'oldest' ? 'rotate-180' : 'rotate-0'
+            }`}
+          />
+          <span>Äldst först</span>
+        </button>
+      </div>
     </div>
   );
 };

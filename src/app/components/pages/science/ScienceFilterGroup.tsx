@@ -22,20 +22,22 @@ const FilterGroup = ({
   name,
 }: FilterGroupProps) => {
   return (
-    <div>
-      <h3 className="font-medium text-gray-700 mb-2">{title}</h3>
-      <div className="flex flex-col gap-2">
+    <div className="pt-6">
+      <h3 className="font-medium text-primary-dark mb-3">{title}</h3>
+      <div className="space-y-2">
         {filters.map((filter) => (
-          <div key={filter.id} className="flex items-center gap-2">
+          <div key={filter.id} className="flex items-center gap-3">
             <input
               type={type}
               id={filter.id}
               name={name}
               checked={selectedValues.includes(filter.id)}
               onChange={(e) => onChange(filter.id, e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className={`w-5 h-5 border-gray-300 text-primary-medium focus:ring-primary-medium ${
+                type === 'checkbox' ? 'rounded' : 'rounded-full'
+              }`}
             />
-            <label htmlFor={filter.id} className="text-gray-700">
+            <label htmlFor={filter.id} className="text-gray-700 select-none cursor-pointer">
               {filter.label}
             </label>
           </div>

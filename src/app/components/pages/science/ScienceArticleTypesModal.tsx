@@ -1,5 +1,6 @@
 import { PUBLICATION_TYPE_FILTERS } from '@/app/data/science';
 import { useState } from 'react';
+import { IoClose } from 'react-icons/io5';
 
 interface ScienceArticleTypesModalProps {
   activeFilters: string[];
@@ -32,47 +33,44 @@ const ScienceArticleTypesModal = ({
 
   return (
     <>
-      {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black/50 z-50"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
         onClick={() => setIsModalOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div
-          role="dialog"
-          aria-labelledby="modal-title"
-          aria-modal="true"
-          className="bg-white w-full max-w-[800px] rounded-lg shadow-xl flex flex-col max-h-[90vh]"
-        >
-          {/* Header */}
-          <div className="p-4 border-b border-gray-200">
-            <h2 id="modal-title" className="text-xl font-medium text-gray-900">
-              Artikeltyp
+        <div className="bg-white w-full max-w-[800px] rounded-lg shadow-xl flex flex-col max-h-[90vh] animate-modal-slide-up">
+          <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 className="text-xl font-semibold text-primary-dark">
+              Välj artikeltyper
             </h2>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+            >
+              <IoClose className="text-2xl text-gray-500" />
+            </button>
           </div>
 
-          {/* Content */}
-          <div className="p-4 overflow-y-auto flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="p-6 overflow-y-auto flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {PUBLICATION_TYPE_FILTERS.map((filter) => (
                 <div
                   key={filter.id}
-                  className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded"
+                  className="flex items-center gap-3 p-3 hover:bg-primary-light rounded-md transition-colors duration-200"
                 >
                   <input
                     type="checkbox"
-                    id={filter.id}
+                    id={`modal-${filter.id}`}
                     checked={tempFilters.includes(filter.id)}
                     onChange={(e) =>
                       handleTempFilterChange(filter.id, e.target.checked)
                     }
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="w-5 h-5 rounded border-gray-300 text-primary-medium focus:ring-primary-medium"
                   />
                   <label
-                    htmlFor={filter.id}
+                    htmlFor={`modal-${filter.id}`}
                     className="text-gray-700 select-none cursor-pointer"
                   >
                     {filter.label}
@@ -82,19 +80,18 @@ const ScienceArticleTypesModal = ({
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="p-4 border-t border-gray-200 flex justify-end gap-3">
+          <div className="p-6 border-t border-gray-200 flex justify-end gap-3">
             <button
               type="button"
               onClick={handleCancel}
-              className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-6 py-2.5 text-primary-dark bg-white border border-primary-border rounded-md hover:bg-primary-light transition-colors duration-200"
             >
               Avbryt
             </button>
             <button
               type="button"
               onClick={handleApply}
-              className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-6 py-2.5 text-white bg-primary-medium rounded-md hover:bg-primary-dark transition-colors duration-200"
             >
               Applicera
             </button>
