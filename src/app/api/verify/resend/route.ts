@@ -1,6 +1,7 @@
 import { getCollection } from '@/app/utils/databaseUtils';
-import { NextResponse } from 'next/server';
 import { sendVerificationEmail } from '@/app/utils/emailUtils';
+import crypto from 'crypto';
+import { NextResponse } from 'next/server';
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   try {
@@ -15,8 +16,21 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
     const collection = await getCollection('thesis', 'users');
     const user = await collection.findOne({ email });
+    const newVerificationToken = crypto.randomBytes(32).toString('hex');
+    const newTokenExpires = new Date(Date.now() + 3600 * 1000);
+
+    await collection.updateOne(
+      { email },
+      {
+        $set: {
+          verificationToken: newVerificationToken,
+          tokenExpires: newTokenExpires,
+        },
+      }
+    );
 
     if (!user) {
+      console.log('user does not exist');
       return NextResponse.json(
         { error: 'A user with this email address does not exist' },
         { status: 404 }
@@ -24,14 +38,17 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     }
 
     if (user.isVerified) {
+      console.log('user is already verified');
       return NextResponse.json(
         { message: 'User is already verified', verified: true },
         { status: 200 }
       );
     }
 
+    console.log('sending verification email', user.email);
+
     await sendVerificationEmail({
-      verificationToken: user.verificationToken,
+      verificationToken: newVerificationToken,
       email: user.email,
     });
 
