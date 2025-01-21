@@ -62,7 +62,7 @@ const BipolarStatistics = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 mb-6">
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="flex flex-col sm:flex-row items-center rounded-lg p-4 shadow-sm">
-              <div className="h-[250px] flex-1 sm:h-[300px] w-full max-w-[300px]">
+              <div className="h-[300px] flex-1 sm:flex-1 sm:h-[300px] w-full max-w-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -84,7 +84,7 @@ const BipolarStatistics = () => {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
-              <div className="text-center flex-1 sm:text-left sm:ml-4 mt-4 sm:mt-0">
+              <div className="text-center sm:flex-1 sm:text-left sm:ml-4 mt-4 sm:mt-0">
                 <div className="mb-4">
                   <span className="text-3xl md:text-4xl font-bold text-secondary-dark">
                     63%
