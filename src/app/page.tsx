@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import Link from 'next/link';
 import laughingImage from '../../public/images/about.jpg';
 import Chat from './components/chat/Chat';
 import BipolarStatistics from './components/pages/home/BipolarStatistics';
@@ -10,28 +11,56 @@ import ThreeSections from './components/pages/home/ThreeSections';
 export default function Home() {
   return (
     <section className="w-full h-full flex flex-col items-center">
-      <div className="w-full h-[calc(100vh-130px)] flex items-center justify-center relative  mx-auto px-4">
-        {/*     <div className="flex-1 flex flex-col gap-4">
-          <h1 className="text-6xl font-bold text-primary-dark">
-            Bipolärkompassne
-          </h1>
-          <p className="text-xl text-primary-dark">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe
-            consectetur perferendis soluta ipsam quis. Voluptatum minus eveniet
-            animi aliquid, laborum nam voluptate culpa deleniti.
-          </p>
+      <div className="w-full min-h-[calc(100vh-130px)] flex relative mx-auto px-4 md:px-10 max-w-[1440px] z-20">
+        <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 md:gap-10 py-10 lg:py-0">
+          <div className="flex-1 text-center md:text-left">
+            <div className="flex flex-col gap-6 md:gap-10 animate-fadeIn">
+              <h2 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-primary-dark font-bold leading-tight">
+                Din digitala följeslagare för att hantera bipolär sjukdom
+              </h2>
+              <p className="text-lg sm:text-xl md:text-2xl text-primary-dark max-w-2xl">
+                BipolärKompassen erbjuder verktyg och stöd för att hjälpa dig
+                hantera din vardag. Med din egna sida, kunskapsbank och senaste
+                forskning står du aldrig ensam i din resa.
+              </p>
+              <Link
+                href="/konto/logga-in"
+                className="main-button w-fit mx-auto md:mx-0 hover:scale-105 transition-transform"
+              >
+                <span className="button-border"></span>
+                <span className="button-text">STARTA DIN RESA</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="w-1/2 flex items-center justify-center rounded-full overflow-hidden">
+            <Image
+              src="/images/laughing.jpeg"
+              alt="testing"
+              width={4910}
+              height={3264}
+              className="object-contain h-full w-auto max-w-full rounded-full"
+            />
+          </div>
         </div>
-        <div className="flex items-end justify-end h-full w-full max-w-[2000px]">
-          <Image
-            src="/images/test.png"
-            alt="testing"
-            width={4910}
-            height={3264}
-            className="object-cover max-h-[90vh] w-auto "
-          />
-        </div> */}
       </div>
+
+      <div className="w-full overflow-hidden relative z-10 -mt-[300px]">
+        <svg
+          viewBox="0 0 1440 120"
+          className="relative block w-full h-[300px]"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"
+            fill="#F5F3FF"
+            fillOpacity="1"
+          />
+        </svg>
+      </div>
+
       <BipolarStatistics />
+
       <div className="w-full flex bg-tertiary-light items-center justify-center pt-20 pb-28 px-10">
         <div className="w-full flex items-center justify-end max-w-[1440px] gap-10">
           <div className="w-full flex text-tertiary-dark flex-1 flex-col gap-4 items-start justify-center">
