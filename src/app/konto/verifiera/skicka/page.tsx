@@ -13,7 +13,8 @@ const SendVerificationLinkPage = () => {
   const [countdown, setCountdown] = useState(0);
   const COOLDOWN_TIME = 90;
 
-  const { resendVerificationEmail, loading: resendLoading } = useResendVerification();
+  const { resendVerificationEmail, loading: resendLoading } =
+    useResendVerification();
 
   useEffect(() => {
     if (countdown > 0) {
@@ -29,7 +30,7 @@ const SendVerificationLinkPage = () => {
       toast.error('Ingen e-postadress hittades.');
       return;
     }
-    
+
     const success = await resendVerificationEmail(session.user.email);
     if (success) {
       setCountdown(COOLDOWN_TIME);
@@ -41,15 +42,15 @@ const SendVerificationLinkPage = () => {
   }
 
   return (
-    <section className="w-full flex justify-center items-center relative h-screen">
-      <div className="flex flex-col items-center px-4 py-12 sm:px-6 lg:px-8 max-w-[300px] sm:max-w-full min-w-[500px] z-10">
-        <div className="flex justify-center mb-8 text-white fixed top-2 left-4">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4">
+      <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
+        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
           <BipolarLogo />
         </div>
 
-        <div className="w-full max-w-lg">
+        <div className="w-full">
           <div
-            className="bg-white rounded-xl p-8 flex flex-col gap-8 border-2 border-primary-dark/50"
+            className="bg-white rounded-xl p-6 sm:p-8 flex flex-col gap-6 sm:gap-8 border-2 border-primary-dark/50"
             style={{
               boxShadow: `
                 -10px 0 20px -5px rgba(255, 255, 255, 0.3), 
@@ -72,12 +73,12 @@ const SendVerificationLinkPage = () => {
               disabled={countdown > 0 || resendLoading}
               className={`px-4 py-2 rounded-lg bg-primary-dark text-white transition-all
                 ${
-                  (countdown > 0 || resendLoading)
+                  countdown > 0 || resendLoading
                     ? 'opacity-50 cursor-not-allowed'
                     : 'hover:bg-primary-medium'
                 }`}
             >
-              {resendLoading 
+              {resendLoading
                 ? 'Skickar...'
                 : countdown > 0
                 ? `Vänta ${countdown} sekunder...`

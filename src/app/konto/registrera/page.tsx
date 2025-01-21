@@ -5,15 +5,15 @@ import RegisterForm from '../../components/pages/auth/register/RegisterForm';
 
 const RegistrationPage = () => {
   return (
-    <section className=" w-full flex justify-center items-center relative h-screen">
-      <div className="flex flex-col items-center px-4 py-12 sm:px-6 lg:px-8 max-w-[300px] sm:max-w-full min-w-[500px] z-10">
-        <div className="flex justify-center mb-8 text-white fixed top-2 left-4">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4">
+      <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
+        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
           <BipolarLogo />
         </div>
 
-        <div className="w-full max-w-lg">
+        <div className="w-full">
           <div
-            className="bg-white rounded-xl p-8 flex flex-col gap-8 border-2 border-primary-dark/50"
+            className="bg-white rounded-xl p-6 sm:p-8 flex flex-col gap-6 sm:gap-8 border-2 border-primary-dark/50"
             style={{
               boxShadow: `
                 -10px 0 20px -5px rgba(255, 255, 255, 0.3), 

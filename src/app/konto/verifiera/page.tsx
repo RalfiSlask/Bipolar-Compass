@@ -66,14 +66,14 @@ const VerificationPage = () => {
   }
 
   return (
-    <section className="w-full min-h-screen bg-gradient-to-br from-primary-light via-white to-secondary-light flex justify-center items-center relative py-12">
-      <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 w-full max-w-xl mx-auto">
-        <div className="flex justify-center mb-8 text-white fixed top-2 left-4">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-12">
+      <div className="flex flex-col items-center w-full max-w-xl mx-auto z-10">
+        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
           <BipolarLogo />
         </div>
 
         <div className="w-full">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-xl border border-primary-border">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-10 shadow-xl border border-primary-border">
             {isAlreadyVerified && (
               <div className="text-center space-y-4">
                 <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
