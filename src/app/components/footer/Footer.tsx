@@ -57,16 +57,16 @@ const Footer = () => {
             </h2>
             <nav className="flex flex-col gap-3">
               <Link
-                href="/resurser/artiklar"
+                href="/akut"
                 className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
               >
-                Artiklar
+                Akut hjälp
               </Link>
               <Link
-                href="/resurser/verktyg"
+                href="/behandling/dokument"
                 className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
               >
-                Verktyg
+                Dokument
               </Link>
               <Link
                 href="/forskning"
