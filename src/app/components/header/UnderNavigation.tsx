@@ -24,6 +24,10 @@ const UnderNavigation = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-6 xl:px-8 text-secondary-dark font-semibold py-4 relative">
       <BipolarLogo />
@@ -49,7 +53,7 @@ const UnderNavigation = () => {
           <MenuItem
             key={menuItem.id}
             menuItem={menuItem}
-            closeMainMenu={() => setIsMenuOpen(false)}
+            closeMenu={closeMenu}
           />
         ))}
         {session && (

@@ -19,10 +19,10 @@ interface IMenuItemProps {
     slug: string;
     submenuItems: SubmenuItemProps[];
   };
-  closeMainMenu: () => void;
+  closeMenu: () => void;
 }
 
-const MenuItem = ({ menuItem, closeMainMenu }: IMenuItemProps) => {
+const MenuItem = ({ menuItem, closeMenu }: IMenuItemProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { title, submenuItems, slug } = menuItem;
@@ -46,7 +46,7 @@ const MenuItem = ({ menuItem, closeMainMenu }: IMenuItemProps) => {
       e.preventDefault();
       setIsVisible(!isVisible);
     } else {
-      closeMainMenu();
+      closeMenu();
     }
   };
 
@@ -103,7 +103,7 @@ const MenuItem = ({ menuItem, closeMainMenu }: IMenuItemProps) => {
                 title={title}
                 route={`/${slug}/${submenuSlug}`}
                 isMobile={window.innerWidth < 1280}
-                onNavigate={closeMainMenu}
+                onNavigate={closeMenu}
               />
             );
           })}
