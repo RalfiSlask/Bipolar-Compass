@@ -102,7 +102,7 @@ export const faqItems: IFaqItem[] = [
     'question': 'Vad säger den senaste forskningen?',
     'answer':
       'Forskningen kring bipolär sjukdom utvecklas ständigt, och nya rön ger oss bättre förståelse för sjukdomen och dess behandling. På vår',
-    'links': [{ 'text': 'forsknings', 'href': '/forskning/artiklar' }],
+    'links': [{ 'text': 'forsknings', 'href': '/forskning' }],
     'additionalText':
       '-sida kan du läsa om de senaste studierna och genombrotten inom området, inklusive nya mediciner, terapiformer och biologiska insikter. De är kopplade till Pubmed, en databas med vetenskapliga artiklar.',
     'id': '10',
