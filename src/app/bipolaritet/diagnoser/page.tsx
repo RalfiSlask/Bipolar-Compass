@@ -1,17 +1,21 @@
 import { BoltIcon } from '@/app/components/shared/icons/BoltIcon';
 import { BulbIcon } from '@/app/components/shared/icons/BulbIcon';
 import { SpinningArrowsIcon } from '@/app/components/shared/icons/SpinningArrowsIcon';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedContent from '@/app/components/shared/RelatedContent';
+import { diagnosisIntro } from '@/app/data/pageIntros';
+
 const DiagnosesPage = () => {
   return (
-    <section className="max-w-4xl mx-auto py-8 px-4">
-      <h2 className="h-md text-primary-dark mb-12 text-center">Diagnoser</h2>
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+      <PageIntroContainer intro={diagnosisIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 1 (Bipolar I disorder)
           </h3>
-          <p className="mb-6 leading-relaxed">
+          <p className="mb-6 ">
             Bipolär typ 1 kännetecknas av minst en episod av mani som varar i
             minst sju dagar eller kräver sjukhusvård på grund av
             svårighetsgraden. Maniska episoder är ofta intensiva och kan leda
@@ -48,18 +52,18 @@ const DiagnosesPage = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 2 (Bipolar II disorder)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className="mb-6">
             Denna form kännetecknas av minst en episod av hypomani och minst en
             episod av djup depression. Hypomani är en mildare form av mani som
             inte leder till allvarliga funktionsnedsättningar eller kräver
             sjukhusvård, men som fortfarande påverkar individens liv.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/20 rounded-md p-4 mb-6">
             <div className="flex items-center gap-2 mb-3">
               <div className="flex items-center gap-2">
                 <BulbIcon className="w-6 h-6 text-primary-dark" />
@@ -68,7 +72,7 @@ const DiagnosesPage = () => {
                 </h4>
               </div>
             </div>
-            <ul className="flex flex-col gap-2 list-disc list-inside ">
+            <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Förhöjt humör och ökad energi, men mindre intensivt än mani.
               </li>
@@ -83,24 +87,24 @@ const DiagnosesPage = () => {
               </li>
             </ul>
           </div>
+
+          <div className="bg-primary-light/20 rounded-md p-4">
+            <h4 className="font-semibold text-primary-dark mb-3">
+              Depression vid bipolär typ 2:
+            </h4>
+            <p className="mb-6">
+              Personer med bipolär typ 2 upplever oftare och längre perioder av
+              depression jämfört med typ 1. Depressionsepisoder kan vara
+              djupgående och påverka vardagslivet mer än hypomaniska episoder.
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h4 className="font-semibold text-primary-dark mb-3">
-            Depression vid bipolär typ 2:
-          </h4>
-          <p className=" mb-6 leading-relaxed">
-            Personer med bipolär typ 2 upplever oftare och längre perioder av
-            depression jämfört med typ 1. Depressionsepisoder kan vara
-            djupgående och påverka vardagslivet mer än hypomaniska episoder.
-          </p>
-        </div>
-
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Cyklotymi (Cyclothymic disorder)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Cyklotymi innebär att en person har regelbundna episoder av
             hypomaniliknande symtom och mildare depressiva episoder under minst
             två års tid (ett år för barn och ungdomar). Symtomen är inte
@@ -134,11 +138,11 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med blandade drag (Mixed features)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             En blandad episod innebär att symtom på både mani (eller hypomani)
             och depression upplevs samtidigt. Detta kan vara särskilt
             förvirrande och påfrestande eftersom individen kan känna sig både
@@ -165,11 +169,11 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med snabb cykling (Rapid cycling)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Snabb cykling innebär att individen har minst fyra episoder av mani,
             hypomani, depression eller blandade tillstånd inom ett år. Denna
             variant kan vara särskilt svår att hantera eftersom
@@ -194,11 +198,11 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med säsongsrelaterade drag (Seasonal pattern)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Denna form av bipolär sjukdom innebär att humöret påverkas av
             årstiderna. Vanligtvis inträffar depression under höst och vinter,
             medan mani eller hypomani uppstår under våren och sommaren.
@@ -226,11 +230,11 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Ospecificerad bipolär sjukdom (Unspecified bipolar disorder)
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Denna kategori används när symtomen inte helt passar in i någon av
             de andra typerna, men ändå orsakar betydande problem för individen.
             Exempelvis kan symtomen vara mindre tydliga, ha en ovanlig
@@ -239,11 +243,11 @@ const DiagnosesPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
           <h3 className="h-xs text-primary-dark mb-4">
             Schizoaffektivt syndrom
           </h3>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Schizoaffektivt syndrom är ett psykiskt tillstånd som kombinerar
             symtom från schizofreni (som psykos, hallucinationer eller
             vanföreställningar) med symtom på en humörstörning, antingen
@@ -251,17 +255,17 @@ const DiagnosesPage = () => {
             särskilt om de psykotiska symtomen bara uppträder under
             humörepisoner.
           </p>
-          <p className=" mb-6 leading-relaxed">
+          <p className=" mb-6 ">
             Schizoaffektivt syndrom kan vara svårt att diagnosticera, eftersom
             det delar likheter med både schizofreni och bipolär sjukdom. Det är
             viktigt att en erfaren psykiatriker gör en noggrann bedömning
             baserad på tidslinjen för symtom och deras samband.
           </p>
 
-          <div className="bg-primary-light/70 rounded-md p-4">
-            <h4 className="font-semibold text-primary-dark mb-3">
-              Typer av schizoaffektivt syndrom::
-            </h4>
+          <div className="bg-primary-light/70 rounded-md p-4 flex flex-col gap-4">
+            <h5 className="font-semibold text-primary-dark mb-3">
+              Typer av schizoaffektivt syndrom:
+            </h5>
             <ul className="flex flex-col gap-2 list-disc list-inside ">
               <li>
                 Bipolär typ: Symtomen inkluderar maniska eller blandade
@@ -271,26 +275,26 @@ const DiagnosesPage = () => {
                 Depressiv typ: Symtomen inkluderar endast depression tillsammans
                 med psykos.
               </li>
+            </ul>
+
+            <h5 className="font-semibold text-primary-dark mb-3">
+              Skillnad mot bipolär sjukdom:
+            </h5>
+            <ul className="flex flex-col gap-2 list-disc list-inside ">
               <li>
-                <h5 className="font-semibold text-primary-dark mb-3">
-                  Skillnad mot bipolär sjukdom:
-                </h5>
-                <ul className="flex flex-col gap-2 list-disc list-inside ">
-                  <li>
-                    Vid bipolär sjukdom uppträder psykotiska symtom (som
-                    hallucinationer eller vanföreställningar) endast under mani
-                    eller djup depression.
-                  </li>
-                  <li>
-                    Vid schizoaffektivt syndrom förekommer psykotiska symtom
-                    även utanför humörepisoner.
-                  </li>
-                </ul>
+                Vid bipolär sjukdom uppträder psykotiska symtom (som
+                hallucinationer eller vanföreställningar) endast under mani
+                eller djup depression.
+              </li>
+              <li>
+                Vid schizoaffektivt syndrom förekommer psykotiska symtom även
+                utanför humörepisoner.
               </li>
             </ul>
           </div>
         </div>
       </div>
+      <RelatedContent currentPage="diagnoser" />
     </section>
   );
 };
