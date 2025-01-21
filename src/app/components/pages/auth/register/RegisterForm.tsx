@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { IRegisterFormValues } from '../../../../types/auth';
 import { registrationValidationSchema } from '../../../../utils/validationSchemas';
 import PasswordStrengthIndicator from './PasswordStrengthIndicator';
@@ -12,6 +13,7 @@ const RegisterForm = () => {
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [password, setPassword] = useState('');
+
   const router = useRouter();
 
   const initialInputValues: IRegisterFormValues = {
@@ -30,7 +32,7 @@ const RegisterForm = () => {
       console.log('Server response:', response.data);
 
       if (response.data.error) {
-        setFormError(response.data.error);
+        toast.error(response.data.error);
       } else {
         const signInResponse = await signIn('credentials', {
           email: values.email,
@@ -39,20 +41,20 @@ const RegisterForm = () => {
         });
 
         if (signInResponse?.error) {
-          setFormError('Inloggning misslyckades: ' + signInResponse.error);
+          toast.error('Registrering misslyckades: ' + signInResponse.error);
         } else {
-          console.log('Login successful');
-          router.push('/min-sida');
+          toast.success('Registrering lyckades');
+          router.push('/konto/verifiera/skicka');
         }
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage =
           error.response?.data?.error || 'Något gick fel. Försök igen senare.';
-        setFormError(errorMessage);
+        toast.error(errorMessage);
       } else {
         console.error('An unexpected error occurred:', error);
-        setFormError('Oväntat fel inträffade.');
+        toast.error('Oväntat fel inträffade.');
       }
     } finally {
       setIsSubmitting(false);
@@ -186,7 +188,7 @@ const RegisterForm = () => {
 
           <button
             type="submit"
-            className={`w-full tertiary-button ${
+            className={`w-full primary-button ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={isSubmitting || !isValid}
