@@ -79,11 +79,6 @@
           "id": 53,
           "title": "Musik",
           "slug": "musik"
-        },
-        {
-          "id": 54,
-          "title": "Videor",
-          "slug": "videor"
         }
       ]
     },
@@ -91,23 +86,7 @@
       "id": 6,
       "title": "Forskning",
       "slug": "forskning",
-      "submenuItems": [
-        {
-          "id": 61,
-          "title": "Senaste",
-          "slug": "senaste"
-        },
-        {
-          "id": 62,
-          "title": "Vårdgivare",
-          "slug": "vardgivare"
-        },
-        {
-          "id": 63,
-          "title": "Artiklar",
-          "slug": "artiklar"
-        }
-      ]
+      "submenuItems": []
     },
     {
       "id": 7,
