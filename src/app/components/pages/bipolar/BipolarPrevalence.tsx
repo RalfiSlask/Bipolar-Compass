@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from 'recharts';
 import Spinner from '../../shared/Spinner';
 
@@ -49,9 +49,9 @@ const BipolarPrevalence = () => {
   }
 
   return (
-    <div className="w-full border border-gray-200 p-4 rounded-lg">
+    <div className="w-full  mt-6 bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
       <div className="w-full mx-auto mb-10 flex flex-col items-center">
-        <h4 className="font-semibold text-primary-dark">
+        <h4 className="font-bold text-2xl text-primary-dark">
           Prevalens Sverige 2021
         </h4>
         <div className="w-full" style={{ maxWidth: '800px' }}>
@@ -105,7 +105,7 @@ const BipolarPrevalence = () => {
           <a
             href="https://ourworldindata.org/grapher/bipolar-disorder-prevalence-by-age?country=~SWE"
             target="_blank"
-            className="text-primary-dark underline"
+            className="nav-link text-primary-dark"
           >
             Klicka här
           </a>
