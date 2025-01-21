@@ -1,5 +1,6 @@
 import ECT from '@/app/components/pages/treatment/ECT';
 import TMS from '@/app/components/pages/treatment/TMS';
+import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import { medicineIntro } from '@/app/data/pageIntros';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
@@ -199,15 +200,6 @@ const MedicinePage = () => {
               behandlingen. Det är viktigt att ha tålamod och att följa den plan
               som läggs upp, även om det känns som att resultaten dröjer.
             </p>
-
-            <div className="bg-primary-light/20 rounded-md p-4">
-              <p className="font-semibold text-primary-dark">
-                Kom ihåg: Många med bipolär sjukdom hittar en medicinering som
-                hjälper dem att leva ett stabilt och balanserat liv. Med rätt
-                stöd och uppföljning finns det goda chanser att du också kommer
-                att må bättre.
-              </p>
-            </div>
           </div>
         </div>
 
@@ -398,6 +390,8 @@ const MedicinePage = () => {
             </div>
           </div>
         </div>
+
+        <EncouragmentContainer text="Kom ihåg: Många med bipolär sjukdom hittar en medicinering som hjälper dem att leva ett stabilt och balanserat liv. Med rätt stöd och uppföljning finns det goda chanser att du också kommer att må bättre." />
       </div>
     </section>
   );

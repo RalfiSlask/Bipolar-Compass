@@ -1,5 +1,6 @@
 'use client';
 
+import RelatedContent from '@/app/components/shared/RelatedContent';
 import { faqItems } from '@/app/data/faqItems';
 import { IFaqItem } from '@/app/types/faq';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -101,6 +102,7 @@ const FAQPage = () => {
           </motion.div>
         ))}
       </div>
+      <RelatedContent currentPage="vanliga-fragor" />
     </section>
   );
 };

@@ -1,8 +1,8 @@
 import Stress from '@/app/components/pages/treatment/Stress';
+import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import { selfHelpIntro } from '@/app/data/pageIntros';
 import Image from 'next/image';
-import { FaHandHoldingHeart } from 'react-icons/fa';
 
 const SelfHelpPage = () => {
   return (
@@ -603,19 +603,7 @@ const SelfHelpPage = () => {
             </div>
           </div>
         </div>
-
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
-          <div className="bg-primary-light/20 rounded-md p-4">
-            <div className="flex items-center gap-6">
-              <FaHandHoldingHeart className="text-5xl text-primary-dark" />
-              <p className="font-semibold text-primary-dark">
-                Kom ihåg, du är inte ensam. Denna sida är här för att ge dig
-                stöd och inspiration. Ta det ett steg i taget, och tveka inte
-                att söka hjälp när du behöver det.
-              </p>
-            </div>
-          </div>
-        </div>
+        <EncouragmentContainer text="Kom ihåg, du är inte ensam. Denna sida är här för att ge dig stöd och inspiration. Ta det ett steg i taget, och tveka inte att söka hjälp när du behöver det." />
       </div>
     </section>
   );
