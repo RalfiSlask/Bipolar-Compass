@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { userPasswordValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
@@ -6,11 +6,10 @@ import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { useSearchParams } from 'next/navigation';
 import router from 'next/router';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import PasswordStrengthIndicator from '../register/PasswordStrengthIndicator';
 
 const ResetPasswordForm = () => {
-  const [formError, setFormError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [password, setPassword] = useState('');
 
@@ -22,8 +21,6 @@ const ResetPasswordForm = () => {
   const token = searchParams.get('token');
 
   const handleSubmit = async (values: FormikValues) => {
-    setFormError(null);
-    setSuccessMessage(null);
     setIsSubmitting(true);
 
     try {
@@ -32,16 +29,16 @@ const ResetPasswordForm = () => {
         token: token,
       });
       if (response.data.error) {
-        setFormError(response.data.error);
+        toast.error(response.data.error);
       } else {
-        setSuccessMessage('Ditt lösenord har blivit återställt.');
+        toast.success('Ditt lösenord har blivit återställt.');
         setTimeout(() => {
           router.push('/');
         }, 3000);
       }
     } catch (error) {
       console.error('Error resetting password:', error);
-      setFormError('Ett oväntat fel inträffade. Försök igen senare.');
+      toast.error('Ett oväntat fel inträffade. Försök igen senare.');
     } finally {
       setIsSubmitting(false);
     }
@@ -106,14 +103,9 @@ const ResetPasswordForm = () => {
           </button>
 
           <div className="min-h-[20px]">
-            {formError && (
+            {errors.password && touched.password && (
               <div role="alert" className="text-red-600 text-sm">
-                {formError}
-              </div>
-            )}
-            {successMessage && (
-              <div role="alert" className="text-green-600 text-sm">
-                {successMessage}
+                {errors.password}
               </div>
             )}
           </div>
