@@ -5,11 +5,25 @@ import Link from 'next/link';
 interface ISubmenuItemProps {
   title: string;
   route: string;
+  isMobile?: boolean;
+  onNavigate?: () => void;
 }
 
-const SubmenuItem = ({ title, route }: ISubmenuItemProps) => {
+const SubmenuItem = ({ title, route, isMobile, onNavigate }: ISubmenuItemProps) => {
   return (
-    <Link role="menuitem" href={route}>
+    <Link
+      role="menuitem"
+      href={route}
+      onClick={onNavigate}
+      className={`
+        py-3 px-4 transition-colors block w-full
+        ${
+          isMobile
+            ? 'text-secondary-dark hover:bg-primary-light hover:text-primary-dark border-l-2 border-primary-light'
+            : 'hover:bg-primary-light rounded-md hover:text-primary-dark'
+        }
+      `}
+    >
       {title}
     </Link>
   );

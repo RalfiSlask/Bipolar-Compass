@@ -8,14 +8,14 @@ const OverNavigation = () => {
       <div className="w-full max-w-[1440px] flex gap-2 py-4 items-center justify-between px-6 lg:px-8">
         <div className="flex gap-2">
           <Link
-            className="rounded-lg py-1 px-2 flex items-center gap-2"
+            className="rounded-lg py-1 px-2 flex items-center gap-2 text-primary-dark"
             href="/akut"
           >
             <MdEmergency /> Akut hjälp
           </Link>
           <div className="flex gap-2">
             <Link
-              className="rounded-lg py-1 px-2 flex items-center gap-2"
+              className="rounded-lg py-1 px-2 flex items-center gap-2 text-primary-dark"
               href="/kontakt"
             >
               <MdContactSupport /> Kontakt

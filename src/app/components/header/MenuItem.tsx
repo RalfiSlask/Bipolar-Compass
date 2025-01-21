@@ -19,16 +19,15 @@ interface IMenuItemProps {
     slug: string;
     submenuItems: SubmenuItemProps[];
   };
+  closeMainMenu: () => void;
 }
 
-const MenuItem = ({ menuItem }: IMenuItemProps) => {
+const MenuItem = ({ menuItem, closeMainMenu }: IMenuItemProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { title, submenuItems, slug } = menuItem;
 
   const hasSubmenuitems = menuItem.submenuItems.length > 0;
-
-  const toggleMenu = (state: boolean) => setIsVisible(state);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
@@ -42,22 +41,31 @@ const MenuItem = ({ menuItem }: IMenuItemProps) => {
     }
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (hasSubmenuitems) {
+      e.preventDefault();
+      setIsVisible(!isVisible);
+    } else {
+      closeMainMenu();
+    }
+  };
+
   return (
-    <div
-      className="relative flex cursor-pointer"
-      onMouseEnter={() => toggleMenu(true)}
-      onMouseLeave={() => toggleMenu(false)}
-      ref={menuRef}
-    >
+    <div className="relative flex flex-col w-full xl:w-auto" ref={menuRef}>
       <Link
         href={`/${slug}`}
         passHref
-        className="text-lg flex items-center gap-2 "
+        className={`
+          !text-base xl:!text-lg flex items-center justify-between
+          hover:text-primary-medium transition-colors w-full xl:w-auto
+          p-3 rounded-lg gap-2
+          ${isVisible ? 'bg-primary-light text-primary-dark' : ''}
+        `}
         aria-haspopup="menu"
         aria-expanded={isVisible}
         aria-controls={`submenu-${slug}`}
-        onFocus={() => toggleMenu(true)}
         onBlur={handleBlur}
+        onClick={handleClick}
       >
         {title}
         {hasSubmenuitems && (
@@ -67,16 +75,25 @@ const MenuItem = ({ menuItem }: IMenuItemProps) => {
             height={14}
             alt="Öppna undermeny"
             aria-hidden={!hasSubmenuitems}
+            className={`transition-transform duration-200 ${
+              isVisible ? 'rotate-180' : ''
+            }`}
           />
         )}
       </Link>
-      {isVisible && hasSubmenuitems && (
+      {hasSubmenuitems && (
         <div
           role="menu"
           id={`submenu-${slug}`}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          className="absolute flex flex-col gap-2 top-full bg-white border border-gray-300 shadow-lg z-10 p-4"
+          className={`
+            xl:absolute xl:w-48 w-full flex flex-col
+            xl:top-full bg-white xl:border xl:border-primary-border 
+            xl:shadow-lg z-10 xl:p-4 xl:rounded-lg
+            ${isVisible ? 'block' : 'hidden'}
+            ${window.innerWidth < 1280 ? 'mt-1' : ''}
+          `}
         >
           {submenuItems.map((submenuItem) => {
             const { id, title, slug: submenuSlug } = submenuItem;
@@ -85,6 +102,8 @@ const MenuItem = ({ menuItem }: IMenuItemProps) => {
                 key={id}
                 title={title}
                 route={`/${slug}/${submenuSlug}`}
+                isMobile={window.innerWidth < 1280}
+                onNavigate={closeMainMenu}
               />
             );
           })}
