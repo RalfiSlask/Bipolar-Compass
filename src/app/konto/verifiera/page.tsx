@@ -3,9 +3,10 @@
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import Spinner from '@/app/components/shared/Spinner';
 import { useResendVerification } from '@/app/hooks/useResendVerification';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const VerificationPage = () => {
   const [isEmailVerified, setIsEmailVerified] = useState(false);
@@ -13,23 +14,37 @@ const VerificationPage = () => {
   const [userEmail, setUserEmail] = useState('');
   const [loading, setLoading] = useState(true);
 
+  const { resendVerificationEmail, loading: resendLoading } =
+    useResendVerification();
+
   useEffect(() => {
     const getVerification = async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get('token');
-      console.log('this is the token: ', token);
+
+      if (!token) {
+        toast.error('Ingen verifieringslänk hittades.');
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.get(`/api/verify?token=${token}`);
-        console.log('this is the verification response: ', response.data);
 
         if (response.data.verified) {
+          toast.success('Din e-postadress är redan verifierad!');
           setIsAlreadyVerified(true);
         } else {
+          toast.success('Din e-postadress har verifierats!');
           setIsEmailVerified(true);
           setUserEmail(response.data.email || '');
         }
-      } catch (err) {
-        console.error('Could not fetch verification status:', err);
+      } catch (error) {
+        const axiosError = error as AxiosError<{ error: string }>;
+        const errorMessage =
+          axiosError.response?.data?.error ||
+          'Något gick fel vid verifieringen.';
+        toast.error(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -38,10 +53,8 @@ const VerificationPage = () => {
     getVerification();
   }, []);
 
-  const { resendVerificationEmail, message: resendMessage } =
-    useResendVerification();
-
   const handleClickOnVerificationButton = () => {
+    console.log('this is the user email: ', userEmail);
     if (!userEmail) {
       return;
     }
@@ -53,55 +66,122 @@ const VerificationPage = () => {
   }
 
   return (
-    <section className="h-screen w-full flex justify-center items-center relative">
-      <div className="flex flex-col items-center px-4 py-12 sm:px-6 lg:px-8 max-w-[300px] sm:max-w-full min-w-[500px] z-10">
+    <section className="w-full min-h-screen bg-gradient-to-br from-primary-light via-white to-secondary-light flex justify-center items-center relative py-12">
+      <div className="flex flex-col items-center px-4 sm:px-6 lg:px-8 w-full max-w-xl mx-auto">
         <div className="flex justify-center mb-8 text-white fixed top-2 left-4">
           <BipolarLogo />
         </div>
 
-        <div className="w-full max-w-lg">
-          <div
-            className="bg-white rounded-xl p-8 flex flex-col gap-8 border-2 border-primary-dark/50"
-            style={{
-              boxShadow: `
-                -10px 0 20px -5px rgba(255, 255, 255, 0.3), 
-                10px 0 20px -5px rgba(101, 149, 152, 0.6)
-              `,
-            }}
-          >
+        <div className="w-full">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 sm:p-10 shadow-xl border border-primary-border">
             {isAlreadyVerified && (
-              <>
-                <h2>Din email address är redan verifierad!</h2>
-                <p>Bara att logga in.</p>
-              </>
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="w-8 h-8 text-primary-dark"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-semibold text-secondary-dark">
+                  Din e-postadress är redan verifierad!
+                </h2>
+                <p className="text-gray-600">
+                  Du kan nu logga in på ditt konto.
+                </p>
+              </div>
             )}
 
             {!isAlreadyVerified && isEmailVerified && (
-              <>
-                <h2>Din email address har blivit verifierad!</h2>
-                <p>Du kan nu logga in på ditt konto.</p>
-              </>
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="w-8 h-8 text-primary-dark"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-semibold text-secondary-dark">
+                  Din e-postadress har verifierats!
+                </h2>
+                <p className="text-gray-600">
+                  Du kan nu logga in på ditt konto.
+                </p>
+              </div>
             )}
 
             {!isAlreadyVerified && !isEmailVerified && (
-              <>
-                <h2>
-                  Något blev fel. Var vänlig skicka länken igen. Länken har
-                  också ett utgångsdatum.
+              <div className="text-center space-y-6">
+                <div className="w-16 h-16 bg-tertiary-light rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="w-8 h-8 text-tertiary-dark"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-semibold text-secondary-dark">
+                  Verifieringslänken är ogiltig eller har gått ut
                 </h2>
-                <button onClick={handleClickOnVerificationButton}>
-                  Skicka verifieringslänk
+                <p className="text-gray-600">
+                  Klicka på knappen nedan för att få en ny verifieringslänk.
+                </p>
+                <button
+                  onClick={handleClickOnVerificationButton}
+                  disabled={resendLoading}
+                  className={`w-full sm:w-auto px-6 py-3 rounded-lg text-white font-medium transition-all
+                    ${
+                      resendLoading
+                        ? 'bg-primary-border cursor-not-allowed'
+                        : 'bg-primary-dark hover:bg-primary-accent active:transform active:scale-95'
+                    }`}
+                >
+                  {resendLoading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Spinner />
+                      Skickar...
+                    </span>
+                  ) : (
+                    'Skicka ny verifieringslänk'
+                  )}
                 </button>
-              </>
+              </div>
             )}
 
-            {resendMessage && <p>{resendMessage}</p>}
-
-            <Link href="/konto/logga-in">Logga in här</Link>
+            <div className="mt-8 pt-6 border-t border-gray-300 flex justify-center">
+              <Link
+                href="/konto/logga-in"
+                className="primary-button text-center"
+              >
+                Gå till inloggning
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-b from-white to-primary-medium z-0"></div>
     </section>
   );
 };
