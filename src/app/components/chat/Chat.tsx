@@ -310,7 +310,7 @@ const Chat = () => {
           </div>
         </>
       )}
-      <div className="fixed right-8 bottom-8">
+      <div className="fixed right-8 bottom-8 z-30">
         <button
           title="Öppna chat"
           onClick={() => setChatOpen(true)}
