@@ -9,12 +9,22 @@ import menu from '../../data/menu.json';
 import BipolarLogo from '../logo/BipolarLogo';
 import MenuItem from './MenuItem';
 
+const MOBILE_BREAKPOINT = 1280;
+
 const UnderNavigation = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+
+    checkMobile();
+
     const handleResize = () => {
+      checkMobile();
       if (isMenuOpen) {
         setIsMenuOpen(false);
       }
@@ -54,6 +64,7 @@ const UnderNavigation = () => {
             key={menuItem.id}
             menuItem={menuItem}
             closeMenu={closeMenu}
+            isMobile={isMobile}
           />
         ))}
         {session && (

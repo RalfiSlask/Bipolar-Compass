@@ -20,9 +20,10 @@ interface IMenuItemProps {
     submenuItems: SubmenuItemProps[];
   };
   closeMenu: () => void;
+  isMobile: boolean;
 }
 
-const MenuItem = ({ menuItem, closeMenu }: IMenuItemProps) => {
+const MenuItem = ({ menuItem, closeMenu, isMobile }: IMenuItemProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { title, submenuItems, slug } = menuItem;
@@ -92,7 +93,7 @@ const MenuItem = ({ menuItem, closeMenu }: IMenuItemProps) => {
             xl:top-full bg-white xl:border xl:border-primary-border 
             xl:shadow-lg z-10 xl:p-4 xl:rounded-lg
             ${isVisible ? 'block' : 'hidden'}
-            ${window.innerWidth < 1280 ? 'mt-1' : ''}
+            ${isMobile ? 'mt-1' : ''}
           `}
         >
           {submenuItems.map((submenuItem) => {
@@ -102,7 +103,7 @@ const MenuItem = ({ menuItem, closeMenu }: IMenuItemProps) => {
                 key={id}
                 title={title}
                 route={`/${slug}/${submenuSlug}`}
-                isMobile={window.innerWidth < 1280}
+                isMobile={isMobile}
                 onNavigate={closeMenu}
               />
             );
