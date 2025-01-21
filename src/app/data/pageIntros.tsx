@@ -57,3 +57,33 @@ export const podcastsIntro = {
   image: '/images/multimedia/podcast-1.jpg',
   color: 'green' as const,
 };
+
+export const whatIsBipolarIntro = {
+  title: 'Vad är bipolaritet?',
+  description:
+    'Bipolaritet, även kallad bipolär sjukdom, är en psykisk sjukdom som kännetecknas av extrema förändringar i humör, energi och aktivitetsnivå. Dessa förändringar går ofta mellan perioder av mani eller hypomani (förhöjt, euforiskt eller irritabelt humör) och perioder av depression (sänkt eller nedstämt humör).',
+  descriptionBold:
+    'Bipolaritet påverkar inte bara den psykiska hälsan utan kan också ha stor inverkan på relationer, arbetsliv och det dagliga livet.',
+  image: '/images/bipolar/sad-happy.jpg',
+  color: 'brown' as const,
+};
+
+export const symptomsIntro = {
+  title: 'Symptom vid bipolär sjukdom',
+  description:
+    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',
+  descriptionBold:
+    'Viktigt att tillägga är att mellan dessa perioder kan många leva ett stabilt liv med rätt behandling.',
+  image: '/images/bipolar/bipolar-redgreen.jpeg',
+  color: 'brown' as const,
+};
+
+export const diagnosisIntro = {
+  title: 'Diagnoser',
+  description:
+    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',
+  descriptionBold:
+    'Viktigt att tillägga är att mellan dessa perioder kan många leva ett stabilt liv med rätt behandling.',
+  image: '/images/bipolar/diagnosis.jpg',
+  color: 'brown' as const,
+};
