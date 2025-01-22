@@ -49,7 +49,7 @@ const BipolarPrevalence = () => {
   }
 
   return (
-    <div className="w-full  mt-6 bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+    <div className="w-full mt-6 bg-white/80 backdrop-blur-sm rounded-xl p-0 py-8 md:px-4 shadow-lg border-2 border-primary-light">
       <div className="w-full mx-auto mb-10 flex flex-col items-center">
         <h4 className="font-bold text-2xl text-primary-dark">
           Prevalens Sverige 2021
@@ -93,7 +93,7 @@ const BipolarPrevalence = () => {
           </ResponsiveContainer>
         </div>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 px-4">
         <p className="text-sm ">
           <span className="font-semibold text-gray-800 mr-2">Data källa:</span>
           <span className="text-gray-600">

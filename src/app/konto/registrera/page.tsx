@@ -11,7 +11,7 @@ const RegistrationPage = () => {
           <BipolarLogo />
         </div>
 
-        <div className="w-full">
+        <div className="w-full mt-10 sm:mt-0">
           <div
             className="bg-white rounded-xl p-6 sm:p-8 flex flex-col gap-6 sm:gap-8 border-2 border-primary-dark/50"
             style={{
