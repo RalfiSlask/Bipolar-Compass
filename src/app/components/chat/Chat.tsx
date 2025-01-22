@@ -3,6 +3,7 @@
 import { questionSuggestions } from '@/app/data/chatSuggestions';
 import { IMessage } from '@/app/types/chat';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import { BiReset, BiSend, BiUser, BiWindowAlt } from 'react-icons/bi';
 import { BsFillChatSquareDotsFill } from 'react-icons/bs';
@@ -145,6 +146,11 @@ const Chat = () => {
   const handleQuestionSuggestionClick = (question: string) => {
     setMessage(question);
   };
+
+  const pathName = usePathname();
+  if (pathName.includes('/min-sida') || pathName.includes('/konto')) {
+    return null;
+  }
 
   return (
     <>
