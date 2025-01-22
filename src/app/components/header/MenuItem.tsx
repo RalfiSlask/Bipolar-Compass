@@ -1,9 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
-import Arrow from '../../assets/icons/arrow-down.svg';
+import { IoIosArrowDown } from 'react-icons/io';
 import SubmenuItem from './SubmenuItem';
 
 interface SubmenuItemProps {
@@ -17,97 +15,80 @@ interface IMenuItemProps {
     id: number;
     title: string;
     slug: string;
+    image?: string;
     submenuItems: SubmenuItemProps[];
   };
   closeMenu: () => void;
   isMobile: boolean;
+  activeMenu: string | null;
+  setActiveMenu: (slug: string | null) => void;
 }
 
-const MenuItem = ({ menuItem, closeMenu, isMobile }: IMenuItemProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+const MenuItem = ({
+  menuItem,
+  closeMenu,
+  isMobile,
+  activeMenu,
+  setActiveMenu,
+}: IMenuItemProps) => {
   const { title, submenuItems, slug } = menuItem;
-
-  const hasSubmenuitems = menuItem.submenuItems.length > 0;
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      setIsVisible(false);
-    }
-  };
-
-  const handleBlur = (e: React.FocusEvent) => {
-    if (menuRef.current && !menuRef.current.contains(e.relatedTarget)) {
-      setIsVisible(false);
-    }
-  };
+  const hasSubmenuitems = submenuItems.length > 0;
+  const isVisible = activeMenu === slug;
 
   const handleClick = (e: React.MouseEvent) => {
     if (hasSubmenuitems) {
       e.preventDefault();
-      setIsVisible(!isVisible);
+      e.stopPropagation();
+      setActiveMenu(isVisible ? null : slug);
     } else {
       closeMenu();
     }
   };
 
   return (
-    <div className="relative flex flex-col w-full xl:w-auto" ref={menuRef}>
+    <div className="w-full xl:w-auto">
       <Link
         href={`/${slug}`}
-        passHref
         className={`
-          !text-base xl:!text-lg flex items-center justify-between
-          hover:text-primary-medium transition-colors w-full xl:w-auto
-          p-3 rounded-lg gap-2
+          nav-link !text-base xl:!text-lg flex items-center justify-between
+          w-full xl:w-auto px-4 py-2 rounded-lg gap-2 transition-all duration-200
+          hover:bg-primary-light hover:text-primary-dark
           ${isVisible ? 'bg-primary-light text-primary-dark' : ''}
         `}
-        aria-haspopup="menu"
-        aria-expanded={isVisible}
-        aria-controls={`submenu-${slug}`}
-        onBlur={handleBlur}
         onClick={handleClick}
       >
         {title}
         {hasSubmenuitems && (
-          <Image
-            src={Arrow}
-            width={14}
-            height={14}
-            alt="Öppna undermeny"
-            aria-hidden={!hasSubmenuitems}
-            className={`transition-transform duration-200 ${
+          <IoIosArrowDown
+            className={`w-5 h-5 transition-transform duration-200 ${
               isVisible ? 'rotate-180' : ''
             }`}
+            aria-hidden={true}
           />
         )}
       </Link>
-      {hasSubmenuitems && (
+
+
+      {isMobile && hasSubmenuitems && (
         <div
-          role="menu"
-          id={`submenu-${slug}`}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
           className={`
-            xl:absolute xl:w-48 w-full flex flex-col
-            xl:top-full bg-white xl:border xl:border-primary-border 
-            xl:shadow-lg z-10 xl:p-4 xl:rounded-lg
-            ${isVisible ? 'block' : 'hidden'}
-            ${isMobile ? 'mt-1' : ''}
+            pl-4 mt-1 transition-all duration-300 ease-in-out
+            ${
+              isVisible
+                ? 'max-h-[500px] opacity-100 visible'
+                : 'max-h-0 opacity-0 invisible overflow-hidden'
+            }
           `}
         >
-          {submenuItems.map((submenuItem) => {
-            const { id, title, slug: submenuSlug } = submenuItem;
-            return (
-              <SubmenuItem
-                key={id}
-                title={title}
-                route={`/${slug}/${submenuSlug}`}
-                isMobile={isMobile}
-                onNavigate={closeMenu}
-              />
-            );
-          })}
+          {submenuItems.map((submenuItem) => (
+            <SubmenuItem
+              key={submenuItem.id}
+              title={submenuItem.title}
+              route={`/${slug}/${submenuItem.slug}`}
+              isMobile={true}
+              onNavigate={closeMenu}
+            />
+          ))}
         </div>
       )}
     </div>

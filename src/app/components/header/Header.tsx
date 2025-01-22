@@ -12,8 +12,8 @@ const Header = () => {
   if (isAccountPage || isDashboardPage) return null;
 
   return (
-    <header className="w-full gap-4 border-b-2 border-primary-medium shadow-sm bg-white flex flex-col items-center text-black">
-      <div className="w-full flex flex-col items-center">
+    <header className="relative z-[100] w-full gap-4 border-b-2 border-primary-medium shadow-sm bg-white flex flex-col items-center text-black">
+      <div className="w-full flex flex-col items-center bg-white">
         <OverNavigation />
         <UnderNavigation />
       </div>

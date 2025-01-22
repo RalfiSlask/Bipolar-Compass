@@ -9,7 +9,12 @@ interface ISubmenuItemProps {
   onNavigate?: () => void;
 }
 
-const SubmenuItem = ({ title, route, isMobile, onNavigate }: ISubmenuItemProps) => {
+const SubmenuItem = ({
+  title,
+  route,
+  isMobile,
+  onNavigate,
+}: ISubmenuItemProps) => {
   return (
     <Link
       role="menuitem"
