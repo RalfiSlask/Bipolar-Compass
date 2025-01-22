@@ -10,21 +10,22 @@ import SciencePagination from '@/app/components/pages/science/SciencePagination'
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
 import Spinner from '@/app/components/shared/Spinner';
 import {
-  ARTICLE_ATTRIBUTE_FILTERS,
-  LANGUAGE_FILTERS,
-  PUBLICATION_TYPE_FILTERS,
-  SWEDISH_HOSPITALS_FILTERS,
-  SWEDISH_UNIVERSITIES_FILTERS,
-  TEXT_AVAILABILITY_FILTERS,
-  YEARS_OF_PUBLICATION_FILTERS,
+    ARTICLE_ATTRIBUTE_FILTERS,
+    LANGUAGE_FILTERS,
+    PUBLICATION_TYPE_FILTERS,
+    SWEDISH_HOSPITALS_FILTERS,
+    SWEDISH_UNIVERSITIES_FILTERS,
+    TEXT_AVAILABILITY_FILTERS,
+    YEARS_OF_PUBLICATION_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
-  getDateFilterQuery,
-  getFormattedArticles,
-  parseXMLAbstracts,
+    getDateFilterQuery,
+    getFormattedArticles,
+    parseXMLAbstracts,
 } from '@/app/utils/scienceUtils';
 import axios from 'axios';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { IoFilter } from 'react-icons/io5';
@@ -314,10 +315,19 @@ const ScienceArticles = () => {
   };
 
   return (
-    <section className="w-full min-h-screen bg-primary-light">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-10 pt-10 pb-20">
-        <div className="w-full bg-white mx-auto rounded-lg shadow-md p-6 flex justify-center">
-          <div className="max-w-3xl bg-white ">
+    <section className="w-full min-h-screen flex flex-col items-center bg-primary-light">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pt-10 pb-20">
+        <div className="w-full lg:h-[350px] bg-white mx-auto rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
+          <Image
+            src="/images/science/science-testing.jpg"
+            alt="forskning"
+            width={6730}
+            height={4444}
+            quality={100}
+            aria-label="forskning"
+            className="w-auto apspect-auto h-full object-cover"
+          />
+          <div className="max-w-3xl flex flex-col justify-center bg-white">
             <h2 className="text-2xl font-semibold text-primary-dark mb-4">
               Sök bland forskningsartiklar om bipolaritet
             </h2>
