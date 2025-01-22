@@ -14,7 +14,10 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
   const { title, description, descriptionBold, image, color } = intro;
 
   const colorClass = color === 'brown' ? 'tertiary-dark' : 'primary-dark';
-  const bgClass = color === 'brown' ? 'bg-tertiary-light' : 'bg-primary-light';
+  const bgClass =
+    color === 'brown'
+      ? 'bg-tertiary-light shadow-tertiary-dark/20'
+      : 'bg-primary-light shadow-primary-dark/20';
 
   return (
     <div className={`intro-container ${bgClass}`}>
