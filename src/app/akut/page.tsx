@@ -1,10 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import { emergencyServices } from '../data/emegencyServices';
-import EmergencyService from '../components/pages/acute/EmergencyService';
 import Image from 'next/image';
+import { useState } from 'react';
+import { BsLightbulb } from 'react-icons/bs';
+import { FaPhoneVolume } from 'react-icons/fa6';
+import { IoMdHeart } from 'react-icons/io';
+import { MdLocalHospital, MdWarning } from 'react-icons/md';
 import googleMapsIcon from '../assets/icons/google-maps.svg';
+import EmergencyService from '../components/pages/acute/EmergencyService';
+import { emergencyServices } from '../data/emegencyServices';
 
 const UrgentHelpPage = () => {
   const [hospitalLink, setHospitalLink] = useState('');
@@ -33,19 +37,28 @@ const UrgentHelpPage = () => {
   };
 
   return (
-    <section className="flex flex-col gap-10 max-w-[800px]">
+    <section className="flex flex-col gap-10 max-w-[800px] px-4 py-20 mx-auto">
       <div className="flex flex-col gap-4">
-        <h2 className="h-md text-primary-dark">Akut hjälp och support</h2>
-        <p className="bg-primary-light px-6 py-4 text-lg">
-          Om du eller någon du känner befinner dig i en akut nödsituation, ring
-          omedelbart <span className="font-bold">112</span> för att få hjälp
-          från räddningstjänsten, polisen eller ambulans.
-        </p>
+        <div className="flex items-center gap-3">
+          <MdWarning className="text-tertiary-dark text-3xl" />
+          <h2 className="h-md text-primary-dark">Akut hjälp och support</h2>
+        </div>
+        <div className="bg-primary-light rounded-lg shadow-md">
+          <p className="px-6 py-4 text-lg">
+            Om du eller någon du känner befinner dig i en akut nödsituation,
+            ring omedelbart{' '}
+            <span className="font-bold text-tertiary-dark text-xl">112</span>{' '}
+            för att få hjälp från räddningstjänsten, polisen eller ambulans.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="h-sm text-primary-dark">Hjälplinjer</h3>
-        <ul>
+        <div className="flex items-center gap-3">
+          <FaPhoneVolume className="text-primary-medium text-2xl" />
+          <h3 className="h-sm text-primary-dark">Hjälplinjer</h3>
+        </div>
+        <ul className="grid gap-4 md:grid-cols-2">
           {emergencyServices.map((service) => {
             return <EmergencyService key={service.id} serviceData={service} />;
           })}
@@ -53,27 +66,32 @@ const UrgentHelpPage = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="h-sm text-primary-dark">Närliggande sjukhus</h3>
-        <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-3">
+          <MdLocalHospital className="text-primary-medium text-2xl" />
+          <h3 className="h-sm text-primary-dark">Närliggande sjukhus</h3>
+        </div>
+        <div className="flex flex-col gap-2 bg-primary-light rounded-lg p-4">
           {hospitalLink ? (
-            <p>Hitta sjukhus via kartan: </p>
+            <p className="text-primary-dark mb-2">Hitta sjukhus via kartan: </p>
           ) : (
-            <p>Klicka på knappen nedan för att hitta sjukhus nära dig:</p>
+            <p className="text-lg">
+              Klicka på knappen nedan för att hitta sjukhus nära dig:
+            </p>
           )}
 
           {!hospitalLink && !error && (
             <button
-              className="primary-button mt-2 w-[250px]"
+              className="primary-button mt-2 w-[250px] hover:bg-primary-medium transition-colors"
               onClick={findNearestHospital}
             >
               Hitta närmaste sjukhus
             </button>
           )}
           {hospitalLink && (
-            <p className="text-lg inline-block">
+            <p className="text-lg">
               <a
                 href={hospitalLink}
-                className="flex gap-1 items-start"
+                className="flex gap-2 items-center hover:text-primary-medium transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -83,41 +101,62 @@ const UrgentHelpPage = () => {
                   width={24}
                   height={24}
                 />
-                Karta
+                Öppna i Google Maps
               </a>
             </p>
           )}
         </div>
 
-        {error && <p className="bg-red-400">{error}</p>}
+        {error && (
+          <p className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            {error}
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-4">
-        <h3 className="h-sm text-primary-dark">Tänk på</h3>
-        <p>
+        <div className="flex items-center gap-3">
+          <IoMdHeart className="text-primary-medium text-2xl" />
+          <h3 className="h-sm text-primary-dark">Tänk på</h3>
+        </div>
+        <p className="bg-tertiary-light p-4 rounded-lg">
           Du är inte ensam. Det finns hjälp att få, och det är modigt att söka
           den. Även om allt känns övermäktigt nu, kan det bli bättre.
         </p>
       </div>
+
       <div className="flex flex-col gap-4">
-        <h3 className="h-sm text-primary-dark">Vad kan du göra just nu?</h3>
-        <ul>
-          <li>Kontakta någon du litar på, som en vän eller familjemedlem.</li>
-          <li>Ta några djupa andetag och fokusera på att lugna dig själv.</li>
-          <li>Skriv ner dina tankar för att få klarhet.</li>
-          <li>
+        <div className="flex items-center gap-3">
+          <BsLightbulb className="text-primary-medium text-2xl" />
+          <h3 className="h-sm text-primary-dark">Vad kan du göra just nu?</h3>
+        </div>
+        <ul className="grid gap-3 list-none">
+          <li className="flex items-start gap-2">
+            <span className="text-primary-medium">•</span>
+            Kontakta någon du litar på, som en vän eller familjemedlem.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary-medium">•</span>
+            Ta några djupa andetag och fokusera på att lugna dig själv.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary-medium">•</span>
+            Skriv ner dina tankar för att få klarhet.
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary-medium">•</span>
             Kom ihåg att det är helt okej att söka hjälp – du förtjänar stöd.
           </li>
         </ul>
       </div>
 
-      <p className="italic">
+      <p className="italic text-gray-700">
         För mer information och hjälp kan du besöka{' '}
         <a
           href="https://www.1177.se"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline"
+          className="text-primary-medium hover:text-primary-dark underline transition-colors"
           aria-label="länk till 1177"
         >
           1177.se
