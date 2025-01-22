@@ -68,12 +68,12 @@ const RelativesPageContent = () => {
   }
 
   return (
-    <section className="w-full px-6 py-12 min-h-screen bg-tertiary-light flex justify-center">
+    <div className="w-full px-4 md:px-6 py-12 min-h-screen bg-tertiary-light flex justify-center">
       <RelativesSettings
         user={user}
         saveRelativesSettings={saveRelativesSettings}
       />
-    </section>
+    </div>
   );
 };
 

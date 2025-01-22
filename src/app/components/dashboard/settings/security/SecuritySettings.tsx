@@ -44,7 +44,7 @@ const SecuritySettings = () => {
           <p className="text-center text-sm my-4">
             <Link
               href="/konto/glomt-losenord"
-              className="font-medium text-primary-dark hover:text-primary transition-colors"
+              className="nav-link font-medium "
             >
               Har du glömt ditt lösenord?
             </Link>
