@@ -3,7 +3,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { dashboardNavigationLinks } from '../../data/dashboardLinks';
 
-const DashboardNavigation = () => {
+interface IDashboardNavigationProps {
+  isMobile: boolean;
+  handleClickOnSidebarLinksOnMobile: () => void;
+}
+
+const DashboardNavigation = ({
+  isMobile,
+  handleClickOnSidebarLinksOnMobile,
+}: IDashboardNavigationProps) => {
   const path = usePathname();
 
   const handleSignOut = async () => {
@@ -20,7 +28,13 @@ const DashboardNavigation = () => {
         <Link
           key={link.href}
           href={link.href}
-          onClick={link.title === 'Logga ut' ? handleSignOut : undefined}
+          onClick={
+            link.title === 'Logga ut'
+              ? handleSignOut
+              : isMobile
+              ? handleClickOnSidebarLinksOnMobile
+              : undefined
+          }
           className={`flex items-center w-full text-base gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 
             ${
               path === link.href

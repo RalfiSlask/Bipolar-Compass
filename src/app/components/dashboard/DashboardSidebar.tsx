@@ -1,8 +1,7 @@
 'use client';
 
-import { FiSidebar, FiUser } from 'react-icons/fi';
-
 import Link from 'next/link';
+import { FiSidebar, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '../shared/icons/CloseIcon';
 import DashboardNavigation from './DashboardNavigation';
 
@@ -10,12 +9,16 @@ interface IDashboardSidebarProps {
   email: string;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  isMobile: boolean;
+  handleClickOnSidebarLinksOnMobile: () => void;
 }
 
 const DashboardSidebar = ({
   email,
   isOpen,
   setIsOpen,
+  isMobile,
+  handleClickOnSidebarLinksOnMobile,
 }: IDashboardSidebarProps) => {
   return (
     <>
@@ -104,7 +107,12 @@ const DashboardSidebar = ({
             </button>
           </div>
 
-          <DashboardNavigation />
+          <DashboardNavigation
+            isMobile={isMobile}
+            handleClickOnSidebarLinksOnMobile={
+              handleClickOnSidebarLinksOnMobile
+            }
+          />
           <div className="mt-auto p-6 flex justify-center items-center w-full border-t border-primary-medium/30">
             <FiUser className="w-4 h-4 text-primary-dark/80 mr-2" />
             <p className="text-sm text-primary-dark/80">{email}</p>
