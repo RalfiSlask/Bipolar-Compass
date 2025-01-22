@@ -1,4 +1,6 @@
 import { IMedication } from '@/app/types/medication';
+import { useState } from 'react';
+import DeleteConfirmationModal from './DeleteConfirmModal';
 
 interface YourMedicationsProps {
   medications: IMedication[];
@@ -9,9 +11,30 @@ const YourMedications = ({
   medications,
   handleDeleteMedicine,
 }: YourMedicationsProps) => {
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [medicineToDelete, setMedicineToDelete] = useState<{
+    index: number;
+    name: string;
+  } | null>(null);
+
+  const handleDeleteClick = (index: number, name: string) => {
+    setMedicineToDelete({ index, name });
+    setDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (medicineToDelete !== null) {
+      handleDeleteMedicine(medicineToDelete.index);
+      setDeleteModalOpen(false);
+      setMedicineToDelete(null);
+    }
+  };
+
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-semibold mb-4 text-primary-dark">Dina Mediciner</h3>
+      <h3 className="text-xl font-semibold mb-4 text-primary-dark">
+        Dina Mediciner
+      </h3>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {medications.map((medicine, index) => (
           <div
@@ -31,9 +54,9 @@ const YourMedications = ({
                 </p>
               </div>
               <button
-                onClick={() => handleDeleteMedicine(index)}
-                className="text-red-500 hover:text-red-800 transition-colors"
-                aria-label="Ta bort medicin"
+                onClick={() => handleDeleteClick(index, medicine.name)}
+                className="text-red-500 hover:text-red-800 transition-colors p-2"
+                aria-label={`Ta bort ${medicine.name || 'medicin'}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +117,16 @@ const YourMedications = ({
           </div>
         ))}
       </div>
+
+      <DeleteConfirmationModal
+        isOpen={deleteModalOpen}
+        onClose={() => {
+          setDeleteModalOpen(false);
+          setMedicineToDelete(null);
+        }}
+        onConfirm={handleConfirmDelete}
+        medicineName={medicineToDelete?.name || ''}
+      />
     </div>
   );
 };

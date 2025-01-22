@@ -7,6 +7,7 @@ import { IUser } from '@/app/types/user';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 
 const MedicinePageContent = () => {
   const { data: session } = useSession();
@@ -60,19 +61,32 @@ const MedicinePageContent = () => {
   }, [email]);
 
   if (isLoading || !email) {
-    return <Spinner />;
+    return (
+      <div className="min-h-screen bg-tertiary-light w-full flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
   }
 
   if (!user) {
-    return <div>Kunde inte ladda användardata</div>;
+    return (
+      <div className="min-h-screen w-full bg-tertiary-light flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+          <FiAlertCircle className="w-12 h-12 text-tertiary-dark mx-auto mb-4" />
+          <p className="text-gray-700">Kunde inte ladda användardata</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <section className="w-full px-6 py-12 min-h-screen bg-tertiary-light flex justify-center">
-      <MedicineSettings
-        user={user}
-        saveMedicationSettings={saveMedicationSettings}
-      />
+    <section className="w-full px-4 sm:px-6 py-8 sm:py-12 min-h-screen bg-tertiary-light">
+      <div className="max-w-7xl mx-auto">
+        <MedicineSettings
+          user={user}
+          saveMedicationSettings={saveMedicationSettings}
+        />
+      </div>
     </section>
   );
 };
