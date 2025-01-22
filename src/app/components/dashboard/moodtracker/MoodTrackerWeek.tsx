@@ -1,7 +1,9 @@
 import { DayId, IMoodValue, MoodId } from '@/app/types/moodtracker';
 import { getMoodIcon } from '@/app/utils/moodtrackerUtils';
+import { useEffect, useState } from 'react';
 import { FaSave } from 'react-icons/fa';
 import MoodTrackerCheckboxes from './MoodTrackerCheckboxes';
+import MoodTrackerIntroContainer from './MoodTrackerIntroContainer';
 import MoodYaxisValues from './MoodYaxisValues';
 
 interface IMoodTrackerWeekProps {
@@ -12,7 +14,7 @@ interface IMoodTrackerWeekProps {
     level: number | null,
     date: string
   ) => void;
-
+  user: string;
   saveMoodTrackerData: () => void;
 }
 
@@ -20,71 +22,150 @@ const MoodTrackerWeek = ({
   moodTrackerValues,
   handleValueChange,
   saveMoodTrackerData,
+  user,
 }: IMoodTrackerWeekProps) => {
-  return (
-    <div className="mx-auto max-w-6xl w-full bg-white rounded-2xl shadow-lg p-8 mb-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-primary-dark mb-2">
-          Veckans Moodtracker
-        </h1>
-        <p className="text-gray-600">
-          Spåra ditt mående genom att markera hur du känner dig varje dag. Ju
-          högre nivå, desto starkare känsla.
-        </p>
-      </div>
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
-      <div className="space-y-12">
-        {moodTrackerValues.map((mood) => (
-          <div key={mood.id} className="bg-primary-light rounded-xl p-6">
-            <h2 className="text-xl font-semibold mb-6 text-primary-dark flex items-center gap-2">
-              {getMoodIcon(mood.moodName)}
-              {mood.moodName}
-            </h2>
-            <div className="grid grid-cols-[150px_repeat(7,1fr)] gap-3">
-              <MoodYaxisValues moodValue={mood} />
-              {mood.valueForDays.map((day) => {
-                const isFutureDate = new Date(day.date) > new Date();
-                return (
-                  <div key={day.id} className="flex flex-col">
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="mx-auto max-w-6xl w-full">
+      <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+          <MoodTrackerIntroContainer user={user} week={true} />
+          <button
+            className="px-6 py-3 bg-primary-dark hover:bg-primary-medium 
+            transition-colors rounded-lg text-white font-medium
+            flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            onClick={saveMoodTrackerData}
+          >
+            <FaSave className="w-5 h-5" />
+            Spara veckan
+          </button>
+        </div>
+
+        <div className="space-y-6">
+          {moodTrackerValues.map((mood) => (
+            <div
+              key={mood.id}
+              className="bg-primary-light rounded-xl p-4 sm:p-6 
+              shadow-md hover:shadow-lg transition-shadow"
+            >
+              <h2
+                className="text-xl font-semibold mb-6 text-primary-dark 
+                flex items-center gap-2 border-b border-primary-border pb-3"
+              >
+                {getMoodIcon(mood.moodName)}
+                {mood.moodName}
+              </h2>
+
+              <div className="hidden sm:grid sm:grid-cols-[80px_repeat(7,1fr)] md:grid-cols-[150px_repeat(7,1fr)]  gap-3">
+                <MoodYaxisValues moodValue={mood} />
+                {mood.valueForDays.map((day) => {
+                  const isFutureDate = new Date(day.date) > new Date();
+                  return (
+                    <div key={day.id} className="flex flex-col">
+                      <div
+                        className={`text-sm font-medium text-center mb-2 sm:mb-4 
+                          ${
+                            isFutureDate ? 'text-gray-400' : 'text-primary-dark'
+                          }`}
+                      >
+                        <div className="text-sm md:text-base font-semibold">
+                          {day.name}
+                        </div>
+                        <div className="text-xs sm:text-sm">
+                          {new Date(day.date).toLocaleDateString('sv-SE', {
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </div>
+                      </div>
+                      <MoodTrackerCheckboxes
+                        mood={mood}
+                        day={day}
+                        handleValueChange={handleValueChange}
+                        disabled={isFutureDate}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="sm:hidden space-y-4">
+                {mood.valueForDays
+                  .filter((day) => new Date(day.date) <= new Date())
+                  .map((day) => (
                     <div
-                      className={`text-sm font-medium text-center mb-4 
-                        ${
-                          isFutureDate ? 'text-gray-400' : 'text-primary-dark'
-                        }`}
+                      key={day.id}
+                      className="bg-white rounded-lg p-4 shadow-sm"
                     >
-                      <div className="text-base">{day.name}</div>
-                      <div>
-                        {new Date(day.date).toLocaleDateString('sv-SE', {
-                          month: 'short',
-                          day: 'numeric',
-                        })}
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="text-primary-dark">
+                          <div className="font-semibold">{day.name}</div>
+                          <div className="text-sm">
+                            {new Date(day.date).toLocaleDateString('sv-SE', {
+                              month: 'short',
+                              day: 'numeric',
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 md:gap-4">
+                        <div className="w-full max-w-20">
+                          <MoodYaxisValues moodValue={mood} />
+                        </div>
+                        <div className="flex-1">
+                          <MoodTrackerCheckboxes
+                            mood={mood}
+                            day={day}
+                            handleValueChange={handleValueChange}
+                            disabled={false}
+                          />
+                        </div>
                       </div>
                     </div>
-                    <MoodTrackerCheckboxes
-                      mood={mood}
-                      day={day}
-                      handleValueChange={handleValueChange}
-                      disabled={isFutureDate}
-                    />
-                  </div>
-                );
-              })}
+                  ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      <div className="mt-8 flex justify-end">
+      {showScrollTop && (
         <button
-          className="px-6 py-3 hover:bg-primary-medium bg-primary-dark 
-              transition-colors rounded-lg text-white font-medium
-              flex items-center gap-2"
-          onClick={saveMoodTrackerData}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-primary-dark hover:bg-primary-medium
+          text-white p-4 rounded-full shadow-lg hover:shadow-xl
+          transition-all duration-300 animate-bounce"
+          aria-label="Tillbaka till toppen"
         >
-          <FaSave className="w-5 h-5" />
-          Spara veckan
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
         </button>
-      </div>
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { FaSave } from 'react-icons/fa';
 import MoodTrackerDaySwitcher from './MoodTrackerDaySwitcher';
+import MoodTrackerIntroContainer from './MoodTrackerIntroContainer';
 import VerticalSlider from './VerticalSlider';
 
 interface IMoodTrackerDayProps {
@@ -55,12 +56,7 @@ const MoodTrackerDay = ({
     setMoodStates(newMoodStates);
   }, [selectedDate, moodTrackerValues]);
 
-  useEffect(() => {
-    console.log('selectedDate', selectedDate);
-  }, [selectedDate]);
-
   const handleMoodChange = (moodId: MoodId, value: number | null) => {
-    console.log('what is the selected date: ', selectedDate);
     const formattedDate = format(selectedDate, 'yyyy-MM-dd');
     const dayId = format(selectedDate, 'EEEE').toLowerCase() as DayId;
 
@@ -82,23 +78,7 @@ const MoodTrackerDay = ({
     <div className="mx-auto max-w-7xl w-full">
       <div className="mb-8">
         <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-md p-8 relative overflow-hidden">
-            <div className="relative z-10">
-              <span className="inline-block px-4 py-1 bg-primary-light text-primary-dark rounded-full text-sm font-medium mb-4">
-                Dagens hälsokoll
-              </span>
-              <h2 className="text-3xl font-semibold text-secondary-dark mb-3">
-                Välkommen tillbaka, {user}!
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
-                Ta en stund att reflektera över hur du mår idag. Din mentala
-                hälsa är viktig, och genom att följa dina mönster kan du bättre
-                förstå dig själv.
-              </p>
-            </div>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-full  transform translate-x-16 -translate-y-16"></div>
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-tertiary-light rounded-full  transform translate-x-8 translate-y-8"></div>
-          </div>
+          <MoodTrackerIntroContainer user={user} />
 
           <div className="lg:col-span-1">
             <MoodTrackerDaySwitcher

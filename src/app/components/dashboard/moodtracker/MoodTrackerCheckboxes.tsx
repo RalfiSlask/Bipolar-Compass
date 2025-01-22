@@ -19,15 +19,18 @@ const MoodTrackerCheckboxes = ({
   disabled,
 }: IMoodTrackerCheckboxesProps) => {
   return (
-    <div className="flex flex-col gap-3 items-center relative">
+    <div className="flex flex-col gap-1.5 pt-8 sm:gap-3 items-center relative">
       {Array.from({ length: mood.yAxis.length }, (_, index) => {
         const level = mood.yAxis.length - 1 - index;
         const isChecked = day.value === level;
 
         return (
-          <div className="relative h-7" key={`${mood.id}-${day.id}-${index}`}>
+          <div 
+            className="relative h-5 md:h-7" 
+            key={`${mood.id}-${day.id}-${index}`}
+          >
             <input
-              className={`peer w-7 h-7 appearance-none rounded-full cursor-pointer 
+              className={`peer w-5 h-5 md:w-7 md:h-7 appearance-none rounded-full cursor-pointer 
                 transition-all duration-200 ease-in-out
                 border-2 bg-white
                 ${
@@ -58,7 +61,7 @@ const MoodTrackerCheckboxes = ({
             />
             {isChecked && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-2 h-2 bg-white rounded-full" />
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full" />
               </div>
             )}
           </div>

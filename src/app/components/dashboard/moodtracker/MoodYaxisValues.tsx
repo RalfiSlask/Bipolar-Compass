@@ -6,11 +6,11 @@ interface MoodYaxisValuesProps {
 
 const MoodYaxisValues = ({ moodValue }: MoodYaxisValuesProps) => {
   return (
-    <div className="flex flex-col-reverse gap-3 h-full pt-8">
+    <div className="flex flex-col-reverse gap-1.5 sm:gap-3 h-full pt-8">
       {moodValue.yAxis.map((label, index) => (
         <div
           key={index}
-          className="h-[28px] flex items-center text-sm text-primary-medium"
+          className="h-5 md:h-7 flex items-center text-xs md:text-sm text-primary-medium"
         >
           {label}
         </div>
