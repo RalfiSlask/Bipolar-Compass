@@ -128,7 +128,7 @@ const MoodTrackerPage = () => {
   }
 
   return (
-    <section className="w-full px-6 py-12 min-h-screen bg-tertiary-light">
+    <section className="w-full px-0 md:px-10 py-12 min-h-screen bg-tertiary-light">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex justify-center gap-4 mb-8">
           <button
@@ -168,6 +168,7 @@ const MoodTrackerPage = () => {
           moodTrackerValues={moodTrackerValues}
           handleValueChange={handleValueChange}
           saveMoodTrackerData={saveMoodTrackerData}
+          user={session?.user.name || ''}
         />
       )}
     </section>
