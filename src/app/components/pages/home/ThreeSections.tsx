@@ -1,3 +1,4 @@
+import { threeSections } from '@/app/data/home';
 import Image from 'next/image';
 import Link from 'next/link';
 import AppleImage from '../../../../../public/images/apple.jpg';
@@ -33,36 +34,6 @@ const Section = ({
 );
 
 const ThreeSections = () => {
-  const sections = [
-    {
-      title: 'Jag är ny diagnostiserad',
-      description:
-        'Du ska veta att du inte är ensam då 60 miljoner människor världen över level med bipolär sjukdom. Vi är här för att hjälpa dig.',
-      bgColor: 'bg-primary-dark',
-      textColor: 'text-white',
-      buttonVariant: 'secondary',
-      href: '/bipolaritet/vad-ar-bipolaritet',
-    },
-    {
-      title: 'Jag forskar om bipolaritet',
-      description:
-        'Om du är forskare vill vi tacka för ditt engagemang och du kan hitta den senaste forskningen om bipolär sjukdom här.',
-      bgColor: 'bg-secondary-light',
-      textColor: 'text-primary-dark',
-      buttonVariant: 'primary',
-      href: '/forskning/artiklar',
-    },
-    {
-      title: 'Jag är anhörig',
-      description:
-        'Om du är anhörig till en person med bipolär sjukdom kan du hjälpa oss att hjälpa andra',
-      bgColor: 'bg-tertiary-light',
-      textColor: 'text-tertiary-dark',
-      buttonVariant: 'tertiary',
-      href: '/anhoriga',
-    },
-  ] as const;
-
   return (
     <div className="w-full flex bg-primary-light items-center justify-center md:px-4 py-6 md:py-16 z-10">
       <div className="w-full flex flex-col md:flex-row items-center justify-end max-w-[1440px] md:min-h-[600px] rounded-3xl md:-my-32">
@@ -78,7 +49,7 @@ const ThreeSections = () => {
           />
         </div>
         <div className="w-full md:w-3/4 flex flex-col h-full rounded-b-3xl md:rounded-r-3xl overflow-hidden">
-          {sections.map((section, index) => (
+          {threeSections.map((section, index) => (
             <Section key={index} {...section} />
           ))}
         </div>
