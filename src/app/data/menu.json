@@ -4,6 +4,7 @@
       "id": 2,
       "title": "Bipolaritet",
       "slug": "bipolaritet",
+      "image": "/images/menu/bipolar.jpeg",
       "submenuItems": [
         {
           "id": 21,
@@ -37,6 +38,7 @@
       "id": 4,
       "title": "Behandling",
       "slug": "behandling",
+      "image": "/images/menu/treatment.jpg",
       "submenuItems": [
         {
           "id": 41,
@@ -64,6 +66,7 @@
       "id": 5,
       "title": "Multimedia",
       "slug": "multimedia",
+      "image": "/images/menu/multimedia.jpg",
       "submenuItems": [
         {
           "id": 51,
@@ -86,12 +89,14 @@
       "id": 6,
       "title": "Forskning",
       "slug": "forskning",
+      "image": "/images/forskning.png",
       "submenuItems": []
     },
     {
       "id": 7,
       "title": "Om oss",
       "slug": "om-oss",
+      "image": "/images/menu/about.jpg",
       "submenuItems": [
         {
           "id": 71,
