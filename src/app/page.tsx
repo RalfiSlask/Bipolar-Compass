@@ -10,15 +10,15 @@ import ThreeSections from './components/pages/home/ThreeSections';
 
 export default function Home() {
   return (
-    <section className="w-full h-full flex flex-col items-center">
+    <section className="w-full h-full flex flex-col items-center bg-primary-light">
       <div className="w-full min-h-[calc(100vh-130px)] flex relative mx-auto px-4 md:px-10 max-w-[1440px] z-20">
-        <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 md:gap-10 py-10 lg:py-0">
-          <div className="flex-1 text-center lg:text-left">
-            <div className="flex flex-col gap-6 md:gap-10 animate-fadeIn">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl text-primary-dark font-bold leading-tight">
+        <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 pb-10 md:gap-10 lg:py-0">
+          <div className="flex-1 text-center lg:text-left z-10 lg:max-w-[600px] mt-20">
+            <div className="flex flex-col gap-6 md:gap-10 animate-fadeIn bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md">
+              <h2 className="text-3xl sm:text-4xl lg:text-3xl text-primary-dark font-bold leading-tight">
                 Din digitala följeslagare för att hantera bipolär sjukdom
               </h2>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-dark max-w-2xl">
+              <p className="text-base sm:text-lg md:text-xl lg:text-xl text-primary-dark max-w-2xl">
                 BipolärKompassen erbjuder verktyg och stöd för att hjälpa dig
                 hantera din vardag. Med din egna sida, kunskapsbank och senaste
                 forskning står du aldrig ensam i din resa.
@@ -33,13 +33,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/2 flex items-center justify-center">
+          <div className="w-full lg:w-3/4 flex items-center justify-center absolute right-0 top-0 h-full">
             <Image
-              src="/images/laughing.jpeg"
+              src="/images/home/laughing.png"
               alt="testing"
               width={4910}
               height={3264}
-              className="object-cover w-full h-auto rounded-2xl lg:rounded-full"
+              quality={100}
+              className="object-cover w-full h-full"
             />
           </div>
         </div>
