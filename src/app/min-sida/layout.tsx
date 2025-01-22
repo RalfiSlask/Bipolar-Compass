@@ -3,7 +3,7 @@
 import DashboardSidebar from '@/app/components/dashboard/DashboardSidebar';
 import { ICustomSession } from '@/app/types/authoptions';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 export default function MyPageLayout({
@@ -13,7 +13,28 @@ export default function MyPageLayout({
 }>) {
   const { data: session } = useSession() as { data: ICustomSession | null };
   const email = session?.user?.email;
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    const checkInitialSize = () => {
+      const width = window.innerWidth;
+      setIsSidebarOpen(width > 640);
+      setIsMobile(width < 640);
+    };
+    checkInitialSize();
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleClickOnSidebarLinksOnMobile = () => {
+    setIsSidebarOpen(false);
+  };
 
   return (
     <div className="flex min-h-screen h-full w-full">
@@ -21,14 +42,16 @@ export default function MyPageLayout({
         email={email || ''}
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
+        isMobile={isMobile}
+        handleClickOnSidebarLinksOnMobile={handleClickOnSidebarLinksOnMobile}
       />
-      <div
+      <section
         className={`dashboard-content flex justify-center items-center ${
           isSidebarOpen ? 'content--open' : 'content--closed'
         } w-full`}
       >
         {children}
-      </div>
+      </section>
       <Toaster position="bottom-right" />
     </div>
   );
