@@ -298,3 +298,57 @@
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .primary-button,
+  .secondary-button,
+  .tertiary-button,
+  .quartiary-button,
+  .advanced-primary-button,
+  .advanced-secondary-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+
+  .main-button {
+    font-size: 12px !important;
+
+    .button-text {
+      padding: 12px 20px !important;
+    }
+  }
+
+  .advanced-tertiary-button {
+    svg {
+      height: 35px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .primary-button,
+  .secondary-button,
+  .tertiary-button,
+  .quartiary-button,
+  .advanced-primary-button,
+  .advanced-secondary-button {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 60px;
+  }
+
+  .main-button {
+    font-size: 10px !important;
+
+    .button-text {
+      padding: 10px 16px !important;
+    }
+  }
+
+  .advanced-tertiary-button {
+    svg {
+      height: 30px;
+    }
+  }
+}
