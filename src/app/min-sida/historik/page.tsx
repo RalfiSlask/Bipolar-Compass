@@ -10,19 +10,36 @@ import {
   getYAxisDomain,
   getYAxisTicks,
 } from '@/app/utils/historyUtils';
+import { getMoodIcon } from '@/app/utils/moodtrackerUtils';
 import axios from 'axios';
 import { format, isAfter, subDays, subMonths, subYears } from 'date-fns';
 import { sv } from 'date-fns/locale';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {
+  BsCalendar3,
+  BsCalendar3Fill,
+  BsCalendar3Range,
+  BsCalendar3Week,
+} from 'react-icons/bs';
+import { FaArrowUp, FaChartLine } from 'react-icons/fa';
+import {
   CartesianGrid,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
+
+interface IFilteredData {
+  date: string;
+  value: number;
+  id: DayId;
+  name: string;
+}
+
 const HistoryPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { data: session } = useSession() as { data: ICustomSession | null };
@@ -34,6 +51,16 @@ const HistoryPage = () => {
   const [activeTab, setActiveTab] = useState<(typeof activeTabs)[number]>(
     activeTabs[0]
   );
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchMoodTrackerData = async () => {
@@ -61,17 +88,21 @@ const HistoryPage = () => {
     fetchMoodTrackerData();
   }, [session]);
 
-  const getLatestAverage = (data: IFilteredData[], days: number = 7) => {
-    const recentData = data.slice(-days);
-    if (recentData.length < 7) return null;
-    return (
-      recentData.reduce((sum, item) => sum + item.value, 0) / recentData.length
-    );
+  const getLatestAverage = (data: IFilteredData[]) => {
+    if (data.length === 0) return null;
+    return data.reduce((sum, item) => sum + item.value, 0) / data.length;
   };
 
-  const getTip = (moodId: string, average: number | null): string | null => {
-    console.log(average, moodId);
+  const getTip = (
+    moodId: string,
+    average: number | null,
+    dataLength: number
+  ): string | null => {
     if (average === null) return null;
+
+    if (dataLength < 3) {
+      return 'Fortsätt registrera ditt mående för att få anpassade tips och insikter.';
+    }
 
     switch (moodId) {
       case 'anxiety':
@@ -111,7 +142,9 @@ const HistoryPage = () => {
     return moodTrackerData
       .flatMap((week) =>
         week.mood_values[moodIndex]?.valueForDays
-          .filter((day) => day.date)
+          .filter(
+            (day) => day.date && day.value !== null && day.value !== undefined
+          )
           .map((day) => {
             try {
               const dateObj = new Date(day.date);
@@ -132,26 +165,16 @@ const HistoryPage = () => {
             }
           })
       )
-      .filter((item): item is IFilteredData => item !== null)
-      .sort((a, b) => {
-        const [dayA, monthA] = a.date.split('/').map(Number);
-        const [dayB, monthB] = b.date.split('/').map(Number);
-        if (monthA !== monthB) return monthA - monthB;
-        return dayA - dayB;
-      });
+      .filter((item): item is IFilteredData => item !== null);
   };
 
-  interface IFilteredData {
-    date: string;
-    value: number;
-    id: DayId;
-    name: string;
-  }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const getFilteredData = (moodIndex: number): IFilteredData[] => {
     const today = new Date();
     let filterDate = today;
-    const endDate = today;
 
     switch (activeTab) {
       case 'vecka':
@@ -168,25 +191,23 @@ const HistoryPage = () => {
     }
 
     const allData = transformMoodData(moodIndex);
-    const filteredData = allData.filter((item) => {
-      const [day, month] = item?.date.split('/').map(Number);
-      const currentYear = new Date().getFullYear();
-      let itemDate = new Date(currentYear, month - 1, day);
-
-      if (isAfter(itemDate, today)) {
-        itemDate = new Date(currentYear - 1, month - 1, day);
-      }
-
-      return itemDate >= filterDate && itemDate <= endDate;
-    });
-
-    return filteredData.sort((a, b) => {
-      const [dayA, monthA] = a?.date.split('/').map(Number);
-      const [dayB, monthB] = b?.date.split('/').map(Number);
-      const dateA = new Date(new Date().getFullYear(), monthA - 1, dayA);
-      const dateB = new Date(new Date().getFullYear(), monthB - 1, dayB);
-      return dateA.getTime() - dateB.getTime();
-    });
+    return allData
+      .filter((item) => {
+        const [day, month] = item.date.split('/').map(Number);
+        const currentYear = new Date().getFullYear();
+        const itemDate = new Date(currentYear, month - 1, day);
+        const adjustedDate = isAfter(itemDate, today)
+          ? new Date(currentYear - 1, month - 1, day)
+          : itemDate;
+        return adjustedDate >= filterDate && adjustedDate <= today;
+      })
+      .sort((a, b) => {
+        const [dayA, monthA] = a.date.split('/').map(Number);
+        const [dayB, monthB] = b.date.split('/').map(Number);
+        const dateA = new Date(new Date().getFullYear(), monthA - 1, dayA);
+        const dateB = new Date(new Date().getFullYear(), monthB - 1, dayB);
+        return dateA.getTime() - dateB.getTime();
+      });
   };
 
   const formatTooltipValue = (
@@ -205,92 +226,191 @@ const HistoryPage = () => {
     return [value, moodName];
   };
 
+  const getIcon = (tab: string) => {
+    switch (tab) {
+      case 'vecka':
+        return <BsCalendar3Week />;
+      case 'månad':
+        return <BsCalendar3Range />;
+      case '1 år':
+        return <BsCalendar3Fill />;
+      case 'alla data':
+        return <BsCalendar3 />;
+    }
+  };
+
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <div>
-      <h2 className="h-md text-primary-dark">Historik</h2>
-      <div className="flex gap-8 mb-8">
-        {activeTabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`quartiary-button py-[6px] ${
-              activeTab === tab ? 'active' : ''
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-      {moodTrackerData.length > 0 ? (
-        <div className="flex flex-col gap-8">
-          {moodTrackerData[0]?.mood_values.map((mood, index) => {
-            const filteredData = getFilteredData(index);
-            const average = getLatestAverage(filteredData);
-            const tip = getTip(mood.id, average);
-
-            return (
-              <div key={mood.id} className="mb-12 max-w-[800px]">
-                <h3 className="text-xl font-semibold text-center mb-4">
-                  {mood.moodName}
-                </h3>
-                <LineChart width={800} height={300} data={filteredData}>
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke={CHART_COLORS[index]}
-                    name={mood.moodName}
-                  />
-                  <CartesianGrid stroke="#ccc" strokeOpacity={0.3} />
-                  <XAxis
-                    dataKey="date"
-                    angle={-45}
-                    textAnchor="end"
-                    height={60}
-                    interval={getTickInterval(
-                      getFilteredData(index).length,
-                      activeTab
-                    )}
-                    tickFormatter={(tickItem) => {
-                      return formatXAxis(tickItem, activeTab);
-                    }}
-                  />
-                  <YAxis
-                    width={100}
-                    domain={getYAxisDomain(index, moodTrackerData)}
-                    ticks={getYAxisTicks(index, moodTrackerData)}
-                    tickFormatter={(value) => {
-                      if (mood.yAxis) {
-                        return mood.yAxis[value] || value.toString();
-                      }
-                      return value.toString();
-                    }}
-                  />
-                  <Tooltip
-                    labelFormatter={(label) => `Datum: ${label}`}
-                    formatter={(value: number) =>
-                      formatTooltipValue(value, mood.moodName, mood.yAxis)
-                    }
-                  />
-                </LineChart>
-                {tip && (
-                  <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <p className="text-blue-800">
-                      <span className="font-semibold">💡 </span>
-                      {tip}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+    <div className="w-full min-h-screen bg-tertiary-light">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 py-8 sm:pb-[180px]">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-primary-dark mb-4 flex items-center justify-center gap-2">
+            <FaChartLine className="text-2xl sm:text-3xl" /> Historik
+          </h2>
+          <p className="text-gray-700 max-w-2xl mx-auto text-sm sm:text-base px-4">
+            Här kan du följa din måendehistorik över tid. Genom att analysera
+            dina trender kan du bättre förstå ditt mående och få anpassade tips
+            för förbättring.
+          </p>
         </div>
-      ) : (
-        <div>Ingen data tillgänglig</div>
-      )}
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-6 sm:mb-8">
+          {activeTabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
+                text-xs sm:text-sm md:text-base transition-all duration-300
+                ${
+                  activeTab === tab
+                    ? 'bg-primary-dark text-white shadow-md'
+                    : 'bg-white text-primary-dark hover:bg-primary-accent hover:text-white shadow-sm hover:shadow-md'
+                }`}
+            >
+              {getIcon(tab)}
+              <span className="whitespace-nowrap">{tab}</span>
+            </button>
+          ))}
+        </div>
+
+        {moodTrackerData.length > 0 ? (
+          <div className="grid gap-4 sm:gap-6 md:gap-8">
+            {moodTrackerData[0]?.mood_values.map((mood, index) => {
+              const filteredData = getFilteredData(index);
+              const average = getLatestAverage(filteredData);
+              const tip = getTip(mood.id, average, filteredData.length);
+
+              return (
+                <div
+                  key={mood.id}
+                  className="p-3 sm:p-4 md:p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-primary-dark mb-3 sm:mb-4 md:mb-6 flex items-center gap-2">
+                    {getMoodIcon(mood.moodName)}
+                    {mood.moodName}
+                  </h3>
+
+                  <div className="w-full overflow-x-auto -mx-3 px-3">
+                    {filteredData.length === 0 ? (
+                      <div className="text-center text-gray-700 p-4 text-sm sm:text-base">
+                        Ingen data registrerad för denna period
+                      </div>
+                    ) : filteredData.length < 2 ? (
+                      <div className="text-center text-gray-700 p-4 text-sm sm:text-base">
+                        Minst två datapunkter krävs för att visa en graf
+                      </div>
+                    ) : (
+                      <div className="min-w-[300px] w-full">
+                        <ResponsiveContainer width="100%" height={300}>
+                          <LineChart
+                            data={filteredData}
+                            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                          >
+                            <Line
+                              type="monotone"
+                              dataKey="value"
+                              stroke={CHART_COLORS[index]}
+                              strokeWidth={2}
+                              dot={{ fill: CHART_COLORS[index], r: 4 }}
+                              activeDot={{ r: 6, fill: CHART_COLORS[index] }}
+                              connectNulls={false}
+                            />
+                            <CartesianGrid
+                              stroke="#ccc"
+                              strokeDasharray="5 5"
+                              strokeOpacity={0.3}
+                            />
+                            <XAxis
+                              dataKey="date"
+                              angle={-45}
+                              textAnchor="end"
+                              height={60}
+                              interval={getTickInterval(
+                                filteredData.length,
+                                activeTab
+                              )}
+                              tickFormatter={(tickItem) =>
+                                formatXAxis(tickItem, activeTab)
+                              }
+                              tick={{ fontSize: 12 }}
+                            />
+                            <YAxis
+                              width={100}
+                              domain={getYAxisDomain(index, moodTrackerData)}
+                              ticks={getYAxisTicks(index, moodTrackerData)}
+                              tickFormatter={(value) => {
+                                if (mood.yAxis) {
+                                  return mood.yAxis[value] || value.toString();
+                                }
+                                return value.toString();
+                              }}
+                              tick={{ fontSize: 12 }}
+                            />
+                            <Tooltip
+                              contentStyle={{ fontSize: '14px' }}
+                              labelFormatter={(label) => `Datum: ${label}`}
+                              formatter={(value: number) =>
+                                formatTooltipValue(
+                                  value,
+                                  mood.moodName,
+                                  mood.yAxis
+                                )
+                              }
+                            />
+                          </LineChart>
+                        </ResponsiveContainer>
+                      </div>
+                    )}
+                  </div>
+
+                  {tip && (
+                    <div
+                      className={`mt-4 p-3 sm:p-4 rounded-lg border text-sm sm:text-base
+                      transition-all duration-300 hover:scale-[1.01]
+                      ${
+                        filteredData.length < 3
+                          ? 'bg-primary-light/50 border-primary-border/50'
+                          : 'bg-primary-light border-primary-border'
+                      }`}
+                    >
+                      <p className="text-primary-dark">
+                        <span className="font-semibold">
+                          {filteredData.length < 3 ? '📝 ' : '💡 '}
+                        </span>
+                        {tip}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center text-gray-700 p-6 sm:p-8 bg-white rounded-xl shadow-lg">
+            <p className="mb-4 text-base sm:text-lg">Ingen data tillgänglig</p>
+            <p className="text-xs sm:text-sm text-gray-500">
+              Börja registrera ditt mående i Moodtracker för att se din historik
+              här
+            </p>
+          </div>
+        )}
+
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 
+              bg-primary-dark hover:bg-primary-medium text-white 
+              p-2 sm:p-3 md:p-4 rounded-full shadow-lg hover:shadow-xl
+              transition-all duration-300 animate-bounce z-50"
+            aria-label="Tillbaka till toppen"
+          >
+            <FaArrowUp className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };
