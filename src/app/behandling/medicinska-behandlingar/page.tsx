@@ -11,7 +11,7 @@ const MedicinePage = () => {
       <PageIntroContainer intro={medicineIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Stämningsstabiliserande mediciner
           </h3>
@@ -61,7 +61,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Antipsykotiska mediciner
           </h3>
@@ -108,7 +108,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Antidepressiva mediciner
           </h3>
@@ -156,7 +156,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kombination av mediciner
           </h3>
@@ -180,7 +180,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kommer medicinen fungera för mig?
           </h3>
@@ -203,7 +203,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Biverkningar och trygghet vid medicinering
           </h3>
@@ -252,7 +252,7 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>

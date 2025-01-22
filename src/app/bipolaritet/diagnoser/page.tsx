@@ -11,7 +11,7 @@ const DiagnosesPage = () => {
       <PageIntroContainer intro={diagnosisIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 1 (Bipolar I disorder)
           </h3>
@@ -52,7 +52,7 @@ const DiagnosesPage = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 2 (Bipolar II disorder)
           </h3>
@@ -100,7 +100,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Cyklotymi (Cyclothymic disorder)
           </h3>
@@ -138,7 +138,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med blandade drag (Mixed features)
           </h3>
@@ -169,7 +169,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med snabb cykling (Rapid cycling)
           </h3>
@@ -198,7 +198,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med säsongsrelaterade drag (Seasonal pattern)
           </h3>
@@ -230,7 +230,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Ospecificerad bipolär sjukdom (Unspecified bipolar disorder)
           </h3>
@@ -243,7 +243,7 @@ const DiagnosesPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-containert">
           <h3 className="h-xs text-primary-dark mb-4">
             Schizoaffektivt syndrom
           </h3>

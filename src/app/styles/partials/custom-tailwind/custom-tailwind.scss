@@ -5,7 +5,7 @@
 }
 
 .intro-container {
-  @apply w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10;
+  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end px-4 md:px-10 py-10 gap-10;
 }
 
 .intro-image {
@@ -16,3 +16,6 @@
   @apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full;
 }
 
+.content-container {
+  @apply bg-white/80 rounded-lg px-4 md:px-8 py-8 shadow-md border-2 border-primary-light;
+}

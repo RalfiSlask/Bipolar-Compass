@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Organizations from '../components/pages/relatives/Organizations';
+import EncouragmentContainer from '../components/shared/EncouragmentContainer';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
 import { relativeIntro } from '../data/pageIntros';
 
@@ -9,7 +10,7 @@ const RelativePage = () => {
       <PageIntroContainer intro={relativeIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Vad innebär bipolär sjukdom?
           </h3>
@@ -28,7 +29,7 @@ const RelativePage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">Din roll som anhörig</h3>
           <p>
             Din närstående behöver både kärlek och praktiskt stöd, men din roll
@@ -104,7 +105,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Vanliga utmaningar för anhöriga
           </h3>
@@ -151,7 +152,7 @@ const RelativePage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             När tvångsvård kan bli nödvändig
           </h3>
@@ -183,7 +184,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Hur går man tillväga för att ansöka om tvångsvård?
           </h3>
@@ -231,7 +232,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark">
             Att tänka på som anhörig vid tvångsvård
           </h3>
@@ -265,7 +266,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Mobila psykiatriska team och läkarbedömning på plats
           </h3>
@@ -299,7 +300,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark">
             Hur kontaktar man ett mobilt psykiatriskt team?
           </h3>
@@ -336,7 +337,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark">
             Vad händer när läkaren kommer till platsen?
           </h3>
@@ -371,7 +372,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark">
             Vad kan du som anhörig göra under tiden?
           </h3>
@@ -404,7 +405,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Finns det mobila psykiatriska team i hela Sverige?
           </h3>
@@ -417,20 +418,15 @@ const RelativePage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
-          <h3 className="h-xs text-primary-dark mb-2">
-            Kom ihåg: Du är inte ensam
-          </h3>
-          <p>
-            Att vara anhörig till någon med bipolär sjukdom kan vara tufft, men
+        <EncouragmentContainer
+          text="Att vara anhörig till någon med bipolär sjukdom kan vara tufft, men
             du är inte ensam i din situation. Genom att söka stöd, bygga kunskap
             och ta hand om dig själv kan du vara en värdefull resurs för din
-            närstående samtidigt som du skyddar ditt eget välmående.
-          </p>
-        </div>
+            närstående samtidigt som du skyddar ditt eget välmående. "
+        />
 
-        <div className="flex flex-col gap-4">
-          <h3 className="h-xs text-primary-dark mb-2">
+        <div className="flex flex-col items-center gap-4">
+          <h3 className="h-xs xl:text-xl text-primary-dark mb-2">
             Organisationer som kan hjälpa dig
           </h3>
           <Organizations />

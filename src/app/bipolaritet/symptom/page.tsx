@@ -12,7 +12,7 @@ const SymptomsPage = () => {
       <PageIntroContainer intro={symptomsIntro} />
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Symptom under maniska episoder
           </h3>
@@ -58,7 +58,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Symptom under hypomaniska episoder
           </h3>
@@ -92,7 +92,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Symptom under depressiva episoder
           </h3>
@@ -133,7 +133,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">Blandade episoder</h3>
           <p className="mb-6 ">
             En blandad episod innebär att symptom på mani och depression
@@ -144,7 +144,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">Psykotiska symptom</h3>
           <p className="mb-6 ">
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
@@ -167,7 +167,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Tidiga tecken och varningstecken
           </h3>
@@ -185,7 +185,7 @@ const SymptomsPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             När bör du söka hjälp?
           </h3>
@@ -197,7 +197,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Symptom hos barn och ungdomar
           </h3>
@@ -224,7 +224,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Att känna igen när du behöver hjälp
           </h3>
@@ -255,7 +255,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/20">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">Vid akuta situationer</h3>
           <p className="mb-6 ">
             Om du eller någon i din närhet har akuta självmordstankar eller

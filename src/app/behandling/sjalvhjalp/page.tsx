@@ -9,7 +9,7 @@ const SelfHelpPage = () => {
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
       <PageIntroContainer intro={selfHelpIntro} />
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Förstå din sjukdom
           </h3>
@@ -77,7 +77,7 @@ const SelfHelpPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col gap-4 content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Dagliga rutiner
           </h3>
@@ -197,7 +197,7 @@ const SelfHelpPage = () => {
 
         <Stress />
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Relationsstöd
           </h3>
@@ -283,7 +283,7 @@ const SelfHelpPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Hantera humörsvängningar
           </h3>
@@ -365,7 +365,7 @@ const SelfHelpPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             När söka hjälp
           </h3>
@@ -445,7 +445,7 @@ const SelfHelpPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Resurser och verktyg
           </h3>
@@ -528,7 +528,7 @@ const SelfHelpPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Självmedkänsla och långsiktig hälsa
           </h3>

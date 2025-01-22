@@ -20,7 +20,7 @@ const WhatIsBipolarityPage = () => {
       <PageIntroContainer intro={whatIsBipolarIntro} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="flex flex-col content-container">
           <div className="flex items-center gap-4 mb-6">
             <MdTimeline className="text-4xl text-primary-dark" />
             <h3 className="h-xs text-primary-dark">
@@ -57,7 +57,7 @@ const WhatIsBipolarityPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light ">
+        <div className="flex flex-col content-container ">
           <div className="flex items-center gap-4 mb-6">
             <MdPsychology className="text-4xl text-primary-dark" />
             <h3 className="h-xs text-primary-dark">Vanliga kännetecken</h3>
@@ -90,7 +90,7 @@ const WhatIsBipolarityPage = () => {
           </div>
         </div>
 
-        <div className="md:col-span-2 bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="md:col-span-2 content-container">
           <div className="flex items-center gap-4 mb-6">
             <MdPeople className="text-4xl text-primary-dark" />
             <h3 className="h-xs text-primary-dark">
@@ -109,7 +109,7 @@ const WhatIsBipolarityPage = () => {
           <Genetics />
         </div>
 
-        <div className="md:col-span-2 bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+        <div className="md:col-span-2 content-container">
           <div className="flex items-center gap-4 mb-6">
             <MdMedicalServices className="text-4xl text-primary-dark" />
             <h3 className="h-xs text-primary-dark">Behandling och stöd</h3>
@@ -136,7 +136,7 @@ const WhatIsBipolarityPage = () => {
         </div>
 
         <div className="md:col-span-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border-2 border-primary-light">
+          <div className="content-container">
             <h3 className="h-xs text-primary-dark mb-4">
               Prevalens av bipolär sjukdom
             </h3>
@@ -200,12 +200,6 @@ const WhatIsBipolarityPage = () => {
               bipolär sjukdom utan att vara medvetna om det. Tidig diagnos och
               behandling är avgörande för att förbättra prognosen och
               livskvaliteten.
-            </p>
-            <p className="mt-6 text-tertiary-dark">
-              Bipolaritet är inte en svaghet eller ett personlighetsdrag – det
-              är en medicinsk sjukdom som kräver vård och behandling. Med rätt
-              stöd kan personer med bipolär sjukdom leva ett meningsfullt och
-              produktivt liv.
             </p>
           </div>
         </div>

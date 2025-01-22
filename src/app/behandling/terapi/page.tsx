@@ -7,7 +7,7 @@ const TherapyPage = () => {
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
       <PageIntroContainer intro={therapyIntro} />
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Psykoterapi: Samtalsterapi som verktyg
           </h3>
@@ -123,7 +123,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Medicinsk behandling i kombination med terapi
           </h3>
@@ -153,7 +153,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Gruppterapi och stödgrupper
           </h3>
@@ -182,7 +182,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Digital terapi och online-stöd
           </h3>
@@ -215,7 +215,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Terapival: Hur hittar du rätt?
           </h3>
@@ -257,7 +257,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Självhjälp som komplement till terapi
           </h3>
@@ -289,7 +289,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Psykologisk behandling som komplement till läkemedel
           </h3>
@@ -380,7 +380,7 @@ const TherapyPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col bg-white/50 backdrop-blur-sm rounded-lg p-6 shadow-sm border border-primary-light/60">
+        <div className="flex flex-col content-container">
           <div className="bg-primary-light/20 rounded-md p-4">
             <p className=" font-semibold text-primary-dark">
               Terapier är ett värdefullt verktyg för att hantera bipolär
