@@ -150,7 +150,11 @@ const Chat = () => {
     <>
       {chatOpen ? (
         <>
-          <div className="bg-black/60 w-full h-full fixed top-0 left-0 z-10"></div>
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
+            onClick={() => setChatOpen(false)}
+            aria-hidden="true"
+          />
           <div className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
             <div
               className="bg-gradient-to-br from-primary-dark to-secondary-dark flex flex-col w-full gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
