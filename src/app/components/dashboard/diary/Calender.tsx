@@ -1,15 +1,52 @@
-import { DayCellMountArg } from '@fullcalendar/core/index.js';
+import { IDiaryEntry } from '@/app/types/diary';
+import { getMoodEmoji } from '@/app/utils/diaryUtils';
+import { EventContentArg } from '@fullcalendar/core';
 import svLocale from '@fullcalendar/core/locales/sv';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import multiMonthPlugin from '@fullcalendar/multimonth';
 import FullCalendar from '@fullcalendar/react';
 
-const Calendar = ({
-  dayCellDidMount,
-}: {
-  dayCellDidMount: (arg: DayCellMountArg) => void;
-}) => {
+interface CalendarProps {
+  entries: { [key: string]: IDiaryEntry };
+  onEntryClick: (date: string) => void;
+}
+
+const Calendar = ({ entries, onEntryClick }: CalendarProps) => {
+  const renderEventContent = (eventContent: EventContentArg) => {
+    const entry = entries[eventContent.event.startStr];
+    const isYearView = eventContent.view.type === 'multiMonthYear';
+
+    if (isYearView) {
+      return (
+        <div className="diary-entry-preview">
+          <div className="flex items-center gap-1">
+            <span className="diary-mood">{getMoodEmoji(entry.mood)}</span>
+            <span className="diary-title truncate">{entry.title}</span>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="diary-entry-preview p-1 flex flex-col gap-1 h-full">
+        <div className="flex items-center gap-1">
+          <span className="diary-mood">{getMoodEmoji(entry.mood)}</span>
+          <span className="diary-title truncate">{entry.title}</span>
+        </div>
+        <p className="diary-description text-xs truncate">{entry.notes}</p>
+      </div>
+    );
+  };
+
+  const events = Object.entries(entries).map(([date, entry]) => ({
+    title: entry.title,
+    start: date,
+    allDay: true,
+    display: 'block',
+    extendedProps: entry,
+  }));
+
   return (
     <div className="h-full w-full">
       <FullCalendar
@@ -25,36 +62,23 @@ const Calendar = ({
           month: 'Månad',
           week: 'Vecka',
           year: 'År',
+          multiMonthYear: 'År',
         }}
         multiMonthMaxColumns={2}
-        selectable={false}
-        dayMaxEvents={true}
+        selectable={true}
         weekends={true}
-        dayCellDidMount={dayCellDidMount}
-        datesSet={(arg) => {
-          setTimeout(() => {
-            const dayCells = document.querySelectorAll('.fc-daygrid-day');
-            dayCells.forEach((cell) => {
-              const date = cell.getAttribute('data-date');
-              if (date) {
-                const dateObj = new Date(date);
-                dayCellDidMount({
-                  date: dateObj,
-                  el: cell as HTMLElement,
-                  view: arg.view,
-                  dayNumberText: dateObj.getDate().toString(),
-                  isPast: dateObj < new Date(),
-                  isFuture: dateObj > new Date(),
-                  isToday: dateObj.toDateString() === new Date().toDateString(),
-                  isOther: false,
-                  dow: dateObj.getDay(),
-                  isDisabled: false,
-                });
-              }
-            });
-          }, 0);
+        events={events}
+        eventContent={renderEventContent}
+        dateClick={(arg) => onEntryClick(arg.dateStr)}
+        eventClick={(arg) => onEntryClick(arg.event.startStr)}
+        height="75vh"
+        dayMaxEvents={true}
+        views={{
+          multiMonthYear: {
+            dayMaxEvents: 1,
+            eventDisplay: 'block',
+          },
         }}
-        height="80vh"
       />
     </div>
   );
