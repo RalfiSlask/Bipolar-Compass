@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Breadcrumbs from './components/Breadcrumbs';
-import Chat from './components/chat/Chat';
+import ChatWrapper from './components/chat/ChatWrapper';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { Providers } from './providers/Providers';
@@ -41,7 +41,7 @@ export default function RootLayout({
             </main>
           </div>
           <Footer />
-          <Chat />
+          <ChatWrapper />
         </Providers>
       </body>
     </html>
