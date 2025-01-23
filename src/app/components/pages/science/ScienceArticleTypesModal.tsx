@@ -1,6 +1,6 @@
 import { PUBLICATION_TYPE_FILTERS } from '@/app/data/science';
 import { useState } from 'react';
-import { IoClose } from 'react-icons/io5';
+import { IoClose, IoDocumentText } from 'react-icons/io5';
 
 interface ScienceArticleTypesModalProps {
   activeFilters: string[];
@@ -42,9 +42,12 @@ const ScienceArticleTypesModal = ({
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div className="bg-white w-full max-w-[800px] rounded-lg shadow-xl flex flex-col max-h-[90vh] animate-modal-slide-up">
           <div className="p-6 border-b border-gray-200 flex items-center justify-between">
-            <h2 className="text-xl font-semibold text-primary-dark">
-              Välj artikeltyper
-            </h2>
+            <div className="flex items-center gap-2">
+              <IoDocumentText className="text-2xl text-primary-dark" />
+              <h2 className="text-xl font-semibold text-primary-dark">
+                Välj artikeltyper
+              </h2>
+            </div>
             <button
               onClick={() => setIsModalOpen(false)}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
