@@ -5,7 +5,6 @@ import NotificationsSettings from '@/app/components/dashboard/settings/notificat
 import ProfileSettings from '@/app/components/dashboard/settings/profile/ProfileSettings';
 import SecuritySettings from '@/app/components/dashboard/settings/security/SecuritySettings';
 import Spinner from '@/app/components/shared/Spinner';
-import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { SettingsProvider } from '@/app/context/SettingsContext';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { ICustomSession } from '@/app/types/authoptions';
@@ -18,7 +17,6 @@ const SettingsPageContent = () => {
   const context = useSettingsContext();
   const { fetchUserData } = context;
   const email = session?.user?.email;
-  const isUserVerified = session?.user?.isVerified;
 
   useEffect(() => {
     if (email) {
@@ -48,7 +46,6 @@ const SettingsPageContent = () => {
             {activeTab === 'security' && <SecuritySettings />}
             {activeTab === 'notifications' && <NotificationsSettings />}
           </div>
-          {isUserVerified && <VerficationMessage />}
         </div>
       </div>
     </section>
