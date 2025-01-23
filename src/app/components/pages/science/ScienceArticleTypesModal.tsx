@@ -34,7 +34,7 @@ const ScienceArticleTypesModal = ({
   return (
     <>
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[140] transition-opacity duration-200"
         onClick={() => setIsModalOpen(false)}
         aria-hidden="true"
       />

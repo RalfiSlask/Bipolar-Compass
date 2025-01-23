@@ -10,19 +10,19 @@ import SciencePagination from '@/app/components/pages/science/SciencePagination'
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
 import Spinner from '@/app/components/shared/Spinner';
 import {
-  ARTICLE_ATTRIBUTE_FILTERS,
-  LANGUAGE_FILTERS,
-  PUBLICATION_TYPE_FILTERS,
-  SWEDISH_HOSPITALS_FILTERS,
-  SWEDISH_UNIVERSITIES_FILTERS,
-  TEXT_AVAILABILITY_FILTERS,
-  YEARS_OF_PUBLICATION_FILTERS,
+    ARTICLE_ATTRIBUTE_FILTERS,
+    LANGUAGE_FILTERS,
+    PUBLICATION_TYPE_FILTERS,
+    SWEDISH_HOSPITALS_FILTERS,
+    SWEDISH_UNIVERSITIES_FILTERS,
+    TEXT_AVAILABILITY_FILTERS,
+    YEARS_OF_PUBLICATION_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
-  getDateFilterQuery,
-  getFormattedArticles,
-  parseXMLAbstracts,
+    getDateFilterQuery,
+    getFormattedArticles,
+    parseXMLAbstracts,
 } from '@/app/utils/scienceUtils';
 import axios from 'axios';
 import Image from 'next/image';
@@ -398,6 +398,107 @@ const ScienceArticles = () => {
         </div>
 
         <div className="grid md:grid-cols-[280px_1fr] gap-8">
+          {isMobileFiltersOpen && (
+            <div className="md:hidden fixed inset-0 z-[120] bg-white overflow-y-auto">
+              <div className="p-4">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-lg font-medium">Filtrera artiklar</h2>
+                  <button
+                    onClick={() => setIsMobileFiltersOpen(false)}
+                    className="p-2 text-gray-500"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <ScienceExtentFilter
+                  searchScope={searchScope}
+                  handleLanguageFilterClick={handleLanguageFilterClick}
+                />
+
+                <div className="flex flex-col gap-4 pt-6">
+                  <h3 className="font-medium text-primary-dark">
+                    Publiceringsdatum
+                  </h3>
+                  <div className="space-y-2">
+                    {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
+                      <div key={tab.value} className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          value={tab.value}
+                          name="years"
+                          id={tab.value}
+                          checked={selectedAmountOfYears === tab.value}
+                          aria-label={tab.label}
+                          onChange={(e) =>
+                            handleYearsFilterChange(e.target.value)
+                          }
+                          className="w-4 h-4 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
+                        />
+                        <label htmlFor={tab.value} className="text-gray-700">
+                          {tab.label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {searchScope === 'swedish' && (
+                  <div className="space-y-4 pt-6">
+                    <CustomSelect
+                      options={SWEDISH_UNIVERSITIES_FILTERS}
+                      value={selectedUniversity}
+                      onChange={(value) =>
+                        handleInstituteChange(value, 'university')
+                      }
+                      name="university"
+                      placeholder="Välj universitet"
+                      size="large"
+                    />
+                    <CustomSelect
+                      options={SWEDISH_HOSPITALS_FILTERS}
+                      value={selectedHospital}
+                      onChange={(value) =>
+                        handleInstituteChange(value, 'hospital')
+                      }
+                      name="hospital"
+                      placeholder="Välj sjukhus"
+                      size="large"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-6 divide-y divide-gray-200">
+                  <FilterGroup
+                    title="Textinnehåll"
+                    filters={TEXT_AVAILABILITY_FILTERS}
+                    selectedValues={activeFilters}
+                    onChange={handleFilterChange}
+                  />
+                  <FilterGroup
+                    title="Artikelattribut"
+                    filters={ARTICLE_ATTRIBUTE_FILTERS}
+                    selectedValues={activeFilters}
+                    onChange={handleFilterChange}
+                  />
+                  <FilterGroup
+                    title="Språk"
+                    filters={LANGUAGE_FILTERS}
+                    selectedValues={[selectedLanguage]}
+                    onChange={(id) => handleLanguageChange(id)}
+                    type="radio"
+                    name="language"
+                  />
+                  <ScienceArticleTypeFilter
+                    activeFilters={activeFilters}
+                    handleFilterChange={handleFilterChange}
+                    setIsModalOpen={setIsModalOpen}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
           <aside className="hidden md:block bg-white p-6 rounded-lg shadow-md h-fit">
             <ScienceExtentFilter
               searchScope={searchScope}
