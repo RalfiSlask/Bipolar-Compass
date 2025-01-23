@@ -20,7 +20,7 @@ const BipolarLogo = ({
       <div className="flex items-center cursor-pointer">
         <div
           className={`w-${logoSize} h-${logoSize} ${
-            footer ? 'text-tertiary-medium' : 'text-primary-dark'
+            footer ? 'text-tertiary-light' : 'text-primary-dark'
           } rounded-full flex items-center justify-center mb-2`}
         >
           <svg
@@ -82,14 +82,14 @@ const BipolarLogo = ({
         >
           <span
             className={`${
-              footer ? 'text-tertiary-medium' : 'text-secondary-dark'
+              footer ? 'text-tertiary-light' : 'text-secondary-dark'
             }`}
           >
             Bipolär
           </span>
           <span
             className={`${
-              footer ? 'text-tertiary-medium' : 'text-secondary-dark'
+              footer ? 'text-tertiary-light' : 'text-secondary-dark'
             }`}
           >
             Kompassen
