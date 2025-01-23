@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const MoodTrackerDiaryShowcase = () => {
   return (
-    <div className="w-full flex items-center justify-center py-10 sm:pt-28 sm:pb-20 px-4 sm:px-10">
+    <div className="w-full flex bg-white items-center justify-center py-10 sm:pt-28 sm:pb-20 px-4 sm:px-10">
       <div className="w-full flex flex-col items-center gap-8 sm:gap-10 max-w-[1440px]">
         <div className="w-full flex text-secondary-dark flex-1 flex-col gap-8 sm:gap-16 items-center justify-center">
           <div className="flex flex-col gap-4 text-center px-2">
@@ -15,9 +15,9 @@ const MoodTrackerDiaryShowcase = () => {
             </p>
           </div>
 
-          <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-10">
+          <div className="max-w-5xl w-full flex flex-col lg:flex-row gap-8 lg:gap-16">
             <div className="flex flex-1 justify-center">
-              <div className="flex flex-col gap-4 text-center lg:text-left">
+              <div className="flex flex-col gap-4 text-center lg:text-left max-w-md">
                 <h4 className="text-xl sm:text-2xl font-bold">
                   Starta med ditt mående
                 </h4>
@@ -25,13 +25,14 @@ const MoodTrackerDiaryShowcase = () => {
                   Vi har en mood tracker som är enkelt att använda och fokuserar
                   på att du ska få en överblick över ditt tillstånd.
                 </p>
-                <div className="w-full flex items-center justify-center mt-4">
+                <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
                   <Image
-                    src="/images/mood-tracker.png"
-                    alt="Mood tracker diary"
-                    width={490}
-                    height={253}
-                    className="object-contain rounded-2xl lg:rounded-full w-full max-w-[400px]"
+                    src="/images/home/mood-tracker.png"
+                    alt="Mood tracker"
+                    width={2000}
+                    height={1000}
+                    quality={100}
+                    className="object-contain w-full h-full p-2"
                   />
                 </div>
               </div>
@@ -41,14 +42,24 @@ const MoodTrackerDiaryShowcase = () => {
             <div className="h-px lg:hidden bg-gray-300"></div>
 
             <div className="flex flex-1 justify-center">
-              <div className="flex flex-col gap-4 text-center lg:text-left">
+              <div className="flex flex-col gap-4 text-center lg:text-left max-w-md">
                 <h4 className="text-xl sm:text-2xl font-bold">
                   Följ din resa med vår dagbok
                 </h4>
                 <p className="text-base sm:text-lg">
                   Fyll i dina dagliga uppgifter och följ din resa med vår
-                  dagbok.
+                  dagbok som hjälper dig att reflektera över dina framsteg.
                 </p>
+                <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
+                  <Image
+                    src="/images/home/diary.png"
+                    alt="Dagbok"
+                    width={2000}
+                    height={1000}
+                    quality={100}
+                    className="object-contain w-full h-full p-2"
+                  />
+                </div>
               </div>
             </div>
           </div>
