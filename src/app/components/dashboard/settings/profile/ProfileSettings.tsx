@@ -8,6 +8,7 @@ import { userSettingsValidationSchema } from '@/app/utils/validationSchemas';
 import { ErrorMessage, Field, FieldProps, Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
 import { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface IFormValues {
   email: string;
@@ -51,9 +52,10 @@ const ProfileSettings = () => {
           },
         });
       }
+      toast.success('Inställningar sparade');
     } catch (error) {
       console.error('Error in handleSubmit:', error);
-      setSaveError('Kunde inte spara inställningarna. Försök igen senare');
+      toast.error('Kunde inte spara inställningarna. Försök igen senare');
     } finally {
       setIsSaving(false);
     }

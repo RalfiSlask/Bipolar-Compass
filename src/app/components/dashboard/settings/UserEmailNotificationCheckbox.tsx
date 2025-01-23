@@ -1,6 +1,7 @@
 import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IUser } from '@/app/types/user';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface IUserEmailNotificationCheckboxProps {
   user: IUser;
@@ -19,7 +20,6 @@ const UserEmailNotificationCheckbox = ({
 
   const handleMainToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNotifications(e.target.checked);
-    console.log('is notification checked: ', e.target.checked);
   };
 
   const handleRelativeToggle =
@@ -39,8 +39,10 @@ const UserEmailNotificationCheckbox = ({
       );
 
       await saveNotificationSettings(notifications, updatedRelatives);
+      toast.success('Notifikationer sparade');
       console.log('saved notification settings');
     } catch (error) {
+      toast.error('Kunde inte spara notifikationer');
       console.error('Failed to save notification settings:', error);
     }
   };

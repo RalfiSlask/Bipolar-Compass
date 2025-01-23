@@ -4,6 +4,7 @@ import { passwordChangeValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface IPasswordFormValues {
   currentPassword: string;
@@ -13,7 +14,6 @@ interface IPasswordFormValues {
 
 const ChangePasswordForm = () => {
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
   const context = useContext(SettingsContext);
 
   if (!context) {
@@ -27,7 +27,6 @@ const ChangePasswordForm = () => {
   const handleSubmit = async (values: IPasswordFormValues) => {
     try {
       setError(null);
-      setSuccess(false);
 
       await axios.put('/api/settings/save/security/password', {
         currentPassword: values.currentPassword,
@@ -35,15 +34,15 @@ const ChangePasswordForm = () => {
         email: user?.email,
       });
 
-      setSuccess(true);
+      toast.success('Lösenordet har uppdaterats');
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setError(
+        toast.error(
           error.response?.data?.message ||
             'Ett fel uppstod vid uppdatering av lösenord'
         );
       } else {
-        setError('Ett oväntat fel uppstod');
+        toast.error('Ett oväntat fel uppstod');
       }
     }
   };
@@ -118,11 +117,6 @@ const ChangePasswordForm = () => {
             </div>
 
             {error && <p className="text-sm text-red-500">{error}</p>}
-            {success && (
-              <p className="text-sm text-green-500">
-                Lösenordet har uppdaterats!
-              </p>
-            )}
 
             <button type="submit" className="primary-button w-full">
               Uppdatera lösenord
