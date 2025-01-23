@@ -41,11 +41,8 @@ const SecuritySettings = () => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-4 shadow-sm border rounded-lg">
           <ChangePasswordForm />
-          <p className="text-center text-sm my-4">
-            <Link
-              href="/konto/glomt-losenord"
-              className="nav-link font-medium "
-            >
+          <p className="text-center text-sm mt-4 hover:text-primary-dark duration-200 transition-colors my-4">
+            <Link href="/konto/glomt-losenord" className="font-medium ">
               Har du glömt ditt lösenord?
             </Link>
           </p>

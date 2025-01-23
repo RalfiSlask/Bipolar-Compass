@@ -12,12 +12,11 @@ import {
   FaSmile,
 } from 'react-icons/fa';
 import {
-  Area,
-  AreaChart,
   CartesianGrid,
   Cell,
-  Label,
   Legend,
+  Line,
+  LineChart,
   Pie,
   PieChart,
   ResponsiveContainer,
@@ -26,26 +25,26 @@ import {
   YAxis,
 } from 'recharts';
 import Spinner from '../components/shared/Spinner';
+import VerficationMessage from '../components/shared/VerficationMessage';
 import { ICustomSession } from '../types/authoptions';
-import { IMoodTrackerWeek } from '../types/moodtracker';
-import { IUser } from '../types/user';
+import { IUserWithMoodTracker } from '../types/user';
 
 const MyPage = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
   const [isLoading, setIsLoading] = useState(true);
-  const [userData, setUserData] = useState<IUser | null>(null);
-  const [moodTrackerData, setMoodTrackerData] = useState<IMoodTrackerWeek[]>(
-    []
-  );
+  const [userData, setUserData] = useState<IUserWithMoodTracker | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         if (!session?.user?.email) return;
 
-        const response: AxiosResponse<IUser> = await axios.post('/api/user', {
-          email: session.user.email,
-        });
+        const response: AxiosResponse<IUserWithMoodTracker> = await axios.post(
+          '/api/user',
+          {
+            email: session.user.email,
+          }
+        );
 
         if (response.status === 200) {
           setUserData(response.data);
@@ -58,37 +57,28 @@ const MyPage = () => {
       }
     };
 
-    const fetchMoodTrackerData = async () => {
-      try {
-        if (!session?.user?.id) return;
-
-        const response = await axios.post('/api/history', {
-          user_id: session.user.id,
-        });
-
-        if (response.data) {
-          setMoodTrackerData(response.data);
-        }
-      } catch (error) {
-        console.error('Failed to fetch mood tracker data:', error);
-      }
-    };
-
     fetchUserData();
-    fetchMoodTrackerData();
   }, [session]);
 
   const calculateSleepAverage = () => {
-    const sleepMood = moodTrackerData
+    const sleepMood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
       .find((mood) => mood.id === 'sleep');
     if (!sleepMood) return null;
 
+    // Get current date
+    const today = new Date();
+    // Calculate date 30 days ago
+    const thirtyDaysAgo = new Date(today.setDate(today.getDate() - 30));
+
     const validDays = sleepMood.valueForDays.filter(
-      (day) => day.value !== null && day.value >= 0
+      (day) =>
+        day.value !== null &&
+        day.value >= 0 &&
+        new Date(day.date) >= thirtyDaysAgo
     );
 
-    if (validDays.length < 7) return null;
+    if (validDays.length === 0) return null;
 
     const totalSleep = validDays.reduce(
       (sum, day) => sum + (day.value || 0),
@@ -99,20 +89,54 @@ const MyPage = () => {
 
   const sleepAverage = calculateSleepAverage();
 
-  const sleepData =
-    moodTrackerData
-      .flatMap((week) => week.mood_values)
-      .find((mood) => mood.id === 'sleep')
-      ?.valueForDays.filter((day) => day.value !== null && day.value >= 0)
-      .map((day) => ({
-        date: new Date(day.date).toLocaleDateString('sv-SE', {
-          month: 'short',
-          day: 'numeric',
-        }),
-        value: day.value,
-      })) || [];
+  console.log(sleepAverage);
 
-  const anxietyMood = moodTrackerData
+  const transformSleepData = () => {
+    return userData?.moodTrackerData
+      .flatMap((week) =>
+        week.mood_values
+          .find((mood) => mood.id === 'sleep')
+          ?.valueForDays.filter(
+            (day) => day.date && day.value !== null && day.value !== undefined
+          )
+          .map((day) => {
+            try {
+              const dateObj = new Date(day.date);
+              if (isNaN(dateObj.getTime())) {
+                console.warn(`Invalid date found: ${day.date}`);
+                return null;
+              }
+
+              return {
+                date: new Date(day.date).toLocaleDateString('sv-SE', {
+                  day: 'numeric',
+                  month: 'short',
+                }),
+                value: day.value,
+              };
+            } catch (error) {
+              console.warn(`Error processing date ${day.date}:`, error);
+              return null;
+            }
+          })
+      )
+      .filter((item): item is { date: string; value: number } => item !== null)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  };
+
+  const sleepData = transformSleepData() || [];
+
+  console.log(sleepData);
+
+  console.log(userData?.moodTrackerData);
+
+  const onlyTheMoodTrackerData = userData?.moodTrackerData.flatMap((week) =>
+    week.mood_values.find((mood) => mood.id === 'sleep')
+  );
+
+  console.log(onlyTheMoodTrackerData);
+
+  const anxietyMood = userData?.moodTrackerData
     .flatMap((week) => week.mood_values)
     .find((mood) => mood.id === 'anxiety');
 
@@ -152,6 +176,7 @@ const MyPage = () => {
 
   return (
     <section className="w-full px-6 py-12 min-h-screen bg-tertiary-light">
+      {session?.user?.isVerified ? null : <VerficationMessage />}
       <div className="max-w-7xl mx-auto mb-8">
         <div className="lg:col-span-2 bg-white rounded-2xl shadow-md p-8 relative overflow-hidden">
           <div className="relative z-10">
@@ -187,7 +212,7 @@ const MyPage = () => {
 
         <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md mb-8">
           <h2 className="text-xl font-semibold text-primary-dark mb-4">
-            Medicinering
+            Dina mediciner
           </h2>
           {userData?.profile?.medications.map((medication, index) => (
             <div key={index} className="mb-4">
@@ -205,40 +230,67 @@ const MyPage = () => {
             </div>
           ))}
         </div>
+        <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md mb-8">
+          <h2 className="text-xl font-semibold text-primary-dark mb-4">
+            Dina Anhöriga
+          </h2>
+          {userData?.settings.relatives.map((relative, index) => (
+            <div key={index} className="mb-4">
+              <p className="text-primary-medium">Namn: {relative.email}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md mb-8">
           <h2 className="text-xl font-semibold text-primary-dark mb-4">
             Sömn (h)
           </h2>
           <ResponsiveContainer width="100%" height={300}>
-            <AreaChart data={sleepData}>
-              <CartesianGrid stroke="#e0e0e0" strokeDasharray="5 5" />
-              <XAxis dataKey="date">
-                <Label value="Datum" offset={-5} position="insideBottom" />
-              </XAxis>
-              <YAxis>
-                <Label value="Timmar" angle={-90} position="insideLeft" />
-              </YAxis>
+            <LineChart data={sleepData}>
+              <CartesianGrid
+                stroke="#ccc"
+                strokeDasharray="5 5"
+                strokeOpacity={0.3}
+              />
+              <XAxis
+                dataKey="date"
+                angle={-45}
+                textAnchor="end"
+                height={60}
+                interval={Math.ceil(sleepData.length / 4)}
+                tick={{ fontSize: 12 }}
+              />
+              <YAxis
+                width={100}
+                domain={[0, 24]}
+                ticks={[0, 4, 8, 12, 16, 20, 24]}
+                tick={{ fontSize: 12 }}
+              />
               <Tooltip
                 contentStyle={{
                   backgroundColor: '#f5f5f5',
                   borderColor: '#ccc',
+                  fontSize: '14px',
                 }}
+                formatter={(value: number) => [`${value} timmar`, 'Sömn']}
               />
-              <Area
+              <Line
                 type="monotone"
                 dataKey="value"
-                stroke="#8884d8"
-                fill="#8884d8"
+                stroke="#46737c"
                 strokeWidth={2}
-                dot={{ r: 4 }}
+                dot={{ fill: '#46737c', r: 4 }}
+                activeDot={{ r: 6, fill: '#46737c' }}
+                connectNulls={false}
               />
-            </AreaChart>
+            </LineChart>
           </ResponsiveContainer>
           {sleepAverage !== null && (
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <p className="text-blue-800">
-                <span className="font-semibold">Genomsnittlig sömn: </span>
+            <div className="mt-4 p-4 bg-primary-light rounded-lg border border-primary-border">
+              <p className="text-primary-dark">
+                <span className="font-semibold">
+                  Genomsnittlig sömn (senaste 30 dagarna):{' '}
+                </span>
                 {sleepAverage.toFixed(2)} timmar
               </p>
             </div>

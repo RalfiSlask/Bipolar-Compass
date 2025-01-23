@@ -40,7 +40,7 @@ const RegistrationPage = () => {
               Har du redan ett konto?{' '}
               <a
                 href="/konto/logga-in"
-                className="font-medium text-primary-dark hover:text-primary transition-colors"
+                className="nav-link font-medium text-primary-dark hover:text-primary transition-colors"
               >
                 Logga in här
               </a>

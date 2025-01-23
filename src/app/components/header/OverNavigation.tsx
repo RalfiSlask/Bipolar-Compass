@@ -17,11 +17,11 @@ const OverNavigation = () => {
             </span>
           </Link>
           <Link
-            className="rounded-lg py-1 px-2 flex items-center gap-2 text-primary-dark hover:bg-white/50 transition-all duration-200 group"
+            className="rounded-lg py-1 px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
             href="/kontakt"
           >
-            <MdContactSupport className="group-hover:scale-110 transition-transform duration-200" />
-            <span className="group-hover:text-primary-medium transition-colors duration-200">
+            <MdContactSupport className="transition-transform duration-200" />
+            <span className="group-hover:text-secondary-dark transition-colors duration-200">
               Kontakt
             </span>
           </Link>
