@@ -15,7 +15,7 @@ export const threeSections = [
     bgColor: 'bg-secondary-light',
     textColor: 'text-primary-dark',
     buttonVariant: 'primary',
-    href: '/forskning/artiklar',
+    href: '/forskning',
   },
   {
     title: 'Jag är anhörig',
