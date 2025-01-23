@@ -10,24 +10,23 @@ import SciencePagination from '@/app/components/pages/science/SciencePagination'
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
 import Spinner from '@/app/components/shared/Spinner';
 import {
-    ARTICLE_ATTRIBUTE_FILTERS,
-    LANGUAGE_FILTERS,
-    PUBLICATION_TYPE_FILTERS,
-    SWEDISH_HOSPITALS_FILTERS,
-    SWEDISH_UNIVERSITIES_FILTERS,
-    TEXT_AVAILABILITY_FILTERS,
-    YEARS_OF_PUBLICATION_FILTERS,
+  ARTICLE_ATTRIBUTE_FILTERS,
+  LANGUAGE_FILTERS,
+  PUBLICATION_TYPE_FILTERS,
+  SWEDISH_HOSPITALS_FILTERS,
+  SWEDISH_UNIVERSITIES_FILTERS,
+  TEXT_AVAILABILITY_FILTERS,
+  YEARS_OF_PUBLICATION_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
-    getDateFilterQuery,
-    getFormattedArticles,
-    parseXMLAbstracts,
+  getDateFilterQuery,
+  getFormattedArticles,
+  parseXMLAbstracts,
 } from '@/app/utils/scienceUtils';
 import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
 import { IoFilter } from 'react-icons/io5';
 import CustomSelect from '../components/shared/CustomSelectDropdown';
 
@@ -125,9 +124,9 @@ const ScienceArticles = () => {
   };
 
   useEffect(() => {
-    const fetchPubMedData = async () => {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    const fetchPubMedData = async () => {
       const dateFilter = getDateFilterQuery(selectedAmountOfYears);
 
       let affiliationQuery = '';
@@ -193,16 +192,16 @@ const ScienceArticles = () => {
         }
       }
 
+      // Add sort parameter to the search URL
+      const sortParam = sortOrder
+        ? `&sort=${sortOrder === 'newest' ? 'date_desc' : 'date_asc'}`
+        : '';
+
+      const searchUrl = `${BASE_URL}/esearch.fcgi?db=pubmed&term=${finalSearchQuery}&retmode=json&retmax=${ARTICLES_PER_PAGE}&retstart=${
+        (currentPage - 1) * ARTICLES_PER_PAGE
+      }${sortParam}&api_key=${apiKey}`;
+
       try {
-        // Add sort parameter to the search URL
-        const sortParam = sortOrder
-          ? `&sort=${sortOrder === 'newest' ? 'date_desc' : 'date_asc'}`
-          : '';
-
-        const searchUrl = `${BASE_URL}/esearch.fcgi?db=pubmed&term=${finalSearchQuery}&retmode=json&retmax=${ARTICLES_PER_PAGE}&retstart=${
-          (currentPage - 1) * ARTICLES_PER_PAGE
-        }${sortParam}&api_key=${apiKey}`;
-
         const searchResponse = await axios.get(searchUrl);
         const ids = searchResponse.data.esearchresult.idlist;
         setTotalResults(parseInt(searchResponse.data.esearchresult.count));
@@ -317,7 +316,7 @@ const ScienceArticles = () => {
   return (
     <section className="w-full min-h-screen flex flex-col items-center bg-primary-light">
       <div className="max-w-[1440px] w-full px-4 md:px-10 pt-10 pb-20">
-        <div className="w-full lg:h-[350px] bg-white mx-auto rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
+        <div className="w-full lg:h-[350px] bg-white rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
           <Image
             src="/images/science/science-testing.jpg"
             alt="forskning"
@@ -382,7 +381,7 @@ const ScienceArticles = () => {
         </div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row gap-8 px-4 md:px-10 pb-20">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pb-20">
         <div className="md:hidden sticky top-0 z-20 bg-primary-light py-4">
           <button
             onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
@@ -398,84 +397,41 @@ const ScienceArticles = () => {
           </button>
         </div>
 
-        <div
-          className={`md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 ${
-            isMobileFiltersOpen
-              ? 'opacity-100'
-              : 'opacity-0 pointer-events-none'
-          }`}
-          onClick={() => setIsMobileFiltersOpen(false)}
-        >
-          <div
-            className={`bg-white w-full max-w-md h-screen overflow-y-auto transition-transform duration-300 ease-out transform ${
-              isMobileFiltersOpen ? 'translate-x-0' : '-translate-x-full'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white z-10 px-6 py-4 border-b border-gray-200">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold text-primary-dark">
-                  Filter
-                </h2>
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-full"
-                >
-                  <IoMdClose className="text-2xl text-gray-500" />
-                </button>
+        <div className="grid md:grid-cols-[280px_1fr] gap-8">
+          <aside className="hidden md:block bg-white p-6 rounded-lg shadow-md h-fit">
+            <ScienceExtentFilter
+              searchScope={searchScope}
+              handleLanguageFilterClick={handleLanguageFilterClick}
+            />
+
+            <div className="flex flex-col gap-4 pt-6">
+              <h3 className="font-medium text-primary-dark">
+                Publiceringsdatum
+              </h3>
+              <div className="space-y-2">
+                {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
+                  <div key={tab.value} className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      value={tab.value}
+                      name="years"
+                      id={tab.value}
+                      checked={selectedAmountOfYears === tab.value}
+                      aria-label={tab.label}
+                      onChange={(e) => handleYearsFilterChange(e.target.value)}
+                      className="w-4 h-4 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
+                    />
+                    <label htmlFor={tab.value} className="text-gray-700">
+                      {tab.label}
+                    </label>
+                  </div>
+                ))}
               </div>
-              {scienceActiveFilters.length > 0 && (
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
-                    {scienceActiveFilters.length} aktiva filter
-                  </span>
-                  <button
-                    onClick={clearAllFilters}
-                    className="text-sm text-primary-medium hover:text-primary-dark"
-                  >
-                    Rensa alla
-                  </button>
-                </div>
-              )}
             </div>
 
-            <div className="p-6 space-y-6">
-              <ScienceExtentFilter
-                searchScope={searchScope}
-                handleLanguageFilterClick={handleLanguageFilterClick}
-              />
-
-              <div className="space-y-4">
-                <h3 className="font-medium text-primary-dark">
-                  Publiceringsdatum
-                </h3>
-                <div className="space-y-3">
-                  {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
-                    <div key={tab.value} className="flex items-center gap-3">
-                      <input
-                        type="checkbox"
-                        value={tab.value}
-                        name="years"
-                        id={`mobile-${tab.value}`}
-                        checked={selectedAmountOfYears === tab.value}
-                        onChange={(e) =>
-                          handleYearsFilterChange(e.target.value)
-                        }
-                        className="w-5 h-5 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
-                      />
-                      <label
-                        htmlFor={`mobile-${tab.value}`}
-                        className="text-gray-700"
-                      >
-                        {tab.label}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {searchScope === 'swedish' && (
-                <div className="space-y-4">
+            {searchScope === 'swedish' && (
+              <>
+                <div className="space-y-4 pt-6">
                   <CustomSelect
                     options={SWEDISH_UNIVERSITIES_FILTERS}
                     value={selectedUniversity}
@@ -486,6 +442,7 @@ const ScienceArticles = () => {
                     placeholder="Välj universitet"
                     size="large"
                   />
+
                   <CustomSelect
                     options={SWEDISH_HOSPITALS_FILTERS}
                     value={selectedHospital}
@@ -497,170 +454,88 @@ const ScienceArticles = () => {
                     size="large"
                   />
                 </div>
-              )}
+              </>
+            )}
 
-              <div className="space-y-6 divide-y divide-gray-200">
-                <FilterGroup
-                  title="Textinnehåll"
-                  filters={TEXT_AVAILABILITY_FILTERS}
-                  selectedValues={activeFilters}
-                  onChange={handleFilterChange}
-                />
-                <FilterGroup
-                  title="Artikelattribut"
-                  filters={ARTICLE_ATTRIBUTE_FILTERS}
-                  selectedValues={activeFilters}
-                  onChange={handleFilterChange}
-                />
-                <FilterGroup
-                  title="Språk"
-                  filters={LANGUAGE_FILTERS}
-                  selectedValues={[selectedLanguage]}
-                  onChange={(id) => handleLanguageChange(id)}
-                  type="radio"
-                  name="language"
-                />
-                <ScienceArticleTypeFilter
-                  activeFilters={activeFilters}
-                  handleFilterChange={handleFilterChange}
-                  setIsModalOpen={setIsModalOpen}
-                />
-              </div>
+            <div className="flex flex-col gap-6 divide-y divide-gray-200">
+              <FilterGroup
+                title="Textinnehåll"
+                filters={TEXT_AVAILABILITY_FILTERS}
+                selectedValues={activeFilters}
+                onChange={handleFilterChange}
+              />
+              <FilterGroup
+                title="Artikelattribut"
+                filters={ARTICLE_ATTRIBUTE_FILTERS}
+                selectedValues={activeFilters}
+                onChange={handleFilterChange}
+              />
+              <FilterGroup
+                title="Språk"
+                filters={LANGUAGE_FILTERS}
+                selectedValues={[selectedLanguage]}
+                onChange={(id) => handleLanguageChange(id)}
+                type="radio"
+                name="language"
+              />
+              <ScienceArticleTypeFilter
+                activeFilters={activeFilters}
+                handleFilterChange={handleFilterChange}
+                setIsModalOpen={setIsModalOpen}
+              />
             </div>
-          </div>
-        </div>
+          </aside>
 
-        <aside className="hidden md:flex flex-col gap-6 w-72 bg-white p-6 rounded-lg shadow-md  h-fit">
-          <ScienceExtentFilter
-            searchScope={searchScope}
-            handleLanguageFilterClick={handleLanguageFilterClick}
-          />
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-medium text-primary-dark">Publiceringsdatum</h3>
-            <div className="space-y-2">
-              {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
-                <div key={tab.value} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    value={tab.value}
-                    name="years"
-                    id={tab.value}
-                    checked={selectedAmountOfYears === tab.value}
-                    aria-label={tab.label}
-                    onChange={(e) => handleYearsFilterChange(e.target.value)}
-                    className="w-4 h-4 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
+          <main className="bg-white rounded-lg shadow-md p-6">
+            <div className="flex flex-col w-full">
+              <div className="w-full space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">
+                    {totalResults} artiklar hittade
+                  </span>
+                  <ScienceSortFilter
+                    handleSortChange={handleSortChange}
+                    sortOrder={sortOrder || 'newest'}
                   />
-                  <label htmlFor={tab.value} className="text-gray-700">
-                    {tab.label}
-                  </label>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {searchScope === 'swedish' && (
-            <>
-              <div className="space-y-4">
-                <CustomSelect
-                  options={SWEDISH_UNIVERSITIES_FILTERS}
-                  value={selectedUniversity}
-                  onChange={(value) =>
-                    handleInstituteChange(value, 'university')
-                  }
-                  name="university"
-                  placeholder="Välj universitet"
-                  size="large"
-                />
+                {scienceActiveFilters.length > 0 && (
+                  <ScienceActiveFilters
+                    ScienceActiveFilters={scienceActiveFilters}
+                    clearAllFilters={clearAllFilters}
+                  />
+                )}
 
-                <CustomSelect
-                  options={SWEDISH_HOSPITALS_FILTERS}
-                  value={selectedHospital}
-                  onChange={(value) => handleInstituteChange(value, 'hospital')}
-                  name="hospital"
-                  placeholder="Välj sjukhus"
-                  size="large"
-                />
-              </div>
-            </>
-          )}
-
-          <div className="flex flex-col gap-6 divide-y divide-gray-200">
-            <FilterGroup
-              title="Textinnehåll"
-              filters={TEXT_AVAILABILITY_FILTERS}
-              selectedValues={activeFilters}
-              onChange={handleFilterChange}
-            />
-            <FilterGroup
-              title="Artikelattribut"
-              filters={ARTICLE_ATTRIBUTE_FILTERS}
-              selectedValues={activeFilters}
-              onChange={handleFilterChange}
-            />
-            <FilterGroup
-              title="Språk"
-              filters={LANGUAGE_FILTERS}
-              selectedValues={[selectedLanguage]}
-              onChange={(id) => handleLanguageChange(id)}
-              type="radio"
-              name="language"
-            />
-            <ScienceArticleTypeFilter
-              activeFilters={activeFilters}
-              handleFilterChange={handleFilterChange}
-              setIsModalOpen={setIsModalOpen}
-            />
-          </div>
-        </aside>
-
-        <main className="flex-1">
-          <div className="flex flex-col items-center gap-6">
-            <div className="w-full  space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">
-                  {totalResults} artiklar hittade
-                </span>
-                <ScienceSortFilter
-                  handleSortChange={handleSortChange}
-                  sortOrder={sortOrder || 'newest'}
-                />
-              </div>
-
-              {scienceActiveFilters.length > 0 && (
-                <ScienceActiveFilters
-                  ScienceActiveFilters={scienceActiveFilters}
-                  clearAllFilters={clearAllFilters}
-                />
-              )}
-
-              <div className="relative space-y-4">
-                {isLoading ? (
-                  <div className="min-h-[400px] flex items-center justify-center">
-                    <Spinner />
+                <div className="relative min-h-[600px] w-full">
+                  <div className="space-y-4 w-full">
+                    {articles.map((article) => (
+                      <ScienceArticleContainer
+                        key={article.id}
+                        article={article}
+                      />
+                    ))}
                   </div>
-                ) : (
-                  articles.map((article) => (
-                    <ScienceArticleContainer
-                      key={article.id}
-                      article={article}
+
+                  {isLoading && (
+                    <div className="absolute inset-0 bg-white/80 z-10 flex items-center justify-center">
+                      <Spinner />
+                    </div>
+                  )}
+                </div>
+
+                {!isLoading && articles.length > 0 && (
+                  <div className="mt-8">
+                    <SciencePagination
+                      currentPage={currentPage}
+                      totalPages={totalPages}
+                      handlePageChange={handlePageChange}
                     />
-                  ))
+                  </div>
                 )}
               </div>
-
-              {!isLoading && articles.length > 0 && (
-                <div className="mt-8">
-                  <SciencePagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    handlePageChange={handlePageChange}
-                  />
-                </div>
-              )}
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
       </div>
 
       {isModalOpen && (
