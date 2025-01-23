@@ -19,7 +19,7 @@ const DashboardSettingsNavigation = ({
           <li key={tab.id}>
             <button
               onClick={() => changeActiveTab(tab.id)}
-              className={`py-4 px-2 text-lg border-b-2 transition-colors focus:outline-none focus:ring-2
+              className={`py-4 px-2 text-lg border-b-2  transition-colors focus:outline-none
                 ${
                   activeTab === tab.id
                     ? 'active border-primary-dark text-primary-dark'
