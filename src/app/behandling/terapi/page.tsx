@@ -1,3 +1,4 @@
+import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import { therapyIntro } from '@/app/data/pageIntros';
 import Image from 'next/image';
@@ -318,7 +319,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="bg-primary-light w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
+        <div className="bg-primary-light w-full flex lg:flex-row  shadow-primary-dark/20 flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
           <div className="flex-1 h-full flex flex-col gap-4 items-center">
             <h3 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
               Resurser och hjälp att börja
@@ -380,16 +381,7 @@ const TherapyPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col content-container">
-          <div className="bg-primary-light/20 rounded-md p-4">
-            <p className=" font-semibold text-primary-dark">
-              Terapier är ett värdefullt verktyg för att hantera bipolär
-              sjukdom. Oavsett vilken terapiform du väljer är det viktigaste att
-              du tar första steget mot att söka hjälp. Vi är här för att stödja
-              dig på din resa mot bättre hälsa och balans i livet.
-            </p>
-          </div>
-        </div>
+        <EncouragmentContainer text="Terapier är ett värdefullt verktyg för att hantera bipolär sjukdom. Oavsett vilken terapiform du väljer är det viktigaste att du tar första steget mot att söka hjälp. Vi är här för att stödja dig på din resa mot bättre hälsa och balans i livet." />
       </div>
     </section>
   );
