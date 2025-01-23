@@ -2,7 +2,7 @@
 
 import MovieContainer from '@/app/components/pages/resources/MovieContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import moviesData from '@/app/data/movies.json';
+import moviesData from '@/app/data/json/movies.json';
 import { moviesIntro } from '@/app/data/pageIntros';
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
 import Image from 'next/image';

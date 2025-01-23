@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { MdContactSupport, MdEmergency } from 'react-icons/md';
-import menu from '../../data/menu.json';
+import menu from '../../data/json/menu.json';
 import BipolarLogo from '../logo/BipolarLogo';
 import Lightbox from './Lightbox';
 import LoginNavigation from './LoginNavigation';

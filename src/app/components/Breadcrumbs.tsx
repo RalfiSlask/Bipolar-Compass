@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import arrowRightIcon from '../assets/icons/arrow-right.svg';
-import menuData from '../data/menu.json';
+import menuData from '../data/json/menu.json';
 import { IMenuItem } from '../types/menu/menu';
 
 const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
