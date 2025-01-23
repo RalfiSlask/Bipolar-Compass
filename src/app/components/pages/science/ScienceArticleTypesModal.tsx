@@ -39,7 +39,7 @@ const ScienceArticleTypesModal = ({
         aria-hidden="true"
       />
 
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
         <div className="bg-white w-full max-w-[800px] rounded-lg shadow-xl flex flex-col max-h-[90vh] animate-modal-slide-up">
           <div className="p-6 border-b border-gray-200 flex items-center justify-between">
             <div className="flex items-center gap-2">
