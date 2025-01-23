@@ -1,7 +1,5 @@
 'use client';
 
-import { ICustomSession } from '@/app/types/authoptions';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -17,7 +15,6 @@ import SubmenuItem from './SubmenuItem';
 const MOBILE_BREAKPOINT = 1280;
 
 const UnderNavigation = () => {
-  const { data: session } = useSession() as { data: ICustomSession | null };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -57,10 +54,10 @@ const UnderNavigation = () => {
 
       <div
         className={`
-        flex flex-col xl:flex-row gap-2 xl:gap-4 items-start xl:items-center
+        flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'absolute top-[96px] left-0 w-full h-[calc(100vh-96px)] bg-white p-4 shadow-lg z-50 border-t border-primary-medium overflow-y-auto'
+            ? 'absolute top-[96px] left-0 w-full h-[calc(100vh-96px)] items-start  bg-white p-4 shadow-lg z-50 border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
       >
@@ -90,14 +87,6 @@ const UnderNavigation = () => {
             setActiveMenu={setActiveMenu}
           />
         ))}
-        {session && (
-          <Link
-            href="/min-sida"
-            className="p-3 font-semibold text-base xl:text-lg hover:text-primary-medium transition-colors w-full xl:w-auto"
-          >
-            Min Sida
-          </Link>
-        )}
         <div className="xl:hidden mt-auto w-full border-t border-primary-light pt-4">
           <LoginNavigation />
         </div>
@@ -122,6 +111,10 @@ const UnderNavigation = () => {
                     <div key={item.id} className="max-w-5xl mx-auto">
                       <Link
                         href={`/${item.slug}`}
+                        onClick={() => {
+                          setActiveMenu(null);
+                          closeMenu();
+                        }}
                         className="group flex items-center gap-3 text-3xl text-primary-dark font-semibold mb-8 hover:text-primary-medium transition-colors"
                       >
                         {item.title}
