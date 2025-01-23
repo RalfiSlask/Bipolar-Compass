@@ -70,7 +70,7 @@ const WhatIsBipolarityPage = () => {
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>Överdrivet energiska eller självsäkra</li>
               <li>Pratsamma eller rastlösa</li>
-              <li>Oförmögen att sova trots att de inte känner sig trötta</li>
+              <li>Oförmögen att sova</li>
               <li>Impulsiva, med riskfyllda beteenden som konsekvens</li>
             </ul>
           </div>
