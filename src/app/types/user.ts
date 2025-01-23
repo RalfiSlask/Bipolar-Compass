@@ -1,3 +1,4 @@
+import { IMoodTrackerWeek } from './moodtracker';
 import { IProfile } from './profile';
 import { ISettings } from './settings';
 
@@ -12,4 +13,8 @@ export interface IUser {
   tokenExpires?: Date;
   profile: IProfile;
   settings: ISettings;
+}
+
+export interface IUserWithMoodTracker extends IUser {
+  moodTrackerData: IMoodTrackerWeek[];
 }
