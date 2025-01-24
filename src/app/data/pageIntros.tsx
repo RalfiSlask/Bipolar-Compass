@@ -38,6 +38,16 @@ export const relativeIntro = {
   color: 'green' as const,
 };
 
+export const faqIntro = {
+  title: 'Frågor och svar',
+  description:
+    'Här har vi samlat de vanligaste frågorna om bipolär sjukdom. Du hittar svar på allt från grundläggande information om diagnosen till praktiska råd om behandling och vardagshantering. ',
+  descriptionBold:
+    'Varje svar innehåller länkar till fördjupad information på relevanta sidor på vår webbplats.',
+  image: '/images/faq.jpg',
+  color: 'green' as const,
+};
+
 export const moviesIntro = {
   title: 'Filmer',
   description:
