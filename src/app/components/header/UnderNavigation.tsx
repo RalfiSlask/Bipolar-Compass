@@ -98,11 +98,7 @@ const UnderNavigation = () => {
           <div
             className="w-full bg-white absolute left-0 right-0 shadow-lg
               transition-all duration-300 ease-in-out opacity-100
-              border-t border-primary-border animate-modal-slide-up"
-            style={{
-              top: '170px',
-              zIndex: 51,
-            }}
+              border-t border-primary-border animate-modal-slide-up top-[160px] z-[51]"
           >
             <div className="p-12 max-w-[1440px] mx-auto">
               {menu.menuItems.map((item) => {

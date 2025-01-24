@@ -41,7 +41,9 @@ const MenuItem = ({
       e.stopPropagation();
       setActiveMenu(isVisible ? null : slug);
     } else {
+      console.log('closing the menu');
       closeMenu();
+      setActiveMenu(null);
     }
   };
 
@@ -50,8 +52,8 @@ const MenuItem = ({
       <Link
         href={`/${slug}`}
         className={`
-          nav-link !text-base xl:!text-lg flex items-center justify-between
-          w-full xl:w-auto px-3 py-2 rounded-lg gap-2 transition-all duration-200
+          nav-link !text-base xl:!text-lg flex items-center gap-1
+          w-full xl:w-auto px-3 py-2 rounded-lg transition-all duration-200
           hover:bg-primary-light hover:text-primary-dark h-[48px]
           ${isVisible ? 'bg-primary-light text-primary-dark' : ''}
         `}
