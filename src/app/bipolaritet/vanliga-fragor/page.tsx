@@ -1,10 +1,11 @@
 'use client';
 
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { faqItems } from '@/app/data/faqItems';
+import { faqIntro } from '@/app/data/pageIntros';
 import { IFaqItem } from '@/app/types/faq';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -22,30 +23,7 @@ const FAQPage = () => {
 
   return (
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
-      <div className="w-full bg-primary-light text-primary-dark flex items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10">
-        <div className="flex-1">
-          <h2 className="h-lg font-bold mb-6">Frågor och svar</h2>
-          <p className="text-xl text-primary-dark">
-            Här har vi samlat de vanligaste frågorna om bipolär sjukdom. Du
-            hittar svar på allt från grundläggande information om diagnosen till
-            praktiska råd om behandling och vardagshantering. Varje svar
-            innehåller länkar till fördjupad information på relevanta sidor på
-            vår webbplats.
-          </p>
-        </div>
-        <div className="flex-1 rounded-lg overflow-hidden w-full">
-          <Image
-            src="/images/faq.jpg"
-            alt="frågor och svar"
-            width={6000}
-            height={3376}
-            quality={100}
-            aria-label="frågor och svar två händer som håller i ett frågetecken"
-            className="object-cover aspect-[6000/3376] rounded-full"
-            priority
-          />
-        </div>
-      </div>
+      <PageIntroContainer intro={faqIntro} />
 
       <div className="space-y-6">
         {questions.map((item, index) => (
