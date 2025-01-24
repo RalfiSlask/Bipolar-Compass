@@ -104,7 +104,11 @@ const BipolarStatistics = () => {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    <Bar dataKey="value" fill={BAR_COLOR} />
+                    <Bar dataKey="value" fill={BAR_COLOR}>
+                      {typeData.map((entry, index) => (
+                        <Cell key={`bar-${index}`} fill={BAR_COLOR} />
+                      ))}
+                    </Bar>
                   </BarChart>
                 </ResponsiveContainer>
               </div>
