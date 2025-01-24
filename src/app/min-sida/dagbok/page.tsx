@@ -71,8 +71,8 @@ const DiaryPage = () => {
         className="object-cover z-0 opacity-60"
         quality={100}
       />
-      <div className="relative z-10 flex flex-col w-full max-w-[1440px] h-full px-4 md:px-10">
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 md:p-8">
+      <div className="relative z-10 flex flex-col w-full max-w-[1440px] h-full px-1 md:px-10">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg px-0 py-6 md:p-8">
           <div className="flex flex-col items-center md:items-start gap-2 mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-primary-dark">
               Min Dagbok

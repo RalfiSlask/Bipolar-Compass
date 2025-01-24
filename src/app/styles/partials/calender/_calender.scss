@@ -98,6 +98,10 @@ td[role='gridcell'] {
   white-space: nowrap;
 }
 
+th[role='columnheader'] {
+  @apply text-xs sm:text-sm md:text-base;
+}
+
 .diary-add-btn {
   @apply text-primary-medium hover:text-primary-dark p-1 rounded-full;
   background: white;
