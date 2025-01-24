@@ -303,13 +303,13 @@ const Chat = () => {
                         ))}
                       </div>
                     </div>
-                    {message ? (
-                      <div className="max-w-[800px] mx-auto w-full">
+                    {message ? null : (
+                      <div className="hidden md:block max-w-[800px] mx-auto w-full">
                         <div className="text-white mb-4">
                           <ChatDescription />
                         </div>
                       </div>
-                    ) : null}
+                    )}
                     <form
                       className="flex flex-row items-center gap-2 sm:gap-4 mb-4"
                       onSubmit={handleClickAndSendChatMessage}
