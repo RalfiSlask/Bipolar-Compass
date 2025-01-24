@@ -1,11 +1,11 @@
 'use client';
 
 import {
-  scoringInfo,
-  selfAssessmentForms,
+    scoringInfo,
+    selfAssessmentForms,
 } from '@/app/data/selfAssesmentForms';
 import { IScoringInfo } from '@/app/types/documents';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HiDownload, HiEye, HiInformationCircle } from 'react-icons/hi';
 
 const Modal = ({
@@ -15,22 +15,43 @@ const Modal = ({
   info: IScoringInfo;
   onClose: () => void;
 }) => {
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEscKey);
+    return () => window.removeEventListener('keydown', handleEscKey);
+  }, [onClose]);
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
-        <h4 className="text-xl font-semibold text-primary-dark mb-4">
+    <div
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[140]"
+      role="dialog"
+      aria-labelledby="modal-title"
+      aria-modal="true"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div className="fixed bg-white p-6 rounded-lg max-w-md w-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-modal-slide-up">
+        <h4
+          id="modal-title"
+          className="text-xl font-semibold text-primary-dark mb-4"
+        >
           {info.title}
         </h4>
-        <ul className="flex flex-col gap-2 mb-6">
+        <ul className="flex flex-col gap-3 mb-6">
           {info.content.map((item: string, index: number) => (
-            <li key={index} className="text-primary-medium">
+            <li
+              key={index}
+              className="text-primary-medium flex items-start gap-2"
+            >
+              <span className="text-primary-dark mt-1">•</span>
               {item}
             </li>
           ))}
         </ul>
         <button
           onClick={onClose}
-          className="w-full   text-white py-2 px-4 rounded transition-colors"
+          className="w-full bg-primary-medium hover:bg-primary-dark text-white py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
         >
           Stäng
         </button>
@@ -43,104 +64,127 @@ const DocumentsPage = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   return (
-    <section className="container max-w-5xl mx-auto p-6  min-h-screen">
+    <section className="container max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 min-h-screen">
       <div className="mb-12 text-center">
-        <h2 className="text-3xl font-bold text-primary-dark mb-4">Dokument</h2>
-        <p>Här kan du ladda ner formulär för självskattning och information</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-4">
+          Dokument
+        </h1>
+        <p className="text-primary-medium">
+          Här kan du ladda ner formulär för självskattning och information
+        </p>
       </div>
 
-      {/* Guide Section */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-12">
-        <h3 className="text-xl font-semibold text-primary-dark mb-4">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md mb-8 sm:mb-12 hover:shadow-lg transition-shadow duration-200">
+        <h2 className="text-xl font-semibold text-primary-dark mb-4">
           Guide för att leva med bipolär sjukdom
-        </h3>
-        <p className="text-primary-dark mb-6 font-semibold text-sm">
+        </h2>
+        <p className="text-primary-dark mb-6 font-medium text-sm">
           En omfattande guide som hjälper dig att hantera vardagen med bipolär
           sjukdom. Guiden innehåller praktiska råd om:
         </p>
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <ul className="list-disc list-inside text-primary-dark flex flex-col gap-2 text-sm">
-            <li>Igenkänning av tidiga varningstecken</li>
-            <li>
-              Strategier för att hantera både maniska och depressiva episoder
-            </li>
-            <li>Tips för bättre sömnrutiner och stresshantering</li>
+        <div className="grid sm:grid-cols-2 gap-6 mb-6">
+          <ul className="space-y-2 text-sm text-primary-dark">
+            {[
+              'Igenkänning av tidiga varningstecken',
+              'Strategier för att hantera både maniska och depressiva episoder',
+              'Tips för bättre sömnrutiner och stresshantering',
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-primary-medium mt-1">•</span>
+                {item}
+              </li>
+            ))}
           </ul>
-          <ul className="list-disc list-inside text-primary-dark flex flex-col gap-2 text-sm">
-            <li>Råd om medicinering och behandling</li>
-            <li>Information för anhöriga</li>
-            <li>Kontaktinformation till vårdresurser</li>
+          <ul className="space-y-2 text-sm text-primary-dark">
+            {[
+              'Råd om medicinering och behandling',
+              'Information för anhöriga',
+              'Kontaktinformation till vårdresurser',
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="text-primary-medium mt-1">•</span>
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3">
           <a
             href="../pdfs/guide.pdf"
             download="guide.pdf"
-            className="flex-1 flex items-center justify-center gap-2   text-white py-2 px-4 rounded transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 bg-primary-medium/60 hover:text-white  text-dark bg-primary-medium hover:bg-primary-dark  py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
           >
-            <HiDownload className="text-xl" />
-            <span>Ladda ner</span>
+            <HiDownload className="text-xl" aria-hidden="true" />
+            <span className="text-sm md:text-base lg:text-lg">Ladda ner</span>
           </a>
           <a
             href="../pdfs/guide.pdf"
             target="_blank"
-            className="flex-1 flex items-center justify-center gap-2 border border-secondary-medium text-secondary-medium hover:bg-secondary-light py-2 px-4 rounded transition-colors"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
           >
-            <HiEye className="text-xl" />
-            <span>Visa guide</span>
+            <HiEye className="text-xl" aria-hidden="true" />
+            <span className="text-sm md:text-base lg:text-lg">Visa guide</span>
           </a>
         </div>
       </div>
 
-      {/* Forms Section */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h3 className="text-xl font-semibold text-primary-dark mb-4">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+        <h2 className="text-xl font-semibold text-primary-dark mb-4">
           Formulär för självskattning
-        </h3>
-        <p className="text-xs text-secondary-medium italic mb-6">
+        </h2>
+        <p className="text-sm text-primary-medium italic mb-6">
           Klicka på &quot;Poängsystem&quot; för att se hur formulären ska tolkas
         </p>
-        <div className="grid md:grid-cols-2 gap-x-8 gap-y-12">
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
           {selfAssessmentForms.map((form, index) => (
             <div
               key={index}
-              className="flex flex-col h-full border-b border-secondary-light pb-6"
+              className="flex flex-col h-full p-4 rounded-lg border border-gray-100 hover:border-primary-border transition-colors duration-200"
             >
-              <div className="flex items-start justify-between mb-2 gap-4">
-                <p className="text-primary-medium font-semibold">
+              <div className="flex items-start justify-between mb-3 gap-4">
+                <h3 className="text-primary-dark font-semibold">
                   {form.title}
-                </p>
+                </h3>
                 {form.scoringId && (
                   <button
                     onClick={() => setActiveModal(form.scoringId)}
-                    className="flex-shrink-0 flex items-center gap-2 text-secondary-medium hover:text-secondary-dark transition-colors px-3 py-1 rounded-full border border-secondary-light hover:border-secondary-medium"
-                    title="Visa poängsystem"
+                    className="flex items-center gap-2 text-primary-medium hover:text-primary-dark transition-colors px-3 py-1 rounded-full border border-primary-border hover:bg-primary-light"
+                    aria-label={`Visa poängsystem för ${form.title}`}
                   >
-                    <HiInformationCircle className="text-xl" />
+                    <HiInformationCircle
+                      className="text-xl"
+                      aria-hidden="true"
+                    />
                     <span className="text-sm">Poängsystem</span>
                   </button>
                 )}
               </div>
-              <p className="text-primary-dark text-sm mb-6 flex-grow">
+              <p className="text-primary-medium text-sm mb-6 flex-grow">
                 {form.description}
               </p>
-              <div className="flex gap-4 mt-auto">
+              <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                 <a
                   href={form.href}
                   download
-                  className="flex-1 flex items-center justify-center gap-2   text-white py-2 px-4 rounded transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 bg-primary-medium/60 hover:bg-primary-dark hover:text-white text-dark py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
                   aria-label={form.ariaLabel}
                 >
-                  <HiDownload className="text-xl" />
-                  <span>Ladda ner</span>
+                  <HiDownload className="text-xl" aria-hidden="true" />
+                  <span className="text-sm md:text-base lg:text-lg">
+                    Ladda ner
+                  </span>
                 </a>
                 <a
                   href={form.href}
                   target="_blank"
-                  className="flex-1 flex items-center justify-center gap-2 border border-secondary-medium text-secondary-medium hover:bg-secondary-light py-2 px-4 rounded transition-colors"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
                 >
-                  <HiEye className="text-xl" />
-                  <span>Visa formulär</span>
+                  <HiEye className="text-xl" aria-hidden="true" />
+                  <span className="text-sm md:text-base lg:text-lg">
+                    Visa formulär
+                  </span>
                 </a>
               </div>
             </div>
