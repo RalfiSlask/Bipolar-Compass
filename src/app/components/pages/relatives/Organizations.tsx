@@ -36,7 +36,7 @@ const Organizations = () => {
           personer med bipolär sjukdom, depression och andra psykiska
           ohälsotillstånd. De erbjuder stöd, information och gemenskap för både
           drabbade och anhöriga.
-        </p> 
+        </p>
       </a>
 
       <a
@@ -74,6 +74,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="Mind"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -102,6 +104,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="Nationell Samverkan för Psykisk Hälsa"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -130,6 +134,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="SPES"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -158,6 +164,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="Barnens Rätt i Samhället"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -186,6 +194,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="Suicide Zero"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
@@ -214,6 +224,8 @@ const Organizations = () => {
         transition-all duration-300 group relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full"
+        target="_blank"
+        aria-label="Anhöriga.se"
       >
         <div className="h-16 flex items-center justify-center">
           <Image
