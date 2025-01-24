@@ -10,3 +10,7 @@ export const sortByNumberField = <T>(
     return ascending ? valueA - valueB : valueB - valueA;
   });
 };
+
+export const roundToNearestHalf = (value: number) => {
+  return Math.round(value * 2) / 2;
+};
