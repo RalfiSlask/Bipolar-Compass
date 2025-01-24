@@ -4,7 +4,8 @@ import { questionSuggestions } from '@/app/data/chatSuggestions';
 import { IMessage } from '@/app/types/chat';
 import Image from 'next/image';
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
-import { BiReset, BiSend, BiUser, BiWindowAlt } from 'react-icons/bi';
+import toast from 'react-hot-toast';
+import { BiSend, BiTrash, BiUser, BiWindowAlt } from 'react-icons/bi';
 import { BsFillChatSquareDotsFill } from 'react-icons/bs';
 import { v4 as uuidv4 } from 'uuid';
 import BotIcon from '../../assets/icons/bot.svg';
@@ -25,6 +26,7 @@ const Chat = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [chatOpen, setChatOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -37,14 +39,16 @@ const Chat = () => {
   useEffect(() => {
     const newUserId = uuidv4();
     setUserId(newUserId);
-    setConversationHistory([
-      {
-        role: 'system',
-        content: `👋 Hej! Jag är Bipo, din guide för frågor om bipolaritet. Vad kan jag hjälpa dig med idag?`,
-      },
-    ]);
     setHasInteracted(true);
   }, []);
+
+  useEffect(() => {
+    if (chatOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [chatOpen]);
 
   const handleMessageOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
@@ -79,14 +83,12 @@ const Chat = () => {
       });
 
       setConversationHistory([]);
+      toast.success('Konversationen har rensats');
     } catch (err) {
+      toast.error('Konversationen kunde inte rensas');
       console.error('Error resetting conversation:', err);
     }
   };
-
-  useEffect(() => {
-    console.log(conversationHistory);
-  }, [conversationHistory]);
 
   const sendChatMessageToServer = async (userMessage: IMessage) => {
     try {
@@ -155,141 +157,201 @@ const Chat = () => {
             onClick={() => setChatOpen(false)}
             aria-hidden="true"
           />
-          <div className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
+          <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4">
             <div
-              className="bg-gradient-to-br from-primary-dark to-secondary-dark flex flex-col w-full gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
+              onClick={() => setChatOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
+              <div
+                className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
          min-h-[500px] 
-         sm:max-h-[95vh]
+         md:max-h-[95vh]
          h-[100vh]
          max-h-[100vh]
-         sm:h-[min(95vh,1000px)] 
-         sm:min-h-[600px] 
-         rounded-[15px] sm:rounded-[25px] shadow-xl border border-primary-border/30 relative overflow-hidden"
-            >
-              <div className="flex justify-between items-center">
-                <div className="text-white w-14 h-14">
-                  <CompassIcon />
+         md:h-[min(95vh,1000px)] 
+         md:min-h-[600px] 
+         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-hidden"
+              >
+                <div className="flex justify-between items-center">
+                  <div className="text-white h-10 sm:w-14 sm:h-14 w-[90px] flex justify-start items-center">
+                    <div className="w-[50px] h-[50px] sm:h-[60px] sm:w-[60px] flex items-center justify-center">
+                      <CompassIcon />
+                    </div>
+                  </div>
+                  <h2 className="text-white text-xl font-semibold sm:hidden">
+                    Bipo
+                  </h2>
+                  <div className="flex items-center gap-3 w-[90px]">
+                    <div className="flex items-center gap-3">
+                      <button
+                        className="bg-primary-medium/20 hover:bg-primary-medium/40 p-2 rounded-lg text-white transition-all duration-300 ease group"
+                        onClick={resetConversation}
+                        title="Rensa konversation"
+                      >
+                        <BiTrash className="text-xl sm:text-2xl group-hover:scale-95 transition-transform" />
+                      </button>
+                      <button
+                        className="bg-primary-medium/20 hover:bg-primary-medium/40 p-2 rounded-lg text-white transition-all duration-300 ease group"
+                        onClick={() => setChatOpen(false)}
+                        title="Minimera fönster"
+                      >
+                        <BiWindowAlt className="text-xl sm:text-2xl group-hover:scale-95 transition-transform" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <button
-                  className=" bg-primary-medium/20 hover:bg-primary-medium/40 p-2 rounded-lg text-white transition-all duration-300 ease group"
-                  onClick={() => setChatOpen(false)}
-                  title="Minimera fönster"
-                >
-                  <BiWindowAlt className="text-2xl group-hover:scale-95 transition-transform" />
-                </button>
-              </div>
 
-              <div className="max-w-[800px] mx-auto w-full">
-                <div className="text-white">
-                  <ChatDescription />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4 sm:gap-6 flex-1 w-full max-w-[800px] mx-auto overflow-hidden">
-                <div
-                  className="bg-white rounded-[10px] sm:rounded-[15px] w-full pl-3 sm:pl-6 py-4 sm:py-6 pr-2 sm:pr-4 md:pr-12 
-             overflow-y-auto shadow-inner border 
-             border-primary-border/30 
+                <div className="flex flex-col gap-4 sm:gap-6 flex-1 w-full max-w-[800px] mx-auto overflow-hidden">
+                  <div
+                    className="bg-primary-dark  rounded-[10px] sm:rounded-[15px] w-full pl-3 sm:pl-6 py-4 sm:py-6 pr-2 sm:pr-4 md:pr-12 
+             overflow-y-auto shadow-inner 
+             sm:border sm:border-primary-border/30 
              flex-1 min-h-0
            "
-                >
-                  {hasInteracted && (
-                    <div className="flex flex-col gap-3 sm:gap-4">
-                      {conversationHistory.map((msg, index) => (
-                        <div
-                          key={index}
-                          className={`flex gap-2 sm:gap-4 items-start ${
-                            msg.role === 'user'
-                              ? 'flex-row-reverse ml-auto'
-                              : ''
-                          }`}
-                        >
+                  >
+                    {!hasInteracted || conversationHistory.length === 0 ? (
+                      <div className="flex flex-col items-center h-full pt-20 sm:pt-30 md:pt-40">
+                        <div className="w-[80px] h-[80px] border border-white/10  rounded-full flex items-center justify-center">
+                          <Image
+                            src={BotIcon}
+                            alt="Bipo"
+                            width={120}
+                            height={120}
+                            className="object-cover w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-3 sm:gap-4">
+                        {conversationHistory.map((msg, index) => (
                           <div
-                            className={`bg-${
-                              msg.role === 'user' ? 'primary-medium' : ''
-                            } rounded-full flex items-center justify-center ${
+                            key={index}
+                            className={`flex gap-2 sm:gap-4 items-start ${
                               msg.role === 'user'
-                                ? 'h-[35px] w-[35px] mt-1'
-                                : 'h-[60px] w-[60px] sm:h-[60px] sm:w-[60px]'
-                            } text-white font-medium shrink-0`}
-                          >
-                            {msg.role === 'user' ? (
-                              <BiUser className="text-lg" />
-                            ) : (
-                              <div className="w-[60px] h-[60px] sm:h-[60px] sm:w-[60px] flex items-center justify-center">
-                                <Image
-                                  src={BotIcon}
-                                  alt="Bipo"
-                                  width={60}
-                                  height={60}
-                                  className="object-cover"
-                                />
-                              </div>
-                            )}
-                          </div>
-                          <p
-                            className={`text-sm sm:text-base text-dark leading-relaxed pt-2 ${
-                              msg.role === 'user' ? 'text-right' : 'text-left'
+                                ? 'flex-row-reverse ml-auto'
+                                : ''
                             }`}
                           >
-                            {index === conversationHistory.length - 1 &&
-                            msg.role === 'system' &&
-                            answer !== ''
-                              ? displayedAnswer
-                              : msg.content}
-                          </p>
-                        </div>
-                      ))}
-                      {typing && <TypingIndicator aria-label="Typing..." />}
-                      <div ref={messagesEndRef} />
-                    </div>
-                  )}
-                </div>
-                <div className="flex-shrink-0">
-                  <div className="flex flex-col sm:flex-row justify-between gap-4 items-center sm:items-start">
-                    <div className="flex flex-col sm:flex-row flex-wrap items-center gap-2 sm:gap-4 w-full">
-                      {questionSuggestions.map((question, index) => (
-                        <button
-                          key={index}
-                          onClick={() =>
-                            handleQuestionSuggestionClick(question)
-                          }
-                          className="text-sm sm:text-base bg-primary-medium hover:bg-primary-accent text-dark font-medium cursor-pointer transition-all duration-300 ease outline-none rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-md hover:shadow-lg active:scale-95"
-                        >
-                          {question}
-                        </button>
-                      ))}
-                    </div>
-                    <button
-                      className="text-sm sm:text-base bg-primary-medium hover:bg-primary-accent text-dark font-medium cursor-pointer transition-all duration-300 ease outline-none rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-md hover:shadow-lg active:scale-95 flex items-center gap-2"
-                      onClick={resetConversation}
-                    >
-                      <BiReset
-                        className="text-xl text-white"
-                        title="Rensa chatten"
-                        aria-label="Rensa chatten"
-                      />
-                    </button>
+                            <div
+                              className={`text-white bg-${
+                                msg.role === 'user' ? 'primary-medium' : ''
+                              } rounded-full flex items-center justify-center ${
+                                msg.role === 'user'
+                                  ? 'h-[30px] w-[30px] sm:h-[35px] sm:w-[35px] mt-1'
+                                  : 'h-[40px] w-[40px] sm:h-[60px] sm:w-[60px]'
+                              } text-white font-medium shrink-0`}
+                            >
+                              {msg.role === 'user' ? (
+                                <BiUser className="text-base sm:text-lg" />
+                              ) : (
+                                <div className="rounded-full border border-white/10 w-[40px] h-[40px] sm:h-[60px] sm:w-[60px] flex items-center justify-center">
+                                  <Image
+                                    src={BotIcon}
+                                    alt="Bipo"
+                                    width={40}
+                                    height={40}
+                                    className="object-cover sm:w-[60px] sm:h-[60px]"
+                                  />
+                                </div>
+                              )}
+                            </div>
+                            <p
+                              className={`text-sm sm:text-base ${
+                                !chatOpen ? 'text-white' : 'text-white'
+                              }  pt-2 ${
+                                msg.role === 'user' ? 'text-right' : 'text-left'
+                              }`}
+                            >
+                              {index === conversationHistory.length - 1 &&
+                              msg.role === 'system' &&
+                              answer !== ''
+                                ? displayedAnswer
+                                : msg.content}
+                            </p>
+                          </div>
+                        ))}
+                        {typing && <TypingIndicator aria-label="Typing..." />}
+                        <div ref={messagesEndRef} />
+                      </div>
+                    )}
                   </div>
-                  <form
-                    className="flex flex-col sm:flex-row items-center gap-4"
-                    onSubmit={handleClickAndSendChatMessage}
-                  >
-                    <input
-                      onChange={handleMessageOnChange}
-                      type="text"
-                      id="chat"
-                      className="w-full px-4 sm:px-6 py-3 mt-4 sm:py-4 rounded-full bg-white border border-primary-border/30 focus:border-primary-medium focus:ring-2 focus:ring-primary-medium/20 focus:outline-none shadow-sm placeholder:text-dark/60 text-sm sm:text-base"
-                      placeholder="Skriv ditt meddelande till Bipo..."
-                      value={message}
-                    />
-                    <button
-                      type="submit"
-                      className="icon-container bg-primary-medium hover:bg-primary-accent text-white cursor-pointer transition-all duration-300 ease outline-none rounded-full p-3 sm:p-4 shadow-md hover:shadow-lg active:scale-95"
+                  <div className="flex-shrink-0">
+                    <div
+                      className={`${
+                        message ? 'hidden' : 'block'
+                      } sm:hidden mb-4`}
                     >
-                      <BiSend className="text-xl sm:text-2xl" />
-                    </button>
-                  </form>
+                      <div className="flex overflow-x-auto hide-scrollbar items-center gap-2 sm:gap-4 w-full">
+                        {questionSuggestions.map((question, index) => (
+                          <button
+                            key={index}
+                            onClick={() =>
+                              handleQuestionSuggestionClick(question.text)
+                            }
+                            className="text-sm bg-primary-medium/20 hover:bg-primary-accent text-white font-medium cursor-pointer transition-all duration-300 ease outline-none rounded-full px-3 py-1.5 shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap flex items-center gap-2"
+                          >
+                            {question.icon && (
+                              <question.icon
+                                className="text-lg"
+                                style={{ color: question.iconColor }}
+                              />
+                            )}
+                            {question.text}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    {message ? (
+                      <div className="max-w-[800px] mx-auto w-full">
+                        <div className="text-white mb-4">
+                          <ChatDescription />
+                        </div>
+                      </div>
+                    ) : null}
+                    <form
+                      className="flex flex-row items-center gap-2 sm:gap-4 mb-4"
+                      onSubmit={handleClickAndSendChatMessage}
+                    >
+                      <input
+                        ref={inputRef}
+                        onChange={handleMessageOnChange}
+                        type="text"
+                        id="chat"
+                        className="w-full px-4 sm:px-6 py-2.5 sm:py-4 rounded-full bg-primary-medium/20  border-primary-border/30 focus:border-primary-medium focus:ring-2 focus:ring-primary-medium/20 focus:outline-none shadow-sm placeholder:text-white/60  text-white  text-sm sm:text-base"
+                        placeholder="Skriv ditt meddelande till Bipo..."
+                        value={message}
+                      />
+                      <button
+                        type="submit"
+                        className="icon-container bg-primary-medium hover:bg-primary-accent text-white cursor-pointer transition-all duration-300 ease outline-none rounded-full p-3 sm:p-4 shadow-md hover:shadow-lg active:scale-95"
+                      >
+                        <BiSend className="text-xl sm:text-2xl" />
+                      </button>
+                    </form>
+                    <div className={`${message ? 'hidden' : 'block'} sm:block`}>
+                      <div className="hidden sm:flex flex-wrap items-center gap-2 sm:gap-4 w-full mt-6">
+                        {questionSuggestions.map((question, index) => (
+                          <button
+                            key={index}
+                            onClick={() =>
+                              handleQuestionSuggestionClick(question.text)
+                            }
+                            className="text-sm bg-primary-medium/20 hover:bg-primary-accent text-white font-medium cursor-pointer transition-all duration-300 ease outline-none rounded-full px-3 py-1.5 shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap flex items-center gap-2"
+                          >
+                            {question.icon && (
+                              <question.icon
+                                className="text-lg"
+                                style={{ color: question.iconColor }}
+                              />
+                            )}
+                            {question.text}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -297,10 +359,10 @@ const Chat = () => {
         </>
       ) : (
         <>
-          <div className="fixed right-8 bottom-12">
+          <div className="fixed right-8 bottom-12 z-50">
             {showTooltip && (
               <div className="absolute right-0 bottom-12 mb-2 pointer-events-none whitespace-nowrap">
-                <div className="bg-black/80 text-white px-4 py-2 rounded-lg shadow-lg opacity-100 translate-y-0 transition-all duration-300 ease-out relative">
+                <div className="bg-black/80 text-white px-4 py-2  rounded-lg shadow-lg opacity-100 translate-y-0 transition-all duration-300 ease-out relative">
                   👋 Hej! Chatta med vår AI om bipolaritet
                   <div
                     className="absolute right-4 top-full w-0 h-0 
