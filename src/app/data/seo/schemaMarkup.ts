@@ -9,6 +9,11 @@ export const schemaMarkup = {
     '@type': 'Organization',
     name: 'Bipolärkompassen',
     url: 'https://www.xn--bipolrkompassen-4kb.se/',
-    logo: '/assets/icons/compass.svg',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.xn--bipolrkompassen-4kb.se/favicon-32x32.png',
+      width: '32',
+      height: '32',
+    },
   },
 };

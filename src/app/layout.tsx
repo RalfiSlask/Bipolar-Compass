@@ -9,9 +9,18 @@ import { Providers } from './providers/Providers';
 import './styles/styles.scss';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.xn--bipolrkompassen-4kb.se'),
   title: 'Bipolärkompassen - Din Guide till Bipolaritet och Mental Hälsa',
   description:
     'Utforska Bipolärkompassen, en omfattande resurs för att förstå och hantera bipolaritet. Innehåller AI-assistenten Bipo, moodtracker, dagbok, forskning, multimedia, och akut hjälplinjer.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png' }],
+  },
   keywords: [
     'bipolaritet',
     'bipolär sjukdom',
