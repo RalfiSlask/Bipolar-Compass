@@ -365,7 +365,9 @@ const MedicinePage = () => {
                     <span className="font-semibold min-w-[120px]">
                       Effektivitet:
                     </span>
-                    <span>Effektiv vid måttlig depression, gradvis effekt</span>
+                    <span>
+                      Effektiv vid måttlig och svår depression, gradvis effekt
+                    </span>
                   </div>
 
                   <div className="flex gap-3 p-3">
