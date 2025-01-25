@@ -76,6 +76,7 @@ const HistoryPage = () => {
         if (response.data) {
           setMoodTrackerData(response.data);
         }
+        console.log(response.data);
       } catch (err) {
         console.error('Error fetching mood tracker data:', err);
       } finally {
@@ -188,6 +189,7 @@ const HistoryPage = () => {
     }
 
     const allData = transformMoodData(moodIndex);
+
     return allData
       .filter((item) => {
         const [day, month] = item.date.split('/').map(Number);
