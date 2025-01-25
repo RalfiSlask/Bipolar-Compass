@@ -54,7 +54,6 @@ const VerificationPage = () => {
   }, []);
 
   const handleClickOnVerificationButton = () => {
-    console.log('this is the user email: ', userEmail);
     if (!userEmail) {
       return;
     }
