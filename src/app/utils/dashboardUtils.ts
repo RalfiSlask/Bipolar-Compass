@@ -38,7 +38,7 @@ export const renderMessage = (
 
   switch (moodState) {
     case 'manic':
-      return 'Du har högt sannolikt maniskt tillstånd. Försök att omedelbart kontakta din läkare.';
+      return 'Du har högst sannolikt maniskt tillstånd. Försök att omedelbart kontakta din läkare.';
     case 'hypomanic':
       return 'Var vaksam på ditt tillstånd. Du är förmodligen i ett hypomaniskt tillstånd. Du kan behöva hjälp av din läkare. Kom ihåg att ta din medicin och hålla dig i balans.';
     case 'depressed':
