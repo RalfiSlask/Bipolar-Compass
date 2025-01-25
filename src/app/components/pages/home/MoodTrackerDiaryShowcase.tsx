@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MoodTrackerDiaryShowcase = () => {
   return (
@@ -64,12 +65,12 @@ const MoodTrackerDiaryShowcase = () => {
             </div>
           </div>
         </div>
-        <button
-          className="primary-button text-lg sm:text-xl lg:text-2xl"
-          aria-label="Kom igång"
+        <Link
+          href="/konto/logga-in"
+          className="primary-button text-lg sm:text-xl"
         >
           Kom igång
-        </button>
+        </Link>
       </div>
     </div>
   );
