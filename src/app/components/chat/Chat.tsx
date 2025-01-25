@@ -50,11 +50,18 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
+    let scrollY = 0;
+
     if (chatOpen) {
       if (window.innerWidth < 768) {
+        scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
+        document.body.style.top = `-${scrollY}px`;
+
+        document.documentElement.style.overflow = 'hidden';
+        document.documentElement.style.height = '100%';
       } else {
         document.body.style.overflow = 'auto';
       }
@@ -64,19 +71,21 @@ const Chat = () => {
           inputRef.current?.focus();
         }, 100);
       }
+    } else {
+      if (window.innerWidth < 768) {
+        const savedScrollY = parseInt(document.body.style.top || '0', 10) * -1;
 
-      return () => {
-        if (window.innerWidth < 768) {
-          const scrollY = document.body.style.top;
-          document.body.style.position = '';
-          document.body.style.width = '';
-          document.body.style.top = '';
-          window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
-      };
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.height = '';
+
+        window.scrollTo(0, savedScrollY);
+      }
     }
   }, [chatOpen]);
-
   const handleMessageOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     if (target === null) return;
