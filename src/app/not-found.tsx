@@ -38,7 +38,7 @@ const NotFound = () => {
         </span>
         <Link
           className="underline hover:text-primary-dark inline-flex items-center"
-          href="/om-oss/kontakt"
+          href="/kontakt"
         >
           <LinkIcon />
           <span> kontakta oss.</span>
