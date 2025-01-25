@@ -3,8 +3,7 @@
 import { userPasswordValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
-import { useSearchParams } from 'next/navigation';
-import router from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import PasswordStrengthIndicator from '../register/PasswordStrengthIndicator';
@@ -12,6 +11,7 @@ import PasswordStrengthIndicator from '../register/PasswordStrengthIndicator';
 const ResetPasswordForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const initialInputValues = {
     password: '',
