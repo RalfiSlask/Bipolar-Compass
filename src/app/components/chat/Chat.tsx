@@ -202,12 +202,12 @@ const Chat = () => {
             aria-label="Ai chat"
             aria-describedby="Ai chat"
           >
-            <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
+            <div className="fixed h-full z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
               <div
                 className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
          min-h-[500px] 
          md:max-h-[95vh]
-         h-[calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))]
+        h-[100vh]
          max-h-[100vh]
          md:h-[min(95vh,1000px)] 
          md:min-h-[600px] 
