@@ -12,7 +12,7 @@ const OverNavigation = () => {
             href="/akut"
           >
             <MdEmergency className="text-tertiary-dark group-hover:scale-110 transition-transform duration-200" />
-            <span className="group-hover:text-tertiary-dark transition-colors duration-200">
+            <span className="text-tertiary-dark transition-colors duration-200">
               Akut hjälp
             </span>
           </Link>
