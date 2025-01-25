@@ -53,7 +53,7 @@ export const moviesIntro = {
   description:
     'Filmer kan ge oss en unik inblick i hur det är att leva med bipolaritet. Genom att följa dessa berättelser kan vi både känna igen oss själva och få större empati för andra. Film som medium har en särskild förmåga att skildra de emotionella höjdpunkterna och utmaningarna som kommer med diagnosen, ofta på ett sätt som kan vara både upplysande och tröstande.',
   descriptionBold:
-    'Här har vi samlat filmer som på olika sätt skildrar bipolär sjukdom. De kan hjälpa dig att känna dig mindre ensam och bättre förstådd i din situation.',
+    'Här har vi samlat filmer som på olika sätt skildrar bipolär sjukdom. Även fast de inte alltid är helt realistiska, så kan de vara en bra resurs för att få insikter om bipolaritet.',
   image: '/images/multimedia/movie-2.jpg',
   color: 'brown' as const,
 };
