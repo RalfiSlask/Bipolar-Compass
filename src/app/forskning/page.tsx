@@ -10,19 +10,19 @@ import SciencePagination from '@/app/components/pages/science/SciencePagination'
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
 import Spinner from '@/app/components/shared/Spinner';
 import {
-    ARTICLE_ATTRIBUTE_FILTERS,
-    LANGUAGE_FILTERS,
-    PUBLICATION_TYPE_FILTERS,
-    SWEDISH_HOSPITALS_FILTERS,
-    SWEDISH_UNIVERSITIES_FILTERS,
-    TEXT_AVAILABILITY_FILTERS,
-    YEARS_OF_PUBLICATION_FILTERS,
+  ARTICLE_ATTRIBUTE_FILTERS,
+  LANGUAGE_FILTERS,
+  PUBLICATION_TYPE_FILTERS,
+  SWEDISH_HOSPITALS_FILTERS,
+  SWEDISH_UNIVERSITIES_FILTERS,
+  TEXT_AVAILABILITY_FILTERS,
+  YEARS_OF_PUBLICATION_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
-    getDateFilterQuery,
-    getFormattedArticles,
-    parseXMLAbstracts,
+  getDateFilterQuery,
+  getFormattedArticles,
+  parseXMLAbstracts,
 } from '@/app/utils/scienceUtils';
 import axios from 'axios';
 import Image from 'next/image';
@@ -204,7 +204,8 @@ const ScienceArticles = () => {
       try {
         const searchResponse = await axios.get(searchUrl);
         const ids = searchResponse.data.esearchresult.idlist;
-        setTotalResults(parseInt(searchResponse.data.esearchresult.count));
+        const count = parseInt(searchResponse.data.esearchresult.count);
+        setTotalResults(count);
 
         if (ids.length > 0) {
           // We fetch metadata from pubmed from the ids
@@ -212,8 +213,6 @@ const ScienceArticles = () => {
             ','
           )}&retmode=json&api_key=${apiKey}`;
           const summaryResponse = await axios.get(summaryUrl);
-
-          console.log(summaryResponse.data);
 
           // We also fetch the abstracts from pubmed
           const fetchUrl = `${BASE_URL}/efetch.fcgi?db=pubmed&id=${ids.join(
@@ -233,9 +232,13 @@ const ScienceArticles = () => {
           );
 
           setArticles(formattedArticles);
+        } else {
+          setArticles([]);
         }
       } catch (error) {
         console.error('Error fetching PubMed data:', error);
+        setArticles([]);
+        setTotalResults(0);
       } finally {
         setIsLoading(false);
       }
@@ -254,7 +257,7 @@ const ScienceArticles = () => {
     searchQuery,
   ]);
 
-  const totalPages = Math.ceil(totalResults / ARTICLES_PER_PAGE);
+  const totalPages = Math.max(Math.ceil(totalResults / ARTICLES_PER_PAGE), 1);
 
   const handleLanguageFilterClick = (language: 'swedish' | 'international') => {
     setSearchScope(language);
@@ -590,7 +593,7 @@ const ScienceArticles = () => {
           <main className="bg-white rounded-lg shadow-md p-6">
             <div className="flex flex-col w-full">
               <div className="w-full space-y-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                   <span className="text-sm text-gray-500">
                     {totalResults} artiklar hittade
                   </span>
@@ -608,14 +611,20 @@ const ScienceArticles = () => {
                 )}
 
                 <div className="relative min-h-[600px] w-full">
-                  <div className="space-y-4 w-full">
-                    {articles.map((article) => (
-                      <ScienceArticleContainer
-                        key={article.id}
-                        article={article}
-                      />
-                    ))}
-                  </div>
+                  {!isLoading && articles.length === 0 ? (
+                    <div className="w-full text-center py-8 text-gray-600">
+                      Inga artiklar hittades som matchar dina sökkriterier.
+                    </div>
+                  ) : (
+                    <div className="space-y-4 w-full">
+                      {articles.map((article) => (
+                        <ScienceArticleContainer
+                          key={article.id}
+                          article={article}
+                        />
+                      ))}
+                    </div>
+                  )}
 
                   {isLoading && (
                     <div className="absolute inset-0 bg-white/80 z-10 flex items-center justify-center">
