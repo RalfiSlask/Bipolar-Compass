@@ -41,7 +41,6 @@ const MenuItem = ({
       e.stopPropagation();
       setActiveMenu(isVisible ? null : slug);
     } else {
-      console.log('closing the menu');
       closeMenu();
       setActiveMenu(null);
     }

@@ -13,7 +13,6 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (!user) {
-      console.log('No user found or token expired');
       return NextResponse.json(
         { error: 'Invalid or expired token' },
         { status: 400 }
@@ -22,7 +21,6 @@ export const POST = async (req: NextRequest) => {
 
     const isTokenValid = await bcryptjs.compare(token, user.resetToken);
     if (!isTokenValid) {
-      console.log('Invalid token');
       return NextResponse.json({ error: 'Invalid token' }, { status: 400 });
     }
 
@@ -35,7 +33,6 @@ export const POST = async (req: NextRequest) => {
       }
     );
 
-    console.log('Password reset successful');
     return NextResponse.json(
       { message: 'Password reset successful' },
       { status: 200 }

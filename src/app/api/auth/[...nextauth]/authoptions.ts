@@ -29,8 +29,6 @@ export const authOptions: NextAuthOptions = {
           password: string;
         };
 
-        console.log('this is the email and password: ', email, password);
-
         if (!email || !password) {
           throw new Error('Email eller lösenord saknas');
         }

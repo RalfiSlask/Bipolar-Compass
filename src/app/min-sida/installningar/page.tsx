@@ -20,7 +20,6 @@ const SettingsPageContent = () => {
 
   useEffect(() => {
     if (email) {
-      console.log('Fetching user data for email:', email);
       fetchUserData(email);
     }
   }, [email, fetchUserData]);

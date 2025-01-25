@@ -40,7 +40,6 @@ const UserEmailNotificationCheckbox = ({
 
       await saveNotificationSettings(notifications, updatedRelatives);
       toast.success('Notifikationer sparade');
-      console.log('saved notification settings');
     } catch (error) {
       toast.error('Kunde inte spara notifikationer');
       console.error('Failed to save notification settings:', error);

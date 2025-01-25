@@ -26,7 +26,6 @@ const LoginForm = () => {
       if (signInResponse?.error) {
         setFormError('Användaren existerar inte. ' + signInResponse.error);
       } else {
-        console.log('Login successful');
         router.push('/min-sida');
       }
     } catch (error) {

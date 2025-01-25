@@ -7,17 +7,7 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
     const { values, originalEmail } = await req.json();
     const { email, age, gender } = values;
 
-    console.log('API Route - Received data:', {
-      originalEmail,
-      newEmail: email,
-      age,
-      gender,
-    });
-
     if (email !== originalEmail) {
-      console.log(
-        'API Route - Email change detected, checking for duplicates...'
-      );
       const existingUser = await collection.findOne({ email: email });
       if (existingUser) {
         console.log('API Route - Duplicate email found:', email);
@@ -26,19 +16,7 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
           { status: 400 }
         );
       }
-      console.log(
-        'API Route - No duplicate email found, proceeding with update'
-      );
     }
-
-    console.log('API Route - Updating user...', {
-      findBy: { email: originalEmail },
-      updateWith: {
-        email,
-        'profile.age': age,
-        'profile.gender': gender,
-      },
-    });
 
     await collection.updateOne(
       { email: originalEmail },
@@ -52,7 +30,6 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
     );
 
     const updatedUser = await collection.findOne({ email: email });
-    console.log('API Route - User after update:', updatedUser);
 
     if (!updatedUser) {
       console.log('API Route - Updated user not found!');

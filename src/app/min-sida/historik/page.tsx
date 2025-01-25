@@ -66,19 +66,16 @@ const HistoryPage = () => {
     const fetchMoodTrackerData = async () => {
       setIsLoading(true);
       if (!session?.user?.id) {
-        console.log('No user ID available:', session);
         return;
       }
 
       try {
-        console.log('Sending request with user_id:', session.user.id);
         const response = await axios.post('/api/history', {
           user_id: session.user.id,
         });
         if (response.data) {
           setMoodTrackerData(response.data);
         }
-        console.log('Response data:', response.data);
       } catch (err) {
         console.error('Error fetching mood tracker data:', err);
       } finally {

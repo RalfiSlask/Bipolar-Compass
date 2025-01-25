@@ -22,7 +22,6 @@ const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
 
     try {
       await deleteAccount(email);
-      console.log('Account successfully deleted');
       await handleSignOut();
     } catch (err) {
       console.error('could not delete account: ', err);

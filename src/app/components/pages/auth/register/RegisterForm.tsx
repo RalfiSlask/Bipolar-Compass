@@ -27,9 +27,7 @@ const RegisterForm = () => {
     setFormError(null);
     setIsSubmitting(true);
     try {
-      console.log('Submitted values:', values);
       const response = await axios.post('/api/register', values);
-      console.log('Server response:', response.data);
 
       if (response.data.error) {
         toast.error(response.data.error);
