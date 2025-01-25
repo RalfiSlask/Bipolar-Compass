@@ -79,7 +79,9 @@ export default function Home() {
               strävar vi efter att göra det enklare att hantera vardagen med
               bipolär sjukdom.
             </p>
-            <button className="tertiary-button">Vår Vision</button>
+            <Link href="/om-oss/vision" className="tertiary-button">
+              Vår Vision
+            </Link>
           </div>
           <div className="w-full lg:flex-1 rounded-lg overflow-hidden mt-8 lg:mt-0">
             <Image
