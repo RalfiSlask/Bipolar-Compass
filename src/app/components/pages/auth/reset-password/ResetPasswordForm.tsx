@@ -50,11 +50,15 @@ const ResetPasswordForm = () => {
       validationSchema={userPasswordValidationSchema}
       onSubmit={handleSubmit}
       validateOnChange={false}
+      className="w-full"
     >
       {({ isValid, errors, touched, handleChange }) => (
         <Form noValidate className="flex flex-col gap-2">
           <div className="flex flex-col gap-1">
-            <label htmlFor="password" className="font-medium text-primary-dark">
+            <label
+              htmlFor="password"
+              className="font-medium text-primary-dark mb-4"
+            >
               Nytt Lösenord
             </label>
             <div className="relative">
@@ -87,7 +91,7 @@ const ResetPasswordForm = () => {
 
           <button
             type="submit"
-            className={`w-full tertiary-button ${
+            className={`w-full tertiary-button mt-2 ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={isSubmitting || !isValid}
