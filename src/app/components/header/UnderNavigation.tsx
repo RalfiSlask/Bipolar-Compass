@@ -41,6 +41,20 @@ const UnderNavigation = () => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (isMenuOpen && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [isMenuOpen, isMobile]);
+
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-6 xl:px-8 text-secondary-dark font-semibold py-4">
       <BipolarLogo />
@@ -100,7 +114,7 @@ const UnderNavigation = () => {
               transition-all duration-300 ease-in-out opacity-100
               border-t border-primary-border animate-modal-slide-up top-[160px] z-[51]"
           >
-            <div className="p-12 max-w-[1440px] mx-auto">
+            <div className="p-12 max-w-[1440px] mx-auto h-[440px]">
               {menu.menuItems.map((item) => {
                 if (item.slug === activeMenu) {
                   return (
@@ -144,7 +158,7 @@ const UnderNavigation = () => {
                               alt={`${item.title} image`}
                               width={450}
                               height={338}
-                              quality={100}
+                              quality={80}
                               className="w-full h-auto object-cover rounded-xl shadow-lg"
                             />
                           </div>
