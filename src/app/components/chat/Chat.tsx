@@ -3,7 +3,14 @@
 import { questionSuggestions } from '@/app/data/chatSuggestions';
 import { IMessage } from '@/app/types/chat';
 import Image from 'next/image';
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import toast from 'react-hot-toast';
 import { BiSend, BiTrash, BiUser, BiWindowAlt } from 'react-icons/bi';
 import { BsFillChatSquareDotsFill } from 'react-icons/bs';
@@ -44,9 +51,29 @@ const Chat = () => {
 
   useEffect(() => {
     if (chatOpen) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 100);
+      if (window.innerWidth < 768) {
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
+      } else {
+        document.body.style.overflow = 'auto';
+      }
+
+      if (inputRef.current) {
+        setTimeout(() => {
+          inputRef.current?.focus();
+        }, 100);
+      }
+
+      return () => {
+        if (window.innerWidth < 768) {
+          const scrollY = document.body.style.top;
+          document.body.style.position = '';
+          document.body.style.width = '';
+          document.body.style.top = '';
+          window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+      };
     }
   }, [chatOpen]);
 
@@ -148,6 +175,8 @@ const Chat = () => {
     setMessage(question);
   };
 
+  const memoizedSuggestions = useMemo(() => questionSuggestions, []);
+
   return (
     <>
       {chatOpen ? (
@@ -157,12 +186,12 @@ const Chat = () => {
             onClick={() => setChatOpen(false)}
             aria-hidden="true"
           />
-          <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4">
-            <div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
-              onClick={() => setChatOpen(false)}
-              aria-hidden="true"
-            />
+          <div
+            className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
+            aria-modal="true"
+            aria-label="Ai chat"
+            aria-describedby="Ai chat"
+          >
             <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
               <div
                 className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
@@ -284,7 +313,7 @@ const Chat = () => {
                       } sm:hidden mb-4`}
                     >
                       <div className="flex overflow-x-auto hide-scrollbar items-center gap-2 sm:gap-4 w-full">
-                        {questionSuggestions.map((question, index) => (
+                        {memoizedSuggestions.map((question, index) => (
                           <button
                             key={index}
                             onClick={() =>
@@ -324,6 +353,7 @@ const Chat = () => {
                         value={message}
                       />
                       <button
+                        disabled={typing || !message.trim()}
                         type="submit"
                         className="icon-container bg-primary-medium hover:bg-primary-accent text-white cursor-pointer transition-all duration-300 ease outline-none rounded-full p-3 sm:p-4 shadow-md hover:shadow-lg active:scale-95"
                       >
@@ -332,7 +362,7 @@ const Chat = () => {
                     </form>
                     <div className={`${message ? 'hidden' : 'block'} sm:block`}>
                       <div className="hidden sm:flex flex-wrap items-center gap-2 sm:gap-4 w-full mt-6">
-                        {questionSuggestions.map((question, index) => (
+                        {memoizedSuggestions.map((question, index) => (
                           <button
                             key={index}
                             onClick={() =>
