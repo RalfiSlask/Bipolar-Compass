@@ -6,7 +6,7 @@ import { relativeIntro } from '../data/pageIntros';
 
 const RelativePage = () => {
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-2">
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-16">
       <PageIntroContainer intro={relativeIntro} />
 
       <div className="flex flex-col gap-8">
