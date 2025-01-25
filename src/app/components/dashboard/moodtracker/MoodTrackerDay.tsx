@@ -40,10 +40,10 @@ const MoodTrackerDay = ({
     const formattedDate = format(date, 'yyyy-MM-dd');
 
     return values.reduce((acc, mood) => {
-      const dayValue =
-        mood.valueForDays.find((day) => day.date === formattedDate)?.value ?? 0;
-
-      return { ...acc, [mood.id]: dayValue };
+      const dayValue = mood.valueForDays.find(
+        (day) => day.date === formattedDate
+      )?.value;
+      return { ...acc, [mood.id]: dayValue === null ? 0 : (dayValue ?? 0) + 1 };
     }, {});
   };
 
@@ -61,7 +61,9 @@ const MoodTrackerDay = ({
     const dayId = format(selectedDate, 'EEEE').toLowerCase() as DayId;
 
     setMoodStates((prev) => ({ ...prev, [moodId]: value ?? 0 }));
-    handleValueChange(moodId, dayId, value, formattedDate);
+
+    const serverValue = value === 0 ? null : value === null ? null : value - 1;
+    handleValueChange(moodId, dayId, serverValue, formattedDate);
   };
 
   const getMoodData = (moodId: string) => {
@@ -134,7 +136,7 @@ const MoodTrackerDay = ({
             <label className="text-lg font-medium text-primary-dark mb-4 block">
               {getMoodData('social').moodData?.moodName}
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-3">
               {getMoodData('social').moodData?.yAxis.map((option, index) => (
                 <button
                   key={option}
@@ -148,7 +150,7 @@ const MoodTrackerDay = ({
                 >
                   <div className="flex flex-col items-center justify-center p-1 h-full gap-2">
                     <span className="text-3xl">
-                      {['🏠', '💻', '👋', '🤝', '🎉'][index]}
+                      {['❓', '🏠', '💻', '👋', '🤝', '🎉'][index]}
                     </span>
                     <span className="text-xs font-medium text-center">
                       {option}
@@ -176,7 +178,15 @@ const MoodTrackerDay = ({
                     }`}
                 >
                   <span className="text-3xl">
-                    {['🛋️', '🚶', '🏃', '💪'][index]}
+                    {
+                      [
+                        '❓', // Ingen data
+                        '🛋️', // Nej
+                        '🚶', // Lätt
+                        '🏃', // Medel
+                        '💪', // Intensiv
+                      ][index]
+                    }
                   </span>
                   <span
                     className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 

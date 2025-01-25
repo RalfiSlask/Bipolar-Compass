@@ -14,6 +14,7 @@ export const moodTrackerValuesData = {
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
       yAxis: [
+        'Ingen data',
         'Ingen',
         'Mycket mild',
         'Mild',
@@ -34,7 +35,15 @@ export const moodTrackerValuesData = {
         { id: 'saturday', name: 'Lördag', value: 0 },
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
-      yAxis: ['Ingen', 'Låg', 'Måttlig', 'Hög', 'Mycket hög', 'Extrem'],
+      yAxis: [
+        'Ingen data',
+        'Ingen',
+        'Låg',
+        'Måttlig',
+        'Hög',
+        'Mycket hög',
+        'Extrem',
+      ],
     },
     {
       id: 'depression',
@@ -48,7 +57,15 @@ export const moodTrackerValuesData = {
         { id: 'saturday', name: 'Lördag', value: 0 },
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
-      yAxis: ['Ingen', 'Mycket mild', 'Mild', 'Måttlig', 'Svår', 'Mycket svår'],
+      yAxis: [
+        'Ingen data',
+        'Ingen',
+        'Mycket mild',
+        'Mild',
+        'Måttlig',
+        'Svår',
+        'Mycket svår',
+      ],
     },
     {
       id: 'energy',
@@ -62,7 +79,15 @@ export const moodTrackerValuesData = {
         { id: 'saturday', name: 'Lördag', value: 0 },
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
-      yAxis: ['Utmattad', 'Mycket låg', 'Låg', 'Normal', 'Hög', 'Mycket hög'],
+      yAxis: [
+        'Ingen data',
+        'Utmattad',
+        'Mycket låg',
+        'Låg',
+        'Normal',
+        'Hög',
+        'Mycket hög',
+      ],
     },
     {
       id: 'physical',
@@ -76,7 +101,7 @@ export const moodTrackerValuesData = {
         { id: 'saturday', name: 'Lördag', value: 0 },
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
-      yAxis: ['Nej', 'Lätt', 'Medel', 'Intensiv'],
+      yAxis: ['Ingen data', 'Nej', 'Lätt', 'Medel', 'Intensiv'],
     },
     {
       id: 'social',
@@ -91,6 +116,7 @@ export const moodTrackerValuesData = {
         { id: 'sunday', name: 'Söndag', value: 0 },
       ],
       yAxis: [
+        'Ingen data',
         'Ingen kontakt',
         'Digital kontakt',
         'Kort interaktion',
