@@ -1,8 +1,8 @@
 'use client';
 
 import {
-    scoringInfo,
-    selfAssessmentForms,
+  scoringInfo,
+  selfAssessmentForms,
 } from '@/app/data/selfAssesmentForms';
 import { IScoringInfo } from '@/app/types/documents';
 import { useEffect, useState } from 'react';
@@ -31,7 +31,7 @@ const Modal = ({
       aria-modal="true"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="fixed bg-white p-6 rounded-lg max-w-md w-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-modal-slide-up">
+      <div className="fixed bg-white p-6 rounded-lg max-w-md w-[95%] sm:w-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         <h4
           id="modal-title"
           className="text-xl font-semibold text-primary-dark mb-4"
