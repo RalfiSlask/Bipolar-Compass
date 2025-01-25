@@ -1,13 +1,15 @@
-import { IoClose } from "react-icons/io5";
+import { IoClose } from 'react-icons/io5';
 
 interface IScienceActiveFiltersProps {
   ScienceActiveFilters: string[];
   clearAllFilters: () => void;
+  removeFilter: (filter: string) => void;
 }
 
 const ScienceActiveFilters = ({
   ScienceActiveFilters,
   clearAllFilters,
+  removeFilter,
 }: IScienceActiveFiltersProps) => {
   if (ScienceActiveFilters.length === 0) return null;
 
@@ -15,7 +17,9 @@ const ScienceActiveFilters = ({
     <div className="bg-white p-4 rounded-lg shadow-sm border border-primary-border">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-primary-dark">Aktiva filter</span>
+          <span className="text-sm font-medium text-primary-dark">
+            Aktiva filter
+          </span>
           <span className="bg-primary-medium text-white text-xs px-2 py-0.5 rounded-full">
             {ScienceActiveFilters.length}
           </span>
@@ -27,7 +31,7 @@ const ScienceActiveFilters = ({
           Rensa alla
         </button>
       </div>
-      
+
       <div className="flex flex-wrap gap-2">
         {ScienceActiveFilters.map((filter) => (
           <div
@@ -36,7 +40,7 @@ const ScienceActiveFilters = ({
           >
             <span className="text-sm text-primary-dark">{filter}</span>
             <button
-              onClick={() => clearAllFilters()}
+              onClick={() => removeFilter(filter)}
               className="p-1 rounded-full hover:bg-primary-medium/10 transition-colors duration-200"
             >
               <IoClose className="text-primary-medium group-hover:text-primary-dark transition-colors duration-200" />

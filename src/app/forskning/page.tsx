@@ -65,6 +65,17 @@ const ScienceArticles = () => {
     setSelectedLanguage('');
   };
 
+  const removeFilter = (filter: string) => {
+    const filterFromLabel = [
+      ...TEXT_AVAILABILITY_FILTERS,
+      ...ARTICLE_ATTRIBUTE_FILTERS,
+      ...PUBLICATION_TYPE_FILTERS,
+      ...LANGUAGE_FILTERS,
+    ].find((f) => f.label === filter)?.id;
+
+    setActiveFilters((prev) => prev.filter((f) => f !== filterFromLabel));
+  };
+
   const getActiveFilters = () => {
     const filters: string[] = [];
 
@@ -607,6 +618,7 @@ const ScienceArticles = () => {
                   <ScienceActiveFilters
                     ScienceActiveFilters={scienceActiveFilters}
                     clearAllFilters={clearAllFilters}
+                    removeFilter={removeFilter}
                   />
                 )}
 
