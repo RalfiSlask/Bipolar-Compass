@@ -31,7 +31,7 @@ const MoodTrackerDiaryShowcase = () => {
                     alt="Mood tracker"
                     width={2000}
                     height={1000}
-                    quality={100}
+                    quality={80}
                     className="object-contain w-full h-full p-2"
                   />
                 </div>
@@ -47,8 +47,8 @@ const MoodTrackerDiaryShowcase = () => {
                   Följ din resa med vår dagbok
                 </h4>
                 <p className="text-base sm:text-lg">
-                  Fyll i dina dagliga uppgifter och följ din resa med vår
-                  dagbok som hjälper dig att reflektera över dina framsteg.
+                  Fyll i dina dagliga uppgifter och följ din resa med vår dagbok
+                  som hjälper dig att reflektera över dina framsteg.
                 </p>
                 <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
                   <Image
@@ -56,7 +56,7 @@ const MoodTrackerDiaryShowcase = () => {
                     alt="Dagbok"
                     width={2000}
                     height={1000}
-                    quality={100}
+                    quality={80}
                     className="object-contain w-full h-full p-2"
                   />
                 </div>

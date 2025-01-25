@@ -5,6 +5,7 @@ import {
   selfAssessmentForms,
 } from '@/app/data/selfAssesmentForms';
 import { IScoringInfo } from '@/app/types/documents';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { HiDownload, HiEye, HiInformationCircle } from 'react-icons/hi';
 
@@ -42,7 +43,7 @@ const Modal = ({
           {info.content.map((item: string, index: number) => (
             <li
               key={index}
-              className="text-primary-medium flex items-start gap-2"
+              className="text-primary-accent flex items-start gap-2"
             >
               <span className="text-primary-dark mt-1">•</span>
               {item}
@@ -51,7 +52,7 @@ const Modal = ({
         </ul>
         <button
           onClick={onClose}
-          className="w-full bg-primary-medium hover:bg-primary-dark text-white py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
+          className="w-full bg-primary-accent hover:bg-primary-dark text-white py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
         >
           Stäng
         </button>
@@ -65,13 +66,35 @@ const DocumentsPage = () => {
 
   return (
     <section className="container max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 min-h-screen">
-      <div className="mb-12 text-center">
-        <h1 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-4">
-          Dokument
-        </h1>
-        <p className="text-primary-medium">
-          Här kan du ladda ner formulär för självskattning och information
-        </p>
+      <div className="mb-12 flex flex-col md:flex-row gap-10">
+        <div className="flex-1">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-4">
+            Dokument
+          </h2>
+          <p className="text-primary-dark">
+            Välkommen till vår dokumentsektion, där du kan hitta ett urval av
+            formulär för självskattning och guider som hjälper dig att förstå
+            och hantera bipolär sjukdom. Dessa resurser är framtagna för att
+            stötta dig och ge dig praktiska verktyg i din vardag.
+          </p>
+          <p className="text-primary-dark mt-4 font-semibold">
+            Dessa formulär kan vara användbara för att reflektera över ditt
+            mående och förbereda dig inför möten med vårdpersonal.
+          </p>
+        </div>
+        <div className="flex-1 rounded-sm overflow-hidden">
+          <Image
+            src="/images/bipolar/form.webp"
+            alt="Bipolar Logo"
+            width={2000}
+            height={1333}
+            quality={80}
+            priority={true}
+            className="w-full"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
+          />
+        </div>
       </div>
 
       <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md mb-8 sm:mb-12 hover:shadow-lg transition-shadow duration-200">
@@ -90,7 +113,7 @@ const DocumentsPage = () => {
               'Tips för bättre sömnrutiner och stresshantering',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="text-primary-medium mt-1">•</span>
+                <span className="text-primary-accent mt-1">•</span>
                 {item}
               </li>
             ))}
@@ -102,7 +125,7 @@ const DocumentsPage = () => {
               'Kontaktinformation till vårdresurser',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="text-primary-medium mt-1">•</span>
+                <span className="text-primary-accent mt-1">•</span>
                 {item}
               </li>
             ))}
@@ -112,7 +135,7 @@ const DocumentsPage = () => {
           <a
             href="../pdfs/guide.pdf"
             download="guide.pdf"
-            className="flex-1 flex items-center justify-center gap-2 bg-primary-medium/60 hover:text-white  text-dark bg-primary-medium hover:bg-primary-dark  py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
+            className="flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:text-white  text-dark bg-primary-accent hover:bg-primary-dark  py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
           >
             <HiDownload className="text-xl" aria-hidden="true" />
             <span className="text-sm md:text-base lg:text-lg">Ladda ner</span>
@@ -121,7 +144,7 @@ const DocumentsPage = () => {
             href="../pdfs/guide.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
+            className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
           >
             <HiEye className="text-xl" aria-hidden="true" />
             <span className="text-sm md:text-base lg:text-lg">Visa guide</span>
@@ -133,7 +156,7 @@ const DocumentsPage = () => {
         <h2 className="text-xl font-semibold text-primary-dark mb-4">
           Formulär för självskattning
         </h2>
-        <p className="text-sm text-primary-medium italic mb-6">
+        <p className="text-sm text-primary-accent italic mb-6">
           Klicka på &quot;Poängsystem&quot; för att se hur formulären ska tolkas
         </p>
         <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
@@ -149,7 +172,7 @@ const DocumentsPage = () => {
                 {form.scoringId && (
                   <button
                     onClick={() => setActiveModal(form.scoringId)}
-                    className="flex items-center gap-2 text-primary-medium hover:text-primary-dark transition-colors px-3 py-1 rounded-full border border-primary-border hover:bg-primary-light"
+                    className="flex items-center gap-2 text-primary-accent hover:text-primary-dark transition-colors px-3 py-1 rounded-full border border-primary-border hover:bg-primary-light"
                     aria-label={`Visa poängsystem för ${form.title}`}
                   >
                     <HiInformationCircle
@@ -160,14 +183,14 @@ const DocumentsPage = () => {
                   </button>
                 )}
               </div>
-              <p className="text-primary-medium text-sm mb-6 flex-grow">
+              <p className="text-primary-accent text-sm mb-6 flex-grow">
                 {form.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                 <a
                   href={form.href}
                   download
-                  className="flex-1 flex items-center justify-center gap-2 bg-primary-medium/60 hover:bg-primary-dark hover:text-white text-dark py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
+                  className="flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:bg-primary-dark hover:text-white text-dark py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
                   aria-label={form.ariaLabel}
                 >
                   <HiDownload className="text-xl" aria-hidden="true" />
@@ -179,7 +202,7 @@ const DocumentsPage = () => {
                   href={form.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-medium focus:ring-offset-2"
+                  className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
                 >
                   <HiEye className="text-xl" aria-hidden="true" />
                   <span className="text-sm md:text-base lg:text-lg">

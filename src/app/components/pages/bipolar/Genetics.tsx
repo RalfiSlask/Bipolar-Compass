@@ -19,7 +19,7 @@ const Genetics = () => {
               aria-label="hjärna med blommor"
               width={1200}
               height={800}
-              quality={100}
+              quality={80}
               className="object-cover rounded-sm lg:rounded-lg"
               priority
             />

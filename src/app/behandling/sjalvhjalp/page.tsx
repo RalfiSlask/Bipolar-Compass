@@ -113,7 +113,7 @@ const SelfHelpPage = () => {
                   aria-label="kvinna som sover"
                   width={1200}
                   height={800}
-                  quality={100}
+                  quality={80}
                   className="rounded-lg object-cover max-h-[350px] lg:h-full"
                 />
               </div>
@@ -127,7 +127,7 @@ const SelfHelpPage = () => {
                   aria-label="kvinna som sover"
                   width={1200}
                   height={800}
-                  quality={100}
+                  quality={80}
                   className="rounded-lg object-cover max-h-[350px] lg:h-full"
                 />
               </div>
@@ -187,7 +187,7 @@ const SelfHelpPage = () => {
                   aria-label="Motion"
                   width={1200}
                   height={800}
-                  quality={100}
+                  quality={80}
                   className="rounded-lg w-full h-[300px] lg:h-full object-cover"
                 />
               </div>

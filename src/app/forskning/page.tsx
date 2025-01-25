@@ -325,7 +325,7 @@ const ScienceArticles = () => {
             alt="forskning"
             width={6730}
             height={4444}
-            quality={100}
+            quality={80}
             aria-label="forskning"
             className="w-auto apspect-auto h-full object-cover"
           />

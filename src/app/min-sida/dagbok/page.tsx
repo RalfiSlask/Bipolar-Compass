@@ -69,7 +69,7 @@ const DiaryPage = () => {
         fill
         priority
         className="object-cover z-0 opacity-60"
-        quality={100}
+        quality={80}
       />
       <div className="relative z-10 flex flex-col w-full max-w-[1440px] h-full px-1 md:px-10">
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg px-0 py-6 md:p-8">

@@ -37,7 +37,7 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
           aria-label="terapi session mellan en psykoterapeut och en patient"
           width={1200}
           height={800}
-          quality={100}
+          quality={80}
           className="object-cover rounded-sm lg:rounded-full"
           priority
         />

@@ -21,7 +21,7 @@ const MoviesPage = () => {
               alt="Jennifer Lawrence"
               width={1500}
               height={846}
-              quality={100}
+              quality={80}
               className="object-cover w-full aspect-[1920/1080]"
             />
           </div>
@@ -44,7 +44,7 @@ const MoviesPage = () => {
               alt="Stephen Fry"
               width={1500}
               height={846}
-              quality={100}
+              quality={80}
               className="object-cover w-full aspect-[1920/1080]"
             />
           </div>

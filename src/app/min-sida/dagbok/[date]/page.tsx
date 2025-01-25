@@ -147,7 +147,7 @@ const DiaryNote = () => {
         fill
         priority
         className="object-cover z-0 opacity-60"
-        quality={100}
+        quality={80}
       />
       <div className="relative z-10 w-full max-w-2xl mx-auto">
         <Link
