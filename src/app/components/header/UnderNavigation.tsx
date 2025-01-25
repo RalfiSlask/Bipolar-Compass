@@ -47,7 +47,7 @@ const UnderNavigation = () => {
     if (isMenuOpen && isMobile) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = originalOverflow;
+      document.body.style.overflow = '';
     }
 
     return () => {
@@ -68,10 +68,10 @@ const UnderNavigation = () => {
 
       <div
         className={`
-        flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
+        dropdown-menu flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'absolute top-[96px] left-0 w-full h-[calc(100vh-96px)] items-start  bg-white p-4 shadow-lg z-50 border-t border-primary-medium overflow-y-auto'
+            ? 'absolute top-[96px] left-0 w-full h-[calc(100%-96px)] items-start  bg-white p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
       >

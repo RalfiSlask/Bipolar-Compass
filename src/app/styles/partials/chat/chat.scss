@@ -6,3 +6,9 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.chat-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  height: -webkit-fill-available;
+}

@@ -86,6 +86,7 @@ const Chat = () => {
       }
     }
   }, [chatOpen]);
+
   const handleMessageOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     if (target === null) return;
@@ -196,7 +197,7 @@ const Chat = () => {
             aria-hidden="true"
           />
           <div
-            className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
+            className="chat-container fixed z-[999] sm:z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
             aria-modal="true"
             aria-label="Ai chat"
             aria-describedby="Ai chat"
@@ -206,11 +207,11 @@ const Chat = () => {
                 className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
          min-h-[500px] 
          md:max-h-[95vh]
-         h-[100vh]
+         h-[calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))]
          max-h-[100vh]
          md:h-[min(95vh,1000px)] 
          md:min-h-[600px] 
-         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-hidden"
+         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-y-auto"
               >
                 <div className="flex justify-between items-center">
                   <div className="text-white h-10 sm:w-14 sm:h-14 w-[90px] flex justify-start items-center">

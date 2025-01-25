@@ -18,3 +18,8 @@
 
   padding-right: 40px;
 }
+
+.dropdown-menu {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
