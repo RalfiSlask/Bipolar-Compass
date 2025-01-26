@@ -73,6 +73,14 @@ const MyPage = () => {
     fetchUserData();
   }, [session]);
 
+  const isThereAnyMoodTrackerData = (id: string): boolean => {
+    const mood = userData?.moodTrackerData
+      .flatMap((week) => week.mood_values)
+      .find((mood) => mood.id === id);
+
+    return mood?.valueForDays.some((day) => day.value !== null) ?? false;
+  };
+
   const calculateSleepAverage = (): number | null => {
     const sleepMood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
@@ -301,108 +309,122 @@ const MyPage = () => {
           icon={FaFrown}
           className="md:row-span-2 lg:col-span-1"
         >
-          <ResponsiveContainer width="100%" height={350}>
-            <PieChart>
-              <Pie
-                data={normalizedAnxietyData}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                fill="#8884d8"
-                label={({
-                  cx,
-                  cy,
-                  midAngle,
-                  innerRadius,
-                  outerRadius,
-                  percent,
-                  index,
-                }) => {
-                  const RADIAN = Math.PI / 180;
-                  const radius = 25 + innerRadius + (outerRadius - innerRadius);
-                  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-                  const Icon = ANXIETY_ICONS[index % ANXIETY_ICONS.length];
-                  const isLeftSide = x < cx;
+          {isThereAnyMoodTrackerData('anxiety') ? (
+            <ResponsiveContainer width="100%" height={350}>
+              <PieChart>
+                <Pie
+                  data={normalizedAnxietyData}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  fill="#8884d8"
+                  label={({
+                    cx,
+                    cy,
+                    midAngle,
+                    innerRadius,
+                    outerRadius,
+                    percent,
+                    index,
+                  }) => {
+                    const RADIAN = Math.PI / 180;
+                    const radius =
+                      25 + innerRadius + (outerRadius - innerRadius);
+                    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                    const Icon = ANXIETY_ICONS[index % ANXIETY_ICONS.length];
+                    const isLeftSide = x < cx;
 
-                  return (
-                    <g>
-                      <Icon
-                        x={isLeftSide ? x - 12 : x - 9}
-                        y={y - 15}
-                        style={{
-                          color: ANXIETY_COLORS[index % ANXIETY_COLORS.length],
-                          fontSize: '24px',
-                        }}
-                      />
-                      <text
-                        x={isLeftSide ? x - 20 : x + 25}
-                        y={y - 3}
-                        fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
-                        textAnchor={isLeftSide ? 'end' : 'start'}
-                        dominantBaseline="central"
-                      >
-                        {`${(percent * 100).toFixed(1)}%`}
-                      </text>
-                    </g>
-                  );
-                }}
-              >
-                {normalizedAnxietyData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
+                    return (
+                      <g>
+                        <Icon
+                          x={isLeftSide ? x - 12 : x - 9}
+                          y={y - 15}
+                          style={{
+                            color:
+                              ANXIETY_COLORS[index % ANXIETY_COLORS.length],
+                            fontSize: '24px',
+                          }}
+                        />
+                        <text
+                          x={isLeftSide ? x - 20 : x + 25}
+                          y={y - 3}
+                          fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
+                          textAnchor={isLeftSide ? 'end' : 'start'}
+                          dominantBaseline="central"
+                        >
+                          {`${(percent * 100).toFixed(1)}%`}
+                        </text>
+                      </g>
+                    );
+                  }}
+                >
+                  {normalizedAnxietyData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-primary-medium text-sm mt-1">
+              Ingen ångest data registrerad
+            </p>
+          )}
         </DashboardCardWrapper>
         <DashboardCardWrapper title="Sömn" icon={FaBed} className="h-full">
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={sleepData}>
-              <CartesianGrid
-                stroke="#ccc"
-                strokeDasharray="5 5"
-                strokeOpacity={0.3}
-              />
-              <XAxis
-                dataKey="date"
-                angle={-45}
-                textAnchor="end"
-                height={60}
-                interval={Math.ceil(sleepData.length / 4)}
-                tick={{ fontSize: 12 }}
-              />
-              <YAxis
-                width={100}
-                domain={[0, 24]}
-                ticks={[0, 4, 8, 12, 16, 20, 24]}
-                tick={{ fontSize: 12 }}
-              />
-              <Tooltip
-                contentStyle={{
-                  backgroundColor: '#f5f5f5',
-                  borderColor: '#ccc',
-                  fontSize: '14px',
-                }}
-                formatter={(value: number) => [`${value} timmar`, 'Sömn']}
-              />
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke="#46737c"
-                strokeWidth={2}
-                dot={{ fill: '#46737c', r: 4 }}
-                activeDot={{ r: 6, fill: '#46737c' }}
-                connectNulls={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          {isThereAnyMoodTrackerData('sleep') ? (
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={sleepData}>
+                <CartesianGrid
+                  stroke="#ccc"
+                  strokeDasharray="5 5"
+                  strokeOpacity={0.3}
+                />
+                <XAxis
+                  dataKey="date"
+                  angle={-45}
+                  textAnchor="end"
+                  height={60}
+                  interval={Math.ceil(sleepData.length / 4)}
+                  tick={{ fontSize: 12 }}
+                />
+                <YAxis
+                  width={100}
+                  domain={[0, 24]}
+                  ticks={[0, 4, 8, 12, 16, 20, 24]}
+                  tick={{ fontSize: 12 }}
+                />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#f5f5f5',
+                    borderColor: '#ccc',
+                    fontSize: '14px',
+                  }}
+                  formatter={(value: number) => [`${value} timmar`, 'Sömn']}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#46737c"
+                  strokeWidth={2}
+                  dot={{ fill: '#46737c', r: 4 }}
+                  activeDot={{ r: 6, fill: '#46737c' }}
+                  connectNulls={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-primary-medium text-sm mt-1">
+              Ingen sömn data registrerad
+            </p>
+          )}
           {sleepAverage !== null && (
             <div className="mt-4 p-4 bg-primary-light rounded-lg border border-primary-border">
               <p className="text-primary-dark">
