@@ -332,7 +332,9 @@ const Chat = () => {
                         ))}
                       </div>
                     </div>
-                    {message ? null : (
+                    {message ||
+                    typing ||
+                    conversationHistory.length > 0 ? null : (
                       <div className="hidden md:block max-w-[800px] mx-auto w-full">
                         <div className="text-white mb-4">
                           <ChatDescription />
