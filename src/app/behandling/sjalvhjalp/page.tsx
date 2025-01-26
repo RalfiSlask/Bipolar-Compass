@@ -1,6 +1,7 @@
 import Stress from '@/app/components/pages/treatment/Stress';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
 import { selfHelpIntro } from '@/app/data/pageIntros';
 import Image from 'next/image';
 
@@ -605,6 +606,7 @@ const SelfHelpPage = () => {
         </div>
         <EncouragmentContainer text="Kom ihåg, du är inte ensam. Denna sida är här för att ge dig stöd och inspiration. Ta det ett steg i taget, och tveka inte att söka hjälp när du behöver det." />
       </div>
+      <RelatedTreatmentContent currentPage="sjalvhjalp" />
     </section>
   );
 };

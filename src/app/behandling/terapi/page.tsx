@@ -1,5 +1,6 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
 import { therapyIntro } from '@/app/data/pageIntros';
 import Image from 'next/image';
 
@@ -382,6 +383,7 @@ const TherapyPage = () => {
           </div>
         </div>
         <EncouragmentContainer text="Terapier är ett värdefullt verktyg för att hantera bipolär sjukdom. Oavsett vilken terapiform du väljer är det viktigaste att du tar första steget mot att söka hjälp. Vi är här för att stödja dig på din resa mot bättre hälsa och balans i livet." />
+        <RelatedTreatmentContent currentPage="terapi" />
       </div>
     </section>
   );

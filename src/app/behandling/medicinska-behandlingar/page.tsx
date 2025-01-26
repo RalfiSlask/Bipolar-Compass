@@ -2,6 +2,7 @@ import ECT from '@/app/components/pages/treatment/ECT';
 import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
 import { medicineIntro } from '@/app/data/pageIntros';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
 
@@ -395,6 +396,7 @@ const MedicinePage = () => {
 
         <EncouragmentContainer text="Kom ihåg: Många med bipolär sjukdom hittar en medicinering som hjälper dem att leva ett stabilt och balanserat liv. Med rätt stöd och uppföljning finns det goda chanser att du också kommer att må bättre." />
       </div>
+      <RelatedTreatmentContent currentPage="medicinska-behandlingar" />
     </section>
   );
 };

@@ -1,5 +1,6 @@
 'use client';
 
+import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
 import {
   scoringInfo,
   selfAssessmentForms,
@@ -221,6 +222,7 @@ const DocumentsPage = () => {
           onClose={() => setActiveModal(null)}
         />
       )}
+      <RelatedTreatmentContent currentPage="dokument" />
     </section>
   );
 };
