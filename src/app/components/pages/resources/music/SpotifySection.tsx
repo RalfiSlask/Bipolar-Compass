@@ -77,6 +77,16 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/spotify/logout', { method: 'POST' });
+      setIsAuthenticated(false);
+      spotifyApi.setAccessToken('');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
   return (
     <article className="w-full">
       <div className="bg-gradient-to-br from-primary-light to-primary-dark shadow-xl p-6 md:p-8 rounded-3xl">
@@ -92,7 +102,10 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
                   musiken direkt här på sidan
                 </p>
               </div>
-              <AuthButton />
+              <AuthButton
+                isAuthenticated={isAuthenticated}
+                onLogout={handleLogout}
+              />
             </div>
           </div>
         )}
