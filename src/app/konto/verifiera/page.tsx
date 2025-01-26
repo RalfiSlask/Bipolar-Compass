@@ -58,10 +58,15 @@ const VerificationPage = () => {
       return;
     }
     resendVerificationEmail(userEmail);
+    toast.success('Ny verifieringslänk har skickats.');
   };
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <div className="w-full min-h-screen flex justify-center items-center relative px-4 py-12">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
