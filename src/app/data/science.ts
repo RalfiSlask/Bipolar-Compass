@@ -1,42 +1,86 @@
 export const SWEDISH_UNIVERSITIES_FILTERS = [
-  { value: '', label: 'Alla universitet' },
-  { value: 'Karolinska Institutet', label: 'Karolinska Institutet' },
-  { value: 'Uppsala University', label: 'Uppsala Universitet' },
-  { value: 'Lund University', label: 'Lunds Universitet' },
-  { value: 'University of Gothenburg', label: 'Göteborgs Universitet' },
-  { value: 'Umeå University', label: 'Umeå Universitet' },
-  { value: 'Linköping University', label: 'Linköpings Universitet' },
-  { value: 'Stockholm University', label: 'Stockholms Universitet' },
-  { value: 'Örebro University', label: 'Örebro Universitet' },
+  { id: '', value: '', label: 'Alla universitet' },
+  {
+    id: 'Karolinska Institutet',
+    value: 'Karolinska Institutet',
+    label: 'Karolinska Institutet',
+  },
+  {
+    id: 'Uppsala University',
+    value: 'Uppsala University',
+    label: 'Uppsala Universitet',
+  },
+  {
+    id: 'Lund University',
+    value: 'Lund University',
+    label: 'Lunds Universitet',
+  },
+  {
+    id: 'University of Gothenburg',
+    value: 'University of Gothenburg',
+    label: 'Göteborgs Universitet',
+  },
+  {
+    id: 'Umeå University',
+    value: 'Umeå University',
+    label: 'Umeå Universitet',
+  },
+  {
+    id: 'Linköping University',
+    value: 'Linköping University',
+    label: 'Linköpings Universitet',
+  },
+  {
+    id: 'Stockholm University',
+    value: 'Stockholm University',
+    label: 'Stockholms Universitet',
+  },
+  {
+    id: 'Örebro University',
+    value: 'Örebro University',
+    label: 'Örebro Universitet',
+  },
 ];
 
 export const SWEDISH_HOSPITALS_FILTERS = [
-  { value: '', label: 'Alla sjukhus' },
+  { id: '', value: '', label: 'Alla sjukhus' },
   {
+    id: 'Karolinska University Hospital',
     value: 'Karolinska University Hospital',
     label: 'Karolinska Universitetssjukhuset',
   },
   {
+    id: 'Sahlgrenska University Hospital',
     value: 'Sahlgrenska University Hospital',
     label: 'Sahlgrenska Universitetssjukhuset',
   },
-  { value: 'Uppsala University Hospital', label: 'Akademiska sjukhuset' },
-  { value: 'Skåne University Hospital', label: 'Skånes Universitetssjukhus' },
   {
+    id: 'Uppsala University Hospital',
+    value: 'Uppsala University Hospital',
+    label: 'Akademiska sjukhuset',
+  },
+  {
+    id: 'Skåne University Hospital',
+    value: 'Skåne University Hospital',
+    label: 'Skånes Universitetssjukhus',
+  },
+  {
+    id: 'Norrlands University Hospital',
     value: 'Norrlands University Hospital',
     label: 'Norrlands Universitetssjukhus',
   },
   {
+    id: 'Linköping University Hospital',
     value: 'Linköping University Hospital',
     label: 'Universitetssjukhuset i Linköping',
   },
 ];
 
 export const YEARS_OF_PUBLICATION_FILTERS = [
-  { value: '1', label: '1 år' },
-  { value: '5', label: '5 år' },
-  { value: '10', label: '10 år' },
-] as const;
+  { id: '1', value: '1', label: '1 år' },
+  { id: '5', value: '5', label: '5 år' },
+  { id: '10', value: '10', label: '10 år' },
+];
 
 export const TEXT_AVAILABILITY_FILTERS = [
   { id: 'hasAbstract', label: 'Har abstrakt', value: 'hasabstract' },
@@ -52,8 +96,8 @@ export const ARTICLE_ATTRIBUTE_FILTERS = [
 ];
 
 export const LANGUAGE_FILTERS = [
-  { id: 'english', label: 'Engelska', value: 'english[Language]' },
-  { id: 'swedish', label: 'Svenska', value: 'swedish[Language]' },
+  { id: 'Engelska', label: 'Engelska', value: 'english[Language]' },
+  { id: 'Svenska', label: 'Svenska', value: 'swedish[Language]' },
 ];
 
 export const PUBLICATION_TYPE_FILTERS = [
@@ -296,7 +340,11 @@ export const PUBLICATION_TYPE_FILTERS = [
     label: 'Pragmatisk klinisk prövning',
     value: 'pragmatic clinical trial[Publication Type]',
   },
-  { id: 'preprint', label: 'Förhandspublicering', value: 'preprint[Publication Type]' },
+  {
+    id: 'preprint',
+    label: 'Förhandspublicering',
+    value: 'preprint[Publication Type]',
+  },
   {
     id: 'publishedErratum',
     label: 'Publicerad rättelse',
@@ -315,7 +363,8 @@ export const PUBLICATION_TYPE_FILTERS = [
   {
     id: 'researchSupportAmericanRecoveryAndReinvestmentAct',
     label: 'Forskningsstöd, American Recovery and Reinvestment Act',
-    value: 'research support, american recovery and reinvestment act[Publication Type]',
+    value:
+      'research support, american recovery and reinvestment act[Publication Type]',
   },
   {
     id: 'researchSupportNIHExtramural',
@@ -357,7 +406,11 @@ export const PUBLICATION_TYPE_FILTERS = [
     label: 'Tillbakadragande av publikation',
     value: 'retraction of publication[Publication Type]',
   },
-  { id: 'review', label: 'Översiktsartikel', value: 'review[Publication Type]' },
+  {
+    id: 'review',
+    label: 'Översiktsartikel',
+    value: 'review[Publication Type]',
+  },
   {
     id: 'scientificIntegrityReview',
     label: 'Vetenskaplig integritetsgranskning',

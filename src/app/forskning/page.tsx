@@ -66,15 +66,51 @@ const ScienceArticles = () => {
   };
 
   const removeFilter = (filter: string) => {
+    if (filter === 'Internationella artiklar') {
+      setSearchScope('swedish');
+      return;
+    }
+
+    if (filter.includes('år')) {
+      setSelectedAmountOfYears('0');
+      return;
+    }
+
+    const university = SWEDISH_UNIVERSITIES_FILTERS.find(
+      (u) => u.label === filter
+    );
+    if (university) {
+      setSelectedUniversity('');
+      return;
+    }
+
+    const hospital = SWEDISH_HOSPITALS_FILTERS.find((h) => h.label === filter);
+    if (hospital) {
+      setSelectedHospital('');
+      return;
+    }
+
+    const language = LANGUAGE_FILTERS.find((l) => l.label === filter);
+    if (language) {
+      setSelectedLanguage('');
+      return;
+    }
+
     const filterFromLabel = [
       ...TEXT_AVAILABILITY_FILTERS,
       ...ARTICLE_ATTRIBUTE_FILTERS,
       ...PUBLICATION_TYPE_FILTERS,
-      ...LANGUAGE_FILTERS,
     ].find((f) => f.label === filter)?.id;
 
-    setActiveFilters((prev) => prev.filter((f) => f !== filterFromLabel));
+    if (filterFromLabel) {
+      setActiveFilters((prev) => prev.filter((f) => f !== filterFromLabel));
+    }
   };
+
+  useEffect(() => {
+    console.log('active filters', activeFilters);
+    console.log('selected language', selectedLanguage);
+  }, [activeFilters, selectedLanguage]);
 
   const getActiveFilters = () => {
     const filters: string[] = [];
@@ -121,6 +157,8 @@ const ScienceArticles = () => {
   };
 
   const scienceActiveFilters = getActiveFilters();
+
+  console.log('scienceActiveFilters', scienceActiveFilters);
 
   const handleSearch = () => {
     const userSearchTerm = additionalSearch.trim();
