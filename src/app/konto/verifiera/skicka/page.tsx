@@ -7,6 +7,7 @@ import { ICustomSession } from '@/app/types/authoptions';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { MdEmail } from 'react-icons/md';
 
 const SendVerificationLinkPage = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
@@ -33,6 +34,7 @@ const SendVerificationLinkPage = () => {
 
     const success = await resendVerificationEmail(session.user.email);
     if (success) {
+      toast.success('Ny verifieringslänk har skickats.');
       setCountdown(COOLDOWN_TIME);
     }
   };
@@ -59,12 +61,18 @@ const SendVerificationLinkPage = () => {
             }}
           >
             <div className="flex flex-col gap-2">
-              <div className="text-center text-primary-dark text-lg font-bold">
-                Vi har redan skickat dig en verifieringslänk.
+              <div className="flex items-center gap-2 text-primary-dark justify-center mb-4">
+                <MdEmail className="w-6 h-6" />
+                <div className="text-center text-primary-dark text-lg font-bold">
+                  Vi har skickat dig en verifieringslänk.
+                </div>
               </div>
               <p className="text-base text-gray-600">
-                Kolla även i skräpposten så den inte har hamnat där. Om du ej
-                får till det, klicka på knappen nedan för att få en ny
+                Var vänlig och kontrollera din e-post. Kolla även i din
+                skräppost så den inte har hamnat där.
+              </p>
+              <p className="text-base text-gray-600">
+                Om du ej får till det, klicka på knappen nedan för att få en ny
                 verifieringslänk.
               </p>
             </div>
