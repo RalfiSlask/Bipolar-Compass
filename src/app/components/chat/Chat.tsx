@@ -50,18 +50,11 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    let scrollY = 0;
-
     if (chatOpen) {
       if (window.innerWidth < 768) {
-        scrollY = window.scrollY || document.documentElement.scrollTop || 0;
-
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-        document.body.style.top = `-${scrollY}px`;
-
-        document.documentElement.style.overflow = 'hidden';
-        document.documentElement.style.height = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
       } else {
         document.body.style.overflow = 'auto';
       }
@@ -71,19 +64,16 @@ const Chat = () => {
           inputRef.current?.focus();
         }, 100);
       }
-    } else {
-      if (window.innerWidth < 768) {
-        const savedScrollY = parseInt(document.body.style.top || '0', 10) * -1;
 
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.top = '';
-
-        document.documentElement.style.overflow = '';
-        document.documentElement.style.height = '';
-
-        window.scrollTo(0, savedScrollY);
-      }
+      return () => {
+        if (window.innerWidth < 768) {
+          const scrollY = document.body.style.top;
+          document.body.style.position = '';
+          document.body.style.width = '';
+          document.body.style.top = '';
+          window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+      };
     }
   }, [chatOpen]);
 
@@ -197,21 +187,21 @@ const Chat = () => {
             aria-hidden="true"
           />
           <div
-            className="chat-container fixed z-[999] sm:z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
+            className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
             aria-modal="true"
             aria-label="Ai chat"
             aria-describedby="Ai chat"
           >
-            <div className="fixed h-full z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
+            <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
               <div
                 className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
          min-h-[500px] 
          md:max-h-[95vh]
-        h-[100vh]
+         h-[100vh]
          max-h-[100vh]
          md:h-[min(95vh,1000px)] 
          md:min-h-[600px] 
-         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-y-auto"
+         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-hidden"
               >
                 <div className="flex justify-between items-center">
                   <div className="text-white h-10 sm:w-14 sm:h-14 w-[90px] flex justify-start items-center">
@@ -420,12 +410,12 @@ const Chat = () => {
         <button
           title="Öppna chat"
           onClick={() => setChatOpen(true)}
-          className="relative flex items-center justify-center bg-primary-dark hover:bg-primary-medium text-white w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease"
+          className="relative flex items-center justify-center bg-primary-dark hover:bg-primary-medium text-white w-12 h-12 xl:w-16 xl:h-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease"
           aria-label="Öppna chat"
           onMouseEnter={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
         >
-          <BsFillChatSquareDotsFill className="mt-1 text-3xl hover:scale-110 transition-transform" />
+          <BsFillChatSquareDotsFill className="mt-1 text-3xl xl:text-4xl hover:scale-110 transition-transform" />
         </button>
       </div>
     </>
