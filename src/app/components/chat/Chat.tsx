@@ -182,7 +182,7 @@ const Chat = () => {
       {chatOpen ? (
         <>
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-opacity duration-200"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[125] transition-opacity duration-200"
             onClick={() => setChatOpen(false)}
             aria-hidden="true"
           />
