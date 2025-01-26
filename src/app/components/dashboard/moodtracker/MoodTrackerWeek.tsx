@@ -39,6 +39,14 @@ const MoodTrackerWeek = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const pastDays = moodTrackerValues.map((mood) =>
+    mood.valueForDays
+      .filter((day) => new Date(day.date) <= new Date())
+      .map((day) => day)
+  );
+
+  console.log(pastDays);
+
   return (
     <div className="mx-auto max-w-6xl w-full">
       <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-8 mb-8">

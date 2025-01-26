@@ -41,6 +41,7 @@ const MoodTrackerPage = () => {
         if (rawData) {
           const data = new MoodtrackerWeek(rawData);
           setMoodTrackerValues(data.mood_values);
+          console.log(data.mood_values);
         } else {
           const defaultWeek = MoodtrackerWeek.createDefault(
             session.user.id,
@@ -99,6 +100,27 @@ const MoodTrackerPage = () => {
     }
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
+      try {
+        console.log('saving?');
+        await saveMoodTrackerData();
+      } catch (error) {
+        console.error('Failed to save mood tracker data:', error);
+
+        event.preventDefault();
+        event.returnValue =
+          'Det gick inte att spara dina ändringar. Vill du verkligen lämna sidan?';
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [moodTrackerValues, selectedDate]);
+
   const handleValueChange = (
     moodId: MoodId,
     dayId: DayId,
@@ -128,7 +150,7 @@ const MoodTrackerPage = () => {
   }
 
   return (
-    <section className="w-full px-0 md:px-10 py-12 min-h-screen bg-tertiary-light">
+    <section className="w-full px-2 md:px-10 py-12 min-h-screen bg-tertiary-light">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex justify-center gap-4 mb-8">
           <button

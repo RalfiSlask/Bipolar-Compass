@@ -18,15 +18,26 @@ const MoodTrackerCheckboxes = ({
   handleValueChange,
   disabled,
 }: IMoodTrackerCheckboxesProps) => {
+  if (mood.yAxis.every((value) => value === 'Ingen data')) {
+    return null;
+  }
+
+  const shouldShowCheckbox = (level: number) => {
+    if (mood.id === 'sleep') return true;
+    return level !== 0;
+  };
+
   return (
     <div className="flex flex-col gap-1.5 pt-8 sm:gap-3 items-center relative">
       {Array.from({ length: mood.yAxis.length }, (_, index) => {
         const level = mood.yAxis.length - 1 - index;
         const isChecked = day.value === level;
 
+        if (!shouldShowCheckbox(level)) return null;
+
         return (
-          <div 
-            className="relative h-5 md:h-7" 
+          <div
+            className="relative h-5 md:h-7"
             key={`${mood.id}-${day.id}-${index}`}
           >
             <input

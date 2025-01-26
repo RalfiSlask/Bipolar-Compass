@@ -43,7 +43,7 @@ const MoodTrackerDay = ({
       const dayValue = mood.valueForDays.find(
         (day) => day.date === formattedDate
       )?.value;
-      return { ...acc, [mood.id]: dayValue === null ? 0 : (dayValue ?? 0) + 1 };
+      return { ...acc, [mood.id]: dayValue ?? 0 };
     }, {});
   };
 
@@ -56,13 +56,17 @@ const MoodTrackerDay = ({
     setMoodStates(newMoodStates);
   }, [selectedDate, moodTrackerValues]);
 
+  useEffect(() => {
+    console.log(moodStates);
+  }, [moodStates]);
+
   const handleMoodChange = (moodId: MoodId, value: number | null) => {
     const formattedDate = format(selectedDate, 'yyyy-MM-dd');
     const dayId = format(selectedDate, 'EEEE').toLowerCase() as DayId;
 
     setMoodStates((prev) => ({ ...prev, [moodId]: value ?? 0 }));
 
-    const serverValue = value === 0 ? null : value === null ? null : value - 1;
+    const serverValue = value === 0 ? null : value;
     handleValueChange(moodId, dayId, serverValue, formattedDate);
   };
 
@@ -178,15 +182,7 @@ const MoodTrackerDay = ({
                     }`}
                 >
                   <span className="text-3xl">
-                    {
-                      [
-                        '❓', // Ingen data
-                        '🛋️', // Nej
-                        '🚶', // Lätt
-                        '🏃', // Medel
-                        '💪', // Intensiv
-                      ][index]
-                    }
+                    {['❓', '🛋️', '🚶', '🏃', '💪'][index]}
                   </span>
                   <span
                     className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 
