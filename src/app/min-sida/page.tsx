@@ -5,7 +5,9 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {
   FaBed,
+  FaCalendarAlt,
   FaCog,
+  FaFire,
   FaFrown,
   FaGrinBeam,
   FaLaughBeam,
@@ -16,6 +18,8 @@ import {
   FaUserFriends,
 } from 'react-icons/fa';
 import {
+  Bar,
+  BarChart,
   CartesianGrid,
   Cell,
   Legend,
@@ -31,6 +35,7 @@ import {
 import Spinner from '../components/shared/Spinner';
 
 import DashboardCardWrapper from '../components/dashboard/DashboardCardWrapper';
+import MoodScoreScale from '../components/dashboard/MoodScoreScale';
 import { ANXIETY_COLORS } from '../data/dashboardColors';
 import { WEIGHTS } from '../data/dashboardWeights';
 import { ICustomSession } from '../types/authoptions';
@@ -62,6 +67,7 @@ const MyPage = () => {
 
         if (response.status === 200) {
           setUserData(response.data);
+          console.log(response.data);
         }
       } catch (error) {
         console.error('Failed to fetch user data:', error);
@@ -187,52 +193,124 @@ const MyPage = () => {
     FaSadTear,
   ];
 
+  const calculateDailyAverageMood = () => {
+    const daysOfWeek = [
+      'måndag',
+      'tisdag',
+      'onsdag',
+      'torsdag',
+      'fredag',
+      'lördag',
+      'söndag',
+    ];
+    const averages = daysOfWeek.map((day, index) => {
+      const englishDays = [
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ];
+      const dayMoods = moodValues
+        ?.map((mood) => {
+          const dayData = mood.valueForDays.find(
+            (d) => d.id === englishDays[index]
+          );
+          if (dayData?.value === null) return null;
+          return {
+            value: dayData?.value || 0,
+            maxScale: mood.yAxis.length - 1,
+          };
+        })
+        .filter((m) => m !== null);
+
+      const avgMood = dayMoods?.reduce((acc, curr) => {
+        if (!curr) return acc;
+        return acc + curr.value / curr.maxScale;
+      }, 0);
+
+      return {
+        day: day,
+        average: dayMoods?.length
+          ? ((avgMood || 0) / dayMoods.length) * 100
+          : 0,
+      };
+    });
+
+    return averages;
+  };
+
+  const calculateLongestStreak = () => {
+    let currentStreak = 0;
+    let longestStreak = 0;
+
+    const allDays = moodValues?.[0]?.valueForDays || [];
+
+    allDays.forEach((day) => {
+      const hasEntries = moodValues?.some((mood) => {
+        const dayData = mood.valueForDays.find((d) => d.id === day.id);
+        return dayData?.value !== null;
+      });
+
+      if (hasEntries) {
+        currentStreak++;
+        longestStreak = Math.max(longestStreak, currentStreak);
+      } else {
+        currentStreak = 0;
+      }
+    });
+
+    return longestStreak;
+  };
+
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <section className="w-full h-full bg-tertiary-light py-10  px-4 md:px-10 ">
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-        <div className="md:col-span-2 lg:col-span-3 max-w-4xl bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden">
-          <div className="relative z-10">
-            <h1 className="text-3xl font-semibold text-secondary-dark mb-3">
-              Välkommen tillbaka, {session?.user?.name}!
-            </h1>
-            <p className="text-gray-600 text-lg w-full">
-              Ta en stund att reflektera över hur du mår idag. Din mentala hälsa
-              är viktig.
-            </p>
-            <div className="flex flex-col">
-              <div className="mt-6 flex items-center">
-                <span
-                  style={{ color: moodScoreColor(moodScore) }}
-                  className={`text-2xl font-semibold mr-4`}
-                >
-                  Moodscore: {moodScore}
-                </span>
+    <section className="w-full h-full bg-tertiary-light py-10 px-4 md:px-10">
+      <div className="bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden">
+        <div className="relative z-10">
+          <h1 className="text-3xl font-semibold text-secondary-dark mb-3">
+            Välkommen tillbaka, {session?.user?.name}!
+          </h1>
+          <p className="text-gray-600 text-lg w-full">
+            Ta en stund att reflektera över hur du mår idag. Din mentala hälsa
+            är viktig.
+          </p>
+          <div className="flex flex-col">
+            <div className="mt-6 flex-col sm:flex-row flex items-center">
+              <span
+                style={{ color: moodScoreColor(moodScore) }}
+                className={`text-2xl font-semibold mr-4 `}
+              >
+                Moodscore: {moodScore}
+              </span>
 
-                <div className="h-2 flex-grow bg-primary-medium/60 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full w-full `}
-                    style={{
-                      width: `${moodScore}%`,
-                      backgroundColor: moodScoreColor(moodScore),
-                    }}
-                  ></div>
-                </div>
+              <div className="h-2 flex-grow bg-primary-medium/60 rounded-full mt-4 sm:mt-0 w-full sm:w-auto overflow-hidden">
+                <div
+                  className={`h-full w-full `}
+                  style={{
+                    width: `${moodScore}%`,
+                    backgroundColor: moodScoreColor(moodScore),
+                  }}
+                ></div>
               </div>
-              {userData?.moodTrackerData && (
-                <p className="text-gray-600 text-sm mt-1">
-                  {renderMessage(moodScore, userData?.moodTrackerData)}
-                </p>
-              )}
             </div>
+            {userData?.moodTrackerData && (
+              <p className="text-gray-600 text-sm mt-1">
+                {renderMessage(moodScore, userData?.moodTrackerData)}
+              </p>
+            )}
           </div>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-full  transform translate-x-16 -translate-y-16"></div>
-          <div className="absolute bottom-0 right-0 w-24 h-24 bg-tertiary-light rounded-full  transform translate-x-8 translate-y-8"></div>
         </div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-full  transform translate-x-16 -translate-y-16"></div>
+        <div className="absolute bottom-0 right-0 w-24 h-24 bg-tertiary-light rounded-full  transform translate-x-8 translate-y-8"></div>
+      </div>
 
+      <div className="grid md:grid-cols-3 gap-6 mt-6">
         <DashboardCardWrapper title="Mediciner" icon={FaNotesMedical}>
           {userData?.profile?.medications.length &&
           userData?.profile?.medications.length > 0 ? (
@@ -284,7 +362,7 @@ const MyPage = () => {
         </DashboardCardWrapper>
 
         <DashboardCardWrapper title="Notifikationer" icon={FaCog}>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <div className="bg-primary-light rounded-xl p-4">
               <p
                 className={`
@@ -303,7 +381,8 @@ const MyPage = () => {
           </div>
         </DashboardCardWrapper>
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
+
+      <div className="grid md:grid-cols-2 gap-6 mt-6">
         <DashboardCardWrapper
           title="Ångestnivåer"
           icon={FaFrown}
@@ -437,6 +516,50 @@ const MyPage = () => {
           )}
         </DashboardCardWrapper>
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+        <div className="bg-white p-6 rounded-xl shadow-md md:col-span-3">
+          <div className="flex items-center mb-4">
+            <FaCalendarAlt className="text-primary-accent text-2xl mr-3" />
+            <h3 className="text-xl font-semibold text-secondary-dark">
+              Dagligt Mående
+            </h3>
+          </div>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={calculateDailyAverageMood()}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis domain={[0, 100]} />
+              <Tooltip
+                formatter={(value: number) => [
+                  `${Math.round(value)}%`,
+                  'Mående',
+                ]}
+                contentStyle={{ backgroundColor: '#fff', borderRadius: '8px' }}
+              />
+              <Bar dataKey="average" fill="#46737c" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="flex items-center mb-4">
+            <FaFire className="text-orange-500 text-2xl mr-3" />
+            <h3 className="text-xl font-semibold text-secondary-dark">
+              Nuvarande Svit
+            </h3>
+          </div>
+          <p className="text-4xl font-bold text-primary-dark">
+            {calculateLongestStreak()}{' '}
+            {calculateLongestStreak() === 1 ? 'dag' : 'dagar'}
+          </p>
+          <p className="text-gray-600 mt-2">
+            Längsta period med registrerad data
+          </p>
+        </div>
+      </div>
+
+      <MoodScoreScale />
     </section>
   );
 };
