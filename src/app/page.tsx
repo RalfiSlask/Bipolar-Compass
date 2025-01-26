@@ -39,7 +39,8 @@ export default function Home() {
               alt="testing"
               width={4910}
               height={3264}
-              quality={100}
+              quality={80}
+              priority={true}
               className="object-cover w-full h-full"
             />
           </div>
