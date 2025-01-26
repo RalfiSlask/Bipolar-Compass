@@ -1,6 +1,7 @@
 'use client';
 
 import PodcastContainer from '@/app/components/pages/resources/PodcastContainer';
+import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import Spinner from '@/app/components/shared/Spinner';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
@@ -59,6 +60,7 @@ const PodcastPage = () => {
           </div>
         </div>
       </div>
+      <MultimediaRelatedContent currentPage="podcasts" />
     </section>
   );
 };

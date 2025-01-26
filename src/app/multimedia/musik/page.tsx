@@ -1,6 +1,7 @@
 'use client';
 
 import SpotifySection from '@/app/components/pages/resources/music/SpotifySection';
+import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import Spinner from '@/app/components/shared/Spinner';
 import {
   PLAYLIST_BIPOLAR,
@@ -82,6 +83,7 @@ const MusicPage = () => {
       <Suspense fallback={<Spinner />}>
         <SpotifySection activePlaylist={activePlaylist} />
       </Suspense>
+      <MultimediaRelatedContent currentPage="musik" />
     </section>
   );
 };

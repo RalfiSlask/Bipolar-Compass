@@ -1,6 +1,7 @@
 'use client';
 
 import MovieContainer from '@/app/components/pages/resources/MovieContainer';
+import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import moviesData from '@/app/data/json/movies.json';
 import { moviesIntro } from '@/app/data/pageIntros';
@@ -11,7 +12,7 @@ const MoviesPage = () => {
   const movies: IMovieOrSeriesResponseData[] = moviesData.movies;
 
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-2">
+    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
       <PageIntroContainer intro={moviesIntro} />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         <div className="flex flex-col md:items-center bg-primary-light rounded-lg overflow-hidden">
@@ -73,6 +74,7 @@ const MoviesPage = () => {
           <MovieContainer key={movie.id} movie={movie} />
         ))}
       </div>
+      <MultimediaRelatedContent currentPage="filmer" />
     </section>
   );
 };
