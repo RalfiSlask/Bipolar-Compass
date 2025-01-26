@@ -11,4 +11,6 @@
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   height: -webkit-fill-available;
+  display: flex;
+  align-items: center;
 }
