@@ -52,27 +52,19 @@ const Chat = () => {
   useEffect(() => {
     if (chatOpen) {
       if (window.innerWidth < 768) {
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`;
-      } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100%';
       }
 
       if (inputRef.current) {
         setTimeout(() => {
           inputRef.current?.focus();
-        }, 100);
+        }, 300);
       }
 
       return () => {
-        if (window.innerWidth < 768) {
-          const scrollY = document.body.style.top;
-          document.body.style.position = '';
-          document.body.style.width = '';
-          document.body.style.top = '';
-          window.scrollTo(0, parseInt(scrollY || '0') * -1);
-        }
+        document.body.style.overflow = '';
+        document.body.style.height = '';
       };
     }
   }, [chatOpen]);
@@ -187,21 +179,18 @@ const Chat = () => {
             aria-hidden="true"
           />
           <div
-            className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4"
+            className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] md:px-4 h-full md:h-auto"
             aria-modal="true"
             aria-label="Ai chat"
             aria-describedby="Ai chat"
           >
-            <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4">
+            <div className="fixed z-[130] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col w-full max-w-[1000px] sm:px-4 h-full md:h-auto">
               <div
                 className="bg-primary-dark flex flex-col w-full gap-4 md:gap-8 p-3 sm:p-4 md:p-6 lg:p-8 
-         min-h-[500px] 
-         md:max-h-[95vh]
-         h-[100vh]
-         max-h-[100vh]
-         md:h-[min(95vh,1000px)] 
-         md:min-h-[600px] 
-         md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-hidden"
+                h-[100dvh] md:h-[min(95vh,1000px)] 
+                md:min-h-[600px] 
+                md:max-h-[95vh]
+                md:rounded-[25px] shadow-xl border-none sm:border border-primary-border/30 relative overflow-hidden"
               >
                 <div className="flex justify-between items-center">
                   <div className="text-white h-10 sm:w-14 sm:h-14 w-[90px] flex justify-start items-center">
