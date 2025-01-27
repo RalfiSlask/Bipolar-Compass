@@ -195,9 +195,7 @@ const SelfHelpPage = () => {
             </div>
           </div>
         </div>
-
         <Stress />
-
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Relationsstöd
@@ -206,7 +204,7 @@ const SelfHelpPage = () => {
           <div className="space-y-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Prata med andra:
+                Prata med andra
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -232,7 +230,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Sök stödgrupper:
+                Sök stödgrupper
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -258,7 +256,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Sätt gränser:
+                Sätt gränser
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -292,7 +290,7 @@ const SelfHelpPage = () => {
           <div className="space-y-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Spåra ditt humör:
+                Spåra ditt humör
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -317,7 +315,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Förebyggande åtgärder:
+                Förebyggande åtgärder
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -341,7 +339,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Följ din behandlingsplan:
+                Följ din behandlingsplan
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -374,7 +372,7 @@ const SelfHelpPage = () => {
           <div className="space-y-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Varningstecken:
+                Varningstecken
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -397,8 +395,8 @@ const SelfHelpPage = () => {
             </div>
 
             <div>
-              <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
-                Professionell hjälp:
+              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
+                Professionell hjälp
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -422,7 +420,7 @@ const SelfHelpPage = () => {
 
             <div className="bg-primary-light/20 rounded-md p-4">
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Nödkontakter:
+                Nödkontakter
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -447,17 +445,13 @@ const SelfHelpPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
-            Resurser och verktyg
-          </h3>
-
-          <div className="space-y-6">
-            <div>
-              <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Artiklar och böcker:
+          <div className="flex flex-col lg:flex-row gap-10 mb-3">
+            <div className="flex-1 lg:min-h-fit">
+              <h4 className="text-lg font-semibold text-primary-dark mb-3">
+                Artiklar och böcker
               </h4>
               <div className="flex flex-col space-y-3">
-                <p>
+                <p className="text-base xl:text-lg">
                   Att fördjupa din kunskap om bipolär sjukdom genom
                   kvalitetsgranskad litteratur kan ge dig värdefulla insikter
                   och verktyg. Vetenskapliga artiklar och böcker skrivna av
@@ -466,7 +460,7 @@ const SelfHelpPage = () => {
                   uppmärksam på material som är granskat av medicinska experter
                   och publicerat av erkända institutioner.
                 </p>
-                <p>
+                <p className="text-base xl:text-lg">
                   Personliga berättelser och memoarer från andra som lever med
                   bipolär sjukdom kan också vara mycket värdefulla. Dessa kan ge
                   praktiska tips och strategier som andra har funnit hjälpsamma,
@@ -476,10 +470,22 @@ const SelfHelpPage = () => {
                 </p>
               </div>
             </div>
-
+            <div className="flex-1">
+              <Image
+                src="/images/treatments/books.webp"
+                alt="Motion"
+                aria-label="Motion"
+                width={1200}
+                height={800}
+                quality={80}
+                className="rounded-lg w-full h-[300px] lg:h-full object-cover"
+              />
+            </div>
+          </div>
+          <div className="space-y-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Appar:
+                Appar
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -505,7 +511,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Online-stöd:
+                Online-stöd
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -537,7 +543,7 @@ const SelfHelpPage = () => {
           <div className="space-y-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Acceptera dig själv:
+                Acceptera dig själv
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -560,7 +566,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Sätt realistiska mål:
+                Sätt realistiska mål
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
@@ -582,7 +588,7 @@ const SelfHelpPage = () => {
 
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-                Fira framgångar:
+                Fira framgångar
               </h4>
               <div className="flex flex-col space-y-3">
                 <p>
