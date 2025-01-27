@@ -5,7 +5,9 @@ export const POST = async (req: NextRequest) => {
 
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-  const redirect_uri = process.env.SPOTIFY_REDIRECT_URI || '';
+  /*   const redirect_uri = process.env.SPOTIFY_REDIRECT_URI || ''; */
+  const redirect_uri =
+    'https://www.xn--bipolrkompassen-4kb.se/multimedia/musik';
 
   if (!client_id || !client_secret || !redirect_uri) {
     console.error('Missing environment variables:', {
