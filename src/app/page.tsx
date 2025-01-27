@@ -70,7 +70,7 @@ export default function Home() {
               Om oss
             </h3>
             <p className="text-base sm:text-lg font-medium text-tertiary-dark">
-              Bipolär Kompassen är gjord av människor som har kommit i kontakt
+              BipolärKompassen är gjord av människor som har kommit i kontakt
               med bipolär sjukdom och sett behovet av en digital resurs för att
               hjälp personer i utsatthet. Detta arbete är ideellt och görs av
               frivilliga.

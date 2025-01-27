@@ -31,7 +31,7 @@ export const medicineIntro = {
 export const relativeIntro = {
   title: 'För dig som är anhörig till någon med bipolär sjukdom',
   description:
-    'Att stå nära någon som lever med bipolär sjukdom kan vara en känslomässig berg- och dalbana. Många anhöriga känner en blandningav kärlek, frustration, oro och maktlöshet. Att förstå vad din närstående går igenom och vad du själv kan göra är avgörande både för deras välbefinnande och för ditt eget. ',
+    'Att stå nära någon som lever med bipolär sjukdom kan vara en känslomässig berg- och dalbana. Många anhöriga känner en blandning av kärlek, frustration, oro och maktlöshet. Att förstå vad din närstående går igenom och vad du själv kan göra är avgörande både för deras välbefinnande och för ditt eget. ',
   descriptionBold:
     'Här har vi samlat kunskap, råd och resurser som kan hjälpa dig att navigera i en ofta komplex och utmanande situation. Kom ihåg: du är inte ensam.',
   image: '/images/relatives/relatives.jpg',

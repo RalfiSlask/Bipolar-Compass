@@ -383,8 +383,8 @@ const ScienceArticles = () => {
               Sök bland forskningsartiklar om bipolaritet
             </h2>
             <p className="text-gray-600 mb-6">
-              Alla sökningar kombineras med &quot;bipolar disorder&quot; för att
-              ge dig relevanta resultat inom området.
+              Ange en sökterm för att hitta forskningsartiklar om bipolär
+              sjukdom och dess olika aspekter.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="flex-1">

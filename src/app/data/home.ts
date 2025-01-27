@@ -1,6 +1,6 @@
 export const threeSections = [
   {
-    title: 'Jag är ny diagnostiserad',
+    title: 'Jag är nydiagnostiserad',
     description:
       'Du ska veta att du inte är ensam då 60 miljoner människor världen över level med bipolär sjukdom. Vi är här för att hjälpa dig.',
     bgColor: 'bg-primary-dark',
