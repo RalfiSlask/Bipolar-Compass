@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      height: {
+        'screen-minus-96': 'calc(100vh - 96px)',
+      },
       colors: {
         'primary-accent': '#46737c',
         'primary-light': '#eff7f7',
