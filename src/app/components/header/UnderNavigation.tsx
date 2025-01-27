@@ -114,7 +114,7 @@ const UnderNavigation = () => {
             setActiveMenu={setActiveMenu}
           />
         ))}
-        <div className="xl:hidden mt-auto w-full border-t border-primary-light pt-4">
+        <div className="xl:hidden mt-6 sm:mt-auto w-full border-t border-primary-light pt-4">
           <LoginNavigation />
         </div>
       </div>
