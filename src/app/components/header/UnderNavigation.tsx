@@ -71,7 +71,7 @@ const UnderNavigation = () => {
         flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'fixed xl:relative  left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-calc[100vh-96px] items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
+            ? 'fixed xl:relative  left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
       >
