@@ -1,5 +1,5 @@
 import MainPageImageGrid from '../components/shared/MainPageImageGrid';
-import { multimediaLinks } from '../data/multimediaLinks';
+import { MULTIMEDIA_LINKS } from '../data/multimediaLinks';
 
 const MultiMediaPage = () => {
   return (
@@ -26,7 +26,7 @@ const MultiMediaPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {multimediaLinks.map((item) => (
+          {MULTIMEDIA_LINKS.map((item) => (
             <MainPageImageGrid key={item.href} item={item} />
           ))}
         </div>

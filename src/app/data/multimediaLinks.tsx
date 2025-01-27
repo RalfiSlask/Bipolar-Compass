@@ -1,4 +1,4 @@
-export const multimediaLinks = [
+export const MULTIMEDIA_LINKS = [
   {
     title: 'Filmer',
     href: '/multimedia/filmer',
