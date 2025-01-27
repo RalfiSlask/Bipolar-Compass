@@ -53,7 +53,7 @@ const MenuItem = ({
         className={`
           nav-link !text-base gap-1 xl:!text-lg flex items-center justify-between
           w-full xl:w-auto px-3 py-2 rounded-lg transition-all duration-200
-          hover:bg-primary-light hover:text-primary-dark min-h-[48px]
+          hover:bg-primary-light hover:text-primary-dark min-h-[48px] xl:max-w-[150px]
           ${isVisible ? 'bg-primary-light text-primary-dark' : ''}
         `}
         onClick={handleClick}
