@@ -56,7 +56,7 @@ const UnderNavigation = () => {
   }, [isMenuOpen, isMobile]);
 
   return (
-    <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-6 xl:px-8 text-secondary-dark font-semibold py-4">
+    <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
       <BipolarLogo />
       <button
         className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
@@ -71,10 +71,23 @@ const UnderNavigation = () => {
         flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'fixed xl:relative top-[96px] left-0 w-full h-[calc(100vh-96px)] items-start bg-white p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
+            ? 'fixed xl:relative  left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-calc[100vh-96px] items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
       >
+        {isMenuOpen && (
+          <div className="sm:hidden m pb-[14px] flex justify-between items-center pt-1 w-full mb-1 pr-3 ">
+            <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
+            <BipolarLogo />
+            <button
+              className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <HiX /> : <HiMenu />}
+            </button>
+          </div>
+        )}
         <div className="flex flex-col w-full xl:hidden gap-2 border-b border-primary-light pb-4 mb-2">
           <Link
             href="/akut"
