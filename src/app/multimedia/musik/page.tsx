@@ -3,6 +3,7 @@
 import SpotifySection from '@/app/components/pages/resources/music/SpotifySection';
 import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import Spinner from '@/app/components/shared/Spinner';
+import { MUSIC_TABS } from '@/app/data/musicTabs';
 import {
   PLAYLIST_BIPOLAR,
   PLAYLIST_CALM,
@@ -32,14 +33,6 @@ const MusicPage = () => {
     }
   };
 
-  const tabs = [
-    { id: 'energi', title: 'Energi & Glädje' },
-    { id: 'lugn', title: 'Lugn & Balans' },
-    { id: 'sömn', title: 'Sömn' },
-    { id: 'meditation', title: 'Meditation' },
-    { id: 'bipolär', title: 'Bipolaritet' },
-  ];
-
   return (
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
       <div className="w-full bg-tertiary-light text-tertiary-dark flex items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10">
@@ -67,7 +60,7 @@ const MusicPage = () => {
       </div>
 
       <div className="flex flex-wrap gap-4 items-center">
-        {tabs.map((tab) => (
+        {MUSIC_TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabChange(tab.id)}
