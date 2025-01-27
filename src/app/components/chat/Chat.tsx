@@ -342,7 +342,7 @@ const Chat = () => {
                         className="w-full px-4 sm:px-6 py-2.5 sm:py-4 rounded-full bg-primary-medium/20 
                           border-primary-border/30 focus:border-primary-medium focus:ring-2 
                           focus:ring-primary-medium/20 focus:outline-none shadow-sm 
-                          placeholder:text-white/60 text-white text-[20px]"
+                          placeholder:text-white/60 text-white text-[16px]"
                         placeholder="Skriv ditt meddelande till Bipo..."
                         value={message}
                       />
