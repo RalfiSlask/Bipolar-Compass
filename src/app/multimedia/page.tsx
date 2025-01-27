@@ -1,37 +1,35 @@
-import Link from 'next/link';
+import MainPageImageGrid from '../components/shared/MainPageImageGrid';
 import { multimediaLinks } from '../data/multimediaLinks';
 
 const MultiMediaPage = () => {
   return (
-    <section className="max-w-6xl mx-auto p-6">
-      <div className="mb-12 text-center">
-        <h2 className="text-4xl font-bold text-primary-dark mb-4">
-          Multimediala resurser
-        </h2>
-        <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          Här kan du hitta filmer, musik och podcasts om bipolär sjukdom och
-          mental hälsa.
-        </p>
-      </div>
+    <section className="min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+        <div className="mb-20 text-left">
+          <h2 className="text-5xl md:text-6xl text-center font-bold text-primary-dark mb-8 animate-fade-in">
+            Multimedia
+          </h2>
+          <div className="flex flex-col gap-4 justify-center bg-primary-light max-w-4xl mx-auto p-4 rounded-lg">
+            <p className="text-secondary-dark">
+              Utforska vårt multimedia-bibliotek där vi har samlat ett urval av
+              filmer, musik och podcasts som belyser olika aspekter av bipolär
+              sjukdom. Genom att kombinera konst och information hoppas vi ge en
+              djupare förståelse för hur sjukdomen påverkar livet och samtidigt
+              inspirera till reflektion och stöd.
+            </p>
+            <p className="text-secondary-dark font-semibold">
+              Upptäck resurser som inte bara utbildar utan också engagerar, vare
+              sig det är genom en tankeväckande film, en lugnande spellista,
+              eller en podcast fylld med insikter om mental hälsa.
+            </p>
+          </div>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {multimediaLinks.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="group block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-1"
-          >
-            <div className="flex items-start space-x-4">
-              <span className="text-4xl">{item.icon}</span>
-              <div>
-                <h3 className="text-xl font-semibold text-primary-dark group-hover:text-primary">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-gray-600">{item.description}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {multimediaLinks.map((item) => (
+            <MainPageImageGrid key={item.href} item={item} />
+          ))}
+        </div>
       </div>
     </section>
   );
