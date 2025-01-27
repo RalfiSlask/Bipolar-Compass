@@ -41,7 +41,7 @@ const UnderNavigation = () => {
     setIsMenuOpen(false);
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const originalOverflow = document.body.style.overflow;
 
     if (isMenuOpen && isMobile) {
@@ -53,7 +53,7 @@ const UnderNavigation = () => {
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, [isMenuOpen, isMobile]);
+  }, [isMenuOpen, isMobile]); */
 
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
@@ -68,7 +68,7 @@ const UnderNavigation = () => {
 
       <div
         className={`
-        flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
+        flex flex-col xl:flex-row gap-1 sm:gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
             ? 'fixed xl:relative  left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
@@ -114,7 +114,7 @@ const UnderNavigation = () => {
             setActiveMenu={setActiveMenu}
           />
         ))}
-        <div className="xl:hidden mt-6 sm:mt-auto w-full border-t border-primary-light pt-4">
+        <div className="xl:hidden mt-auto w-full border-t border-primary-light pt-4">
           <LoginNavigation />
         </div>
       </div>
