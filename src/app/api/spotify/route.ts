@@ -33,7 +33,7 @@ export const POST = async (req: NextRequest) => {
       body: new URLSearchParams({
         grant_type: 'authorization_code',
         code,
-        redirect_uri,
+        redirect_uri: redirect_uri,
       }).toString(),
     });
 
