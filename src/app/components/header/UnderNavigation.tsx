@@ -28,7 +28,7 @@ const UnderNavigation = () => {
 
     const handleResize = () => {
       checkMobile();
-      if (isMenuOpen) {
+      if (window.innerWidth >= MOBILE_BREAKPOINT && isMenuOpen) {
         setIsMenuOpen(false);
       }
     };
@@ -71,7 +71,7 @@ const UnderNavigation = () => {
         flex flex-col xl:flex-row gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'absolute top-[96px] left-0 w-full h-[calc(100vh-96px)] items-start  bg-white p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
+            ? 'fixed xl:relative top-[96px] left-0 w-full h-[calc(100vh-96px)] items-start bg-white p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
       >

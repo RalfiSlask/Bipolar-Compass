@@ -47,21 +47,21 @@ const MenuItem = ({
   };
 
   return (
-    <div className="w-full xl:w-auto ">
+    <div className="w-full xl:w-auto">
       <Link
         href={`/${slug}`}
         className={`
-          nav-link !text-base xl:!text-lg flex items-center gap-1
+          nav-link !text-base xl:!text-lg flex items-center justify-between
           w-full xl:w-auto px-3 py-2 rounded-lg transition-all duration-200
-          hover:bg-primary-light hover:text-primary-dark h-[48px]
+          hover:bg-primary-light hover:text-primary-dark min-h-[48px]
           ${isVisible ? 'bg-primary-light text-primary-dark' : ''}
         `}
         onClick={handleClick}
       >
-        {title}
+        <span>{title}</span>
         {hasSubmenuitems && (
           <IoIosArrowDown
-            className={`w-5 h-5 transition-transform duration-200 ${
+            className={`w-5 h-5 transition-transform duration-200 flex-shrink-0 ${
               isVisible ? 'rotate-180' : ''
             }`}
             aria-hidden={true}
@@ -75,7 +75,7 @@ const MenuItem = ({
             pl-4 mt-1 transition-all duration-300 ease-in-out
             ${
               isVisible
-                ? 'max-h-[500px] opacity-100 visible'
+                ? 'max-h-[1000px] opacity-100 visible'
                 : 'max-h-0 opacity-0 invisible overflow-hidden'
             }
           `}
