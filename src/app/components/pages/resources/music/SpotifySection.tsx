@@ -45,8 +45,6 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
 
   const exchangeCodeForToken = async (code: string) => {
     try {
-      console.log('Attempting to exchange code:', code);
-
       const response = await fetch('/api/spotify', {
         method: 'POST',
         headers: {
