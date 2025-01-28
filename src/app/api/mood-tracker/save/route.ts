@@ -4,6 +4,7 @@ import {
   IMoodTrackerWeek,
 } from '@/app/types/moodtracker';
 import { getCollection } from '@/app/utils/databaseUtils';
+import { Document, ObjectId, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -38,10 +39,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
       await moodTrackerCollection.updateOne(
         { _id: existingEntry._id },
-        { $set: updatedWeek }
+        { $set: updatedWeek.toPlainObject() as Document }
       );
     } else {
-      const newWeekData: IMoodTrackerWeek = {
+      const newWeekData: WithId<IMoodTrackerWeek> = {
+        _id: new ObjectId(),
         id: crypto.randomUUID(),
         user_id,
         week_number: weekData.week_number,

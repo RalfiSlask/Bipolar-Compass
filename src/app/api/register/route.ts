@@ -32,7 +32,9 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
 
     try {
       // Save user first
-      const userResult = await usersCollection.insertOne(serializedUser);
+      const userResult = await usersCollection.insertOne(
+        serializedUser as Document
+      );
       const userId = userResult.insertedId.toString();
 
       const initialMoodTracker = MoodtrackerWeek.createDefault(userId);

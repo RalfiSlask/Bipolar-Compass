@@ -1,18 +1,23 @@
+import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
-
 export const POST = async (req: NextRequest) => {
   try {
     const { password, token } = await req.json();
-    console.log('Received request:', { password, token });
 
     const collection = await getCollection('thesis', 'users');
-    const user = await collection.findOne({
+    const user = (await collection.findOne({
       resetTokenExpires: { $gt: Date.now() },
-    });
+    })) as IUser | null;
 
     if (!user) {
+      return NextResponse.json(
+        { error: 'Invalid or expired token' },
+        { status: 400 }
+      );
+    }
+    if (!user.resetToken) {
       return NextResponse.json(
         { error: 'Invalid or expired token' },
         { status: 400 }

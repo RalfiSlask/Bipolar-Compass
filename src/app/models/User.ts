@@ -3,7 +3,7 @@ import { IUser } from '../types/user';
 import { Profile } from './Profile';
 import { Settings } from './Settings';
 
-export class User implements IUser {
+export class User extends Document implements IUser {
   readonly created_at: string = new Date().toISOString();
   isVerified: boolean = false;
   profile: Profile;
@@ -15,6 +15,7 @@ export class User implements IUser {
     public email: string,
     public password: string
   ) {
+    super();
     this.profile = new Profile();
     this.settings = new Settings();
     this.generateVerificationToken();

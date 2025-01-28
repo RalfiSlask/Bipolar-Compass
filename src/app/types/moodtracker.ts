@@ -1,4 +1,4 @@
-import { WithId } from 'mongodb';
+import { ObjectId, WithId } from 'mongodb';
 
 export type DayId =
   | 'monday'
@@ -42,6 +42,7 @@ export interface IMoodTrackerWeek {
 }
 
 export interface IMoodTrackerDocument extends WithId<Document> {
+  _id: ObjectId;
   user_id: string;
   week_number: number;
   year: number;
