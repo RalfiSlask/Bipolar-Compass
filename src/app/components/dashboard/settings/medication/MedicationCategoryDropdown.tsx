@@ -1,21 +1,15 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import { MEDICATION_CATEGORIES } from '@/app/data/medications';
 import { useField } from 'formik';
 
 const MedicationCategoryDropdown = () => {
   const [field, meta] = useField('category');
 
-  const options = [
-    { value: '', label: 'Välj kategori...' },
-    { value: 'moodStabilizers', label: 'Stämningsstabiliserande' },
-    { value: 'antipsychotics', label: 'Antipsykotiska' },
-    { value: 'antidepressants', label: 'Antidepressiva' },
-  ];
-
   return (
     <>
       <label className="block text-lg font-medium mb-2">Kategori</label>
       <CustomSelect
-        options={options}
+        options={MEDICATION_CATEGORIES}
         value={field.value}
         onChange={(value) =>
           field.onChange({ target: { name: 'category', value } })
