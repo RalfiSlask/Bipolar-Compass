@@ -1,15 +1,16 @@
 import { Client } from '@upstash/qstash';
-import { verifySignature } from '@upstash/qstash/dist/nextjs';
-import { NextApiRequest } from 'next';
-import { NextResponse } from 'next/server';
+import { verifySignatureAppRouter } from '@upstash/qstash/dist/nextjs';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 const qstashClient = new Client({
   token: process.env.QSTASH_TOKEN!,
 });
 
-export const POST = verifySignature(async function POST(req: NextApiRequest) {
-  const { email, medication, time, userId } = req.body;
+export const POST = verifySignatureAppRouter(async function POST(
+  req: NextRequest
+) {
+  const { email, medication, time, userId } = await req.json();
   console.log('Email:', email);
   console.log('Medication:', medication);
   console.log('Time:', time);
