@@ -134,6 +134,7 @@ const RegisterForm = () => {
                 name="password"
                 type="password"
                 autoComplete="new-password"
+                aria-autocomplete="list"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleChange(e);
                   setPassword(e.target.value);
