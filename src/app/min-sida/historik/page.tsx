@@ -144,10 +144,12 @@ const HistoryPage = () => {
         return null;
     }
   };
-  /*
-    This function is used to transform the mood data into a format that can be used to display in the chart.
-    It returns an array of objects with the date, value, id, and name of the mood.
-  */
+  /**
+   * This function is used to transform the mood data into a format that can be used to display in the chart.
+   * It returns an array of objects with the date, value, id, and name of the mood.
+   * @param moodIndex - The index of the mood to transform.
+   * @returns {IFilteredData[]} - The transformed mood data.
+   */
   const transformMoodData = (moodIndex: number): IFilteredData[] => {
     return moodTrackerData
       .flatMap((week) =>
