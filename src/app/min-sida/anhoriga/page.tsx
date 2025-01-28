@@ -7,6 +7,7 @@ import { IUser } from '@/app/types/user';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const RelativesPageContent = () => {
   const { data: session } = useSession();
@@ -47,7 +48,9 @@ const RelativesPageContent = () => {
           },
         });
       }
+      toast.success('Anhöriga sparade!');
     } catch (err) {
+      toast.error('Något gick fel när anhöriga sparades.');
       console.error('could not save relatives: ', err);
       throw new Error('Could not save relatives');
     }
