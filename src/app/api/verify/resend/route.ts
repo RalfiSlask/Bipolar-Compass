@@ -1,3 +1,4 @@
+import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { sendVerificationEmail } from '@/app/utils/emailUtils';
 import crypto from 'crypto';
@@ -15,7 +16,7 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     }
 
     const collection = await getCollection('thesis', 'users');
-    const user = await collection.findOne({ email });
+    const user = (await collection.findOne({ email })) as IUser | null;
     const newVerificationToken = crypto.randomBytes(32).toString('hex');
     const newTokenExpires = new Date(Date.now() + 3600 * 1000);
 

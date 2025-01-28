@@ -1,3 +1,4 @@
+import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -14,7 +15,9 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const collection = await getCollection('thesis', 'users');
 
-    const user = await collection.findOne({ verificationToken: token });
+    const user = (await collection.findOne({
+      verificationToken: token,
+    })) as IUser | null;
 
     if (!user) {
       const verifiedUser = await collection.findOne({ isVerified: true });
@@ -33,6 +36,10 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
         { error: 'Invalid verification token' },
         { status: 400 }
       );
+    }
+
+    if (!user.tokenExpires) {
+      return NextResponse.json({ error: 'Token has expired' }, { status: 400 });
     }
 
     if (user.isVerified) {

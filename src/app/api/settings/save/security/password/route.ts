@@ -1,3 +1,4 @@
+import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
@@ -8,12 +9,19 @@ export async function PUT(req: NextRequest) {
 
     const collection = await getCollection('thesis', 'users');
 
-    const user = await collection.findOne({ email });
+    const user = (await collection.findOne({ email })) as IUser | null;
 
     if (!user) {
       return NextResponse.json(
         { message: 'Användaren hittades inte' },
         { status: 404 }
+      );
+    }
+
+    if (!user.password) {
+      return NextResponse.json(
+        { message: 'Användaren har ingen lösenord' },
+        { status: 400 }
       );
     }
 

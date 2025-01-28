@@ -111,7 +111,7 @@ export class MoodValue implements IMoodValue {
   }
 }
 
-export class MoodtrackerWeek extends Document {
+export class MoodtrackerWeek implements IMoodTrackerWeek {
   id: string;
   user_id: string;
   week_number: number;
@@ -121,7 +121,6 @@ export class MoodtrackerWeek extends Document {
   mood_values: MoodValue[];
 
   constructor(moodtrackerWeek: IMoodTrackerWeek) {
-    super();
     this.id = moodtrackerWeek.id;
     this.user_id = moodtrackerWeek.user_id;
     this.week_number = moodtrackerWeek.week_number;

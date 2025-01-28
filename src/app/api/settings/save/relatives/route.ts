@@ -1,3 +1,4 @@
+import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -7,7 +8,7 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
 
     const collection = await getCollection('thesis', 'users');
 
-    const user = await collection.findOne({ email: email });
+    const user = (await collection.findOne({ email: email })) as IUser | null;
 
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });

@@ -54,7 +54,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       };
 
       const newWeek = new MoodtrackerWeek(newWeekData);
-      await moodTrackerCollection.insertOne(newWeek);
+      await moodTrackerCollection.insertOne(
+        JSON.parse(JSON.stringify(newWeek))
+      );
     }
 
     return NextResponse.json({ success: true });

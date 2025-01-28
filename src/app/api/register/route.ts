@@ -38,7 +38,9 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       const userId = userResult.insertedId.toString();
 
       const initialMoodTracker = MoodtrackerWeek.createDefault(userId);
-      await moodTrackerCollection.insertOne(initialMoodTracker);
+      await moodTrackerCollection.insertOne(
+        JSON.parse(JSON.stringify(initialMoodTracker))
+      );
 
       // Send verification email
       await sendVerificationEmail({
