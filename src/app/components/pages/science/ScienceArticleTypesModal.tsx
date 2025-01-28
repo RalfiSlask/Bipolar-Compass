@@ -15,6 +15,7 @@ const ScienceArticleTypesModal = ({
 }: ScienceArticleTypesModalProps) => {
   const [tempFilters, setTempFilters] = useState<string[]>(activeFilters);
 
+  // This function is used to update the temporary filters state when a checkbox is checked or unchecked.
   const handleTempFilterChange = (filterId: string, checked: boolean) => {
     setTempFilters((prev) =>
       checked ? [...prev, filterId] : prev.filter((f) => f !== filterId)

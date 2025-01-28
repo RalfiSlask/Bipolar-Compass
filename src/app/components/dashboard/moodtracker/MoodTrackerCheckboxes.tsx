@@ -22,6 +22,8 @@ const MoodTrackerCheckboxes = ({
     return null;
   }
 
+  // This function is used to determine if a checkbox should be shown for a given level.
+  // If the mood is 'sleep', the checkbox is always shown.
   const shouldShowCheckbox = (level: number) => {
     if (mood.id === 'sleep') return true;
     return level !== 0;

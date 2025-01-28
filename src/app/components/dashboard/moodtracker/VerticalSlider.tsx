@@ -26,13 +26,17 @@ const VerticalSlider = ({
   const [sliderValue, setSliderValue] = useState(value);
   const sliderRef = useRef<HTMLDivElement>(null);
 
+  // We use a the useCallback hook to update the slider value to prevent unnecessary re-renders.
   const updateValue = useCallback(
     (clientY: number) => {
       if (!sliderRef.current) return;
 
+      // We get the bounding client rect (the position of the slider)
       const rect = sliderRef.current.getBoundingClientRect();
+      // We calculate the percentage of the slider that the user is dragging.
       const percentage =
         1 - Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+      // We calculate the new value based on the percentage.
       const newValue = Math.round(min + percentage * (max - min));
       setSliderValue(newValue);
       onChange(newValue, date);
@@ -60,6 +64,8 @@ const VerticalSlider = ({
     setIsDragging(false);
   }, []);
 
+  // This effect is used to add event listeners for mouse movement and mouse up.
+  // It is used to update the slider value when the user is dragging the slider.
   useEffect(() => {
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);

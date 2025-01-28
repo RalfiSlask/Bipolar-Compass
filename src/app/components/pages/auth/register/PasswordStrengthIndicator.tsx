@@ -1,3 +1,8 @@
+import {
+  PASSWORD_COLORS,
+  PASSWORD_STRENGTH_MESSAGES,
+  PASSWORD_TEXT_COLORS,
+} from '@/app/data/passwordIndicator';
 import { useEffect, useState } from 'react';
 
 interface PasswordStrengthIndicatorProps {
@@ -24,47 +29,29 @@ const PasswordStrengthIndicator = ({
   ]);
 
   useEffect(() => {
+    // check if the password meets the requirements using regex
     const updatedRequirements = requirements.map((req) => ({
       ...req,
       met: req.regex.test(password),
     }));
     setRequirements(updatedRequirements);
 
+    // calculate the strength of the password
     const currentStrength = updatedRequirements.filter((req) => req.met).length;
     setStrength(currentStrength);
 
-    const messages = {
-      0: 'Mycket svagt',
-      1: 'Svagt',
-      2: 'Medel',
-      3: 'Bra',
-      4: 'Starkt',
-      5: 'Godkänt',
-    };
+    const messages = PASSWORD_STRENGTH_MESSAGES;
+
     setMessage(messages[currentStrength as keyof typeof messages] || '');
   }, [password]);
 
   const getColor = () => {
-    const colors = {
-      0: 'bg-red-500',
-      1: 'bg-orange-500',
-      2: 'bg-yellow-500',
-      3: 'bg-lime-500',
-      4: 'bg-green-700',
-      5: 'bg-primary-medium',
-    };
+    const colors = PASSWORD_COLORS;
     return colors[strength as keyof typeof colors] || 'bg-gray-200';
   };
 
   const getTextColor = () => {
-    const colors = {
-      0: 'text-red-700',
-      1: 'text-orange-700',
-      2: 'text-yellow-700',
-      3: 'text-lime-700',
-      4: 'text-green-700',
-      5: 'text-primary-medium',
-    };
+    const colors = PASSWORD_TEXT_COLORS;
     return colors[strength as keyof typeof colors] || 'text-gray-600';
   };
 

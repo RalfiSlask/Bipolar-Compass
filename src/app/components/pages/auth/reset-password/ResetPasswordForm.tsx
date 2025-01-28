@@ -24,6 +24,7 @@ const ResetPasswordForm = () => {
     setIsSubmitting(true);
 
     try {
+      // resets password by checking the token from the url
       const response = await axios.post('/api/reset-password', {
         ...values,
         token: token,

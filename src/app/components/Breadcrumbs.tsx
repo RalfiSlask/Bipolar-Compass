@@ -20,9 +20,11 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
   const segments = pathname.split('/').filter(Boolean);
   let currentMenu: IMenuItem[] = menu;
 
+  // This loop is used to find the breadcrumbs based on the pathname.
   for (const segment of segments) {
     const match = currentMenu.find((item) => item.slug === segment);
 
+    // If a match is found, the match is added to the breadcrumbs array and the currentMenu is updated to the submenuItems of the match.
     if (match) {
       breadcrumbs.push(match);
       currentMenu = match.submenuItems || [];
@@ -33,6 +35,7 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
   }
   return breadcrumbs;
 };
+
 const Breadcrumbs = () => {
   const pathname = usePathname();
 

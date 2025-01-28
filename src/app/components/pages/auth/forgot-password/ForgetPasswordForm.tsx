@@ -12,6 +12,7 @@ const ForgetPasswordForm = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
 
+  // waits 90 seconds before sending the email again
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (countdown !== null && countdown > 0) {

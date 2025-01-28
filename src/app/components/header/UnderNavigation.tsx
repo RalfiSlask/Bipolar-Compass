@@ -19,6 +19,11 @@ const UnderNavigation = () => {
   const [isMobile, setIsMobile] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
+  /**
+   * Handle mobile and desktop view by checking window width
+   * It closes the menu if the user resizes the window to desktop size
+   * removes the event listener when the component unmounts to avoid memory leaks
+   */
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
@@ -40,20 +45,6 @@ const UnderNavigation = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-
-  /*   useEffect(() => {
-    const originalOverflow = document.body.style.overflow;
-
-    if (isMenuOpen && isMobile) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = originalOverflow;
-    }
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [isMenuOpen, isMobile]); */
 
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">

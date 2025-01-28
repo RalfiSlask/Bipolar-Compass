@@ -21,16 +21,16 @@ import ChatDescription from './ChatDescription';
 import TypingIndicator from './TypingIndicator';
 
 const Chat = () => {
-  const [message, setMessage] = useState('');
-  const [answer, setAnswer] = useState('');
+  const [message, setMessage] = useState(''); // message state to store the user's message
+  const [answer, setAnswer] = useState(''); // answer state to store the bot's answer
   const [displayedAnswer, setDisplayedAnswer] = useState('');
-  const [typing, setTyping] = useState(false);
+  const [typing, setTyping] = useState(false); // typing state to show the typing indicator
   const [conversationHistory, setConversationHistory] = useState<IMessage[]>(
     []
   );
-  const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false); // hasInteracted state to check if the user has interacted with the chat
   const [userId, setUserId] = useState<string>('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null); // messagesEndRef to scroll to the bottom of the chat
   const [chatOpen, setChatOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,12 +50,14 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
+    // This is a fix to prevent the chat from being opened on mobile devices
     if (chatOpen) {
       if (window.innerWidth < 768) {
         document.body.style.overflow = 'hidden';
         document.body.style.height = '100%';
       }
 
+      // focuses the input field after the chat is opened (keyboard focus)
       if (inputRef.current) {
         setTimeout(() => {
           inputRef.current?.focus();
@@ -89,6 +91,7 @@ const Chat = () => {
     await sendChatMessageToServer(userMessage);
   };
 
+  // resets the conversation history and clears the chat
   const resetConversation = async () => {
     try {
       await fetch('/api/ai/reset', {
@@ -153,6 +156,8 @@ const Chat = () => {
     setDisplayedAnswer('');
   }, [answer]);
 
+  // updates the displayed answer with the answer from the server
+  // it uses a timer to update the displayed answer with the answer from the server
   useEffect(() => {
     if (typing || answer === displayedAnswer) return;
 
@@ -167,6 +172,7 @@ const Chat = () => {
     setMessage(question);
   };
 
+  // memoizes the question suggestions to prevent unnecessary re-renders
   const memoizedSuggestions = useMemo(() => questionSuggestions, []);
 
   return (

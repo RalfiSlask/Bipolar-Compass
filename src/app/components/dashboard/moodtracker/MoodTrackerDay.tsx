@@ -39,6 +39,9 @@ const MoodTrackerDay = ({
   const initializeMoodStates = (values: IMoodValue[], date: Date) => {
     const formattedDate = format(date, 'yyyy-MM-dd');
 
+    // This function is used to initialize the mood states for a given date.
+    // It iterates over the mood values and finds the corresponding value for the given date.
+    // If no value is found, it defaults to 0.
     return values.reduce((acc, mood) => {
       const dayValue = mood.valueForDays.find(
         (day) => day.date === formattedDate

@@ -39,6 +39,8 @@ const Calendar = ({ entries, onEntryClick }: CalendarProps) => {
     );
   };
 
+  // This function is used to map the entries to events.
+  // The events are used to display the diary entries in the calendar.
   const events = Object.entries(entries).map(([date, entry]) => ({
     title: entry.title,
     start: date,
