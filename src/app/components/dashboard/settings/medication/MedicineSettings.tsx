@@ -1,6 +1,6 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
-import { medicineCategories } from '@/app/data/medications';
+import { MEDICATION_OPTIONS } from '@/app/data/medications';
 import { IMedication } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
@@ -228,8 +228,8 @@ const MedicineSettings = ({
                           Medicin
                         </label>
                         <CustomSelect
-                          options={medicineCategories[
-                            values.category as keyof typeof medicineCategories
+                          options={MEDICATION_OPTIONS[
+                            values.category as keyof typeof MEDICATION_OPTIONS
                           ].map((option) => ({
                             value: option.value,
                             label: option.label,

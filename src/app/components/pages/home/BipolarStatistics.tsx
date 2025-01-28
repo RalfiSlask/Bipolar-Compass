@@ -1,5 +1,6 @@
 'use client';
 
+import { BIPOLAR_TYPES, GENDER_DATA } from '@/app/data/bipolarStatistics';
 import Link from 'next/link';
 import { HiArrowRight } from 'react-icons/hi';
 import {
@@ -15,17 +16,6 @@ import {
 } from 'recharts';
 
 const BipolarStatistics = () => {
-  const genderData = [
-    { name: 'Kvinnor', value: 63 },
-    { name: 'Män', value: 37 },
-  ];
-
-  const typeData = [
-    { name: 'Typ 1', value: 40 },
-    { name: 'Typ 2', value: 40 },
-    { name: 'Andra', value: 20 },
-  ];
-
   const COLORS = ['#659598', '#19505b'];
   const BAR_COLOR = '#659598';
 
@@ -66,7 +56,7 @@ const BipolarStatistics = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
-                      data={genderData}
+                      data={GENDER_DATA}
                       cx="50%"
                       cy="50%"
                       innerRadius={45}
@@ -74,7 +64,7 @@ const BipolarStatistics = () => {
                       fill="white"
                       dataKey="value"
                     >
-                      {genderData.map((entry, index) => (
+                      {GENDER_DATA.map((entry, index) => (
                         <Cell
                           key={`cell-${index}`}
                           fill={COLORS[index % COLORS.length]}
@@ -100,12 +90,12 @@ const BipolarStatistics = () => {
             <div className="flex flex-col sm:flex-row items-center rounded-lg p-4 shadow-sm">
               <div className="h-[250px] sm:h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={typeData}>
+                  <BarChart data={BIPOLAR_TYPES}>
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
                     <Bar dataKey="value" fill={BAR_COLOR}>
-                      {typeData.map((entry, index) => (
+                      {BIPOLAR_TYPES.map((entry, index) => (
                         <Cell key={`bar-${index}`} fill={BAR_COLOR} />
                       ))}
                     </Bar>

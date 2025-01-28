@@ -1,16 +1,10 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import { DOSE_UNIT_OPTIONS } from '@/app/data/medications';
 import { useField } from 'formik';
 
 const MedicineDosage = () => {
   const [doseField, doseMeta] = useField('dosage');
   const [unitField, unitMeta] = useField('doseUnit');
-
-  const doseUnitOptions = [
-    { value: 'mg', label: 'mg' },
-    { value: 'ml', label: 'ml' },
-    { value: 'tabletter', label: 'tabletter' },
-    { value: 'droppar', label: 'droppar' },
-  ];
 
   const getMaxValue = () => {
     switch (unitField.value) {
@@ -62,7 +56,7 @@ const MedicineDosage = () => {
         </div>
         <div className="flex-1">
           <CustomSelect
-            options={doseUnitOptions}
+            options={DOSE_UNIT_OPTIONS}
             value={unitField.value}
             onChange={(value) =>
               unitField.onChange({ target: { name: 'doseUnit', value } })
