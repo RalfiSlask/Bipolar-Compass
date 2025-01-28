@@ -90,15 +90,6 @@ export class MoodValue implements IMoodValue {
     this.yAxis = moodValue.yAxis;
   }
 
-  toPlainObject(): IMoodValue {
-    return {
-      id: this.id,
-      moodName: this.moodName,
-      valueForDays: this.valueForDays,
-      yAxis: this.yAxis,
-    };
-  }
-
   static createDefaultMoodValues(): MoodValue[] {
     const defaultDays = DayValue.createDefaultWeek(new Date());
     return moodTrackerValuesData.moodValues.map(
@@ -130,18 +121,6 @@ export class MoodtrackerWeek implements IMoodTrackerWeek {
     this.mood_values = moodtrackerWeek.mood_values.map(
       (mood) => new MoodValue(mood)
     );
-  }
-
-  toPlainObject(): IMoodTrackerWeek {
-    return {
-      id: this.id,
-      user_id: this.user_id,
-      week_number: this.week_number,
-      year: this.year,
-      created_at: this.created_at,
-      updated_at: this.updated_at,
-      mood_values: this.mood_values.map((mood) => mood.toPlainObject()),
-    };
   }
 
   static createDefault(
