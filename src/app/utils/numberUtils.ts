@@ -1,3 +1,11 @@
+/**
+ * Sorts an array of generic type T by either asc or desc depending on a boolean argument.
+ * Uses a callback function that extracts a number from an item.
+ * @param {T[]} items
+ * @param {(item: T) => number | undefined} valueExtractor
+ * @param {boolean} ascending
+ * @returns {T[]}
+ */
 export const sortByNumberField = <T>(
   items: T[],
   valueExtractor: (item: T) => number | undefined,

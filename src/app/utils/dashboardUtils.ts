@@ -1,16 +1,30 @@
 import { IMoodTrackerWeek } from '../types/moodtracker';
 
+/**
+ * Checks if the mood data has sufficient data
+ * @param {IMoodTrackerWeek[]} moodData
+ * @returns {boolean}
+ */
 export const hasSufficientData = (moodData: IMoodTrackerWeek[]): boolean => {
+  // Flattens the mood data to an array of mood values
   const moodValues = moodData.flatMap((week) =>
     week.mood_values.flatMap((mood) => mood.valueForDays)
   );
 
   if (!moodValues) return false;
 
+  // Filters out null values and checks if there are at least 10 valid days
   const validDays = moodValues.filter((day) => day.value !== null);
   return validDays.length >= 10;
 };
 
+/**
+ * Evaluates the mood score and returns a mood state
+ * These states are used to inform the user about their mood state
+ * @param {number} moodScore
+ * @param {IMoodTrackerWeek[]} moodData
+ * @returns {string | null}
+ */
 export const evaluateMood = (
   moodScore: number,
   moodData: IMoodTrackerWeek[]
@@ -30,6 +44,13 @@ export const evaluateMood = (
   }
 };
 
+/**
+ * Returns a message based on the mood score and mood data
+ * These messages are used to inform the user about their mood state
+ * @param {number} moodScore
+ * @param {IMoodTrackerWeek[]} moodData
+ * @returns {string | null}
+ */
 export const renderMessage = (
   moodScore: number,
   moodData: IMoodTrackerWeek[]
@@ -50,6 +71,11 @@ export const renderMessage = (
   }
 };
 
+/**
+ * Converts a medicine frequency to a Swedish string
+ * @param {string} frequency
+ * @returns {string}
+ */
 export const convertMedicineFrequencyToSwedishString = (
   frequency: string
 ): string => {
@@ -62,7 +88,13 @@ export const convertMedicineFrequencyToSwedishString = (
   return '';
 };
 
-export const moodScoreColor = (score: number) => {
+/**
+ * Returns a color based on the mood score
+ * The colors are such that the it reflects the nature of bipolar disorder
+ * @param {number} score
+ * @returns {string}
+ */
+export const moodScoreColor = (score: number): string => {
   if (score >= 80) return '#0088FE';
   if (score >= 60) return '#00C49F';
   if (score >= 40) return '#FFBB28';

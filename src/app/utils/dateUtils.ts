@@ -1,4 +1,9 @@
-export const getFormattedTimeFromSeconds = (seconds: number | null) => {
+/**
+ * Formats a string of minutes and hours based on number of seconds
+ * @param {number | null} seconds
+ * @returns {string}
+ */
+export const getFormattedTimeFromSeconds = (seconds: number | null): string => {
   if (!seconds) return '';
   const runtimeInSeconds = seconds || 0;
 
@@ -10,13 +15,23 @@ export const getFormattedTimeFromSeconds = (seconds: number | null) => {
   }`.trim();
 };
 
+/**
+ * Formats a number of seconds to minutes and seconds in a string format
+ * @param {number} seconds
+ * @returns {string}
+ */
 export const formatDurationToMinutesAndSeconds = (seconds: number): string => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 };
 
-export const getCreateDateAsMonthDayAndYear = (date: string) => {
+/**
+ * Formats a date string to a month, day and year string
+ * @param {string} date
+ * @returns {string}
+ */
+export const getCreateDateAsMonthDayAndYear = (date: string): string => {
   const dateObj = new Date(date);
   return dateObj.toLocaleDateString('sv-SE', {
     month: 'long',
@@ -25,6 +40,11 @@ export const getCreateDateAsMonthDayAndYear = (date: string) => {
   });
 };
 
+/**
+ * Returns week number based on a date argument
+ * @param {Date} date
+ * @returns {number}
+ */
 export const getWeekNumber = (date: Date): number => {
   const d = new Date(
     Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
@@ -34,9 +54,14 @@ export const getWeekNumber = (date: Date): number => {
   return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
 };
 
+/**
+ * Returns an array of swedish week dates
+ * @param {Date} date
+ * @returns {string[]}
+ */
 export const getWeekDates = (date: Date): string[] => {
   const monday = new Date(date);
-  monday.setDate(date.getDate() - (date.getDay() || 7) + 1); // Få måndagens datum
+  monday.setDate(date.getDate() - (date.getDay() || 7) + 1);
 
   const weekDates = [];
   for (let i = 0; i < 7; i++) {

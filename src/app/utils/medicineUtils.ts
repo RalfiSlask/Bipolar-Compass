@@ -1,3 +1,8 @@
+/**
+ * Returns the number of times a medicine is taken per day based on the frequency
+ * @param {string} frequency
+ * @returns {number}
+ */
 export const getNumberOfTimes = (frequency: string): number => {
   switch (frequency) {
     case '1_daily':
