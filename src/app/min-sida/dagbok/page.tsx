@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
+// We use dynamic import to prevent the calendar from being loaded on the server.
 const Calendar = dynamic(
   () => import('@/app/components/dashboard/diary/Calender'),
   {

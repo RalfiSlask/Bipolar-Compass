@@ -96,22 +96,23 @@ const ScienceArticles = () => {
       return;
     }
 
+    // This function is used to find the id of a filter based on its label.
     const filterFromLabel = [
       ...TEXT_AVAILABILITY_FILTERS,
       ...ARTICLE_ATTRIBUTE_FILTERS,
       ...PUBLICATION_TYPE_FILTERS,
     ].find((f) => f.label === filter)?.id;
 
+    // If the filter is found, it is removed from the active filters.
     if (filterFromLabel) {
       setActiveFilters((prev) => prev.filter((f) => f !== filterFromLabel));
     }
   };
 
-  useEffect(() => {
-    console.log('active filters', activeFilters);
-    console.log('selected language', selectedLanguage);
-  }, [activeFilters, selectedLanguage]);
-
+  /*
+    This function is used to get the active filters.
+    It returns an array of strings, each representing an active filter.
+  */
   const getActiveFilters = () => {
     const filters: string[] = [];
 
@@ -158,8 +159,11 @@ const ScienceArticles = () => {
 
   const scienceActiveFilters = getActiveFilters();
 
-  console.log('scienceActiveFilters', scienceActiveFilters);
-
+  /*
+    This function is used to handle the search functionality.
+    It takes the user's search term, trims it, and sets the search query.
+    It also resets the current page to 1.
+  */
   const handleSearch = () => {
     const userSearchTerm = additionalSearch.trim();
     if (userSearchTerm) {
@@ -172,6 +176,10 @@ const ScienceArticles = () => {
     setCurrentPage(1);
   };
 
+  /*
+    This effect is used to fetch the data from PubMed.
+    It is triggered when the user changes the filters or the search query.
+  */
   useEffect(() => {
     setIsLoading(true);
 

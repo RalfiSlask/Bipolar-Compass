@@ -41,7 +41,6 @@ const MoodTrackerPage = () => {
         if (rawData) {
           const data = new MoodtrackerWeek(rawData);
           setMoodTrackerValues(data.mood_values);
-          console.log(data.mood_values);
         } else {
           const defaultWeek = MoodtrackerWeek.createDefault(
             session.user.id,
@@ -101,6 +100,11 @@ const MoodTrackerPage = () => {
   };
 
   useEffect(() => {
+    /**
+     * This effect is used to save the mood tracker data when the user leaves the page.
+     * This prevents the user from losing their data if they leave the page without saving.
+     * @param event - The event object.
+     */
     const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
       try {
         console.log('saving?');

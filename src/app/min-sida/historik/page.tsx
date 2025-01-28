@@ -91,6 +91,15 @@ const HistoryPage = () => {
     return data.reduce((sum, item) => sum + item.value, 0) / data.length;
   };
 
+  /**
+   * This function is used to get the tip for a mood based on the average value of the mood.
+   * If the data length is less than 3, it returns a message to the user to continue registering their mood.
+   * If the average value is greater than 4, it returns a tip to the user to improve their mood.
+   * @param moodId - The id of the mood to get the tip for.
+   * @param average - The average value of the mood.
+   * @param dataLength - The length of the data.
+   * @returns {string | null} - The tip for the mood or null if there is no tip.
+   */
   const getTip = (
     moodId: string,
     average: number | null,
@@ -135,7 +144,10 @@ const HistoryPage = () => {
         return null;
     }
   };
-
+  /*
+    This function is used to transform the mood data into a format that can be used to display in the chart.
+    It returns an array of objects with the date, value, id, and name of the mood.
+  */
   const transformMoodData = (moodIndex: number): IFilteredData[] => {
     return moodTrackerData
       .flatMap((week) =>
@@ -190,23 +202,29 @@ const HistoryPage = () => {
 
     const allData = transformMoodData(moodIndex);
 
-    return allData
-      .filter((item) => {
-        const [day, month] = item.date.split('/').map(Number);
-        const currentYear = new Date().getFullYear();
-        const itemDate = new Date(currentYear, month - 1, day);
-        const adjustedDate = isAfter(itemDate, today)
-          ? new Date(currentYear - 1, month - 1, day)
-          : itemDate;
-        return adjustedDate >= filterDate && adjustedDate <= today;
-      })
-      .sort((a, b) => {
-        const [dayA, monthA] = a.date.split('/').map(Number);
-        const [dayB, monthB] = b.date.split('/').map(Number);
-        const dateA = new Date(new Date().getFullYear(), monthA - 1, dayA);
-        const dateB = new Date(new Date().getFullYear(), monthB - 1, dayB);
-        return dateA.getTime() - dateB.getTime();
-      });
+    return (
+      allData
+        .filter((item) => {
+          // first we filter out the data based on the date
+          const [day, month] = item.date.split('/').map(Number);
+          const currentYear = new Date().getFullYear();
+          const itemDate = new Date(currentYear, month - 1, day);
+          // if the item date is after today, we set the item date to the previous year
+          const adjustedDate = isAfter(itemDate, today)
+            ? new Date(currentYear - 1, month - 1, day)
+            : itemDate;
+          // if the adjusted date is after the filter date and before today, we return the item
+          return adjustedDate >= filterDate && adjustedDate <= today;
+        })
+        // then we sort the data based on the date
+        .sort((a, b) => {
+          const [dayA, monthA] = a.date.split('/').map(Number);
+          const [dayB, monthB] = b.date.split('/').map(Number);
+          const dateA = new Date(new Date().getFullYear(), monthA - 1, dayA);
+          const dateB = new Date(new Date().getFullYear(), monthB - 1, dayB);
+          return dateA.getTime() - dateB.getTime();
+        })
+    );
   };
 
   const formatTooltipValue = (

@@ -18,6 +18,7 @@ const SendVerificationLinkPage = () => {
     useResendVerification();
 
   useEffect(() => {
+    // This effect is used to countdown the time before the user can resend the verification email again.
     if (countdown > 0) {
       const timer = setInterval(() => {
         setCountdown((prev) => prev - 1);

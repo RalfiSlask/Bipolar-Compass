@@ -79,6 +79,11 @@ const MyPage = () => {
     fetchUserData();
   }, [session]);
 
+  /**
+   * This function is used to check if there is any mood tracker data for a given mood id.
+   * @param {string} id - The id of the mood to check for.
+   * @returns {boolean} - True if there is any mood tracker data for the given mood id, false otherwise.
+   */
   const isThereAnyMoodTrackerData = (id: string): boolean => {
     const mood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
@@ -87,6 +92,10 @@ const MyPage = () => {
     return mood?.valueForDays.some((day) => day.value !== null) ?? false;
   };
 
+  /**
+   * This function is used to calculate the average sleep time for the user.
+   * @returns {number | null} - The average sleep time or null if there is no sleep mood data.
+   */
   const calculateSleepAverage = (): number | null => {
     const sleepMood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
@@ -107,6 +116,10 @@ const MyPage = () => {
     return totalSleep / validDays.length;
   };
 
+  /**
+   * This function is used to transform the sleep data into a format that can be used to display in the chart.
+   * @returns { { date: string; value: number }[] } - The transformed sleep data.
+   */
   const transformSleepData = (): { date: string; value: number }[] => {
     const sleepMood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
@@ -125,6 +138,12 @@ const MyPage = () => {
     );
   };
 
+  /**
+   * This function is used to calculate the mood score by using the mood data and the weights.
+   * @param {IMoodValue[] | undefined} moodData - The mood data to calculate the score from.
+   * @param { { [key: string]: number } } weights - The weights for each mood.
+   * @returns {number} - The mood score.
+   */
   const calculateMoodScore = (
     moodData: IMoodValue[] | undefined,
     weights: { [key: string]: number }
@@ -132,6 +151,7 @@ const MyPage = () => {
     let totalScore = 0;
     let totalWeight = 0;
 
+    // Loop through each mood and calculate the score
     moodData?.forEach((mood) => {
       const maxScale = mood.yAxis.length - 1;
       const validValues = mood.valueForDays
@@ -147,7 +167,7 @@ const MyPage = () => {
         totalWeight += weights[mood.id] || 0;
       }
     });
-
+    // Return the mood score or 0 if there is no weight and no valid values
     return totalWeight > 0 ? (totalScore / totalWeight) * 100 : 0;
   };
 

@@ -14,6 +14,11 @@ const UrgentHelpPage = () => {
   const [hospitalLink, setHospitalLink] = useState('');
   const [error, setError] = useState('');
 
+  /* 
+    This function is used to find the nearest hospital based on the user's location.
+    It uses the navigator.geolocation API to get the user's location.
+    If the user's location is found, it sets the hospital link to the Google Maps link for the user's location.
+  */
   const findNearestHospital = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
