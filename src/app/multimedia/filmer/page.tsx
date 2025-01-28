@@ -1,12 +1,13 @@
 'use client';
 
+import ActorQuote from '@/app/components/pages/multimedia/movies/ActorQuote';
 import MovieContainer from '@/app/components/pages/resources/MovieContainer';
 import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import moviesData from '@/app/data/json/movies.json';
+import { ACTORS } from '@/app/data/movies';
 import { moviesIntro } from '@/app/data/pageIntros';
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
-import Image from 'next/image';
 
 const MoviesPage = () => {
   const movies: IMovieOrSeriesResponseData[] = moviesData.movies;
@@ -15,51 +16,9 @@ const MoviesPage = () => {
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
       <PageIntroContainer intro={moviesIntro} />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
-        <div className="flex flex-col md:items-center bg-primary-light rounded-lg overflow-hidden">
-          <div className="flex-1">
-            <Image
-              src="/images/movies/jennifer-lawrence.webp"
-              alt="Jennifer Lawrence"
-              width={1500}
-              height={846}
-              quality={80}
-              className="object-cover w-full aspect-[1920/1080]"
-            />
-          </div>
-          <div className="flex flex-col gap-4 p-6 flex-1">
-            <p className="text-lg italic ">
-              &quot;Vi ville visa att dessa karaktärer ej är deras diagnoser.
-              Att de är komplexa, bristfälliga och vackra människor.&quot;
-            </p>
-            <p className="text-sm text-gray-600">
-              - Jennifer Lawrence för sin oscarbelönade roll som Tiffany i
-              Silver Linings Playbook
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col md:items-center bg-primary-light rounded-lg overflow-hidden">
-          <div className="flex-1">
-            <Image
-              src="/images/movies/stephen-fry.webp"
-              alt="Stephen Fry"
-              width={1500}
-              height={846}
-              quality={80}
-              className="object-cover w-full aspect-[1920/1080]"
-            />
-          </div>
-          <div className="flex flex-col gap-4 p-6 flex-1">
-            <p className="text-lg italic ">
-              &quot;Jag vill inte att någon ska tro att bipolär sjukdom är en
-              enkel resa. Men det är en del av vem jag är, och jag skulle inte
-              byta bort det.&quot;
-            </p>
-            <p className="text-sm text-gray-600">
-              - Stephen Fry - The Secret Life of the Manic Depressive
-            </p>
-          </div>
-        </div>
+        {ACTORS.map((actor) => {
+          return <ActorQuote key={actor.id} actorInfo={actor} />;
+        })}
       </div>
 
       <div className="mb-8">
