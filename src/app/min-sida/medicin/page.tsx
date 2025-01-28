@@ -7,6 +7,7 @@ import { IUser } from '@/app/types/user';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FiAlertCircle } from 'react-icons/fi';
 
 const MedicinePageContent = () => {
@@ -25,6 +26,7 @@ const MedicinePageContent = () => {
       }
     } catch (err) {
       console.error('could not fetch user data: ', err);
+      toast.error('Kunde inte hämta användardata');
     } finally {
       setIsLoading(false);
     }
@@ -47,10 +49,11 @@ const MedicinePageContent = () => {
             medications,
           },
         });
+        toast.success('Mediciner sparade!');
       }
     } catch (err) {
       console.error('could not save medications: ', err);
-      throw new Error('Could not save medications');
+      toast.error('Kunde inte spara mediciner');
     }
   };
 
