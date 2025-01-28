@@ -8,6 +8,7 @@ export interface IMovieOrSeriesResponse {
 export interface IMovieOrSeriesResponseData {
   _id: string;
   id: string;
+  imdbLink: string;
   ratingsSummary?: IRatingsSummary | null;
   episodes?: null;
   primaryImage?: IImage | null;
