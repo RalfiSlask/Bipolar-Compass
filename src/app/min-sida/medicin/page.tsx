@@ -49,11 +49,9 @@ const MedicinePageContent = () => {
             medications,
           },
         });
-        toast.success('Mediciner sparade!');
       }
     } catch (err) {
       console.error('could not save medications: ', err);
-      toast.error('Kunde inte spara mediciner');
     }
   };
 
