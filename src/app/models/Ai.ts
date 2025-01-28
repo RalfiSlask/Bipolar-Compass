@@ -1,6 +1,6 @@
-import { ObjectId } from 'mongodb';
+import { ObjectId, OptionalId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
-import { IAiConversation, IConversationLog } from '../types/ai';
+import { IAiConversationDocument, IConversationLog } from '../types/ai';
 
 export class ConversationLog implements IConversationLog {
   constructor(
@@ -10,7 +10,7 @@ export class ConversationLog implements IConversationLog {
   ) {}
 }
 
-export class AiConversation implements IAiConversation {
+export class AiConversation {
   public _id?: ObjectId;
   public user_id: string;
   constructor(
@@ -19,5 +19,18 @@ export class AiConversation implements IAiConversation {
     public updated_at: string = new Date().toISOString()
   ) {
     this.user_id = uuidv4();
+  }
+  toDBObject(): OptionalId<IAiConversationDocument> {
+    return {
+      _id: this._id,
+      user_id: this.user_id,
+      conversation_log: this.conversation_log.map((log) => ({
+        role: log.role,
+        content: log.content,
+        timestamp: log.timestamp,
+      })),
+      created_at: this.created_at,
+      updated_at: this.updated_at,
+    };
   }
 }
