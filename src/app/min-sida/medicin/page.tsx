@@ -32,27 +32,36 @@ const MedicinePageContent = () => {
     }
   };
 
-  const saveMedicationSettings = async (medications: IMedication[]) => {
-    if (!email) return;
+  const saveMedicationSettings = async (
+    medications: IMedication[]
+  ): Promise<IMedication[]> => {
+    if (!email) return medications;
 
     try {
-      await axios.put('/api/settings/save/medications', {
+      const response = await axios.put('/api/settings/save/medications', {
         medications,
         email,
       });
 
-      if (user) {
-        setUser({
-          ...user,
-          profile: {
-            ...user.profile,
-            medications,
-          },
-        });
+      if (response?.data?.medications) {
+        setUser((prevUser) =>
+          prevUser
+            ? {
+                ...prevUser,
+                profile: {
+                  ...prevUser.profile,
+                  medications: response.data.medications,
+                },
+              }
+            : prevUser
+        );
+        return response.data.medications;
       }
     } catch (err) {
       console.error('could not save medications: ', err);
     }
+
+    return medications;
   };
 
   useEffect(() => {
