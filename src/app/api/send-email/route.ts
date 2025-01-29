@@ -18,6 +18,7 @@ export const POST = verifySignatureAppRouter(async function POST(
   const { email, medication, time, userId } = await req.json();
 
   try {
+    // Send the email
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -33,12 +34,11 @@ export const POST = verifySignatureAppRouter(async function POST(
       text: `Dags att ta din medicin "${medication.name}" vid ${time}.`,
     });
 
-    // Calculate the next medication time
+    // Calculate next medication time
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     const nextMedicationTime = new Date(now);
 
-    // If the current time is greater than the medication time, set the next medication time to the next day
     if (
       now.getUTCHours() > hours ||
       (now.getUTCHours() === hours && now.getUTCMinutes() > minutes)
@@ -48,15 +48,26 @@ export const POST = verifySignatureAppRouter(async function POST(
 
     nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
 
-    // Publish the email to the queue by generating a messageId (timestamp)
-    await qstashClient.publishJSON({
+    // Schedule the next reminder
+    const nextReminder = await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/send-email`,
       body: { email, medication, userId, time },
       notBefore: Math.floor(nextMedicationTime.getTime() / 1000),
     });
 
+    // Trigger the webhook with the new messageId
+    await qstashClient.publishJSON({
+      url: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
+      body: {
+        userId,
+        medicationName: medication.name,
+        newMessageId: nextReminder.messageId,
+      },
+    });
+
     return NextResponse.json({
       message: 'Email sent and next reminder scheduled',
+      newMessageId: nextReminder.messageId,
     });
   } catch (error) {
     console.error('Failed to process reminder:', error);

@@ -9,56 +9,69 @@ const handler = async (req: NextRequest) => {
   try {
     const body = await req.json();
 
-    const { messageId, metadata } = body;
-    if (!metadata || !metadata.userId || !metadata.medicationName) {
-      return NextResponse.json({ error: 'Missing metadata' }, { status: 400 });
+    // Extract data from the webhook body
+    const { userId, medicationName, newMessageId } = body;
+
+    if (!userId || !medicationName || !newMessageId) {
+      return NextResponse.json(
+        { error: 'Missing required webhook data' },
+        { status: 400 }
+      );
     }
 
-    const { userId, medicationName } = metadata;
-
-    console.log('userId', userId, 'medicationName');
-
-    if (typeof userId !== 'string') {
-      throw new Error('Invalid userId: Must be a string');
-    }
     const collection = await getCollection('thesis', 'users');
     const user = await collection.findOne<IUser>({
       _id: new ObjectId(userId),
     });
+
+    console.log('user', user);
+
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
+    // Update the medication's messageIds while preserving the array
     const updatedMedications = user.profile.medications.map(
       (med: IMedication) => {
         if (med.name === medicationName) {
-          return {
-            ...med,
-            reminder: {
-              ...med.reminder,
-              messageIds: [...(med.reminder.messageIds || []), messageId],
-            },
-          };
+          // Get existing messageIds or initialize empty array
+          const existingMessageIds = med.reminder.messageIds || [];
+
+          // Add new messageId if it doesn't exist
+          if (!existingMessageIds.includes(newMessageId)) {
+            console.log('newMessageId', newMessageId);
+            return {
+              ...med,
+              reminder: {
+                ...med.reminder,
+                messageIds: [...existingMessageIds, newMessageId],
+              },
+            };
+          }
         }
         return med;
       }
     );
 
     console.log('updatedMedications', updatedMedications);
+
+    // Update the user's medications in the database
     await collection.updateOne(
       { _id: new ObjectId(userId) },
       { $set: { 'profile.medications': updatedMedications } }
     );
 
-    return NextResponse.json({ message: 'Message ID updated successfully' });
+    return NextResponse.json({
+      message: 'Webhook processed successfully',
+      updatedMedications,
+    });
   } catch (error) {
-    console.error('Error updating message ID:', error);
+    console.error('Error processing webhook:', error);
     return NextResponse.json(
-      { error: 'Could not update message ID' },
+      { error: 'Could not process webhook' },
       { status: 500 }
     );
   }
 };
 
-// ✅ **Wrappar route-handlern med `verifySignatureAppRouter`**
 export const POST = verifySignatureAppRouter(handler);
