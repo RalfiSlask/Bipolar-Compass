@@ -6,21 +6,21 @@ const qstashClient = new Client({
 });
 
 const convertSwedishTimeToUTC = (time: string) => {
-    const [hours, minutes] = time.split(':').map(Number);
-  
-    const swedishTime = new Date();
-    swedishTime.setHours(hours, minutes, 0, 0);
+  const [hours, minutes] = time.split(':').map(Number);
+  const now = new Date();
+  const swedishTime = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      hours - 1,
+      minutes,
+      0
+    )
+  );
 
-    console.log('swedishTime', swedishTime);
-
-    const utcTime = new Date(
-      swedishTime.toLocaleString("en-US", { timeZone: "Europe/Stockholm" })
-    );
-
-  console.log('utcTime', utcTime);
-  
-    return utcTime;
-  };
+  return swedishTime;
+};
 
 export const scheduleMedicationReminder = async (
   userId: string,
@@ -51,8 +51,6 @@ export const scheduleMedicationReminder = async (
     if (medicationTime.getTime() <= Date.now()) {
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
     }
-
-    console.log('medicationTime', medicationTime);
 
     console.log(process.env.NEXTAUTH_URL);
 
