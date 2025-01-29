@@ -5,35 +5,43 @@ const qstashClient = new Client({
   token: process.env.QSTASH_TOKEN!,
 });
 
+const convertSwedishTimeToUTC = (time: string) => {
+  const [hours, minutes] = time.split(':').map(Number);
+
+  const swedishTime = new Date();
+  swedishTime.setHours(hours, minutes, 0, 0);
+
+  return new Date(swedishTime.toISOString());
+};
+
 export const scheduleMedicationReminder = async (
   userId: string,
   medication: IMedication,
   email: string
-) => {
+): Promise<string | null> => {
   if (!medication.reminder.enabled) {
     console.log(
       `Skipping reminder for ${medication.name} (reminders disabled).`
     );
-    return;
+    return null;
   }
 
   if (medication.times.length === 0) {
     console.log(`Skipping reminder for ${medication.name} (no times set).`);
-    return;
+    return null;
   }
 
+  let messageId: string | null = null;
+
   for (const time of medication.times) {
-    console.log('Time:', time);
-    const [hours, minutes] = time.split(':').map(Number);
-    const medicationTime = new Date();
-    medicationTime.setUTCHours(hours, minutes, 0, 0);
+    const medicationTime = convertSwedishTimeToUTC(time);
 
     if (medicationTime.getTime() <= Date.now()) {
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
     }
 
     try {
-      await qstashClient.publishJSON({
+      const response = await qstashClient.publishJSON({
         url: `${process.env.NEXTAUTH_URL}/api/send-email`,
         body: {
           email,
@@ -43,6 +51,11 @@ export const scheduleMedicationReminder = async (
         },
         notBefore: Math.floor(medicationTime.getTime() / 1000),
       });
+
+      messageId = response.messageId;
+      console.log(
+        `Reminder scheduled for ${medication.name} - QStash Message ID: ${messageId}`
+      );
     } catch (error) {
       console.error(
         `Failed to schedule reminder for ${medication.name}:`,
@@ -50,4 +63,6 @@ export const scheduleMedicationReminder = async (
       );
     }
   }
+
+  return messageId;
 };
