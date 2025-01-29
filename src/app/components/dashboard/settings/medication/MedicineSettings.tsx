@@ -100,30 +100,36 @@ const MedicineSettings = ({
         email: user.email,
       });
 
-      console.log('data', data);
-
       const latestMedications = data.medications;
       const deletedMedicine = latestMedications[index];
 
+      // Delete all QStash reminders for this medication
       if (deletedMedicine?.reminder?.messageIds?.length > 0) {
-        const payload = { messageId: deletedMedicine.reminder.messageIds };
-
-        try {
-          await axios.post('/api/delete-qstash', payload, {
-            headers: { 'Content-Type': 'application/json' },
-          });
-        } catch (error) {
-          console.error(
-            `Failed to delete QStash reminder for ${deletedMedicine.name}:`,
-            error
-          );
-        }
+        await Promise.all(
+          deletedMedicine.reminder.messageIds.map(async (messageId: string) => {
+            try {
+              await axios.post(
+                '/api/delete-qstash',
+                { messageId },
+                {
+                  headers: { 'Content-Type': 'application/json' },
+                }
+              );
+            } catch (error) {
+              console.error(
+                `Failed to delete QStash reminder ${messageId} for ${deletedMedicine.name}:`,
+                error
+              );
+            }
+          })
+        );
       } else {
         console.warn(
           `No messageIds found for ${deletedMedicine.name}, skipping QStash delete.`
         );
       }
 
+      // Remove the medication from the list
       const newMedicines: IMedication[] = latestMedications.filter(
         (medicine: IMedication, i: number) => i !== index
       );
