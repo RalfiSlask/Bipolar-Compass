@@ -32,9 +32,17 @@ export const POST = verifySignatureAppRouter(async function POST(
       text: `Dags att ta din medicin "${medication.name}" vid ${time}.`,
     });
 
-    const nextMedicationTime = new Date();
+    const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
-    nextMedicationTime.setUTCDate(nextMedicationTime.getUTCDate() + 1);
+    const nextMedicationTime = new Date(now);
+
+    if (
+      now.getUTCHours() > hours ||
+      (now.getUTCHours() === hours && now.getUTCMinutes() > minutes)
+    ) {
+      nextMedicationTime.setUTCDate(nextMedicationTime.getUTCDate() + 1);
+    }
+
     nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
 
     console.log(`${process.env.NEXTAUTH_URL}/api/send-email`);

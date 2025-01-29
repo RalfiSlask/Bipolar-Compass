@@ -22,7 +22,7 @@ export const scheduleMedicationReminder = async (
     return;
   }
 
-  medication.times.forEach(async (time: string) => {
+  for (const time of medication.times) {
     console.log('Time:', time);
     const [hours, minutes] = time.split(':').map(Number);
     const medicationTime = new Date();
@@ -49,5 +49,5 @@ export const scheduleMedicationReminder = async (
         error
       );
     }
-  });
+  }
 };
