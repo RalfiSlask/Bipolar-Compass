@@ -26,34 +26,21 @@ export const scheduleMedicationReminder = async (
   medication: IMedication,
   email: string
 ): Promise<string | null> => {
-  if (!medication.reminder.enabled) {
-    console.log(
-      `Skipping reminder for ${medication.name} (reminders disabled).`
-    );
+  if (!medication.reminder.enabled || medication.times.length === 0) {
+    console.log(`Skipping reminder for ${medication.name}`);
     return null;
   }
-
-  if (medication.times.length === 0) {
-    console.log(`Skipping reminder for ${medication.name} (no times set).`);
-    return null;
-  }
-
-  console.log('medication', medication);
 
   let messageId: string | null = null;
 
   for (const time of medication.times) {
-    console.log('time', time);
     const medicationTime = convertSwedishTimeToUTC(time);
-    console.log('medicationTime', medicationTime);
-
     if (medicationTime.getTime() <= Date.now()) {
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
     }
 
-    console.log(process.env.NEXTAUTH_URL);
-
     try {
+      // Schedule the next reminder
       const response = await qstashClient.publishJSON({
         url: `${process.env.NEXTAUTH_URL}/api/send-email`,
         body: {
@@ -63,7 +50,6 @@ export const scheduleMedicationReminder = async (
           time,
         },
         notBefore: Math.floor(medicationTime.getTime() / 1000),
-
         webhook: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
         webhookHeaders: {
           'Content-Type': 'application/json',
@@ -71,6 +57,7 @@ export const scheduleMedicationReminder = async (
         webhookBody: {
           userId,
           medicationName: medication.name,
+          newMessageId: null, // This will be set in send-email route
         },
       });
 
@@ -78,7 +65,7 @@ export const scheduleMedicationReminder = async (
 
       messageId = response.messageId;
       console.log(
-        `Reminder scheduled for ${medication.name} - QStash Message ID: ${messageId}`
+        `Initial reminder scheduled for ${medication.name} - QStash Message ID: ${messageId}`
       );
     } catch (error) {
       console.error(
