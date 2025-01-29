@@ -21,7 +21,6 @@ const convertSwedishTimeToUTC = (time: string) => {
 
   return swedishTime;
 };
-
 export const scheduleMedicationReminder = async (
   userId: string,
   medication: IMedication,
@@ -64,6 +63,15 @@ export const scheduleMedicationReminder = async (
           time,
         },
         notBefore: Math.floor(medicationTime.getTime() / 1000),
+
+        webhook: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
+        webhookHeaders: {
+          'Content-Type': 'application/json',
+        },
+        webhookBody: {
+          userId,
+          medicationName: medication.name,
+        },
       });
 
       console.log('response', response);
