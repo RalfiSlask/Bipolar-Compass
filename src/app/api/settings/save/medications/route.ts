@@ -4,34 +4,64 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import { scheduleMedicationReminder } from '@/app/utils/qstashUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the user's medications.
+ * @param {NextRequest} req - The request object which contains the medications and email.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const PUT = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { medications, email } = await req.json();
     const collection = await getCollection('thesis', 'users');
-    const user = (await collection.findOne({ email: email })) as IUser | null;
+    const user = (await collection.findOne({ email })) as IUser | null;
 
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    const updatedUser = { ...user, profile: { ...user.profile, medications } };
+    // Schedule qstash reminders for the medications to send emails to the user
+    const updatedMedications = await Promise.all(
+      medications.map(async (medication: IMedication) => {
+        if (medication.reminder.enabled) {
+          try {
+            const messageId = await scheduleMedicationReminder(
+              user._id?.toString() || '',
+              medication,
+              email
+            );
 
-    medications.forEach((medication: IMedication) => {
-      try {
-        if (user._id) {
-          console.log('Scheduling reminder for:', medication.name);
-          scheduleMedicationReminder(user._id.toString(), medication, email);
+            return {
+              ...medication,
+              reminder: {
+                ...medication.reminder,
+                messageIds: [
+                  ...(medication.reminder.messageIds || []),
+                  messageId,
+                ].filter(Boolean),
+              },
+            };
+          } catch (error) {
+            console.error(
+              `Failed to schedule reminder for ${medication.name}:`,
+              error
+            );
+            return medication;
+          }
         }
-      } catch (err) {
-        console.error(
-          `Failed to schedule reminder for ${medication.name}:`,
-          err
-        );
-      }
-    });
+        return medication;
+      })
+    );
 
-    await collection.updateOne({ email: email }, { $set: updatedUser });
-    return NextResponse.json({ message: 'Medicines saved' });
+    const updatedUser = {
+      ...user,
+      profile: { ...user.profile, medications: updatedMedications },
+    };
+    await collection.updateOne({ email }, { $set: updatedUser });
+
+    return NextResponse.json({
+      message: 'Medicines saved',
+      medications: updatedMedications,
+    });
   } catch (err) {
     console.error('could not save medications: ', err);
     return NextResponse.json(
