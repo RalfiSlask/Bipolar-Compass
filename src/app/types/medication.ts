@@ -13,4 +13,5 @@ export interface IReminder {
   enabled: boolean;
   method: string;
   times: string[];
+  messageIds: string[];
 }

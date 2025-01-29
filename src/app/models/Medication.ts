@@ -17,6 +17,7 @@ export class Reminder implements IReminder {
   constructor(
     public enabled: boolean = false,
     public method: string = '',
-    public times: string[] = []
+    public times: string[] = [],
+    public messageIds: string[] = []
   ) {}
 }
