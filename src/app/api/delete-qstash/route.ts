@@ -14,6 +14,8 @@ export const POST = async (req: NextRequest) => {
   try {
     const body = await req.json();
 
+    console.log('body', body);
+
     if (!body || !body.messageId) {
       console.error('Missing messageId in request body');
       return NextResponse.json(
