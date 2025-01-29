@@ -31,6 +31,8 @@ export const scheduleMedicationReminder = async (
     return null;
   }
 
+  console.log('medication', medication);
+
   let messageId: string | null = null;
 
   for (const time of medication.times) {
@@ -53,6 +55,8 @@ export const scheduleMedicationReminder = async (
         },
         notBefore: Math.floor(medicationTime.getTime() / 1000),
       });
+
+      console.log('response', response);
 
       messageId = response.messageId;
       console.log(

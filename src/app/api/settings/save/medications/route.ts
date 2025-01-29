@@ -18,6 +18,7 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
+    console.log('medications', medications);
 
     // Schedule qstash reminders for the medications to send emails to the user
     const updatedMedications = await Promise.all(
