@@ -6,13 +6,21 @@ const qstashClient = new Client({
 });
 
 const convertSwedishTimeToUTC = (time: string) => {
-  const [hours, minutes] = time.split(':').map(Number);
+    const [hours, minutes] = time.split(':').map(Number);
+  
+    const swedishTime = new Date();
+    swedishTime.setHours(hours, minutes, 0, 0);
 
-  const swedishTime = new Date();
-  swedishTime.setHours(hours, minutes, 0, 0);
+    console.log('swedishTime', swedishTime);
 
-  return new Date(swedishTime.toISOString());
-};
+    const utcTime = new Date(
+      swedishTime.toLocaleString("en-US", { timeZone: "Europe/Stockholm" })
+    );
+
+  console.log('utcTime', utcTime);
+  
+    return utcTime;
+  };
 
 export const scheduleMedicationReminder = async (
   userId: string,
