@@ -59,10 +59,6 @@ const MoodTrackerDay = ({
     setMoodStates(newMoodStates);
   }, [selectedDate, moodTrackerValues]);
 
-  useEffect(() => {
-    console.log(moodStates);
-  }, [moodStates]);
-
   const handleMoodChange = (moodId: MoodId, value: number | null) => {
     const formattedDate = format(selectedDate, 'yyyy-MM-dd');
     const dayId = format(selectedDate, 'EEEE').toLowerCase() as DayId;
