@@ -7,6 +7,11 @@ const qstashClient = new Client({
   token: process.env.QSTASH_TOKEN!,
 });
 
+/**
+ * This route is used to send an email to the user.
+ * @param {NextRequest} req - The request object which contains the email, medication, time and userId.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = verifySignatureAppRouter(async function POST(
   req: NextRequest
 ) {
@@ -28,10 +33,12 @@ export const POST = verifySignatureAppRouter(async function POST(
       text: `Dags att ta din medicin "${medication.name}" vid ${time}.`,
     });
 
+    // Calculate the next medication time
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     const nextMedicationTime = new Date(now);
 
+    // If the current time is greater than the medication time, set the next medication time to the next day
     if (
       now.getUTCHours() > hours ||
       (now.getUTCHours() === hours && now.getUTCMinutes() > minutes)
@@ -41,6 +48,7 @@ export const POST = verifySignatureAppRouter(async function POST(
 
     nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
 
+    // Publish the email to the queue by generating a messageId (timestamp)
     await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/send-email`,
       body: { email, medication, userId, time },
