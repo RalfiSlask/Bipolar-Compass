@@ -5,7 +5,7 @@ import { IMedication } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -103,9 +103,8 @@ const MedicineSettings = ({
       const latestMedications = data.medications;
       const deletedMedicine = latestMedications[index];
 
-      // Delete all QStash reminders for this medication
       if (deletedMedicine?.reminder?.messageIds?.length > 0) {
-        await Promise.all(
+        const deleteResults = await Promise.allSettled(
           deletedMedicine.reminder.messageIds.map(async (messageId: string) => {
             try {
               await axios.post(
@@ -115,21 +114,46 @@ const MedicineSettings = ({
                   headers: { 'Content-Type': 'application/json' },
                 }
               );
-            } catch (error) {
-              console.error(
-                `Failed to delete QStash reminder ${messageId} for ${deletedMedicine.name}:`,
-                error
-              );
+              return { messageId, status: 'deleted' };
+            } catch (error: unknown) {
+              if (error instanceof AxiosError) {
+                if (
+                  error.response?.status === 500 &&
+                  error.response.data?.error?.includes('message not found')
+                ) {
+                  return { messageId, status: 'already-deleted' as const };
+                }
+                console.error(
+                  `Non-critical error deleting QStash reminder ${messageId}:`,
+                  error
+                );
+                return {
+                  messageId,
+                  status: 'error' as const,
+                  error: error.message,
+                };
+              }
+              return {
+                messageId,
+                status: 'error' as const,
+                error: error instanceof Error ? error.message : 'Unknown error',
+              };
             }
           })
         );
-      } else {
-        console.warn(
-          `No messageIds found for ${deletedMedicine.name}, skipping QStash delete.`
-        );
+
+        deleteResults.forEach((result) => {
+          if (
+            result.status === 'fulfilled' &&
+            result.value.status === 'error'
+          ) {
+            console.warn(
+              `Failed to delete reminder: ${result.value.messageId}`
+            );
+          }
+        });
       }
 
-      // Remove the medication from the list
       const newMedicines: IMedication[] = latestMedications.filter(
         (medicine: IMedication, i: number) => i !== index
       );
