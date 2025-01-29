@@ -61,12 +61,7 @@ export const scheduleMedicationReminder = async (
         },
       });
 
-      console.log('response', response);
-
       messageId = response.messageId;
-      console.log(
-        `Initial reminder scheduled for ${medication.name} - QStash Message ID: ${messageId}`
-      );
     } catch (error) {
       console.error(
         `Failed to schedule reminder for ${medication.name}:`,

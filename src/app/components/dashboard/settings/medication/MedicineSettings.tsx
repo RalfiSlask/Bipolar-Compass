@@ -82,7 +82,6 @@ const MedicineSettings = ({
 
       const updatedMedicines = await saveSettings(newMedicines);
       if (updatedMedicines) setMedicines(updatedMedicines);
-      console.log(updatedMedicines);
 
       setIsAddingMedicine(false);
       toast.success('Medicin tillagd');

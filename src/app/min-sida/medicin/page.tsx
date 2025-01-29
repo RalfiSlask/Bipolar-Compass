@@ -37,8 +37,6 @@ const MedicinePageContent = () => {
   ): Promise<IMedication[]> => {
     if (!email) return medications;
 
-    console.log('medications', medications);
-
     try {
       const response = await axios.put('/api/settings/save/medications', {
         medications,
@@ -59,8 +57,6 @@ const MedicinePageContent = () => {
         );
         return response.data.medications;
       }
-
-      console.log('medications', response.data.medications);
     } catch (err) {
       console.error('could not save medications: ', err);
     }

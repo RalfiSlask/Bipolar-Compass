@@ -107,7 +107,6 @@ const MoodTrackerPage = () => {
      */
     const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
       try {
-        console.log('saving?');
         await saveMoodTrackerData();
       } catch (error) {
         console.error('Failed to save mood tracker data:', error);

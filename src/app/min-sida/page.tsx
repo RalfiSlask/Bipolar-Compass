@@ -67,7 +67,6 @@ const MyPage = () => {
 
         if (response.status === 200) {
           setUserData(response.data);
-          console.log(response.data);
         }
       } catch (error) {
         console.error('Failed to fetch user data:', error);
