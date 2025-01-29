@@ -94,10 +94,19 @@ const MedicineSettings = ({
 
   const handleDeleteMedicine = async (index: number) => {
     try {
-      const deletedMedicine = medications[index];
+      if (!user?.email) return;
 
-      if (deletedMedicine.reminder?.messageIds?.length > 0) {
-        const payload = { messageId: [...deletedMedicine.reminder.messageIds] };
+      const { data } = await axios.post('/api/get-medications', {
+        email: user.email,
+      });
+
+      console.log('data', data);
+
+      const latestMedications = data.medications;
+      const deletedMedicine = latestMedications[index];
+
+      if (deletedMedicine?.reminder?.messageIds?.length > 0) {
+        const payload = { messageId: deletedMedicine.reminder.messageIds };
 
         try {
           await axios.post('/api/delete-qstash', payload, {
@@ -115,9 +124,10 @@ const MedicineSettings = ({
         );
       }
 
-      const newMedicines = medications.filter((_, i) => i !== index);
+      const newMedicines: IMedication[] = latestMedications.filter(
+        (medicine: IMedication, i: number) => i !== index
+      );
       const updatedMedicines = await saveSettings(newMedicines);
-      console.log(updatedMedicines);
 
       if (updatedMedicines) setMedicines(updatedMedicines);
       toast.success('Medicin borttagen');
