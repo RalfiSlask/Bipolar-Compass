@@ -36,11 +36,15 @@ export const scheduleMedicationReminder = async (
   let messageId: string | null = null;
 
   for (const time of medication.times) {
+    console.log('time', time);
     const medicationTime = convertSwedishTimeToUTC(time);
+    console.log('medicationTime', medicationTime);
 
     if (medicationTime.getTime() <= Date.now()) {
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
     }
+
+    console.log('medicationTime', medicationTime);
 
     console.log(process.env.NEXTAUTH_URL);
 
