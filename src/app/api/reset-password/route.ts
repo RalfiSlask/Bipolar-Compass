@@ -30,7 +30,9 @@ export const POST = async (req: NextRequest) => {
       );
     }
 
+    // Compare the token with the hashed token
     const isTokenValid = await bcryptjs.compare(token, user.resetToken);
+
     if (!isTokenValid) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 400 });
     }
