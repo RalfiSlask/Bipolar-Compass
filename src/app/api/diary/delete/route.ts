@@ -2,6 +2,11 @@ import { IUserDiary } from '@/app/types/diary';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to delete a diary entry.
+ * @param {NextRequest} req - The request object which contains the user_id and entry_id.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const { user_id, entry_id } = await req.json();

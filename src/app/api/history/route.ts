@@ -1,6 +1,11 @@
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to get the mood tracker data to display in the history page.
+ * @param {NextRequest} req - The request object which contains the user_id.
+ * @returns {NextResponse} Response object with the mood tracker data or error.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { user_id } = await req.json();

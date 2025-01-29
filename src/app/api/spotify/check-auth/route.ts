@@ -1,6 +1,10 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
+/**
+ * This route is used to check if the user is authenticated with spotify.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function GET(): Promise<NextResponse> {
   try {
     const cookieStore = await cookies();

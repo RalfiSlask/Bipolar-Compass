@@ -5,6 +5,11 @@ import bcrypt from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
 import { getCollection } from '../../utils/databaseUtils';
 
+/**
+ * This route is used to register a new user.
+ * @param {NextRequest} req - The request object which contains the name, email and password.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { name, email, password } = await req.json();

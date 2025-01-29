@@ -1,6 +1,11 @@
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the user's notification settings.
+ * @param {NextRequest} req - The request object which contains the emailNotification, email and relativeNotifications.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { emailNotification, email, relativeNotifications } =

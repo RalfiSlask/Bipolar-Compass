@@ -7,6 +7,11 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import { ObjectId, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the mood tracker data by week.
+ * @param {NextRequest} req - The request object which contains the user_id and weekData.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const { user_id, weekData } = await req.json();

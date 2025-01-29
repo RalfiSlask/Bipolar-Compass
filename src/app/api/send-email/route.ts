@@ -11,17 +11,13 @@ export const POST = verifySignatureAppRouter(async function POST(
   req: NextRequest
 ) {
   const { email, medication, time, userId } = await req.json();
-  console.log('Email:', email);
-  console.log('Medication:', medication);
-  console.log('Time:', time);
-  console.log('User ID:', userId);
 
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
@@ -45,15 +41,11 @@ export const POST = verifySignatureAppRouter(async function POST(
 
     nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
 
-    console.log(`${process.env.NEXTAUTH_URL}/api/send-email`);
-
     await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/send-email`,
       body: { email, medication, userId, time },
       notBefore: Math.floor(nextMedicationTime.getTime() / 1000),
     });
-
-    console.log('Email sent successfully, scheduling next reminder');
 
     return NextResponse.json({
       message: 'Email sent and next reminder scheduled',

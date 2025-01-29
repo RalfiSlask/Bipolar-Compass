@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to exchange the spotify code for an access token.
+ * @param {NextRequest} req - The request object which contains the code.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = async (req: NextRequest) => {
   const { code } = await req.json();
 
   const client_id = process.env.SPOTIFY_CLIENT_ID;
   const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-  /*   const redirect_uri = process.env.SPOTIFY_REDIRECT_URI || ''; */
   const redirect_uri =
     'https://www.xn--bipolrkompassen-4kb.se/multimedia/musik';
 

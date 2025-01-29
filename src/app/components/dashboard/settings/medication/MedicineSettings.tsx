@@ -5,6 +5,7 @@ import { IMedication } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
+import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -20,7 +21,9 @@ import YourMedications from './YourMedications';
 
 interface MedicineSettingsProps {
   user: IUser;
-  saveMedicationSettings: (medications: IMedication[]) => Promise<void>;
+  saveMedicationSettings: (
+    medications: IMedication[]
+  ) => Promise<IMedication[]>;
 }
 
 const MedicineSettings = ({
@@ -40,49 +43,47 @@ const MedicineSettings = ({
     frequency: '',
     times: [],
     notes: '',
-    reminder: { enabled: false, method: 'email', times: [] },
+    reminder: { enabled: false, method: 'email', times: [], messageIds: [] },
   };
 
-  const saveSettings = async (newMedicines: IMedication[]) => {
+  const saveSettings = async (
+    newMedicines: IMedication[]
+  ): Promise<IMedication[]> => {
     try {
-      await saveMedicationSettings(newMedicines);
-      setMedicines(newMedicines);
+      const updatedMedicines = await saveMedicationSettings(newMedicines);
+      setMedicines(updatedMedicines);
+      return updatedMedicines;
     } catch (err) {
-      console.error('could not save medications: ', err);
+      console.error('Could not save medications:', err);
       toast.error('Kunde inte spara mediciner');
+      return newMedicines;
     }
   };
 
   const handleSubmit = async (values: IMedication) => {
-    const {
-      name,
-      category,
-      dosage,
-      doseUnit,
-      frequency,
-      times,
-      notes,
-      reminder,
-    } = values;
-
     try {
-      const newMedicine = {
-        category: category,
-        name: name,
-        dosage: Number(dosage),
-        doseUnit: doseUnit,
-        times: times || [],
-        frequency: frequency,
-        notes: notes,
+      const newMedicine: IMedication = {
+        category: values.category,
+        name: values.name,
+        dosage: Number(values.dosage),
+        doseUnit: values.doseUnit,
+        times: values.times || [],
+        frequency: values.frequency,
+        notes: values.notes,
         reminder: {
-          enabled: Boolean(reminder.enabled),
-          method: reminder.method || 'email',
-          times: reminder.times || [],
+          enabled: Boolean(values.reminder.enabled),
+          method: values.reminder.method || 'email',
+          times: values.reminder.times || [],
+          messageIds: values.reminder.messageIds || [],
         },
       };
 
+      console.log('newMedicine', newMedicine);
       const newMedicines = [...medications, newMedicine];
-      await saveSettings(newMedicines);
+
+      const updatedMedicines = await saveSettings(newMedicines);
+      if (updatedMedicines) setMedicines(updatedMedicines);
+
       setIsAddingMedicine(false);
       toast.success('Medicin tillagd');
     } catch (error) {
@@ -93,11 +94,34 @@ const MedicineSettings = ({
 
   const handleDeleteMedicine = async (index: number) => {
     try {
+      const deletedMedicine = medications[index];
+
+      if (deletedMedicine.reminder?.messageIds?.length > 0) {
+        const payload = { messageId: [...deletedMedicine.reminder.messageIds] };
+
+        try {
+          await axios.post('/api/delete-qstash', payload, {
+            headers: { 'Content-Type': 'application/json' },
+          });
+        } catch (error) {
+          console.error(
+            `⚠️ Failed to delete QStash reminder for ${deletedMedicine.name}:`,
+            error
+          );
+        }
+      } else {
+        console.warn(
+          `⚠️ No messageIds found for ${deletedMedicine.name}, skipping QStash delete.`
+        );
+      }
+
       const newMedicines = medications.filter((_, i) => i !== index);
-      await saveSettings(newMedicines);
-      toast.success('Medicin borttagen');
+      const updatedMedicines = await saveSettings(newMedicines);
+
+      if (updatedMedicines) setMedicines(updatedMedicines);
+      toast.success('✅ Medicin borttagen');
     } catch (error) {
-      console.error('could not delete medicine:', error);
+      console.error('❌ could not delete medicine: ', error);
       toast.error('Kunde inte ta bort medicin');
     }
   };

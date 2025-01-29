@@ -2,6 +2,11 @@ import { DiaryEntry } from '@/app/models/Diary';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save a diary entry.
+ * @param {NextRequest} req - The request object which contains the user_id, date and entry.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = async (req: NextRequest) => {
   try {
     const { user_id, date, entry } = await req.json();
@@ -15,6 +20,7 @@ export const POST = async (req: NextRequest) => {
 
     const diaryCollection = await getCollection('thesis', 'diaries');
 
+    // Create a new diary entry, uses crypto to generate a random UUID if no id is provided
     const diaryEntry = new DiaryEntry(
       entry.id || crypto.randomUUID(),
       date,

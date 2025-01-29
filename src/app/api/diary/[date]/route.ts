@@ -6,10 +6,13 @@ interface RouteParams {
   params: Promise<{ date: string }>;
 }
 
-export const POST = async (
-  request: NextRequest,
-  { params }: RouteParams
-) => {
+/**
+ * This route is used to get a diary entry.
+ * @param {NextRequest} request - The request object.
+ * @param {RouteParams} params - The parameters of the route.
+ * @returns {NextResponse} Response object with the diary entry or error.
+ */
+export const POST = async (request: NextRequest, { params }: RouteParams) => {
   try {
     const { user_id } = await request.json();
     const { date } = await params;

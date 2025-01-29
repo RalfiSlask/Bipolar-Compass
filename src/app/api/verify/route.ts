@@ -2,6 +2,11 @@ import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to verify the user's email.
+ * @param {NextRequest} req - The request object which contains the token.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const GET = async (req: NextRequest): Promise<NextResponse> => {
   const token = req.nextUrl.searchParams.get('token');
 
@@ -52,6 +57,7 @@ export const GET = async (req: NextRequest): Promise<NextResponse> => {
       );
     }
 
+    // If the token has expired, return an error
     if (new Date() > new Date(user.tokenExpires)) {
       return NextResponse.json({ error: 'Token has expired' }, { status: 400 });
     }

@@ -4,6 +4,12 @@ import { sendVerificationEmail } from '@/app/utils/emailUtils';
 import crypto from 'crypto';
 import { NextResponse } from 'next/server';
 
+/**
+ * This route is used to resend the verification email.
+ * @param {Request} req - The request object which contains the email.
+ * @returns {NextResponse} Response object with success or error.
+ */
+
 export const POST = async (req: Request): Promise<NextResponse> => {
   try {
     const { email } = await req.json();
@@ -17,6 +23,8 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
     const collection = await getCollection('thesis', 'users');
     const user = (await collection.findOne({ email })) as IUser | null;
+
+    // Generate a new verification token if the user does not have one
     const newVerificationToken = crypto.randomBytes(32).toString('hex');
     const newTokenExpires = new Date(Date.now() + 3600 * 1000);
 
@@ -45,8 +53,6 @@ export const POST = async (req: Request): Promise<NextResponse> => {
         { status: 200 }
       );
     }
-
-    console.log('sending verification email', user.email);
 
     await sendVerificationEmail({
       verificationToken: newVerificationToken,

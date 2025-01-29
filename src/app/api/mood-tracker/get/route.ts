@@ -4,6 +4,11 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import { Document, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to get the mood tracker data to display in the mood tracker page.
+ * @param {NextRequest} req - The request object which contains the user_id, week and year.
+ * @returns {NextResponse} Response object with the mood tracker data or error.
+ */
 export const POST = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { user_id, week, year } = await req.json();
@@ -31,6 +36,7 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       .limit(1)
       .toArray();
 
+    // If the mood tracker data is found, return the data by converting the mongo document to a IMoodTrackerWeek object
     if (moodTrackerData[0]) {
       const mongoDoc = moodTrackerData[0] as WithId<Document>;
       const weekData: IMoodTrackerWeek = {

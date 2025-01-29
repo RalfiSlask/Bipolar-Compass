@@ -2,6 +2,12 @@ import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
+
+/**
+ * This route is used to reset the user's password.
+ * @param {NextRequest} req - The request object which contains the password and token.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = async (req: NextRequest) => {
   try {
     const { password, token } = await req.json();

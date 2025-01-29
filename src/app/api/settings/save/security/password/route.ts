@@ -3,6 +3,11 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the user's password.
+ * @param {NextRequest} req - The request object which contains the currentPassword, newPassword and email.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function PUT(req: NextRequest) {
   try {
     const { currentPassword, newPassword, email } = await req.json();

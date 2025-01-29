@@ -2,9 +2,13 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import { sendForgotPasswordEmail } from '@/app/utils/emailUtils';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to send a forgot password link to the user.
+ * @param {NextRequest} req - The request object which contains the email.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function POST(req: NextRequest) {
   try {
     const { email } = await req.json();
@@ -26,8 +30,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Generate a random reset token
     const resetToken = crypto.randomBytes(32).toString('hex');
 
+    // Hash the reset token
     const hashedToken = bcrypt.hashSync(resetToken, 10);
 
     await collection.updateOne(

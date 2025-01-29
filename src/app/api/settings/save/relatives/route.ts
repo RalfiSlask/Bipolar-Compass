@@ -2,6 +2,11 @@ import { IUser } from '@/app/types/user';
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the user's relatives settings.
+ * @param {NextRequest} req - The request object which contains the relatives and email.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const PUT = async (req: NextRequest): Promise<NextResponse> => {
   try {
     const { relatives, email } = await req.json();

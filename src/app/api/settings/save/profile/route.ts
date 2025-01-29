@@ -1,9 +1,15 @@
 import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to save the user's profile settings.
+ * @param {NextRequest} req - The request object which contains the values and originalEmail.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export async function PUT(req: NextRequest): Promise<NextResponse> {
   try {
     const collection = await getCollection('thesis', 'users');
+
     const { values, originalEmail } = await req.json();
     const { email, age, gender } = values;
 
