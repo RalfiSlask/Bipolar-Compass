@@ -40,6 +40,8 @@ export const scheduleMedicationReminder = async (
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
     }
 
+    console.log(process.env.NEXTAUTH_URL);
+
     try {
       const response = await qstashClient.publishJSON({
         url: `${process.env.NEXTAUTH_URL}/api/send-email`,

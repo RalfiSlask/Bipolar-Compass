@@ -78,11 +78,11 @@ const MedicineSettings = ({
         },
       };
 
-      console.log('newMedicine', newMedicine);
       const newMedicines = [...medications, newMedicine];
 
       const updatedMedicines = await saveSettings(newMedicines);
       if (updatedMedicines) setMedicines(updatedMedicines);
+      console.log(updatedMedicines);
 
       setIsAddingMedicine(false);
       toast.success('Medicin tillagd');
@@ -105,23 +105,24 @@ const MedicineSettings = ({
           });
         } catch (error) {
           console.error(
-            `⚠️ Failed to delete QStash reminder for ${deletedMedicine.name}:`,
+            `Failed to delete QStash reminder for ${deletedMedicine.name}:`,
             error
           );
         }
       } else {
         console.warn(
-          `⚠️ No messageIds found for ${deletedMedicine.name}, skipping QStash delete.`
+          `No messageIds found for ${deletedMedicine.name}, skipping QStash delete.`
         );
       }
 
       const newMedicines = medications.filter((_, i) => i !== index);
       const updatedMedicines = await saveSettings(newMedicines);
+      console.log(updatedMedicines);
 
       if (updatedMedicines) setMedicines(updatedMedicines);
-      toast.success('✅ Medicin borttagen');
+      toast.success('Medicin borttagen');
     } catch (error) {
-      console.error('❌ could not delete medicine: ', error);
+      console.error('could not delete medicine: ', error);
       toast.error('Kunde inte ta bort medicin');
     }
   };

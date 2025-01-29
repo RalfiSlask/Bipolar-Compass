@@ -57,6 +57,8 @@ const MedicinePageContent = () => {
         );
         return response.data.medications;
       }
+
+      console.log('medications', response.data.medications);
     } catch (err) {
       console.error('could not save medications: ', err);
     }
