@@ -1,4 +1,9 @@
-import { IMedication, IReminder } from '../types/medication';
+import {
+  IHistory,
+  IMedication,
+  IReminder,
+  ISchedule,
+} from '../types/medication';
 
 export class Medication implements IMedication {
   constructor(
@@ -18,6 +23,7 @@ export class Reminder implements IReminder {
     public enabled: boolean = false,
     public method: string = '',
     public times: string[] = [],
-    public messageIds: string[] = []
+    public schedule: ISchedule[] = [],
+    public history: IHistory[] = []
   ) {}
 }
