@@ -85,13 +85,13 @@ const UnderNavigation = () => {
         flex flex-col xl:flex-row gap-1 sm:gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto touch-pan-y'
+            ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
             : 'hidden xl:flex'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {isMenuOpen && (
-          <div className="sm:hidden m pb-[14px] flex justify-between items-center pt-1 w-full mb-1 pr-3 ">
+          <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full pr-3">
             <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
             <BipolarLogo />
             <button
