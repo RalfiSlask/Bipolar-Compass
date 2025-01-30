@@ -62,6 +62,8 @@ export const scheduleMedicationReminder = async (
         },
       });
 
+      console.log('response', response);
+
       schedules.push({
         time,
         nextReminder: medicationTime.toISOString(),

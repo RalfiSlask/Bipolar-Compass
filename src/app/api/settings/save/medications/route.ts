@@ -19,18 +19,23 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
+    console.log('medications', medications);
+
     // Schedule qstash reminders for the medications
     const updatedMedications = await Promise.all(
       medications.map(async (medication: IMedication) => {
         if (medication.reminder.enabled) {
           try {
+            console.log('medication', medication);
             // Check if we need to schedule new reminders
             const existingSchedules = medication.reminder.schedule || [];
             const scheduledTimes = existingSchedules.map((s) => s.time);
             const timesNeedingScheduling = medication.reminder.times.filter(
               (time) => !scheduledTimes.includes(time)
             );
-
+            console.log('timesNeedingScheduling', timesNeedingScheduling);
+            console.log('existingSchedules', existingSchedules);
+            console.log('medication.reminder.times', medication.reminder.times);
             if (timesNeedingScheduling.length > 0) {
               const newSchedules = await scheduleMedicationReminder(
                 user._id?.toString() || '',
@@ -43,6 +48,8 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
                 },
                 email
               );
+
+              console.log('newSchedules', newSchedules);
 
               return {
                 ...medication,
