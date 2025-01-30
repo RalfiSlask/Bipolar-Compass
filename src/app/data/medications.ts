@@ -39,6 +39,5 @@ export const MEDICATION_FREQUENCY_OPTIONS = [
   { value: '2_daily', label: '2 gånger om dagen' },
   { value: '3_daily', label: '3 gånger om dagen' },
   { value: '4_daily', label: '4 gånger om dagen' },
-  { value: 'weekly', label: '1 gång i veckan' },
   { value: 'as_needed', label: 'Vid behov' },
 ];
