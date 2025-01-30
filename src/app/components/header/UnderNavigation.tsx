@@ -44,13 +44,24 @@ const UnderNavigation = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollY}px`;
     } else {
-      document.body.style.overflow = 'unset';
+      // Restore the scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
     };
   }, [isMenuOpen]);
 
@@ -77,6 +88,7 @@ const UnderNavigation = () => {
             ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto touch-pan-y'
             : 'hidden xl:flex'
         }`}
+        onClick={(e) => e.stopPropagation()}
       >
         {isMenuOpen && (
           <div className="sm:hidden m pb-[14px] flex justify-between items-center pt-1 w-full mb-1 pr-3 ">
@@ -118,7 +130,7 @@ const UnderNavigation = () => {
           />
         ))}
         <div className="xl:hidden mt-auto w-full border-t border-primary-light pt-4">
-          <LoginNavigation />
+          <LoginNavigation closeMenu={closeMenu} />
         </div>
       </div>
 
