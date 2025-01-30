@@ -39,6 +39,10 @@ export const POST = verifySignatureAppRouter(async function POST(
     const [hours, minutes] = time.split(':').map(Number);
     const nextMedicationTime = new Date(now);
 
+    console.log('now', now);
+    console.log('hours', hours);
+    console.log('minutes', minutes);
+
     if (
       now.getUTCHours() > hours ||
       (now.getUTCHours() === hours && now.getUTCMinutes() > minutes)
@@ -48,21 +52,31 @@ export const POST = verifySignatureAppRouter(async function POST(
 
     nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
 
-    // Schedule the next reminder
+    // Schedule next reminder
     const nextReminder = await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/send-email`,
       body: { email, medication, userId, time },
       notBefore: Math.floor(nextMedicationTime.getTime() / 1000),
+      webhook: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
+      webhookHeaders: {
+        'Content-Type': 'application/json',
+      },
+      webhookBody: {
+        userId,
+        medicationName: medication.name,
+        time,
+        newMessageId: null,
+      },
     });
 
-    // Update the medication's messageIds (replace old with new)
+    // Mark current reminder as sent and schedule next one
     await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
       body: {
         userId,
         medicationName: medication.name,
+        time,
         newMessageId: nextReminder.messageId,
-        replaceExisting: true,
       },
     });
 

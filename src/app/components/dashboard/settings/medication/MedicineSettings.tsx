@@ -1,11 +1,12 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { MEDICATION_OPTIONS } from '@/app/data/medications';
-import { IMedication } from '@/app/types/medication';
+import { Reminder } from '@/app/models/Medication';
+import { IHistory, IMedication, ISchedule } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -43,7 +44,7 @@ const MedicineSettings = ({
     frequency: '',
     times: [],
     notes: '',
-    reminder: { enabled: false, method: 'email', times: [], messageIds: [] },
+    reminder: new Reminder(),
   };
 
   const saveSettings = async (
@@ -59,7 +60,6 @@ const MedicineSettings = ({
       return newMedicines;
     }
   };
-
   const handleSubmit = async (values: IMedication) => {
     try {
       const newMedicine: IMedication = {
@@ -74,17 +74,19 @@ const MedicineSettings = ({
           enabled: Boolean(values.reminder.enabled),
           method: values.reminder.method || 'email',
           times: values.reminder.times || [],
-          messageIds: values.reminder.messageIds || [],
+          schedule: [],
+          history: [],
         },
       };
 
       const newMedicines = [...medications, newMedicine];
-
       const updatedMedicines = await saveSettings(newMedicines);
-      if (updatedMedicines) setMedicines(updatedMedicines);
 
-      setIsAddingMedicine(false);
-      toast.success('Medicin tillagd');
+      if (updatedMedicines) {
+        setMedicines(updatedMedicines);
+        setIsAddingMedicine(false);
+        toast.success('Medicin tillagd');
+      }
     } catch (error) {
       console.error('could not save medicine:', error);
       toast.error('Kunde inte spara medicin');
@@ -95,6 +97,7 @@ const MedicineSettings = ({
     try {
       if (!user?.email) return;
 
+      // Get latest medications
       const { data } = await axios.post('/api/get-medications', {
         email: user.email,
       });
@@ -102,64 +105,42 @@ const MedicineSettings = ({
       const latestMedications = data.medications;
       const deletedMedicine = latestMedications[index];
 
-      if (deletedMedicine?.reminder?.messageIds?.length > 0) {
-        const deleteResults = await Promise.allSettled(
-          deletedMedicine.reminder.messageIds.map(async (messageId: string) => {
-            try {
-              await axios.post(
-                '/api/delete-qstash',
-                { messageId },
-                {
-                  headers: { 'Content-Type': 'application/json' },
-                }
-              );
-              return { messageId, status: 'deleted' };
-            } catch (error: unknown) {
-              if (error instanceof AxiosError) {
-                if (
-                  error.response?.status === 500 &&
-                  error.response.data?.error?.includes('message not found')
-                ) {
-                  return { messageId, status: 'already-deleted' as const };
-                }
-                console.error(
-                  `Non-critical error deleting QStash reminder ${messageId}:`,
-                  error
-                );
-                return {
-                  messageId,
-                  status: 'error' as const,
-                  error: error.message,
-                };
-              }
-              return {
-                messageId,
-                status: 'error' as const,
-                error: error instanceof Error ? error.message : 'Unknown error',
-              };
-            }
-          })
-        );
+      // Collect all messageIds from both schedule and history
+      const messageIds = [
+        ...(deletedMedicine.reminder.schedule?.map(
+          (s: ISchedule) => s.messageId
+        ) || []),
+        ...(deletedMedicine.reminder.history
+          ?.filter((h: IHistory) => h.status === 'pending')
+          .map((h: IHistory) => h.messageId) || []),
+      ].filter(Boolean);
 
-        deleteResults.forEach((result) => {
-          if (
-            result.status === 'fulfilled' &&
-            result.value.status === 'error'
-          ) {
-            console.warn(
-              `Failed to delete reminder: ${result.value.messageId}`
-            );
+      // Delete all related QStash messages
+      if (messageIds.length > 0) {
+        await axios.post(
+          '/api/delete-qstash',
+          {
+            messageIds,
+            userId: user._id,
+            medicationName: deletedMedicine.name,
+          },
+          {
+            headers: { 'Content-Type': 'application/json' },
           }
-        });
+        );
       }
 
-      const newMedicines: IMedication[] = latestMedications.filter(
-        (medicine: IMedication, i: number) => i !== index
+      // Filter out the deleted medication
+      const newMedicines = latestMedications.filter(
+        (_: IMedication, i: number) => i !== index
       );
+
       const updatedMedicines = await saveSettings(newMedicines);
 
-      if (updatedMedicines) setMedicines(updatedMedicines);
-      toast.success('Medicin borttagen');
+      if (updatedMedicines) {
+        setMedicines(updatedMedicines);
+        toast.success('Medicin borttagen');
+      }
     } catch (error) {
       console.error('could not delete medicine: ', error);
       toast.error('Kunde inte ta bort medicin');

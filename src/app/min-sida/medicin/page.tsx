@@ -44,6 +44,7 @@ const MedicinePageContent = () => {
       });
 
       if (response?.data?.medications) {
+        console.log('response', response.data.medications);
         setUser((prevUser) =>
           prevUser
             ? {
@@ -59,6 +60,7 @@ const MedicinePageContent = () => {
       }
     } catch (err) {
       console.error('could not save medications: ', err);
+      throw err;
     }
 
     return medications;

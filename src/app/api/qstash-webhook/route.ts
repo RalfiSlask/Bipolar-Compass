@@ -5,42 +5,71 @@ import { verifySignatureAppRouter } from '@upstash/qstash/dist/nextjs';
 import { ObjectId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
-const handler = async (req: NextRequest) => {
+export const POST = verifySignatureAppRouter(async (req: NextRequest) => {
   try {
-    const body = await req.json();
+    const { userId, medicationName, time, newMessageId } = await req.json();
 
-    // Extract data from the webhook body
-    const { userId, medicationName, newMessageId, replaceExisting } = body;
-
-    if (!userId || !medicationName || !newMessageId) {
+    if (!userId || !medicationName || !time || !newMessageId) {
       return NextResponse.json(
         { error: 'Missing required webhook data' },
         { status: 400 }
       );
     }
 
+    console.log('userId', userId);
+    console.log('medicationName', medicationName);
+    console.log('time', time);
+    console.log('newMessageId', newMessageId);
+
     const collection = await getCollection('thesis', 'users');
     const user = await collection.findOne<IUser>({
       _id: new ObjectId(userId),
     });
 
-    console.log('user', user);
-
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    // Update the medication's messageIds
     const updatedMedications = user.profile.medications.map(
       (med: IMedication) => {
         if (med.name === medicationName) {
+          // Find the specific schedule for this time
+          const oldSchedule = med.reminder.schedule.find(
+            (s) => s.time === time && s.status === 'pending'
+          );
+
+          // Move completed schedule to history with proper status
+          const newHistory = oldSchedule
+            ? [
+                ...med.reminder.history,
+                {
+                  time: oldSchedule.time,
+                  sentAt: new Date().toISOString(),
+                  messageId: oldSchedule.messageId,
+                  status: 'sent',
+                },
+              ]
+            : med.reminder.history;
+
+          // Update schedule with new reminder for the same time
+          const newSchedule = [
+            ...med.reminder.schedule.filter(
+              (s) => s.messageId !== oldSchedule?.messageId
+            ),
+            {
+              time,
+              nextReminder: new Date().toISOString(),
+              messageId: newMessageId,
+              status: 'pending',
+            },
+          ];
+
           return {
             ...med,
             reminder: {
               ...med.reminder,
-              messageIds: replaceExisting
-                ? [newMessageId] // Replace existing messageIds
-                : [...(med.reminder.messageIds || []), newMessageId], // Append
+              schedule: newSchedule,
+              history: newHistory,
             },
           };
         }
@@ -50,7 +79,6 @@ const handler = async (req: NextRequest) => {
 
     console.log('updatedMedications', updatedMedications);
 
-    // Update the user's medications in the database
     await collection.updateOne(
       { _id: new ObjectId(userId) },
       { $set: { 'profile.medications': updatedMedications } }
@@ -67,6 +95,4 @@ const handler = async (req: NextRequest) => {
       { status: 500 }
     );
   }
-};
-
-export const POST = verifySignatureAppRouter(handler);
+});

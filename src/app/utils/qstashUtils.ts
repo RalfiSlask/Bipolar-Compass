@@ -1,5 +1,5 @@
 import { Client } from '@upstash/qstash';
-import { IMedication } from '../types/medication';
+import { IMedication, ISchedule } from '../types/medication';
 
 const qstashClient = new Client({
   token: process.env.QSTASH_TOKEN!,
@@ -21,17 +21,18 @@ const convertSwedishTimeToUTC = (time: string) => {
 
   return swedishTime;
 };
+
 export const scheduleMedicationReminder = async (
   userId: string,
   medication: IMedication,
   email: string
-): Promise<string | null> => {
+): Promise<ISchedule[]> => {
   if (!medication.reminder.enabled || medication.times.length === 0) {
     console.log(`Skipping reminder for ${medication.name}`);
-    return null;
+    return [];
   }
 
-  let messageId: string | null = null;
+  const schedules: ISchedule[] = [];
 
   for (const time of medication.times) {
     const medicationTime = convertSwedishTimeToUTC(time);
@@ -40,7 +41,6 @@ export const scheduleMedicationReminder = async (
     }
 
     try {
-      // Schedule the next reminder
       const response = await qstashClient.publishJSON({
         url: `${process.env.NEXTAUTH_URL}/api/send-email`,
         body: {
@@ -57,18 +57,24 @@ export const scheduleMedicationReminder = async (
         webhookBody: {
           userId,
           medicationName: medication.name,
-          newMessageId: null, // This will be set in send-email route
+          time,
+          newMessageId: null,
         },
       });
 
-      messageId = response.messageId;
+      schedules.push({
+        time,
+        nextReminder: medicationTime.toISOString(),
+        messageId: response.messageId,
+        status: 'pending',
+      });
     } catch (error) {
       console.error(
-        `Failed to schedule reminder for ${medication.name}:`,
+        `Failed to schedule reminder for ${medication.name} at ${time}:`,
         error
       );
     }
   }
 
-  return messageId;
+  return schedules;
 };
