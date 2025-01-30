@@ -1,5 +1,6 @@
 import { Client } from '@upstash/qstash';
 import { verifySignatureAppRouter } from '@upstash/qstash/dist/nextjs';
+import { formatInTimeZone } from 'date-fns-tz';
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -38,25 +39,30 @@ export const POST = verifySignatureAppRouter(async function POST(
     const now = new Date();
     const [hours, minutes] = time.split(':').map(Number);
     const nextMedicationTime = new Date(now);
+    nextMedicationTime.setDate(nextMedicationTime.getDate() + 1);
+    nextMedicationTime.setHours(hours, minutes, 0, 0);
 
-    console.log('now', now);
-    console.log('hours', hours);
-    console.log('minutes', minutes);
+    // Format the time in Swedish timezone
+    const swedishTime = formatInTimeZone(
+      nextMedicationTime,
+      'Europe/Stockholm',
+      "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+    );
 
-    if (
-      now.getUTCHours() > hours ||
-      (now.getUTCHours() === hours && now.getUTCMinutes() > minutes)
-    ) {
-      nextMedicationTime.setUTCDate(nextMedicationTime.getUTCDate() + 1);
+    // Ensure next reminder is in the future
+    const nextReminderTime = new Date(swedishTime);
+    if (nextReminderTime.getTime() <= Date.now()) {
+      nextReminderTime.setDate(nextReminderTime.getDate() + 1);
     }
 
-    nextMedicationTime.setUTCHours(hours, minutes, 0, 0);
+    console.log('Current time:', now);
+    console.log('Next medication time:', nextReminderTime);
 
     // Schedule next reminder
     const nextReminder = await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/send-email`,
       body: { email, medication, userId, time },
-      notBefore: Math.floor(nextMedicationTime.getTime() / 1000),
+      notBefore: Math.floor(nextReminderTime.getTime() / 1000),
       webhook: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
       webhookHeaders: {
         'Content-Type': 'application/json',
@@ -69,7 +75,7 @@ export const POST = verifySignatureAppRouter(async function POST(
       },
     });
 
-    // Mark current reminder as sent and schedule next one
+    // Update webhook body with new messageId
     await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
       body: {
@@ -86,6 +92,19 @@ export const POST = verifySignatureAppRouter(async function POST(
     });
   } catch (error) {
     console.error('Failed to process reminder:', error);
+
+    // Try to update the medication status even if scheduling fails
+    await qstashClient.publishJSON({
+      url: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
+      body: {
+        userId,
+        medicationName: medication.name,
+        time,
+        newMessageId: null, // Indicate that scheduling failed
+        error: error instanceof Error ? error.message : 'Unknown error',
+      },
+    });
+
     return NextResponse.json(
       { error: 'Failed to process reminder' },
       { status: 500 }

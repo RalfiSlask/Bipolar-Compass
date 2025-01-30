@@ -27,14 +27,15 @@ export const scheduleMedicationReminder = async (
   medication: IMedication,
   email: string
 ): Promise<ISchedule[]> => {
-  if (!medication.reminder.enabled || medication.times.length === 0) {
+  console.log('scheduling reminder');
+  if (!medication.reminder.enabled || medication.reminder.times.length === 0) {
     console.log(`Skipping reminder for ${medication.name}`);
     return [];
   }
 
   const schedules: ISchedule[] = [];
 
-  for (const time of medication.times) {
+  for (const time of medication.reminder.times) {
     const medicationTime = convertSwedishTimeToUTC(time);
     if (medicationTime.getTime() <= Date.now()) {
       medicationTime.setUTCDate(medicationTime.getUTCDate() + 1);
@@ -61,8 +62,6 @@ export const scheduleMedicationReminder = async (
           newMessageId: null,
         },
       });
-
-      console.log('response', response);
 
       schedules.push({
         time,

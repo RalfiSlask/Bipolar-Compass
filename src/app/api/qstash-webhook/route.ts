@@ -5,6 +5,11 @@ import { verifySignatureAppRouter } from '@upstash/qstash/dist/nextjs';
 import { ObjectId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
+/**
+ * This route is used to update the medication status and schedule the next reminder.
+ * @param {NextRequest} req - The request object which contains the userId, medicationName, time and newMessageId.
+ * @returns {NextResponse} Response object with success or error.
+ */
 export const POST = verifySignatureAppRouter(async (req: NextRequest) => {
   try {
     const { userId, medicationName, time, newMessageId } = await req.json();
@@ -15,11 +20,6 @@ export const POST = verifySignatureAppRouter(async (req: NextRequest) => {
         { status: 400 }
       );
     }
-
-    console.log('userId', userId);
-    console.log('medicationName', medicationName);
-    console.log('time', time);
-    console.log('newMessageId', newMessageId);
 
     const collection = await getCollection('thesis', 'users');
     const user = await collection.findOne<IUser>({
@@ -52,6 +52,13 @@ export const POST = verifySignatureAppRouter(async (req: NextRequest) => {
             : med.reminder.history;
 
           // Update schedule with new reminder for the same time
+
+          const [hours, minutes] = time.split(':').map(Number);
+
+          const nextReminderTime = new Date();
+          nextReminderTime.setUTCDate(nextReminderTime.getUTCDate() + 1);
+          nextReminderTime.setUTCHours(hours, minutes, 0, 0);
+
           const newSchedule = [
             ...med.reminder.schedule.filter(
               (s) => s.messageId !== oldSchedule?.messageId
