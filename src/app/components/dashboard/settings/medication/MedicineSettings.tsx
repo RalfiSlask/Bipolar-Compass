@@ -52,6 +52,7 @@ const MedicineSettings = ({
   ): Promise<IMedication[]> => {
     try {
       const updatedMedicines = await saveMedicationSettings(newMedicines);
+      console.log('updatedMedicines', updatedMedicines);
       setMedicines(updatedMedicines);
       return updatedMedicines;
     } catch (err) {
@@ -80,6 +81,7 @@ const MedicineSettings = ({
       };
 
       const newMedicines = [...medications, newMedicine];
+      console.log('newMedicines', newMedicines);
       const updatedMedicines = await saveSettings(newMedicines);
 
       if (updatedMedicines) {
