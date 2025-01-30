@@ -55,13 +55,14 @@ export const POST = verifySignatureAppRouter(async function POST(
       notBefore: Math.floor(nextMedicationTime.getTime() / 1000),
     });
 
-    // Trigger the webhook with the new messageId
+    // Update the medication's messageIds (replace old with new)
     await qstashClient.publishJSON({
       url: `${process.env.NEXTAUTH_URL}/api/qstash-webhook`,
       body: {
         userId,
         medicationName: medication.name,
         newMessageId: nextReminder.messageId,
+        replaceExisting: true,
       },
     });
 

@@ -25,28 +25,27 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
       medications.map(async (medication: IMedication) => {
         if (medication.reminder.enabled) {
           try {
-            const messageId = await scheduleMedicationReminder(
-              user._id?.toString() || '',
-              medication,
-              email
-            );
+            // Only schedule a new reminder if there are no existing messageIds
+            if (!medication.reminder.messageIds?.length) {
+              const messageId = await scheduleMedicationReminder(
+                user._id?.toString() || '',
+                medication,
+                email
+              );
 
-            return {
-              ...medication,
-              reminder: {
-                ...medication.reminder,
-                messageIds: [
-                  ...(medication.reminder.messageIds || []),
-                  messageId,
-                ].filter(Boolean),
-              },
-            };
+              return {
+                ...medication,
+                reminder: {
+                  ...medication.reminder,
+                  messageIds: [messageId],
+                },
+              };
+            }
           } catch (error) {
             console.error(
               `Failed to schedule reminder for ${medication.name}:`,
               error
             );
-            return medication;
           }
         }
         return medication;

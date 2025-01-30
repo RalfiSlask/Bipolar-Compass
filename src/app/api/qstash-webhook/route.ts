@@ -10,7 +10,7 @@ const handler = async (req: NextRequest) => {
     const body = await req.json();
 
     // Extract data from the webhook body
-    const { userId, medicationName, newMessageId } = body;
+    const { userId, medicationName, newMessageId, replaceExisting } = body;
 
     if (!userId || !medicationName || !newMessageId) {
       return NextResponse.json(
@@ -30,24 +30,19 @@ const handler = async (req: NextRequest) => {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    // Update the medication's messageIds while preserving the array
+    // Update the medication's messageIds
     const updatedMedications = user.profile.medications.map(
       (med: IMedication) => {
         if (med.name === medicationName) {
-          // Get existing messageIds or initialize empty array
-          const existingMessageIds = med.reminder.messageIds || [];
-
-          // Add new messageId if it doesn't exist
-          if (!existingMessageIds.includes(newMessageId)) {
-            console.log('newMessageId', newMessageId);
-            return {
-              ...med,
-              reminder: {
-                ...med.reminder,
-                messageIds: [...existingMessageIds, newMessageId],
-              },
-            };
-          }
+          return {
+            ...med,
+            reminder: {
+              ...med.reminder,
+              messageIds: replaceExisting
+                ? [newMessageId] // Replace existing messageIds
+                : [...(med.reminder.messageIds || []), newMessageId], // Append
+            },
+          };
         }
         return med;
       }
