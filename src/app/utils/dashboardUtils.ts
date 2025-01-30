@@ -83,7 +83,6 @@ export const convertMedicineFrequencyToSwedishString = (
   if (frequency === '2_daily') return '2 gånger om dagen';
   if (frequency === '3_daily') return '3 gånger om dagen';
   if (frequency === '4_daily') return '4 gånger om dagen';
-  if (frequency === 'weekly') return '1 gång i veckan';
   if (frequency === 'as_needed') return 'Vid behov';
   return '';
 };

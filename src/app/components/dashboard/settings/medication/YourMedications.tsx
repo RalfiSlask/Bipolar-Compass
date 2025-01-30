@@ -87,7 +87,6 @@ const YourMedications = ({
                   {medicine.frequency === '2_daily' && '2 gånger om dagen'}
                   {medicine.frequency === '3_daily' && '3 gånger om dagen'}
                   {medicine.frequency === '4_daily' && '4 gånger om dagen'}
-                  {medicine.frequency === 'weekly' && '1 gång i veckan'}
                   {medicine.frequency === 'as_needed' && 'Vid behov'}
                 </p>
               </div>
