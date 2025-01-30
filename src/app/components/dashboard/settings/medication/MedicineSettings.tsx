@@ -52,7 +52,6 @@ const MedicineSettings = ({
   ): Promise<IMedication[]> => {
     try {
       const updatedMedicines = await saveMedicationSettings(newMedicines);
-      console.log('updatedMedicines', updatedMedicines);
       setMedicines(updatedMedicines);
       return updatedMedicines;
     } catch (err) {
@@ -74,14 +73,13 @@ const MedicineSettings = ({
         reminder: {
           enabled: Boolean(values.reminder.enabled),
           method: values.reminder.method || 'email',
-          times: values.reminder.times || [],
+          times: values.times || [], // The times the user selected
           schedule: [],
-          history: [],
+          history: [], // Empty array - history handled by server
         },
       };
 
       const newMedicines = [...medications, newMedicine];
-      console.log('newMedicines', newMedicines);
       const updatedMedicines = await saveSettings(newMedicines);
 
       if (updatedMedicines) {
