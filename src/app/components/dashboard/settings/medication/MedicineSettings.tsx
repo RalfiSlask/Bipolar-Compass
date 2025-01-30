@@ -73,9 +73,9 @@ const MedicineSettings = ({
         reminder: {
           enabled: Boolean(values.reminder.enabled),
           method: values.reminder.method || 'email',
-          times: values.times || [], // The times the user selected
+          times: values.times || [],
           schedule: [],
-          history: [], // Empty array - history handled by server
+          history: [],
         },
       };
 
