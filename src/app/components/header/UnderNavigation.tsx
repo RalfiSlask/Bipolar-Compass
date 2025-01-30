@@ -103,21 +103,26 @@ const UnderNavigation = () => {
             </button>
           </div>
         )}
-        <div className="flex flex-col w-full xl:hidden gap-2 border-b border-primary-light pb-4 mb-2">
-          <Link
-            href="/akut"
-            className="p-3 font-semibold text-base flex items-center gap-2 text-primary-dark"
-            onClick={closeMenu}
-          >
-            <MdEmergency /> Akut hjälp
-          </Link>
-          <Link
-            href="/kontakt"
-            className="p-3 font-semibold text-base flex items-center gap-2 text-primary-dark"
-            onClick={closeMenu}
-          >
-            <MdContactSupport /> Kontakt
-          </Link>
+        <div className="flex flex-col sm:flex-row w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2">
+          <div className="flex items-center gap-6 px-2 py-4">
+            <Link
+              href="/akut"
+              className="font-semibold text-base flex items-center gap-2 text-primary-dark"
+              onClick={closeMenu}
+            >
+              <MdEmergency /> Akut hjälp
+            </Link>
+            <Link
+              href="/kontakt"
+              className="font-semibold text-base flex items-center gap-2 text-primary-dark"
+              onClick={closeMenu}
+            >
+              <MdContactSupport /> Kontakt
+            </Link>
+          </div>
+          <div className="xl:hidden flex items-center h pl-2">
+            <LoginNavigation closeMenu={closeMenu} />
+          </div>
         </div>
         {menu.menuItems.map((menuItem) => (
           <MenuItem
@@ -129,9 +134,6 @@ const UnderNavigation = () => {
             setActiveMenu={setActiveMenu}
           />
         ))}
-        <div className="xl:hidden mt-auto w-full border-t border-primary-light pt-4">
-          <LoginNavigation closeMenu={closeMenu} />
-        </div>
       </div>
 
       {!isMobile && activeMenu && (

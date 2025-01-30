@@ -50,14 +50,14 @@ const LoginNavigation = ({ closeMenu }: LoginNavigationProps) => {
         <div className="flex gap-4 items-center">
           <Link
             href="/konto/logga-in"
-            className="py-1 px-2 hover:bg-white/80 rounded-lg transition-colors duration-200"
+            className="rounded-md primary-button text-white min-h-[40px] py-2 px-2 text-center"
             onClick={handleClick}
           >
             Logga in
           </Link>
           <Link
             href="/konto/registrera"
-            className="py-1 px-2 bg-primary-medium text-white rounded-lg hover:bg-primary-dark transition-colors duration-200"
+            className="rounded-md border advanced-secondary-button h-10 flex justify-center items-center py-1 px-2"
             onClick={handleClick}
           >
             Registrera
