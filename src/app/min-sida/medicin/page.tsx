@@ -37,15 +37,12 @@ const MedicinePageContent = () => {
   ): Promise<IMedication[]> => {
     if (!email) return medications;
 
-    console.log('medications', medications);
     try {
       const response = await axios.put('/api/settings/save/medications', {
         medications,
         email,
       });
-      console.log('response', response);
       if (response?.data?.medications) {
-        console.log('response', response.data.medications);
         setUser((prevUser) =>
           prevUser
             ? {
@@ -57,7 +54,6 @@ const MedicinePageContent = () => {
               }
             : prevUser
         );
-        console.log('response.data.medications', response.data.medications);
         return response.data.medications;
       }
     } catch (err) {
