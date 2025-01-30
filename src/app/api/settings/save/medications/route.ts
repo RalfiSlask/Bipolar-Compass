@@ -33,9 +33,6 @@ export const PUT = async (req: NextRequest): Promise<NextResponse> => {
             const timesNeedingScheduling = medication.reminder.times.filter(
               (time) => !scheduledTimes.includes(time)
             );
-            console.log('timesNeedingScheduling', timesNeedingScheduling);
-            console.log('existingSchedules', existingSchedules);
-            console.log('medication.reminder.times', medication.reminder.times);
             if (timesNeedingScheduling.length > 0) {
               const newSchedules = await scheduleMedicationReminder(
                 user._id?.toString() || '',
