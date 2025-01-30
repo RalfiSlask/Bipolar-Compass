@@ -42,6 +42,18 @@ const UnderNavigation = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -62,7 +74,7 @@ const UnderNavigation = () => {
         flex flex-col xl:flex-row gap-1 sm:gap-2 xl:gap-3 lg:items-center
         ${
           isMenuOpen
-            ? 'fixed xl:relative  left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
+            ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-[100vh] sm:h-screen-minus-96 items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto touch-pan-y'
             : 'hidden xl:flex'
         }`}
       >
