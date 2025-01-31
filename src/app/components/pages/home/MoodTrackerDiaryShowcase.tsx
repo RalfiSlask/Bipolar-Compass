@@ -28,7 +28,7 @@ const MoodTrackerDiaryShowcase = () => {
                 </p>
                 <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
                   <Image
-                    src="/images/home/mood-tracker.png"
+                    src="/images/home/mood-tracker.webp"
                     alt="Mood tracker"
                     width={2000}
                     height={1000}
@@ -53,7 +53,7 @@ const MoodTrackerDiaryShowcase = () => {
                 </p>
                 <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
                   <Image
-                    src="/images/home/diary.png"
+                    src="/images/home/webp.png"
                     alt="Dagbok"
                     width={2000}
                     height={1000}

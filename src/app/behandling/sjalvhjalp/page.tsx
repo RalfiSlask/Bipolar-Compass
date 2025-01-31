@@ -109,7 +109,7 @@ const SelfHelpPage = () => {
               </div>
               <div className="flex-1 max-h-[350px] lg:h-full">
                 <Image
-                  src="/images/treatments/routine.jpg"
+                  src="/images/treatments/routine.webp"
                   alt="Sleep"
                   aria-label="kvinna som sover"
                   width={1200}
@@ -123,7 +123,7 @@ const SelfHelpPage = () => {
             <div className="flex flex-col-reverse lg:flex-row gap-10">
               <div className="flex-1 max-h-[350px] lg:h-full">
                 <Image
-                  src="/images/treatments/sleep.jpg"
+                  src="/images/treatments/sleep.webp"
                   alt="Sleep"
                   aria-label="kvinna som sover"
                   width={1200}
@@ -183,7 +183,7 @@ const SelfHelpPage = () => {
               </div>
               <div className="flex-1">
                 <Image
-                  src="/images/treatments/gym.jpg"
+                  src="/images/treatments/gym.webp"
                   alt="Motion"
                   aria-label="Motion"
                   width={1200}

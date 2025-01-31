@@ -23,7 +23,7 @@ const ContactPage = () => {
             </div>
             <div className="relative aspect-[4/3] w-full max-w-xl rounded-lg overflow-hidden">
               <Image
-                src="/images/contact.jpg"
+                src="/images/contact.webp"
                 alt="Contact"
                 fill
                 className="object-cover"

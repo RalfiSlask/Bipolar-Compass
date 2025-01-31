@@ -9,7 +9,7 @@ const ECT = () => {
         </h4>
         <div className="w-full rounded-lg overflow-hidden">
           <Image
-            src="/images/treatments/ect.jpeg"
+            src="/images/treatments/ect.webp"
             alt="ECT"
             aria-label="ECT behandling"
             width={1200}

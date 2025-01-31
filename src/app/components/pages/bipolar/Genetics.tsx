@@ -14,7 +14,7 @@ const Genetics = () => {
           </div>
           <div className="w-full rounded-lg overflow-hidden">
             <Image
-              src="/images/bipolar/flower-brains.jpg"
+              src="/images/bipolar/flower-brains.webp"
               alt="hjärna med blommor"
               aria-label="hjärna med blommor"
               width={1200}

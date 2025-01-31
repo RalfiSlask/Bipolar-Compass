@@ -9,7 +9,7 @@ const Stress = () => {
         </h4>
         <div className="w-full rounded-lg overflow-hidden">
           <Image
-            src="/images/treatments/stress-relief.jpg"
+            src="/images/treatments/stress-relief.webp"
             alt="Stress"
             aria-label="Stress behandling"
             width={1200}

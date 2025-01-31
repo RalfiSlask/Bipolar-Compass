@@ -4,7 +4,7 @@
       "id": 2,
       "title": "Bipolaritet",
       "slug": "bipolaritet",
-      "image": "/images/menu/bipolar.jpeg",
+      "image": "/images/menu/bipolar.webp",
       "submenuItems": [
         {
           "id": 21,
@@ -38,7 +38,7 @@
       "id": 4,
       "title": "Behandling",
       "slug": "behandling",
-      "image": "/images/menu/treatment.jpg",
+      "image": "/images/menu/treatment.webp",
       "submenuItems": [
         {
           "id": 41,
@@ -66,7 +66,7 @@
       "id": 5,
       "title": "Multimedia",
       "slug": "multimedia",
-      "image": "/images/menu/multimedia.jpg",
+      "image": "/images/menu/multimedia.webp",
       "submenuItems": [
         {
           "id": 51,
@@ -96,7 +96,7 @@
       "id": 7,
       "title": "Om oss",
       "slug": "om-oss",
-      "image": "/images/menu/about.jpg",
+      "image": "/images/menu/about.webp",
       "submenuItems": [
         {
           "id": 71,

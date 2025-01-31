@@ -142,7 +142,7 @@ const DiaryNote = () => {
   return (
     <div className="relative flex flex-col justify-center w-full items-center min-h-screen p-4 md:p-6">
       <Image
-        src="/images/dashboard/notes.jpg"
+        src="/images/dashboard/notes.webp"
         alt="Bakgrundsbild"
         fill
         priority

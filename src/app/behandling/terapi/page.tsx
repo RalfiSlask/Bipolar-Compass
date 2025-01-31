@@ -327,7 +327,7 @@ const TherapyPage = () => {
             </h3>
             <div className="w-full rounded-lg overflow-hidden">
               <Image
-                src="/images/treatments/therapy.jpg"
+                src="/images/treatments/therapy-session.webp"
                 alt="terapi session"
                 aria-label="terapi session mellan en psykoterapeut och en patient"
                 width={1200}

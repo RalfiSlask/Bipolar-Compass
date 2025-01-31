@@ -49,7 +49,7 @@ const TMS = () => {
         </h4>
         <div className="w-full rounded-lg overflow-hidden">
           <Image
-            src="/images/treatments/tms.jpg"
+            src="/images/treatments/tms.webp"
             alt="TMS"
             aria-label="TMS behandling"
             width={1200}

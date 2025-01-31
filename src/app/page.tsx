@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import Link from 'next/link';
-import laughingImage from '../../public/images/about.jpg';
+import laughingImage from '../../public/images/about.webp';
 import Chat from './components/chat/Chat';
 import BipolarStatistics from './components/pages/home/BipolarStatistics';
 import MoodTrackerDiaryShowcase from './components/pages/home/MoodTrackerDiaryShowcase';

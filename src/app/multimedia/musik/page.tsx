@@ -47,7 +47,7 @@ const MusicPage = () => {
         </div>
         <div className="flex-1 rounded-lg overflow-hidden w-full">
           <Image
-            src="/images/music.jpg"
+            src="/images/music.webp"
             alt="kvinna som lyssnar på musik"
             aria-label="kvinna som lyssnar på musik"
             width={1200}

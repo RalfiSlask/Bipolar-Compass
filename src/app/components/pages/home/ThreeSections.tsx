@@ -1,7 +1,7 @@
 import { threeSections } from '@/app/data/home';
 import Image from 'next/image';
 import Link from 'next/link';
-import AppleImage from '../../../../../public/images/apple.jpg';
+import AppleImage from '../../../../../public/images/apple.webp';
 
 interface SectionProps {
   title: string;

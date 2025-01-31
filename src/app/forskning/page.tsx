@@ -378,7 +378,7 @@ const ScienceArticles = () => {
       <div className="max-w-[1440px] w-full px-4 md:px-10 pt-10 pb-20">
         <div className="w-full lg:h-[350px] bg-white rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
           <Image
-            src="/images/science/science-testing.jpg"
+            src="/images/science/science-testing.webp"
             alt="forskning"
             width={6730}
             height={4444}

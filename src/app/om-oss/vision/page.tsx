@@ -15,7 +15,7 @@ const VisionPage = () => {
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="w-full md:w-1/2">
             <Image
-              src="/images/about/vision.jpg"
+              src="/images/about/our-vision.webp"
               alt="our vision"
               aria-label="vår vision, bild på en person i solnedgången"
               width={600}

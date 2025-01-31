@@ -65,7 +65,7 @@ const DiaryPage = () => {
   return (
     <div className="relative flex w-full justify-center px-2 md:px-10 min-h-screen py-10">
       <Image
-        src="/images/dashboard/diary.jpg"
+        src="/images/dashboard/diary.webp"
         alt="Bakgrundsbild"
         fill
         priority
