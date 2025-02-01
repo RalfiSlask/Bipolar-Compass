@@ -24,21 +24,24 @@ const MovieContainer = ({ movie }: IMovieContainerProps) => {
     <a
       href={movie.imdbLink}
       target="_blank"
-      className="block transform transition-transform group hover:shadow-lg duration-200"
+      className="block transform transition-transform group h-full hover:shadow-lg duration-200"
     >
-      <div className="bg-white rounded-lg overflow-hidden shadow-md">
+      <div className="bg-white rounded-lg min-h-[720px] overflow-hidden shadow-md">
         <div className="aspect-[3/4] relative overflow-hidden">
           <Image
             src={primaryImage ? primaryImage.url : 'saknar bild'}
             alt={titleText ? titleText.text : 'en film'}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         </div>
         <div className="p-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <h2 className="h-sm text-green-dark">{titleText?.text}</h2>
+              <h2 className="text-xl font-bold lg:h-sm text-green-dark">
+                {titleText?.text}
+              </h2>
               <p className="text-xl">({releaseDate?.year})</p>
             </div>
             <div className="flex items-center gap-4">
@@ -47,8 +50,9 @@ const MovieContainer = ({ movie }: IMovieContainerProps) => {
                 <Image
                   src={imdbLogo}
                   width={40}
-                  height={40}
                   alt="imdb loggan"
+                  aria-label="en imdb logga"
+                  className="h-auto"
                 />
                 <p className="font-medium">{ratingsSummary?.aggregateRating}</p>
               </div>
