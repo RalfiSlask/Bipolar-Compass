@@ -2,13 +2,24 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: [
-      'm.media-amazon.com',
-      'cdn-images-3.listennotes.com',
-      'i.scdn.co',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn-images-3.listennotes.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co',
+        pathname: '**',
+      },
     ],
   },
-  /* config options here */
 };
 
 export default nextConfig;
