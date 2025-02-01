@@ -11,7 +11,7 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
     const collection = await getCollection('thesis', 'users');
 
     const { values, originalEmail } = await req.json();
-    const { email, age, gender } = values;
+    const { email, age, gender, diagnosis } = values;
 
     if (email !== originalEmail) {
       const existingUser = await collection.findOne({ email: email });
@@ -31,6 +31,7 @@ export async function PUT(req: NextRequest): Promise<NextResponse> {
           email: email,
           'profile.age': age,
           'profile.gender': gender,
+          'profile.diagnosis': diagnosis,
         },
       }
     );
