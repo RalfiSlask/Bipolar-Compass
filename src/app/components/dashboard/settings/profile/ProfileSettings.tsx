@@ -9,6 +9,7 @@ import { ErrorMessage, Field, FieldProps, Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import EmailChangeButton from './EmailChangeButton';
 
 interface IFormValues {
   email: string;
@@ -37,9 +38,14 @@ const ProfileSettings = () => {
     diagnosis: user?.profile?.diagnosis ?? 'Ej valt',
   };
 
+  const changeEmailChangable = () => {
+    setIsEmailChangable(!isEmailChangable);
+  };
+
   const handleSubmit = async (values: IFormValues) => {
     setIsSaving(true);
     setSaveError(null);
+    console.log('these are the values:', values);
     try {
       await saveProfileSettings(values, user?.email ?? '');
 
@@ -63,7 +69,7 @@ const ProfileSettings = () => {
 
   return (
     <div
-      className="max-w-2xl w-full p-6 flex flex-col items-center gap-10"
+      className="max-w-3xl w-full p-6 flex flex-col items-center gap-10"
       aria-labelledby="profile-heading"
     >
       <div className="flex flex-col gap-3 text-center">
@@ -112,10 +118,10 @@ const ProfileSettings = () => {
                     E-postadress
                   </legend>
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                    <div className="flex-grow">
+                    <div>
                       <div className="relative">
                         <Field
-                          className={`primary-input w-full max-w-[420px]  ${
+                          className={`primary-input w-full sm:w-[420px]  ${
                             errors.email && touched.email
                               ? 'border-red-500'
                               : ''
@@ -140,18 +146,10 @@ const ProfileSettings = () => {
                         </p>
                       )}
                     </div>
-                    <button
-                      type="button"
-                      className={`whitespace-nowrap h-[42px] px-4 text-sm font-medium rounded-md border shadow-sm 
-                        ${
-                          isEmailChangable
-                            ? 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                            : 'bg-white hover:bg-gray-50 text-gray-700'
-                        }`}
-                      onClick={() => setIsEmailChangable(!isEmailChangable)}
-                    >
-                      {isEmailChangable ? 'Avbryt' : 'Ändra e-post'}
-                    </button>
+                    <EmailChangeButton
+                      isEmailChangable={isEmailChangable}
+                      changeEmailChangable={changeEmailChangable}
+                    />
                   </div>
                 </fieldset>
 
@@ -214,7 +212,7 @@ const ProfileSettings = () => {
                       Diagnos
                     </legend>
                     <div className="flex flex-col gap-1">
-                      <Field name="diagnosis">
+                      <Field name="diagnosis" className="min-w-[200px]">
                         {({ field, form }: FieldProps<string, IFormValues>) => (
                           <CustomSelect
                             options={DIAGNOSIS_OPTIONS}
@@ -223,6 +221,7 @@ const ProfileSettings = () => {
                               form.setFieldValue('diagnosis', value)
                             }
                             name="diagnosis"
+                            size="large"
                             error={form.errors.diagnosis}
                             touched={form.touched.diagnosis}
                           />
@@ -240,7 +239,7 @@ const ProfileSettings = () => {
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto primary-button"
+                    className="w-full sm:w-auto primary-button min-w-[180px]"
                     disabled={isSaving}
                   >
                     {isSaving ? 'Sparar...' : 'Spara ändringar'}

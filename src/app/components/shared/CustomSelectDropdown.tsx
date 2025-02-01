@@ -56,7 +56,7 @@ const CustomSelect = ({
       <button
         type="button"
         className={`w-full sm:w-[160px] ${
-          size === 'large' ? 'sm:w-full' : 'sm:w-[160px]'
+          size === 'large' ? 'sm:w-full min-w-[240px]' : 'sm:w-[160px]'
         } h-[42px] px-3 text-left bg-white rounded-md border
           ${
             error && touched
