@@ -7,36 +7,14 @@ import {
   FaBed,
   FaCalendarAlt,
   FaCog,
-  FaFire,
   FaFrown,
-  FaGrinBeam,
-  FaLaughBeam,
-  FaMeh,
   FaNotesMedical,
-  FaSadTear,
-  FaSmile,
   FaUserFriends,
 } from 'react-icons/fa';
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Legend,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
 import Spinner from '../components/shared/Spinner';
 
 import DashboardCardWrapper from '../components/dashboard/DashboardCardWrapper';
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
-import { ANXIETY_COLORS } from '../data/dashboardColors';
 import { WEIGHTS } from '../data/dashboardWeights';
 import { ICustomSession } from '../types/authoptions';
 import { IMoodValue } from '../types/moodtracker';
@@ -47,6 +25,10 @@ import {
   renderMessage,
 } from '../utils/dashboardUtils';
 import { roundToNearestHalf } from '../utils/numberUtils';
+import AnxietyPieChart from '../components/dashboard/AnxietyPieChart';
+import SleepGraph from '../components/dashboard/SleepGraph';
+import DailyAverageMoodChart from '../components/dashboard/DailyAverageMoodChart';
+import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 
 const MyPage = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
@@ -203,87 +185,6 @@ const MyPage = () => {
     }));
   })();
 
-  const ANXIETY_ICONS = [
-    FaLaughBeam,
-    FaGrinBeam,
-    FaSmile,
-    FaMeh,
-    FaFrown,
-    FaSadTear,
-  ];
-
-  const calculateDailyAverageMood = () => {
-    const daysOfWeek = [
-      'måndag',
-      'tisdag',
-      'onsdag',
-      'torsdag',
-      'fredag',
-      'lördag',
-      'söndag',
-    ];
-    const averages = daysOfWeek.map((day, index) => {
-      const englishDays = [
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday',
-      ];
-      const dayMoods = moodValues
-        ?.map((mood) => {
-          const dayData = mood.valueForDays.find(
-            (d) => d.id === englishDays[index]
-          );
-          if (dayData?.value === null) return null;
-          return {
-            value: dayData?.value || 0,
-            maxScale: mood.yAxis.length - 1,
-          };
-        })
-        .filter((m) => m !== null);
-
-      const avgMood = dayMoods?.reduce((acc, curr) => {
-        if (!curr) return acc;
-        return acc + curr.value / curr.maxScale;
-      }, 0);
-
-      return {
-        day: day,
-        average: dayMoods?.length
-          ? ((avgMood || 0) / dayMoods.length) * 100
-          : 0,
-      };
-    });
-
-    return averages;
-  };
-
-  const calculateLongestStreak = () => {
-    let currentStreak = 0;
-    let longestStreak = 0;
-
-    const allDays = moodValues?.[0]?.valueForDays || [];
-
-    allDays.forEach((day) => {
-      const hasEntries = moodValues?.some((mood) => {
-        const dayData = mood.valueForDays.find((d) => d.id === day.id);
-        return dayData?.value !== null;
-      });
-
-      if (hasEntries) {
-        currentStreak++;
-        longestStreak = Math.max(longestStreak, currentStreak);
-      } else {
-        currentStreak = 0;
-      }
-    });
-
-    return longestStreak;
-  };
-
   if (isLoading) {
     return <Spinner />;
   }
@@ -381,21 +282,13 @@ const MyPage = () => {
             )}
           </DashboardCardWrapper>
 
-          <DashboardCardWrapper title="Notifikationer" icon={FaCog}>
+          <DashboardCardWrapper title="Diagnos" icon={FaCog}>
             <div className="grid grid-cols-1 gap-4">
               <div className="bg-primary-light rounded-xl p-4">
-                <p
-                  className={`
-                ${
-                  userData?.settings?.notifications_enabled
-                    ? 'text-primary-accent'
-                    : 'text-tertiary-dark'
-                }
-              `}
-                >
-                  {userData?.settings?.notifications_enabled
-                    ? 'Aktiverade'
-                    : 'Inaktiverade'}
+                <p className="text-primary-dark font-semibold">
+                  {userData?.profile.diagnosis
+                    ? userData?.profile.diagnosis
+                    : 'Ingen data'}
                 </p>
               </div>
             </div>
@@ -409,68 +302,7 @@ const MyPage = () => {
             className="md:row-span-2 lg:col-span-1"
           >
             {isThereAnyMoodTrackerData('anxiety') ? (
-              <ResponsiveContainer width="100%" height={350}>
-                <PieChart>
-                  <Pie
-                    data={normalizedAnxietyData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={100}
-                    fill="#8884d8"
-                    label={({
-                      cx,
-                      cy,
-                      midAngle,
-                      innerRadius,
-                      outerRadius,
-                      percent,
-                      index,
-                    }) => {
-                      const RADIAN = Math.PI / 180;
-                      const radius =
-                        25 + innerRadius + (outerRadius - innerRadius);
-                      const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                      const y = cy + radius * Math.sin(-midAngle * RADIAN);
-                      const Icon = ANXIETY_ICONS[index % ANXIETY_ICONS.length];
-                      const isLeftSide = x < cx;
-
-                      return (
-                        <g>
-                          <Icon
-                            x={isLeftSide ? x - 12 : x - 9}
-                            y={y - 15}
-                            style={{
-                              color:
-                                ANXIETY_COLORS[index % ANXIETY_COLORS.length],
-                              fontSize: '24px',
-                            }}
-                          />
-                          <text
-                            x={isLeftSide ? x - 20 : x + 25}
-                            y={y - 3}
-                            fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
-                            textAnchor={isLeftSide ? 'end' : 'start'}
-                            dominantBaseline="central"
-                          >
-                            {`${(percent * 100).toFixed(1)}%`}
-                          </text>
-                        </g>
-                      );
-                    }}
-                  >
-                    {normalizedAnxietyData.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={ANXIETY_COLORS[index % ANXIETY_COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
+              <AnxietyPieChart normalizedAnxietyData={normalizedAnxietyData} />
             ) : (
               <p className="text-primary-medium text-sm mt-1">
                 Ingen ångest data registrerad
@@ -479,46 +311,7 @@ const MyPage = () => {
           </DashboardCardWrapper>
           <DashboardCardWrapper title="Sömn" icon={FaBed} className="h-full">
             {isThereAnyMoodTrackerData('sleep') ? (
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={sleepData}>
-                  <CartesianGrid
-                    stroke="#ccc"
-                    strokeDasharray="5 5"
-                    strokeOpacity={0.3}
-                  />
-                  <XAxis
-                    dataKey="date"
-                    angle={-45}
-                    textAnchor="end"
-                    height={60}
-                    interval={Math.ceil(sleepData.length / 4)}
-                    tick={{ fontSize: 12 }}
-                  />
-                  <YAxis
-                    width={100}
-                    domain={[0, 24]}
-                    ticks={[0, 4, 8, 12, 16, 20, 24]}
-                    tick={{ fontSize: 12 }}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: '#f5f5f5',
-                      borderColor: '#ccc',
-                      fontSize: '14px',
-                    }}
-                    formatter={(value: number) => [`${value} timmar`, 'Sömn']}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#46737c"
-                    strokeWidth={2}
-                    dot={{ fill: '#46737c', r: 4 }}
-                    activeDot={{ r: 6, fill: '#46737c' }}
-                    connectNulls={false}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+              <SleepGraph sleepData={sleepData} />
             ) : (
               <p className="text-primary-medium text-sm mt-1">
                 Ingen sömn data registrerad
@@ -545,43 +338,10 @@ const MyPage = () => {
                 Dagligt Mående
               </h3>
             </div>
-            <ResponsiveContainer width="100%" height={200}>
-              <BarChart data={calculateDailyAverageMood()}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" />
-                <YAxis domain={[0, 100]} />
-                <Tooltip
-                  formatter={(value: number) => [
-                    `${Math.round(value)}%`,
-                    'Mående',
-                  ]}
-                  contentStyle={{
-                    backgroundColor: '#fff',
-                    borderRadius: '8px',
-                  }}
-                />
-                <Bar dataKey="average" fill="#46737c" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <DailyAverageMoodChart moodValues={moodValues} />
           </div>
-
-          <div className="bg-white p-6 rounded-xl shadow-md">
-            <div className="flex items-center mb-4">
-              <FaFire className="text-orange-500 text-2xl mr-3" />
-              <h3 className="text-xl font-semibold text-secondary-dark">
-                Nuvarande Svit
-              </h3>
-            </div>
-            <p className="text-4xl font-bold text-primary-dark">
-              {calculateLongestStreak()}{' '}
-              {calculateLongestStreak() === 1 ? 'dag' : 'dagar'}
-            </p>
-            <p className="text-gray-600 mt-2">
-              Längsta period med registrerad data
-            </p>
-          </div>
+          <LongestStreakContainer moodValues={moodValues} />
         </div>
-
         <MoodScoreScale />
       </div>
     </section>
