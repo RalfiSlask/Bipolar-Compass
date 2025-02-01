@@ -39,7 +39,8 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
           height={800}
           quality={80}
           className="object-cover rounded-sm lg:rounded-full"
-          priority
+          priority={true}
+          loading="eager"
         />
       </div>
     </div>
