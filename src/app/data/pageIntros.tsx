@@ -68,6 +68,16 @@ export const podcastsIntro = {
   color: 'green' as const,
 };
 
+export const musicIntro = {
+  title: 'Spellistor',
+  image: '/images/multimedia/listening-music.webp',
+  description:
+    'Här finns en samling noggrant utvalda spellistor som kan vara till hjälp för dig som lever med bipolär sjukdom. Oavsett om du befinner dig i en balanserad remission, känner av en energifylld period, eller kämpar med en tyngre, deppig fas, så finns här musik anpassad för ditt sinnestillstånd. Musiken kan fungera som stöd i vardagen – hjälpa dig att varva ner, hitta fokus eller helt enkelt ge dig ett tryggt sällskap genom olika känslolägen.',
+  descriptionBold:
+    'Musik kan vara ett kraftfullt verktyg för både återhämtning och välmående.',
+  color: 'brown' as const,
+};
+
 export const whatIsBipolarIntro = {
   title: 'Vad är bipolaritet?',
   description:
