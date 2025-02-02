@@ -3,7 +3,7 @@ import LinkIcon from './components/shared/LinkIcon';
 
 const NotFound = () => {
   return (
-    <section className="flex flex-col items-start gap-6 pt-20">
+    <section className="flex flex-col items-start gap-6 pt-20 px-4">
       <h2 className="h-xl text-primary-dark mb-4 text-center sm:text-left">
         Sidan kunde inte hittas
       </h2>
@@ -29,7 +29,7 @@ const NotFound = () => {
         </div>
       </div>
 
-      <Link href="/" className="tertiary-button">
+      <Link href="/" className="primary-button">
         Tillbaka till startsidan
       </Link>
       <p className="w-full flex items-center flex-wrap">
