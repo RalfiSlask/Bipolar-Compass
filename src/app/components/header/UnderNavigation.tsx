@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { MdContactSupport, MdEmergency } from 'react-icons/md';
 import menu from '../../data/json/menu.json';
@@ -11,70 +10,33 @@ import Lightbox from './Lightbox';
 import LoginNavigation from './LoginNavigation';
 import MenuItem from './MenuItem';
 import SubmenuItem from './SubmenuItem';
+import { SetStateAction } from 'react';
 
-const MOBILE_BREAKPOINT = 1280;
+interface IUnderNavigationProps {
+  toggleMenuOpen: () => void;
+  closeMenu: () => void;
+  setActiveMenu: (value: SetStateAction<string | null>) => void;
+  resetMenu: () => void;
+  isMenuOpen: boolean;
+  isMobile: boolean;
+  activeMenu: string | null;
+}
 
-const UnderNavigation = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(true);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
-
-  /**
-   * Handle mobile and desktop view by checking window width
-   * It closes the menu if the user resizes the window to desktop size
-   * removes the event listener when the component unmounts to avoid memory leaks
-   */
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    };
-
-    checkMobile();
-
-    const handleResize = () => {
-      checkMobile();
-      if (window.innerWidth >= MOBILE_BREAKPOINT && isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      // Save the current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${scrollY}px`;
-    } else {
-      // Restore the scroll position
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-
-    return () => {
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-    };
-  }, [isMenuOpen]);
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
+const UnderNavigation = ({
+  toggleMenuOpen,
+  closeMenu,
+  setActiveMenu,
+  resetMenu,
+  isMobile,
+  activeMenu,
+  isMenuOpen,
+}: IUnderNavigationProps) => {
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
       <BipolarLogo />
       <button
         className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={toggleMenuOpen}
         aria-label="Toggle menu"
       >
         {isMenuOpen ? <HiX /> : <HiMenu />}
@@ -96,7 +58,7 @@ const UnderNavigation = () => {
             <BipolarLogo />
             <button
               className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleMenuOpen}
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <HiX /> : <HiMenu />}
@@ -151,10 +113,7 @@ const UnderNavigation = () => {
                     <div key={item.id} className="max-w-5xl mx-auto">
                       <Link
                         href={`/${item.slug}`}
-                        onClick={() => {
-                          setActiveMenu(null);
-                          closeMenu();
-                        }}
+                        onClick={resetMenu}
                         className="group flex items-center gap-3 text-3xl text-primary-dark font-semibold mb-8 hover:text-primary-medium transition-colors"
                       >
                         {item.title}
@@ -171,10 +130,7 @@ const UnderNavigation = () => {
                                   title={submenuItem.title}
                                   route={`/${item.slug}/${submenuItem.slug}`}
                                   isMobile={false}
-                                  onNavigate={() => {
-                                    setActiveMenu(null);
-                                    closeMenu();
-                                  }}
+                                  onNavigate={resetMenu}
                                 />
                                 <div className="h-[1px] bg-primary-light border-b border-primary-dark/10 mt-3" />
                               </div>
