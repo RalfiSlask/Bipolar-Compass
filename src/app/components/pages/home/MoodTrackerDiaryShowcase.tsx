@@ -53,7 +53,7 @@ const MoodTrackerDiaryShowcase = () => {
                 </p>
                 <div className="flex items-center justify-center mt-4 border-2 border-gray-300 rounded-lg overflow-hidden bg-white w-full aspect-[4/3] shadow-md hover:shadow-lg transition-shadow">
                   <Image
-                    src="/images/home/webp.png"
+                    src="/images/home/diary.webp"
                     alt="Dagbok"
                     width={2000}
                     height={1000}
