@@ -11,8 +11,10 @@ import {
   PLAYLIST_MEDITATION,
   PLAYLIST_SLEEP,
 } from '@/app/data/playlists';
-import Image from 'next/image';
+
 import { Suspense, useState } from 'react';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import { musicIntro } from '@/app/data/pageIntros';
 
 const MusicPage = () => {
   const [activeTab, setActiveTab] = useState('energi');
@@ -35,29 +37,7 @@ const MusicPage = () => {
 
   return (
     <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
-      <div className="w-full bg-tertiary-light text-tertiary-dark flex items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10">
-        <div className="flex-1">
-          <h2 className="h-lg font-bold mb-6">Spellistor</h2>
-          <p className="text-xl text-tertiary-dark">
-            Här finns det samlat spellistor som kan hjälpa dig som är
-            diagnostiserad med bipolär sjukdom. Vare sig du är i remission eller
-            i en deppig fas, så kan du hitta spellistor som kan hjälpa dig. Här
-            finns spellistor som kan hjälpa dig att sova, meditera och mer.
-          </p>
-        </div>
-        <div className="flex-1 rounded-lg overflow-hidden w-full">
-          <Image
-            src="/images/music.webp"
-            alt="kvinna som lyssnar på musik"
-            aria-label="kvinna som lyssnar på musik"
-            width={1200}
-            height={800}
-            quality={80}
-            className="object-cover rounded-sm lg:rounded-full"
-            priority
-          />
-        </div>
-      </div>
+      <PageIntroContainer intro={musicIntro} />
 
       <div className="flex flex-wrap gap-4 items-center">
         {MUSIC_TABS.map((tab) => (
