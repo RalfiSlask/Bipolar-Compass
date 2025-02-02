@@ -15,7 +15,7 @@ export const MULTIMEDIA_LINKS = [
   },
   {
     title: 'Podcasts',
-    href: '/multimedia/podcasts.webp',
+    href: '/multimedia/podcasts',
     description: 'Utforska podcasts om bipolär sjukdom och mental hälsa',
     image: '/images/multimedia/podcasts.webp',
   },
