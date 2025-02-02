@@ -7,7 +7,7 @@ import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
 import { medicineValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik, FormikErrors } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiClock, FiList, FiPlusCircle, FiShield } from 'react-icons/fi';
@@ -19,6 +19,7 @@ import MedicationReminder from './MedicationReminder';
 import MedicineDosage from './MedicineDosage';
 import MedicineFrequencyDropdown from './MedicineFrequencyDropdown';
 import YourMedications from './YourMedications';
+import AddMedicationButtons from './AddMedicationButtons';
 
 interface MedicineSettingsProps {
   user: IUser;
@@ -35,6 +36,7 @@ const MedicineSettings = ({
     user.profile.medications
   );
   const [isAddingMedicine, setIsAddingMedicine] = useState(false);
+  const [medicationError, setMedicationError] = useState('');
 
   const initialValues: IMedication = {
     category: '',
@@ -45,6 +47,29 @@ const MedicineSettings = ({
     times: [],
     notes: '',
     reminder: new Reminder(),
+  };
+
+  const abortAddingMedicine = () => {
+    setIsAddingMedicine(false);
+  };
+
+  const handleChangeOnMedicationField = (
+    value: string,
+    setFieldValue: (
+      field: string,
+      value: string,
+      shouldValidate?: boolean
+    ) => Promise<void | FormikErrors<IMedication>>
+  ) => {
+    const doMedicationAlreadyExist = user.profile.medications.find(
+      (medication) => medication.name === value
+    );
+    if (doMedicationAlreadyExist) {
+      setMedicationError('Medicinen finns redan i din lista');
+    } else {
+      setFieldValue('name', value);
+      setMedicationError('');
+    }
   };
 
   const saveSettings = async (
@@ -60,6 +85,7 @@ const MedicineSettings = ({
       return newMedicines;
     }
   };
+
   const handleSubmit = async (values: IMedication) => {
     try {
       const newMedicine: IMedication = {
@@ -281,7 +307,7 @@ const MedicineSettings = ({
                           }))}
                           value={values.name}
                           onChange={(value: string) => {
-                            setFieldValue('name', value);
+                            handleChangeOnMedicationField(value, setFieldValue);
                           }}
                           name="name"
                           error={errors.name}
@@ -289,6 +315,11 @@ const MedicineSettings = ({
                           size="large"
                           placeholder="Välj medicin..."
                         />
+                        {medicationError && (
+                          <p className="text-red-500 text-sm mt-2">
+                            {medicationError}
+                          </p>
+                        )}
                       </>
                     )}
                   </div>
@@ -339,18 +370,9 @@ const MedicineSettings = ({
                     <MedicationReminder />
                   </div>
                 </div>
-                <div className="flex gap-4">
-                  <button type="submit" className="primary-button py-1">
-                    Lägg till medicin
-                  </button>
-                  <button
-                    type="button"
-                    className="tertiary-button w-40"
-                    onClick={() => setIsAddingMedicine(false)}
-                  >
-                    Avbryt
-                  </button>
-                </div>
+                <AddMedicationButtons
+                  abortAddingMedication={abortAddingMedicine}
+                />
               </Form>
             )}
           </Formik>
