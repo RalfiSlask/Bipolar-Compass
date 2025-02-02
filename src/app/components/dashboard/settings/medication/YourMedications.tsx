@@ -35,7 +35,7 @@ const YourMedications = ({
       <h3 className="text-xl font-semibold mb-4 text-primary-dark">
         Dina Mediciner
       </h3>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
         {medications.map((medicine, index) => (
           <div
             key={index}
