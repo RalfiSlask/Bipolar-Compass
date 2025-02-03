@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { SetStateAction, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { MdContactSupport, MdEmergency } from 'react-icons/md';
 import menu from '../../data/json/menu.json';
@@ -10,7 +11,6 @@ import Lightbox from './Lightbox';
 import LoginNavigation from './LoginNavigation';
 import MenuItem from './MenuItem';
 import SubmenuItem from './SubmenuItem';
-import { SetStateAction } from 'react';
 
 interface IUnderNavigationProps {
   toggleMenuOpen: () => void;
@@ -31,6 +31,29 @@ const UnderNavigation = ({
   activeMenu,
   isMenuOpen,
 }: IUnderNavigationProps) => {
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Save the current scroll position
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollY}px`;
+    } else {
+      // Restore the scroll position
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+
+    return () => {
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
       <BipolarLogo />
