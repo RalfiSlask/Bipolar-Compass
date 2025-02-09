@@ -2,7 +2,7 @@ import { threeSections } from '@/app/data/home';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface SectionProps {
+interface ISectionProps {
   title: string;
   description: string;
   buttonText?: string;
@@ -20,7 +20,7 @@ const Section = ({
   textColor,
   buttonVariant,
   href,
-}: SectionProps) => (
+}: ISectionProps) => (
   <div
     className={`px-6 md:px-10 ${bgColor} min-h-[200px] md:h-1/3 flex flex-col justify-center py-8 md:py-0`}
   >

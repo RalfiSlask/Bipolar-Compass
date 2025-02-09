@@ -4,6 +4,7 @@ import { SpinningArrowsIcon } from '@/app/components/shared/icons/SpinningArrows
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { diagnosisIntro } from '@/app/data/pageIntros';
+import Image from 'next/image';
 
 const DiagnosesPage = () => {
   return (
@@ -52,7 +53,7 @@ const DiagnosesPage = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 2 (Bipolar II disorder)
           </h3>
@@ -87,20 +88,57 @@ const DiagnosesPage = () => {
               </li>
             </ul>
           </div>
+        </div>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
-            <h4 className="font-semibold text-primary-dark mb-3">
-              Depression vid bipolär typ 2:
-            </h4>
-            <p className="mb-6">
-              Personer med bipolär typ 2 upplever oftare och längre perioder av
-              depression jämfört med typ 1. Depressionsepisoder kan vara
-              djupgående och påverka vardagslivet mer än hypomaniska episoder.
-            </p>
+        <div className="bg-primary-light w-full flex lg:flex-row  shadow-primary-dark/20 flex-col items-center shadow-md rounded-lg justify-end gap-6 md:gap-10 px-4 md:px-10 py-10">
+          <div className="flex-1 h-full flex flex-col gap-4 items-center">
+            <h3 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
+              Depression vid bipolär sjukdom
+            </h3>
+            <div className="w-full rounded-lg overflow-hidden">
+              <Image
+                src="/images/bipolar/depression.webp"
+                alt="terapi session"
+                aria-label="terapi session mellan en psykoterapeut och en patient"
+                width={1200}
+                height={800}
+                quality={80}
+                className="object-cover rounded-sm lg:rounded-full"
+                priority
+              />
+            </div>
+          </div>
+          <div className="flex-1 space-y-6 text-primary-dark">
+            <div>
+              <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
+                Hur bipolär depression skiljer sig från vanlig depression
+              </h5>
+              <p className="lg:text-base xl:text-lg text-primary-dark">
+                Depression vid bipolär sjukdom kan vara djup och långvarig, ofta
+                svår att skilja från egentlig depression. Skillnaden är att den
+                bipolära depressionen förekommer i skov och är en del av
+                sjukdomens cykliska natur, vilket innebär att perioder av
+                nedstämdhet kan följas av hypomani eller mani.
+              </p>
+            </div>
+            <div>
+              <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
+                Verktyg för att hantera bipolär depression
+              </h5>
+              <p className="lg:text-base xl:text-lg text-primary-dark">
+                För att hantera bipolär depression är det viktigt att skapa
+                rutiner och använda strategier som kan mildra symtomen.
+                Regelbunden sömn, en stabil dygnsrytm och att undvika stress kan
+                göra stor skillnad. Att vara medveten om tidiga varningssignaler
+                och ha en plan för att hantera nedstämdhet kan också hjälpa till
+                att minska intensiteten och varaktigheten av en depressiv
+                episod.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Cyklotymi (Cyclothymic disorder)
           </h3>
@@ -138,7 +176,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med blandade drag (Mixed features)
           </h3>
@@ -169,7 +207,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med snabb cykling (Rapid cycling)
           </h3>
@@ -198,7 +236,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär sjukdom med säsongsrelaterade drag (Seasonal pattern)
           </h3>
@@ -230,7 +268,7 @@ const DiagnosesPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Ospecificerad bipolär sjukdom (Unspecified bipolar disorder)
           </h3>
@@ -243,7 +281,7 @@ const DiagnosesPage = () => {
           </p>
         </div>
 
-        <div className="flex flex-col content-containert">
+        <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Schizoaffektivt syndrom
           </h3>

@@ -320,7 +320,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div className="bg-primary-light w-full flex lg:flex-row  shadow-primary-dark/20 flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
+        <div className="bg-primary-light w-full flex lg:flex-row  shadow-primary-dark/20 flex-col items-center shadow-md rounded-lg justify-end gap-6 md:gap-10 sm:gap-10 px-4 md:px-10 py-10">
           <div className="flex-1 h-full flex flex-col gap-4 items-center">
             <h3 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
               Resurser och hjälp att börja
@@ -341,7 +341,6 @@ const TherapyPage = () => {
           <div className="flex-1 space-y-6 text-primary-dark">
             <div>
               <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
-                {' '}
                 Hitta legitimerad psykolog eller psykoterapeut:
               </h5>
               <p className="text-primary-dark">
