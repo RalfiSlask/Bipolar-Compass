@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { schemaMarkup } from './data/seo/schemaMarkup';
 import { Providers } from './providers/Providers';
+import Script from 'next/script';
 import './styles/styles.scss';
 
 export const metadata: Metadata = {
@@ -72,6 +73,19 @@ export default function RootLayout({
   return (
     <html lang="sv" className={`${inter.variable} ${playfair.variable}`}>
       <body className="h-full">
+      <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-2L0NHL68ND"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2L0NHL68ND');
+          `}
+        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
