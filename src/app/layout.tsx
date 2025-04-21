@@ -27,14 +27,11 @@ export const metadata: Metadata = {
     'bipolär sjukdom',
     'maniskt tillstånd',
     'mental hälsa',
-    'AI-assistent Bipo',
     'moodtracker',
     'dagbok för bipolaritet',
-    'forskningsartiklar om bipolaritet',
-    'multimedia för mental hälsa',
-    'Spotify mental hälsa',
-    'självbedömning mental hälsa',
-    'akut hjälplinjer Sverige',
+    'forskning bipolaritet',
+    'bipolar',
+    'bipolär',
     'anhöriga och bipolaritet',
     'diagnoser och behandling',
   ].join(', '),
@@ -73,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="sv" className={`${inter.variable} ${playfair.variable}`}>
       <body className="h-full">
-      <Script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-2L0NHL68ND"
           strategy="afterInteractive"
