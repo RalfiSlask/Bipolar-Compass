@@ -160,17 +160,18 @@ const UnderNavigation = ({
                             ))}
                           </div>
                         </div>
-                        {item.image && (
-                          <div className="w-[400px] flex flex-col gap-4">
+                        {item.image ? (
+                          <div className="relative w-[400px] aspect-[450/338] max-h-[260px] flex flex-col gap-4">
                             <Image
                               src={item.image}
                               alt={`${item.title} image`}
-                              width={450}
-                              height={338}
                               quality={80}
+                              fill
                               className="w-full h-auto object-cover rounded-xl shadow-lg"
                             />
                           </div>
+                        ) : (
+                          <div className="w-full h-[260px] rounded-xl"></div>
                         )}
                       </div>
                     </div>
