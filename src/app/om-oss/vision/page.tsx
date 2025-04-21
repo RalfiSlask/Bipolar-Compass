@@ -20,6 +20,7 @@ const VisionPage = () => {
               aria-label="vår vision, bild på en person i solnedgången"
               width={600}
               height={400}
+              priority={true}
               className="rounded-lg shadow-lg w-full h-[400px] object-cover"
             />
           </div>

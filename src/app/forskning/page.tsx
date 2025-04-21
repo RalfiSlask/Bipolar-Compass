@@ -383,6 +383,7 @@ const ScienceArticles = () => {
             width={6730}
             height={4444}
             quality={80}
+            priority={true}
             aria-label="forskning"
             className="w-auto apspect-auto h-full object-cover"
           />
