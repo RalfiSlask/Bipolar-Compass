@@ -21,7 +21,6 @@ const Genetics = () => {
               height={800}
               quality={80}
               className="object-cover rounded-sm lg:rounded-lg"
-              priority
             />
           </div>
         </div>

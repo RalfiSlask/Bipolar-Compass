@@ -33,8 +33,8 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
       <div className="flex-1 rounded-lg overflow-hidden w-full">
         <Image
           src={image}
-          alt="terapi session"
-          aria-label="terapi session mellan en psykoterapeut och en patient"
+          alt={description}
+          aria-label={title}
           width={1200}
           height={800}
           quality={80}

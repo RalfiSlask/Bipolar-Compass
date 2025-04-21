@@ -28,7 +28,7 @@ const HeroSection = () => {
 
           <div className="w-full lg:w-3/4 flex items-center justify-center absolute right-0 top-0 h-full">
             <Image
-              src="/images/home/laughing.png"
+              src="/images/home/laughing.webp"
               alt="testing"
               width={4910}
               height={3264}
