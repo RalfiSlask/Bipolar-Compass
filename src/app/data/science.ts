@@ -100,6 +100,11 @@ export const LANGUAGE_FILTERS = [
   { id: 'Svenska', label: 'Svenska', value: 'swedish[Language]' },
 ];
 
+export const SEX_FILTERS = [
+  { id: 'Man', label: 'Man', value: 'male[MeSH Terms]' },
+  { id: 'Kvinna', label: 'Kvinna', value: 'female[MeSH Terms]' }
+]
+
 export const PUBLICATION_TYPE_FILTERS = [
   {
     id: 'adaptiveClinicalTrial',
