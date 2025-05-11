@@ -58,7 +58,7 @@ const ScienceArticleTypesModal = ({
           </div>
 
           <div className="p-6 overflow-y-auto flex-1">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {PUBLICATION_TYPE_FILTERS.map((filter) => (
                 <div
                   key={filter.id}
@@ -71,7 +71,7 @@ const ScienceArticleTypesModal = ({
                     onChange={(e) =>
                       handleTempFilterChange(filter.id, e.target.checked)
                     }
-                    className="w-5 h-5 rounded border-gray-300 text-primary-medium focus:ring-primary-medium"
+                    className="min-w-5 min-h-5 w-5 h-5 rounded border-gray-300 text-primary-medium focus:ring-primary-medium"
                   />
                   <label
                     htmlFor={`modal-${filter.id}`}
