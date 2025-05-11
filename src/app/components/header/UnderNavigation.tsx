@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { SetStateAction, useEffect } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { MdContactSupport, MdEmergency } from 'react-icons/md';
 import menu from '../../data/json/menu.json';
@@ -31,6 +31,12 @@ const UnderNavigation = ({
   activeMenu,
   isMenuOpen,
 }: IUnderNavigationProps) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
   useEffect(() => {
     if (isMenuOpen) {
       // Save the current scroll position
@@ -54,11 +60,13 @@ const UnderNavigation = ({
     };
   }, [isMenuOpen]);
 
+  if(!mounted) return null;
+
   return (
-    <nav className="w-full flex justify-between items-center gap-10 max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
+    <nav className="w-full flex justify-between items-center max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4">
       <BipolarLogo />
       <button
-        className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
+        className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
         onClick={toggleMenuOpen}
         aria-label="Toggle menu"
       >
@@ -67,7 +75,7 @@ const UnderNavigation = ({
 
       <div
         className={`
-        flex flex-col xl:flex-row gap-1 sm:gap-2 xl:gap-3 lg:items-center
+        flex flex-col xl:flex-row gap-1 sm:gap-2 lg:items-center min-w-[910px] max-w-[910px]
         ${
           isMenuOpen
             ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
@@ -76,11 +84,11 @@ const UnderNavigation = ({
         onClick={(e) => e.stopPropagation()}
       >
         {isMenuOpen && (
-          <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full pr-3">
+          <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full px-4">
             <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
             <BipolarLogo />
             <button
-              className="xl:hidden text-2xl hover:text-primary-medium transition-colors"
+              className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
               onClick={toggleMenuOpen}
               aria-label="Toggle menu"
             >
