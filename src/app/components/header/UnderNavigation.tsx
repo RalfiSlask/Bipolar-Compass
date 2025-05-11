@@ -75,16 +75,16 @@ const UnderNavigation = ({
 
       <div
         className={`
-        flex flex-col xl:flex-row gap-1 sm:gap-2 lg:items-center min-w-[910px] max-w-[910px]
+        flex flex-col xl:flex-row gap-1 lg:gap-4 xl:gap-2 lg:items-center xl:min-w-[910px] xl:max-w-[910px]
         ${
           isMenuOpen
-            ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white px-4 pt-3 pb-4 sm:p-4 shadow-lg z-[999] border-t border-primary-medium overflow-y-auto'
+            ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white pt-3 pb-4 p-4 sm:p-6 shadow-lg z-[999] overflow-y-auto'
             : 'hidden xl:flex'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {isMenuOpen && (
-          <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full px-4">
+          <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full">
             <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
             <BipolarLogo />
             <button
@@ -96,8 +96,8 @@ const UnderNavigation = ({
             </button>
           </div>
         )}
-        <div className="flex flex-col sm:flex-row w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2">
-          <div className="flex items-center gap-6 px-2 py-4">
+        <div className="flex flex-col sm:flex-row w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2 lg:mb-10 xl:mb-2">
+          <div className="flex items-center gap-6 px-3 xl:px-2 py-4">
             <Link
               href="/akut"
               className="font-semibold text-base flex items-center gap-2 text-primary-dark"
@@ -113,7 +113,7 @@ const UnderNavigation = ({
               <MdContactSupport /> Kontakt
             </Link>
           </div>
-          <div className="xl:hidden flex items-center h pl-2">
+          <div className="xl:hidden flex items-center h xl:pl-2">
             <LoginNavigation closeMenu={closeMenu} />
           </div>
         </div>

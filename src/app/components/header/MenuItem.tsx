@@ -47,7 +47,7 @@ const MenuItem = ({
   };
 
   return (
-    <div className="xl:w-auto max-w-[150px] w-fit">
+    <div className="xl:w-auto max-w-[150px] lg:max-w-[200px] lg:min-w-[200px] min-w-[150px] xl:max-w-[150px] xl:min-w-0 w-fit">
       <Link
         href={`/${slug}`}
         className={`
@@ -59,7 +59,7 @@ const MenuItem = ({
         `}
         onClick={handleClick}
       >
-        <span>{title}</span>
+        <span className='lg:text-xl xl:text-base'>{title}</span>
         {hasSubmenuitems && (
           <IoIosArrowDown
             className={`min-w-5 min-h-5 w-5 h-5 transition-transform duration-200 flex-shrink-0 ${

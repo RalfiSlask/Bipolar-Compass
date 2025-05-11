@@ -24,12 +24,12 @@ const LoginNavigation = ({ closeMenu }: LoginNavigationProps) => {
   };
 
   return (
-    <div className="flex items-center justify-end gap-2 pr-2">
+    <div className="flex items-center justify-end gap-2 xl:pr-2">
       {session ? (
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 px-3 xl:px-0">
           <Link
             href="/min-sida"
-            className="rounded-lg min-w-[102px] sm:min-w-min py-1 sm:px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
+            className="rounded-lg min-w-[102px] sm:min-w-min py-1 xl:px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
           >
             <FaUser className="transition-transform duration-200" />
             <span className="group-hover:text-primary-accent transition-colors duration-200 ">
@@ -38,7 +38,7 @@ const LoginNavigation = ({ closeMenu }: LoginNavigationProps) => {
           </Link>
           <button
             onClick={handleSignOut}
-            className="rounded-lg py-1 sm:px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
+            className="rounded-lg py-1 xl:px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
           >
             <FaSignOutAlt className="w-4 h-4 transition-transform duration-200" />
             <span className="group-hover:text-secondary-dark transition-colors duration-200">
