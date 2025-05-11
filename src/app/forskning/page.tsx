@@ -17,6 +17,7 @@ import {
   SWEDISH_UNIVERSITIES_FILTERS,
   TEXT_AVAILABILITY_FILTERS,
   YEARS_OF_PUBLICATION_FILTERS,
+  SEX_FILTERS
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
@@ -45,6 +46,7 @@ const ScienceArticles = () => {
   const [selectedUniversity, setSelectedUniversity] = useState('');
   const [selectedHospital, setSelectedHospital] = useState('');
   const [selectedAmountOfYears, setSelectedAmountOfYears] = useState('0');
+  const [selectedSex, setSelectedSex] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const [selectedLanguage, setSelectedLanguage] = useState('');
@@ -93,6 +95,12 @@ const ScienceArticles = () => {
     const language = LANGUAGE_FILTERS.find((l) => l.label === filter);
     if (language) {
       setSelectedLanguage('');
+      return;
+    }
+
+    const sex = SEX_FILTERS.find((l) => l.label === filter);
+    if(sex) {
+      setSelectedSex('')
       return;
     }
 
@@ -152,6 +160,11 @@ const ScienceArticles = () => {
     if (selectedLanguage) {
       const language = LANGUAGE_FILTERS.find((l) => l.id === selectedLanguage);
       if (language) filters.push(language.label);
+    }
+
+    if(selectedSex) {
+      const sex = SEX_FILTERS.find((l) => l.id === selectedSex);
+      if (sex) filters.push(sex.label);
     }
 
     return filters;
@@ -239,6 +252,14 @@ const ScienceArticles = () => {
           .join(' OR ')})`;
       }
 
+      // add sex filter
+      if(selectedSex) {
+        const sexFilter = SEX_FILTERS.find((l) => l.id === selectedSex);
+        if(sexFilter) {
+          finalSearchQuery += ` AND ${sexFilter.value}`
+        }
+      }
+
       // Add language filter
       if (selectedLanguage) {
         const languageFilter = LANGUAGE_FILTERS.find(
@@ -312,6 +333,7 @@ const ScienceArticles = () => {
     selectedLanguage,
     sortOrder,
     searchQuery,
+    selectedSex
   ]);
 
   const totalPages = Math.max(Math.ceil(totalResults / ARTICLES_PER_PAGE), 1);
@@ -360,6 +382,11 @@ const ScienceArticles = () => {
     setSelectedLanguage(value === selectedLanguage ? '' : value);
     setCurrentPage(1);
   };
+
+  const handleSexChange = (value: string) => {
+    setSelectedSex(value === selectedSex ? '' : value);
+    setCurrentPage(1);
+  }
 
   const handlePageChange = (direction: 'prev' | 'next') => {
     if (direction === 'prev') {
@@ -639,6 +666,12 @@ const ScienceArticles = () => {
                 onChange={(id) => handleLanguageChange(id)}
                 type="radio"
                 name="language"
+              />
+              <FilterGroup
+                title="Kön"
+                filters={SEX_FILTERS}
+                selectedValues={[selectedSex]}
+                onChange={(id) => handleSexChange(id)}
               />
               <ScienceArticleTypeFilter
                 activeFilters={activeFilters}
