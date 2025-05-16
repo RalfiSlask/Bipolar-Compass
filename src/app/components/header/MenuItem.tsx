@@ -47,7 +47,7 @@ const MenuItem = ({
   };
 
   return (
-    <div className="xl:w-auto max-w-[150px] lg:max-w-[200px] lg:min-w-[200px] min-w-[150px] xl:max-w-[150px] xl:min-w-0 w-fit">
+    <div className="xl:w-auto min-w-[300px] max-w-[300px]  lg:max-w-[200px] lg:min-w-[200px] xl:max-w-[150px] xl:min-w-0 w-fit">
       <Link
         href={`/${slug}`}
         className={`

@@ -96,8 +96,8 @@ const UnderNavigation = ({
             </button>
           </div>
         )}
-        <div className="flex flex-col sm:flex-row w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2 lg:mb-10 xl:mb-2">
-          <div className="flex items-center gap-6 px-3 xl:px-2 py-4">
+        <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2 lg:mb-10 xl:mb-2">
+          <div className="flex items-center gap-6 sm:px-3 xl:px-2 py-4">
             <Link
               href="/akut"
               className="font-semibold text-base flex items-center gap-2 text-primary-dark"

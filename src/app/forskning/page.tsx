@@ -684,7 +684,7 @@ const ScienceArticles = () => {
           <main className="bg-white rounded-lg shadow-md p-6">
             <div className="flex flex-col w-full">
               <div className="w-full space-y-4">
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
                   <span className="text-sm text-gray-500">
                     {totalResults} artiklar hittade
                   </span>
