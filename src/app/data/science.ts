@@ -91,8 +91,13 @@ export const SPECIES_FILTERS = [
   },
 ];
 
+/* NEED VALUE FOR CHILD */
 export const AGE_FILTERS = [
-  { id: 'Child', label: 'Barn', value: '' },
+  {
+    id: 'Child',
+    label: 'Barn',
+    value: '"Infant"[MeSH] OR "Preschool Child"[MeSH] OR "Child"[MeSH]',
+  },
   { id: 'NewbornInfant', label: 'Nyfödd', value: 'Infant, Newborn[MeSH]' },
   { id: 'Baby', label: 'Bebis', value: 'Infant[MeSH]' },
   { id: 'Infant', label: 'Förskolan', value: 'Preschool Child[MeSH]' },
