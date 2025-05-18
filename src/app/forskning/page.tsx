@@ -3,11 +3,13 @@
 import ScienceActiveFilters from '@/app/components/pages/science/ScienceActiveFilters';
 import ScienceArticleContainer from '@/app/components/pages/science/ScienceArticleContainer';
 import ScienceArticleTypeFilter from '@/app/components/pages/science/ScienceArticleTypeFilter';
-import ScienceArticleTypesModal from '@/app/components/pages/science/ScienceArticleTypesModal';
 import ScienceExtentFilter from '@/app/components/pages/science/ScienceExtentFilter';
 import FilterGroup from '@/app/components/pages/science/ScienceFilterGroup';
 import SciencePagination from '@/app/components/pages/science/SciencePagination';
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
+import CustomSelect from '../components/shared/CustomSelectDropdown';
+import ScienceAgesFilter from '../components/pages/science/ScienceAgeFilter';
+import ScienceModal from '../components/pages/science/ScienceModal';
 import Spinner from '@/app/components/shared/Spinner';
 import {
   ARTICLE_ATTRIBUTE_FILTERS,
@@ -17,7 +19,9 @@ import {
   SWEDISH_UNIVERSITIES_FILTERS,
   TEXT_AVAILABILITY_FILTERS,
   YEARS_OF_PUBLICATION_FILTERS,
-  SEX_FILTERS
+  SEX_FILTERS,
+  AGE_FILTERS,
+  SPECIES_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
@@ -29,7 +33,6 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IoFilter } from 'react-icons/io5';
-import CustomSelect from '../components/shared/CustomSelectDropdown';
 
 const apiKey = process.env.NEXT_PUBLIC_PUB_MED_API_KEY;
 const BASE_URL = process.env.NEXT_PUBLIC_PUB_MED_BASE_URL;
@@ -37,6 +40,7 @@ const ARTICLES_PER_PAGE = 10;
 
 const ScienceArticles = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAgesModalOpen, setIsAgesModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [articles, setArticles] = useState<IScienceArticle[]>([]);
   const [totalResults, setTotalResults] = useState(0);
@@ -53,6 +57,7 @@ const ScienceArticles = () => {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest' | null>(null);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const [additionalSearch, setAdditionalSearch] = useState('');
+  const [selectedSpecies, setSelectedSpecies] = useState('');
   const [searchQuery, setSearchQuery] = useState(
     'bipolar disorder[Title/Abstract]'
   );
@@ -99,8 +104,14 @@ const ScienceArticles = () => {
     }
 
     const sex = SEX_FILTERS.find((l) => l.label === filter);
-    if(sex) {
-      setSelectedSex('')
+    if (sex) {
+      setSelectedSex('');
+      return;
+    }
+
+    const species = SPECIES_FILTERS.find((l) => l.label === filter);
+    if (species) {
+      setSelectedSpecies('');
       return;
     }
 
@@ -109,6 +120,7 @@ const ScienceArticles = () => {
       ...TEXT_AVAILABILITY_FILTERS,
       ...ARTICLE_ATTRIBUTE_FILTERS,
       ...PUBLICATION_TYPE_FILTERS,
+      ...AGE_FILTERS,
     ].find((f) => f.label === filter)?.id;
 
     // If the filter is found, it is removed from the active filters.
@@ -150,6 +162,7 @@ const ScienceArticles = () => {
       ...TEXT_AVAILABILITY_FILTERS,
       ...ARTICLE_ATTRIBUTE_FILTERS,
       ...PUBLICATION_TYPE_FILTERS,
+      ...AGE_FILTERS,
       ...LANGUAGE_FILTERS,
     ].forEach((filter) => {
       if (activeFilters.includes(filter.id)) {
@@ -162,7 +175,12 @@ const ScienceArticles = () => {
       if (language) filters.push(language.label);
     }
 
-    if(selectedSex) {
+    if (selectedSpecies) {
+      const species = SPECIES_FILTERS.find((l) => l.id === selectedSpecies);
+      if (species) filters.push(species.label);
+    }
+
+    if (selectedSex) {
       const sex = SEX_FILTERS.find((l) => l.id === selectedSex);
       if (sex) filters.push(sex.label);
     }
@@ -234,6 +252,11 @@ const ScienceArticles = () => {
       const typeFilters = PUBLICATION_TYPE_FILTERS.filter((f) =>
         activeFilters.includes(f.id)
       );
+      const ageFilters = AGE_FILTERS.filter((f) =>
+        activeFilters.includes(f.id)
+      );
+
+      console.log(typeFilters, ageFilters);
 
       // Add text availability filters
       textFilters.forEach((filter) => {
@@ -250,13 +273,33 @@ const ScienceArticles = () => {
         finalSearchQuery += ` AND (${typeFilters
           .map((f) => f.value)
           .join(' OR ')})`;
+
+        console.log('final search query: ', finalSearchQuery);
+      }
+
+      if (ageFilters.length > 0) {
+        finalSearchQuery += ` AND (${ageFilters
+          .map((f) => f.value)
+          .join(' OR ')})`;
+
+        console.log('final search query age function: ', finalSearchQuery);
       }
 
       // add sex filter
-      if(selectedSex) {
+      if (selectedSex) {
         const sexFilter = SEX_FILTERS.find((l) => l.id === selectedSex);
-        if(sexFilter) {
-          finalSearchQuery += ` AND ${sexFilter.value}`
+        if (sexFilter) {
+          finalSearchQuery += ` AND ${sexFilter.value}`;
+        }
+      }
+
+      // add species filter
+      if (selectedSpecies) {
+        const speciesFilter = SPECIES_FILTERS.find(
+          (l) => l.id === selectedSpecies
+        );
+        if (speciesFilter) {
+          finalSearchQuery += ` AND ${speciesFilter.value}`;
         }
       }
 
@@ -333,7 +376,8 @@ const ScienceArticles = () => {
     selectedLanguage,
     sortOrder,
     searchQuery,
-    selectedSex
+    selectedSex,
+    selectedSpecies,
   ]);
 
   const totalPages = Math.max(Math.ceil(totalResults / ARTICLES_PER_PAGE), 1);
@@ -372,6 +416,7 @@ const ScienceArticles = () => {
   };
 
   const handleFilterChange = (filterId: string, checked: boolean) => {
+    console.log('filterId', filterId, 'checked: ', checked);
     setActiveFilters((prev) =>
       checked ? [...prev, filterId] : prev.filter((f) => f !== filterId)
     );
@@ -386,7 +431,12 @@ const ScienceArticles = () => {
   const handleSexChange = (value: string) => {
     setSelectedSex(value === selectedSex ? '' : value);
     setCurrentPage(1);
-  }
+  };
+
+  const handleSpeciesChange = (value: string) => {
+    setSelectedSpecies(value === selectedSpecies ? '' : value);
+    setCurrentPage(1);
+  };
 
   const handlePageChange = (direction: 'prev' | 'next') => {
     if (direction === 'prev') {
@@ -577,10 +627,27 @@ const ScienceArticles = () => {
                     type="radio"
                     name="language"
                   />
+                  <FilterGroup
+                    title="Kön"
+                    filters={SEX_FILTERS}
+                    selectedValues={[selectedSex]}
+                    onChange={(id) => handleSexChange(id)}
+                  />
+                  <FilterGroup
+                    title="Art"
+                    filters={SPECIES_FILTERS}
+                    selectedValues={[selectedSpecies]}
+                    onChange={(id) => handleSpeciesChange(id)}
+                  />
                   <ScienceArticleTypeFilter
                     activeFilters={activeFilters}
                     handleFilterChange={handleFilterChange}
                     setIsModalOpen={setIsModalOpen}
+                  />
+                  <ScienceAgesFilter
+                    activeFilters={activeFilters}
+                    handleFilterChange={handleFilterChange}
+                    setIsModalOpen={setIsAgesModalOpen}
                   />
                 </div>
               </div>
@@ -673,10 +740,21 @@ const ScienceArticles = () => {
                 selectedValues={[selectedSex]}
                 onChange={(id) => handleSexChange(id)}
               />
+              <FilterGroup
+                title="Art"
+                filters={SPECIES_FILTERS}
+                selectedValues={[selectedSpecies]}
+                onChange={(id) => handleSpeciesChange(id)}
+              />
               <ScienceArticleTypeFilter
                 activeFilters={activeFilters}
                 handleFilterChange={handleFilterChange}
                 setIsModalOpen={setIsModalOpen}
+              />
+              <ScienceAgesFilter
+                activeFilters={activeFilters}
+                handleFilterChange={handleFilterChange}
+                setIsModalOpen={setIsAgesModalOpen}
               />
             </div>
           </aside>
@@ -741,10 +819,19 @@ const ScienceArticles = () => {
       </div>
 
       {isModalOpen && (
-        <ScienceArticleTypesModal
+        <ScienceModal
           activeFilters={activeFilters}
           handleFilterChange={handleModalFilterChange}
           setIsModalOpen={setIsModalOpen}
+          FILTERS={PUBLICATION_TYPE_FILTERS}
+        />
+      )}
+      {isAgesModalOpen && (
+        <ScienceModal
+          activeFilters={activeFilters}
+          handleFilterChange={handleModalFilterChange}
+          setIsModalOpen={setIsAgesModalOpen}
+          FILTERS={AGE_FILTERS}
         />
       )}
     </section>
