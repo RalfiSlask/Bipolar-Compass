@@ -1,0 +1,54 @@
+import { AGE_FILTERS } from '@/app/data/science';
+import { IoChevronForward } from 'react-icons/io5';
+
+interface IScienceAgesFilterProps {
+  activeFilters: string[];
+  handleFilterChange: (id: string, checked: boolean) => void;
+  setIsModalOpen: (open: boolean) => void;
+}
+
+const ScienceAgesFilter = ({
+  activeFilters,
+  handleFilterChange,
+  setIsModalOpen,
+}: IScienceAgesFilterProps) => {
+  return (
+    <div className="pt-6">
+      <h3 className="font-medium text-primary-dark mb-3">Åldrar</h3>
+      <div className="space-y-2">
+        {AGE_FILTERS.map((filter, index) => {
+          if (index < 3) {
+            return (
+              <div key={filter.id} className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id={filter.id}
+                  checked={activeFilters.includes(filter.id)}
+                  onChange={(e) =>
+                    handleFilterChange(filter.id, e.target.checked)
+                  }
+                  className="w-5 h-5 rounded border-gray-300 text-primary-medium focus:ring-primary-medium"
+                />
+                <label
+                  htmlFor={filter.id}
+                  className="text-gray-700 select-none cursor-pointer"
+                >
+                  {filter.label}
+                </label>
+              </div>
+            );
+          }
+        })}
+      </div>
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="mt-4 w-full flex items-center justify-between px-4 py-2 text-primary-medium hover:text-primary-dark hover:bg-primary-light rounded-md transition-colors duration-200"
+      >
+        <span>Se alla åldrar</span>
+        <IoChevronForward className="text-lg" />
+      </button>
+    </div>
+  );
+};
+
+export default ScienceAgesFilter;
