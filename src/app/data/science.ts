@@ -82,6 +82,29 @@ export const YEARS_OF_PUBLICATION_FILTERS = [
   { id: '10', value: '10', label: '10 år' },
 ];
 
+export const SPECIES_FILTERS = [
+  { id: 'Humans', label: 'Människor', value: 'Humans[MeSH Terms]' },
+  {
+    id: 'OtherAnimals',
+    label: 'Andra djur',
+    value: 'Animals[MeSH Terms] NOT Humans[MeSH]',
+  },
+];
+
+export const AGE_FILTERS = [
+  { id: 'Child', label: 'Barn', value: '' },
+  { id: 'NewbornInfant', label: 'Nyfödd', value: 'Infant, Newborn[MeSH]' },
+  { id: 'Baby', label: 'Bebis', value: 'Infant[MeSH]' },
+  { id: 'Infant', label: 'Förskolan', value: 'Preschool Child[MeSH]' },
+  { id: 'Low', label: 'Lågstadiet', value: 'Child[MeSH]' },
+  { id: 'Adolescent', label: 'Tonåring', value: 'Adolescent[MeSH]' },
+  { id: 'YoungAdult', label: 'Ung Vuxen', value: 'Young Adult[MeSH]' },
+  { id: 'Adult', label: 'Vuxen', value: 'Adult[MeSH]' },
+  { id: 'MiddleAged', label: 'Medelålders', value: 'Middle Aged[MeSH]' },
+  { id: 'Senior', label: 'Senior', value: 'Aged[MeSH]' },
+  { id: 'Aged', label: '80+', value: 'Aged, 80 and over[MeSH]' },
+];
+
 export const TEXT_AVAILABILITY_FILTERS = [
   { id: 'hasAbstract', label: 'Har abstrakt', value: 'hasabstract' },
   { id: 'hasFreeFullText', label: 'Fri fulltext', value: 'ffrft[filter]' },
@@ -102,8 +125,8 @@ export const LANGUAGE_FILTERS = [
 
 export const SEX_FILTERS = [
   { id: 'Man', label: 'Man', value: 'male[MeSH Terms]' },
-  { id: 'Kvinna', label: 'Kvinna', value: 'female[MeSH Terms]' }
-]
+  { id: 'Kvinna', label: 'Kvinna', value: 'female[MeSH Terms]' },
+];
 
 export const PUBLICATION_TYPE_FILTERS = [
   {
