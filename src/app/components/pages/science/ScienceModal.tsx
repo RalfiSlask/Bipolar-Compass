@@ -1,18 +1,25 @@
-import { PUBLICATION_TYPE_FILTERS } from '@/app/data/science';
 import { useState } from 'react';
 import { IoClose, IoDocumentText } from 'react-icons/io5';
 
-interface ScienceArticleTypesModalProps {
+interface IScienceFilter {
+  id: string;
+  value: string;
+  label: string;
+}
+
+interface IScienceModalProps {
   activeFilters: string[];
   handleFilterChange: (filters: string[]) => void;
   setIsModalOpen: (open: boolean) => void;
+  FILTERS: IScienceFilter[];
 }
 
-const ScienceArticleTypesModal = ({
+const ScienceModal = ({
   activeFilters,
   handleFilterChange,
   setIsModalOpen,
-}: ScienceArticleTypesModalProps) => {
+  FILTERS,
+}: IScienceModalProps) => {
   const [tempFilters, setTempFilters] = useState<string[]>(activeFilters);
 
   // This function is used to update the temporary filters state when a checkbox is checked or unchecked.
@@ -59,7 +66,7 @@ const ScienceArticleTypesModal = ({
 
           <div className="p-6 overflow-y-auto flex-1">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {PUBLICATION_TYPE_FILTERS.map((filter) => (
+              {FILTERS.map((filter) => (
                 <div
                   key={filter.id}
                   className="flex items-center gap-3 p-3 hover:bg-primary-light rounded-md transition-colors duration-200"
@@ -106,4 +113,4 @@ const ScienceArticleTypesModal = ({
   );
 };
 
-export default ScienceArticleTypesModal;
+export default ScienceModal;
