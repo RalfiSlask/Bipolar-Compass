@@ -34,3 +34,7 @@ p {
 .home-container {
   height: calc(100vh - 138px);
 }
+
+body.overflow-hidden {
+  overflow: hidden;
+}

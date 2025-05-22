@@ -39,9 +39,14 @@ td[role='gridcell'] {
   margin: 0.1rem !important;
 }
 
+.fc-highlight {
+  height: 100% !important;
+}
+
 .fc-daygrid-day-frame {
   position: relative;
   min-height: 100px !important;
+  height: 100% !important;
   transition: background-color 0.2s;
 
   &:hover {
