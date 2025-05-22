@@ -416,12 +416,18 @@ const ScienceArticles = () => {
   };
 
   const handleFilterChange = (filterId: string, checked: boolean) => {
-    console.log('filterId', filterId, 'checked: ', checked);
     setActiveFilters((prev) =>
       checked ? [...prev, filterId] : prev.filter((f) => f !== filterId)
     );
+    if (isMobileFiltersOpen) {
+      setIsMobileFiltersOpen(false);
+    }
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    console.log(isMobileFiltersOpen);
+  }, [isMobileFiltersOpen]);
 
   const handleLanguageChange = (value: string) => {
     setSelectedLanguage(value === selectedLanguage ? '' : value);
@@ -452,7 +458,7 @@ const ScienceArticles = () => {
 
   return (
     <section className="w-full min-h-screen flex flex-col items-center bg-primary-light">
-      <div className="max-w-[1440px] w-full px-4 md:px-10 py-8">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 md:py-8">
         <div className="w-full lg:h-[350px] bg-white rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
           <Image
             src="/images/science/science-testing.webp"
@@ -519,7 +525,7 @@ const ScienceArticles = () => {
         </div>
       </div>
 
-      <div className="max-w-[1440px] w-full px-4 md:px-10 pb-20">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pb-4 md:pb-8">
         <div className="md:hidden sticky top-0 z-20 bg-primary-light py-4">
           <button
             onClick={() => setIsMobileFiltersOpen(!isMobileFiltersOpen)}
@@ -538,7 +544,7 @@ const ScienceArticles = () => {
         <div className="grid md:grid-cols-[280px_1fr] gap-8">
           {isMobileFiltersOpen && (
             <div className="md:hidden fixed inset-0 z-[120] bg-white overflow-y-auto">
-              <div className="p-4">
+              <div className="p-4 pb-16">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-lg font-medium">Filtrera artiklar</h2>
                   <button
@@ -759,7 +765,7 @@ const ScienceArticles = () => {
             </div>
           </aside>
 
-          <main className="bg-white rounded-lg shadow-md p-6">
+          <main className="bg-white rounded-lg shadow-md p-4 md:p-6">
             <div className="flex flex-col w-full">
               <div className="w-full space-y-4">
                 <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
@@ -823,6 +829,7 @@ const ScienceArticles = () => {
           activeFilters={activeFilters}
           handleFilterChange={handleModalFilterChange}
           setIsModalOpen={setIsModalOpen}
+          setIsMobileFiltersOpen={setIsMobileFiltersOpen}
           FILTERS={PUBLICATION_TYPE_FILTERS}
         />
       )}
@@ -831,6 +838,7 @@ const ScienceArticles = () => {
           activeFilters={activeFilters}
           handleFilterChange={handleModalFilterChange}
           setIsModalOpen={setIsAgesModalOpen}
+          setIsMobileFiltersOpen={setIsMobileFiltersOpen}
           FILTERS={AGE_FILTERS}
         />
       )}
