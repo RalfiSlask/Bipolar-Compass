@@ -8,3 +8,9 @@ export interface IContactEmail {
   email: string;
   message: string;
 }
+
+export interface IMedicationEmail {
+  email: string;
+  medication: string;
+  time: string;
+}
