@@ -2,7 +2,9 @@ interface IPasswordTemplateProps {
   resetLink: string;
 }
 
-const PasswordTemplate = ({ resetLink }: IPasswordTemplateProps): string => `
+const EmailPasswordTemplate = ({
+  resetLink,
+}: IPasswordTemplateProps): string => `
   <div style="font-family: 'Open Sans', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9fafb; padding: 20px; border: 1px solid #eaeaea; border-radius: 10px; max-width: 900px; margin: auto;">
     <!-- Header -->
     <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #eaeaea;">
@@ -47,4 +49,4 @@ const PasswordTemplate = ({ resetLink }: IPasswordTemplateProps): string => `
   </div>
 `;
 
-export default PasswordTemplate;
+export default EmailPasswordTemplate;
