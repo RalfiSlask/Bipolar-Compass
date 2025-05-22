@@ -13,7 +13,7 @@ const OtherOrganizations = () => {
         </p>
       </div>
       <nav className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-6 place-items-center list-none">
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a
             href="https://balansriks.se/balans-foreningar/"
             target="_blank"
@@ -28,7 +28,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a
             href="https://anhorigasriksforbund.se/"
             target="_blank"
@@ -43,7 +43,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a href="https://mind.se/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/organizations/mind.png"
@@ -54,7 +54,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a href="https://spes.se/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/organizations/spes.png"
@@ -65,7 +65,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a
             href="https://suicidezero.se/"
             target="_blank"
@@ -80,7 +80,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a
             href="https://anhoriga.se/"
             target="_blank"
@@ -95,7 +95,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a href="https://nsph.se/" target="_blank" rel="noopener noreferrer">
             <Image
               src="/images/organizations/nsph.png"
@@ -106,7 +106,7 @@ const OtherOrganizations = () => {
             />
           </a>
         </li>
-        <li className="cursor-pointer">
+        <li className="organization-container-home">
           <a
             href="https://www.bris.se/"
             target="_blank"
