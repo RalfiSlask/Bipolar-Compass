@@ -63,7 +63,7 @@ const UrgentHelpPage = () => {
           <FaPhoneVolume className="text-primary-medium text-2xl" />
           <h3 className="h-sm text-primary-dark">Hjälplinjer</h3>
         </div>
-        <ul className="grid gap-4 md:grid-cols-2">
+        <ul className="grid gap-4 md:grid-cols-2 list-none">
           {emergencyServices.map((service) => {
             return <EmergencyService key={service.id} serviceData={service} />;
           })}
@@ -161,7 +161,7 @@ const UrgentHelpPage = () => {
           href="https://www.1177.se"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary-medium hover:text-primary-dark underline transition-colors"
+          className="text-primary-dark/80 hover:text-secondary-dark underline transition-colors"
           aria-label="länk till 1177"
         >
           1177.se

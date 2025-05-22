@@ -53,7 +53,7 @@ const SelfHelpPage = () => {
               </ul>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Vikten av kunskap:
               </h4>
@@ -418,7 +418,7 @@ const SelfHelpPage = () => {
               </div>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Nödkontakter
               </h4>

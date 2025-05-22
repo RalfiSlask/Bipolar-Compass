@@ -24,7 +24,7 @@ const DiagnosesPage = () => {
             mellan episoder av mani, men det är inte ett krav för diagnos.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <div className="flex items-center gap-2 mb-3">
               <div className="flex items-center gap-2">
                 <BoltIcon className="w-6 h-6 text-primary-dark" />
@@ -64,7 +64,7 @@ const DiagnosesPage = () => {
             sjukhusvård, men som fortfarande påverkar individens liv.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4 mb-6">
+          <div className="bg-primary-light/50 rounded-md p-4 mb-6">
             <div className="flex items-center gap-2 mb-3">
               <div className="flex items-center gap-2">
                 <BulbIcon className="w-6 h-6 text-primary-dark" />
@@ -151,14 +151,14 @@ const DiagnosesPage = () => {
             livskvaliteten.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <div className="flex items-center gap-2 mb-3 text-primary-dark">
               <SpinningArrowsIcon className="w-6 h-6" />
               <h4 className="font-semibold ">
                 Karaktäristiska drag för cyklotymi:
               </h4>
             </div>
-            <ul className="flex flex-col gap-2 list-disc list-inside ">
+            <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Upprepade humörsvängningar, men utan att nå fullständig mani,
                 hypomani eller djup depression.
@@ -187,7 +187,7 @@ const DiagnosesPage = () => {
             extremt energisk och djupt hopplös på samma gång.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <h4 className="font-semibold text-primary-dark mb-3">
               Exempel på symtom vid blandade drag:
             </h4>
@@ -218,11 +218,11 @@ const DiagnosesPage = () => {
             humörsvängningarna sker i snabb följd.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <h4 className="font-semibold text-primary-dark mb-3">
               Fakta om snabb cykling:
             </h4>
-            <ul className="flex flex-col gap-2 list-disc list-inside ">
+            <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Episoderna kan vara korta (flera dagar) eller långa (veckor till
                 månader).
@@ -230,9 +230,11 @@ const DiagnosesPage = () => {
               <li>
                 Kvinnor är mer benägna att drabbas av snabb cykling än män.
               </li>
+            </ul>
+            <p className="mb-3">
               Tillståndet kan vara tillfälligt och utlösas av stress, hormonella
               förändringar eller medicinavbrott.
-            </ul>
+            </p>
           </div>
         </div>
 
@@ -246,7 +248,7 @@ const DiagnosesPage = () => {
             medan mani eller hypomani uppstår under våren och sommaren.
           </p>
 
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <h4 className="font-semibold text-primary-dark mb-3">
               Typiska mönster:
             </h4>
@@ -300,8 +302,8 @@ const DiagnosesPage = () => {
             baserad på tidslinjen för symtom och deras samband.
           </p>
 
-          <div className="bg-primary-light/70 rounded-md p-4 flex flex-col gap-4">
-            <h5 className="font-semibold text-primary-dark mb-3">
+          <div className="bg-primary-light/50 rounded-md p-4 flex flex-col gap-4">
+            <h5 className="font-semibold text-primary-dark">
               Typer av schizoaffektivt syndrom:
             </h5>
             <ul className="flex flex-col gap-2 list-disc list-inside ">
@@ -315,7 +317,7 @@ const DiagnosesPage = () => {
               </li>
             </ul>
 
-            <h5 className="font-semibold text-primary-dark mb-3">
+            <h5 className="font-semibold text-primary-dark">
               Skillnad mot bipolär sjukdom:
             </h5>
             <ul className="flex flex-col gap-2 list-disc list-inside ">

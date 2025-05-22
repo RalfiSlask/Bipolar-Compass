@@ -21,7 +21,7 @@ const SymptomsPage = () => {
             humör som varar i minst en vecka och påverkar vardagen betydligt.
             Typiska symptom är:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Överdrivet självförtroende: Personen kan känna sig grandios och
@@ -68,7 +68,7 @@ const SymptomsPage = () => {
             mindre intensiva och kortvariga (minst fyra dagar). Vanliga symptom
             är:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Förhöjt humör: Personen känner sig positiv och entusiastisk
@@ -100,7 +100,7 @@ const SymptomsPage = () => {
             Depressiva episoder innebär en kraftig nedstämdhet och minskad
             energi som varar i minst två veckor. Dessa symptom inkluderar:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Ihållande nedstämdhet: Känslor av sorg, hopplöshet eller
@@ -150,7 +150,7 @@ const SymptomsPage = () => {
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
             såsom:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Vanföreställningar: Personen kan tro att de har övermänskliga
@@ -175,7 +175,7 @@ const SymptomsPage = () => {
             Många med bipolär sjukdom upplever tidiga tecken innan en ny episod.
             Det är viktigt att känna igen dessa tecken för att söka vård i tid:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>Sömnproblem (svårt att somna eller minskat sömnbehov)</li>
               <li>Förändrad aptit</li>
@@ -206,7 +206,7 @@ const SymptomsPage = () => {
             och ungdomar. Det kan vara svårt att skilja mellan normala
             humörsvängningar under uppväxten och tecken på bipolär sjukdom.
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>Snabbare humörsvängningar än hos vuxna</li>
               <li>Mer frekventa episoder med kortare duration</li>
@@ -235,7 +235,7 @@ const SymptomsPage = () => {
             hjälp, då den ökade energin och kreativiteten kan upplevas som
             positiv.
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <h4 className="font-semibold text-primary-dark mb-3">
               Viktiga varningssignaler:
             </h4>
@@ -262,7 +262,7 @@ const SymptomsPage = () => {
             planer på att skada sig själv är det viktigt att agera omedelbart.
             Du är inte ensam och det finns hjälp att få.
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <h4 className="font-semibold text-primary-dark mb-3">
               Här kan du få akut hjälp:
             </h4>

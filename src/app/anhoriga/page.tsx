@@ -118,7 +118,7 @@ const RelativePage = () => {
                 Var tydlig när du pratar med vårdpersonal. Förklara varför du
                 tror att din närstående behöver tvångsvård, till exempel om de:
               </p>
-              <div className="bg-primary-light/20 rounded-md p-4">
+              <div className="bg-primary-light/50 rounded-md p-4">
                 <ul className="flex flex-col gap-2 list-disc list-inside">
                   <li>Uppvisar farligt eller riskabelt beteende</li>
                   <li>Har hallucinationer eller vanföreställningar</li>
@@ -262,7 +262,7 @@ const RelativePage = () => {
             <h3 className="h-xs text-primary-dark ">
               Vad händer när läkaren kommer till platsen?
             </h3>
-            <div className="bg-primary-light/20 rounded-md">
+            <div className="bg-primary-light/50 rounded-md">
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li className="flex gap-2 flex-col">
                   <h4 className="font-semibold">Initial bedömning:</h4>
@@ -300,7 +300,7 @@ const RelativePage = () => {
             <h3 className="h-xs text-primary-dark">
               Vad kan du som anhörig göra under tiden?
             </h3>
-            <div className="bg-primary-light/20 rounded-md">
+            <div className="bg-primary-light/50 rounded-md">
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li className="flex gap-2 flex-col">
                   <h4 className="font-semibold">Håll dig lugn:</h4>

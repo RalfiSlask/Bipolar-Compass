@@ -134,16 +134,18 @@ const DocumentsPage = () => {
         </div>
         <div className="flex flex-col sm:flex-row gap-3">
           <a
-            href="../pdfs/guide.pdf"
+            href="../pdfs/guide.pdf?download=true"
             download="guide.pdf"
+            aria-label="Ladda ner guide som pdf"
             className="flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:text-white  text-dark bg-primary-accent hover:bg-primary-dark  py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
           >
             <HiDownload className="text-xl" aria-hidden="true" />
             <span className="text-sm md:text-base lg:text-lg">Ladda ner</span>
           </a>
           <a
-            href="../pdfs/guide.pdf"
+            href="../pdfs/guide.pdf#view"
             target="_blank"
+            aria-label="Visa guide som PDF i ny flik"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
           >
@@ -189,10 +191,10 @@ const DocumentsPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mt-auto">
                 <a
-                  href={form.href}
+                  href={`${form.href}?download=true"`}
                   download
                   className="flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:bg-primary-dark hover:text-white text-dark py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
-                  aria-label={form.ariaLabel}
+                  aria-label={form.ariaLabelDownload}
                 >
                   <HiDownload className="text-xl" aria-hidden="true" />
                   <span className="text-sm md:text-base lg:text-lg">
@@ -200,9 +202,10 @@ const DocumentsPage = () => {
                   </span>
                 </a>
                 <a
-                  href={form.href}
+                  href={`${form.href}#view`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${form.ariaLabelOpen}`}
                   className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
                 >
                   <HiEye className="text-xl" aria-hidden="true" />

@@ -8,11 +8,7 @@ import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { whatIsBipolarIntro } from '@/app/data/pageIntros';
-import {
-    MdPeople,
-    MdTimeline,
-    MdWarning
-} from 'react-icons/md';
+import { MdPeople, MdTimeline, MdWarning } from 'react-icons/md';
 
 const WhatIsBipolarityPage = () => {
   return (
@@ -31,7 +27,7 @@ const WhatIsBipolarityPage = () => {
             Bipolär sjukdom är inte en enhetlig diagnos utan kan delas in i
             flera olika typer beroende på symptomens svårighetsgrad och mönster:
           </p>
-          <div className="bg-primary-light/20 rounded-md p-4">
+          <div className="bg-primary-light/50 rounded-md p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li>
                 Bipolär sjukdom typ 1: Kännetecknas av minst en manisk episod
@@ -57,7 +53,7 @@ const WhatIsBipolarityPage = () => {
           </div>
         </div>
 
-  <CommonSigns />
+        <CommonSigns />
 
         <div className="md:col-span-2 content-container">
           <div className="flex items-center gap-4 mb-6">
@@ -82,7 +78,6 @@ const WhatIsBipolarityPage = () => {
         <BipolarPrevalenceInfo />
         <div className="md:col-span-2 bg-tertiary-light rounded-xl p-8 shadow-lg">
           <div className="flex items-center gap-4 mb-6">
-
             <MdWarning className="text-4xl text-tertiary-dark" />
             <h3 className="h-xs text-tertiary-dark">Viktigt att notera</h3>
           </div>

@@ -45,7 +45,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li>
@@ -93,7 +93,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li>
@@ -140,7 +140,7 @@ const MedicinePage = () => {
               </p>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li>

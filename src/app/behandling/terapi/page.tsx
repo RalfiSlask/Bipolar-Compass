@@ -34,7 +34,7 @@ const TherapyPage = () => {
                   </p>
                 </div>
 
-                <div className="bg-primary-light/20 rounded-md p-4">
+                <div className="bg-primary-light/50 rounded-md p-4">
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Hur kan det hjälpa?
                   </h5>
@@ -69,7 +69,7 @@ const TherapyPage = () => {
                   </p>
                 </div>
 
-                <div className="bg-primary-light/20 rounded-md p-4">
+                <div className="bg-primary-light/50 rounded-md p-4">
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Hur kan det hjälpa?
                   </h5>
@@ -106,7 +106,7 @@ const TherapyPage = () => {
                   </p>
                 </div>
 
-                <div className="bg-primary-light/20 rounded-md p-4">
+                <div className="bg-primary-light/50 rounded-md p-4">
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Hur kan det hjälpa?
                   </h5>
@@ -146,7 +146,7 @@ const TherapyPage = () => {
               </ul>
             </div>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <p>
                 Att kombinera terapi med medicinering kan ge långsiktiga
                 resultat och minska risken för återfall.
@@ -305,7 +305,7 @@ const TherapyPage = () => {
               stämningsläget har stabiliserats.
             </p>
 
-            <div className="bg-primary-light/20 rounded-md p-4">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Tillgång till terapi i Sverige
               </h4>
