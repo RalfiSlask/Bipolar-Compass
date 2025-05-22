@@ -1,5 +1,5 @@
 /**
- * Returns the number of times a medicine is taken per day based on the frequency
+ * Returns the number of times a medication is taken per day based on the frequency
  * @param {string} frequency
  * @returns {number}
  */

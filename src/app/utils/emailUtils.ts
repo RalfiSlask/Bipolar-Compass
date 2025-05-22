@@ -1,7 +1,12 @@
-import EmailTemplate from '../components/EmailTemplate';
-import PasswordTemplate from '../components/PasswordTemplate';
+import EmailTemplate from '../components/shared/email_templates/EmailTemplate';
+import EmailPasswordTemplate from '../components/shared/email_templates/EmailPasswordTemplate';
+import EmailMedicationTemplate from '../components/shared/email_templates/EmailMedicationTemplate';
 import { emailTransporter } from '../lib/nodemailer';
-import { IContactEmail, IVerificationEmail } from '../types/email';
+import {
+  IContactEmail,
+  IMedicationEmail,
+  IVerificationEmail,
+} from '../types/email';
 
 /**
  * Returns a verification link for a verification email
@@ -15,6 +20,7 @@ export const getVerificationLink = (token: string): string => {
 
 /**
  * Sends a verification email to the user by using a provided verification token and email
+ *
  * Uses an html template for the email and a nodemailer transport to send the email
  * @param {IVerificationEmail} verificationEmail
  * @returns {Promise<void>}
@@ -56,6 +62,7 @@ const getResetLink = (token: string): string => {
 
 /**
  * Sends a forgot password email to the user by using a provided reset token and email
+ *
  * Uses an html template for the email and a nodemailer transport to send the email
  * @param {string} email
  * @param {string} resetToken
@@ -69,7 +76,7 @@ export const sendForgotPasswordEmail = async ({
   resetToken: string;
 }): Promise<void> => {
   const resetLink = getResetLink(resetToken);
-  const emailHtml = PasswordTemplate({ resetLink });
+  const emailHtml = EmailPasswordTemplate({ resetLink });
 
   try {
     const mailOptions = {
@@ -90,7 +97,42 @@ export const sendForgotPasswordEmail = async ({
 };
 
 /**
+ * Sends an email with a notification to the user that it is time to take their medication
+ *
+ * Uses an html template for the email and a nodemailer transport to send the email
+ * @param {string} email
+ * @param {string} medication
+ * @param {string} time - the time to take the medication
+ * @returns {Promise<void>}
+ */
+export const sendMedicationNotificationEmail = async ({
+  email,
+  medication,
+  time,
+}: IMedicationEmail): Promise<void> => {
+  const emailHtml = EmailMedicationTemplate({ medication, time });
+
+  try {
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: `Påminnelse: ${medication}`,
+      html: emailHtml,
+    };
+
+    await emailTransporter.sendMail(mailOptions);
+  } catch (err) {
+    console.error(
+      'Something went wrong when trying to send medication notification email: ',
+      err
+    );
+    throw new Error('Medication notification email could not be sent');
+  }
+};
+
+/**
  * Sends a contact email to the user by using a provided name, email and message
+ *
  * Uses an html template for the email and a nodemailer transport to send the email
  * @param {IContactEmail} contactEmail
  * @returns {Promise<void>}

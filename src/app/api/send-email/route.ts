@@ -1,8 +1,8 @@
+import { sendMedicationNotificationEmail } from '@/app/utils/emailUtils';
 import { Client } from '@upstash/qstash';
 import { verifySignatureAppRouter } from '@upstash/qstash/dist/nextjs';
 import { formatInTimeZone } from 'date-fns-tz';
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 
 const qstashClient = new Client({
   token: process.env.QSTASH_TOKEN!,
@@ -20,19 +20,12 @@ export const POST = verifySignatureAppRouter(async function POST(
 
   try {
     // Send the email
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    const medicationName = medication.name;
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: `Påminnelse: ${medication.name}`,
-      text: `Dags att ta din medicin "${medication.name}" vid ${time}.`,
+    await sendMedicationNotificationEmail({
+      email,
+      medication: medicationName,
+      time,
     });
 
     // Calculate next medication time
@@ -54,9 +47,6 @@ export const POST = verifySignatureAppRouter(async function POST(
     if (nextReminderTime.getTime() <= Date.now()) {
       nextReminderTime.setDate(nextReminderTime.getDate() + 1);
     }
-
-    console.log('Current time:', now);
-    console.log('Next medication time:', nextReminderTime);
 
     // Schedule next reminder
     const nextReminder = await qstashClient.publishJSON({
