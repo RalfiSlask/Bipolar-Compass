@@ -244,11 +244,11 @@ const MyPage = () => {
                     <p className="text-primary-dark font-semibold">
                       {medication.name}
                     </p>
-                    <span className="text-primary-medium text-sm">
+                    <span className="text-dark text-sm">
                       {medication.dosage} {medication.doseUnit}
                     </span>
                   </div>
-                  <p className="text-primary-medium text-sm mt-1">
+                  <p className="text-dark text-sm mt-1">
                     {convertMedicineFrequencyToSwedishString(
                       medication.frequency
                     )}
@@ -256,7 +256,7 @@ const MyPage = () => {
                 </div>
               ))
             ) : (
-              <p className="text-primary-medium text-sm mt-1">
+              <p className="text-dark text-sm mt-1">
                 Inga mediciner registrerade
               </p>
             )}
@@ -304,7 +304,7 @@ const MyPage = () => {
             {isThereAnyMoodTrackerData('anxiety') ? (
               <AnxietyPieChart normalizedAnxietyData={normalizedAnxietyData} />
             ) : (
-              <p className="text-primary-medium text-sm mt-1">
+              <p className="text-dark text-sm mt-1">
                 Ingen ångest data registrerad
               </p>
             )}
@@ -313,7 +313,7 @@ const MyPage = () => {
             {isThereAnyMoodTrackerData('sleep') ? (
               <SleepGraph sleepData={sleepData} />
             ) : (
-              <p className="text-primary-medium text-sm mt-1">
+              <p className="text-dark text-sm mt-1">
                 Ingen sömn data registrerad
               </p>
             )}

@@ -24,11 +24,11 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <nav className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ABOUT_LINKS.map((item) => (
             <MainPageImageGrid key={item.href} item={item} />
           ))}
-        </div>
+        </nav>
       </div>
     </section>
   );

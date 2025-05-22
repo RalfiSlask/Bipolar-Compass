@@ -5,7 +5,7 @@ import RegisterForm from '../../components/pages/auth/register/RegisterForm';
 
 const RegistrationPage = () => {
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-8 md:py-12">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-8 md:py-24">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
         <div className="flex justify-center mb-8 text-white absolute top-4 left-4 md:left-8">
           <BipolarLogo />

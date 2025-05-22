@@ -28,11 +28,11 @@ const MoviesPage = () => {
         <div className="h-1 w-20 bg-primary-dark mb-8"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <nav className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 list-none">
         {movies.map((movie) => (
           <MovieContainer key={movie.id} movie={movie} />
         ))}
-      </div>
+      </nav>
       <MultimediaRelatedContent currentPage="filmer" />
     </section>
   );

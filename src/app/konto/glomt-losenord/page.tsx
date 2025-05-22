@@ -5,7 +5,7 @@ import ForgotPasswordForm from '@/app/components/pages/auth/forgot-password/Forg
 
 const ForgotPasswordPage = () => {
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-8 md:py-24">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
         <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
           <BipolarLogo />

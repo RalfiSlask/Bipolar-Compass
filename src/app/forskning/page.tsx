@@ -452,7 +452,7 @@ const ScienceArticles = () => {
 
   return (
     <section className="w-full min-h-screen flex flex-col items-center bg-primary-light">
-      <div className="max-w-[1440px] w-full px-4 md:px-10 pt-10 pb-20">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 py-8">
         <div className="w-full lg:h-[350px] bg-white rounded-lg shadow-md p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10">
           <Image
             src="/images/science/science-testing.webp"
@@ -480,7 +480,7 @@ const ScienceArticles = () => {
                   id="search"
                   aria-label="input för att söka forskningsartiklar"
                   placeholder="Skriv din sökterm här..."
-                  className="primary-input w-full"
+                  className="primary-input !h-12 w-full"
                   value={additionalSearch}
                   onChange={(e) => setAdditionalSearch(e.target.value)}
                   onKeyPress={(e) => {
@@ -491,7 +491,7 @@ const ScienceArticles = () => {
                 />
               </div>
               <button
-                className="px-8 py-3 bg-primary-medium hover:bg-primary-dark text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                className="px-8 py-3 bg-primary-dark hover:bg-secondary-dark text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
                 onClick={handleSearch}
               >
                 <svg
