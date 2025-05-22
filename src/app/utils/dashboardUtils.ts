@@ -95,8 +95,8 @@ export const convertMedicineFrequencyToSwedishString = (
  */
 export const moodScoreColor = (score: number): string => {
   if (score >= 80) return '#0088FE';
-  if (score >= 60) return '#00C49F';
-  if (score >= 40) return '#FFBB28';
-  if (score >= 20) return '#FF8042';
-  return '#FF6384';
+  if (score >= 60) return '#00856C';
+  if (score >= 40) return '#C28400';
+  if (score >= 20) return '#D14600';
+  return '#E42151';
 };
