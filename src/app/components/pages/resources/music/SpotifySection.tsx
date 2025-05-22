@@ -122,6 +122,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
                   src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator`}
                   width="100%"
                   height="100%"
+                  title={`playlist with id: ${playlist.id}`}
                   frameBorder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"

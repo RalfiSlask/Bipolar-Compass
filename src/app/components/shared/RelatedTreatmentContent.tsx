@@ -1,5 +1,10 @@
 import Link from 'next/link';
-import { BiBookHeart, BiBrain, BiConversation, BiFirstAid } from 'react-icons/bi';
+import {
+  BiBookHeart,
+  BiBrain,
+  BiConversation,
+  BiFirstAid,
+} from 'react-icons/bi';
 
 interface IRelatedTreatmentContentProps {
   currentPage: 'medicinska-behandlingar' | 'sjalvhjalp' | 'terapi' | 'dokument';
@@ -19,64 +24,62 @@ const RelatedTreatmentContent = ({
           länkar.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
         {currentPage !== 'sjalvhjalp' && (
-          <Link
-            href="/behandling/sjalvhjalp"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Gå till självhjälp"
-          >
-            <BiBookHeart
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Självhjälp</span>
-          </Link>
+          <li className="group related-container">
+            <Link href="/behandling/sjalvhjalp" aria-label="Gå till självhjälp">
+              <BiBookHeart
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Självhjälp</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'terapi' && (
-          <Link
-            href="/behandling/terapi"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Läs mer om terapi"
-          >
-            <BiConversation
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Terapi</span>
-          </Link>
+          <li className="group related-container">
+            <Link href="/behandling/terapi" aria-label="Läs mer om terapi">
+              <BiConversation
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Terapi</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'dokument' && (
-          <Link
-            href="/behandling/dokument"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Lär dig mer om verktyg & dokument"
-          >
-            <BiBrain
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Verktyg & Dokument</span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/behandling/dokument"
+              aria-label="Lär dig mer om verktyg & dokument"
+            >
+              <BiBrain
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Verktyg & Dokument</span>
+            </Link>
+          </li>
         )}
         {currentPage !== 'medicinska-behandlingar' && (
-          <Link
-            href="/behandling/medicinska-behandlingar"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Lär dig mer om diagnoser för bipolär sjukdom"
-          >
-            <BiFirstAid
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">
-              Medicinska behandlingar
-            </span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/behandling/medicinska-behandlingar"
+              aria-label="Lär dig mer om diagnoser för bipolär sjukdom"
+            >
+              <BiFirstAid
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">
+                Medicinska behandlingar
+              </span>
+            </Link>
+          </li>
         )}
-      </div>
+      </nav>
     </div>
   );
 };
