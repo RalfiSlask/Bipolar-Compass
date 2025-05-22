@@ -72,7 +72,7 @@ export const renderMessage = (
 };
 
 /**
- * Converts a medicine frequency to a Swedish string
+ * Converts a medication frequency to a Swedish string
  * @param {string} frequency
  * @returns {string}
  */

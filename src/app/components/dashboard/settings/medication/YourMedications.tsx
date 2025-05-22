@@ -36,7 +36,7 @@ const YourMedications = ({
         Dina Mediciner
       </h3>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-        {medications.map((medicine, index) => (
+        {medications.map((medication, index) => (
           <div
             key={index}
             className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
@@ -44,19 +44,20 @@ const YourMedications = ({
             <div className="flex justify-between items-start mb-4 border border-gray-200 p-4 rounded-lg">
               <div>
                 <h4 className="text-lg font-medium text-dark">
-                  {medicine.name || 'Namnlös medicin'}
+                  {medication.name || 'Namnlös medicin'}
                 </h4>
                 <p className="text-sm text-gray-500 mt-1">
-                  {medicine.category === 'moodStabilizers' &&
+                  {medication.category === 'moodStabilizers' &&
                     'Stämningsstabiliserande'}
-                  {medicine.category === 'antipsychotics' && 'Antipsykotiska'}
-                  {medicine.category === 'antidepressants' && 'Antidepressiva'}
+                  {medication.category === 'antipsychotics' && 'Antipsykotiska'}
+                  {medication.category === 'antidepressants' &&
+                    'Antidepressiva'}
                 </p>
               </div>
               <button
-                onClick={() => handleDeleteClick(index, medicine.name)}
+                onClick={() => handleDeleteClick(index, medication.name)}
                 className="text-red-500 hover:text-red-800 transition-colors p-2"
-                aria-label={`Ta bort ${medicine.name || 'medicin'}`}
+                aria-label={`Ta bort ${medication.name || 'medicin'}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -77,35 +78,35 @@ const YourMedications = ({
               <div>
                 <p className="text-primary-dark">Dosering</p>
                 <p className="font-medium">
-                  {medicine.dosage} {medicine.doseUnit}
+                  {medication.dosage} {medication.doseUnit}
                 </p>
               </div>
               <div>
                 <p className="text-primary-dark">Frekvens</p>
                 <p className="font-medium">
-                  {medicine.frequency === '1_daily' && '1 gång om dagen'}
-                  {medicine.frequency === '2_daily' && '2 gånger om dagen'}
-                  {medicine.frequency === '3_daily' && '3 gånger om dagen'}
-                  {medicine.frequency === '4_daily' && '4 gånger om dagen'}
-                  {medicine.frequency === 'as_needed' && 'Vid behov'}
+                  {medication.frequency === '1_daily' && '1 gång om dagen'}
+                  {medication.frequency === '2_daily' && '2 gånger om dagen'}
+                  {medication.frequency === '3_daily' && '3 gånger om dagen'}
+                  {medication.frequency === '4_daily' && '4 gånger om dagen'}
+                  {medication.frequency === 'as_needed' && 'Vid behov'}
                 </p>
               </div>
-              {medicine.times && medicine.times.length > 0 && (
+              {medication.times && medication.times.length > 0 && (
                 <div className="col-span-2">
                   <p className="text-primary-dark">Tider</p>
-                  <p className="font-medium">{medicine.times.join(', ')}</p>
+                  <p className="font-medium">{medication.times.join(', ')}</p>
                 </div>
               )}
-              {medicine.notes && (
+              {medication.notes && (
                 <div className="col-span-2">
                   <p className="text-primary-dark">Anteckningar</p>
-                  <p className="font-medium">{medicine.notes}</p>
+                  <p className="font-medium">{medication.notes}</p>
                 </div>
               )}
               <div className="col-span-2">
                 <p className="text-primary-dark">Påminnelser</p>
                 <p className="font-medium">
-                  {medicine.reminder.enabled ? (
+                  {medication.reminder.enabled ? (
                     <span className="text-green-700">Aktiverad</span>
                   ) : (
                     <span className="text-gray-500">Inaktiverad</span>

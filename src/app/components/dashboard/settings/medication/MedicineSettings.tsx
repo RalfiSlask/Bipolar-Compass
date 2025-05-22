@@ -114,7 +114,7 @@ const MedicineSettings = ({
         toast.success('Medicin tillagd');
       }
     } catch (error) {
-      console.error('could not save medicine:', error);
+      console.error('could not save medication:', error);
       toast.error('Kunde inte spara medicin');
     }
   };
@@ -168,7 +168,7 @@ const MedicineSettings = ({
         toast.success('Medicin borttagen');
       }
     } catch (error) {
-      console.error('could not delete medicine: ', error);
+      console.error('could not delete medication: ', error);
       toast.error('Kunde inte ta bort medicin');
     }
   };
@@ -176,14 +176,14 @@ const MedicineSettings = ({
   return (
     <div
       className="mx-auto max-w-7xl w-full bg-tertiary-light"
-      aria-labelledby="medicine-heading"
+      aria-labelledby="medication-heading"
     >
       {!user?.isVerified && <VerficationMessage />}
       <div className="flex flex-col gap-3 text-center mb-8">
         <div className="flex items-center justify-center gap-3">
           <MdMedication className="w-8 h-8 text-primary-dark" />
           <h2
-            id="medicine-heading"
+            id="medication-heading"
             className={`text-3xl font-semibold ${
               !user.isVerified ? 'text-gray-400' : 'text-primary-dark'
             }`}

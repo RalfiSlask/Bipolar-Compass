@@ -59,7 +59,7 @@ const UnderNavigation = ({
         <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
-          className="text-2xl hover:text-primary-medium transition-colors z-[9999]"
+          className="hidden xl:static text-2xl hover:text-primary-medium transition-colors z-[9999]"
           onClick={toggleMenuOpen}
           aria-label="Toggle menu"
         >
