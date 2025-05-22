@@ -6,7 +6,8 @@ export const selfAssessmentForms = [
     description:
       'Ett formulär med 9 frågor som mäter depressiva symtom. Används för att bedöma svårighetsgraden av depression och för att följa förändringar över tid. Skalan täcker områden som nedstämdhet, oro, sömn, aptit och koncentrationsförmåga.',
     href: '../pdfs/MADRS.pdf',
-    ariaLabel: 'Ladda ner MADRS',
+    ariaLabelDownload: 'Ladda ner MADRS',
+    ariaLabelOpen: 'Öppny MADRS formulär i ny flik',
     scoringId: 'MADRS',
   },
   {
@@ -14,7 +15,8 @@ export const selfAssessmentForms = [
     description:
       'Ett screeningverktyg för bipolär sjukdom. Formuläret hjälper till att identifiera tidigare maniska eller hypomana episoder genom att ställa frågor om symtom, tidsperioder och påverkan på vardagslivet. Består av 13 ja/nej-frågor följt av följdfrågor.',
     href: '../pdfs/MDQ.pdf',
-    ariaLabel: 'Ladda ner MDQ',
+    ariaLabelDownload: 'Ladda ner MDQ',
+    ariaLabelOpen: 'Öppny MDQ formulär i ny flik',
     scoringId: 'MDQ',
   },
   {
@@ -22,7 +24,8 @@ export const selfAssessmentForms = [
     description:
       'Ett formulär med 14 frågor som mäter både ångest och depression. Särskilt utformat för att undvika påverkan från fysiska symtom. Består av två delskalor med 7 frågor vardera för ångest respektive depression. Används ofta inom primärvården.',
     href: '../pdfs/HAD.pdf',
-    ariaLabel: 'Ladda ner HAD',
+    ariaLabelDownload: 'Ladda ner HAD',
+    ariaLabelOpen: 'Öppny HAD formulär i ny flik',
     scoringId: 'HAD',
   },
   {
@@ -30,7 +33,8 @@ export const selfAssessmentForms = [
     description:
       'Ett kort screeningverktyg för generaliserat ångestsyndrom (GAD). Består av 7 frågor som mäter ångestsymtom under de senaste två veckorna. Används både för att upptäcka ångest och för att följa behandlingseffekt. Enkelt att fylla i och ger snabbt en bild av ångestnivån.',
     href: '../pdfs/GAD-7.pdf',
-    ariaLabel: 'Ladda ner GAD-7',
+    ariaLabelDownload: 'Ladda ner GAD-7',
+    ariaLabelOpen: 'Öppna GAD-7 formulär i ny flik',
     scoringId: 'GAD7',
   },
   {
@@ -38,7 +42,8 @@ export const selfAssessmentForms = [
     description:
       'Ett verktyg för att dagligen dokumentera ditt stämningsläge, sömn, aktivitetsnivå och andra viktiga faktorer. Hjälper dig att identifiera mönster och triggers i ditt mående, samt underlättar kommunikationen med vårdgivare. Rekommenderas att fyllas i dagligen under minst två veckor.',
     href: '../pdfs/diary.pdf',
-    ariaLabel: 'Ladda ner Stämningsdagbok',
+    ariaLabelDownload: 'Ladda ner Stämningsdagbok',
+    ariaLabelOpen: 'Öppny Stämningsdagbok i ny flik',
   },
 ];
 
