@@ -19,49 +19,43 @@ const MultimediaRelatedContent = ({
           Fördjupa dig i fler medier som kan stödja och inspirera.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto w-full">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto w-full list-none">
         {currentPage !== 'podcasts' && (
-          <Link
-            href="/multimedia/podcasts"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Gå till podcasts"
-          >
-            <BiMicrophone
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Podcasts</span>
-          </Link>
+          <li className="group related-container">
+            <Link href="/multimedia/podcasts" aria-label="Gå till podcasts">
+              <BiMicrophone
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Podcasts</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'musik' && (
-          <Link
-            href="/multimedia/musik"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Gå till musik"
-          >
-            <BiMusic
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Musik</span>
-          </Link>
+          <li className="group related-container">
+            <Link href="/multimedia/musik" aria-label="Gå till musik">
+              <BiMusic
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Musik</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'filmer' && (
-          <Link
-            href="/multimedia/filmer"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Gå till filmer"
-          >
-            <MdLocalMovies
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Filmer</span>
-          </Link>
+          <li className="group related-container">
+            <Link href="/multimedia/filmer" aria-label="Gå till filmer">
+              <MdLocalMovies
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Filmer</span>
+            </Link>
+          </li>
         )}
-      </div>
+      </nav>
     </div>
   );
 };

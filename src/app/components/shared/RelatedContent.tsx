@@ -23,64 +23,68 @@ const RelatedContent = ({ currentPage }: IRelatedContentProps) => {
           Utforska mer information om bipolär sjukdom genom dessa länkar
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
+      <nav className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
         {currentPage !== 'vanliga-fragor' && (
-          <Link
-            href="/bipolaritet/vanliga-fragor"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Gå till vanliga frågor om bipolär sjukdom"
-          >
-            <FaQuestionCircle
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Vanliga frågor</span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/bipolaritet/vanliga-fragor"
+              aria-label="Gå till vanliga frågor om bipolär sjukdom"
+            >
+              <FaQuestionCircle
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Vanliga frågor</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'symptom' && (
-          <Link
-            href="/bipolaritet/symptom"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Läs mer om symptom vid bipolär sjukdom"
-          >
-            <MdOutlineWavingHand
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Symptom</span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/bipolaritet/symptom"
+              aria-label="Läs mer om symptom vid bipolär sjukdom"
+            >
+              <MdOutlineWavingHand
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Symptom</span>
+            </Link>
+          </li>
         )}
 
         {currentPage !== 'vad-ar-bipolaritet' && (
-          <Link
-            href="/bipolaritet/vad-ar-bipolaritet"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Lär dig mer om vad bipolär sjukdom är"
-          >
-            <BiBrain
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">
-              Vad är bipolär sjukdom?
-            </span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/bipolaritet/vad-ar-bipolaritet"
+              aria-label="Lär dig mer om vad bipolär sjukdom är"
+            >
+              <BiBrain
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">
+                Vad är bipolär sjukdom?
+              </span>
+            </Link>
+          </li>
         )}
         {currentPage !== 'diagnoser' && (
-          <Link
-            href="/bipolaritet/diagnoser"
-            className="group flex flex-col bg-primary-dark hover:bg-primary-medium items-center gap-4 transition-all duration-300 text-primary-light hover:text-primary-dark p-8 rounded-lg shadow-sm border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2"
-            aria-label="Lär dig mer om diagnoser för bipolär sjukdom"
-          >
-            <TbStethoscope
-              className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
-              aria-hidden="true"
-            />
-            <span className="font-semibold text-lg">Diagnoser</span>
-          </Link>
+          <li className="group related-container">
+            <Link
+              href="/bipolaritet/diagnoser"
+              aria-label="Lär dig mer om diagnoser för bipolär sjukdom"
+            >
+              <TbStethoscope
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-lg">Diagnoser</span>
+            </Link>
+          </li>
         )}
-      </div>
+      </nav>
     </div>
   );
 };

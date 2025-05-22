@@ -128,7 +128,7 @@ const RegisterForm = () => {
                 className={`block w-full px-4 py-3 rounded-lg border primary-input text-base ${
                   errors.password && touched.password
                     ? 'border-red-500 focus:ring-red-500'
-                    : 'border-gray-300 focus:ring-primary'
+                    : ''
                 } focus:border-transparent focus:outline-none focus:ring-2 transition-colors`}
                 id="password"
                 name="password"

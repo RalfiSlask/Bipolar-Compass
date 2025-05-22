@@ -26,7 +26,7 @@ const LoginNavigation = ({ closeMenu }: LoginNavigationProps) => {
   return (
     <div className="flex items-center justify-end gap-2 xl:pr-2">
       {session ? (
-        <div className="flex items-center gap-4 sm:gap-6 px-3 xl:px-0">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/min-sida"
             className="rounded-lg min-w-[102px] sm:min-w-min py-1 xl:px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"

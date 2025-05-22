@@ -8,7 +8,7 @@ const CommonSigns = () => {
       <h3 className="h-xs text-primary-dark">Vanliga kännetecken</h3>
     </div>
 
-    <div className="bg-primary-light/20 rounded-md p-4 mb-6">
+    <div className="bg-primary-light/50 rounded-md p-4 mb-6">
       <h4 className="font-semibold text-primary-dark mb-3">
         Under maniska eller hypomaniska episoder kan personer känna sig:
       </h4>
@@ -20,7 +20,7 @@ const CommonSigns = () => {
       </ul>
     </div>
 
-    <div className="bg-primary-light/20 rounded-md p-4">
+    <div className="bg-primary-light/50 rounded-md p-4">
       <h4 className="font-semibold text-primary-dark mb-3">
         Under depressiva episoder kan personer uppleva:
       </h4>

@@ -19,7 +19,7 @@ const ScienceSortFilter = ({
           onClick={() => handleSortChange('newest')}
           className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md transition-all duration-200 ${
             sortOrder === 'newest'
-              ? 'bg-primary-medium border border-primary-border text-white shadow-sm'
+              ? 'bg-primary-dark border border-primary-border text-white shadow-sm'
               : 'bg-white border border-primary-border text-primary-dark hover:bg-primary-light'
           }`}
         >
@@ -34,7 +34,7 @@ const ScienceSortFilter = ({
           onClick={() => handleSortChange('oldest')}
           className={`flex items-center gap-2 px-4 py-2 text-sm rounded-md transition-all duration-200 ${
             sortOrder === 'oldest'
-              ? 'bg-primary-medium border border-primary-border text-white shadow-sm'
+              ? 'bg-primary-dark border border-primary-border text-white shadow-sm'
               : 'bg-white border border-primary-border text-primary-dark hover:bg-primary-light'
           }`}
         >

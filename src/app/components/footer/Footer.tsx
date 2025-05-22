@@ -30,25 +30,31 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-tertiary-light">
                 Information
               </h2>
-              <nav className="flex flex-col gap-3">
-                <Link
-                  href="/bipolaritet/vad-ar-bipolaritet"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Vad är bipolaritet
-                </Link>
-                <Link
-                  href="/anhoriga"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Anhöriga
-                </Link>
-                <Link
-                  href="/behandling"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Behandling
-                </Link>
+              <nav className="flex flex-col gap-3 list-none">
+                <li className="cursor-pointer">
+                  <Link
+                    href="/bipolaritet/vad-ar-bipolaritet"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Vad är bipolaritet
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <Link
+                    href="/anhoriga"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Anhöriga
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <Link
+                    href="/behandling"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Behandling
+                  </Link>
+                </li>
               </nav>
             </div>
           </div>
@@ -58,25 +64,31 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-tertiary-light">
                 Resurser
               </h2>
-              <nav className="flex flex-col gap-3">
-                <Link
-                  href="/akut"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Akut hjälp
-                </Link>
-                <Link
-                  href="/behandling/dokument"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Dokument
-                </Link>
-                <Link
-                  href="/forskning"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Forskning
-                </Link>
+              <nav className="flex flex-col gap-3 list-none">
+                <li className="cursor-pointer">
+                  <Link
+                    href="/akut"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Akut hjälp
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <Link
+                    href="/behandling/dokument"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Dokument
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <Link
+                    href="/forskning"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Forskning
+                  </Link>
+                </li>
               </nav>
             </div>
           </div>
@@ -86,25 +98,31 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-tertiary-light">
                 Om oss
               </h2>
-              <nav className="flex flex-col gap-3">
-                <Link
-                  href="/om-oss/vision"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Vision
-                </Link>
-                <Link
-                  href="/kontakt"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  Kontakt
-                </Link>
-                <a
-                  href="mailto:info@bipolarkompassen.se"
-                  className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
-                >
-                  info@bipolarkompassen.se
-                </a>
+              <nav className="flex flex-col gap-3 list-none">
+                <li className="cursor-pointer">
+                  <Link
+                    href="/om-oss/vision"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Vision
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <Link
+                    href="/kontakt"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    Kontakt
+                  </Link>
+                </li>
+                <li className="cursor-pointer">
+                  <a
+                    href="mailto:info@bipolarkompassen.se"
+                    className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
+                  >
+                    info@bipolarkompassen.se
+                  </a>
+                </li>
               </nav>
             </div>
           </div>
@@ -124,20 +142,24 @@ const Footer = () => {
           <p className="text-sm text-gray-400">
             © {currentYear} Bipolär Kompassen. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            <Link
-              href="/om-oss/villkor"
-              className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
-            >
-              Villkor
-            </Link>
-            <Link
-              href="/om-oss/integritetspolicy"
-              className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
-            >
-              Integritetspolicy
-            </Link>
-          </div>
+          <nav className="flex gap-8 list-none">
+            <li className="cursor-pointer">
+              <Link
+                href="/om-oss/villkor"
+                className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
+              >
+                Villkor
+              </Link>
+            </li>
+            <li className="cursor-pointer">
+              <Link
+                href="/om-oss/integritetspolicy"
+                className="text-sm text-gray-400 hover:text-tertiary-light transition-colors duration-200"
+              >
+                Integritetspolicy
+              </Link>
+            </li>
+          </nav>
         </div>
       </div>
     </footer>

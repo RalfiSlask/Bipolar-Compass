@@ -16,12 +16,9 @@ const SubmenuItem = ({
   onNavigate,
 }: ISubmenuItemProps) => {
   return (
-    <Link
-      role="menuitem"
-      href={route}
-      onClick={onNavigate}
+    <li
       className={`
-        py-3 px-4 transition-colors block w-full
+        py-3 px-4 transition-colors block w-full cursor-pointer
         ${
           isMobile
             ? 'text-secondary-dark hover:bg-primary-light hover:text-primary-dark border-l-2 border-primary-light'
@@ -29,8 +26,10 @@ const SubmenuItem = ({
         }
       `}
     >
-      {title}
-    </Link>
+      <Link role="menuitem" href={route} onClick={onNavigate}>
+        {title}
+      </Link>
+    </li>
   );
 };
 

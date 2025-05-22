@@ -75,13 +75,13 @@ const YourMedications = ({
 
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-gray-500">Dosering</p>
+                <p className="text-primary-dark">Dosering</p>
                 <p className="font-medium">
                   {medicine.dosage} {medicine.doseUnit}
                 </p>
               </div>
               <div>
-                <p className="text-gray-500">Frekvens</p>
+                <p className="text-primary-dark">Frekvens</p>
                 <p className="font-medium">
                   {medicine.frequency === '1_daily' && '1 gång om dagen'}
                   {medicine.frequency === '2_daily' && '2 gånger om dagen'}
@@ -92,23 +92,23 @@ const YourMedications = ({
               </div>
               {medicine.times && medicine.times.length > 0 && (
                 <div className="col-span-2">
-                  <p className="text-gray-500">Tider</p>
+                  <p className="text-primary-dark">Tider</p>
                   <p className="font-medium">{medicine.times.join(', ')}</p>
                 </div>
               )}
               {medicine.notes && (
                 <div className="col-span-2">
-                  <p className="text-gray-500">Anteckningar</p>
+                  <p className="text-primary-dark">Anteckningar</p>
                   <p className="font-medium">{medicine.notes}</p>
                 </div>
               )}
               <div className="col-span-2">
-                <p className="text-gray-500">Påminnelser</p>
+                <p className="text-primary-dark">Påminnelser</p>
                 <p className="font-medium">
                   {medicine.reminder.enabled ? (
-                    <span className="text-green-600">Aktiverad</span>
+                    <span className="text-green-700">Aktiverad</span>
                   ) : (
-                    <span className="text-gray-400">Inaktiverad</span>
+                    <span className="text-gray-500">Inaktiverad</span>
                   )}
                 </p>
               </div>

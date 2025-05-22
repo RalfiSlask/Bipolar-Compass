@@ -42,7 +42,7 @@ const ScienceAgesFilter = ({
       </div>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="mt-4 w-full flex items-center justify-between px-4 py-2 text-primary-medium hover:text-primary-dark hover:bg-primary-light rounded-md transition-colors duration-200"
+        className="mt-4 w-full flex items-center justify-between px-4 py-2 text-primary-dark hover:text-dark hover:bg-primary-light rounded-md transition-colors duration-200"
       >
         <span>Se alla åldrar</span>
         <IoChevronForward className="text-lg" />

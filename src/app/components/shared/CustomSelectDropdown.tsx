@@ -57,18 +57,14 @@ const CustomSelect = ({
         type="button"
         className={`w-full sm:w-[160px] ${
           size === 'large' ? 'sm:w-full min-w-[240px]' : 'sm:w-[160px]'
-        } h-[42px] px-3 text-left bg-white rounded-md border
-          ${
-            error && touched
-              ? 'border-red-500'
-              : 'border-primary-border hover:border-primary-medium focus:border-primary-medium'
-          }
+        } h-[42px] px-3 text-left bg-white rounded-md border primary-input
+          ${error && touched ? 'border-red-500' : ''}
           flex items-center justify-between`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="truncate">{selectedLabel || placeholder}</span>
         <svg
-          className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${
+          className={`w-5 h-5 text-primary-dark transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"

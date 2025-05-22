@@ -225,7 +225,7 @@ const MoodTrackerDay = ({
                         className={`text-right w-24 transition-colors ${
                           getMoodData(id).moodData!.yAxis[value] === label
                             ? 'text-primary-dark font-semibold'
-                            : 'text-gray-400'
+                            : 'text-gray-500'
                         }`}
                       >
                         {label}

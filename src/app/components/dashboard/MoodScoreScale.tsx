@@ -13,7 +13,7 @@ const MoodScoreScale = () => {
       </div>
 
       <div className="flex flex-col gap-4 sm:gap-0">
-        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/50">
+        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/20">
           <div className="sm:min-w-[130px] h-full">
             <div className="h-full bg-red-500 sm:bg-gradient-to-b from-red-500 to-orange-500 text-white px-4 py-2 rounded-tl-md text-center font-semibold flex items-center justify-center">
               Mani
@@ -25,7 +25,7 @@ const MoodScoreScale = () => {
                 Fullständig brist på omdöme, extrema ekonomiska beslut,
                 vanföreställningar och ibland hallucinationer.
               </p>
-              <span className="text-sm font-semibold text-red-500 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-red-900 min-w-[30px] text-right">
                 100
               </span>
             </div>
@@ -34,14 +34,14 @@ const MoodScoreScale = () => {
                 Verklighetsuppfattningen är kraftigt rubbad, ologiskt beteende,
                 ingen sömn och riskfyllt agerande.
               </p>
-              <span className="text-sm font-semibold text-red-600 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-red-800 min-w-[30px] text-right">
                 90
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/50">
+        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/20">
           <div className="sm:min-w-[130px] h-full">
             <div className="h-full bg-orange-500 sm:bg-gradient-to-b from-orange-500 to-yellow-500 text-white px-4 py-2  text-center font-semibold flex items-center justify-center">
               Hypomani
@@ -53,7 +53,7 @@ const MoodScoreScale = () => {
                 Överdriven självsäkerhet, snabba tankar och högt tempo, startar
                 flera projekt samtidigt utan att avsluta.
               </p>
-              <span className="text-sm font-semibold text-orange-600 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-orange-700 min-w-[30px] text-right">
                 80
               </span>
             </div>
@@ -62,14 +62,14 @@ const MoodScoreScale = () => {
                 Ökad energi, starkt driv, intensivt social och har svårt att
                 bromsa sitt engagemang.
               </p>
-              <span className="text-sm font-semibold text-yellow-500 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-yellow-700 min-w-[30px] text-right">
                 70
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/50">
+        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/20">
           <div className="sm:min-w-[130px] h-full">
             <div className="h-full bg-green-500 sm:bg-gradient-to-b from-yellow-500 via-green-400 to-green-600 text-white px-4 py-2  text-center font-semibold flex items-center justify-center">
               Balanserat
@@ -81,7 +81,7 @@ const MoodScoreScale = () => {
                 Känner sig stabil, har god självkänsla och är effektiv i sitt
                 arbete, med mindre behov av sömn än vanligt.
               </p>
-              <span className="text-sm font-semibold text-green-400 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-green-900 min-w-[30px] text-right">
                 60
               </span>
             </div>
@@ -90,7 +90,7 @@ const MoodScoreScale = () => {
                 Harmoniskt tillstånd utan tecken på vare sig mani eller
                 depression, allt känns balanserat.
               </p>
-              <span className="text-sm font-semibold text-green-500 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-green-800 min-w-[30px] text-right">
                 50
               </span>
             </div>
@@ -99,14 +99,14 @@ const MoodScoreScale = () => {
                 Börjar dra sig undan från omgivningen, tappar fokus och känner
                 sig lätt irriterad eller otålig.
               </p>
-              <span className="text-sm font-semibold text-green-600 min-w-[30px] text-right">
+              <span className="text-sm font-semibold text-green-700 min-w-[30px] text-right">
                 40
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/50">
+        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/20">
           <div className="sm:min-w-[130px] h-full">
             <div className="h-full bg-gray-700 mild text-white px-4 py-2  text-center font-semibold flex items-center justify-center">
               Mild/Måttlig
@@ -134,7 +134,7 @@ const MoodScoreScale = () => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/50">
+        <div className="flex flex-col sm:h-[130px] sm:flex-row gap-4 pr-4 bg-primary-light/20">
           <div className="sm:min-w-[130px] h-full">
             <div className="h-full bg-black sm:bg-gradient-to-b from-gray-700 via-gray-900 to-gray-950 text-white px-4 py-2 rounded-bl-md text-center font-semibold flex items-center justify-center">
               Svår

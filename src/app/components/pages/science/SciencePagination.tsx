@@ -1,4 +1,4 @@
-import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 interface SciencePaginationProps {
   currentPage: number;
@@ -29,7 +29,7 @@ const SciencePagination = ({
       <button
         onClick={() => handlePageChange('next')}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary-medium text-white hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-medium transition-colors duration-200"
+        className="flex items-center gap-2 px-4 py-2 rounded-md bg-primary-dark text-white hover:bg-secondary-dark disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-medium transition-colors duration-200"
       >
         <span>Nästa</span>
         <IoChevronForward className="text-lg" />

@@ -115,7 +115,7 @@ const ProfileSettings = () => {
 
                 <fieldset className="space-y-4">
                   <legend className="text-base font-medium text-gray-900">
-                    E-postadress
+                    <label htmlFor="email">E-postadress</label>
                   </legend>
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
                     <div>
@@ -156,14 +156,12 @@ const ProfileSettings = () => {
                 <div className="flex flex-wrap gap-8">
                   <fieldset className="flex flex-col space-y-2">
                     <legend className="text-base font-medium text-gray-900">
-                      Ålder
+                      <label htmlFor="age">Ålder</label>
                     </legend>
                     <div className="flex flex-col gap-1">
                       <Field
                         className={`primary-input w-full sm:w-[120px] ${
-                          errors.age && touched.age
-                            ? 'border-red-500'
-                            : 'border-primary-border hover:border-primary-medium focus:border-primary-medium'
+                          errors.age && touched.age ? 'border-red-500' : ''
                         }`}
                         name="age"
                         type="number"

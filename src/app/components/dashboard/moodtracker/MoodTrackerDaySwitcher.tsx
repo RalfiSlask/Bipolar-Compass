@@ -18,6 +18,7 @@ const MoodTrackerDaySwitcher = ({
     <div className="bg-white rounded-2xl shadow-md p-6 flex-1">
       <div className="flex items-center justify-between gap-4">
         <button
+          aria-label="pil för att gå till föregående dag"
           onClick={handlePreviousDay}
           className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary-light text-primary-dark 
           hover:bg-primary-medium hover:text-white transform transition-all duration-300 
@@ -36,6 +37,11 @@ const MoodTrackerDaySwitcher = ({
         </div>
 
         <button
+          aria-label={`${
+            isToday(selectedDate)
+              ? 'pil för att gå till nästa dag, utgråad är redan på dagens datum'
+              : 'pil för att gå till nästa dag'
+          }`}
           onClick={handleNextDay}
           disabled={isToday(selectedDate)}
           className={`w-12 h-12 flex items-center justify-center rounded-xl transform transition-all duration-300 

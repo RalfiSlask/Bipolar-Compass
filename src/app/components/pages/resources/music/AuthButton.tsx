@@ -28,7 +28,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({
       className="flex items-center gap-3 bg-[#1DB954] hover:bg-[#1ed760] text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg whitespace-nowrap"
     >
       <Image src={SpotifyIcon} alt="Spotify" width="24" height="24" />
-      <span className="font-medium">
+      <span className="font-medium text-black">
         {isAuthenticated ? 'Logga ut' : 'Logga in med Spotify'}
       </span>
     </button>

@@ -299,7 +299,7 @@ const RelativesSettings = ({
 
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <p className="text-base md:text-gray-500">Frekvens</p>
+                      <p className="text-base md:text-primary-dark">Frekvens</p>
                       <p className="font-medium text-base md:text-gray-900">
                         {relative.email_frequency === 'weekly' && 'Varje vecka'}
                         {relative.email_frequency === 'biweekly' &&
@@ -308,12 +308,14 @@ const RelativesSettings = ({
                       </p>
                     </div>
                     <div className="col-span-2">
-                      <p className="text-base md:text-gray-500">Påminnelser</p>
+                      <p className="text-base md:text-primary-dark">
+                        Påminnelser
+                      </p>
                       <p className="font-medium text-base md:text-gray-900">
                         {relative.email_enabled ? (
-                          <span className="text-green-600">Aktiverad</span>
+                          <span className="text-green-700">Aktiverad</span>
                         ) : (
-                          <span className="text-gray-400">Inaktiverad</span>
+                          <span className="text-gray-500">Inaktiverad</span>
                         )}
                       </p>
                     </div>
