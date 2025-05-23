@@ -45,7 +45,6 @@ const ProfileSettings = () => {
   const handleSubmit = async (values: IFormValues) => {
     setIsSaving(true);
     setSaveError(null);
-    console.log('these are the values:', values);
     try {
       await saveProfileSettings(values, user?.email ?? '');
 

@@ -256,8 +256,6 @@ const ScienceArticles = () => {
         activeFilters.includes(f.id)
       );
 
-      console.log(typeFilters, ageFilters);
-
       // Add text availability filters
       textFilters.forEach((filter) => {
         finalSearchQuery += ` AND ${filter.value}`;
@@ -273,16 +271,12 @@ const ScienceArticles = () => {
         finalSearchQuery += ` AND (${typeFilters
           .map((f) => f.value)
           .join(' OR ')})`;
-
-        console.log('final search query: ', finalSearchQuery);
       }
 
       if (ageFilters.length > 0) {
         finalSearchQuery += ` AND (${ageFilters
           .map((f) => f.value)
           .join(' OR ')})`;
-
-        console.log('final search query age function: ', finalSearchQuery);
       }
 
       // add sex filter
@@ -424,10 +418,6 @@ const ScienceArticles = () => {
     }
     setCurrentPage(1);
   };
-
-  useEffect(() => {
-    console.log(isMobileFiltersOpen);
-  }, [isMobileFiltersOpen]);
 
   const handleLanguageChange = (value: string) => {
     setSelectedLanguage(value === selectedLanguage ? '' : value);
