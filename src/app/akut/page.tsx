@@ -75,7 +75,7 @@ const UrgentHelpPage = () => {
           <MdLocalHospital className="text-primary-medium text-2xl" />
           <h3 className="h-sm text-primary-dark">Närliggande sjukhus</h3>
         </div>
-        <div className="flex flex-col gap-2 bg-primary-light rounded-lg p-4">
+        <div className="flex flex-col gap-2 bg-primary-light rounded-lg p-4 shadow-md">
           {hospitalLink ? (
             <p className="text-primary-dark mb-2">Hitta sjukhus via kartan: </p>
           ) : (
@@ -124,7 +124,7 @@ const UrgentHelpPage = () => {
           <IoMdHeart className="text-primary-medium text-2xl" />
           <h3 className="h-sm text-primary-dark">Tänk på</h3>
         </div>
-        <p className="bg-tertiary-light p-4 rounded-lg">
+        <p className="bg-tertiary-light p-4 rounded-lg shadow-md">
           Du är inte ensam. Det finns hjälp att få, och det är modigt att söka
           den. Även om allt känns övermäktigt nu, kan det bli bättre.
         </p>
