@@ -471,7 +471,7 @@ const ScienceArticles = () => {
             className="w-auto apspect-auto h-full object-cover"
           />
           <div className="max-w-3xl flex flex-col justify-center bg-white">
-            <h2 className="text-2xl font-semibold text-primary-dark mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-primary-dark mb-4">
               Sök bland forskningsartiklar om bipolaritet
             </h2>
             <p className="text-gray-600 mb-6">
@@ -801,7 +801,6 @@ const ScienceArticles = () => {
                       ))}
                     </div>
                   )}
-
                   {isLoading && (
                     <div className="absolute inset-0 bg-white/80 z-10 flex items-center justify-center">
                       <Spinner />
