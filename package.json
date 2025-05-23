@@ -28,6 +28,7 @@
     "framer-motion": "^11.18.0",
     "lodash": "^4.17.21",
     "mongodb": "^6.13.0",
+    "mysql2": "^2.3.3",
     "next": "15.1.2",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.9.16",
