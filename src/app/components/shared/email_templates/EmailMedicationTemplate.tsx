@@ -3,6 +3,8 @@ interface IEmailMedicationProps {
   time: string;
 }
 
+const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+
 const EmailMedicationTemplate = ({
   medication,
   time,
@@ -28,7 +30,7 @@ const EmailMedicationTemplate = ({
     <!-- Footer -->
     <div style="text-align: center; font-size: 0.85em; color: #777;">
       <p style="margin: 0;">Detta är ett automatiskt meddelande från <strong>Bipolärkompassen</strong>.</p>
-      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="https://bipolarkompassen.se/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
+      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
     </div>
   </div>
 `;

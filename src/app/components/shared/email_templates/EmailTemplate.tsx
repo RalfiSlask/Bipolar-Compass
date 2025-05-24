@@ -2,6 +2,8 @@ interface IEmailTemplateProps {
   verificationLink: string;
 }
 
+const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+
 const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
   <div style="font-family: 'Open Sans', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9fafb; padding: 20px; border: 1px solid #eaeaea; border-radius: 10px; max-width: 900px; margin: auto;">
     <!-- Header -->
@@ -42,7 +44,7 @@ const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
     <!-- Footer -->
     <div style="text-align: center; font-size: 0.85em; color: #777;">
       <p style="margin: 0;">Detta är ett automatiskt meddelande från <strong>Bipolärkompassen</strong>.</p>
-      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="https://bipolarkompassen.se/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
+      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
     </div>
   </div>
 `;
