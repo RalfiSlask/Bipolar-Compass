@@ -16,7 +16,7 @@ import { IoArrowBack, IoTrashOutline } from 'react-icons/io5';
 const DiaryNote = () => {
   const router = useRouter();
   const params = useParams();
-  const date = params.date as string;
+  const date = params?.date as string;
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { data: session } = useSession() as { data: ICustomSession | null };
   const [isLoading, setIsLoading] = useState(true);
