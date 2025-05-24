@@ -18,7 +18,7 @@ const ResetPasswordForm = () => {
   };
 
   const searchParams = useSearchParams();
-  const token = searchParams.get('token');
+  const token = searchParams?.get('token');
 
   const handleSubmit = async (values: FormikValues) => {
     setIsSubmitting(true);
