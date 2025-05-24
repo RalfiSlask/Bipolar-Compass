@@ -30,7 +30,7 @@ const DashboardNavigation = ({
       {dashboardNavigationLinks.map((link) => (
         <li
           key={link.href}
-          className={`w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 
+          className={`w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 cursor-pointer 
             ${
               path === link.href
                 ? 'bg-primary-dark font-semibold text-white [&_svg]:text-white'

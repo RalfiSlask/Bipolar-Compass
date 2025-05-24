@@ -13,7 +13,7 @@ const DashboardCardWrapper = ({
 }) => {
   return (
     <div
-      className={`bg-white rounded-2xl shadow-lg p-6 mb-6 hover:shadow-xl transition-all duration-300 ${className}`}
+      className={`bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 min-h-32 ${className}`}
     >
       <div className="flex items-center mb-4">
         {Icon && <Icon className="mr-3 text-primary-accent text-2xl" />}

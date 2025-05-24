@@ -33,17 +33,19 @@ const LongestStreakContainer = ({
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md">
-      <div className="flex items-center mb-4">
+      <div className="flex flex-col xl:flex-row gap-4 xl:gap-0 items-center mb-4">
         <FaFire className="text-orange-500 text-2xl mr-3" />
         <h3 className="text-xl font-semibold text-secondary-dark">
           Nuvarande Svit
         </h3>
       </div>
-      <p className="text-4xl font-bold text-primary-dark">
+      <p className="text-xl md:text-2xl xl:text-4xl font-bold text-primary-dark">
         {calculateLongestStreak()}{' '}
         {calculateLongestStreak() === 1 ? 'dag' : 'dagar'}
       </p>
-      <p className="text-gray-600 mt-2">Längsta period med registrerad data</p>
+      <p className="text-dark mt-4 text-sm">
+        Längsta period med registrerad data
+      </p>
     </div>
   );
 };

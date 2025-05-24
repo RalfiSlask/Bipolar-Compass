@@ -190,7 +190,7 @@ const MyPage = () => {
   }
 
   return (
-    <section className="w-full h-full bg-tertiary-light py-10 px-4 md:px-10 ">
+    <section className="w-full h-full bg-tertiary-light py-10 px-4 md:px-8 lg:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden ">
           <div className="relative z-10">
