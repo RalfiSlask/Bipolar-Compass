@@ -1,14 +1,14 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import OverNavigation from './OverNavigation';
 import UnderNavigation from './UnderNavigation';
-import { useEffect, useState } from 'react';
 
 const Header = () => {
   const pathname = usePathname();
-  const isAccountPage = pathname.startsWith('/konto');
-  const isDashboardPage = pathname.startsWith('/min-sida');
+  const isAccountPage = pathname?.startsWith('/konto');
+  const isDashboardPage = pathname?.startsWith('/min-sida');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);

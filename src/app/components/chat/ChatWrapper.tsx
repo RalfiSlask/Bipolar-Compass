@@ -6,7 +6,7 @@ import Chat from './Chat';
 const ChatWrapper = () => {
   const pathName = usePathname();
   const shouldShowChat =
-    !pathName.includes('/min-sida') && !pathName.includes('/konto');
+    pathName && !pathName.includes('/min-sida') && !pathName.includes('/konto');
 
   if (!shouldShowChat) return null;
 

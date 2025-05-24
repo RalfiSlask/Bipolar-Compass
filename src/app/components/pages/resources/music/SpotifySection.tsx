@@ -36,7 +36,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
   }, []);
 
   useEffect(() => {
-    const code = searchParams.get('code');
+    const code = searchParams?.get('code');
     if (code && !attemptedExchange) {
       setAttemptedExchange(true);
       exchangeCodeForToken(code);

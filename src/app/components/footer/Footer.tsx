@@ -7,7 +7,7 @@ import BipolarLogo from '../logo/BipolarLogo';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
-  if (pathname.includes('konto') || pathname.includes('min-sida')) {
+  if (pathname?.includes('konto') || pathname?.includes('min-sida')) {
     return null;
   }
 
