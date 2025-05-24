@@ -28,8 +28,8 @@ export default {
         'light': '#b0d9d566',
         'dark': '#202020',
 
-        'footer-color': '#1a1f20', // Footer dark gray
-        'beige': '#f5f5dc', // Beige color
+        'footer-color': '#1a1f20',
+        'beige': '#f5f5dc',
         'gray-700': '#374151',
         'gray-300': '#d1d5db',
       },
