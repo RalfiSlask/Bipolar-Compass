@@ -41,14 +41,17 @@ const Breadcrumbs = () => {
 
   if (
     pathname === '/' ||
-    pathname.includes('/min-sida') ||
-    pathname.includes('/akut') ||
-    pathname.includes('/konto')
+    pathname?.includes('/min-sida') ||
+    pathname?.includes('/akut') ||
+    pathname?.includes('/konto')
   ) {
     return null;
   }
 
-  const breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems);
+  let breadcrumbs;
+  if (pathname !== null) {
+    breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems);
+  }
 
   return (
     <nav
@@ -56,7 +59,7 @@ const Breadcrumbs = () => {
       aria-label="Breadcrumb"
     >
       <ol className="flex max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
-        {breadcrumbs.map((breadcrumb, index) => {
+        {breadcrumbs?.map((breadcrumb, index) => {
           const isLast = index === breadcrumbs.length - 1;
 
           return (
