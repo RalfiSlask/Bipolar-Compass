@@ -1,4 +1,5 @@
 import { Client } from '@upstash/qstash';
+import { fromZonedTime } from 'date-fns-tz';
 import { IMedication, ISchedule } from '../types/medication';
 
 const qstashClient = new Client({
@@ -9,17 +10,19 @@ const convertSwedishTimeToUTC = (time: string) => {
   const [hours, minutes] = time.split(':').map(Number);
   const now = new Date();
   const swedishTime = new Date(
-    Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      hours - 1,
-      minutes,
-      0
-    )
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    hours,
+    minutes
   );
 
-  return swedishTime;
+  // Convert Swedish time to UTC
+  const utcTime = fromZonedTime(swedishTime, 'Europe/Stockholm');
+  console.log('Swedish time:', swedishTime.toISOString());
+  console.log('UTC time:', utcTime.toISOString());
+
+  return utcTime;
 };
 
 export const scheduleMedicationReminder = async (
