@@ -30,7 +30,7 @@ const DashboardNavigation = ({
       {dashboardNavigationLinks.map((link) => (
         <li
           key={link.href}
-          className={`w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-primary-medium/20 cursor-pointer 
+          className={`w-full rounded-lg transition-all duration-200 hover:bg-primary-medium/20 cursor-pointer 
             ${
               path === link.href
                 ? 'bg-primary-dark font-semibold text-white [&_svg]:text-white'
@@ -46,7 +46,7 @@ const DashboardNavigation = ({
                 ? handleClickOnSidebarLinksOnMobile
                 : undefined
             }
-            className="flex items-center w-full gap-3"
+            className="flex items-center w-full gap-3 px-4 py-3 block"
           >
             <span className="transition-transform duration-200 group-hover:scale-110">
               {link.icon}

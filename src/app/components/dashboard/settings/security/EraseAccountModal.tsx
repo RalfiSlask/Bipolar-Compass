@@ -30,7 +30,7 @@ const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
   };
 
   return (
-    <div className="flex flex-col text-lg justify-center items-center gap-6 absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-white p-8 rounded-lg">
+    <div className="flex flex-col text-lg justify-center items-center gap-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-white p-8 rounded-lg">
       <div className="flex flex-col text-center">
         <h2 className="h-sm font-semibold">
           Är du säker du vill ta bort ditt konto?
