@@ -5,9 +5,9 @@ interface IEmailTemplateProps {
 const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
 
 const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
-  <div style="font-family: 'Open Sans', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9fafb; padding: 20px; border: 1px solid #eaeaea; border-radius: 10px; max-width: 900px; margin: auto;">
+  <div style="font-family: 'Open Sans', Arial, sans-serif; line-height: 1.6; color: #333; background-color: #eff7f7; padding: 20px; border: 1px solid #a1b8bd; border-radius: 10px; max-width: 900px; margin: auto;">
     <!-- Header -->
-    <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #eaeaea;">
+    <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #a1b8bd;">
       <h1 style="color: #659598; font-size: 1.8em; margin: 0;">Bipolärkompassen</h1>
       <p style="color: #555; font-size: 1em; margin: 10px 0;">Guiden för att förstå och hantera bipolaritet</p>
     </div>
@@ -27,6 +27,7 @@ const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
         <a
           href="${verificationLink}"
           style="display: inline-block; padding: 15px 25px; background-color: #659598; color: #ffffff; text-decoration: none; border-radius: 5px; font-size: 1.1em; font-weight: bold;"
+          aria-label="Verifiera din e-postadress"
         >
           Verifiera din e-postadress
         </a>
@@ -42,9 +43,9 @@ const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
     <hr style="border: none; border-top: 1px solid #a1b8bd; margin: 20px 0;" />
 
     <!-- Footer -->
-    <div style="text-align: center; font-size: 0.85em; color: #777;">
+    <div style="text-align: center; font-size: 0.85em; color: #777; background-color: #f1f1f1; padding: 10px;">
       <p style="margin: 0;">Detta är ett automatiskt meddelande från <strong>Bipolärkompassen</strong>.</p>
-      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
+      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
     </div>
   </div>
 `;
