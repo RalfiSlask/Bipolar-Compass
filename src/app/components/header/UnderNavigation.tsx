@@ -66,7 +66,7 @@ const UnderNavigation = ({
           <HiX />
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light py-4 mb-2 lg:mb-10 xl:mb-2">
+      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light pt-4 pb-4 sm:pt-0 mb-2 lg:mb-10 xl:mb-2">
         <div className="flex items-center gap-6 sm:px-3 xl:px-2 py-4">
           <Link
             href="/akut"
