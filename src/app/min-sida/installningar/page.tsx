@@ -1,7 +1,6 @@
 'use client';
 
 import DashboardSettingsNavigation from '@/app/components/dashboard/settings/DashboardSettingsNavigation';
-import NotificationsSettings from '@/app/components/dashboard/settings/notifications/NotificationsSettings';
 import ProfileSettings from '@/app/components/dashboard/settings/profile/ProfileSettings';
 import SecuritySettings from '@/app/components/dashboard/settings/security/SecuritySettings';
 import Spinner from '@/app/components/shared/Spinner';
@@ -43,7 +42,6 @@ const SettingsPageContent = () => {
           <div className="flex justify-center">
             {activeTab === 'profile' && <ProfileSettings />}
             {activeTab === 'security' && <SecuritySettings />}
-            {activeTab === 'notifications' && <NotificationsSettings />}
           </div>
         </div>
       </div>
