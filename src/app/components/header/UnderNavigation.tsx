@@ -55,7 +55,7 @@ const UnderNavigation = ({
   // Render mobile menu header
   const renderMobileMenuHeader = () => (
     <>
-      <div className="sm:hidden mb-4 flex justify-between items-center pt-1 w-full">
+      <div className="sm:hidden flex justify-between items-center w-full">
         <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
@@ -66,7 +66,7 @@ const UnderNavigation = ({
           <HiX />
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light pb-4 mb-2 lg:mb-10 xl:mb-2">
+      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light py-4 mb-2 lg:mb-10 xl:mb-2">
         <div className="flex items-center gap-6 sm:px-3 xl:px-2 py-4">
           <Link
             href="/akut"
@@ -153,7 +153,7 @@ const UnderNavigation = ({
   };
 
   return (
-    <nav className="w-full flex justify-between items-center max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4 h-[88px]">
+    <nav className="w-full flex justify-between items-center max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4 h-[94px]">
       <BipolarLogo />
 
       {/* Mobile menu toggle button */}
