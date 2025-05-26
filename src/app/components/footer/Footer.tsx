@@ -12,7 +12,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="w-full bg-gradient-to-b from-primary-dark via-footer-color to-black text-white py-16">
+    <footer className="w-full bg-gradient-to-b from-primary-dark via-footer-color to-black text-white pt-10 pb-16 sm:py-16">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
           <div className="flex flex-col gap-2 -mt-[18px] sm:pr-4">
