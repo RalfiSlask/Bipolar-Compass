@@ -34,7 +34,7 @@ const BipolarPrevalence = () => {
   }
 
   return (
-    <div className="w-full mt-6 bg-white/80 backdrop-blur-sm rounded-xl p-0 py-8 md:px-4 shadow-lg border-2 border-primary-light">
+    <div className="w-full mt-4 sm:pt-10 bg-white/80 backdrop-blur-sm rounded-xl p-0 py-8 md:px-4 shadow-lg border-2 border-primary-light">
       <div className="w-full mx-auto mb-10 flex flex-col items-center">
         <h4 className="font-bold text-2xl text-primary-dark">
           Prevalens Sverige 2021

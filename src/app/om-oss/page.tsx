@@ -4,7 +4,7 @@ import { ABOUT_LINKS } from '../data/aboutLinks';
 const AboutPage = () => {
   return (
     <section className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-16 sm:pb-24">
         <div className="mb-20 text-left">
           <h2 className="text-5xl md:text-6xl text-center font-bold text-primary-dark mb-8 animate-fade-in">
             Om oss

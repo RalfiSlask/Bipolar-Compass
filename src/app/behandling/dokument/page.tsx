@@ -66,8 +66,8 @@ const DocumentsPage = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
   return (
-    <section className="container max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 min-h-screen">
-      <div className="mb-12 flex flex-col md:flex-row gap-10">
+    <section className="container max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:py-10 min-h-screen">
+      <div className="mb-4 sm:mb-10 flex flex-col md:flex-row gap-10">
         <div className="flex-1">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary-dark mb-4">
             Dokument

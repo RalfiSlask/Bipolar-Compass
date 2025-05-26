@@ -248,7 +248,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 px-4 md:px-10 md:gap-8 content-container">
+        <div className="flex flex-col sm:flex-row gap-4 px-4 md:px-8 md:gap-8 content-container">
           <div className="flex flex-1">
             <Image
               src="/images/relatives/doctor.webp"
@@ -295,7 +295,7 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row px-4 md:px-10 gap-4 md:gap-8 content-container">
+        <div className="flex flex-col sm:flex-row px-4 md:px-8 gap-4 md:gap-8 content-container">
           <div className="flex flex-1 flex-col gap-4">
             <h3 className="h-xs text-primary-dark">
               Vad kan du som anhörig göra under tiden?
@@ -359,8 +359,8 @@ const RelativePage = () => {
             närstående samtidigt som du skyddar ditt eget välmående. "
         />
 
-        <div className="flex flex-col items-center gap-4">
-          <h3 className="h-xs xl:text-xl text-primary-dark mb-2">
+        <div className="flex flex-col items-center gap-10">
+          <h3 className="h-md mt-8 sm:mt-0 text-primary-dark mb-2">
             Organisationer som kan hjälpa dig
           </h3>
           <Organizations />

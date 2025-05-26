@@ -296,8 +296,8 @@ const MedicinePage = () => {
                   <h4 className="text-2xl font-bold text-primary-dark">ECT</h4>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                <div className="sm:space-y-4">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row bg-primary-light/10 rounded-lg">
                     <span className="font-semibold min-w-[120px]">
                       Invasivitet:
                     </span>
@@ -306,21 +306,21 @@ const MedicinePage = () => {
                     </span>
                   </div>
 
-                  <div className="flex gap-3 p-3">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row">
                     <span className="font-semibold min-w-[120px]">
                       Behandlingstid:
                     </span>
                     <span>6-12 sessioner under 2-4 veckor</span>
                   </div>
 
-                  <div className="flex gap-3 p-3">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row">
                     <span className="font-semibold min-w-[120px]">
                       Effektivitet:
                     </span>
                     <span>Mycket effektiv vid svåra fall, snabb effekt</span>
                   </div>
 
-                  <div className="flex gap-3 p-3">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row">
                     <span className="font-semibold min-w-[120px]">
                       Biverkningar:
                     </span>
@@ -346,22 +346,22 @@ const MedicinePage = () => {
                   <h4 className="text-2xl font-bold text-primary-dark">TMS</h4>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                <div className="sm:space-y-4">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row bg-primary-light/10 rounded-lg">
                     <span className="font-semibold min-w-[120px]">
                       Invasivitet:
                     </span>
                     <span>Icke-invasiv, ingen narkos krävs</span>
                   </div>
 
-                  <div className="flex gap-3 p-3">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row">
                     <span className="font-semibold min-w-[120px]">
                       Behandlingstid:
                     </span>
                     <span>20-30 sessioner under 4-6 veckor</span>
                   </div>
 
-                  <div className="flex gap-3 p-3 bg-primary-light/10 rounded-lg">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row bg-primary-light/10 rounded-lg">
                     <span className="font-semibold min-w-[120px]">
                       Effektivitet:
                     </span>
@@ -370,7 +370,7 @@ const MedicinePage = () => {
                     </span>
                   </div>
 
-                  <div className="flex gap-3 p-3">
+                  <div className="flex gap-3 p-3 flex-col sm:flex-row">
                     <span className="font-semibold min-w-[120px]">
                       Biverkningar:
                     </span>

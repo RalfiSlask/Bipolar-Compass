@@ -284,8 +284,8 @@ const SymptomsPage = () => {
           </div>
 
           <EncouragmentContainer text="Det är alltid bättre att söka hjälp en gång för mycket än en gång för lite. Vårdpersonal är van vid att möta personer i kris och finns där för att hjälpa utan att döma." />
-          <RelatedContent currentPage="symptom" />
         </div>
+        <RelatedContent currentPage="symptom" />
       </div>
     </section>
   );

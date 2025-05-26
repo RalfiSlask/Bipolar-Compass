@@ -14,7 +14,7 @@ interface IRelatedContentProps {
 
 const RelatedContent = ({ currentPage }: IRelatedContentProps) => {
   return (
-    <div className="flex flex-col gap-6 border-t border-primary-light/30 pt-4 sm:pt-10">
+    <div className="flex flex-col gap-6 border-t border-primary-light/30 pt-10">
       <div className="text-center max-w-2xl mx-auto">
         <h2 className="h-xs lg:text-2xl text-primary-dark mb-3">
           Relaterat innehåll

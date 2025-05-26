@@ -5,7 +5,7 @@
 }
 
 .intro-container {
-  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 sm:py-10 gap-4 sm:gap-10;
+  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 md:px-8 sm:py-10 gap-4 sm:gap-10;
 }
 
 .intro-image {
@@ -29,7 +29,7 @@
 
 .organization-container {
   @apply rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
-        border border-primary-light/20 shadow-md shadow-primary-dark/20 hover:shadow-md hover:bg-primary-light/70 
+        border border-secondary-light shadow-md shadow-primary-dark/20 hover:shadow-md hover:bg-primary-light/70 
         transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
         hover:after:w-full;
@@ -46,5 +46,5 @@
 }
 
 .page-section {
-  @apply w-full space-y-4 sm:space-y-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-20;
+  @apply w-full space-y-4 sm:space-y-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
 }

@@ -24,8 +24,7 @@ const FAQPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={faqIntro} />
-
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {questions.map((item, index) => (
           <motion.div
             initial={false}
