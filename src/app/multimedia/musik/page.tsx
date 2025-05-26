@@ -36,9 +36,8 @@ const MusicPage = () => {
   };
 
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20 ">
+    <section className="page-section ">
       <PageIntroContainer intro={musicIntro} />
-
       <div className="flex flex-wrap gap-4 items-center">
         {MUSIC_TABS.map((tab) => (
           <button

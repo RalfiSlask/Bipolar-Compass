@@ -13,7 +13,7 @@ const MoviesPage = () => {
   const movies: IMovieOrSeriesResponseData[] = moviesData.movies;
 
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+    <section className="page-section">
       <PageIntroContainer intro={moviesIntro} />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         {ACTORS.map((actor) => {

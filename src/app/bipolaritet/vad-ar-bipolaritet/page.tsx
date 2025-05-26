@@ -12,10 +12,10 @@ import { MdPeople, MdTimeline, MdWarning } from 'react-icons/md';
 
 const WhatIsBipolarityPage = () => {
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+    <section className="page-section">
       <PageIntroContainer intro={whatIsBipolarIntro} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <div className="flex items-center gap-4 mb-6">
             <MdTimeline className="text-4xl text-primary-dark" />
@@ -62,7 +62,7 @@ const WhatIsBipolarityPage = () => {
               Vem drabbas av bipolaritet?
             </h3>
           </div>
-          <p className="mb-6 ">
+          <p className="mb-6">
             Bipolaritet kan drabba vem som helst, oavsett ålder, kön eller
             bakgrund. Sjukdomen debuterar ofta i sena tonåren eller tidig vuxen
             ålder och har en livslång karaktär. Den exakta orsaken är inte känd,

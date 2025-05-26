@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const TherapyPage = () => {
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+    <section className="page-section">
       <PageIntroContainer intro={therapyIntro} />
       <div className="flex flex-col gap-8">
         <div className="flex flex-col content-container">

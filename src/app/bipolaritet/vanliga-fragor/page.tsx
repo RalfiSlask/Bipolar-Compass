@@ -22,7 +22,7 @@ const FAQPage = () => {
   };
 
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-20">
+    <section className="page-section">
       <PageIntroContainer intro={faqIntro} />
 
       <div className="space-y-6">
