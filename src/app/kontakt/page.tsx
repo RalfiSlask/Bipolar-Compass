@@ -3,7 +3,7 @@ import ContactForm from '../components/pages/contact/ContactForm';
 
 const ContactPage = () => {
   return (
-    <section className="bg-tertiary-light w-full text-tertiary-dark flex justify-center py-4 sm:py-10">
+    <section className="bg-tertiary-light w-full text-tertiary-dark flex justify-center pt-4 pb-10 sm:py-10">
       <div className="max-w-[1440px] px-4 md:px-10 w-full">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
           <div className="flex flex-col gap-6">

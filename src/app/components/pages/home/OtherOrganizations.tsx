@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const OtherOrganizations = () => {
   return (
-    <div className="flex flex-col gap-10 bg-tertiary-light w-full px-10 py-20">
+    <div className="flex flex-col gap-10 bg-tertiary-light w-full px-10 py-12 sm:py-20">
       <div className="flex flex-col gap-4">
         <h2 className="text-4xl sm:text-5xl font-bold text-tertiary-dark text-center lg:text-left">
           Organisationer
