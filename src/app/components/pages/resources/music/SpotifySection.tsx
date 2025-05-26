@@ -87,7 +87,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
 
   return (
     <article className="w-full">
-      <div className="bg-gradient-to-br from-primary-light to-primary-dark shadow-xl p-6 md:p-8 rounded-3xl">
+      <div className="bg-gradient-to-br from-primary-light to-primary-dark shadow-xl p-4 md:p-8 rounded-3xl">
         {!isAuthenticated && (
           <div className="mb-8 p-6 bg-primary-dark backdrop-blur-sm rounded-2xl border border-gray-700">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -112,12 +112,12 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
           {activePlaylist.map((playlist) => (
             <div
               key={playlist.id}
-              className="bg-primary-dark backdrop-blur-sm p-6 rounded-2xl shadow-inner border border-gray-700"
+              className="bg-primary-dark backdrop-blur-sm sm:p-6 rounded-2xl shadow-inner sm:border sm:border-gray-700"
             >
-              <h3 className="text-white text-xl font-semibold mb-4">
+              <h3 className="hidden sm:block text-white text-xl font-semibold mb-4">
                 {playlist.title}
               </h3>
-              <div className="overflow-hidden rounded-xl shadow-lg aspect-[4/3]">
+              <div className="overflow-hidden rounded-xl shadow-lg sm:aspect-[4/3]">
                 <iframe
                   src={`https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator`}
                   width="100%"
@@ -126,8 +126,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
                   frameBorder="0"
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                  className="hover:opacity-95 transition-opacity"
-                  style={{ minHeight: '352px' }}
+                  className="hover:opacity-95 transition-opacity min-h-[450px] sm:min-h-[352px]"
                 />
               </div>
             </div>

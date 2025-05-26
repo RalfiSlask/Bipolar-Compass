@@ -55,7 +55,7 @@ const UnderNavigation = ({
   // Render mobile menu header
   const renderMobileMenuHeader = () => (
     <>
-      <div className="sm:hidden flex justify-between items-center w-full">
+      <div className="sm:hidden flex justify-between items-center w-full py-4 h-[94px]">
         <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
@@ -172,7 +172,7 @@ const UnderNavigation = ({
           flex flex-col xl:flex-row gap-1 lg:gap-4 xl:gap-2 lg:items-center xl:min-w-[910px] xl:max-w-[910px]
           ${
             isMenuOpen
-              ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white pt-3 pb-4 p-4 sm:p-6 shadow-lg z-[999] overflow-y-auto'
+              ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white pb-4 px-4 sm:p-6 shadow-lg z-[999] overflow-y-auto'
               : 'hidden xl:flex'
           }`}
         onClick={(e) => e.stopPropagation()}
