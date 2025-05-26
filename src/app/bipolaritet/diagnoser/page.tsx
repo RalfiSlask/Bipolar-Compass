@@ -11,7 +11,7 @@ const DiagnosesPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={diagnosisIntro} />
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Bipolär typ 1 (Bipolar I disorder)

@@ -8,7 +8,7 @@ const TherapyPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={therapyIntro} />
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Psykoterapi: Samtalsterapi som verktyg

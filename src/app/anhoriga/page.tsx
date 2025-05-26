@@ -16,10 +16,10 @@ import { relativeIntro } from '../data/pageIntros';
 
 const RelativePage = () => {
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 md:px-10 pt-10 pb-16">
+    <section className="page-section">
       <PageIntroContainer intro={relativeIntro} />
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Vad innebär bipolär sjukdom?

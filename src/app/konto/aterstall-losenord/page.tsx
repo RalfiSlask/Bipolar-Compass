@@ -15,7 +15,7 @@ const ResetPasswordPage = () => {
 
         <div className="w-full max-w-lg">
           <div
-            className="bg-white rounded-xl px-4 py-8 sm:px-8 md:px-10 flex flex-col gap-8 border-2 w-full border-primary-dark/50"
+            className="bg-white rounded-xl px-4 py-8 sm:px-8 md:px-10 flex flex-col gap-4 sm:gap-10 border-2 w-full border-primary-dark/50"
             style={{
               boxShadow: `
                 -10px 0 20px -5px rgba(255, 255, 255, 0.3), 

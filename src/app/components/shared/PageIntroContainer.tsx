@@ -22,10 +22,16 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
   return (
     <div className={`intro-container ${bgClass}`}>
       <div className="flex-1 h-full">
-        <h2 className={`h-lg font-bold mb-6 text-${colorClass}`}>{title}</h2>
-        <div className={`space-y-6 text-xl text-${colorClass}`}>
-          <p className={`text-xl text-${colorClass}`}>{description}</p>
-          <p className={`text-xl text-${colorClass} font-bold`}>
+        <h2 className={`h-lg font-bold mb-4 sm:mb-6 text-${colorClass}`}>
+          {title}
+        </h2>
+        <div
+          className={`space-y-4 sm:space-y-6 text-lg sm:text-xl text-${colorClass}`}
+        >
+          <p className={`text-lg sm:text-xl text-${colorClass}`}>
+            {description}
+          </p>
+          <p className={`text-lg sm:text-xl text-${colorClass} font-bold`}>
             {descriptionBold}
           </p>
         </div>

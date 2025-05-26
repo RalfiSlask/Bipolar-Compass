@@ -23,8 +23,8 @@ const PodcastPage = () => {
   if (!mounted) return <Spinner />;
 
   return (
-    <section className="w-full space-y-12 max-w-[1440px] px-4 pt-10 md:px-10 pb-20">
-      <div className="flex flex-col gap-8">
+    <section className="page-section">
+      <div className="flex flex-col gap-4 sm:gap-10">
         <PageIntroContainer intro={podcastsIntro} />
 
         <div className="flex flex-col gap-6">

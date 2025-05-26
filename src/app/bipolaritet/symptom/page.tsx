@@ -10,8 +10,7 @@ const SymptomsPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={symptomsIntro} />
-
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
             Symptom under maniska episoder
