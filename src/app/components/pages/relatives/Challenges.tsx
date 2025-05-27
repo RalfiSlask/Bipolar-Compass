@@ -42,7 +42,7 @@ const Challenges = () => {
           Det är viktigt att ta hand om sig själv också! Här kan du hitta mer
           information om{' '}
           <Link
-            href="/behandling/sjalv-hjalp"
+            href="/behandling/sjalvhjalp"
             className="nav-link text-tertiary-dark font-semibold"
           >
             själv hjälp
