@@ -80,8 +80,8 @@ const RelativesSettings = ({
       className="mx-auto max-w-7xl w-full bg-tertiary-light"
       aria-labelledby="relatives-heading"
     >
-      {!user?.isVerified && <VerficationMessage />}
-      <div className="flex flex-col gap-3 text-center mb-8">
+      <div className="flex flex-col gap-3 text-center mb-8 items-center">
+        {!user?.isVerified && <VerficationMessage />}
         <div className="flex items-center justify-center gap-3">
           <FiUsers className="w-8 h-8 text-primary-dark" />
           <h2

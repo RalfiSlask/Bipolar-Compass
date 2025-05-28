@@ -178,8 +178,8 @@ const MedicineSettings = ({
       className="mx-auto max-w-7xl w-full bg-tertiary-light"
       aria-labelledby="medication-heading"
     >
-      {!user?.isVerified && <VerficationMessage />}
-      <div className="flex flex-col gap-3 text-center mb-8">
+      <div className="flex flex-col items-center gap-3 text-center mb-8">
+        {!user?.isVerified && <VerficationMessage />}
         <div className="flex items-center justify-center gap-3">
           <MdMedication className="w-8 h-8 text-primary-dark" />
           <h2
