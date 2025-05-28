@@ -1,10 +1,10 @@
 import {
-  BsCalendarCheck,
-  BsClockHistory,
-  BsGear,
-  BsJournalText,
+    BsCalendarCheck,
+    BsClockHistory,
+    BsGear,
+    BsJournalText,
 } from 'react-icons/bs';
-import { FaCompass, FaPills, FaSignOutAlt, FaUsers } from 'react-icons/fa';
+import { FaCompass, FaPills, FaSignOutAlt, FaUserNurse, FaUsers } from 'react-icons/fa';
 
 export const dashboardNavigationLinks = [
   {
@@ -32,6 +32,11 @@ export const dashboardNavigationLinks = [
     title: 'Anhöriga',
     href: '/min-sida/anhoriga',
     icon: <FaUsers className="w-6 h-6 text-primary-dark" />,
+  },
+  {
+    title: 'Vårdgivare',
+    href: '/min-sida/vardgivare',
+    icon: <FaUserNurse className="w-6 h-6 text-primary-dark" />,
   },
   {
     title: 'Mediciner',
