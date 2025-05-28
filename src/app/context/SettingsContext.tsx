@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createContext, useCallback, useState } from 'react';
+import { IHealthcareProvider } from '../types/healthcareProvider';
 import { IRelative } from '../types/relative';
 import { IUser } from '../types/user';
 
@@ -26,6 +27,10 @@ interface ISettingsContext {
   saveNotificationSettings: (
     emailNotification: boolean,
     relatives: IRelative[]
+  ) => Promise<void>;
+  saveHealthcareProvidersSettings: (
+    healthcareProviders: IHealthcareProvider[],
+    email: string
   ) => Promise<void>;
   savePasswordSettings: (
     currentPassword: string,
@@ -145,6 +150,26 @@ export const SettingsProvider = ({
     }
   };
 
+  const saveHealthcareProvidersSettings = async (
+    healthcareProviders: IHealthcareProvider[],
+    email: string
+  ): Promise<void> => {
+    try {
+      await axios.put('/api/settings/save/healthcare_providers', {
+        healthcareProviders,
+        email,
+      });
+      if (user) {
+        setUser({
+          ...user,
+          settings: { ...user.settings, healthcare_providers: healthcareProviders },
+        });
+      }
+    } catch (err) {
+      console.error('could not save healthcare providers settings: ', err);
+      throw new Error('Could not save healthcare providers settings');
+    }
+  };
 
   const savePasswordSettings = async (
     currentPassword: string,
@@ -176,6 +201,7 @@ export const SettingsProvider = ({
     saveProfileSettings,
     deleteAccount,
     saveRelativesSettings,
+    saveHealthcareProvidersSettings,
     savePasswordSettings,
     saveNotificationSettings,
   };

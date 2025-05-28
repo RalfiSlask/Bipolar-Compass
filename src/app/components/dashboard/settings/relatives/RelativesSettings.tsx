@@ -1,22 +1,16 @@
+import CaregiverInfoContainer from '@/app/components/shared/CaregiverInfoContainer';
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import { notificationFrequencies } from '@/app/data/notifications';
+import { RELATIVE_FEATURES, RELATIVE_TYPES } from '@/app/data/relatives';
 import { IRelative } from '@/app/types/relative';
 import { IUser } from '@/app/types/user';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import {
-  FiClock,
-  FiMail,
-  FiPlusCircle,
-  FiShield,
-  FiUserPlus,
-  FiUsers,
-} from 'react-icons/fi';
+import { FiEdit, FiPlusCircle, FiUserPlus, FiUsers } from 'react-icons/fi';
 import RelativeDeleteConfirmationModal from './RelativeDeleteConfirmModal';
-
 interface RelativesSettingsProps {
   user: IUser;
   saveRelativesSettings: (relatives: IRelative[]) => Promise<void>;
@@ -26,10 +20,16 @@ const RelativesSettings = ({
   user,
   saveRelativesSettings,
 }: RelativesSettingsProps) => {
-  const [relatives, setRelatives] = useState(user.settings.relatives);
+  const [relatives, setRelatives] = useState<IRelative[]>(
+    user.settings.relatives || []
+  );
   const [isAddingRelative, setIsAddingRelative] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedRelativeIndex, setSelectedRelativeIndex] = useState<
+    number | null
+  >(null);
+  const [isEditingRelative, setIsEditingRelative] = useState(false);
+  const [editingRelativeIndex, setEditingRelativeIndex] = useState<
     number | null
   >(null);
 
@@ -37,10 +37,20 @@ const RelativesSettings = ({
     email: '',
     email_enabled: false,
     email_frequency: 'weekly',
+    name: '',
+    type: '',
   };
 
   const handleSubmit = async (values: IRelative) => {
-    const newRelatives = [...relatives, values];
+    let newRelatives;
+    if (isEditingRelative && editingRelativeIndex !== null) {
+      newRelatives = relatives.map((relative, index) =>
+        index === editingRelativeIndex ? values : relative
+      );
+    } else {
+      newRelatives = [...relatives, values];
+    }
+
     try {
       await saveRelativesSettings(newRelatives);
       setRelatives(newRelatives);
@@ -49,7 +59,8 @@ const RelativesSettings = ({
       toast.error('Kunde inte spara inställningar');
     }
     setIsAddingRelative(false);
-    toast.success('Anhörig tillagd');
+    setIsEditingRelative(false);
+    setEditingRelativeIndex(null);
   };
 
   const handleDeleteRelative = async (index: number) => {
@@ -73,6 +84,12 @@ const RelativesSettings = ({
     }
     setDeleteModalOpen(false);
     setSelectedRelativeIndex(null);
+  };
+
+  const handleEditRelative = (index: number) => {
+    setEditingRelativeIndex(index);
+    setIsEditingRelative(true);
+    setIsAddingRelative(false);
   };
 
   return (
@@ -105,7 +122,7 @@ const RelativesSettings = ({
           !user.isVerified ? 'opacity-50 pointer-events-none' : ''
         }`}
       >
-        {!isAddingRelative && (
+        {!isAddingRelative && !isEditingRelative && (
           <div className="bg-white px-4 md:px-8 py-8 rounded-lg border border-gray-200 shadow-sm">
             <div className="flex flex-col items-center justify-center gap-4">
               {relatives.length === 0 ? (
@@ -128,26 +145,7 @@ const RelativesSettings = ({
                     </button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
-                    {[
-                      {
-                        icon: <FiMail className="w-6 h-6" />,
-                        title: 'E-postutskick',
-                        description:
-                          'Skicka automatiska uppdateringar till dina anhöriga via e-post.',
-                      },
-                      {
-                        icon: <FiClock className="w-6 h-6" />,
-                        title: 'Anpassad frekvens',
-                        description:
-                          'Välj hur ofta dina anhöriga ska få uppdateringar.',
-                      },
-                      {
-                        icon: <FiShield className="w-6 h-6" />,
-                        title: 'Säker hantering',
-                        description:
-                          'All kommunikation hanteras säkert och konfidentiellt.',
-                      },
-                    ].map((feature, index) => (
+                    {RELATIVE_FEATURES.map((feature, index) => (
                       <div
                         key={index}
                         className="p-6 bg-primary-light rounded-lg text-center hover:bg-primary-light/80 transition-colors"
@@ -178,9 +176,13 @@ const RelativesSettings = ({
           </div>
         )}
 
-        {isAddingRelative && (
+        {(isAddingRelative || isEditingRelative) && (
           <Formik
-            initialValues={initialValues}
+            initialValues={
+              isEditingRelative && editingRelativeIndex !== null
+                ? relatives[editingRelativeIndex]
+                : initialValues
+            }
             validationSchema={relativeValidationSchema}
             onSubmit={handleSubmit}
           >
@@ -188,6 +190,38 @@ const RelativesSettings = ({
               <Form className="flex flex-col gap-6">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <div className="flex flex-col gap-4">
+                    <label className="block text-lg font-medium mb-2">
+                      Namn
+                    </label>
+                    <Field
+                      type="text"
+                      name="name"
+                      className="primary-input"
+                      placeholder="Ange namn"
+                    />
+                    {errors.name && touched.name && (
+                      <div className="text-red-500 text-sm">{errors.name}</div>
+                    )}
+
+                    <label className="block text-lg font-medium mb-2">
+                      Typ av anhörig
+                    </label>
+                    <CustomSelect
+                      options={RELATIVE_TYPES}
+                      name="type"
+                      value={values.type}
+                      onChange={(value: string) => {
+                        setFieldValue('type', value);
+                      }}
+                      placeholder="Välj typ av anhörig..."
+                      error={errors.type}
+                      touched={touched.type}
+                      size="large"
+                    />
+                    {errors.type && touched.type && (
+                      <div className="text-red-500 text-sm">{errors.type}</div>
+                    )}
+
                     <label className="block text-lg font-medium mb-2">
                       E-postadress
                     </label>
@@ -245,12 +279,16 @@ const RelativesSettings = ({
 
                 <div className="flex gap-4">
                   <button type="submit" className="primary-button">
-                    Lägg till
+                    {isEditingRelative ? 'Uppdatera' : 'Lägg till'}
                   </button>
                   <button
                     type="button"
                     className="tertiary-button"
-                    onClick={() => setIsAddingRelative(false)}
+                    onClick={() => {
+                      setIsAddingRelative(false);
+                      setIsEditingRelative(false);
+                      setEditingRelativeIndex(null);
+                    }}
                   >
                     Avbryt
                   </button>
@@ -260,68 +298,55 @@ const RelativesSettings = ({
           </Formik>
         )}
 
-        {!isAddingRelative && relatives.length > 0 && (
+        {!isAddingRelative && !isEditingRelative && relatives.length > 0 && (
           <div className="bg-white px-4 md:px-6 py-6 rounded-lg shadow-sm border border-gray-200">
             <h3 className="text-center md:text-left text-base md:text-xl font-semibold mb-6 text-primary-dark">
               Registrerade anhöriga
             </h3>
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {relatives.map((relative, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
-                >
-                  <div className="flex flex-col-reverse items-center gap-2 md:flex-row justify-between md:items-start mb-4">
-                    <div>
-                      <h4 className="text-base md:text-lg font-medium text-gray-900">
-                        {relative.email}
-                      </h4>
-                    </div>
-                    <button
-                      onClick={() => handleDeleteRelative(index)}
-                      className="text-red-600 hover:text-red-800 transition-colors"
-                      aria-label="Ta bort anhörig"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+              {relatives.map((relative, index) => {
+                const typeLabel =
+                  RELATIVE_TYPES.find((type) => type.value === relative.type)
+                    ?.label || 'Typ saknas';
+                return (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-sm border border-gray-200 p-6"
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <button
+                        aria-label="Redigera anhörig"
+                        onClick={() => handleEditRelative(index)}
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+                        <FiEdit className="h-5 w-5 text-primary-dark hover:text-primary-medium transition-colors" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteRelative(index)}
+                        className="text-red-600 hover:text-red-800 transition-colors"
+                        aria-label="Ta bort anhörig"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
 
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <p className="text-base md:text-primary-dark">Frekvens</p>
-                      <p className="font-medium text-base md:text-gray-900">
-                        {relative.email_frequency === 'weekly' && 'Varje vecka'}
-                        {relative.email_frequency === 'biweekly' &&
-                          'Varannan vecka'}
-                        {relative.email_frequency === 'monthly' && 'Månadsvis'}
-                      </p>
-                    </div>
-                    <div className="col-span-2">
-                      <p className="text-base md:text-primary-dark">
-                        Påminnelser
-                      </p>
-                      <p className="font-medium text-base md:text-gray-900">
-                        {relative.email_enabled ? (
-                          <span className="text-green-700">Aktiverad</span>
-                        ) : (
-                          <span className="text-gray-500">Inaktiverad</span>
-                        )}
-                      </p>
-                    </div>
+                    <CaregiverInfoContainer
+                      caregiver={relative}
+                      typeLabel={typeLabel}
+                    />
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

@@ -4,31 +4,31 @@ import axios, { AxiosResponse } from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {
-  FaBed,
-  FaCalendarAlt,
-  FaCog,
-  FaFrown,
-  FaNotesMedical,
-  FaUserFriends,
+    FaBed,
+    FaCalendarAlt,
+    FaCog,
+    FaFrown,
+    FaNotesMedical,
+    FaUserFriends,
 } from 'react-icons/fa';
 import Spinner from '../components/shared/Spinner';
 
+import AnxietyPieChart from '../components/dashboard/AnxietyPieChart';
+import DailyAverageMoodChart from '../components/dashboard/DailyAverageMoodChart';
 import DashboardCardWrapper from '../components/dashboard/DashboardCardWrapper';
+import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
+import SleepGraph from '../components/dashboard/SleepGraph';
 import { WEIGHTS } from '../data/dashboardWeights';
 import { ICustomSession } from '../types/authoptions';
 import { IMoodValue } from '../types/moodtracker';
 import { IUserWithMoodTracker } from '../types/user';
 import {
-  convertMedicineFrequencyToSwedishString,
-  moodScoreColor,
-  renderMessage,
+    convertMedicineFrequencyToSwedishString,
+    moodScoreColor,
+    renderMessage,
 } from '../utils/dashboardUtils';
 import { roundToNearestHalf } from '../utils/numberUtils';
-import AnxietyPieChart from '../components/dashboard/AnxietyPieChart';
-import SleepGraph from '../components/dashboard/SleepGraph';
-import DailyAverageMoodChart from '../components/dashboard/DailyAverageMoodChart';
-import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 
 const MyPage = () => {
   const { data: session } = useSession() as { data: ICustomSession | null };
@@ -271,6 +271,12 @@ const MyPage = () => {
                   className="bg-primary-light rounded-xl p-4 mb-3 last:mb-0"
                 >
                   <p className="text-primary-dark font-semibold">
+                    {relative.name}
+                  </p>
+                  <p className="text-dark text-sm">
+                    {relative.type}
+                  </p>
+                  <p className="text-primary-dark text-sm">
                     {relative.email}
                   </p>
                 </div>
@@ -278,6 +284,32 @@ const MyPage = () => {
             ) : (
               <p className="text-primary-dark text-sm mt-1">
                 Inga anhöriga registrerade
+              </p>
+            )}
+          </DashboardCardWrapper>
+
+          <DashboardCardWrapper title="Vårdgivare" icon={FaUserFriends}>
+            {userData?.settings.healthcare_providers && userData?.settings.healthcare_providers.length &&
+            userData?.settings.healthcare_providers.length > 0 ? (
+              userData?.settings.healthcare_providers.map((healthcareProvider) => (
+                <div
+                  key={healthcareProvider.name}
+                  className="bg-primary-light rounded-xl p-4 mb-3 last:mb-0"
+                >
+                  <p className="text-primary-dark font-semibold">
+                    {healthcareProvider.name}
+                  </p>
+                  <p className="text-dark text-sm">
+                    {healthcareProvider.type}
+                  </p>
+                  <p className="text-primary-dark text-sm">
+                    {healthcareProvider.email}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p className="text-primary-dark text-sm mt-1">
+                Inga vårdgivare registrerade
               </p>
             )}
           </DashboardCardWrapper>
