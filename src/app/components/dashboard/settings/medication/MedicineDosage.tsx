@@ -40,7 +40,7 @@ const MedicineDosage = () => {
     <div className="flex flex-col gap-4">
       <label className="font-medium">Dosering</label>
       <div className="flex gap-2">
-        <div className="flex-1">
+        <div className="flex-1 sm:flex-none">
           <input
             {...doseField}
             type="number"
@@ -54,7 +54,7 @@ const MedicineDosage = () => {
             <div className="text-red-500 text-sm mt-1">{doseMeta.error}</div>
           )}
         </div>
-        <div className="flex-1">
+        <div className="flex-1 sm:flex-none">
           <CustomSelect
             options={DOSE_UNIT_OPTIONS}
             value={unitField.value}
@@ -64,7 +64,7 @@ const MedicineDosage = () => {
             name="doseUnit"
             error={unitMeta.error}
             touched={unitMeta.touched}
-            size="large"
+            size="small"
           />
         </div>
       </div>

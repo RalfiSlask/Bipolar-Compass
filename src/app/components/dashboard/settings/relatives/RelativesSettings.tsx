@@ -138,11 +138,11 @@ const RelativesSettings = ({
         }`}
       >
         {!isAddingRelative && !isEditingRelative && (
-          <div className="bg-white px-4 md:px-8 py-8 rounded-lg border border-gray-200 shadow-sm">
+          <div className="bg-white px-4 md:px-8 py-6 sm:py-8 rounded-lg border border-gray-200 shadow-sm">
             <div className="flex flex-col items-center justify-center gap-4">
               {relatives.length === 0 ? (
                 <>
-                  <div className="text-center py-8">
+                  <div className="text-center sm:py-8">
                     <FiUserPlus className="mx-auto h-16 w-16 text-primary-medium mb-4" />
                     <h3 className="text-xl font-medium text-gray-900 mb-3">
                       Inga anhöriga tillagda än
@@ -159,7 +159,7 @@ const RelativesSettings = ({
                       Lägg till anhörig
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 sm:mt-8 w-full">
                     {RELATIVE_FEATURES.map((feature, index) => (
                       <div
                         key={index}
@@ -292,7 +292,7 @@ const RelativesSettings = ({
                   </div>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex justify-center md:justify-start gap-4 mb-16">
                   <button type="submit" className="primary-button">
                     {isEditingRelative ? 'Uppdatera' : 'Lägg till'}
                   </button>

@@ -140,7 +140,7 @@ const DiaryNote = () => {
   }
 
   return (
-    <div className="relative flex flex-col justify-center w-full items-center min-h-screen p-4 md:p-6">
+    <div className="relative flex flex-col justify-center w-full items-center min-h-screen p-4 pb-12 md:p-6">
       <Image
         src="/images/dashboard/notes.webp"
         alt="Bakgrundsbild"
@@ -149,7 +149,7 @@ const DiaryNote = () => {
         className="object-cover z-0 opacity-60"
         quality={80}
       />
-      <div className="relative z-10 w-full max-w-2xl mx-auto">
+      <div className="relative flex flex-col items-center z-10 w-full max-w-2xl mx-auto">
         <Link
           href="/min-sida/dagbok"
           className="inline-flex items-center shadow-xl bg-white rounded-md p-2 text-primary-dark hover:text-primary mb-4 transition-all duration-200 hover:translate-x-[-10px]"
@@ -158,7 +158,7 @@ const DiaryNote = () => {
           <span>Tillbaka till dagboken</span>
         </Link>
 
-        <div className="bg-primary-light rounded-lg shadow-md overflow-hidden">
+        <div className="bg-primary-light rounded-lg shadow-md overflow-hidden w-full">
           <div className="flex flex-col md:flex-row w-full">
             <div className="w-full md:w-[230px] bg-primary-dark p-6 flex justify-center">
               <div className="flex items-center justify-center gap-4 py-4 md:py-10">

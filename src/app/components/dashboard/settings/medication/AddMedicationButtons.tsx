@@ -1,14 +1,16 @@
 interface IAddMedicationButtonsProps {
   abortAddingMedication: () => void;
+  isEditing?: boolean;
 }
 
 const AddMedicationButtons = ({
   abortAddingMedication,
+  isEditing = false,
 }: IAddMedicationButtonsProps) => {
   return (
-    <div className="flex gap-4">
+    <div className="flex justify-center md:justify-start gap-4 mb-16">
       <button type="submit" className="primary-button py-1">
-        Lägg till medicin
+        {isEditing ? 'Uppdatera medicin' : 'Lägg till medicin'}
       </button>
       <button
         type="button"

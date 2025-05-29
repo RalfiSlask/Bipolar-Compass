@@ -1,15 +1,18 @@
 import { IMedication } from '@/app/types/medication';
 import { useState } from 'react';
+import { FiEdit } from 'react-icons/fi';
 import DeleteConfirmationModal from './DeleteConfirmModal';
 
 interface YourMedicationsProps {
   medications: IMedication[];
   handleDeleteMedicine: (index: number) => void;
+  handleEditMedicine: (index: number) => void;
 }
 
 const YourMedications = ({
   medications,
   handleDeleteMedicine,
+  handleEditMedicine,
 }: YourMedicationsProps) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [medicineToDelete, setMedicineToDelete] = useState<{
@@ -54,24 +57,33 @@ const YourMedications = ({
                     'Antidepressiva'}
                 </p>
               </div>
-              <button
-                onClick={() => handleDeleteClick(index, medication.name)}
-                className="text-red-500 hover:text-red-800 transition-colors p-2"
-                aria-label={`Ta bort ${medication.name || 'medicin'}`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handleEditMedicine(index)}
+                  className="text-primary-dark hover:text-primary-medium transition-colors p-2"
+                  aria-label={`Redigera ${medication.name || 'medicin'}`}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
+                  <FiEdit className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={() => handleDeleteClick(index, medication.name)}
+                  className="text-red-500 hover:text-red-800 transition-colors p-2"
+                  aria-label={`Ta bort ${medication.name || 'medicin'}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 text-sm">

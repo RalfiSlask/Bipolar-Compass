@@ -25,6 +25,7 @@ const HealthcareProviderPageContent = () => {
       }
     } catch (err) {
       console.error('could not fetch user data: ', err);
+      toast.error('Kunde inte hämta användardata');
     } finally {
       setIsLoading(false);
     }

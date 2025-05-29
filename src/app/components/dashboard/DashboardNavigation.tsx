@@ -24,7 +24,7 @@ const DashboardNavigation = ({
 
   return (
     <nav
-      className="flex flex-col gap-2 mt-16 w-full px-6 list-none"
+      className="flex flex-col gap-2 mt-6 sm:mt-8 w-full px-6 list-none"
       role="navigation"
     >
       {dashboardNavigationLinks.map((link) => (
@@ -46,7 +46,7 @@ const DashboardNavigation = ({
                 ? handleClickOnSidebarLinksOnMobile
                 : undefined
             }
-            className="flex items-center w-full gap-3 px-4 py-3 block"
+            className="flex items-center w-full gap-3 px-4 py-3"
           >
             <span className="transition-transform duration-200 group-hover:scale-110">
               {link.icon}

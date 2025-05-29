@@ -22,7 +22,7 @@ const BipolarStatistics = () => {
   return (
     <div className="bg-secondary-light w-full px-4 py-12 md:py-16">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-secondary-dark text-center mb-8 md:mb-16">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-secondary-dark text-center mb-2 sm:mb-6 md:mb-16">
           Bipolaritet I Sverige
         </h2>
 
@@ -74,7 +74,7 @@ const BipolarStatistics = () => {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
-              <div className="text-center sm:flex-1 sm:text-left sm:ml-4 mt-4 sm:mt-0">
+              <div className="text-center sm:flex-1 sm:text-left sm:ml-4">
                 <div className="mb-4">
                   <span className="text-3xl md:text-4xl font-bold text-secondary-dark">
                     63%
@@ -93,9 +93,9 @@ const BipolarStatistics = () => {
                   <BarChart data={BIPOLAR_TYPES}>
                     <XAxis dataKey="name" />
                     <YAxis />
-                    <Tooltip />
+                    <Tooltip formatter={(value) => [`${value}%`, 'Andel']} />
                     <Bar dataKey="value" fill={BAR_COLOR}>
-                      {BIPOLAR_TYPES.map((entry, index) => (
+                      {BIPOLAR_TYPES.map((_, index) => (
                         <Cell key={`bar-${index}`} fill={BAR_COLOR} />
                       ))}
                     </Bar>

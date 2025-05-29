@@ -57,7 +57,7 @@ const CustomSelect = ({
         type="button"
         className={`w-full sm:w-[160px] ${
           size === 'large' ? 'sm:w-full min-w-[240px]' : 'sm:w-[160px]'
-        } h-[42px] px-3 text-left bg-white rounded-md border primary-input
+        } h-[44px] px-3 text-left bg-white rounded-md border primary-input
           ${error && touched ? 'border-red-500' : ''}
           flex items-center justify-between`}
         onClick={() => setIsOpen(!isOpen)}

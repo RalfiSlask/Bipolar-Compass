@@ -33,7 +33,8 @@ const MedicinePageContent = () => {
   };
 
   const saveMedicationSettings = async (
-    medications: IMedication[]
+    medications: IMedication[],
+    operation: 'add' | 'edit' | 'delete'
   ): Promise<IMedication[]> => {
     if (!email) return medications;
 
@@ -42,6 +43,7 @@ const MedicinePageContent = () => {
         medications,
         email,
       });
+
       if (response?.data?.medications) {
         setUser((prevUser) =>
           prevUser
@@ -54,9 +56,20 @@ const MedicinePageContent = () => {
               }
             : prevUser
         );
+
+        // Show appropriate toast message based on the operation
+        if (operation === 'add') {
+          toast.success('Medicin sparad!');
+        } else if (operation === 'edit') {
+          toast.success('Medicin uppdaterad!');
+        } else if (operation === 'delete') {
+          toast.success('Medicin borttagen!');
+        }
+
         return response.data.medications;
       }
     } catch (err) {
+      toast.error('Något gick fel när medicin sparades.');
       console.error('could not save medications: ', err);
       throw err;
     }

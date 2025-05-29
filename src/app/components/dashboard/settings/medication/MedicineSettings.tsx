@@ -12,6 +12,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiClock, FiList, FiPlusCircle, FiShield } from 'react-icons/fi';
 import { MdMedication } from 'react-icons/md';
+import AddMedicationButtons from './AddMedicationButtons';
 import AntiDepressantMedicationMessage from './AntiDepressantMedicationMessage';
 import MedicationCategoryDropdown from './MedicationCategoryDropdown';
 import MedicationNotes from './MedicationNotes';
@@ -19,12 +20,12 @@ import MedicationReminder from './MedicationReminder';
 import MedicineDosage from './MedicineDosage';
 import MedicineFrequencyDropdown from './MedicineFrequencyDropdown';
 import YourMedications from './YourMedications';
-import AddMedicationButtons from './AddMedicationButtons';
 
 interface MedicineSettingsProps {
   user: IUser;
   saveMedicationSettings: (
-    medications: IMedication[]
+    medications: IMedication[],
+    operation: 'add' | 'edit' | 'delete'
   ) => Promise<IMedication[]>;
 }
 
@@ -36,6 +37,10 @@ const MedicineSettings = ({
     user.profile.medications
   );
   const [isAddingMedicine, setIsAddingMedicine] = useState(false);
+  const [isEditingMedicine, setIsEditingMedicine] = useState(false);
+  const [editingMedicineIndex, setEditingMedicineIndex] = useState<
+    number | null
+  >(null);
   const [medicationError, setMedicationError] = useState('');
 
   const initialValues: IMedication = {
@@ -51,6 +56,8 @@ const MedicineSettings = ({
 
   const abortAddingMedicine = () => {
     setIsAddingMedicine(false);
+    setIsEditingMedicine(false);
+    setEditingMedicineIndex(null);
   };
 
   const handleChangeOnMedicationField = (
@@ -72,47 +79,70 @@ const MedicineSettings = ({
     }
   };
 
-  const saveSettings = async (
-    newMedicines: IMedication[]
-  ): Promise<IMedication[]> => {
-    try {
-      const updatedMedicines = await saveMedicationSettings(newMedicines);
-      setMedicines(updatedMedicines);
-      return updatedMedicines;
-    } catch (err) {
-      console.error('Could not save medications:', err);
-      toast.error('Kunde inte spara mediciner');
-      return newMedicines;
-    }
+  const handleEditMedicine = (index: number) => {
+    setEditingMedicineIndex(index);
+    setIsEditingMedicine(true);
+    setIsAddingMedicine(false);
   };
 
   const handleSubmit = async (values: IMedication) => {
-    try {
-      const newMedicine: IMedication = {
-        category: values.category,
-        name: values.name,
-        dosage: Number(values.dosage),
-        doseUnit: values.doseUnit,
-        times: values.times || [],
-        frequency: values.frequency,
-        notes: values.notes,
-        reminder: {
-          enabled: Boolean(values.reminder.enabled),
-          method: values.reminder.method || 'email',
+    let operation: 'add' | 'edit';
+    let newMedicines: IMedication[];
+
+    if (isEditingMedicine && editingMedicineIndex !== null) {
+      operation = 'edit';
+      newMedicines = medications.map((medication, index) =>
+        index === editingMedicineIndex
+          ? {
+              category: values.category,
+              name: values.name,
+              dosage: Number(values.dosage),
+              doseUnit: values.doseUnit,
+              times: values.times || [],
+              frequency: values.frequency,
+              notes: values.notes,
+              reminder: {
+                enabled: Boolean(values.reminder.enabled),
+                method: values.reminder.method || 'email',
+                times: values.times || [],
+                schedule: [],
+                history: [],
+              },
+            }
+          : medication
+      );
+    } else {
+      operation = 'add';
+      newMedicines = [
+        ...medications,
+        {
+          category: values.category,
+          name: values.name,
+          dosage: Number(values.dosage),
+          doseUnit: values.doseUnit,
           times: values.times || [],
-          schedule: [],
-          history: [],
+          frequency: values.frequency,
+          notes: values.notes,
+          reminder: {
+            enabled: Boolean(values.reminder.enabled),
+            method: values.reminder.method || 'email',
+            times: values.times || [],
+            schedule: [],
+            history: [],
+          },
         },
-      };
+      ];
+    }
 
-      const newMedicines = [...medications, newMedicine];
-      const updatedMedicines = await saveSettings(newMedicines);
-
-      if (updatedMedicines) {
-        setMedicines(updatedMedicines);
-        setIsAddingMedicine(false);
-        toast.success('Medicin tillagd');
-      }
+    try {
+      const updatedMedicines = await saveMedicationSettings(
+        newMedicines,
+        operation
+      );
+      setMedicines(updatedMedicines);
+      setIsAddingMedicine(false);
+      setIsEditingMedicine(false);
+      setEditingMedicineIndex(null);
     } catch (error) {
       console.error('could not save medication:', error);
       toast.error('Kunde inte spara medicin');
@@ -161,12 +191,11 @@ const MedicineSettings = ({
         (_: IMedication, i: number) => i !== index
       );
 
-      const updatedMedicines = await saveSettings(newMedicines);
-
-      if (updatedMedicines) {
-        setMedicines(updatedMedicines);
-        toast.success('Medicin borttagen');
-      }
+      const updatedMedicines = await saveMedicationSettings(
+        newMedicines,
+        'delete'
+      );
+      setMedicines(updatedMedicines);
     } catch (error) {
       console.error('could not delete medication: ', error);
       toast.error('Kunde inte ta bort medicin');
@@ -178,7 +207,7 @@ const MedicineSettings = ({
       className="mx-auto max-w-7xl w-full bg-tertiary-light"
       aria-labelledby="medication-heading"
     >
-      <div className="flex flex-col items-center gap-3 text-center mb-8">
+      <div className="flex flex-col items-center gap-3 text-center mb-6 sm:mb-8">
         {!user?.isVerified && <VerficationMessage />}
         <div className="flex items-center justify-center gap-3">
           <MdMedication className="w-8 h-8 text-primary-dark" />
@@ -203,12 +232,12 @@ const MedicineSettings = ({
           !user.isVerified ? 'opacity-50 pointer-events-none' : ''
         }`}
       >
-        {!isAddingMedicine && (
-          <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
+        {!isAddingMedicine && !isEditingMedicine && (
+          <div className="bg-white px-4 md:px-8 py-6 sm:py-8 rounded-lg border border-gray-200 shadow-sm">
             <div className="flex flex-col items-center justify-center gap-4">
               {medications.length === 0 ? (
                 <>
-                  <div className="text-center py-8">
+                  <div className="text-center sm:py-8">
                     <MdMedication className="mx-auto h-16 w-16 text-primary-medium mb-4" />
                     <h3 className="text-xl font-medium text-gray-900 mb-3">
                       Inga mediciner tillagda än
@@ -225,7 +254,7 @@ const MedicineSettings = ({
                       Lägg till ny medicin
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 w-full">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 sm:mt-8 w-full">
                     {[
                       {
                         icon: <FiList className="w-6 h-6" />,
@@ -276,9 +305,13 @@ const MedicineSettings = ({
           </div>
         )}
 
-        {isAddingMedicine && (
+        {(isAddingMedicine || isEditingMedicine) && (
           <Formik
-            initialValues={initialValues}
+            initialValues={
+              isEditingMedicine && editingMedicineIndex !== null
+                ? medications[editingMedicineIndex]
+                : initialValues
+            }
             validationSchema={medicineValidationSchema}
             onSubmit={handleSubmit}
             validateOnChange={false}
@@ -372,16 +405,18 @@ const MedicineSettings = ({
                 </div>
                 <AddMedicationButtons
                   abortAddingMedication={abortAddingMedicine}
+                  isEditing={isEditingMedicine}
                 />
               </Form>
             )}
           </Formik>
         )}
 
-        {!isAddingMedicine && medications.length > 0 && (
+        {!isAddingMedicine && !isEditingMedicine && medications.length > 0 && (
           <YourMedications
             medications={medications}
             handleDeleteMedicine={handleDeleteMedicine}
+            handleEditMedicine={handleEditMedicine}
           />
         )}
       </div>
