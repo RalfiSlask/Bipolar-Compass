@@ -30,7 +30,10 @@ const RelativesPageContent = () => {
     }
   };
 
-  const saveRelativesSettings = async (relatives: IRelative[]) => {
+  const saveRelativesSettings = async (
+    relatives: IRelative[],
+    operation: 'add' | 'edit' | 'delete'
+  ) => {
     if (!email) return;
 
     try {
@@ -48,7 +51,15 @@ const RelativesPageContent = () => {
           },
         });
       }
-      toast.success('Anhöriga sparade!');
+
+      // Show appropriate toast message based on the operation
+      if (operation === 'add') {
+        toast.success('Anhörig sparad!');
+      } else if (operation === 'edit') {
+        toast.success('Anhörig uppdaterad!');
+      } else if (operation === 'delete') {
+        toast.success('Anhörig borttagen!');
+      }
     } catch (err) {
       toast.error('Något gick fel när anhöriga sparades.');
       console.error('could not save relatives: ', err);

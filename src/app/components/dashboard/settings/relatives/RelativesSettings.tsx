@@ -5,15 +5,20 @@ import { notificationFrequencies } from '@/app/data/notifications';
 import { RELATIVE_FEATURES, RELATIVE_TYPES } from '@/app/data/relatives';
 import { IRelative } from '@/app/types/relative';
 import { IUser } from '@/app/types/user';
+import { getLabelByValue } from '@/app/utils/generalUtils';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiEdit, FiPlusCircle, FiUserPlus, FiUsers } from 'react-icons/fi';
 import RelativeDeleteConfirmationModal from './RelativeDeleteConfirmModal';
+
 interface RelativesSettingsProps {
   user: IUser;
-  saveRelativesSettings: (relatives: IRelative[]) => Promise<void>;
+  saveRelativesSettings: (
+    relatives: IRelative[],
+    operation: 'add' | 'edit' | 'delete'
+  ) => Promise<void>;
 }
 
 const RelativesSettings = ({
@@ -43,16 +48,20 @@ const RelativesSettings = ({
 
   const handleSubmit = async (values: IRelative) => {
     let newRelatives;
+    let operation: 'add' | 'edit';
+
     if (isEditingRelative && editingRelativeIndex !== null) {
       newRelatives = relatives.map((relative, index) =>
         index === editingRelativeIndex ? values : relative
       );
+      operation = 'edit';
     } else {
       newRelatives = [...relatives, values];
+      operation = 'add';
     }
 
     try {
-      await saveRelativesSettings(newRelatives);
+      await saveRelativesSettings(newRelatives, operation);
       setRelatives(newRelatives);
     } catch (err) {
       console.error('could not save the settings, ', err);
@@ -75,9 +84,8 @@ const RelativesSettings = ({
       const newRelatives = relatives.filter(
         (_, i) => i !== selectedRelativeIndex
       );
-      await saveRelativesSettings(newRelatives);
+      await saveRelativesSettings(newRelatives, 'delete');
       setRelatives(newRelatives);
-      toast.success('Anhörig borttagen');
     } catch (err) {
       console.error('could not delete relative: ', err);
       toast.error('Kunde inte ta bort anhörig');
@@ -91,6 +99,13 @@ const RelativesSettings = ({
     setIsEditingRelative(true);
     setIsAddingRelative(false);
   };
+
+  useEffect(() => {
+    console.log(isAddingRelative);
+    console.log(isEditingRelative);
+    console.log(relatives);
+    console.log(user.settings.relatives);
+  }, [isAddingRelative, isEditingRelative]);
 
   return (
     <div
@@ -305,9 +320,10 @@ const RelativesSettings = ({
             </h3>
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
               {relatives.map((relative, index) => {
-                const typeLabel =
-                  RELATIVE_TYPES.find((type) => type.value === relative.type)
-                    ?.label || 'Typ saknas';
+                const typeLabel = getLabelByValue(
+                  relative.type,
+                  RELATIVE_TYPES
+                );
                 return (
                   <div
                     key={index}

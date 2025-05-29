@@ -4,12 +4,12 @@ import axios, { AxiosResponse } from 'axios';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {
-    FaBed,
-    FaCalendarAlt,
-    FaCog,
-    FaFrown,
-    FaNotesMedical,
-    FaUserFriends,
+  FaBed,
+  FaCalendarAlt,
+  FaCog,
+  FaFrown,
+  FaNotesMedical,
+  FaUserFriends,
 } from 'react-icons/fa';
 import Spinner from '../components/shared/Spinner';
 
@@ -20,14 +20,17 @@ import LongestStreakContainer from '../components/dashboard/LongestStreakContain
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
 import SleepGraph from '../components/dashboard/SleepGraph';
 import { WEIGHTS } from '../data/dashboardWeights';
+import { HEALTHCARE_PROVIDER_TYPES } from '../data/healtcareProviders';
+import { RELATIVE_TYPES } from '../data/relatives';
 import { ICustomSession } from '../types/authoptions';
 import { IMoodValue } from '../types/moodtracker';
 import { IUserWithMoodTracker } from '../types/user';
 import {
-    convertMedicineFrequencyToSwedishString,
-    moodScoreColor,
-    renderMessage,
+  convertMedicineFrequencyToSwedishString,
+  moodScoreColor,
+  renderMessage,
 } from '../utils/dashboardUtils';
+import { getLabelByValue } from '../utils/generalUtils';
 import { roundToNearestHalf } from '../utils/numberUtils';
 
 const MyPage = () => {
@@ -274,11 +277,9 @@ const MyPage = () => {
                     {relative.name}
                   </p>
                   <p className="text-dark text-sm">
-                    {relative.type}
+                    {getLabelByValue(relative.type, RELATIVE_TYPES)}
                   </p>
-                  <p className="text-primary-dark text-sm">
-                    {relative.email}
-                  </p>
+                  <p className="text-primary-dark text-sm">{relative.email}</p>
                 </div>
               ))
             ) : (
@@ -289,24 +290,30 @@ const MyPage = () => {
           </DashboardCardWrapper>
 
           <DashboardCardWrapper title="Vårdgivare" icon={FaUserFriends}>
-            {userData?.settings.healthcare_providers && userData?.settings.healthcare_providers.length &&
+            {userData?.settings.healthcare_providers &&
+            userData?.settings.healthcare_providers.length &&
             userData?.settings.healthcare_providers.length > 0 ? (
-              userData?.settings.healthcare_providers.map((healthcareProvider) => (
-                <div
-                  key={healthcareProvider.name}
-                  className="bg-primary-light rounded-xl p-4 mb-3 last:mb-0"
-                >
-                  <p className="text-primary-dark font-semibold">
-                    {healthcareProvider.name}
-                  </p>
-                  <p className="text-dark text-sm">
-                    {healthcareProvider.type}
-                  </p>
-                  <p className="text-primary-dark text-sm">
-                    {healthcareProvider.email}
-                  </p>
-                </div>
-              ))
+              userData?.settings.healthcare_providers.map(
+                (healthcareProvider) => (
+                  <div
+                    key={healthcareProvider.name}
+                    className="bg-primary-light rounded-xl p-4 mb-3 last:mb-0"
+                  >
+                    <p className="text-primary-dark font-semibold">
+                      {healthcareProvider.name}
+                    </p>
+                    <p className="text-dark text-sm">
+                      {getLabelByValue(
+                        healthcareProvider.type,
+                        HEALTHCARE_PROVIDER_TYPES
+                      )}
+                    </p>
+                    <p className="text-primary-dark text-sm">
+                      {healthcareProvider.email}
+                    </p>
+                  </div>
+                )
+              )
             ) : (
               <p className="text-primary-dark text-sm mt-1">
                 Inga vårdgivare registrerade

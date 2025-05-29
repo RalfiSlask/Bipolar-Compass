@@ -10,28 +10,30 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const HealthcareProviderPageContent = () => {
-    const { data: session } = useSession();
-    const [user, setUser] = useState<IUser | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const email = session?.user?.email;
-  
-    const fetchUserData = async (email: string) => {
-      try {
-        const response = await axios.post<{ user: IUser }>('/api/settings/', {
-          email,
-        });
-        if (response && response.data) {
-          setUser(response.data.user);
-        }
-      } catch (err) {
-        console.error('could not fetch user data: ', err);
-      } finally {
-        setIsLoading(false);
+  const { data: session } = useSession();
+  const [user, setUser] = useState<IUser | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const email = session?.user?.email;
+
+  const fetchUserData = async (email: string) => {
+    try {
+      const response = await axios.post<{ user: IUser }>('/api/settings/', {
+        email,
+      });
+      if (response && response.data) {
+        setUser(response.data.user);
       }
-    };
-  
-    
-  const saveHealthcareProvidersSettings = async (healthcare_providers: IHealthcareProvider[]) => {
+    } catch (err) {
+      console.error('could not fetch user data: ', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const saveHealthcareProvidersSettings = async (
+    healthcare_providers: IHealthcareProvider[],
+    operation: 'add' | 'edit' | 'delete'
+  ) => {
     if (!email) return;
 
     try {
@@ -49,7 +51,15 @@ const HealthcareProviderPageContent = () => {
           },
         });
       }
-      toast.success('Vårdgivare sparade!');
+
+      // Show appropriate toast message based on the operation
+      if (operation === 'add') {
+        toast.success('Vårdgivare sparad!');
+      } else if (operation === 'edit') {
+        toast.success('Vårdgivare uppdaterad!');
+      } else if (operation === 'delete') {
+        toast.success('Vårdgivare borttagen!');
+      }
     } catch (err) {
       toast.error('Något gick fel när vårdgivare sparades.');
       console.error('could not save healthcare providers: ', err);
@@ -70,7 +80,7 @@ const HealthcareProviderPageContent = () => {
   if (!user) {
     return <div>Kunde inte ladda användardata</div>;
   }
-    
+
   return (
     <div className="w-full px-4 md:px-6 py-12 min-h-screen bg-tertiary-light flex justify-center">
       <HealthcareProvidersSettings
@@ -79,10 +89,8 @@ const HealthcareProviderPageContent = () => {
       />
     </div>
   );
-}
+};
 
 export default function HealthcareProviderPage() {
-    return <HealthcareProviderPageContent />;
-  }
-
-
+  return <HealthcareProviderPageContent />;
+}

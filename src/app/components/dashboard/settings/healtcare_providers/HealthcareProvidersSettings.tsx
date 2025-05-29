@@ -10,7 +10,7 @@ import { IHealthcareProvider } from '@/app/types/healthcareProvider';
 import { IUser } from '@/app/types/user';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiEdit, FiPlusCircle, FiUserPlus, FiUsers } from 'react-icons/fi';
 import HealthcareProvidersDeleteConfirmationModal from './HealthcareProvidersDeleteConfirmModal';
@@ -18,7 +18,8 @@ import HealthcareProvidersDeleteConfirmationModal from './HealthcareProvidersDel
 interface HealthcareProvidersSettingsProps {
   user: IUser;
   saveHealthcareProvidersSettings: (
-    healthcareProviders: IHealthcareProvider[]
+    healthcareProviders: IHealthcareProvider[],
+    operation: 'add' | 'edit' | 'delete'
   ) => Promise<void>;
 }
 
@@ -45,11 +46,11 @@ const HealthcareProvidersSettings = ({
     email_frequency: 'weekly',
     name: '',
     type: '',
-    address: '',
   };
 
   const handleSubmit = async (values: IHealthcareProvider) => {
     let newHealthcareProviders;
+    let operation: 'add' | 'edit';
 
     if (
       isEditingHealthcareProvider &&
@@ -58,12 +59,14 @@ const HealthcareProvidersSettings = ({
       newHealthcareProviders = healthcareProviders.map((provider, index) =>
         index === editingHealthcareProviderIndex ? values : provider
       );
+      operation = 'edit';
     } else {
       newHealthcareProviders = [...healthcareProviders, values];
+      operation = 'add';
     }
 
     try {
-      await saveHealthcareProvidersSettings(newHealthcareProviders);
+      await saveHealthcareProvidersSettings(newHealthcareProviders, operation);
       setHealthcareProviders(newHealthcareProviders);
     } catch (err) {
       console.error('could not save the settings, ', err);
@@ -86,9 +89,8 @@ const HealthcareProvidersSettings = ({
       const newHealthcareProviders = healthcareProviders.filter(
         (_, i) => i !== selectedHealthcareProviderIndex
       );
-      await saveHealthcareProvidersSettings(newHealthcareProviders);
+      await saveHealthcareProvidersSettings(newHealthcareProviders, 'delete');
       setHealthcareProviders(newHealthcareProviders);
-      toast.success('Vårdgivare borttagen');
     } catch (err) {
       console.error('could not delete healthcare provider: ', err);
       toast.error('Kunde inte ta bort vårdgivare');
@@ -102,6 +104,13 @@ const HealthcareProvidersSettings = ({
     setIsEditingHealthcareProvider(true);
     setIsAddingHealthcareProvider(false);
   };
+
+  useEffect(() => {
+    console.log(isAddingHealthcareProvider);
+    console.log(isEditingHealthcareProvider);
+    console.log(healthcareProviders);
+    console.log(user.settings.healthcare_providers);
+  }, [isAddingHealthcareProvider, isEditingHealthcareProvider]);
 
   return (
     <div
@@ -136,7 +145,7 @@ const HealthcareProvidersSettings = ({
         {!isAddingHealthcareProvider && !isEditingHealthcareProvider && (
           <div className="bg-white px-4 md:px-8 py-8 rounded-lg border border-gray-200 shadow-sm">
             <div className="flex flex-col items-center justify-center gap-4">
-              {!healthcareProviders || healthcareProviders.length === 0 ? (
+              {healthcareProviders.length === 0 ? (
                 <>
                   <div className="text-center py-8">
                     <FiUserPlus className="mx-auto h-16 w-16 text-primary-medium mb-4" />
@@ -187,138 +196,128 @@ const HealthcareProvidersSettings = ({
           </div>
         )}
 
-        {isAddingHealthcareProvider ||
-          (isEditingHealthcareProvider && (
-            <Formik
-              initialValues={
-                isEditingHealthcareProvider &&
-                editingHealthcareProviderIndex !== null
-                  ? healthcareProviders[editingHealthcareProviderIndex]
-                  : initialValues
-              }
-              validationSchema={relativeValidationSchema}
-              onSubmit={handleSubmit}
-            >
-              {({ values, setFieldValue, errors, touched }) => (
-                <Form className="flex flex-col gap-6">
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
-                    <div className="flex flex-col gap-4">
-                      <label className="block text-lg font-medium mb-2">
-                        Namn
-                      </label>
-                      <Field
-                        type="text"
-                        name="name"
-                        className="primary-input"
-                        placeholder="Ange namn"
-                      />
-                      {errors.name && touched.name && (
-                        <div className="text-red-500 text-sm">
-                          {errors.name}
-                        </div>
-                      )}
+        {(isAddingHealthcareProvider || isEditingHealthcareProvider) && (
+          <Formik
+            initialValues={
+              isEditingHealthcareProvider &&
+              editingHealthcareProviderIndex !== null
+                ? healthcareProviders[editingHealthcareProviderIndex]
+                : initialValues
+            }
+            validationSchema={relativeValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values, setFieldValue, errors, touched }) => (
+              <Form className="flex flex-col gap-6">
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <div className="flex flex-col gap-4">
+                    <label className="block text-lg font-medium mb-2">
+                      Namn
+                    </label>
+                    <Field
+                      type="text"
+                      name="name"
+                      className="primary-input"
+                      placeholder="Ange namn"
+                    />
+                    {errors.name && touched.name && (
+                      <div className="text-red-500 text-sm">{errors.name}</div>
+                    )}
 
-                      <label className="block text-lg font-medium mb-2">
-                        Typ av vårdgivare
+                    <label className="block text-lg font-medium mb-2">
+                      Typ av vårdgivare
+                    </label>
+                    <CustomSelect
+                      options={HEALTHCARE_PROVIDER_TYPES}
+                      name="type"
+                      value={values.type}
+                      onChange={(value: string) => {
+                        setFieldValue('type', value);
+                      }}
+                      placeholder="Välj typ av vårdgivare..."
+                      error={errors.type}
+                      touched={touched.type}
+                      size="large"
+                    />
+                    {errors.type && touched.type && (
+                      <div className="text-red-500 text-sm">{errors.type}</div>
+                    )}
+
+                    <label className="block text-lg font-medium mb-2">
+                      E-postadress
+                    </label>
+                    <Field
+                      type="email"
+                      name="email"
+                      className="primary-input"
+                      placeholder="namn@exempel.se"
+                    />
+                    {errors.email && touched.email && (
+                      <div className="text-red-500 text-sm">{errors.email}</div>
+                    )}
+
+                    <div className="flex flex-col gap-4">
+                      <label className="font-medium">
+                        Frekvens för utskick
                       </label>
                       <CustomSelect
-                        options={HEALTHCARE_PROVIDER_TYPES}
-                        name="type"
-                        value={values.type}
+                        options={Object.entries(notificationFrequencies).map(
+                          ([key, value]) => ({
+                            value: key,
+                            label: value,
+                          })
+                        )}
+                        name="email_frequency"
+                        value={values.email_frequency}
                         onChange={(value: string) => {
-                          setFieldValue('type', value);
+                          setFieldValue('email_frequency', value);
                         }}
-                        placeholder="Välj typ av vårdgivare..."
-                        error={errors.type}
-                        touched={touched.type}
+                        placeholder="Välj frekvens..."
+                        error={errors.email_frequency}
+                        touched={touched.email_frequency}
                         size="large"
                       />
-                      {errors.type && touched.type && (
+                      {errors.email_frequency && touched.email_frequency && (
                         <div className="text-red-500 text-sm">
-                          {errors.type}
+                          {errors.email_frequency}
                         </div>
                       )}
+                    </div>
 
-                      <label className="block text-lg font-medium mb-2">
-                        E-postadress
-                      </label>
+                    <div className="flex items-center gap-2">
                       <Field
-                        type="email"
-                        name="email"
-                        className="primary-input"
-                        placeholder="namn@exempel.se"
+                        type="checkbox"
+                        id="email_enabled"
+                        name="email_enabled"
+                        className="primary-checkbox"
                       />
-                      {errors.email && touched.email && (
-                        <div className="text-red-500 text-sm">
-                          {errors.email}
-                        </div>
-                      )}
-
-                      <div className="flex flex-col gap-4">
-                        <label className="font-medium">
-                          Frekvens för utskick
-                        </label>
-                        <CustomSelect
-                          options={Object.entries(notificationFrequencies).map(
-                            ([key, value]) => ({
-                              value: key,
-                              label: value,
-                            })
-                          )}
-                          name="email_frequency"
-                          value={values.email_frequency}
-                          onChange={(value: string) => {
-                            setFieldValue('email_frequency', value);
-                          }}
-                          placeholder="Välj frekvens..."
-                          error={errors.email_frequency}
-                          touched={touched.email_frequency}
-                          size="large"
-                        />
-                        {errors.email_frequency && touched.email_frequency && (
-                          <div className="text-red-500 text-sm">
-                            {errors.email_frequency}
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <Field
-                          type="checkbox"
-                          id="email_enabled"
-                          name="email_enabled"
-                          className="primary-checkbox"
-                        />
-                        <label
-                          htmlFor="email_enabled"
-                          className="text-gray-700"
-                        >
-                          Aktivera e-postutskick
-                        </label>
-                      </div>
+                      <label htmlFor="email_enabled" className="text-gray-700">
+                        Aktivera e-postutskick
+                      </label>
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex gap-4">
-                    <button type="submit" className="primary-button">
-                      {isEditingHealthcareProvider ? 'Uppdatera' : 'Lägg till'}
-                    </button>
-                    <button
-                      type="button"
-                      className="tertiary-button"
-                      onClick={() => {
-                        setIsAddingHealthcareProvider(false);
-                        setIsEditingHealthcareProvider(false);
-                        setEditingHealthcareProviderIndex(null);
-                      }}
-                    >
-                      Avbryt
-                    </button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
-          ))}
+                <div className="flex gap-4">
+                  <button type="submit" className="primary-button">
+                    {isEditingHealthcareProvider ? 'Uppdatera' : 'Lägg till'}
+                  </button>
+                  <button
+                    type="button"
+                    className="tertiary-button"
+                    onClick={() => {
+                      setIsAddingHealthcareProvider(false);
+                      setIsEditingHealthcareProvider(false);
+                      setEditingHealthcareProviderIndex(null);
+                    }}
+                  >
+                    Avbryt
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        )}
 
         {!isAddingHealthcareProvider &&
           !isEditingHealthcareProvider &&
