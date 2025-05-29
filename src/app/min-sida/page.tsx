@@ -234,7 +234,7 @@ const MyPage = () => {
           <div className="absolute bottom-0 right-0 w-24 h-24 bg-tertiary-light rounded-full  transform translate-x-8 translate-y-8"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-6">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
           <DashboardCardWrapper title="Mediciner" icon={FaNotesMedical}>
             {userData?.profile?.medications.length &&
             userData?.profile?.medications.length > 0 ? (
