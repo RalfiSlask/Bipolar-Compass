@@ -1,4 +1,4 @@
-import { FiList, FiClock, FiShield } from 'react-icons/fi';
+import { FiClock, FiList, FiShield } from 'react-icons/fi';
 
 export const MEDICATION_PAGE_LIST = [
   {
@@ -21,22 +21,129 @@ export const MEDICATION_PAGE_LIST = [
 
 export const MEDICATION_OPTIONS = {
   moodStabilizers: [
-    { value: 'lithium', label: 'Lithium' },
-    { value: 'lamotrigine', label: 'Lamotrigin' },
-    { value: 'valproate', label: 'Valproat' },
-    { value: 'carbamazepine', label: 'Karbamazepin' },
+    {
+      value: 'lamotrigine',
+      label: 'Lamotrigin (Lamictal)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POFIUB0Q2VERT1&userType=2',
+    },
+    {
+      value: 'valproate',
+      label: 'Valproinsyra (Ergenyl)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POC1U973RVERT1&userType=2',
+    },
+    {
+      value: 'carbamazepine',
+      label: 'Karbamazepin (Tegretol)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POC8U9CHDVERT1&userType=2',
+    },
+    {
+      value: 'lithium',
+      label: 'Litium (Lithionit)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POE6U9ZNXVERT1',
+    },
   ],
   antipsychotics: [
-    { value: 'olanzapine', label: 'Olanzapin (Zyprexa)' },
-    { value: 'quetiapine', label: 'Quetiapin (Seroquel)' },
-    { value: 'aripiprazole', label: 'Aripiprazol (Abilify)' },
-    { value: 'risperidone', label: 'Risperidon (Risperdal)' },
+    {
+      value: 'olanzapine',
+      label: 'Olanzapin (Zyprexa)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POGVUB7FSVERT1&userType=2',
+    },
+    {
+      value: 'quetiapine',
+      label: 'Kvetiapin (Seroquel)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POIDUCD9UVERT1&userType=2',
+    },
+    {
+      value: 'aripiprazole',
+      label: 'Aripiprazol (Abilify)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POJKUCFGAVERT1&userType=2',
+    },
+    {
+      value: 'risperidone',
+      label: 'Risperidon (Risperdal)',
+      href: 'https://www.fass.se/LIF/substance?substanceId=IDE4POGSUB54MVERT1&userType=2',
+    },
+    {
+      value: 'ziprasidone',
+      label: 'Ziprasidon (Zeldox)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POI9UCABBVERT1',
+    },
   ],
   antidepressants: [
-    { value: 'sertraline', label: 'Sertralin (Zoloft)' },
-    { value: 'fluoxetine', label: 'Fluoxetin (Prozac)' },
-    { value: 'venlafaxine', label: 'Venlafaxin (Effexor)' },
-    { value: 'bupropion', label: 'Bupropion (Wellbutrin)' },
+    {
+      value: 'venlafaxine',
+      label: 'Venlafaxin (Efexor)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POFLUB33GVERT1',
+    },
+    {
+      value: 'fluoxetine',
+      label: 'Fluoxetin (Fontex)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POF4UAPRVVERT1',
+    },
+    {
+      value: 'bupropion',
+      label: 'Bupropion (Voxra)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POEWUAJTOVERT1',
+    },
+    {
+      value: 'mirtazapine',
+      label: 'Mirtazapin (Remeron)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POF8UAT55VERT1',
+    },
+    {
+      value: 'duloxetine',
+      label: 'Duloxetin (Cymbalta)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POI9UCA92VERT1',
+    },
+  ],
+  anxiolytics: [
+    {
+      value: 'alimemazine',
+      label: 'Alimemazin (Theralen)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POBZU95MDVERT1',
+    },
+    {
+      value: 'hydroxyzine',
+      label: 'Hydroxizin (Atarax)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POBWU93I5VERT1',
+    },
+    {
+      value: 'lorazepam',
+      label: 'Lorazepam (Temesta)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POCIU9KESVERT1',
+    },
+    {
+      value: 'oxazepam',
+      label: 'Oxazepam (Sobril)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POCGU9ITHVERT1',
+    },
+  ],
+  sleepMedication: [
+    {
+      value: 'zopiclone',
+      label: 'Zopiklon (Imovane)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POF0UAMLJVERT1',
+    },
+    {
+      value: 'zolpidem',
+      label: 'Zolpidem (Stilnoct)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POFIUB0C5VERT1',
+    },
+    {
+      value: 'melatonin',
+      label: 'Melatonin (Circadin)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POIFUCEFAVERT1',
+    },
+    {
+      value: 'mirtazapine_sleep',
+      label: 'Mirtazapin (Remeron)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POF8UAT55VERT1',
+    },
+    {
+      value: 'alimemazine_sleep',
+      label: 'Alimemazin (Theralen)',
+      href: 'https://www.fass.se/LIF/substance?userType=2&substanceId=IDE4POBZU95MDVERT1',
+    },
   ],
 };
 
@@ -45,6 +152,8 @@ export const MEDICATION_CATEGORIES = [
   { value: 'moodStabilizers', label: 'Stämningsstabiliserande' },
   { value: 'antipsychotics', label: 'Antipsykotiska' },
   { value: 'antidepressants', label: 'Antidepressiva' },
+  { value: 'anxiolytics', label: 'Lugnande medel / Ångestdämpande' },
+  { value: 'sleepMedication', label: 'Sömnmedel' },
 ];
 
 export const DOSE_UNIT_OPTIONS = [
