@@ -1,8 +1,8 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import {
-  MEDICATION_PAGE_LIST,
   MEDICATION_OPTIONS,
+  MEDICATION_PAGE_LIST,
 } from '@/app/data/medications';
 import { Reminder } from '@/app/models/Medication';
 import { IHistory, IMedication, ISchedule } from '@/app/types/medication';
