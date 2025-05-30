@@ -1,6 +1,9 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
-import { MEDICATION_OPTIONS } from '@/app/data/medications';
+import {
+  MEDICATION_PAGE_LIST,
+  MEDICATION_OPTIONS,
+} from '@/app/data/medications';
 import { Reminder } from '@/app/models/Medication';
 import { IHistory, IMedication, ISchedule } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
@@ -10,7 +13,7 @@ import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikErrors } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { FiClock, FiList, FiPlusCircle, FiShield } from 'react-icons/fi';
+import { FiPlusCircle } from 'react-icons/fi';
 import { MdMedication } from 'react-icons/md';
 import AddMedicationButtons from './AddMedicationButtons';
 import AntiDepressantMedicationMessage from './AntiDepressantMedicationMessage';
@@ -255,26 +258,7 @@ const MedicineSettings = ({
                     </button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 sm:mt-8 w-full">
-                    {[
-                      {
-                        icon: <FiList className="w-6 h-6" />,
-                        title: 'Enkel översikt',
-                        description:
-                          'Få en tydlig översikt över alla dina mediciner på ett ställe.',
-                      },
-                      {
-                        icon: <FiClock className="w-6 h-6" />,
-                        title: 'Påminnelser',
-                        description:
-                          'Ställ in påminnelser så du aldrig missar en dos.',
-                      },
-                      {
-                        icon: <FiShield className="w-6 h-6" />,
-                        title: 'Säker hantering',
-                        description:
-                          'Din medicinska information hanteras säkert och privat.',
-                      },
-                    ].map((feature, index) => (
+                    {MEDICATION_PAGE_LIST.map((feature, index) => (
                       <div
                         key={index}
                         className="p-6 bg-primary-light rounded-lg text-center hover:bg-primary-light/80 transition-colors"

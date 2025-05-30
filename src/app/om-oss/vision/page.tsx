@@ -9,10 +9,10 @@ import { FaQuoteLeft } from 'react-icons/fa6';
 
 const VisionPage = () => {
   return (
-    <section className="container mx-auto max-w-6xl w-full flex flex-col gap-24 pt-12 pb-28 px-4">
+    <section className="container mx-auto max-w-6xl w-full flex flex-col gap-10 sm:gap-16 pt-4 sm:pt-10 pb-16 px-4">
       <div className="md:relative">
         <div className="hidden md:block absolute right-0 top-12 w-[95%] h-[400px] bg-primary-light rounded-lg -z-10" />
-        <div className="flex flex-col md:flex-row gap-8 items-center">
+        <div className="flex flex-col md:flex-row gap-10 items-center">
           <div className="w-full md:w-1/2">
             <Image
               src="/images/about/our-vision.webp"
@@ -38,7 +38,7 @@ const VisionPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-12 max-w-4xl mx-auto">
+      <div className="flex flex-col gap-10 max-w-4xl mx-auto">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <FaBrain className="text-3xl text-primary-dark" />

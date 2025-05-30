@@ -42,11 +42,13 @@ const UrgentHelpPage = () => {
   };
 
   return (
-    <section className="flex flex-col gap-4 sm:gap-10 max-w-[800px] px-4 pt-4 pb-10 sm:py-10 mx-auto">
+    <section className="flex flex-col gap-10 max-w-[800px] px-4 pt-4 pb-16 sm:py-10 mx-auto">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3">
           <MdWarning className="text-tertiary-dark text-3xl" />
-          <h2 className="h-md text-primary-dark">Akut hjälp och support</h2>
+          <h2 className="h-sm sm:h-md text-primary-dark">
+            Akut hjälp och support
+          </h2>
         </div>
         <div className="bg-primary-light rounded-lg shadow-md">
           <p className="px-6 py-4 text-lg">

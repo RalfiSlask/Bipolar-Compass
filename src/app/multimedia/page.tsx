@@ -5,7 +5,7 @@ const MultiMediaPage = () => {
   return (
     <section className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-16 sm:pb-24">
-        <div className="mb-20 text-left">
+        <div className="mb-8 sm:mb-20 text-left">
           <h2 className="text-5xl md:text-6xl text-center font-bold text-primary-dark mb-8 animate-fade-in">
             Multimedia
           </h2>
@@ -25,7 +25,7 @@ const MultiMediaPage = () => {
           </div>
         </div>
 
-        <nav className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <nav className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {MULTIMEDIA_LINKS.map((item) => (
             <MainPageImageGrid key={item.href} item={item} />
           ))}
