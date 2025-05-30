@@ -153,7 +153,7 @@ const MoodTrackerPage = () => {
   }
 
   return (
-    <section className="w-full px-2 md:px-10 py-12 min-h-screen bg-tertiary-light">
+    <section className="w-full px-2 md:px-10 pt-10 pb-20 min-h-screen bg-tertiary-light">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex justify-center gap-4 mb-8">
           <button
