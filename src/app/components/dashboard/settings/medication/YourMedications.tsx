@@ -35,7 +35,6 @@ const YourMedications = ({
   };
 
   const getMedicationInfo = (medication: IMedication) => {
-    // Find the medication info from MEDICATION_OPTIONS
     const categoryOptions: {
       value: string;
       label: string;

@@ -1,5 +1,5 @@
-import { FaFire } from 'react-icons/fa';
 import { IMoodValue } from '@/app/types/moodtracker';
+import { FaFire } from 'react-icons/fa';
 
 interface ILongestStreakContainerProps {
   moodValues: IMoodValue[] | undefined;
@@ -33,7 +33,7 @@ const LongestStreakContainer = ({
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md">
-      <div className="flex flex-col xl:flex-row gap-4 xl:gap-0 items-center mb-4">
+      <div className="flex flex-col xl:flex-row gap-4 sm:items-center xl:gap-0 mb-4">
         <FaFire className="text-orange-500 text-2xl mr-3" />
         <h3 className="text-xl font-semibold text-secondary-dark">
           Nuvarande Svit
@@ -43,7 +43,7 @@ const LongestStreakContainer = ({
         {calculateLongestStreak()}{' '}
         {calculateLongestStreak() === 1 ? 'dag' : 'dagar'}
       </p>
-      <p className="text-dark mt-4 text-sm">
+      <p className="text-dark mt-2 text-sm">
         Längsta period med registrerad data
       </p>
     </div>

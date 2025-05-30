@@ -10,6 +10,7 @@ import {
   FaFrown,
   FaNotesMedical,
   FaUserFriends,
+  FaUserNurse,
 } from 'react-icons/fa';
 import Spinner from '../components/shared/Spinner';
 
@@ -289,7 +290,7 @@ const MyPage = () => {
             )}
           </DashboardCardWrapper>
 
-          <DashboardCardWrapper title="Vårdgivare" icon={FaUserFriends}>
+          <DashboardCardWrapper title="Vårdgivare" icon={FaUserNurse}>
             {userData?.settings.healthcare_providers &&
             userData?.settings.healthcare_providers.length &&
             userData?.settings.healthcare_providers.length > 0 ? (
