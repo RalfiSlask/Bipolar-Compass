@@ -7,21 +7,18 @@ import ScienceExtentFilter from '@/app/components/pages/science/ScienceExtentFil
 import FilterGroup from '@/app/components/pages/science/ScienceFilterGroup';
 import SciencePagination from '@/app/components/pages/science/SciencePagination';
 import ScienceSortFilter from '@/app/components/pages/science/ScienceSortFilter';
-import CustomSelect from '../components/shared/CustomSelectDropdown';
-import ScienceAgesFilter from '../components/pages/science/ScienceAgeFilter';
-import ScienceModal from '../components/pages/science/ScienceModal';
 import Spinner from '@/app/components/shared/Spinner';
 import {
+  AGE_FILTERS,
   ARTICLE_ATTRIBUTE_FILTERS,
   LANGUAGE_FILTERS,
   PUBLICATION_TYPE_FILTERS,
+  SEX_FILTERS,
+  SPECIES_FILTERS,
   SWEDISH_HOSPITALS_FILTERS,
   SWEDISH_UNIVERSITIES_FILTERS,
   TEXT_AVAILABILITY_FILTERS,
   YEARS_OF_PUBLICATION_FILTERS,
-  SEX_FILTERS,
-  AGE_FILTERS,
-  SPECIES_FILTERS,
 } from '@/app/data/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
@@ -33,6 +30,9 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { IoFilter } from 'react-icons/io5';
+import ScienceAgesFilter from '../components/pages/science/ScienceAgeFilter';
+import ScienceModal from '../components/pages/science/ScienceModal';
+import CustomSelect from '../components/shared/CustomSelectDropdown';
 
 const apiKey = process.env.NEXT_PUBLIC_PUB_MED_API_KEY;
 const BASE_URL = process.env.NEXT_PUBLIC_PUB_MED_BASE_URL;
@@ -569,7 +569,7 @@ const ScienceArticles = () => {
                           }
                           className="w-4 h-4 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
                         />
-                        <label htmlFor={tab.value} className="text-gray-700">
+                        <label htmlFor={tab.value} className="text-dark">
                           {tab.label}
                         </label>
                       </div>
@@ -673,7 +673,7 @@ const ScienceArticles = () => {
                       onChange={(e) => handleYearsFilterChange(e.target.value)}
                       className="w-4 h-4 text-primary-medium border-gray-300 rounded focus:ring-primary-medium"
                     />
-                    <label htmlFor={tab.value} className="text-gray-700">
+                    <label htmlFor={tab.value} className="text-dark">
                       {tab.label}
                     </label>
                   </div>

@@ -9,7 +9,7 @@ const EmailChangeButton = ({
 }: IEmailChangeButtonProps) => {
   const emailChangableColors = isEmailChangable
     ? 'bg-primary-light hover:bg-primary-medium text-gray-900 hover:text-white'
-    : 'bg-white hover:bg-gray-50 text-gray-700';
+    : 'bg-white hover:bg-gray-50 text-dark';
 
   return (
     <button

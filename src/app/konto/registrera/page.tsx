@@ -25,7 +25,7 @@ const RegistrationPage = () => {
               <h1 className="text-3xl font-bold text-primary-dark mb-2">
                 Skapa konto
               </h1>
-              <p className="text-gray-700">
+              <p className="text-dark">
                 Bli medlem i och få tillgång till alla våra tjänster
               </p>
             </div>
@@ -36,7 +36,7 @@ const RegistrationPage = () => {
               </div>
             </div>
             <RegisterForm />
-            <p className="text-center text-sm text-gray-700 mt-4">
+            <p className="text-center text-sm text-dark mt-4">
               Har du redan ett konto?{' '}
               <a
                 href="/konto/logga-in"

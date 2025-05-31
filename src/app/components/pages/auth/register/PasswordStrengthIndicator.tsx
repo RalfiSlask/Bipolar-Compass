@@ -59,7 +59,7 @@ const PasswordStrengthIndicator = ({
     <div className="mt-4 space-y-4">
       <div className="space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-dark">
             Lösenordsstyrka:
           </span>
           <span className={`text-sm font-medium ${getTextColor()}`}>
@@ -80,7 +80,7 @@ const PasswordStrengthIndicator = ({
       </div>
 
       <div className="bg-gray-50 rounded-lg p-4">
-        <h3 className="text-sm font-medium text-gray-700 mb-3">
+        <h3 className="text-sm font-medium text-dark mb-3">
           Lösenordet måste innehålla:
         </h3>
         <ul className="space-y-2">

@@ -33,9 +33,7 @@ const MainPageImageGrid = ({ item }: MainPageImageGridProps) => {
           <h3 className="text-2xl font-bold text-primary-dark group-hover:text-secondary-dark transition-colors duration-200">
             {title}
           </h3>
-          <p className="mt-4 text-lg text-gray-700 line-clamp-3">
-            {description}
-          </p>
+          <p className="mt-4 text-lg text-dark line-clamp-3">{description}</p>
           <div className="mt-6 inline-flex items-center text-primary-dark group-hover:text-secondary-dark transition-colors duration-200">
             <span className="font-medium">Läs mer</span>
             <HiArrowLongRight className="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform duration-200" />

@@ -27,7 +27,7 @@ const VisionPage = () => {
           <div className="w-full md:w-1/2 relative bg-primary-light md:bg-transparent p-4 sm:px-8 sm:py-10 rounded-lg md:rounded-none">
             <FaQuoteLeft className="hidden md:block absolute -z-10 text-5xl text-primary-medium opacity-70 -left-4 -top-6" />
             <h2 className="h-md text-primary-dark mb-4">Vår Vision</h2>
-            <p className="sm:text-lg text-gray-700">
+            <p className="sm:text-lg text-dark">
               Välkommen till Bipolärkompassen – en plats skapad för att ge stöd,
               kunskap och inspiration till alla som på något sätt påverkas av
               bipolär sjukdom. Oavsett om du är diagnostiserad, anhörig, eller
@@ -46,7 +46,7 @@ const VisionPage = () => {
               Kunskap och Förståelse
             </h3>
           </div>
-          <p className="sm:text-lg text-gray-700">
+          <p className="sm:text-lg text-dark">
             Vi tror att kunskap är grunden till förändring. Med tillgång till
             forskningsartiklar, pedagogiska resurser och en AI-assistent som
             svarar på dina frågor, vill vi göra information om bipolär sjukdom
@@ -63,7 +63,7 @@ const VisionPage = () => {
               Verktyg för Självinsikt och Välmående
             </h3>
           </div>
-          <p className="sm:text-lg text-gray-700">
+          <p className="sm:text-lg text-dark">
             Vi erbjuder en rad verktyg för att hjälpa dig förstå och följa ditt
             mående:
           </p>
@@ -92,7 +92,7 @@ const VisionPage = () => {
             ].map((item, index) => (
               <li key={index} className="flex items-start gap-3">
                 <span className="text-primary-dark sm:text-lg mt-1">•</span>
-                <span className="sm:text-lg text-gray-700">
+                <span className="sm:text-lg text-dark">
                   <span className="font-medium">{item.title}:</span>{' '}
                   {item.description}
                 </span>
@@ -108,7 +108,7 @@ const VisionPage = () => {
               Stöd för Anhöriga och Vårdpersonal
             </h3>
           </div>
-          <p className="sm:text-lg text-gray-700">
+          <p className="sm:text-lg text-dark">
             För anhöriga och vårdpersonal erbjuder vi resurser och insikter som
             hjälper till att förstå och stötta personer med bipolär sjukdom. Med
             en kombination av praktisk information och inspirerande multimedia
@@ -124,7 +124,7 @@ const VisionPage = () => {
               En Framtid utan Stigma
             </h3>
           </div>
-          <p className="sm:text-lg text-gray-700">
+          <p className="sm:text-lg text-dark">
             Genom att tillhandahålla verktyg och kunskap vill vi skapa en värld
             där bipolär sjukdom inte definieras av fördomar utan av öppenhet och
             förståelse. Tillsammans kan vi bygga en framtid där psykisk hälsa är

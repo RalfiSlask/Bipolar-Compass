@@ -157,7 +157,7 @@ const UrgentHelpPage = () => {
         </ul>
       </div>
 
-      <p className="italic text-gray-700">
+      <p className="italic text-dark">
         För mer information och hjälp kan du besöka{' '}
         <a
           href="https://www.1177.se"

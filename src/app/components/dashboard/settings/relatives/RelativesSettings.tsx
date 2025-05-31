@@ -285,7 +285,7 @@ const RelativesSettings = ({
                         name="email_enabled"
                         className="primary-checkbox"
                       />
-                      <label htmlFor="email_enabled" className="text-gray-700">
+                      <label htmlFor="email_enabled" className="text-dark">
                         Aktivera e-postutskick
                       </label>
                     </div>

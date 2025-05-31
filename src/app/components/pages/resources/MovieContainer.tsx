@@ -69,7 +69,7 @@ const MovieContainer = ({ movie }: IMovieContainerProps) => {
                   </div>
                 ))}
               </div>
-              <p className="text-gray-700 line-clamp-3">
+              <p className="text-dark line-clamp-3">
                 {plot?.plotText?.plainText}
               </p>
             </div>

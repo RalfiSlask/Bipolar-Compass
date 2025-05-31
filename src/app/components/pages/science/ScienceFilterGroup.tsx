@@ -37,7 +37,10 @@ const FilterGroup = ({
                 type === 'checkbox' ? 'rounded' : 'rounded-full'
               }`}
             />
-            <label htmlFor={filter.id} className="text-gray-700 select-none cursor-pointer">
+            <label
+              htmlFor={filter.id}
+              className="text-dark select-none cursor-pointer"
+            >
               {filter.label}
             </label>
           </div>

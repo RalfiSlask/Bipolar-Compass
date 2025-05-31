@@ -1,5 +1,5 @@
 const ScienceAuthors = ({ authors }: { authors: string[] }) => {
-  return <p className="text-sm text-gray-700">{authors.join(', ')}</p>;
+  return <p className="text-sm text-dark">{authors.join(', ')}</p>;
 };
 
 export default ScienceAuthors;

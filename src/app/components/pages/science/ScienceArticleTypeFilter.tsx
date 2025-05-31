@@ -31,7 +31,7 @@ const ScienceArticleTypeFilter = ({
                 />
                 <label
                   htmlFor={filter.id}
-                  className="text-gray-700 select-none cursor-pointer"
+                  className="text-dark select-none cursor-pointer"
                 >
                   {filter.label}
                 </label>

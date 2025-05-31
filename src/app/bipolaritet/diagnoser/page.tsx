@@ -1,3 +1,4 @@
+import MoodScoreScale from '@/app/components/dashboard/MoodScoreScale';
 import { BoltIcon } from '@/app/components/shared/icons/BoltIcon';
 import { BulbIcon } from '@/app/components/shared/icons/BulbIcon';
 import { SpinningArrowsIcon } from '@/app/components/shared/icons/SpinningArrowsIcon';
@@ -10,7 +11,6 @@ const DiagnosesPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={diagnosisIntro} />
-
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
@@ -333,6 +333,11 @@ const DiagnosesPage = () => {
             </ul>
           </div>
         </div>
+        <MoodScoreScale
+          title="Bipolär Skala"
+          scaleType="decimal"
+          description="Denna skala illustrerar olika humörlägen och de beteenden som kan förekomma vid bipolär sjukdom, från depression till mani."
+        />
       </div>
       <RelatedContent currentPage="diagnoser" />
     </section>

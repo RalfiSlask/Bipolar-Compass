@@ -41,7 +41,7 @@ const DeleteConfirmationModal = ({
           <div className="flex gap-3 justify-end">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+              className="px-4 py-2 text-dark bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
             >
               Avbryt
             </button>

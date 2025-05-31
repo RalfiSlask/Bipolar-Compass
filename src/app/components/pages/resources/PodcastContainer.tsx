@@ -38,7 +38,7 @@ const PodcastContainer = ({ podcastData }: { podcastData: IPodcast }) => {
           <p className="text-sm text-gray-600">{podcast.publisher_original}</p>
         </header>
 
-        <p className="text-gray-700 line-clamp-3">
+        <p className="text-dark line-clamp-3">
           {stripHtml(description_original)}
         </p>
 

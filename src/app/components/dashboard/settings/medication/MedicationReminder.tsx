@@ -9,7 +9,7 @@ const MedicationReminder = () => {
         name="reminder.enabled"
         className="primary-checkbox"
       />
-      <label htmlFor="reminder" className="text-gray-700">
+      <label htmlFor="reminder" className="text-dark">
         Påminnelse till din e-post
       </label>
     </div>

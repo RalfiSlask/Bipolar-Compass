@@ -194,7 +194,7 @@ const MyPage = () => {
   }
 
   return (
-    <section className="w-full h-full bg-tertiary-light py-10 px-4 md:px-8 lg:px-10">
+    <section className="w-full h-full bg-tertiary-light pt-10 pb-16 px-4 md:px-8 lg:px-10">
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden ">
           <div className="relative z-10">
@@ -370,7 +370,7 @@ const MyPage = () => {
           </DashboardCardWrapper>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 my-6">
           <div className="bg-white p-6 rounded-xl shadow-md md:col-span-3">
             <div className="flex items-center mb-4">
               <FaCalendarAlt className="text-primary-accent text-2xl mr-3" />
@@ -382,7 +382,7 @@ const MyPage = () => {
           </div>
           <LongestStreakContainer moodValues={moodValues} />
         </div>
-        <MoodScoreScale />
+        <MoodScoreScale title="Moodscore Guide" />
       </div>
     </section>
   );

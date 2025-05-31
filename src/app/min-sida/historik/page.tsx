@@ -268,7 +268,7 @@ const HistoryPage = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-primary-dark mb-4 flex items-center justify-center gap-2">
             <FaChartLine className="text-2xl sm:text-3xl" /> Historik
           </h2>
-          <p className="text-gray-700 max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p className="text-dark max-w-2xl mx-auto text-sm sm:text-base px-4">
             Här kan du följa din måendehistorik över tid. Genom att analysera
             dina trender kan du bättre förstå ditt mående och få anpassade tips
             för förbättring.
@@ -313,11 +313,11 @@ const HistoryPage = () => {
 
                   <div className="w-full overflow-x-auto -mx-3 px-3">
                     {filteredData.length === 0 ? (
-                      <div className="text-center text-gray-700 p-4 text-sm sm:text-base">
+                      <div className="text-center text-dark p-4 text-sm sm:text-base">
                         Ingen data registrerad för denna period
                       </div>
                     ) : filteredData.length < 2 ? (
-                      <div className="text-center text-gray-700 p-4 text-sm sm:text-base">
+                      <div className="text-center text-dark p-4 text-sm sm:text-base">
                         Minst två datapunkter krävs för att visa en graf
                       </div>
                     ) : (
@@ -407,7 +407,7 @@ const HistoryPage = () => {
             })}
           </div>
         ) : (
-          <div className="text-center text-gray-700 p-6 sm:p-8 bg-white rounded-xl shadow-lg">
+          <div className="text-center text-dark p-6 sm:p-8 bg-white rounded-xl shadow-lg">
             <p className="mb-4 text-base sm:text-lg">Ingen data tillgänglig</p>
             <p className="text-xs sm:text-sm text-gray-500">
               Börja registrera ditt mående i Moodtracker för att se din historik

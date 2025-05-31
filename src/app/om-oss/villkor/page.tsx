@@ -179,7 +179,7 @@ const TermsOfUsePage = () => {
         />
 
         <div className="mt-8 p-4 bg-tertiary-light rounded-lg">
-          <p className="italic text-gray-700">
+          <p className="italic text-dark">
             Dessa användarvillkor gäller från och med 2025-01-31.
           </p>
         </div>

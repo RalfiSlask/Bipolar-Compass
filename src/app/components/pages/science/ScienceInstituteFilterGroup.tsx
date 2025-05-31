@@ -20,7 +20,7 @@ const ScienceInstituteFilterGroup = ({
 }: ScienceInstituteFilterGroupProps) => {
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-medium text-gray-700">{label}</label>
+      <label className="font-medium text-dark">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value, type)}

@@ -96,7 +96,7 @@ const MedicinePageContent = () => {
       <div className="min-h-screen w-full bg-tertiary-light flex items-center justify-center">
         <div className="bg-white p-6 rounded-lg shadow-sm text-center">
           <FiAlertCircle className="w-12 h-12 text-tertiary-dark mx-auto mb-4" />
-          <p className="text-gray-700">Kunde inte ladda användardata</p>
+          <p className="text-dark">Kunde inte ladda användardata</p>
         </div>
       </div>
     );

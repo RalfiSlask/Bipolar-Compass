@@ -181,7 +181,7 @@ const DiaryNote = () => {
             <div className="flex-1 p-4 md:p-10">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="title" className="block text-gray-700 mb-2">
+                  <label htmlFor="title" className="block text-dark mb-2">
                     Titel
                   </label>
                   <input
@@ -198,7 +198,7 @@ const DiaryNote = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="mood" className="block text-gray-700 mb-2">
+                  <label htmlFor="mood" className="block text-dark mb-2">
                     Dagens humör
                   </label>
                   <select
@@ -219,7 +219,7 @@ const DiaryNote = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="notes" className="block text-gray-700 mb-2">
+                  <label htmlFor="notes" className="block text-dark mb-2">
                     Anteckning
                   </label>
                   <textarea

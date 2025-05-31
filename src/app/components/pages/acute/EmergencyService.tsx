@@ -13,7 +13,7 @@ const EmergencyService = ({ serviceData }: IEmergencyServiceProps) => {
           {service}
         </span>
         <span className="font-bold text-xl text-primary-medium">{number}</span>
-        <span className="text-gray-700">{description}</span>
+        <span className="text-dark">{description}</span>
       </p>
     </li>
   );
