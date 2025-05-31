@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const TMS = () => {
   return (
-    <div className="bg-tertiary-light w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
+    <div className="bg-tertiary-light treatment-container">
       <div className="flex-1 space-y-6 text-tertiary-dark">
         <div>
           <h5 className="font-semibold text-tertiary-dark mb-2">

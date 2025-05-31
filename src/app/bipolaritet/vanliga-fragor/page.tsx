@@ -35,8 +35,8 @@ const FAQPage = () => {
             className="bg-white p-6 rounded-lg border border-primary-dark/20 shadow-sm cursor-pointer"
             transition={{ duration: 0.2 }}
           >
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-xl font-semibold  text-primary-dark">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg sm:text-xl font-semibold text-primary-dark">
                 {item.question}
               </h3>
               <motion.div
@@ -55,7 +55,7 @@ const FAQPage = () => {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  className="text-gray-700 overflow-hidden"
+                  className="text-gray-700 overflow-hidden mt-3"
                 >
                   {item.answer}{' '}
                   {item.links &&

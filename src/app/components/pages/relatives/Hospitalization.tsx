@@ -3,8 +3,8 @@ import { FaExclamationCircle } from 'react-icons/fa';
 
 const Hospitalization = () => {
   return (
-    <div className="bg-primary-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-10 px-4 md:px-8 py-12 animate-modal-slide-up">
-      <div className="flex-1 space-y-8 text-primary-dark">
+    <div className="bg-primary-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-10 px-4 md:px-8 py-4 sm:py-10 animate-modal-slide-up">
+      <div className="flex-1 space-y-6 text-primary-dark">
         <h2 className="h-xs lg:text-2xl font-bold text-primary-dark">
           När tvångsvård kan bli nödvändig
         </h2>

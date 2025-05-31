@@ -274,7 +274,7 @@ const DiagnosesPage = () => {
           <h3 className="h-xs text-primary-dark mb-4">
             Ospecificerad bipolär sjukdom (Unspecified bipolar disorder)
           </h3>
-          <p className=" mb-6 ">
+          <p className="">
             Denna kategori används när symtomen inte helt passar in i någon av
             de andra typerna, men ändå orsakar betydande problem för individen.
             Exempelvis kan symtomen vara mindre tydliga, ha en ovanlig

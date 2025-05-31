@@ -146,8 +146,8 @@ const RelativePage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center content-container gap-8  p-6 rounded-xl shadow-lg">
-          <h3 className="h-xs text-primary-dark font-bold mb-2">
+        <div className="flex flex-col items-center content-container gap-6 p-6 rounded-xl shadow-lg">
+          <h3 className="h-xs text-primary-dark font-bold">
             Att tänka på som anhörig vid tvångsvård
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
@@ -187,7 +187,7 @@ const RelativePage = () => {
         </div>
 
         <div className="content-container">
-          <h3 className="text-primary-dark h-xs font-bold flex items-center gap-3">
+          <h3 className="flex-col sm:flex-row text-primary-dark h-xs font-bold flex items-center gap-3">
             <FaHeartbeat className="text-primary-accent" />
             Mobila psykiatriska team och läkarbedömning på plats
           </h3>

@@ -83,8 +83,8 @@ const SelfHelpPage = () => {
             Dagliga rutiner
           </h3>
 
-          <div className="space-y-10">
-            <div className="flex flex-col lg:flex-row gap-10">
+          <div className="space-y-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               <div className="flex-1 lg:min-h-fit">
                 <h4 className="lg:text-xl text-lg font-semibold text-primary-dark mb-3">
                   Skapa struktur
@@ -120,7 +120,7 @@ const SelfHelpPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-col-reverse lg:flex-row gap-10">
+            <div className="flex flex-col-reverse lg:flex-row gap-6">
               <div className="flex-1 max-h-[350px] lg:h-full">
                 <Image
                   src="/images/treatments/sleep.webp"
@@ -157,7 +157,7 @@ const SelfHelpPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row gap-10">
+            <div className="flex flex-col lg:flex-row gap-6">
               <div className="flex-1 lg:min-h-fit">
                 <h4 className="lg:text-xl text-lg font-semibold text-primary-dark mb-3">
                   Motion
@@ -445,7 +445,7 @@ const SelfHelpPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <div className="flex flex-col lg:flex-row gap-10 mb-3">
+          <div className="flex flex-col lg:flex-row gap-6 mb-3">
             <div className="flex-1 lg:min-h-fit">
               <h4 className="text-lg font-semibold text-primary-dark mb-3">
                 Artiklar och böcker

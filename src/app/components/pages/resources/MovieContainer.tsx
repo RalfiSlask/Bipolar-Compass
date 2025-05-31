@@ -23,7 +23,7 @@ const MovieContainer = ({ movie }: IMovieContainerProps) => {
   return (
     <li className="block transform transition-transform group h-full hover:shadow-lg duration-200 cursor-pointer">
       <a href={movie.imdbLink} target="_blank">
-        <div className="bg-white rounded-lg min-h-[720px] overflow-hidden shadow-md">
+        <div className="bg-white rounded-lg sm:min-h-[720px] overflow-hidden shadow-md">
           <div className="aspect-[3/4] relative overflow-hidden">
             <Image
               src={primaryImage ? primaryImage.url : 'saknar bild'}

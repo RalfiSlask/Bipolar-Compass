@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const ECT = () => {
   return (
-    <div className="bg-primary-light w-full flex lg:flex-row  flex-col items-center shadow-sm rounded-lg justify-end gap-10 px-4 md:px-10 py-10">
+    <div className="bg-primary-light treatment-container">
       <div className="flex-1 h-full flex flex-col gap-4 items-center">
         <h4 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
           Elektrokonvulsiv behandling (ECT)
