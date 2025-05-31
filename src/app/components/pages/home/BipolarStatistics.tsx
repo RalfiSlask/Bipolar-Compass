@@ -22,7 +22,7 @@ const BipolarStatistics = () => {
   return (
     <div className="bg-secondary-light w-full px-4 py-12 md:py-16">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-secondary-dark text-center mb-2 sm:mb-6 md:mb-16">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-secondary-dark text-center mb-6 md:mb-16">
           Bipolaritet I Sverige
         </h2>
 

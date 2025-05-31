@@ -8,7 +8,7 @@ import { RiUserSettingsLine } from 'react-icons/ri';
 
 const IntegrityPolicyPage = () => {
   return (
-    <section className="container mx-auto max-w-4xl w-full flex flex-col gap-4 sm:gap-10 py-12 px-4">
+    <section className="container mx-auto max-w-4xl w-full flex flex-col gap-8 sm:gap-10 py-4 sm:pt-10 pb-16 px-4">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3 mb-2">
           <IoShieldOutline className="text-3xl text-primary-medium" />
@@ -23,7 +23,7 @@ const IntegrityPolicyPage = () => {
         </div>
       </div>
 
-      <div className="grid gap-8 md:gap-12">
+      <div className="grid gap-8 md:gap-10">
         <AboutUsSection
           icon={<BsShieldLock />}
           title="Ansvarig för dataskydd"

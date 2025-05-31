@@ -8,7 +8,7 @@ import { MdOutlineAccountCircle, MdOutlineGavel } from 'react-icons/md';
 
 const TermsOfUsePage = () => {
   return (
-    <section className="container mx-auto max-w-4xl w-full flex flex-col gap-4 sm:gap-10 py-12 px-4">
+    <section className="container mx-auto max-w-4xl w-full flex flex-col gap-8 sm:gap-10 py-4 sm:pt-10 pb-16 px-4">
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-3 mb-2">
           <IoDocumentTextOutline className="text-3xl text-primary-medium" />
@@ -25,7 +25,7 @@ const TermsOfUsePage = () => {
         </div>
       </div>
 
-      <div className="grid gap-8 md:gap-12">
+      <div className="grid gap-8 md:gap-10">
         <AboutUsSection
           icon={<MdOutlineGavel />}
           title="Introduktion"
@@ -62,7 +62,7 @@ const TermsOfUsePage = () => {
           title="Tillåten användning"
           content={
             <div>
-              <h4>
+              <h4 className="mb-4">
                 Du får endast använda tjänsten för lagliga syften och i enlighet
                 med dessa villkor. Följande är inte tillåtet:
               </h4>
