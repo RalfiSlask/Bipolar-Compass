@@ -1,17 +1,20 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
+import Script from 'next/script';
 import Breadcrumbs from './components/Breadcrumbs';
 import ChatWrapper from './components/chat/ChatWrapper';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import { schemaMarkup } from './data/seo/schemaMarkup';
 import { Providers } from './providers/Providers';
-import Script from 'next/script';
 import './styles/styles.scss';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.xn--bipolrkompassen-4kb.se'),
-  title: 'Bipolärkompassen - Din Guide till Bipolaritet och Mental Hälsa',
+  title: {
+    default: 'Bipolärkompassen - Din Guide till Bipolaritet och Mental Hälsa',
+    template: '%s | Bipolärkompassen',
+  },
   description:
     'Utforska Bipolärkompassen, en omfattande resurs för att förstå och hantera bipolaritet. Innehåller AI-assistenten Bipo, moodtracker, dagbok, forskning, multimedia, och akut hjälplinjer.',
   icons: {
@@ -47,6 +50,23 @@ export const metadata: Metadata = {
         alt: 'Bipolärkompassen thumbnail',
       },
     ],
+  },
+  alternates: {
+    canonical: 'https://www.xn--bipolrkompassen-4kb.se',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'DY-P4TH1lOm3lXPh4FEYhwGFJtY6kfSueYq05QhhZfQ',
   },
 };
 
