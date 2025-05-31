@@ -8,13 +8,13 @@ const Hospitalization = () => {
         <h2 className="h-xs lg:text-2xl font-bold text-primary-dark">
           När tvångsvård kan bli nödvändig
         </h2>
-        <p className="text-lg leading-relaxed">
+        <p className="text-base leading-relaxed">
           I vissa situationer, särskilt när din närstående befinner sig i ett
           maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att ansöka
           om tvångsvård. Detta är ofta en sista utväg när personen inte kan
           förstå sin egen situation eller är en fara för sig själv eller andra.
         </p>
-        <p className="text-lg leading-relaxed">
+        <p className="text-base leading-relaxed">
           Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan
           bli aktuellt om följande kriterier är uppfyllda:
         </p>
