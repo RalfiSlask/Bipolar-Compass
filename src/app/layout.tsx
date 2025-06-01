@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/assets/icons/compass.svg',
+        url: '/assets/images/opengraph-image.png',
         alt: 'Bipolärkompassen thumbnail',
       },
     ],
