@@ -54,7 +54,12 @@ const UrgentHelpPage = () => {
           <p className="px-6 py-4 text-lg">
             Om du eller någon du känner befinner dig i en akut nödsituation,
             ring omedelbart{' '}
-            <span className="font-bold text-tertiary-dark text-xl">112</span>{' '}
+            <a
+              href="tel:112"
+              className="nav-link font-bold after:!bg-red-600 text-red-600 text-xl"
+            >
+              112
+            </a>{' '}
             för att få hjälp från räddningstjänsten, polisen eller ambulans.
           </p>
         </div>
