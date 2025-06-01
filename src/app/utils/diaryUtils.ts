@@ -4,7 +4,6 @@
  * @returns {string}
  */
 export const getMoodEmoji = (mood?: string) => {
-  console.log(mood);
   const moodMap: { [key: string]: string } = {
     happy: '😊',
     neutral: '😐',
