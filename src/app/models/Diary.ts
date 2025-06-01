@@ -52,7 +52,7 @@ export class DiaryEntry implements IDiaryEntry {
     public date: string = new Date().toISOString().split('T')[0],
     public title: string = '',
     public notes: string = '',
-    public mood?: 'glad' | 'neutral' | 'ledsen' | 'energisk' | 'trött',
+    public mood?: 'happy' | 'neutral' | 'sad' | 'energetic' | 'tired' | '',
     public image?: DiaryImage,
     readonly created_at: string = new Date().toISOString(),
     public updated_at: string = new Date().toISOString()
@@ -62,7 +62,13 @@ export class DiaryEntry implements IDiaryEntry {
     this.title = title;
     this.notes = notes;
     if (mood) {
-      this.mood = mood as 'glad' | 'neutral' | 'ledsen' | 'energisk' | 'trött';
+      this.mood = mood as
+        | 'happy'
+        | 'neutral'
+        | 'sad'
+        | 'energetic'
+        | 'tired'
+        | '';
     }
     this.updated_at = new Date().toISOString();
   }
