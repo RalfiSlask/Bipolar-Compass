@@ -8,7 +8,7 @@ import { IUser } from '@/app/types/user';
 import { getLabelByValue } from '@/app/utils/generalUtils';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
 import { Field, Form, Formik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiEdit, FiPlusCircle, FiUserPlus, FiUsers } from 'react-icons/fi';
 import RelativeDeleteConfirmationModal from './RelativeDeleteConfirmModal';
@@ -99,13 +99,6 @@ const RelativesSettings = ({
     setIsEditingRelative(true);
     setIsAddingRelative(false);
   };
-
-  useEffect(() => {
-    console.log(isAddingRelative);
-    console.log(isEditingRelative);
-    console.log(relatives);
-    console.log(user.settings.relatives);
-  }, [isAddingRelative, isEditingRelative]);
 
   return (
     <div
