@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/assets/images/opengraph/opengraph-image.png',
+        url: '/images/opengraph/opengraph-image.png',
         alt: 'Bipolärkompassen thumbnail',
       },
     ],
