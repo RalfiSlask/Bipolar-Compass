@@ -45,7 +45,7 @@ const SendVerificationLinkPage = () => {
   }
 
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-8 md:py-24">
+    <section className="w-full min-h-screen flex justify-center items-center relative px-4 pt-20 pb-8 md:py-24">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
         <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
           <BipolarLogo />
