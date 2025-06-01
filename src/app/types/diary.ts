@@ -3,7 +3,7 @@ export interface IDiaryEntry {
   date: string;
   title: string;
   notes: string;
-  mood?: 'glad' | 'neutral' | 'ledsen' | 'energisk' | 'trött';
+  mood?: 'happy' | 'neutral' | 'sad' | 'energetic' | 'tired' | '';
   image?: IDiaryImage;
   created_at: string;
   updated_at: string;
