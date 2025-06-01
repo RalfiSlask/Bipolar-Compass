@@ -9,10 +9,15 @@ import bcrypt from 'bcryptjs';
 import { NextAuthOptions, Session } from 'next-auth';
 import { Adapter } from 'next-auth/adapters';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise) as Adapter,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -64,8 +69,28 @@ export const authOptions: NextAuthOptions = {
   jwt: {
     secret: process.env.NEXTAUTH_SECRET as string,
   },
-
+  pages: {
+    signIn: '/konto/logga-in',
+    error: '/konto/logga-in',
+  },
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === 'google') {
+        const existingUser = await (await clientPromise)
+          .db('thesis')
+          .collection('users')
+          .findOne({ email: user.email });
+
+        if (!existingUser) {
+          console.log(
+            `Google login försök för ej registrerad email: ${user.email}`
+          );
+          return false;
+        }
+      }
+      return true;
+    },
+
     async session({
       session,
       token,
