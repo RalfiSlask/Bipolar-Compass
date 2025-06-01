@@ -1,14 +1,16 @@
 'use client';
 
+import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import Spinner from '@/app/components/shared/Spinner';
+import { diaryMoods } from '@/app/data/diary';
 import { ICustomSession } from '@/app/types/authoptions';
 import { IDiaryEntry } from '@/app/types/diary';
 import axios from 'axios';
+import { Field, Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { IoArrowBack, IoTrashOutline } from 'react-icons/io5';
@@ -20,12 +22,14 @@ const DiaryNote = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const { data: session } = useSession() as { data: ICustomSession | null };
   const [isLoading, setIsLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
-  const [formData, setFormData] = useState<Partial<IDiaryEntry>>({
+  const [initialValues, setInitialValues] = useState<IDiaryEntry>({
     title: '',
     notes: '',
-    mood: undefined,
+    mood: '',
     id: '',
+    date: date,
+    created_at: '',
+    updated_at: '',
   });
 
   const closeDeleteModal = () => {
@@ -43,11 +47,24 @@ const DiaryNote = () => {
         });
 
         if (response.data) {
-          setFormData({
+          setInitialValues({
             title: response.data.title || '',
             notes: response.data.notes || '',
-            mood: response.data.mood,
+            mood: response.data.mood || '',
             id: response.data.id || '',
+            date: date,
+            created_at: response.data.created_at || '',
+            updated_at: response.data.updated_at || '',
+          });
+        } else {
+          setInitialValues({
+            title: '',
+            notes: '',
+            mood: '',
+            id: '',
+            date: date,
+            created_at: '',
+            updated_at: '',
           });
         }
       } catch (error) {
@@ -60,32 +77,18 @@ const DiaryNote = () => {
     fetchDiaryNote();
   }, [date, session]);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (values: IDiaryEntry) => {
     if (!session?.user?.id) {
       toast.error('Du måste vara inloggad för att spara');
       return;
     }
 
-    setIsSaving(true);
     try {
       await axios.post('/api/diary/save', {
         user_id: session.user.id,
         date: date,
         entry: {
-          ...formData,
+          ...values,
           date: date as string,
           updated_at: new Date().toISOString(),
         },
@@ -97,7 +100,6 @@ const DiaryNote = () => {
       console.error(error);
       toast.error('Kunde inte spara dagboksanteckningen');
     }
-    setIsSaving(false);
   };
 
   const dateObj = new Date(date + 'T00:00:00');
@@ -110,10 +112,10 @@ const DiaryNote = () => {
 
   const deleteDiaryEntry = async () => {
     try {
-      if (!session?.user?.id || !formData.id) return;
+      if (!session?.user?.id || !initialValues.id) return;
 
       const bodyToSend = {
-        entry_id: formData.id,
+        entry_id: initialValues.id,
         user_id: session.user.id,
       };
 
@@ -149,7 +151,7 @@ const DiaryNote = () => {
         className="object-cover z-0 opacity-60"
         quality={80}
       />
-      <div className="relative flex flex-col items-center z-10 w-full max-w-2xl mx-auto">
+      <div className="relative flex flex-col items-center sm:items-start z-10 w-full max-w-2xl mx-auto">
         <Link
           href="/min-sida/dagbok"
           className="inline-flex items-center shadow-xl bg-white rounded-md p-2 text-primary-dark hover:text-primary mb-4 transition-all duration-200 hover:translate-x-[-10px]"
@@ -179,91 +181,96 @@ const DiaryNote = () => {
               </div>
             </div>
             <div className="flex-1 p-4 md:p-10">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="title" className="block text-dark mb-2">
-                    Titel
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    className="primary-input w-full"
-                    placeholder="Ange en titel för din anteckning"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                    aria-label="Anteckningens titel"
-                    required
-                  />
-                </div>
+              <Formik
+                initialValues={initialValues}
+                enableReinitialize={true}
+                onSubmit={handleSubmit}
+              >
+                {({ values, setFieldValue, isSubmitting }) => (
+                  <Form className="space-y-6">
+                    <div>
+                      <label htmlFor="title" className="block text-dark mb-2">
+                        Titel
+                      </label>
+                      <Field
+                        type="text"
+                        id="title"
+                        name="title"
+                        className="primary-input w-full"
+                        placeholder="Ange en titel för din anteckning"
+                        aria-label="Anteckningens titel"
+                        required
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="mood" className="block text-dark mb-2">
-                    Dagens humör
-                  </label>
-                  <select
-                    id="mood"
-                    name="mood"
-                    className="primary-input w-full"
-                    value={formData.mood || ''}
-                    onChange={handleInputChange}
-                    aria-label="Välj ditt humör"
-                  >
-                    <option value="">Välj humör</option>
-                    <option value="glad">Glad 😊</option>
-                    <option value="neutral">Neutral 😐</option>
-                    <option value="ledsen">Ledsen 😢</option>
-                    <option value="energisk">Energisk ⚡</option>
-                    <option value="trött">Trött 😴</option>
-                  </select>
-                </div>
+                    <div>
+                      <label htmlFor="mood" className="block text-dark mb-2">
+                        Dagens humör
+                      </label>
+                      <CustomSelect
+                        options={Object.entries(diaryMoods).map(
+                          ([key, value]) => ({
+                            value: key,
+                            label: value,
+                          })
+                        )}
+                        name="mood"
+                        value={values.mood || ''}
+                        onChange={(value: string) => {
+                          setFieldValue('mood', value);
+                        }}
+                        placeholder="Välj humör"
+                        size="large"
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="notes" className="block text-dark mb-2">
-                    Anteckning
-                  </label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows={6}
-                    className="primary-input w-full min-h-[150px] resize-y"
-                    placeholder="Skriv din dagboksanteckning här..."
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    aria-label="Anteckningens innehåll"
-                    required
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="notes" className="block text-dark mb-2">
+                        Anteckning
+                      </label>
+                      <Field
+                        as="textarea"
+                        id="notes"
+                        name="notes"
+                        rows={6}
+                        className="primary-input w-full min-h-[150px] resize-y"
+                        placeholder="Skriv din dagboksanteckning här..."
+                        aria-label="Anteckningens innehåll"
+                        required
+                      />
+                    </div>
 
-                <div className="flex gap-4 justify-end pt-4">
-                  <Link href="/min-sida/dagbok">
-                    <button
-                      type="button"
-                      className="secondary-button"
-                      aria-label="Avbryt redigering"
-                      disabled={isSaving}
-                    >
-                      Avbryt
-                    </button>
-                  </Link>
-                  <button
-                    type="submit"
-                    className="primary-button"
-                    aria-label="Spara anteckning"
-                    disabled={isSaving}
-                  >
-                    {isSaving ? 'Sparar...' : 'Spara'}
-                  </button>
-                  <button
-                    type="button"
-                    className="text-red-500 hover:text-red-700 hover:translate-y-[-2px] transition-all duration-200 text-2xl"
-                    aria-label="ta bort anteckning"
-                    onClick={() => setIsDeleteModalOpen(true)}
-                  >
-                    <IoTrashOutline />
-                  </button>
-                </div>
-              </form>
+                    <div className="flex gap-4 justify-end pt-4">
+                      <Link href="/min-sida/dagbok">
+                        <button
+                          type="button"
+                          className="secondary-button"
+                          aria-label="Avbryt redigering"
+                          disabled={isSubmitting}
+                        >
+                          Avbryt
+                        </button>
+                      </Link>
+                      <button
+                        type="submit"
+                        className="primary-button"
+                        aria-label="Spara anteckning"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Sparar...' : 'Spara'}
+                      </button>
+                      <button
+                        type="button"
+                        className="text-red-500 hover:text-red-700 hover:translate-y-[-2px] transition-all duration-200 text-2xl"
+                        aria-label="ta bort anteckning"
+                        onClick={() => setIsDeleteModalOpen(true)}
+                      >
+                        <IoTrashOutline />
+                      </button>
+                    </div>
+                  </Form>
+                )}
+              </Formik>
             </div>
           </div>
         </div>

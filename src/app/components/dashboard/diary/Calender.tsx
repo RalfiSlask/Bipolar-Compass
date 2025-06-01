@@ -15,6 +15,8 @@ interface CalendarProps {
 const Calendar = ({ entries, onEntryClick }: CalendarProps) => {
   const renderEventContent = (eventContent: EventContentArg) => {
     const entry = entries[eventContent.event.startStr];
+    console.log(entry);
+    console.log(getMoodEmoji(entry.mood));
     const isYearView = eventContent.view.type === 'multiMonthYear';
 
     if (isYearView) {
