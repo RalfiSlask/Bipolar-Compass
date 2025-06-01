@@ -1,4 +1,6 @@
 import clientPromise from '@/app/lib/mongodb';
+import { MoodtrackerWeek } from '@/app/models/Moodtracker';
+import { User } from '@/app/models/User';
 import {
   ICustomSession,
   ICustomToken,
@@ -76,16 +78,42 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === 'google') {
-        const existingUser = await (await clientPromise)
-          .db('thesis')
-          .collection('users')
-          .findOne({ email: user.email });
+        const db = (await clientPromise).db('thesis');
+        const usersCollection = db.collection('users');
+        const moodTrackerCollection = db.collection('mood_tracker_weeks');
+
+        const existingUser = await usersCollection.findOne({
+          email: user.email,
+        });
 
         if (!existingUser) {
-          console.log(
-            `Google login försök för ej registrerad email: ${user.email}`
-          );
-          return false;
+          // Create new user automatically for Google sign-in
+          try {
+            const newUser = new User(
+              user.name || '',
+              user.email || '',
+              '' // No password for Google users
+            );
+
+            // Auto-verify Google users
+            newUser.isVerified = true;
+
+            const serializedUser = newUser.toJSON();
+
+            const userResult = await usersCollection.insertOne(
+              serializedUser as Document
+            );
+            const userId = userResult.insertedId.toString();
+
+            // Create initial mood tracker
+            const initialMoodTracker = MoodtrackerWeek.createDefault(userId);
+            await moodTrackerCollection.insertOne(
+              JSON.parse(JSON.stringify(initialMoodTracker))
+            );
+          } catch (error) {
+            console.error('Error creating Google user:', error);
+            return false;
+          }
         }
       }
       return true;
