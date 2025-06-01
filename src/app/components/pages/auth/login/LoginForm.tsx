@@ -24,7 +24,7 @@ const LoginForm = () => {
       });
 
       if (signInResponse?.error) {
-        setFormError('Användaren existerar inte. ' + signInResponse.error);
+        setFormError(signInResponse.error);
       } else {
         router.push('/min-sida');
       }
