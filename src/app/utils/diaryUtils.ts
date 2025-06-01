@@ -4,12 +4,13 @@
  * @returns {string}
  */
 export const getMoodEmoji = (mood?: string) => {
+  console.log(mood);
   const moodMap: { [key: string]: string } = {
-    glad: '😊',
+    happy: '😊',
     neutral: '😐',
-    ledsen: '😢',
-    energisk: '⚡',
-    trött: '😴',
+    sad: '😢',
+    energetic: '⚡',
+    tired: '😴',
   };
   return mood ? moodMap[mood] : '';
 };
