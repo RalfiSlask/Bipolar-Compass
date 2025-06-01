@@ -7,7 +7,7 @@ const GoogleAuthButton = ({ handleGoogleSignIn }: IGoogleAuthButtonProps) => {
     <button
       type="button"
       onClick={handleGoogleSignIn}
-      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium"
+      className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-lg mt-2 hover:bg-gray-50 transition-colors duration-200 font-medium"
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24">
         <path
