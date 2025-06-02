@@ -49,10 +49,17 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Ingen användare finns med detta email');
         }
 
+        // We check if the user is a Google user by checking if the password is empty
+        if (!user.password || user.password === '') {
+          throw new Error(
+            'Detta konto är skapat via Google. Använd Google-inloggning.'
+          );
+        }
+
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
-          throw new Error('Lösenordet är fel');
+          throw new Error('Felaktigt lösenord');
         }
 
         return {
