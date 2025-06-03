@@ -37,7 +37,7 @@ const SettingsPageContent = () => {
         activeTab={activeTab}
         changeActiveTab={changeActiveTab}
       />
-      <div className="h-full pt-10">
+      <div className="h-full pt-4 sm:pt-10">
         <div className="flex flex-col gap-10">
           <div className="flex justify-center">
             {activeTab === 'profile' && <ProfileSettings />}

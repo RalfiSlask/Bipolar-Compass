@@ -17,7 +17,7 @@ const SecuritySettings = () => {
 
   return (
     <div
-      className="max-w-2xl p-6 flex flex-col items-center gap-10"
+      className="max-w-2xl p-6 pb-16 flex flex-col items-center gap-10"
       aria-labelledby="security-heading"
     >
       {isModalOpen && (
@@ -39,7 +39,7 @@ const SecuritySettings = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-4 shadow-sm border rounded-lg">
+        <div className="flex flex-col shadow-sm border rounded-lg">
           <ChangePasswordForm />
           <p className="text-center text-sm mt-4 hover:text-primary-dark duration-200 transition-colors my-4">
             <Link href="/konto/glomt-losenord" className="font-medium ">

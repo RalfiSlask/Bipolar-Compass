@@ -11,7 +11,7 @@ const Lightbox = ({ onClose }: LightboxProps) => {
 
   return createPortal(
     <div
-      className="fixed inset-0 bg-black/20"
+      className="fixed inset-0 bg-black/30"
       onClick={onClose}
       aria-hidden="true"
       style={{ zIndex: 40 }}
@@ -20,4 +20,4 @@ const Lightbox = ({ onClose }: LightboxProps) => {
   );
 };
 
-export default Lightbox; 
+export default Lightbox;
