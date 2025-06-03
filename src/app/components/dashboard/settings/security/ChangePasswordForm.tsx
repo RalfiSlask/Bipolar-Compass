@@ -1,9 +1,9 @@
 import PasswordStrengthIndicator from '@/app/components/pages/auth/register/PasswordStrengthIndicator';
-import { SettingsContext } from '@/app/context/SettingsContext';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { passwordChangeValidationSchema } from '@/app/utils/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 interface IPasswordFormValues {
@@ -14,13 +14,7 @@ interface IPasswordFormValues {
 
 const ChangePasswordForm = () => {
   const [error, setError] = useState<string | null>(null);
-  const context = useContext(SettingsContext);
-
-  if (!context) {
-    throw new Error(
-      'ChangePasswordForm måste användas inom en SettingsProvider'
-    );
-  }
+  const context = useSettingsContext();
 
   const { user } = context;
 
