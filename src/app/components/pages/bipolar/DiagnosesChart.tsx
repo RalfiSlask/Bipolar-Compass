@@ -73,7 +73,7 @@ const DiagnosesChart = () => {
   };
 
   return (
-    <div className="w-full bg-white rounded-xl shadow-lg p-4 sm:p-6">
+    <div className="content-container">
       <div className="mb-6">
         <h3 className="text-xl md:text-2xl font-bold text-primary-dark mb-3">
           Bipolära Diagnoser - Mönster och Svängningar
