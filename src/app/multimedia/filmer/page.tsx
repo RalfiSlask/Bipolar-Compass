@@ -6,7 +6,7 @@ import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedC
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import moviesData from '@/app/data/json/movies.json';
 import { ACTORS } from '@/app/data/movies';
-import { moviesIntro } from '@/app/data/pageIntros';
+import { MOVIES_INTRO } from '@/app/data/pageIntros';
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
 
 const MoviesPage = () => {
@@ -14,7 +14,7 @@ const MoviesPage = () => {
 
   return (
     <section className="page-section">
-      <PageIntroContainer intro={moviesIntro} />
+      <PageIntroContainer intro={MOVIES_INTRO} />
       <div className="grid md:grid-cols-2 gap-6 mb-12">
         {ACTORS.map((actor) => {
           return <ActorQuote key={actor.id} actorInfo={actor} />;

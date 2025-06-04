@@ -1,4 +1,4 @@
-export const therapyIntro = {
+export const THEAPY_INTRO = {
   title: 'Terapier för Bipolär Sjukdom',
   description:
     'Bipolär sjukdom är en komplex diagnos som påverkar både humör och energi. Terapier spelar en avgörande roll i att hantera symtom, förebygga episoder och förbättra livskvaliteten.',
@@ -8,7 +8,7 @@ export const therapyIntro = {
   color: 'brown' as const,
 };
 
-export const selfHelpIntro = {
+export const SELF_HELP_INTRO = {
   title: 'Självhjälp',
   description:
     'Här har vi sammanställt information om metoder som kommer underlätta din vardag. Här hittar du verktyg, strategier och resurser för att bättre förstå och hantera dina symtom. Genom att utveckla goda rutiner, lära dig känna igen tidiga varningstecken och använda olika copingstrategier kan du ta en mer aktiv roll i din återhämtning. Vi går igenom allt från sömnhygien och stresshantering till mindfulness och fysisk aktivitet.',
@@ -18,7 +18,7 @@ export const selfHelpIntro = {
   color: 'green' as const,
 };
 
-export const medicineIntro = {
+export const MEDICINE_INTRO = {
   title: 'Medicinska behandlingar',
   description:
     'Medicinsk behandling är en central del i hanteringen av bipolär sjukdom. Genom att kombinera olika typer av läkemedel som stämningsstabiliserare, antipsykotika och antidepressiva, kan man effektivt stabilisera humöret och förebygga nya episoder. För vissa personer kan även behandlingar som ECT eller TMS vara värdefulla alternativ.',
@@ -28,7 +28,7 @@ export const medicineIntro = {
   color: 'brown' as const,
 };
 
-export const relativeIntro = {
+export const RELATIVES_INTRO = {
   title: 'För dig som är anhörig till någon med bipolär sjukdom',
   description:
     'Att stå nära någon som lever med bipolär sjukdom kan vara en känslomässig berg- och dalbana. Många anhöriga känner en blandning av kärlek, frustration, oro och maktlöshet. Att förstå vad din närstående går igenom och vad du själv kan göra är avgörande både för deras välbefinnande och för ditt eget. ',
@@ -38,7 +38,7 @@ export const relativeIntro = {
   color: 'green' as const,
 };
 
-export const faqIntro = {
+export const FAQ_INTRO = {
   title: 'Frågor och svar',
   description:
     'Här har vi samlat de vanligaste frågorna om bipolär sjukdom. Du hittar svar på allt från grundläggande information om diagnosen till praktiska råd om behandling och vardagshantering. ',
@@ -48,7 +48,7 @@ export const faqIntro = {
   color: 'green' as const,
 };
 
-export const moviesIntro = {
+export const MOVIES_INTRO = {
   title: 'Filmer',
   description:
     'Filmer kan ge oss en unik inblick i hur det är att leva med bipolaritet. Genom att följa dessa berättelser kan vi både känna igen oss själva och få större empati för andra. Film som medium har en särskild förmåga att skildra de emotionella höjdpunkterna och utmaningarna som kommer med diagnosen, ofta på ett sätt som kan vara både upplysande och tröstande.',
@@ -58,7 +58,7 @@ export const moviesIntro = {
   color: 'brown' as const,
 };
 
-export const podcastsIntro = {
+export const PODCASTS_INTRO = {
   title: 'Podcasts',
   description:
     'Podcasts är en annan bra resurs för att få insikter om bipolaritet. Genom att lyssna på dessa berättelser kan du både känna igen dig själv och få större empati för andra. Podcasts kan vara en bra möjlighet att lära sig mer om bipolaritet och få insikter om hur andra hanterar sina symtom.',
@@ -68,7 +68,7 @@ export const podcastsIntro = {
   color: 'green' as const,
 };
 
-export const musicIntro = {
+export const MUSIC_INTRO = {
   title: 'Spellistor',
   image: '/images/multimedia/listening-music.webp',
   description:
@@ -78,7 +78,7 @@ export const musicIntro = {
   color: 'brown' as const,
 };
 
-export const whatIsBipolarIntro = {
+export const WHAT_IS_BIPOLAR_INTRO = {
   title: 'Vad är bipolaritet?',
   description:
     'Bipolaritet, även kallad bipolär sjukdom, är en psykisk sjukdom som kännetecknas av extrema förändringar i humör, energi och aktivitetsnivå. Dessa förändringar går ofta mellan perioder av mani eller hypomani (förhöjt, euforiskt eller irritabelt humör) och perioder av depression (sänkt eller nedstämt humör).',
@@ -88,7 +88,7 @@ export const whatIsBipolarIntro = {
   color: 'brown' as const,
 };
 
-export const symptomsIntro = {
+export const SYMPTOMS_INTRO = {
   title: 'Symptom vid bipolär sjukdom',
   description:
     'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',
@@ -98,7 +98,7 @@ export const symptomsIntro = {
   color: 'brown' as const,
 };
 
-export const diagnosisIntro = {
+export const DIAGNOSIS_INTRO = {
   title: 'Diagnoser',
   description:
     'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',

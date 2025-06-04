@@ -7,13 +7,13 @@ import TreatmentSupport from '@/app/components/pages/bipolar/TreatmentSupport';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
-import { whatIsBipolarIntro } from '@/app/data/pageIntros';
+import { WHAT_IS_BIPOLAR_INTRO } from '@/app/data/pageIntros';
 import { MdPeople, MdTimeline, MdWarning } from 'react-icons/md';
 
 const WhatIsBipolarityPage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={whatIsBipolarIntro} />
+      <PageIntroContainer intro={WHAT_IS_BIPOLAR_INTRO} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
@@ -55,14 +55,12 @@ const WhatIsBipolarityPage = () => {
 
         <CommonSigns />
 
-        <div className="md:col-span-2 content-container">
+        <div className="md:col-span-2 content-container-tertiary">
           <div className="flex items-center gap-4 mb-6">
-            <MdPeople className="text-4xl text-primary-dark" />
-            <h3 className="h-xs text-primary-dark">
-              Vem drabbas av bipolaritet?
-            </h3>
+            <MdPeople className="text-4xl text-tertiary-dark" />
+            <h3 className="h-xs ">Vem drabbas av bipolaritet?</h3>
           </div>
-          <p className="mb-6">
+          <p className="mb-6 text-tertiary-dark">
             Bipolaritet kan drabba vem som helst, oavsett ålder, kön eller
             bakgrund. Sjukdomen debuterar ofta i sena tonåren eller tidig vuxen
             ålder och har en livslång karaktär. Den exakta orsaken är inte känd,

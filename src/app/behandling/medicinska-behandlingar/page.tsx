@@ -3,13 +3,13 @@ import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
-import { medicineIntro } from '@/app/data/pageIntros';
+import { MEDICINE_INTRO } from '@/app/data/pageIntros';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
 
 const MedicinePage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={medicineIntro} />
+      <PageIntroContainer intro={MEDICINE_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">

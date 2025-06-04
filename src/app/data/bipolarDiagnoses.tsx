@@ -15,7 +15,7 @@ export interface IBipolarType {
 export const BIPOLAR_TYPES: IBipolarType[] = [
   {
     title: 'Bipolär typ 1 (Bipolar I disorder)',
-    subtitle: 'Karaktäristiska drag för mani:',
+    subtitle: 'Karaktäristiska drag för mani',
     description:
       'Bipolär typ 1 kännetecknas av minst en episod av mani som varar i minst sju dagar eller kräver sjukhusvård på grund av svårighetsgraden. Maniska episoder är ofta intensiva och kan leda till impulsiva och riskfyllda beslut. Depression kan också förekomma mellan episoder av mani, men det är inte ett krav för diagnos.',
     icon: <BoltIcon className="w-6 h-6 text-primary-dark" />,
@@ -31,7 +31,7 @@ export const BIPOLAR_TYPES: IBipolarType[] = [
   },
   {
     title: 'Bipolär typ 2 (Bipolar II disorder)',
-    subtitle: 'Karaktäristiska drag för hypomani:',
+    subtitle: 'Karaktäristiska drag för hypomani',
     description:
       'Denna form kännetecknas av minst en episod av hypomani och minst en episod av djup depression. Hypomani är en mildare form av mani som inte leder till allvarliga funktionsnedsättningar eller kräver sjukhusvård, men som fortfarande påverkar individens liv.',
     icon: <BulbIcon className="w-6 h-6 text-primary-dark" />,
@@ -44,7 +44,7 @@ export const BIPOLAR_TYPES: IBipolarType[] = [
   },
   {
     title: 'Cyklotymi (Cyclothymic disorder)',
-    subtitle: 'Karaktäristiska drag för cyklotymi:',
+    subtitle: 'Karaktäristiska drag för cyklotymi',
     description:
       'Cyklotymi innebär att en person har regelbundna episoder av hypomaniliknande symtom och mildare depressiva episoder under minst två års tid (ett år för barn och ungdomar). Symtomen är inte tillräckligt allvarliga för att uppfylla kriterierna för bipolär typ 1 eller 2, men tillståndet kan vara störande och påverka livskvaliteten.',
     icon: <SpinningArrowsIcon className="w-6 h-6 text-primary-dark" />,
@@ -57,7 +57,7 @@ export const BIPOLAR_TYPES: IBipolarType[] = [
   },
   {
     title: 'Bipolär sjukdom med blandade drag (Mixed features)',
-    subtitle: 'Karaktäristiska drag för blandade episoder:',
+    subtitle: 'Karaktäristiska drag för blandade episoder',
     description:
       'En blandad episod innebär att symtom på både mani (eller hypomani) och depression upplevs samtidigt. Detta kan vara särskilt förvirrande och påfrestande eftersom individen kan känna sig både extremt energisk och djupt hopplös på samma gång.',
     icon: <FaMixcloud className="w-6 h-6 text-primary-dark" />,
@@ -81,7 +81,7 @@ export const BIPOLAR_TYPES: IBipolarType[] = [
   },
   {
     title: 'Bipolär sjukdom med säsongsrelaterade drag (Seasonal pattern)',
-    subtitle: 'Karaktäristiska drag för säsongsrelaterade mönster:',
+    subtitle: 'Karaktäristiska drag för säsongsrelaterade mönster',
     description:
       'Denna form av bipolär sjukdom innebär att humöret påverkas av årstiderna. Vanligtvis inträffar depression under höst och vinter, medan mani eller hypomani uppstår under våren och sommaren.',
     icon: <FaSun className="w-6 h-6 text-primary-dark" />,
@@ -93,7 +93,7 @@ export const BIPOLAR_TYPES: IBipolarType[] = [
   },
   {
     title: 'Ospecificerad bipolär sjukdom (Unspecified bipolar disorder)',
-    subtitle: 'Karaktäristiska drag för ospecificerad bipolär sjukdom:',
+    subtitle: 'Karaktäristiska drag för ospecificerad bipolär sjukdom',
     description:
       'Denna kategori används när symtomen inte helt passar in i någon av de andra typerna, men ändå orsakar betydande problem för individen. Exempelvis kan symtomen vara mindre tydliga, ha en ovanlig presentation eller utlösas av en specifik medicinsk eller substansrelaterad orsak.',
     icon: <FaQuestion className="w-6 h-6 text-primary-dark" />,

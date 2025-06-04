@@ -8,7 +8,7 @@ interface IBipolarTypeProps {
 const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
   const { title, subtitle, description, icon, list, imageUrl } = bipolarType;
   return (
-    <div className="content-container bg-white rounded-md shadow-md flex flex-col gap-6 py-8 px-4 md:px-10">
+    <div className="content-container">
       <div className="flex flex-col lg:flex-row items-start gap-6">
         <div className="flex-1">
           <h3 className="h-xs text-primary-dark mb-4">{title}</h3>
@@ -28,9 +28,9 @@ const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
           </div>
         )}
       </div>
-      <div className="bg-primary-light/50 rounded-md p-4 w-full">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex items-center gap-2">
+      <div className="bg-primary-light/50 rounded-md p-4 w-full mt-4">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex flex-col w-full text-center sm:text-left sm:flex-row items-center gap-2">
             {icon}
             <h4 className="font-semibold text-primary-dark">{subtitle}</h4>
           </div>

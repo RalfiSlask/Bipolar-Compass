@@ -3,13 +3,13 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
-import { symptomsIntro } from '@/app/data/pageIntros';
+import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
 import Link from 'next/link';
 
 const SymptomsPage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={symptomsIntro} />
+      <PageIntroContainer intro={SYMPTOMS_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">

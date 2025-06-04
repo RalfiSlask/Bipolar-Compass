@@ -12,13 +12,12 @@ import Hospitalization from '../components/pages/relatives/Hospitalization';
 import Organizations from '../components/pages/relatives/Organizations';
 import EncouragmentContainer from '../components/shared/EncouragmentContainer';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
-import { relativeIntro } from '../data/pageIntros';
+import { RELATIVES_INTRO } from '../data/pageIntros';
 
 const RelativePage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={relativeIntro} />
-
+      <PageIntroContainer intro={RELATIVES_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">

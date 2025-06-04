@@ -6,12 +6,12 @@ import SchizoAffectiveDisorder from '@/app/components/pages/bipolar/SchizoAffect
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { BIPOLAR_TYPES } from '@/app/data/bipolarDiagnoses';
-import { diagnosisIntro } from '@/app/data/pageIntros';
+import { DIAGNOSIS_INTRO } from '@/app/data/pageIntros';
 
 const DiagnosesPage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={diagnosisIntro} />
+      <PageIntroContainer intro={DIAGNOSIS_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10 items-center">
         {BIPOLAR_TYPES.map((type) => (
           <BipolarType key={type.title} bipolarType={type} />

@@ -12,9 +12,9 @@ import {
   PLAYLIST_SLEEP,
 } from '@/app/data/playlists';
 
-import { Suspense, useState } from 'react';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import { musicIntro } from '@/app/data/pageIntros';
+import { MUSIC_INTRO } from '@/app/data/pageIntros';
+import { Suspense, useState } from 'react';
 
 const MusicPage = () => {
   const [activeTab, setActiveTab] = useState('energi');
@@ -37,7 +37,7 @@ const MusicPage = () => {
 
   return (
     <section className="page-section ">
-      <PageIntroContainer intro={musicIntro} />
+      <PageIntroContainer intro={MUSIC_INTRO} />
       <div className="flex flex-wrap gap-4 items-center">
         {MUSIC_TABS.map((tab) => (
           <button

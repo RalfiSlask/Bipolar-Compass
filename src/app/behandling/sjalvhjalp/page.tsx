@@ -2,13 +2,13 @@ import Stress from '@/app/components/pages/treatment/Stress';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
-import { selfHelpIntro } from '@/app/data/pageIntros';
+import { SELF_HELP_INTRO } from '@/app/data/pageIntros';
 import Image from 'next/image';
 
 const SelfHelpPage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={selfHelpIntro} />
+      <PageIntroContainer intro={SELF_HELP_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">

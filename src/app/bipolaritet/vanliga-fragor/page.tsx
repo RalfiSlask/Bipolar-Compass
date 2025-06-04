@@ -3,7 +3,7 @@
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { faqItems } from '@/app/data/faqItems';
-import { faqIntro } from '@/app/data/pageIntros';
+import { FAQ_INTRO } from '@/app/data/pageIntros';
 import { IFaqItem } from '@/app/types/faq';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const FAQPage = () => {
 
   return (
     <section className="page-section">
-      <PageIntroContainer intro={faqIntro} />
+      <PageIntroContainer intro={FAQ_INTRO} />
       <div className="space-y-4 sm:space-y-6">
         {questions.map((item, index) => (
           <motion.div

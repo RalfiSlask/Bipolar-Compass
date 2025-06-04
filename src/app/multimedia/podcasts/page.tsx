@@ -6,7 +6,7 @@ import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import Spinner from '@/app/components/shared/Spinner';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
-import { podcastsIntro } from '@/app/data/pageIntros';
+import { PODCASTS_INTRO } from '@/app/data/pageIntros';
 import { IPodcastResult } from '@/app/types/podcast';
 import { useEffect, useState } from 'react';
 
@@ -25,7 +25,7 @@ const PodcastPage = () => {
   return (
     <section className="page-section">
       <div className="flex flex-col gap-4 sm:gap-10">
-        <PageIntroContainer intro={podcastsIntro} />
+        <PageIntroContainer intro={PODCASTS_INTRO} />
 
         <div className="flex flex-col gap-6">
           <h3 className="text-2xl font-semibold text-primary-dark">

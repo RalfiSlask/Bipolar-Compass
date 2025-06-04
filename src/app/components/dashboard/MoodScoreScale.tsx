@@ -28,7 +28,7 @@ const MoodScoreScale = ({
       <div className="flex flex-col gap-4 sm:gap-0">
         <div className="mood-score-scale-container__item">
           <div className="sm:min-w-[130px] h-full">
-            <h3 className="bg-red-500 sm:bg-gradient-to-b from-red-500 to-orange-500 rounded-tl-md">
+            <h3 className="bg-red-500 sm:bg-gradient-to-b from-red-500 to-orange-500 sm:rounded-t-md">
               Mani
             </h3>
           </div>
@@ -149,7 +149,7 @@ const MoodScoreScale = ({
 
         <div className="mood-score-scale-container__item">
           <div className="sm:min-w-[130px] h-full">
-            <h3 className="bg-black sm:bg-gradient-to-b from-gray-700 via-gray-900 to-gray-950 rounded-bl-md">
+            <h3 className="bg-black sm:bg-gradient-to-b from-gray-700 via-gray-900 to-gray-950 sm:rounded-b-md">
               Svår
             </h3>
           </div>
