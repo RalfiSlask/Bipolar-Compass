@@ -37,6 +37,8 @@ interface ISettingsContext {
     newPassword: string,
     email: string
   ) => Promise<void>;
+  saveProfileAvatar: (avatarUrl: string) => Promise<void>;
+  deleteProfileAvatar: () => Promise<void>;
 }
 
 export const SettingsContext = createContext<ISettingsContext | undefined>(
@@ -91,6 +93,28 @@ export const SettingsProvider = ({
     } catch (err) {
       console.error('could not save settings: ', err);
       throw new Error('Could not save settings');
+    }
+  };
+
+  const saveProfileAvatar = async (avatarUrl: string): Promise<void> => {
+    try {
+      await axios.put('/api/settings/save/profile/avatar', {
+        email: user?.email,
+        avatarUrl,
+      });
+
+      if (user) {
+        setUser({
+          ...user,
+          profile: {
+            ...user.profile,
+            avatarUrl,
+          },
+        });
+      }
+    } catch (err) {
+      console.error('could not save avatar: ', err);
+      throw new Error('Could not save avatar');
     }
   };
 
@@ -162,7 +186,10 @@ export const SettingsProvider = ({
       if (user) {
         setUser({
           ...user,
-          settings: { ...user.settings, healthcare_providers: healthcareProviders },
+          settings: {
+            ...user.settings,
+            healthcare_providers: healthcareProviders,
+          },
         });
       }
     } catch (err) {
@@ -193,6 +220,27 @@ export const SettingsProvider = ({
     }
   };
 
+  const deleteProfileAvatar = async (): Promise<void> => {
+    try {
+      await axios.delete('/api/settings/delete/avatar', {
+        data: { email: user?.email },
+      });
+
+      if (user) {
+        setUser({
+          ...user,
+          profile: {
+            ...user.profile,
+            avatarUrl: '',
+          },
+        });
+      }
+    } catch (err) {
+      console.error('could not delete avatar: ', err);
+      throw new Error('Could not delete avatar');
+    }
+  };
+
   const settingsData: ISettingsContext = {
     user,
     setUser,
@@ -204,6 +252,8 @@ export const SettingsProvider = ({
     saveHealthcareProvidersSettings,
     savePasswordSettings,
     saveNotificationSettings,
+    saveProfileAvatar,
+    deleteProfileAvatar,
   };
 
   return (
