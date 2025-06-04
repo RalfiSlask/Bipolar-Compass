@@ -6,6 +6,7 @@ export class Profile implements IProfile {
     public age: number = 0,
     public gender: string = '',
     public diagnosis: string = '',
-    public medications: Medication[] = []
+    public medications: Medication[] = [],
+    public avatarUrl: string = ''
   ) {}
 }
