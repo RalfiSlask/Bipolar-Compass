@@ -1,22 +1,17 @@
 'use client';
 
-import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { SettingsContext } from '@/app/context/SettingsContext';
-import { DIAGNOSIS_OPTIONS, GENDER_OPTIONS } from '@/app/data/settings';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
+import { IProfileFormValues } from '@/app/types/profile';
 import { getCreateDateAsMonthDayAndYear } from '@/app/utils/dateUtils';
 import { userSettingsValidationSchema } from '@/app/utils/validationSchemas';
-import { ErrorMessage, Field, FieldProps, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
-import EmailChangeButton from './EmailChangeButton';
-
-interface IFormValues {
-  email: string;
-  age: number;
-  gender: string;
-  diagnosis: string;
-}
+import AgeOptions from './AgeOptions';
+import DiagnosisOptions from './DiagnosisOptions';
+import EmailOptions from './EmailOptions';
+import GenderOptions from './GenderOptions';
 
 const ProfileSettings = () => {
   const { data: session, update: updateSession } = useSession();
@@ -24,14 +19,11 @@ const ProfileSettings = () => {
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  const context = useContext(SettingsContext);
-  if (!context) {
-    throw new Error('ProfileSettings måste användas inom en SettingsProvider');
-  }
+  const context = useSettingsContext();
 
   const { user, saveProfileSettings } = context;
 
-  const initialFormValues: IFormValues = {
+  const initialFormValues: IProfileFormValues = {
     email: user?.email ?? '',
     age: user?.profile?.age ?? 0,
     gender: user?.profile?.gender ?? 'Ej valt',
@@ -42,7 +34,7 @@ const ProfileSettings = () => {
     setIsEmailChangable(!isEmailChangable);
   };
 
-  const handleSubmit = async (values: IFormValues) => {
+  const handleSubmit = async (values: IProfileFormValues) => {
     setIsSaving(true);
     setSaveError(null);
     try {
@@ -68,7 +60,7 @@ const ProfileSettings = () => {
 
   return (
     <div
-      className="max-w-3xl w-full p-6 flex flex-col items-center gap-10"
+      className="max-w-3xl w-full p-6 pb-16 flex flex-col items-center gap-10"
       aria-labelledby="profile-heading"
     >
       <div className="flex flex-col gap-3 text-center">
@@ -85,6 +77,10 @@ const ProfileSettings = () => {
 
       <div className="w-full space-y-6">
         <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+          <div className="mb-6 pb-6 border-b border-gray-200">
+            {/* <AvatarContainer /> */}
+          </div>
+
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div className="flex flex-col gap-1">
               <h3 className="text-sm font-medium text-gray-500">Skapad</h3>
@@ -111,128 +107,17 @@ const ProfileSettings = () => {
                     {saveError}
                   </div>
                 )}
-
-                <fieldset className="space-y-4">
-                  <legend className="text-base font-medium text-gray-900">
-                    <label htmlFor="email">E-postadress</label>
-                  </legend>
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                    <div>
-                      <div className="relative">
-                        <Field
-                          className={`primary-input w-full sm:w-[420px]  ${
-                            errors.email && touched.email
-                              ? 'border-red-500'
-                              : ''
-                          }`}
-                          name="email"
-                          type="email"
-                          id="email"
-                          placeholder="Din e-postadress"
-                          disabled={!isEmailChangable}
-                          aria-invalid={Boolean(errors.email && touched.email)}
-                        />
-                        <ErrorMessage
-                          name="email"
-                          component="span"
-                          className="text-red-500 text-sm mt-1 block"
-                        />
-                      </div>
-                      {!isEmailChangable && (
-                        <p className="text-sm text-gray-500 mt-2">
-                          Klicka på &quot;Ändra e-post&quot; för att uppdatera
-                          din e-postadress
-                        </p>
-                      )}
-                    </div>
-                    <EmailChangeButton
-                      isEmailChangable={isEmailChangable}
-                      changeEmailChangable={changeEmailChangable}
-                    />
-                  </div>
-                </fieldset>
-
+                <EmailOptions
+                  errors={errors}
+                  touched={touched}
+                  isEmailChangable={isEmailChangable}
+                  changeEmailChangable={changeEmailChangable}
+                />
                 <div className="flex flex-wrap gap-8">
-                  <fieldset className="flex flex-col space-y-2">
-                    <legend className="text-base font-medium text-gray-900">
-                      <label htmlFor="age">Ålder</label>
-                    </legend>
-                    <div className="flex flex-col gap-1">
-                      <Field
-                        className={`primary-input w-full sm:w-[120px] ${
-                          errors.age && touched.age ? 'border-red-500' : ''
-                        }`}
-                        name="age"
-                        type="number"
-                        id="age"
-                        min={0}
-                        max={110}
-                        aria-invalid={Boolean(errors.age && touched.age)}
-                      />
-                      <ErrorMessage
-                        name="age"
-                        component="span"
-                        className="text-red-500 text-sm block"
-                      />
-                    </div>
-                  </fieldset>
-
-                  <fieldset className="flex flex-col space-y-2">
-                    <legend className="text-base font-medium text-gray-900">
-                      Kön
-                    </legend>
-                    <div className="flex flex-col gap-1">
-                      <Field name="gender">
-                        {({ field, form }: FieldProps<string, IFormValues>) => (
-                          <CustomSelect
-                            options={GENDER_OPTIONS}
-                            value={field.value}
-                            onChange={(value) =>
-                              form.setFieldValue('gender', value)
-                            }
-                            name="gender"
-                            error={form.errors.gender}
-                            touched={form.touched.gender}
-                          />
-                        )}
-                      </Field>
-                      <ErrorMessage
-                        name="gender"
-                        component="span"
-                        className="text-red-500 text-sm block"
-                      />
-                    </div>
-                  </fieldset>
-
-                  <fieldset className="flex flex-col space-y-2">
-                    <legend className="text-base font-medium text-gray-900">
-                      Diagnos
-                    </legend>
-                    <div className="flex flex-col gap-1">
-                      <Field name="diagnosis" className="min-w-[200px]">
-                        {({ field, form }: FieldProps<string, IFormValues>) => (
-                          <CustomSelect
-                            options={DIAGNOSIS_OPTIONS}
-                            value={field.value}
-                            onChange={(value) =>
-                              form.setFieldValue('diagnosis', value)
-                            }
-                            name="diagnosis"
-                            size="large"
-                            error={form.errors.diagnosis}
-                            touched={form.touched.diagnosis}
-                          />
-                        )}
-                      </Field>
-                      <ErrorMessage
-                        name="diagnosis"
-                        component="span"
-                        className="text-red-500 text-sm block"
-                      />
-                    </div>
-                  </fieldset>
+                  <AgeOptions errors={errors} touched={touched} />
+                  <GenderOptions />
+                  <DiagnosisOptions />
                 </div>
-
                 <div className="pt-4">
                   <button
                     type="submit"
