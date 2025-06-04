@@ -26,7 +26,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-3/4 flex items-center justify-center absolute right-0 top-0 h-full">
+          <div className="w-full xl:w-3/4 flex items-center justify-center absolute right-0 top-0 h-full">
             <Image
               src="/images/home/laughing.webp"
               alt="testing"
