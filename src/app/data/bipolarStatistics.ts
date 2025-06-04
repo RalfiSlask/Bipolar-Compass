@@ -24,3 +24,28 @@ export const BIPOLAR_TYPES = [
   { name: 'Typ 2', value: 40 },
   { name: 'Andra', value: 20 },
 ];
+
+/* This is for the graph chart for different bipolar diagnoses in the "diagnoser" page */
+export const GRAPH_MOOD_LEVELS = [
+  { threshold: 40, label: 'Mani' },
+  { threshold: 30, label: 'Hypomani' },
+  { threshold: 0, label: 'Normal' },
+  { threshold: -20, label: 'Lätt Depression' },
+  { threshold: -40, label: 'Svår Depression' },
+];
+
+export const GRAPH_EXACT_LEVELS = {
+  40: 'Mani',
+  20: 'Hypomani',
+  0: 'Normal',
+  '-20': 'Lätt Depression',
+  '-40': 'Svår Depression',
+};
+
+export const GRAPH_DATA = [
+  { time: '0', bipolar1: 0, bipolar2: 0, cyclothymia: 0 },
+  { time: '5', bipolar1: 40, bipolar2: 30, cyclothymia: 20 },
+  { time: '10', bipolar1: -10, bipolar2: -40, cyclothymia: -20 },
+  { time: '15', bipolar1: -50, bipolar2: -40, cyclothymia: -10 },
+  { time: '20', bipolar1: 0, bipolar2: 0, cyclothymia: 0 },
+];
