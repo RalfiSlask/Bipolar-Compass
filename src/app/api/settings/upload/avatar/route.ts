@@ -1,6 +1,6 @@
-import { mkdir, writeFile } from 'fs/promises';
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import { NextRequest, NextResponse } from 'next/server';
-import path from 'path';
+import s3Client from '../../../../../../s3Config';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
@@ -15,22 +15,30 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadDir = path.join(process.cwd(), 'public/uploads/avatars');
-    await mkdir(uploadDir, { recursive: true });
-
-    const filename = `avatar-${email.replace(
+    // We generate a unique filename for the avatar
+    const fileExtension = file.name.split('.').pop();
+    const filename = `avatars/avatar-${email.replace(
       '@',
       '_'
-    )}-${Date.now()}.${file.name.split('.').pop()}`;
-    const filepath = path.join(uploadDir, filename);
+    )}-${Date.now()}.${fileExtension}`;
 
-    await writeFile(filepath, buffer);
+    // We upload to our bucket on S3 (AWS)
+    const uploadParams = {
+      Bucket: process.env.AWS_S3_BUCKET_NAME,
+      Key: filename,
+      Body: buffer,
+      ContentType: file.type,
+    };
 
-    const avatarUrl = `/uploads/avatars/${filename}`;
+    const command = new PutObjectCommand(uploadParams);
+    await s3Client.send(command);
+
+    // Construct the public URL
+    const avatarUrl = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${filename}`;
 
     return NextResponse.json({ avatarUrl });
   } catch (error) {
-    console.error('Upload error:', error);
+    console.error('S3 Upload error:', error);
     return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
   }
 }
