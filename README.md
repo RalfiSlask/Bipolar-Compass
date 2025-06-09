@@ -58,8 +58,8 @@ This web application is designed to educate and support individuals affected by 
 - **Movies**: Collection of movies that have links to imdb.
 - **Podcasts**: Here you can view podcasts related to the disorder.
 - **Contact Form**: A contact form for sending emails.
-- **User Settings**: Users can change their profile info, change password or delete their account. 
-- **Hospital Google Maps**: In the acute page users can find the nearest hospitals by clicking a button that opens up google maps with the nearest hospitals. 
+- **User Settings**: Users can change their profile info, change password or delete their account.
+- **Hospital Google Maps**: In the acute page users can find the nearest hospitals by clicking a button that opens up google maps with the nearest hospitals.
 - **Login/Registration**: Auth for users including verification links so they can have access to more features in their dashboard.
 - **Notifications**: User can choose to add medications or relatives and allow the application to send email notifications by Qstash.
 - **Historic Overview**: Graphs displaying the mood of the user
