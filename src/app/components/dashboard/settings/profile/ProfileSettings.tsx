@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import AgeOptions from './AgeOptions';
+import AvatarContainer from './avatar/AvatarContainer';
 import DiagnosisOptions from './DiagnosisOptions';
 import EmailOptions from './EmailOptions';
 import GenderOptions from './GenderOptions';
@@ -78,7 +79,7 @@ const ProfileSettings = () => {
       <div className="w-full flex flex-col gap-6">
         <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
           <div className="mb-6 pb-6 border-b border-gray-200">
-            {/* <AvatarContainer /> */}
+            <AvatarContainer />
           </div>
 
           <div className="grid grid-cols-2 gap-6 mb-6">
