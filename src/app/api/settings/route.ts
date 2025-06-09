@@ -7,13 +7,10 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
 
     const { email } = await req.json();
 
-    console.log(email);
-
     const user = await collection.findOne(
       { email: email },
       { projection: { password: 0 } }
     );
-    console.log(user);
     return NextResponse.json({
       user: user,
     });
