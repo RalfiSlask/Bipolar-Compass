@@ -79,7 +79,7 @@ const VerificationPage = () => {
         <div className="w-full">
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-10 shadow-xl border border-primary-border">
             {isAlreadyVerified && (
-              <div className="text-center space-y-4">
+              <div className="text-center flex flex-col gap-4">
                 <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-primary-dark"
@@ -105,7 +105,7 @@ const VerificationPage = () => {
             )}
 
             {!isAlreadyVerified && isEmailVerified && (
-              <div className="text-center space-y-4">
+              <div className="text-center flex flex-col gap-4">
                 <div className="w-16 h-16 bg-primary-light rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-primary-dark"
@@ -131,7 +131,7 @@ const VerificationPage = () => {
             )}
 
             {!isAlreadyVerified && !isEmailVerified && (
-              <div className="text-center space-y-6">
+              <div className="text-center flex flex-col gap-6">
                 <div className="w-16 h-16 bg-tertiary-light rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg
                     className="w-8 h-8 text-tertiary-dark"
