@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
+    /* We need to explicitly allow images from external sources for security reasons */
     remotePatterns: [
       {
         protocol: 'https',
@@ -16,6 +17,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'i.scdn.co',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bipolar-compass-image-storage.s3.eu-north-1.amazonaws.com',
         pathname: '**',
       },
     ],
