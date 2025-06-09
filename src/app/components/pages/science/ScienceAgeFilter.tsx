@@ -15,7 +15,7 @@ const ScienceAgesFilter = ({
   return (
     <div className="pt-6">
       <h3 className="font-medium text-primary-dark mb-3">Åldrar</h3>
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         {AGE_FILTERS.map((filter, index) => {
           if (index < 3) {
             return (

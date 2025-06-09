@@ -75,7 +75,7 @@ const ProfileSettings = () => {
         </p>
       </div>
 
-      <div className="w-full space-y-6">
+      <div className="w-full flex flex-col gap-6">
         <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
           <div className="mb-6 pb-6 border-b border-gray-200">
             {/* <AvatarContainer /> */}
@@ -101,7 +101,7 @@ const ProfileSettings = () => {
             onSubmit={handleSubmit}
           >
             {({ errors, touched }) => (
-              <Form className="space-y-6">
+              <Form className="flex flex-col gap-6">
                 {saveError && (
                   <div className="text-red-500 text-sm" role="alert">
                     {saveError}

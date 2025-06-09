@@ -91,7 +91,7 @@ const SpotifySection = ({ activePlaylist }: ISpotifySectionProps) => {
         {!isAuthenticated && (
           <div className="mb-8 p-6 bg-primary-dark backdrop-blur-sm rounded-2xl border border-gray-700">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <h3 className="text-white text-xl font-semibold">
                   Få ut mer av din musikupplevelse
                 </h3>

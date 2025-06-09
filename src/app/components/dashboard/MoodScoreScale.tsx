@@ -32,7 +32,7 @@ const MoodScoreScale = ({
               Mani
             </h3>
           </div>
-          <div className="flex-1 space-y-3 h-full flex-grow flex flex-col justify-center">
+          <div className="flex-1 flex flex-col gap-3 h-full flex-grow justify-center">
             <div className="flex justify-between items-start gap-4">
               <p className="text-sm text-dark">
                 Fullständig brist på omdöme, extrema ekonomiska beslut,
@@ -60,7 +60,7 @@ const MoodScoreScale = ({
               Hypomani
             </h3>
           </div>
-          <div className="flex-1 space-y-3 h-full flex-grow flex flex-col justify-center">
+          <div className="flex-1 flex flex-col gap-3 h-full flex-grow justify-center">
             <div className="flex justify-between items-start gap-4">
               <p className="text-sm text-dark">
                 Överdriven självsäkerhet, snabba tankar och högt tempo, startar
@@ -88,7 +88,7 @@ const MoodScoreScale = ({
               Balanserat
             </h3>
           </div>
-          <div className="flex-1 space-y-3 h-full flex-grow flex flex-col justify-center">
+          <div className="flex-1 flex flex-col gap-3 h-full flex-grow justify-center">
             <div className="flex justify-between items-start gap-4">
               <p className="text-sm text-dark">
                 Känner sig stabil, har god självkänsla och är effektiv i sitt
@@ -125,7 +125,7 @@ const MoodScoreScale = ({
               Mild/Måttlig
             </h3>
           </div>
-          <div className="flex-1 space-y-3 h-full flex-grow flex flex-col justify-center">
+          <div className="flex-1 flex flex-col gap-3 h-full flex-grow justify-center">
             <div className="flex justify-between items-start gap-4">
               <p className="text-sm text-dark">
                 Ångest och rastlöshet dominerar, svårt att koncentrera sig, men
@@ -153,7 +153,7 @@ const MoodScoreScale = ({
               Svår
             </h3>
           </div>
-          <div className="flex-1 space-y-3 h-full flex-grow flex flex-col justify-center">
+          <div className="flex-1 flex flex-col gap-3 h-full flex-grow justify-center">
             <div className="flex justify-between items-start gap-4">
               <p className="text-sm text-dark">
                 Djupa känslor av hopplöshet och skuld, svårt att röra sig eller

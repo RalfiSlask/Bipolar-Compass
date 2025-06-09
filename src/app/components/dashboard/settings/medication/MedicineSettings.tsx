@@ -231,7 +231,7 @@ const MedicineSettings = ({
       </div>
 
       <div
-        className={`w-full space-y-6 ${
+        className={`w-full flex flex-col gap-6 ${
           !user.isVerified ? 'opacity-50 pointer-events-none' : ''
         }`}
       >

@@ -56,7 +56,7 @@ const MoodTrackerWeek = ({
           </button>
         </div>
 
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           {moodTrackerValues.map((mood) => (
             <div
               key={mood.id}
@@ -104,7 +104,7 @@ const MoodTrackerWeek = ({
                 })}
               </div>
 
-              <div className="sm:hidden space-y-4">
+              <div className="sm:hidden flex flex-col gap-4">
                 {mood.valueForDays
                   .filter((day) => new Date(day.date) <= new Date())
                   .map((day) => (

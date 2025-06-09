@@ -82,7 +82,7 @@ const UserEmailNotificationCheckbox = ({
         </div>
 
         {user.settings.relatives.length > 0 ? (
-          <div className="space-y-3">
+          <div className="flex flex-col gap-3">
             {user.settings.relatives.map((relative, index) => (
               <div key={index} className="flex justify-between items-center">
                 <span className="text-sm">{relative.email}</span>

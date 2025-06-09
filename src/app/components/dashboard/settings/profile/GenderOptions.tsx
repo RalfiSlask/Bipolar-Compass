@@ -7,7 +7,7 @@ import { ErrorMessage, FieldProps } from 'formik';
 
 const GenderOptions = () => {
   return (
-    <fieldset className="flex flex-col space-y-2">
+    <fieldset className="flex flex-col gap-2">
       <legend className="text-base font-medium text-gray-900">Kön</legend>
       <div className="flex flex-col gap-1">
         <Field name="gender">

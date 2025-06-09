@@ -56,8 +56,8 @@ const PasswordStrengthIndicator = ({
   };
 
   return (
-    <div className="mt-4 space-y-4">
-      <div className="space-y-2">
+    <div className="mt-4 flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <div className="flex justify-between items-center">
           <span className="text-sm font-medium text-dark">
             Lösenordsstyrka:
@@ -83,7 +83,7 @@ const PasswordStrengthIndicator = ({
         <h3 className="text-sm font-medium text-dark mb-3">
           Lösenordet måste innehålla:
         </h3>
-        <ul className="space-y-2">
+        <ul className="flex flex-col gap-2">
           {requirements.map((requirement, index) => (
             <li
               key={index}

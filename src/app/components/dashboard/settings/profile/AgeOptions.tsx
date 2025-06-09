@@ -8,7 +8,7 @@ interface IAgeOptionsProps {
 
 const AgeOptions = ({ errors, touched }: IAgeOptionsProps) => {
   return (
-    <fieldset className="flex flex-col space-y-2">
+    <fieldset className="flex flex-col gap-2">
       <legend className="text-base font-medium text-gray-900">
         <label htmlFor="age">Ålder</label>
       </legend>

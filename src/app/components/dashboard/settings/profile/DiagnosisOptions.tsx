@@ -5,7 +5,7 @@ import { ErrorMessage, Field, FieldProps } from 'formik';
 
 const DiagnosisOptions = () => {
   return (
-    <fieldset className="flex flex-col space-y-2">
+    <fieldset className="flex flex-col gap-2">
       <legend className="text-base font-medium text-gray-900">Diagnos</legend>
       <div className="flex flex-col gap-1">
         <Field name="diagnosis" className="min-w-[200px]">

@@ -96,7 +96,7 @@ const MoodTrackerDay = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="space-y-6">
+        <div className="flex flex-col gap-6">
           <div className="bg-white rounded-2xl shadow-md p-6">
             <div className="flex flex-col gap-4">
               <label

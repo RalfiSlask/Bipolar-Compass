@@ -24,7 +24,7 @@ const Section = ({
   <div
     className={`px-6 md:px-10 ${bgColor} min-h-[200px] md:h-1/3 flex flex-col justify-center py-8 md:py-0`}
   >
-    <Link href={href} className="space-y-3 md:space-y-4">
+    <Link href={href} className="space-y-3 md:flex flex-col gap-4">
       <h3 className={`text-xl md:text-2xl font-bold ${textColor}`}>{title}</h3>
       <p className={`${textColor} text-sm md:text-base`}>{description}</p>
       <button className={`${buttonVariant}-button`}>{buttonText}</button>

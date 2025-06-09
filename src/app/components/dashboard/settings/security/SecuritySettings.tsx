@@ -49,7 +49,7 @@ const SecuritySettings = () => {
         </div>
         <div className="p-6 border bg-white rounded-lg shadow-sm">
           <h3 className="text-xl font-semibold mb-4">Ta bort konto</h3>
-          <div className="space-y-4">
+          <div className="flex flex-col gap-4">
             <p className="text-gray-600">
               Enligt GDPR har du rätt att ta bort ditt konto och all tillhörande
               data. Detta är en permanent åtgärd och kan inte ångras. All din

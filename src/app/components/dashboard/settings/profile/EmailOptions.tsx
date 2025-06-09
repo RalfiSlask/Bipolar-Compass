@@ -16,7 +16,7 @@ const EmailOptions = ({
   changeEmailChangable,
 }: IEmailOptionsProps) => {
   return (
-    <fieldset className="space-y-4">
+    <fieldset className="flex flex-col gap-4">
       <legend className="text-base font-medium text-gray-900">
         <label htmlFor="email">E-postadress</label>
       </legend>
