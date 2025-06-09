@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Challenges = () => {
   return (
     <div className="bg-tertiary-light w-full flex flex-col lg:flex-row-reverse items-center shadow-lg rounded-2xl gap-6 px-4 md:px-10 py-4 md:py-10 animate-modal-slide-up">
-      <div className="flex-1 space-y-6 text-tertiary-dark">
+      <div className="flex-1 flex flex-col gap-6 text-tertiary-dark">
         <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-tertiary-dark">
           Vanliga utmaningar för anhöriga
         </h3>
