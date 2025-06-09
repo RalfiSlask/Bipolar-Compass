@@ -50,6 +50,50 @@
   min-width: 100px;
 }
 
+.tertiary-button {
+  padding: 12px 24px;
+  border-radius: 12px;
+  background-color: $tertiary-dark;
+  color: white;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+  &:hover {
+    background-color: $tertiary-medium;
+  }
+  width: fit-content;
+  min-width: 100px;
+}
+
+.quartiary-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  display: inline-block;
+  width: fit-content;
+  min-width: 100px;
+  background-color: $primary-light;
+  color: $primary-dark;
+
+  &:hover {
+    background-color: $primary-medium;
+    color: $secondary-dark;
+  }
+
+  &.active {
+    background-color: $primary-dark;
+    color: $primary-light;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
+
+.questionare-download-button {
+  @apply flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:bg-primary-dark hover:text-white text-dark py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2;
+}
+
+.questionare-view-button {
+  @apply flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2;
+}
+
 .main-button {
   color: #19505b !important;
   background-color: white !important;
@@ -124,42 +168,6 @@
   transition-duration: 0.3s;
   transition-property: width;
   transition-timing-function: linear;
-}
-
-.tertiary-button {
-  padding: 12px 24px;
-  border-radius: 12px;
-  background-color: $tertiary-dark;
-  color: white;
-  display: inline-block;
-  transition: background-color 0.3s, color 0.3s;
-  &:hover {
-    background-color: $tertiary-medium;
-  }
-  width: fit-content;
-  min-width: 100px;
-}
-
-.quartiary-button {
-  padding: 12px 24px;
-  border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  display: inline-block;
-  width: fit-content;
-  min-width: 100px;
-  background-color: $primary-light;
-  color: $primary-dark;
-
-  &:hover {
-    background-color: $primary-medium;
-    color: $secondary-dark;
-  }
-
-  &.active {
-    background-color: $primary-dark;
-    color: $primary-light;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-  }
 }
 
 .advanced-primary-button {
