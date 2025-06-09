@@ -554,7 +554,7 @@ const ScienceArticles = () => {
                   <h3 className="font-medium text-primary-dark">
                     Publiceringsdatum
                   </h3>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
                       <div key={tab.value} className="flex items-center gap-2">
                         <input
@@ -578,7 +578,7 @@ const ScienceArticles = () => {
                 </div>
 
                 {searchScope === 'swedish' && (
-                  <div className="space-y-4 pt-6">
+                  <div className="flex flex-col gap-4 pt-6">
                     <CustomSelect
                       options={SWEDISH_UNIVERSITIES_FILTERS}
                       value={selectedUniversity}
@@ -660,7 +660,7 @@ const ScienceArticles = () => {
               <h3 className="font-medium text-primary-dark">
                 Publiceringsdatum
               </h3>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 {YEARS_OF_PUBLICATION_FILTERS.map((tab) => (
                   <div key={tab.value} className="flex items-center gap-2">
                     <input
@@ -683,7 +683,7 @@ const ScienceArticles = () => {
 
             {searchScope === 'swedish' && (
               <>
-                <div className="space-y-4 pt-6">
+                <div className="flex flex-col gap-4 pt-6">
                   <CustomSelect
                     options={SWEDISH_UNIVERSITIES_FILTERS}
                     value={selectedUniversity}
@@ -757,7 +757,7 @@ const ScienceArticles = () => {
 
           <main className="bg-white rounded-lg shadow-md p-4 md:p-6">
             <div className="flex flex-col w-full">
-              <div className="w-full space-y-4">
+              <div className="w-full flex flex-col gap-4">
                 <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
                   <span className="text-sm text-gray-500">
                     {totalResults} artiklar hittade
@@ -782,7 +782,7 @@ const ScienceArticles = () => {
                       Inga artiklar hittades som matchar dina sökkriterier.
                     </div>
                   ) : (
-                    <div className="space-y-4 w-full">
+                    <div className="flex flex-col gap-4 w-full">
                       {articles.map((article) => (
                         <ScienceArticleContainer
                           key={article.id}

@@ -14,12 +14,12 @@ const TherapyPage = () => {
             Psykoterapi: Samtalsterapi som verktyg
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Kognitiv beteendeterapi (KBT)
               </h4>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div>
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Vad är KBT?
@@ -58,7 +58,7 @@ const TherapyPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Interpersonell och social rytmterapi (IPSRT)
               </h4>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div>
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Vad är IPSRT?
@@ -91,7 +91,7 @@ const TherapyPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Psykoedukation
               </h4>
-              <div className="space-y-4">
+              <div className="flex flex-col gap-4">
                 <div>
                   <h5 className="font-semibold text-primary-dark mb-2">
                     Vad är psykoedukation?
@@ -130,13 +130,13 @@ const TherapyPage = () => {
             Medicinsk behandling i kombination med terapi
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p>
               Terapier kombineras ofta med medicinsk behandling för att ge bästa
               möjliga resultat.
             </p>
 
-            <div className="space-y-4">
+            <div className="flex flex-col gap-4">
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li>
                   Stämningsstabiliserande mediciner: Hjälper till att minska
@@ -160,7 +160,7 @@ const TherapyPage = () => {
             Gruppterapi och stödgrupper
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Gruppterapi:
@@ -189,7 +189,7 @@ const TherapyPage = () => {
             Digital terapi och online-stöd
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p>
               I en digital värld finns allt fler alternativ för terapi online.
             </p>
@@ -222,7 +222,7 @@ const TherapyPage = () => {
             Terapival: Hur hittar du rätt?
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p>
               Att hitta rätt terapi är individuellt och kan ta tid. Här är några
               tips:
@@ -264,7 +264,7 @@ const TherapyPage = () => {
             Självhjälp som komplement till terapi
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Mindfulness:
@@ -296,7 +296,7 @@ const TherapyPage = () => {
             Psykologisk behandling som komplement till läkemedel
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p>
               I Sverige rekommenderas ofta en kombination av läkemedel och
               psykologisk behandling för att effektivt hantera bipolär sjukdom.
@@ -338,7 +338,7 @@ const TherapyPage = () => {
               />
             </div>
           </div>
-          <div className="flex-1 space-y-6 text-primary-dark">
+          <div className="flex-1 flex flex-col gap-6 text-primary-dark">
             <div>
               <h5 className="font-semibold text-primary-dark mb-2 lg:text-lg">
                 Hitta legitimerad psykolog eller psykoterapeut:

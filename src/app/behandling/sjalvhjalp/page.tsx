@@ -15,12 +15,12 @@ const SelfHelpPage = () => {
             Förstå din sjukdom
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Vad är bipolär sjukdom?
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Bipolär sjukdom är ett komplext psykiskt hälsotillstånd som
                   påverkar ditt humör, energi och aktivitetsnivå på ett
@@ -57,7 +57,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Vikten av kunskap:
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att förstå din diagnos är ett kraftfullt verktyg i din
                   återhämtningsresa. Genom att lära dig mer om bipolär sjukdom
@@ -83,13 +83,13 @@ const SelfHelpPage = () => {
             Dagliga rutiner
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="flex flex-col lg:flex-row gap-6">
               <div className="flex-1 lg:min-h-fit">
                 <h4 className="lg:text-xl text-lg font-semibold text-primary-dark mb-3">
                   Skapa struktur
                 </h4>
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col gap-3">
                   <p className="text-base xl:text-lg">
                     En välplanerad daglig rutin är grundläggande för att hantera
                     bipolär sjukdom. Genom att etablera fasta tider för sömn,
@@ -136,7 +136,7 @@ const SelfHelpPage = () => {
                 <h4 className="lg:text-xl text-lg font-semibold text-primary-dark mb-3">
                   Sömn
                 </h4>
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col gap-3">
                   <p className="text-base xl:text-lg">
                     God sömn är en av de viktigaste faktorerna för att hantera
                     bipolär sjukdom. Sikta på att gå och lägga dig samt vakna
@@ -162,7 +162,7 @@ const SelfHelpPage = () => {
                 <h4 className="lg:text-xl text-lg font-semibold text-primary-dark mb-3">
                   Motion
                 </h4>
-                <div className="flex flex-col space-y-3">
+                <div className="flex flex-col gap-3">
                   <p className="text-base xl:text-lg">
                     Regelbunden fysisk aktivitet är en kraftfull naturlig
                     stämningsstabilisator. Det behöver inte vara intensiv
@@ -201,12 +201,12 @@ const SelfHelpPage = () => {
             Relationsstöd
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Prata med andra
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att öppna upp sig för andra om din bipolära sjukdom kan kännas
                   utmanande, men ärlig kommunikation är nyckeln till starka och
@@ -232,7 +232,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Sök stödgrupper
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Stödgrupper erbjuder en unik möjlighet att dela erfarenheter
                   med andra som verkligen förstår vad du går igenom. I dessa
@@ -258,7 +258,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Sätt gränser
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att sätta hälsosamma gränser är avgörande för ditt välmående.
                   Detta innebär att lära sig känna igen när sociala situationer,
@@ -287,12 +287,12 @@ const SelfHelpPage = () => {
             Hantera humörsvängningar
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Spåra ditt humör
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att regelbundet spåra ditt humör är ett av de mest effektiva
                   sätten att hantera bipolär sjukdom. Genom vår inbyggda
@@ -317,7 +317,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Förebyggande åtgärder
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att känna igen och agera på tidiga varningstecken är avgörande
                   för att förebygga allvarliga episoder. Var uppmärksam på
@@ -341,7 +341,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Följ din behandlingsplan
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   En konsekvent behandlingsplan är grundläggande för att hantera
                   bipolär sjukdom effektivt. Detta inkluderar att ta ordinerad
@@ -369,12 +369,12 @@ const SelfHelpPage = () => {
             När söka hjälp
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Varningstecken
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Det är viktigt att kunna identifiera när dina symtom blir
                   allvarliga nog att kräva professionell hjälp. Var särskilt
@@ -398,7 +398,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Professionell hjälp
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Det finns många olika typer av professionell hjälp
                   tillgänglig. En psykiater kan hjälpa dig med medicinsk
@@ -422,7 +422,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Nödkontakter
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Det är viktigt att ha en lista med relevanta nödkontakter
                   lättillgänglig, särskilt under perioder när du känner dig
@@ -450,7 +450,7 @@ const SelfHelpPage = () => {
               <h4 className="text-lg font-semibold text-primary-dark mb-3">
                 Artiklar och böcker
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p className="text-base xl:text-lg">
                   Att fördjupa din kunskap om bipolär sjukdom genom
                   kvalitetsgranskad litteratur kan ge dig värdefulla insikter
@@ -482,12 +482,12 @@ const SelfHelpPage = () => {
               />
             </div>
           </div>
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Appar
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Det finns många användbara appar som kan stödja dig i din
                   hantering av bipolär sjukdom. Förutom vår egen
@@ -513,7 +513,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Online-stöd
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Internet erbjuder många värdefulla resurser för personer med
                   bipolär sjukdom. Förutom Bipolärkompassen finns det flera
@@ -540,12 +540,12 @@ const SelfHelpPage = () => {
             Självmedkänsla och långsiktig hälsa
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div>
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Acceptera dig själv
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att leva med bipolär sjukdom kan ibland kännas överväldigande,
                   men kom ihåg att din diagnos inte definierar dig som person.
@@ -568,7 +568,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Sätt realistiska mål
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att sätta realistiska mål är viktigt för din långsiktiga hälsa
                   och välbefinnande. Börja med små, uppnåbara mål och bygg
@@ -590,7 +590,7 @@ const SelfHelpPage = () => {
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Fira framgångar
               </h4>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col gap-3">
                 <p>
                   Att uppmärksamma och fira dina framsteg är en viktig del av
                   återhämtningsprocessen. Varje steg framåt, oavsett hur litet

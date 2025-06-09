@@ -187,7 +187,7 @@ const DiaryNote = () => {
                 onSubmit={handleSubmit}
               >
                 {({ values, setFieldValue, isSubmitting }) => (
-                  <Form className="space-y-6">
+                  <Form className="flex flex-col gap-6">
                     <div>
                       <label htmlFor="title" className="block text-dark mb-2">
                         Titel

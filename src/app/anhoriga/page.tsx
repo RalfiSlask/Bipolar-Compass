@@ -202,7 +202,7 @@ const RelativePage = () => {
               <h4 className="text-lg mb-2 text-primary-dark font-semibold">
                 När kan detta bli aktuellt?
               </h4>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside flex flex-col gap-2">
                 <li>
                   Din närstående vägrar lämna hemmet eller en annan plats för
                   att uppsöka vård.
@@ -222,7 +222,7 @@ const RelativePage = () => {
               <h4 className="text-lg mb-2 text-primary-dark font-semibold">
                 Hur kontaktar man ett mobilt psykiatriskt team?
               </h4>
-              <ul className="list-disc list-inside space-y-2">
+              <ul className="list-disc list-inside flex flex-col gap-2">
                 <li>
                   Ring psykiatriska jourmottagningen eller titta på vår sida om{' '}
                   {''}

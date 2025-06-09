@@ -16,7 +16,7 @@ const MedicinePage = () => {
             Stämningsstabiliserande mediciner
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
@@ -66,7 +66,7 @@ const MedicinePage = () => {
             Antipsykotiska mediciner
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
@@ -113,7 +113,7 @@ const MedicinePage = () => {
             Antidepressiva mediciner
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vad gör de?
@@ -161,7 +161,7 @@ const MedicinePage = () => {
             Kombination av mediciner
           </h3>
 
-          <div className="space-y-6 lg:text-lg">
+          <div className="flex flex-col gap-6 lg:text-lg">
             <p>
               I många fall används en kombination av mediciner från olika
               grupper för att uppnå bästa möjliga effekt. Till exempel kan en
@@ -185,7 +185,7 @@ const MedicinePage = () => {
             Kommer medicinen fungera för mig?
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p className="lg:text-lg">
               Det är naturligt att undra om medicinen kommer att fungera för
               just dig. Behandling av bipolär sjukdom är individuell, och det
@@ -208,7 +208,7 @@ const MedicinePage = () => {
             Biverkningar och trygghet vid medicinering
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p className="lg:text-lg">
               När du påbörjar en ny medicinering är det vanligt att känna viss
               oro för biverkningar. Det är dock viktigt att veta att de flesta
@@ -257,7 +257,7 @@ const MedicinePage = () => {
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>
 
-          <div className="space-y-6">
+          <div className="flex flex-col gap-6">
             <p className="lg:text-lg">
               Förutom mediciner finns det andra behandlingsmetoder som kan vara
               effektiva vid bipolär sjukdom, särskilt om mediciner inte ger
@@ -296,7 +296,7 @@ const MedicinePage = () => {
                   <h4 className="text-2xl font-bold text-primary-dark">ECT</h4>
                 </div>
 
-                <div className="sm:space-y-4">
+                <div className="sm:flex flex-col gap-4">
                   <div className="flex gap-3 p-3 flex-col sm:flex-row bg-primary-light/10 rounded-lg">
                     <span className="font-semibold min-w-[120px]">
                       Invasivitet:
@@ -329,7 +329,7 @@ const MedicinePage = () => {
 
                   <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
                     <p className="font-medium">Rekommenderas särskilt vid:</p>
-                    <ul className="list-disc list-inside mt-2 space-y-1">
+                    <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Svår depression som inte svarar på mediciner</li>
                       <li>Akuta maniska episoder</li>
                       <li>När snabb behandlingseffekt krävs</li>
@@ -346,7 +346,7 @@ const MedicinePage = () => {
                   <h4 className="text-2xl font-bold text-primary-dark">TMS</h4>
                 </div>
 
-                <div className="sm:space-y-4">
+                <div className="sm:flex flex-col gap-4">
                   <div className="flex gap-3 p-3 flex-col sm:flex-row bg-primary-light/10 rounded-lg">
                     <span className="font-semibold min-w-[120px]">
                       Invasivitet:
@@ -381,7 +381,7 @@ const MedicinePage = () => {
 
                   <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
                     <p className="font-medium">Rekommenderas särskilt vid:</p>
-                    <ul className="list-disc list-inside mt-2 space-y-1">
+                    <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Måttlig depression som inte svarar på mediciner</li>
                       <li>När man vill undvika biverkningar från mediciner</li>
                       <li>För personer som inte kan få ECT</li>

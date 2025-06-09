@@ -28,7 +28,7 @@ const PageIntroContainer = ({ intro }: IPageIntroContainerProps) => {
           {title}
         </h2>
         <div
-          className={`space-y-4 sm:space-y-6 text-lg sm:text-xl text-${colorClass}`}
+          className={`space-y-4 sm:flex flex-col gap-6 text-lg sm:text-xl text-${colorClass}`}
         >
           <p className={`text-base sm:text-xl text-${colorClass}`}>
             {description}
