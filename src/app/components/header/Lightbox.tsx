@@ -3,7 +3,7 @@
 import { createPortal } from 'react-dom';
 
 interface LightboxProps {
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Lightbox = ({ onClose }: LightboxProps) => {
