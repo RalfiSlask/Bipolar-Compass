@@ -1,6 +1,7 @@
-import { IScoringInfo } from '../types/documents';
+import { IScoringInfo } from '@/app/types/documents';
+import { IToolForm } from '@/app/types/tools/tools';
 
-export const selfAssessmentForms = [
+export const selfAssessmentForms: IToolForm[] = [
   {
     title: 'MADRS - Montgomery-Åsberg Depression Rating Scale',
     description:
@@ -44,6 +45,7 @@ export const selfAssessmentForms = [
     href: '../pdfs/diary.pdf',
     ariaLabelDownload: 'Ladda ner Stämningsdagbok',
     ariaLabelOpen: 'Öppny Stämningsdagbok i ny flik',
+    scoringId: 'Stämningsdagbok',
   },
 ];
 
