@@ -17,20 +17,19 @@ import Spinner from '../components/shared/Spinner';
 import AnxietyPieChart from '../components/dashboard/AnxietyPieChart';
 import DailyAverageMoodChart from '../components/dashboard/DailyAverageMoodChart';
 import DashboardCardWrapper from '../components/dashboard/DashboardCardWrapper';
+import MoodScoreContainer from '../components/dashboard/home/MoodScoreContainer';
 import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
+import MyPageAvatar from '../components/dashboard/MyPageAvatar';
 import SleepGraph from '../components/dashboard/SleepGraph';
 import { WEIGHTS } from '../data/dashboardWeights';
 import { HEALTHCARE_PROVIDER_TYPES } from '../data/healtcareProviders';
 import { RELATIVE_TYPES } from '../data/relatives';
 import { ICustomSession } from '../types/authoptions';
+import { INormalizedAnxietyData } from '../types/dashboard/data';
 import { IMoodValue } from '../types/moodtracker';
 import { IUserWithMoodTracker } from '../types/user';
-import {
-  convertMedicineFrequencyToSwedishString,
-  moodScoreColor,
-  renderMessage,
-} from '../utils/dashboardUtils';
+import { convertMedicineFrequencyToSwedishString } from '../utils/dashboardUtils';
 import { getLabelByValue } from '../utils/generalUtils';
 import { roundToNearestHalf } from '../utils/numberUtils';
 
@@ -69,7 +68,10 @@ const MyPage = () => {
    * @param {string} id - The id of the mood to check for.
    * @returns {boolean} - True if there is any mood tracker data for the given mood id, false otherwise.
    */
-  const isThereAnyMoodTrackerData = (id: string): boolean => {
+  const isThereAnyMoodTrackerData = (
+    id: string,
+    userData: IUserWithMoodTracker | null
+  ): boolean => {
     const mood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
       .find((mood) => mood.id === id);
@@ -164,7 +166,7 @@ const MyPage = () => {
 
   const moodScore = Math.round(calculateMoodScore(moodValues, WEIGHTS));
 
-  const normalizedAnxietyData = (() => {
+  const normalizedAnxietyData: INormalizedAnxietyData[] = (() => {
     const anxietyMood = userData?.moodTrackerData
       .flatMap((week) => week.mood_values)
       .find((mood) => mood.id === 'anxiety');
@@ -196,44 +198,11 @@ const MyPage = () => {
   return (
     <section className="w-full h-full bg-tertiary-light pt-10 pb-16 px-4 md:px-8 lg:px-10">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden ">
-          <div className="relative z-10">
-            <h1 className="text-3xl font-semibold text-secondary-dark mb-3">
-              Välkommen tillbaka, {session?.user?.name}!
-            </h1>
-            <p className="text-gray-600 text-lg w-full">
-              Ta en stund att reflektera över hur du mår idag. Din mentala hälsa
-              är viktig.
-            </p>
-            <div className="flex flex-col">
-              <div className="mt-6 flex-col sm:flex-row flex items-center">
-                <span
-                  style={{ color: moodScoreColor(moodScore) }}
-                  className={`text-2xl font-semibold mr-4 `}
-                >
-                  Moodscore: {moodScore}
-                </span>
-
-                <div className="h-2 flex-grow bg-primary-medium/60 rounded-full mt-4 sm:mt-0 w-full sm:w-auto overflow-hidden">
-                  <div
-                    className={`h-full w-full `}
-                    style={{
-                      width: `${moodScore}%`,
-                      backgroundColor: moodScoreColor(moodScore),
-                    }}
-                  ></div>
-                </div>
-              </div>
-              {userData?.moodTrackerData && (
-                <p className="text-gray-600 text-sm mt-1">
-                  {renderMessage(moodScore, userData?.moodTrackerData)}
-                </p>
-              )}
-            </div>
-          </div>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-full  transform translate-x-16 -translate-y-16"></div>
-          <div className="absolute bottom-0 right-0 w-24 h-24 bg-tertiary-light rounded-full  transform translate-x-8 translate-y-8"></div>
-        </div>
+        <MoodScoreContainer
+          moodScore={moodScore}
+          userData={userData}
+          user={session?.user as ICustomSession['user']}
+        />
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
           <DashboardCardWrapper title="Mediciner" icon={FaNotesMedical}>
@@ -341,7 +310,7 @@ const MyPage = () => {
             icon={FaFrown}
             className="md:row-span-2 lg:col-span-1"
           >
-            {isThereAnyMoodTrackerData('anxiety') ? (
+            {isThereAnyMoodTrackerData('anxiety', userData) ? (
               <AnxietyPieChart normalizedAnxietyData={normalizedAnxietyData} />
             ) : (
               <p className="text-dark text-sm mt-1">
@@ -350,7 +319,7 @@ const MyPage = () => {
             )}
           </DashboardCardWrapper>
           <DashboardCardWrapper title="Sömn" icon={FaBed} className="h-full">
-            {isThereAnyMoodTrackerData('sleep') ? (
+            {isThereAnyMoodTrackerData('sleep', userData) ? (
               <SleepGraph sleepData={sleepData} />
             ) : (
               <p className="text-dark text-sm mt-1">
@@ -384,6 +353,10 @@ const MyPage = () => {
         </div>
         <MoodScoreScale title="Moodscore Guide" />
       </div>
+      <MyPageAvatar
+        user={session?.user as ICustomSession['user']}
+        userData={userData}
+      />
     </section>
   );
 };

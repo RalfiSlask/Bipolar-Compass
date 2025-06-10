@@ -1,5 +1,6 @@
 'use client';
 
+import useSidebarContext from '@/app/hooks/useSidebarContext';
 import Link from 'next/link';
 import { FiSidebar, FiUser } from 'react-icons/fi';
 import { CloseIcon } from '../shared/icons/CloseIcon';
@@ -7,24 +8,18 @@ import DashboardNavigation from './DashboardNavigation';
 
 interface IDashboardSidebarProps {
   email: string;
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
   isMobile: boolean;
   handleClickOnSidebarLinksOnMobile: () => void;
 }
 
-const DashboardSidebar = ({
-  email,
-  isOpen,
-  setIsOpen,
-  isMobile,
-  handleClickOnSidebarLinksOnMobile,
-}: IDashboardSidebarProps) => {
+const DashboardSidebar = ({ email, isMobile }: IDashboardSidebarProps) => {
+  const { isSidebarOpen, handleStateOfSidebar } = useSidebarContext();
+
   return (
     <>
-      {!isOpen && (
+      {!isSidebarOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => handleStateOfSidebar(true)}
           className="fixed left-0 top-10 transform -translate-x-1/2 hover:-translate-x-1/4 p-2 rouded-l-none z-20 rounded-r-full bg-primary-dark text-white shadow-lg  w-[80px] flex items-center justify-end transition-all duration-300 hover:pl-2"
           aria-label="Öppna sidopanel"
         >
@@ -37,7 +32,7 @@ const DashboardSidebar = ({
 
       <aside
         className={`sidebar fixed left-0 top-0 h-full bg-primary-light w-full lg:max-w-[260px] z-40 shadow-lg transition-transform duration-300 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="flex flex-col items-end h-full">
@@ -99,20 +94,14 @@ const DashboardSidebar = ({
               </div>
             </Link>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => handleStateOfSidebar(false)}
               className="sidebar-toggle group p-0  text-white rounded-full bg-primary-dark hover:bg-primary-medium/20 transition-colors duration-200"
               aria-label="Stäng sidopanel"
             >
               <CloseIcon className="text-white group-hover:text-primary-dark w-4 h-4" />
             </button>
           </div>
-
-          <DashboardNavigation
-            isMobile={isMobile}
-            handleClickOnSidebarLinksOnMobile={
-              handleClickOnSidebarLinksOnMobile
-            }
-          />
+          <DashboardNavigation isMobile={isMobile} />
           <div className="mt-auto p-6 flex justify-center items-center w-full border-t border-primary-medium/30">
             <FiUser className="w-4 h-4 text-primary-dark/80 mr-2" />
             <p className="text-sm text-primary-dark/80">{email}</p>

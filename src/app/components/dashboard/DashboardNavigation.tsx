@@ -1,3 +1,4 @@
+import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -5,14 +6,11 @@ import { dashboardNavigationLinks } from '../../data/dashboardLinks';
 
 interface IDashboardNavigationProps {
   isMobile: boolean;
-  handleClickOnSidebarLinksOnMobile: () => void;
 }
 
-const DashboardNavigation = ({
-  isMobile,
-  handleClickOnSidebarLinksOnMobile,
-}: IDashboardNavigationProps) => {
+const DashboardNavigation = ({ isMobile }: IDashboardNavigationProps) => {
   const path = usePathname();
+  const { handleStateOfSidebar } = useSidebarContext();
 
   const handleSignOut = async () => {
     try {
@@ -43,7 +41,7 @@ const DashboardNavigation = ({
               link.title === 'Logga ut'
                 ? handleSignOut
                 : isMobile
-                ? handleClickOnSidebarLinksOnMobile
+                ? () => handleStateOfSidebar(false)
                 : undefined
             }
             className="flex items-center w-full gap-3 px-4 py-3"

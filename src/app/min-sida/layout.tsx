@@ -1,6 +1,7 @@
 'use client';
 
 import DashboardSidebar from '@/app/components/dashboard/DashboardSidebar';
+import { SidebarProvider } from '@/app/context/SidebarContext';
 import { ICustomSession } from '@/app/types/authoptions';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -36,23 +37,30 @@ export default function MyPageLayout({
     setIsSidebarOpen(false);
   };
 
+  const handleStateOfSidebar = (open: boolean) => {
+    setIsSidebarOpen(open);
+  };
+
   return (
-    <div className="flex min-h-screen h-full w-full">
-      <DashboardSidebar
-        email={email || ''}
-        isOpen={isSidebarOpen}
-        setIsOpen={setIsSidebarOpen}
-        isMobile={isMobile}
-        handleClickOnSidebarLinksOnMobile={handleClickOnSidebarLinksOnMobile}
-      />
-      <section
-        className={`dashboard-content flex justify-center items-center ${
-          isSidebarOpen ? 'content--open' : 'content--closed'
-        } w-full`}
-      >
-        {children}
-      </section>
-      <Toaster position="bottom-right" />
-    </div>
+    <SidebarProvider
+      isSidebarOpen={isSidebarOpen}
+      handleStateOfSidebar={handleStateOfSidebar}
+    >
+      <div className="flex min-h-screen h-full w-full">
+        <DashboardSidebar
+          email={email || ''}
+          isMobile={isMobile}
+          handleClickOnSidebarLinksOnMobile={handleClickOnSidebarLinksOnMobile}
+        />
+        <section
+          className={`dashboard-content flex justify-center items-center ${
+            isSidebarOpen ? 'content--open' : 'content--closed'
+          } w-full`}
+        >
+          {children}
+        </section>
+        <Toaster position="bottom-right" />
+      </div>
+    </SidebarProvider>
   );
 }
