@@ -10,7 +10,7 @@ const MoodTrackerDiaryShowcase = () => {
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Dagliga verktyg stärker din resa tillbaka till hälsa
             </h3>
-            <p className="text-gray-500 font-medium text-base sm:text-lg lg:text-xl">
+            <p className="text-gray-500 font-medium text-base sm:text-lg lg:text-xl max-w-3xl">
               Allas resa för att komma tillbaka till hälsa är unik, men vi kan
               hjälpa dig att hitta vägen och ta det första steget.
             </p>
