@@ -17,16 +17,22 @@ export default function MyPageLayout({
   const [isMobile, setIsMobile] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const DASHBOARD_OPEN_BREAKPOINT = 1024;
+
   useEffect(() => {
     const checkInitialSize = () => {
       const width = window.innerWidth;
-      setIsSidebarOpen(width > 640);
-      setIsMobile(width < 640);
+      setIsSidebarOpen(width >= DASHBOARD_OPEN_BREAKPOINT);
+      setIsMobile(width < DASHBOARD_OPEN_BREAKPOINT);
     };
     checkInitialSize();
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 640);
+      const width = window.innerWidth;
+      setIsMobile(width < DASHBOARD_OPEN_BREAKPOINT);
+      if (width >= DASHBOARD_OPEN_BREAKPOINT) {
+        setIsSidebarOpen(true);
+      }
     };
 
     window.addEventListener('resize', handleResize);
