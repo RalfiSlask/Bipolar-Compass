@@ -1,6 +1,7 @@
 import { ICustomSession } from '@/app/types/authoptions';
 import { IUserWithMoodTracker } from '@/app/types/user';
 import { moodScoreColor, renderMessage } from '@/app/utils/dashboardUtils';
+import MyPageAvatar from '../MyPageAvatar';
 
 interface IMoodScoreContainerProps {
   moodScore: number;
@@ -14,15 +15,21 @@ const MoodScoreContainer = ({
   user,
 }: IMoodScoreContainerProps) => {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-8 lg:pr-20 relative overflow-hidden ">
+    <div className="bg-white rounded-2xl shadow-md p-6 lg:pr-20 relative overflow-hidden">
       <div className="relative z-10">
-        <h1 className="text-3xl font-semibold text-secondary-dark mb-3">
-          Välkommen tillbaka, {user?.name}!
-        </h1>
-        <p className="text-gray-600 text-lg w-full">
-          Ta en stund att reflektera över hur du mår idag. Din mentala hälsa är
-          viktig.
-        </p>
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col gap-3 text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl font-semibold text-secondary-dark">
+              Välkommen tillbaka, {user?.name}!
+            </h1>
+            <p className="text-gray-600 text-lg w-full">
+              Ta en stund att reflektera över hur du mår idag. Din mentala hälsa
+              är viktig
+            </p>
+          </div>
+          <MyPageAvatar user={user} userData={userData} />
+        </div>
+
         <div className="flex flex-col">
           <div className="mt-6 flex-col sm:flex-row flex items-center">
             <span
