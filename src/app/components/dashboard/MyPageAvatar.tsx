@@ -20,11 +20,11 @@ const MyPageAvatar = ({ user, userData }: IMyPageAvatarProps) => {
         <img
           src={avatarUrl}
           alt={user?.name || 'Användare'}
-          className="w-12 rounded-full object-cover"
+          className="w-[120px] sm:w-[76px] rounded-full object-cover"
         />
       ) : (
         <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-          <FiUser className="w-12 h-12 text-primary-medium" />
+          <FiUser className="w-[120px] h-[120px] sm:w-[76px] sm:h-[76px] text-primary-medium" />
         </div>
       )}
     </Link>
