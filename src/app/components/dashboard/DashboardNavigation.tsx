@@ -38,11 +38,11 @@ const DashboardNavigation = ({ isMobile }: IDashboardNavigationProps) => {
       {DASHBOARD_NAVIGATION_LINKS.map((link) => (
         <li
           key={link.href}
-          className={`w-full rounded-lg transition-all duration-200 hover:bg-primary-medium/20 cursor-pointer 
+          className={`w-full rounded-lg transition-all duration-200 cursor-pointer 
             ${
               path === link.href
                 ? 'bg-primary-dark font-semibold text-white [&_svg]:text-white'
-                : 'text-primary-dark/80 hover:text-primary-dark [&_svg]:text-primary-dark/80 hover:[&_svg]:text-primary-dark'
+                : 'text-primary-dark/80 hover:text-primary-dark hover:bg-primary-medium/20 [&_svg]:text-primary-dark/80 hover:[&_svg]:text-primary-dark'
             }`}
         >
           <Link
