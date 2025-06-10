@@ -1,4 +1,5 @@
 import Lightbox from '@/app/components/header/Lightbox';
+import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { getCroppedImg } from '@/app/utils/cropImage';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -10,7 +11,6 @@ import AvatarModalActionButtons from './AvatarModalActionButtons';
 import AvatarModalDisplay from './AvatarModalDisplay';
 import CropModalActionButtons from './CropModalActionButtons';
 import CropModalZoomControl from './CropModalZoomControl';
-import useSettingsContext from '@/app/hooks/useSettingsContext';
 
 const AvatarContainer = () => {
   const context = useSettingsContext();
@@ -70,16 +70,22 @@ const AvatarContainer = () => {
     }
   };
 
-  const handleEditImage = () => {
+  const handleEditImage = async () => {
     if (user?.profile?.avatarUrl) {
-      fetch(user.profile.avatarUrl)
-        .then((res) => res.blob())
-        .then((blob) => {
-          const file = new File([blob], 'avatar.jpg', { type: blob.type });
-          setTempImage(file);
-          setShowModal(false);
-          setShowCropModal(true);
+      try {
+        const response = await fetch(user.profile.avatarUrl, {
+          mode: 'cors',
+          credentials: 'omit',
         });
+        const blob = await response.blob();
+        const file = new File([blob], 'avatar.jpg', { type: blob.type });
+        setTempImage(file);
+        setShowModal(false);
+        setShowCropModal(true);
+      } catch (error) {
+        console.error('Error fetching image:', error);
+        toast.error('Kunde inte ladda bilden för redigering');
+      }
     }
   };
 
