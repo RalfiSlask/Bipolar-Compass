@@ -1,12 +1,18 @@
 import {
-    BsCalendarCheck,
-    BsClockHistory,
-    BsGear,
-    BsJournalText,
+  BsCalendarCheck,
+  BsClockHistory,
+  BsGear,
+  BsJournalText,
 } from 'react-icons/bs';
-import { FaCompass, FaPills, FaSignOutAlt, FaUserNurse, FaUsers } from 'react-icons/fa';
+import {
+  FaCompass,
+  FaPills,
+  FaSignOutAlt,
+  FaUserNurse,
+  FaUsers,
+} from 'react-icons/fa';
 
-export const dashboardNavigationLinks = [
+export const DASHBOARD_NAVIGATION_LINKS = [
   {
     title: 'Min Sida',
     href: '/min-sida',
@@ -54,3 +60,22 @@ export const dashboardNavigationLinks = [
     icon: <FaSignOutAlt className="w-6 h-6 text-primary-dark" />,
   },
 ];
+
+export const ANXIETY_COLORS = [
+  '#0088FE',
+  '#00C49F',
+  '#FFBB28',
+  '#FF8042',
+  '#FF6384',
+  '#36A2EB',
+];
+
+export const WEIGHTS = {
+  anxiety: 0.25,
+  stress: 0.2,
+  depression: 0.25,
+  energy: 0.15,
+  physical: 0.1,
+  social: 0.15,
+  sleep: 0.2,
+};

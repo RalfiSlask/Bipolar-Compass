@@ -22,7 +22,7 @@ import LongestStreakContainer from '../components/dashboard/LongestStreakContain
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
 import MyPageAvatar from '../components/dashboard/MyPageAvatar';
 import SleepGraph from '../components/dashboard/SleepGraph';
-import { WEIGHTS } from '../data/dashboardWeights';
+import { WEIGHTS } from '../data/dashboard';
 import { HEALTHCARE_PROVIDER_TYPES } from '../data/healtcareProviders';
 import { RELATIVE_TYPES } from '../data/relatives';
 import { ICustomSession } from '../types/authoptions';
