@@ -1,3 +1,4 @@
+import HighlightList from '@/app/components/shared/HighlightList';
 import { MdMedicalServices } from 'react-icons/md';
 
 const TreatmentSupport = () => {
@@ -12,16 +13,14 @@ const TreatmentSupport = () => {
         behandlingar som kan hjälpa till att stabilisera humöret och förbättra
         livskvaliteten. Behandlingen inkluderar oftast:
       </p>
-      <div className="bg-primary-light/50 rounded-md p-4">
-        <ul className="flex flex-col gap-2 list-disc list-inside">
-          <li>
-            Medicinering, såsom stämningsstabiliserare eller antidepressiva
-          </li>
-          <li>Psykoterapi, till exempel KBT eller familjeterapi</li>
-          <li>Livsstilsförändringar som regelbundna sömn- och rutiner</li>
-        </ul>
-      </div>
-      <p className="mt-6 ">
+      <HighlightList
+        list={[
+          'Medicinering, såsom stämningsstabiliserare eller antidepressiva',
+          'Psykoterapi, till exempel KBT eller familjeterapi',
+          'Livsstilsförändringar som regelbundna sömn- och rutiner',
+        ]}
+      />
+      <p className="mt-6">
         Det är också viktigt att ha stöd från familj, vänner och vårdpersonal.
         Att förstå sjukdomen är ett viktigt steg för att hantera den.
       </p>
