@@ -61,7 +61,7 @@ const ProfileSettings = () => {
 
   return (
     <div
-      className="max-w-3xl w-full p-6 pb-16 flex flex-col items-center gap-10"
+      className="max-w-3xl w-full p-4 sm:p-6 pb-16 flex flex-col items-center gap-10"
       aria-labelledby="profile-heading"
     >
       <div className="flex flex-col gap-3 text-center">

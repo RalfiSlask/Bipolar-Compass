@@ -91,13 +91,13 @@ const AvatarContainer = () => {
   const handleEditImage = async () => {
     if (user?.profile?.avatarUrl) {
       try {
-        const response = await fetch(user.profile.avatarUrl, {
-          mode: 'cors',
-          credentials: 'omit',
+        // For S3 images, we'll create a proxy endpoint to avoid CORS issues
+        const response = await fetch('/api/settings/fetch-avatar', {
+          method: 'POST',
           headers: {
-            'Accept': 'image/*',
+            'Content-Type': 'application/json',
           },
-          referrerPolicy: 'no-referrer',
+          body: JSON.stringify({ avatarUrl: user.profile.avatarUrl }),
         });
 
         if (!response.ok) {
@@ -203,7 +203,7 @@ const AvatarContainer = () => {
         createPortal(
           <div className="fixed inset-0 z-50 pointer-events-none flex items-start justify-center">
             <div
-              className={`bg-dark rounded-lg p-6 max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl w-full mx-4 pointer-events-auto absolute top-[200px] left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
+              className={`bg-dark rounded-lg p-4 sm:p-6 max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl w-full sm:mx-4 pointer-events-auto absolute top-[200px] left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
                 isSidebarOpen
                   ? 'translate-x-[calc(-50%+130px)]'
                   : '-translate-x-1/2'
@@ -240,7 +240,7 @@ const AvatarContainer = () => {
         createPortal(
           <div className="crop-modal fixed inset-0 z-50 pointer-events-none">
             <div
-              className={`bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto pointer-events-auto absolute top-20 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
+              className={`bg-white rounded-lg p-6 max-w-4xl w-full sm:mx-4 h-[100vh] sm:h-auto sm:max-h-[90vh] overflow-auto pointer-events-auto absolute top-0 sm:top-20 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
                 isSidebarOpen
                   ? 'translate-x-[calc(-50%+130px)]'
                   : '-translate-x-1/2'

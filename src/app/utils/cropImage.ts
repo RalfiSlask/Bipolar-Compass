@@ -11,9 +11,21 @@ export const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
-    image.addEventListener('error', (error) => reject(error));
-    image.setAttribute('crossOrigin', 'anonymous');
-    image.src = url;
+    image.addEventListener('error', (error) => {
+      console.error('Error loading image:', error);
+      reject(error);
+    });
+
+    // Try to load with crossOrigin first
+    try {
+      image.setAttribute('crossOrigin', 'anonymous');
+      image.src = url;
+    } catch (error) {
+      // If crossOrigin fails, try without it
+      console.warn('CrossOrigin failed, trying without:', error);
+      image.removeAttribute('crossOrigin');
+      image.src = url;
+    }
   });
 
 /**

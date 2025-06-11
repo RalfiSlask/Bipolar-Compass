@@ -17,7 +17,7 @@ const SecuritySettings = () => {
 
   return (
     <div
-      className="max-w-2xl p-6 pb-16 flex flex-col items-center gap-10"
+      className="max-w-2xl p-4 sm:p-6 pb-16 flex flex-col items-center gap-10"
       aria-labelledby="security-heading"
     >
       {isModalOpen && (
