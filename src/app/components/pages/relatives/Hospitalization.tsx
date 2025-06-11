@@ -19,19 +19,25 @@ const Hospitalization = () => {
           bli aktuellt om följande kriterier är uppfyllda:
         </p>
 
-        <div className="bg-primary-light/40 border-l-4 border-primary-accent rounded-lg p-6">
+        <div className="bg-primary-light/40 border-l-4 border-primary-accent rounded-lg p-4 sm:p-6">
           <ul className="flex flex-col gap-4 list-disc list-inside">
             <li className="flex items-start gap-3">
-              <FaExclamationCircle className="text-primary-accent mt-1" />
+              <span className="w-4 h-4">
+                <FaExclamationCircle className="text-primary-accent mt-1" />
+              </span>
               Personen lider av en allvarlig psykisk störning (som bipolär
               sjukdom i mani eller psykos).
             </li>
             <li className="flex items-start gap-3">
-              <FaExclamationCircle className="text-primary-accent mt-1" />
+              <span className="w-4 h-4">
+                <FaExclamationCircle className="text-primary-accent mt-1" />
+              </span>
               Personen behöver psykiatrisk vård som inte kan ges frivilligt.
             </li>
             <li className="flex items-start gap-3">
-              <FaExclamationCircle className="text-primary-accent mt-1" />
+              <span className="w-4 h-4">
+                <FaExclamationCircle className="text-primary-accent mt-1" />
+              </span>
               Personen utgör en fara för sig själv eller andra, eller riskerar
               att allvarligt försämras utan vård.
             </li>
