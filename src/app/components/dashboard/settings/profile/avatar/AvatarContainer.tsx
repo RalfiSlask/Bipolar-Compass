@@ -1,6 +1,5 @@
 import Lightbox from '@/app/components/header/Lightbox';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
-import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { getCroppedImg } from '@/app/utils/cropImage';
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -15,7 +14,6 @@ import CropModalZoomControl from './CropModalZoomControl';
 
 const AvatarContainer = () => {
   const context = useSettingsContext();
-  const { isSidebarOpen } = useSidebarContext();
   const { user, saveProfileAvatar, deleteProfileAvatar } = context;
   const [tempImage, setTempImage] = useState<File | null>(null);
   const [dragOver, setDragOver] = useState(false);
