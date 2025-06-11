@@ -1,7 +1,8 @@
 import Lightbox from '@/app/components/header/Lightbox';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
+import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { getCroppedImg } from '@/app/utils/cropImage';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Cropper, { Area } from 'react-easy-crop';
 import toast from 'react-hot-toast';
@@ -14,9 +15,8 @@ import CropModalZoomControl from './CropModalZoomControl';
 
 const AvatarContainer = () => {
   const context = useSettingsContext();
-
+  const { isSidebarOpen } = useSidebarContext();
   const { user, saveProfileAvatar, deleteProfileAvatar } = context;
-
   const [tempImage, setTempImage] = useState<File | null>(null);
   const [dragOver, setDragOver] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +24,23 @@ const AvatarContainer = () => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
+
+  // Create blob URL only when needed and clean it up properly
+  const tempImageUrl = useMemo(() => {
+    if (tempImage) {
+      return URL.createObjectURL(tempImage);
+    }
+    return null;
+  }, [tempImage]);
+
+  // Cleanup blob URL when component unmounts or tempImage changes
+  useEffect(() => {
+    return () => {
+      if (tempImageUrl) {
+        URL.revokeObjectURL(tempImageUrl);
+      }
+    };
+  }, [tempImageUrl]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -76,9 +93,20 @@ const AvatarContainer = () => {
         const response = await fetch(user.profile.avatarUrl, {
           mode: 'cors',
           credentials: 'omit',
+          headers: {
+            'Accept': 'image/*',
+          },
+          referrerPolicy: 'no-referrer',
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const blob = await response.blob();
-        const file = new File([blob], 'avatar.jpg', { type: blob.type });
+        const file = new File([blob], 'avatar.jpg', {
+          type: blob.type || 'image/jpeg',
+        });
         setTempImage(file);
         setShowModal(false);
         setShowCropModal(true);
@@ -100,10 +128,10 @@ const AvatarContainer = () => {
   };
 
   const handleCropComplete = async () => {
-    if (tempImage && croppedAreaPixels) {
+    if (tempImage && croppedAreaPixels && tempImageUrl) {
       try {
         const croppedFile = await getCroppedImg(
-          URL.createObjectURL(tempImage),
+          tempImageUrl,
           croppedAreaPixels
         );
 
@@ -201,6 +229,7 @@ const AvatarContainer = () => {
 
       {showCropModal &&
         tempImage &&
+        tempImageUrl &&
         createPortal(
           <div className="crop-modal fixed inset-0 z-50 flex items-start pt-20 justify-center pointer-events-none">
             <div className="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto pointer-events-auto">
@@ -217,7 +246,7 @@ const AvatarContainer = () => {
               </div>
               <div className="relative h-96 mb-6">
                 <Cropper
-                  image={URL.createObjectURL(tempImage)}
+                  image={tempImageUrl}
                   crop={crop}
                   zoom={zoom}
                   aspect={1}
