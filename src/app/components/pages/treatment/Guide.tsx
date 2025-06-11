@@ -24,7 +24,7 @@ const Guide = () => {
           href="../pdfs/guide.pdf?download=true"
           download="guide.pdf"
           aria-label="Ladda ner guide som pdf"
-          className="flex-1 flex items-center justify-center gap-2 bg-primary-accent/60 hover:text-white  text-dark bg-primary-accent hover:bg-primary-dark  py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
+          className="questionare-download-button"
         >
           <HiDownload className="text-xl" aria-hidden="true" />
           <span className="text-sm md:text-base lg:text-lg">Ladda ner</span>
@@ -34,7 +34,7 @@ const Guide = () => {
           target="_blank"
           aria-label="Visa guide som PDF i ny flik"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 border border-primary-border text-primary-dark hover:bg-primary-light py-2.5 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-accent focus:ring-offset-2"
+          className="questionare-view-button"
         >
           <HiEye className="text-xl" aria-hidden="true" />
           <span className="text-sm md:text-base lg:text-lg">Visa guide</span>

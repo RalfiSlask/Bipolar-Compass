@@ -12,7 +12,7 @@ const Questionaire = ({ form, setActiveModal }: IQuestionaireProps) => {
       key={form.scoringId}
       className="flex flex-col h-full p-4 rounded-lg border border-gray-100 hover:border-primary-border transition-colors duration-200"
     >
-      <div className="flex items-start justify-between mb-3 gap-4">
+      <div className="flex flex-col lg:flex-row items-start justify-between mb-3 gap-3">
         <h3 className="text-primary-dark font-semibold">{form.title}</h3>
         {form.scoringId && (
           <button
