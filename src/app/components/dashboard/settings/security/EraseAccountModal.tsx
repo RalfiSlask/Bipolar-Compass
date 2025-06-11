@@ -1,4 +1,5 @@
 import useSettingsContext from '@/app/hooks/useSettingsContext';
+import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { signOut } from 'next-auth/react';
 
 interface IEraseAccountModalProps {
@@ -8,6 +9,7 @@ interface IEraseAccountModalProps {
 
 const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
   const { deleteAccount } = useSettingsContext();
+  const { isSidebarOpen } = useSidebarContext();
 
   const handleSignOut = async () => {
     try {
@@ -30,7 +32,11 @@ const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
   };
 
   return (
-    <div className="flex flex-col text-lg justify-center items-center gap-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-white p-8 rounded-lg">
+    <div
+      className={`flex flex-col text-lg justify-center items-center ${
+        isSidebarOpen ? 'translate-x-[calc(-50%+130px)]' : '-translate-x-1/2'
+      } gap-6 absolute top-1/2 left-1/2 transform -translate-y-1/2 z-30 bg-white p-8 rounded-lg transition-transform duration-300 ease-in-out`}
+    >
       <div className="flex flex-col text-center">
         <h2 className="h-sm font-semibold">
           Är du säker du vill ta bort ditt konto?
