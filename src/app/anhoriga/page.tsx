@@ -11,8 +11,10 @@ import Challenges from '../components/pages/relatives/Challenges';
 import Hospitalization from '../components/pages/relatives/Hospitalization';
 import Organizations from '../components/pages/relatives/Organizations';
 import EncouragmentContainer from '../components/shared/EncouragmentContainer';
+import HighlightList from '../components/shared/HighlightList';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
 import { RELATIVES_INTRO } from '../data/pageIntros';
+import { RELATIVE_TIPS } from '../data/relatives';
 
 const RelativePage = () => {
   return (
@@ -50,28 +52,7 @@ const RelativePage = () => {
             göra skillnad:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            {[
-              {
-                title: 'Informera dig om sjukdomen',
-                description:
-                  'Läs på om bipolär sjukdom. Genom att förstå diagnosen kan du få en bättre bild av vad din närstående går igenom och hur du kan stötta.',
-              },
-              {
-                title: 'Var en lyhörd samtalspartner',
-                description:
-                  'Lyssna utan att döma eller försöka fixa situationen. Bara att få känna sig hörd kan vara en enorm lättnad för den som mår dåligt.',
-              },
-              {
-                title: 'Hjälp till med struktur och rutiner',
-                description:
-                  'Personer med bipolär sjukdom kan ha svårt att hålla struktur i vardagen, särskilt under sjukdomsperioder. Du kan hjälpa till med att skapa och upprätthålla rutiner.',
-              },
-              {
-                title: 'Lär dig känna igen tidiga varningstecken',
-                description:
-                  'Många anhöriga blir med tiden bra på att se tecken på att en manisk eller depressiv period är på väg. Tidig intervention kan hjälpa till att förhindra att episoden förvärras.',
-              },
-            ].map((item, index) => (
+            {RELATIVE_TIPS.map((item, index) => (
               <div
                 key={index}
                 className="bg-primary-light rounded-lg p-4 shadow-md"
@@ -84,10 +65,8 @@ const RelativePage = () => {
             ))}
           </div>
         </div>
-
         <Challenges />
         <Hospitalization />
-
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Hur går man tillväga för att ansöka om tvångsvård?
@@ -117,13 +96,13 @@ const RelativePage = () => {
                 Var tydlig när du pratar med vårdpersonal. Förklara varför du
                 tror att din närstående behöver tvångsvård, till exempel om de:
               </p>
-              <div className="bg-primary-light/50 rounded-md p-4">
-                <ul className="flex flex-col gap-2 list-disc list-inside">
-                  <li>Uppvisar farligt eller riskabelt beteende</li>
-                  <li>Har hallucinationer eller vanföreställningar</li>
-                  <li>Vägrar vård trots att de tydligt mår mycket dåligt</li>
-                </ul>
-              </div>
+              <HighlightList
+                list={[
+                  'Uppvisar farligt eller riskabelt beteende',
+                  'Har hallucinationer eller vanföreställningar',
+                  'Vägrar vård trots att de tydligt mår mycket dåligt',
+                ]}
+              />
             </div>
             <div>
               <h4 className="font-semibold mb-2">Läkarbedömning</h4>
@@ -162,7 +141,7 @@ const RelativePage = () => {
               </p>
             </div>
             <div className="bg-tertiary-light rounded-lg p-6 flex flex-col items-center text-center shadow-md">
-              <FaExclamationTriangle className="text-tertiary-dark  text-3xl mb-4" />
+              <FaExclamationTriangle className="text-tertiary-dark text-3xl mb-4" />
               <h4 className="font-semibold text-tertiary-dark text-lg mb-2">
                 Var beredd på motstånd
               </h4>
@@ -173,7 +152,7 @@ const RelativePage = () => {
               </p>
             </div>
             <div className="bg-tertiary-light  rounded-lg p-6 flex flex-col items-center text-center shadow-md">
-              <FaUserShield className="text-tertiary-dark  text-3xl mb-4" />
+              <FaUserShield className="text-tertiary-dark text-3xl mb-4" />
               <h4 className="font-semibold text-lg text-tertiary-dark mb-2">
                 Ta hand om dig själv
               </h4>

@@ -1,6 +1,8 @@
 'use client';
 
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import HighlightList from '@/app/components/shared/HighlightList';
+import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
@@ -11,85 +13,44 @@ const SymptomsPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={SYMPTOMS_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
-            Symptom under maniska episoder
-          </h3>
-          <p className="mb-6 ">
-            En manisk episod innebär ett förhöjt, expansivt eller irritabelt
-            humör som varar i minst en vecka och påverkar vardagen betydligt.
-            Typiska symptom är:
-          </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>
-                Överdrivet självförtroende: Personen kan känna sig grandios och
-                osårbar
-              </li>
-              <li>
-                Ökad energi och aktivitetsnivå: Man tar sig an flera projekt
-                samtidigt, ofta utan att slutföra dem
-              </li>
-              <li>
-                Minskat sömnbehov: Sömn upplevs som överflödigt; personen kan
-                känna sig pigg efter bara ett par timmars sömn
-              </li>
-              <li>
-                Snabbt och intensivt tal: Svårt för andra att avbryta eller
-                hänga med
-              </li>
-              <li>
-                Tankeflykt: Tankarna rusar, vilket kan leda till impulsiva
-                beslut
-              </li>
-              <li>
-                Riskfyllt beteende: Kan inkludera överdrivet spenderande,
-                farliga situationer eller oansvarigt sexuellt beteende
-              </li>
-              <li>
-                Irritabilitet: Personen kan snabbt bli frustrerad eller arg
-              </li>
-            </ul>
-          </div>
-          <p className="mt-6 ">
+        <InfoSection
+          title="Symptom under maniska episoder"
+          description="En manisk episod innebär ett förhöjt, expansivt eller irritabelt humör som varar i minst en vecka och påverkar vardagen betydligt."
+        >
+          <HighlightList
+            list={[
+              'Överdrivet självförtroende: Personen kan känna sig grandios och osårbar',
+              'Ökad energi och aktivitetsnivå: Man tar sig an flera projekt samtidigt, ofta utan att slutföra dem',
+              'Minskat sömnbehov: Sömn upplevs som överflödigt; personen kan känna sig pigg efter bara ett par timmars sömn',
+              'Snabbt och intensivt tal: Svårt för andra att avbryta eller hänga med',
+              'Tankeflykt: Tankarna rusar, vilket kan leda till impulsiva beslut',
+              'Riskfyllt beteende: Kan inkludera överdrivet spenderande, farliga situationer eller oansvarigt sexuellt beteende',
+              'Irritabilitet: Personen kan snabbt bli frustrerad eller arg',
+            ]}
+          />
+          <p className="lg:text-lg">
             Efter en manisk episod kan det vara känslomässigt tungt att inse
             vilka konsekvenser ens beteende har fått.
           </p>
-        </div>
+        </InfoSection>
 
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
-            Symptom under hypomaniska episoder
-          </h3>
-          <p className="mb-6 ">
-            Hypomani är en lindrigare form av mani, som inte leder till samma
-            grad av funktionsnedsättning. Symptomen liknar de vid mani men är
-            mindre intensiva och kortvariga (minst fyra dagar). Vanliga symptom
-            är:
-          </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>
-                Förhöjt humör: Personen känner sig positiv och entusiastisk
-              </li>
-              <li>
-                Ökad energi och kreativitet: Produktiviteten ökar, ofta i arbete
-                eller hobbyprojekt
-              </li>
-              <li>
-                Minskat sömnbehov: Mindre sömn behövs utan att känna trötthet
-              </li>
-              <li>
-                Social utåtriktning: Personen kan vara mer pratglad och
-                sällskaplig än vanligt
-              </li>
-            </ul>
-          </div>
-          <p className="mt-6 ">
+        <InfoSection
+          title="Symptom under hypomaniska episoder"
+          description="Hypomani är en lindrigare form av mani, som inte leder till samma grad av funktionsnedsättning. Symptomen liknar de vid mani men är mindre intensiva och kortvariga (minst fyra dagar)."
+        >
+          <HighlightList
+            list={[
+              'Förhöjt humör: Personen känner sig positiv och entusiastisk',
+              'Ökad energi och kreativitet: Produktiviteten ökar, ofta i arbete eller hobbyprojekt',
+              'Minskat sömnbehov: Mindre sömn behövs utan att känna trötthet',
+              'Social utåtriktning: Personen kan vara mer pratglad och sällskaplig än vanligt',
+            ]}
+          />
+          <p className="lg:text-lg">
             Hypomaniska episoder kan ofta passera obemärkta av individen själv
             men kan ibland övergå i fullständig mani.
           </p>
-        </div>
+        </InfoSection>
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-4">
@@ -99,34 +60,18 @@ const SymptomsPage = () => {
             Depressiva episoder innebär en kraftig nedstämdhet och minskad
             energi som varar i minst två veckor. Dessa symptom inkluderar:
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>
-                Ihållande nedstämdhet: Känslor av sorg, hopplöshet eller
-                irritabilitet
-              </li>
-              <li>
-                Förlorat intresse: Oförmåga att njuta av tidigare uppskattade
-                aktiviteter
-              </li>
-              <li>
-                Trötthet och energilöshet: Vardagsaktiviteter känns
-                överväldigande
-              </li>
-              <li>
-                Sömnstörningar: Svårigheter att somna, tidiga uppvaknanden eller
-                överdriven sömn
-              </li>
-              <li>Ändrad aptit: Kan leda till viktförlust eller viktuppgång</li>
-              <li>
-                Koncentrationssvårigheter: Svårt att fatta beslut eller fokusera
-              </li>
-              <li>
-                Tankar på döden: Återkommande tankar på döden eller självmord
-              </li>
-            </ul>
-          </div>
-          <p className="mt-6 ">
+          <HighlightList
+            list={[
+              'Ihållande nedstämdhet: Känslor av sorg, hopplöshet eller irritabilitet',
+              'Förlorat intresse: Oförmåga att njuta av tidigare uppskattade aktiviteter',
+              'Trötthet och energilöshet: Vardagsaktiviteter känns överväldigande',
+              'Sömnstörningar: Svårigheter att somna, tidiga uppvaknanden eller överdriven sömn',
+              'Ändrad aptit: Kan leda till viktförlust eller viktuppgång',
+              'Koncentrationssvårigheter: Svårt att fatta beslut eller fokusera',
+              'Tankar på döden: Återkommande tankar på döden eller självmord',
+            ]}
+          />
+          <p className="mt-6">
             Depression vid bipolär sjukdom är ofta djupare och mer långvarig än
             vid en &quot;vanlig&quot; depression.
           </p>
@@ -149,18 +94,12 @@ const SymptomsPage = () => {
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
             såsom:
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>
-                Vanföreställningar: Personen kan tro att de har övermänskliga
-                förmågor (vid mani) eller att de är förföljda (vid depression)
-              </li>
-              <li>
-                Hallucinationer: Kan inkludera röster eller syner som inte är
-                verkliga
-              </li>
-            </ul>
-          </div>
+          <HighlightList
+            list={[
+              'Vanföreställningar: Personen kan tro att de har övermänskliga förmågor (vid mani) eller att de är förföljda (vid depression)',
+              'Hallucinationer: Kan inkludera röster eller syner som inte är verkliga',
+            ]}
+          />
           <p className="mt-6 ">
             Dessa symptom försvinner vanligtvis med behandling.
           </p>
@@ -174,14 +113,14 @@ const SymptomsPage = () => {
             Många med bipolär sjukdom upplever tidiga tecken innan en ny episod.
             Det är viktigt att känna igen dessa tecken för att söka vård i tid:
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>Sömnproblem (svårt att somna eller minskat sömnbehov)</li>
-              <li>Förändrad aptit</li>
-              <li>Ökad irritabilitet eller rastlöshet</li>
-              <li>Ovanlig energinivå</li>
-            </ul>
-          </div>
+          <HighlightList
+            list={[
+              'Sömnproblem (svårt att somna eller minskat sömnbehov)',
+              'Förändrad aptit',
+              'Ökad irritabilitet eller rastlöshet',
+              'Ovanlig energinivå',
+            ]}
+          />
         </div>
 
         <div className="flex flex-col content-container">
@@ -205,18 +144,15 @@ const SymptomsPage = () => {
             och ungdomar. Det kan vara svårt att skilja mellan normala
             humörsvängningar under uppväxten och tecken på bipolär sjukdom.
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>Snabbare humörsvängningar än hos vuxna</li>
-              <li>Mer frekventa episoder med kortare duration</li>
-              <li>Svårare att uttrycka känslor och upplevelser verbalt</li>
-              <li>
-                Kan uppvisa irritabilitet snarare än klassisk mani eller
-                depression
-              </li>
-              <li>Symptom kan förväxlas med andra tillstånd som ADHD</li>
-            </ul>
-          </div>
+          <HighlightList
+            list={[
+              'Snabbare humörsvängningar än hos vuxna',
+              'Mer frekventa episoder med kortare duration',
+              'Svårare att uttrycka känslor och upplevelser verbalt',
+              'Kan uppvisa irritabilitet snarare än klassisk mani eller depression',
+              'Symptom kan förväxlas med andra tillstånd som ADHD',
+            ]}
+          />
           <p className="mt-6 ">
             Det är viktigt att söka professionell hjälp för korrekt diagnos och
             behandling, då tidig intervention kan förbättra prognosen avsevärt.
@@ -234,19 +170,15 @@ const SymptomsPage = () => {
             hjälp, då den ökade energin och kreativiteten kan upplevas som
             positiv.
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <h4 className="font-semibold text-primary-dark mb-3">
-              Viktiga varningssignaler:
-            </h4>
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>När humörsvängningar börjar påverka relationer negativt</li>
-              <li>
-                Om du fattar impulsiva beslut som får allvarliga konsekvenser
-              </li>
-              <li>När vardagliga rutiner blir svåra att upprätthålla</li>
-              <li>Om du upplever återkommande perioder av hopplöshet</li>
-            </ul>
-          </div>
+          <HighlightList
+            title="Viktiga varningssignaler:"
+            list={[
+              'När humörsvängningar börjar påverka relationer negativt',
+              'Om du fattar impulsiva beslut som får allvarliga konsekvenser',
+              'När vardagliga rutiner blir svåra att upprätthålla',
+              'Om du upplever återkommande perioder av hopplöshet',
+            ]}
+          />
           <p className="mt-6 ">
             Det är viktigt att komma ihåg att bipolär sjukdom är en
             behandlingsbar tillstånd, men det kräver professionell hjälp.

@@ -5,6 +5,7 @@ import CommonSigns from '@/app/components/pages/bipolar/CommonSigns';
 import Genetics from '@/app/components/pages/bipolar/Genetics';
 import TreatmentSupport from '@/app/components/pages/bipolar/TreatmentSupport';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import HighlightList from '@/app/components/shared/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedContent from '@/app/components/shared/RelatedContent';
 import { WHAT_IS_BIPOLAR_INTRO } from '@/app/data/pageIntros';
@@ -27,34 +28,16 @@ const WhatIsBipolarityPage = () => {
             Bipolär sjukdom är inte en enhetlig diagnos utan kan delas in i
             flera olika typer beroende på symptomens svårighetsgrad och mönster:
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
-            <ul className="flex flex-col gap-2 list-disc list-inside">
-              <li>
-                Bipolär sjukdom typ 1: Kännetecknas av minst en manisk episod
-                som kan vara så allvarlig att sjukhusvård behövs. Episoder av
-                depression är också vanliga, men inte nödvändiga för diagnos.
-              </li>
-              <li>
-                Bipolär sjukdom typ 2: Innebär återkommande episoder av
-                depression och hypomani, en mildare form av mani. Hypomani leder
-                oftast inte till allvarliga funktionsnedsättningar.
-              </li>
-              <li>
-                Cyklotymi: En mildare form av bipolär sjukdom där humöret växlar
-                mellan hypomaniliknande och milda depressiva symptom under
-                längre tid, ofta flera år.
-              </li>
-              <li>
-                Ospecificerad bipolär sjukdom: Symptom som inte helt passar in i
-                någon av ovanstående kategorier men som ändå orsakar betydande
-                lidande.
-              </li>
-            </ul>
-          </div>
+          <HighlightList
+            list={[
+              'Bipolär sjukdom typ 1: Kännetecknas av minst en manisk episod som kan vara så allvarlig att sjukhusvård behövs. Episoder av depression är också vanliga, men inte nödvändiga för diagnos.',
+              'Bipolär sjukdom typ 2: Innebär återkommande episoder av depression och hypomani, en mildare form av mani. Hypomani leder oftast inte till allvarliga funktionsnedsättningar.',
+              'Cyklotymi: En mildare form av bipolär sjukdom där humöret växlar mellan hypomaniliknande och milda depressiva symptom under längre tid, ofta flera år.',
+              'Ospecificerad bipolär sjukdom: Symptom som inte helt passar in i någon av ovanstående kategorier men som ändå orsakar betydande lidande.',
+            ]}
+          />
         </div>
-
         <CommonSigns />
-
         <div className="md:col-span-2 content-container-tertiary">
           <div className="flex items-center gap-4 mb-6">
             <MdPeople className="text-4xl text-tertiary-dark" />
@@ -71,7 +54,6 @@ const WhatIsBipolarityPage = () => {
         <div className="md:col-span-2">
           <Genetics />
         </div>
-
         <TreatmentSupport />
         <BipolarPrevalenceInfo />
         <div className="md:col-span-2 bg-tertiary-light rounded-xl p-8 shadow-lg">
@@ -90,7 +72,6 @@ const WhatIsBipolarityPage = () => {
           </div>
         </div>
       </div>
-
       <EncouragmentContainer
         text="Bipolaritet är inte en svaghet eller ett personlighetsdrag – det
               är en medicinsk sjukdom som kräver vård och behandling. Med rätt

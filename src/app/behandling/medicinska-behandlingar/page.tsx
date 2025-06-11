@@ -1,6 +1,8 @@
 import ECT from '@/app/components/pages/treatment/ECT';
 import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import HighlightList from '@/app/components/shared/HighlightList';
+import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
 import { MEDICINE_INTRO } from '@/app/data/pageIntros';
@@ -11,156 +13,84 @@ const MedicinePage = () => {
     <section className="page-section">
       <PageIntroContainer intro={MEDICINE_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
-            Stämningsstabiliserande mediciner
-          </h3>
-
-          <div className="flex flex-col gap-6">
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Vad gör de?
-              </h4>
-              <p>
-                Stämningsstabiliserare används för att balansera humöret hos
-                personer med bipolär sjukdom. De är särskilt effektiva för att
-                förebygga återfall i maniska och depressiva episoder. Genom att
-                påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel
-                de kraftiga humörsvängningar som är typiska för sjukdomen.
-              </p>
-            </div>
-
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Varför används de?
-              </h4>
-              <p className="mb-4">
-                Stämningsstabiliserare är ofta den första medicinen som
-                ordineras vid bipolär sjukdom eftersom de är beprövade och
-                effektiva för långsiktig stabilitet. De används också i
-                kombination med andra läkemedel, till exempel antidepressiva
-                eller antipsykotiska mediciner, för att behandla specifika
-                symtom.
-              </p>
-            </div>
-
-            <div className="bg-primary-light/50 rounded-md p-4">
-              <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
-              <ul className="flex flex-col gap-2 list-disc list-inside">
-                <li>
-                  Lithium har använts i flera decennier och är särskilt
-                  effektivt för att minska risken för självmord och återkommande
-                  episoder.
-                </li>
-                <li>
-                  Lamotrigin används främst för att förebygga depression och är
-                  ett alternativ för personer som inte tolererar lithium.
-                </li>
-              </ul>
-            </div>
+        <InfoSection
+          title="Stämningsstabiliserande mediciner"
+          description="Stämningsstabiliserare används för att balansera humöret hos personer med bipolär sjukdom. De är särskilt effektiva för att förebygga återfall i maniska och depressiva episoder. Genom att påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel de kraftiga humörsvängningar som är typiska för sjukdomen."
+        >
+          <div className="lg:text-lg">
+            <h4 className="font-semibold text-primary-dark mb-3">
+              Varför används de?
+            </h4>
+            <p className="mb-4">
+              Stämningsstabiliserare är ofta den första medicinen som ordineras
+              vid bipolär sjukdom eftersom de är beprövade och effektiva för
+              långsiktig stabilitet. De används också i kombination med andra
+              läkemedel, till exempel antidepressiva eller antipsykotiska
+              mediciner, för att behandla specifika symtom.
+            </p>
           </div>
-        </div>
+          <HighlightList
+            title="Exempel:"
+            list={[
+              'Lithium har använts i flera decennier och är särskilt effektivt för att minska risken för självmord och återkommande episoder.',
+              'Lamotrigin används främst för att förebygga depression och är ett alternativ för personer som inte tolererar lithium.',
+            ]}
+          />
+        </InfoSection>
 
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
-            Antipsykotiska mediciner
-          </h3>
-
-          <div className="flex flex-col gap-6">
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Vad gör de?
-              </h4>
-              <p>
-                Antipsykotika verkar genom att reglera nivåerna av dopamin och
-                serotonin i hjärnan. Dessa signalsubstanser spelar en viktig
-                roll i humör, beteende och tänkande. Antipsykotiska mediciner
-                kan snabbt lindra symtom vid akuta maniska episoder och används
-                också som långtidsbehandling för att stabilisera humöret.
-              </p>
-            </div>
-
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Varför används de?
-              </h4>
-              <p>
-                De används för att hantera både maniska episoder och blandade
-                episoder (en kombination av mani och depression). Vissa
-                antipsykotika kan också vara effektiva vid behandling av bipolär
-                depression, särskilt när andra läkemedel inte räcker till.
-              </p>
-            </div>
-
-            <div className="bg-primary-light/50 rounded-md p-4">
-              <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
-              <ul className="flex flex-col gap-2 list-disc list-inside">
-                <li>
-                  Olanzapin (Zyprexa) används för att snabbt lindra akuta symtom
-                  vid mani.
-                </li>
-                <li>
-                  Quetiapin (Seroquel) är ett mångsidigt läkemedel som kan
-                  behandla både mani och depression.
-                </li>
-              </ul>
-            </div>
+        <InfoSection
+          title="Antipsykotiska mediciner"
+          description="Antipsykotika verkar genom att reglera nivåerna av dopamin och serotonin i hjärnan. Dessa signalsubstanser spelar en viktig roll i humör, beteende och tänkande. Antipsykotiska mediciner kan snabbt lindra symtom vid akuta maniska episoder och används också som långtidsbehandling för att stabilisera humöret."
+        >
+          <div className="lg:text-lg">
+            <h4 className="font-semibold text-primary-dark mb-3">
+              Varför används de?
+            </h4>
+            <p>
+              De används för att hantera både maniska episoder och blandade
+              episoder (en kombination av mani och depression). Vissa
+              antipsykotika kan också vara effektiva vid behandling av bipolär
+              depression, särskilt när andra läkemedel inte räcker till.
+            </p>
           </div>
-        </div>
+          <HighlightList
+            title="Exempel:"
+            list={[
+              'Olzanapin (Zyprexa) används för att snabbt lindra akuta symtom vid mani.',
+              'Quetiapin (Seroquel) är ett mångsidigt läkemedel som kan behandla både mani och depression.',
+            ]}
+          />
+        </InfoSection>
 
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
-            Antidepressiva mediciner
-          </h3>
-
-          <div className="flex flex-col gap-6">
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Vad gör de?
-              </h4>
-              <p>
-                Antidepressiva mediciner påverkar hjärnans serotoninnivåer och
-                ibland även noradrenalin och dopamin, vilket hjälper till att
-                lindra symtom vid depression. De används för att återställa
-                balansen i hjärnans signalsubstanser och förbättra humöret.
-              </p>
-            </div>
-
-            <div className="lg:text-lg">
-              <h4 className="font-semibold text-primary-dark mb-3">
-                Varför används de?
-              </h4>
-              <p>
-                Vid bipolär sjukdom används antidepressiva ofta tillsammans med
-                stämningsstabiliserare för att undvika att de triggar en manisk
-                episod. De är särskilt effektiva för att behandla långvariga
-                eller återkommande depressioner som inte svarar på andra
-                behandlingar.
-              </p>
-            </div>
-
-            <div className="bg-primary-light/50 rounded-md p-4">
-              <h4 className="font-semibold text-primary-dark mb-3">Exempel:</h4>
-              <ul className="flex flex-col gap-2 list-disc list-inside">
-                <li>
-                  Sertralin (Zoloft) är ett SSRI som ofta är förstahandsval vid
-                  behandling av depression.
-                </li>
-                <li>
-                  Bupropion (Wellbutrin) är ett alternativ för personer som inte
-                  tolererar traditionella SSRI och kan också förbättra
-                  energinivåer.
-                </li>
-              </ul>
-            </div>
+        <InfoSection
+          title="Antidepressiva mediciner"
+          description="Antidepressiva mediciner påverkar hjärnans serotoninnivåer och ibland även noradrenalin och dopamin, vilket hjälper till att lindra symtom vid depression. De används för att återställa balansen i hjärnans signalsubstanser och förbättra humöret."
+        >
+          <div className="lg:text-lg">
+            <h4 className="font-semibold text-primary-dark mb-3">
+              Varför används de?
+            </h4>
+            <p>
+              Vid bipolär sjukdom används antidepressiva ofta tillsammans med
+              stämningsstabiliserare för att undvika att de triggar en manisk
+              episod. De är särskilt effektiva för att behandla långvariga eller
+              återkommande depressioner som inte svarar på andra behandlingar.
+            </p>
           </div>
-        </div>
+
+          <HighlightList
+            title="Exempel:"
+            list={[
+              'Sertralin (Zoloft) är ett SSRI som ofta är förstahandsval vid behandling av depression.',
+              'Bupropion (Wellbutrin) är ett alternativ för personer som inte tolererar traditionella SSRI och kan också förbättra energinivåer.',
+            ]}
+          />
+        </InfoSection>
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kombination av mediciner
           </h3>
-
           <div className="flex flex-col gap-6 lg:text-lg">
             <p>
               I många fall används en kombination av mediciner från olika
@@ -184,7 +114,6 @@ const MedicinePage = () => {
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             Kommer medicinen fungera för mig?
           </h3>
-
           <div className="flex flex-col gap-6">
             <p className="lg:text-lg">
               Det är naturligt att undra om medicinen kommer att fungera för
@@ -193,7 +122,6 @@ const MedicinePage = () => {
               För vissa kan förbättring märkas snabbt, medan andra behöver flera
               justeringar innan den optimala behandlingen hittas.
             </p>
-
             <p className="lg:text-lg">
               Din läkare eller psykiater tar hänsyn till din sjukdomshistoria,
               symtom och tidigare erfarenheter för att välja den bästa
@@ -215,7 +143,6 @@ const MedicinePage = () => {
               mediciner är noggrant testade och att majoriteten av användare
               endast upplever milda eller övergående biverkningar.
             </p>
-
             <div className="lg:text-lg">
               <h4 className="font-semibold text-primary-dark mb-3">
                 Vanligheten av milda biverkningar
@@ -256,7 +183,6 @@ const MedicinePage = () => {
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>
-
           <div className="flex flex-col gap-6">
             <p className="lg:text-lg">
               Förutom mediciner finns det andra behandlingsmetoder som kan vara
