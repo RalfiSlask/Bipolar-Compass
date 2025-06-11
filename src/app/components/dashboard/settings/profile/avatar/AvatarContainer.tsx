@@ -1,5 +1,6 @@
 import Lightbox from '@/app/components/header/Lightbox';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
+import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { getCroppedImg } from '@/app/utils/cropImage';
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -14,6 +15,8 @@ import CropModalZoomControl from './CropModalZoomControl';
 
 const AvatarContainer = () => {
   const context = useSettingsContext();
+  const { isSidebarOpen } = useSidebarContext();
+
   const { user, saveProfileAvatar, deleteProfileAvatar } = context;
   const [tempImage, setTempImage] = useState<File | null>(null);
   const [dragOver, setDragOver] = useState(false);
@@ -198,8 +201,14 @@ const AvatarContainer = () => {
 
       {showModal &&
         createPortal(
-          <div className="avatar-modal fixed inset-0 flex items-start z-50 justify-center pt-32 pointer-events-none">
-            <div className="bg-dark rounded-lg p-6 max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl w-full mx-4 pointer-events-auto">
+          <div className="fixed inset-0 z-50 pointer-events-none flex items-start justify-center">
+            <div
+              className={`bg-dark rounded-lg p-6 max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl w-full mx-4 pointer-events-auto absolute top-[200px] left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
+                isSidebarOpen
+                  ? 'translate-x-[calc(-50%+130px)]'
+                  : '-translate-x-1/2'
+              }`}
+            >
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-medium">
                   Profilbild
@@ -229,8 +238,14 @@ const AvatarContainer = () => {
         tempImage &&
         tempImageUrl &&
         createPortal(
-          <div className="crop-modal fixed inset-0 z-50 flex items-start pt-20 justify-center pointer-events-none">
-            <div className="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto pointer-events-auto">
+          <div className="crop-modal fixed inset-0 z-50 pointer-events-none">
+            <div
+              className={`bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto pointer-events-auto absolute top-20 left-1/2 transform -translate-x-1/2 transition-transform duration-300 ease-in-out ${
+                isSidebarOpen
+                  ? 'translate-x-[calc(-50%+130px)]'
+                  : '-translate-x-1/2'
+              }`}
+            >
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-primary-dark text-lg font-medium">
                   Redigera bild

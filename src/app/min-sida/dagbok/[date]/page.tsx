@@ -1,6 +1,7 @@
 'use client';
 
 import DeleteModal from '@/app/components/dashboard/diary/DeleteModal';
+import Lightbox from '@/app/components/header/Lightbox';
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import Spinner from '@/app/components/shared/Spinner';
 import { diaryMoods } from '@/app/data/diary';
@@ -277,10 +278,13 @@ const DiaryNote = () => {
         </div>
       </div>
       {isDeleteModalOpen && (
-        <DeleteModal
-          deleteDiaryEntry={deleteDiaryEntry}
-          closeDeleteModal={closeDeleteModal}
-        />
+        <>
+          <Lightbox />
+          <DeleteModal
+            deleteDiaryEntry={deleteDiaryEntry}
+            closeDeleteModal={closeDeleteModal}
+          />
+        </>
       )}
     </div>
   );
