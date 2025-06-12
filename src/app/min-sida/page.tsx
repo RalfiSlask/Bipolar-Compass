@@ -20,7 +20,6 @@ import DashboardCardWrapper from '../components/dashboard/DashboardCardWrapper';
 import MoodScoreContainer from '../components/dashboard/home/MoodScoreContainer';
 import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
-import MyPageAvatar from '../components/dashboard/MyPageAvatar';
 import SleepGraph from '../components/dashboard/SleepGraph';
 import { WEIGHTS } from '../data/dashboard';
 import { HEALTHCARE_PROVIDER_TYPES } from '../data/healtcareProviders';
@@ -353,10 +352,6 @@ const MyPage = () => {
         </div>
         <MoodScoreScale title="Moodscore Guide" />
       </div>
-      <MyPageAvatar
-        user={session?.user as ICustomSession['user']}
-        userData={userData}
-      />
     </section>
   );
 };
