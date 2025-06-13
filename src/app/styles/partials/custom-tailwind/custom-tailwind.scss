@@ -31,6 +31,10 @@
   }
 }
 
+.account-section {
+  @apply w-full min-h-screen flex justify-center items-center relative px-4 pt-4 sm:pt-20 pb-8 md:py-24;
+}
+
 .organization-container {
   @apply rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
         border border-secondary-light shadow-md shadow-primary-dark/20 hover:shadow-md hover:bg-primary-light/70 
