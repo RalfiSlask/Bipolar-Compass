@@ -55,7 +55,7 @@ const RegistrationPage = () => {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-b from-white to-primary-medium z-0"></div>
+      <div className="fixed inset-0 w-1/2 h-full bg-gradient-to-b from-white to-primary-medium z-0"></div>
     </section>
   );
 };
