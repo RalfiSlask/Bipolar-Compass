@@ -32,7 +32,7 @@
 }
 
 .account-section {
-  @apply w-full min-h-[100dvh] flex justify-center items-center relative px-4 pt-4 sm:pt-20 pb-4 md:py-24;
+  @apply w-full h-[100dvh] grid place-items-center relative px-4 py-4 sm:py-20 md:py-24;
 }
 
 .organization-container {
