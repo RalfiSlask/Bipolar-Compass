@@ -71,13 +71,13 @@ const LoginForm = () => {
         validateOnChange={false}
       >
         {({ isValid, errors, touched }) => (
-          <Form noValidate className="flex flex-col gap-2">
-            <div className="flex flex-col gap-2">
+          <Form noValidate className="flex flex-col gap-2 sm:gap-4">
+            <div className="flex flex-col">
               <label htmlFor="email" className="font-medium text-primary-dark">
                 E-postadress
               </label>
               <Field
-                className={`primary-input ${
+                className={`primary-input mt-2 ${
                   errors.email && touched.email ? 'border-red-500' : ''
                 }`}
                 id="email"
@@ -88,17 +88,17 @@ const LoginForm = () => {
                 aria-invalid={errors.email && touched.email ? 'true' : 'false'}
                 aria-describedby={errors.email ? 'email-error' : undefined}
               />
-              <div className="min-h-[20px]">
+              <div className="">
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="text-red-600 text-sm"
+                  className="text-red-600 text-sm mt-2"
                   id="email-error"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
               <label
                 htmlFor="password"
                 className="font-medium text-primary-dark"
@@ -106,7 +106,7 @@ const LoginForm = () => {
                 Lösenord
               </label>
               <Field
-                className={`primary-input w-full ${
+                className={`primary-input w-full mt-2 ${
                   errors.password && touched.password ? 'border-red-500' : ''
                 }`}
                 id="password"
@@ -121,11 +121,11 @@ const LoginForm = () => {
                   errors.password ? 'password-error' : undefined
                 }
               />
-              <div className="min-h-[20px]">
+              <div>
                 <ErrorMessage
                   name="password"
                   component="div"
-                  className="text-red-600 text-sm"
+                  className="text-red-600 text-sm mt-2"
                   id="password-error"
                 />
               </div>
@@ -133,7 +133,7 @@ const LoginForm = () => {
 
             <button
               type="submit"
-              className={`w-full primary-button cursor-pointer ${
+              className={`w-full primary-button cursor-pointer mt-2 sm:mt-4 ${
                 isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={isSubmitting || !isValid}
@@ -148,7 +148,7 @@ const LoginForm = () => {
               )}
             </button>
 
-            <div className="min-h-[20px]">
+            <div>
               {formError && (
                 <div role="alert" className="text-red-600 text-sm">
                   {formError}

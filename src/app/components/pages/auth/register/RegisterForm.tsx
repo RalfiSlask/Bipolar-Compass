@@ -67,13 +67,13 @@ const RegisterForm = () => {
       validateOnChange={false}
     >
       {({ isValid, errors, touched, handleChange }) => (
-        <Form noValidate className="flex flex-col gap-2">
-          <div className="flex flex-col gap-1">
+        <Form noValidate className="flex flex-col gap-2 sm:gap-4">
+          <div className="flex flex-col">
             <label htmlFor="name" className="font-medium text-primary-dark">
               Namn
             </label>
             <Field
-              className={`primary-input w-full text-base !bg-white ${
+              className={`primary-input mt-2 ${
                 errors.name && touched.name ? 'border-red-500' : ''
               }`}
               id="name"
@@ -83,22 +83,22 @@ const RegisterForm = () => {
               aria-invalid={errors.name && touched.name ? 'true' : 'false'}
               aria-describedby={errors.name ? 'name-error' : undefined}
             />
-            <div className="min-h-[20px]">
+            <div>
               <ErrorMessage
                 name="name"
                 component="div"
-                className="text-red-600 text-sm"
+                className="text-red-600 text-sm mt-2"
                 id="name-error"
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <label htmlFor="email" className="font-medium text-primary-dark">
               E-postadress
             </label>
             <Field
-              className={`primary-input w-full text-base ${
+              className={`primary-input mt-2 ${
                 errors.email && touched.email ? 'border-red-500' : ''
               }`}
               id="email"
@@ -109,43 +109,39 @@ const RegisterForm = () => {
               aria-invalid={errors.email && touched.email ? 'true' : 'false'}
               aria-describedby={errors.email ? 'email-error' : undefined}
             />
-            <div className="min-h-[20px]">
+            <div>
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-600 text-sm"
+                className="text-red-600 text-sm mt-2"
                 id="email-error"
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col">
             <label htmlFor="password" className="font-medium text-primary-dark">
               Lösenord
             </label>
-            <div className="relative">
-              <Field
-                className={`block w-full px-4 py-3 rounded-lg border primary-input text-base ${
-                  errors.password && touched.password
-                    ? 'border-red-500 focus:ring-red-500'
-                    : ''
-                } focus:border-transparent focus:outline-none focus:ring-2 transition-colors`}
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                aria-autocomplete="list"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  handleChange(e);
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
-            <div className="min-h-[20px]">
+            <Field
+              className={`primary-input mt-2 ${
+                errors.password && touched.password ? 'border-red-500' : ''
+              }`}
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="new-password"
+              aria-autocomplete="list"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                handleChange(e);
+                setPassword(e.target.value);
+              }}
+            />
+            <div>
               <ErrorMessage
                 name="password"
                 component="div"
-                className="text-red-600 text-sm"
+                className="text-red-600 text-sm mt-2"
                 id="password-error"
               />
             </div>
@@ -176,18 +172,18 @@ const RegisterForm = () => {
                 </Link>
               </span>
             </label>
-            <div className="min-h-[20px] mt-2 text-center">
+            <div>
               <ErrorMessage
                 name="acceptTerms"
                 component="div"
-                className="text-red-600 text-sm"
+                className="text-red-600 text-sm mt-2"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className={`w-full primary-button ${
+            className={`w-full primary-button cursor-pointer mt-2 sm:mt-4 ${
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
             disabled={isSubmitting || !isValid}
@@ -202,7 +198,7 @@ const RegisterForm = () => {
             )}
           </button>
 
-          <div className="min-h-[20px]">
+          <div>
             {formError && (
               <div role="alert" className="text-red-600 text-sm">
                 {formError}

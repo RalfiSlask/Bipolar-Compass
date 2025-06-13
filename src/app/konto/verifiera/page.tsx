@@ -2,6 +2,7 @@
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import Spinner from '@/app/components/shared/Spinner';
+import useIsMobile from '@/app/hooks/useIsMobile';
 import { useResendVerification } from '@/app/hooks/useResendVerification';
 import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const VerificationPage = () => {
+  const isMobile = useIsMobile();
   const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [isAlreadyVerified, setIsAlreadyVerified] = useState(false);
   const [userEmail, setUserEmail] = useState('');
@@ -72,9 +74,11 @@ const VerificationPage = () => {
   return (
     <section className="w-full min-h-screen flex justify-center items-center relative px-4 py-12">
       <div className="flex flex-col items-center w-full max-w-xl mx-auto z-10">
-        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
-          <BipolarLogo />
-        </div>
+        {!isMobile && (
+          <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
+            <BipolarLogo />
+          </div>
+        )}
 
         <div className="w-full">
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-10 shadow-xl border border-primary-border">

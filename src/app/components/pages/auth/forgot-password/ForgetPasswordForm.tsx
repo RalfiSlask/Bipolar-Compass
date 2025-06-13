@@ -70,8 +70,8 @@ const ForgetPasswordForm = () => {
       validateOnChange={false}
     >
       {({ errors, touched }) => (
-        <Form noValidate className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
+        <Form noValidate className="flex flex-col gap-2 sm:gap-4">
+          <div className="flex flex-col">
             <label htmlFor="email" className="font-medium text-primary-dark">
               E-postadress
             </label>
@@ -87,11 +87,11 @@ const ForgetPasswordForm = () => {
               aria-invalid={errors.email && touched.email ? 'true' : 'false'}
               aria-describedby={errors.email ? 'email-error' : undefined}
             />
-            <div className="min-h-[20px]">
+            <div>
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-600 text-sm"
+                className="text-red-600 text-sm mt-2"
                 id="email-error"
               />
             </div>
@@ -118,14 +118,14 @@ const ForgetPasswordForm = () => {
             )}
           </button>
 
-          <div className="min-h-[20px]">
+          <div>
             {formError && (
-              <div role="alert" className="text-red-600 text-sm">
+              <div role="alert" className="text-red-600 text-sm mt-2">
                 {formError}
               </div>
             )}
             {successMessage && (
-              <div role="alert" className="text-green-600 text-sm">
+              <div role="alert" className="text-green-600 text-sm mt-2">
                 {successMessage}
               </div>
             )}

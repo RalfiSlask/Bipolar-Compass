@@ -1,15 +1,20 @@
 'use client';
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
+import useIsMobile from '@/app/hooks/useIsMobile';
 import RegisterForm from '../../components/pages/auth/register/RegisterForm';
 
 const RegistrationPage = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 pt-20 pb-8 md:py-24">
+    <section className="account-section">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
-        <div className="flex justify-center mb-8 text-white absolute top-2 left-4 md:left-8">
-          <BipolarLogo />
-        </div>
+        {!isMobile && (
+          <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
+            <BipolarLogo />
+          </div>
+        )}
 
         <div className="w-full">
           <div
@@ -25,26 +30,28 @@ const RegistrationPage = () => {
               <h1 className="text-3xl font-bold text-primary-dark mb-2">
                 Skapa konto
               </h1>
-              <p className="text-dark">
+              <p className="text-gray-600">
                 Bli medlem i och få tillgång till alla våra tjänster
               </p>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-600"></div>
+            <div className="flex flex-col gap-4">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
               </div>
+              <RegisterForm />
+              <p className="text-sm text-gray-600 sm:mt-2">
+                Har du redan ett konto?{' '}
+                <a
+                  href="/konto/logga-in"
+                  className="nav-link text-primary-dark font-medium"
+                >
+                  Logga in här
+                </a>
+              </p>
             </div>
-            <RegisterForm />
-            <p className="text-center text-sm text-dark mt-4">
-              Har du redan ett konto?{' '}
-              <a
-                href="/konto/logga-in"
-                className="nav-link font-medium text-primary-dark hover:text-primary transition-colors"
-              >
-                Logga in här
-              </a>
-            </p>
           </div>
         </div>
       </div>

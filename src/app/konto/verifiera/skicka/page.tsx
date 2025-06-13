@@ -2,6 +2,7 @@
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import Spinner from '@/app/components/shared/Spinner';
+import useIsMobile from '@/app/hooks/useIsMobile';
 import { useResendVerification } from '@/app/hooks/useResendVerification';
 import { ICustomSession } from '@/app/types/authoptions';
 import { useSession } from 'next-auth/react';
@@ -10,6 +11,7 @@ import { toast } from 'react-hot-toast';
 import { MdEmail } from 'react-icons/md';
 
 const SendVerificationLinkPage = () => {
+  const isMobile = useIsMobile();
   const { data: session } = useSession() as { data: ICustomSession | null };
   const [countdown, setCountdown] = useState(0);
   const COOLDOWN_TIME = 90;
@@ -45,11 +47,13 @@ const SendVerificationLinkPage = () => {
   }
 
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 pt-20 pb-8 md:py-24">
+    <section className="account-section">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
-        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
-          <BipolarLogo />
-        </div>
+        {!isMobile && (
+          <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
+            <BipolarLogo />
+          </div>
+        )}
 
         <div className="w-full">
           <div

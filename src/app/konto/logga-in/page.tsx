@@ -2,15 +2,20 @@
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import LoginForm from '@/app/components/pages/auth/login/LoginForm';
+import useIsMobile from '@/app/hooks/useIsMobile';
 import Link from 'next/link';
 
 const LoginPage = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 pt-20 pb-8 md:py-24">
+    <section className="account-section">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
-        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
-          <BipolarLogo />
-        </div>
+        {!isMobile && (
+          <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
+            <BipolarLogo />
+          </div>
+        )}
 
         <div className="w-full">
           <div
@@ -37,12 +42,12 @@ const LoginPage = () => {
                 </div>
               </div>
               <LoginForm />
-              <p className="text-center text-sm mt-4 hover:text-primary-dark duration-200 transition-colors">
+              <p className="text-center text-sm sm:mt-4 hover:text-primary-dark duration-200 transition-colors">
                 <Link href="/konto/glomt-losenord" className="font-medium">
                   Har du glömt ditt lösenord?
                 </Link>
               </p>
-              <p className="text-center text-sm text-gray-600 mt-2">
+              <p className="text-center text-sm text-gray-600 sm:mt-2">
                 Har du inget konto?{' '}
                 <Link
                   href="/konto/registrera"

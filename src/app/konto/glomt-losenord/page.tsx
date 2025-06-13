@@ -2,14 +2,19 @@
 
 import BipolarLogo from '@/app/components/logo/BipolarLogo';
 import ForgotPasswordForm from '@/app/components/pages/auth/forgot-password/ForgetPasswordForm';
+import useIsMobile from '@/app/hooks/useIsMobile';
 
 const ForgotPasswordPage = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="w-full min-h-screen flex justify-center items-center relative px-4 pt-20 pb-8 md:py-24">
+    <section className="account-section">
       <div className="flex flex-col items-center w-full max-w-lg mx-auto z-10">
-        <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
-          <BipolarLogo />
-        </div>
+        {!isMobile && (
+          <div className="flex justify-center mb-8 text-white absolute top-2 left-4">
+            <BipolarLogo />
+          </div>
+        )}
 
         <div className="w-full">
           <div
