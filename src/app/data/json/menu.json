@@ -94,32 +94,48 @@
     },
     {
       "id": 7,
-      "title": "Om oss",
-      "slug": "om-oss",
-      "image": "/images/menu/about.webp",
+      "title": "Hjälp",
+      "slug": "hjalp",
       "submenuItems": [
         {
           "id": 71,
-          "title": "Vision",
-          "slug": "vision"
+          "title": "Myndigheter",
+          "slug": "myndigheter"
         },
         {
-          "id": 73,
-          "title": "Villkor",
-          "slug": "villkor"
-        },
-        {
-          "id": 74,
-          "title": "Integritetspolicy",
-          "slug": "integritetspolicy"
+          "id": 72,
+          "title": "Juridik och rättigheter",
+          "slug": "juridik-och-raattigheter"
         }
       ]
     },
     {
       "id": 8,
-      "title": "Kontakt",
-      "slug": "kontakt",
-      "submenuItems": []
+      "title": "Om oss",
+      "slug": "om-oss",
+      "image": "/images/menu/about.webp",
+      "submenuItems": [
+        {
+          "id": 81,
+          "title": "Vision",
+          "slug": "vision"
+        },
+        {
+          "id": 82,
+          "title": "Villkor",
+          "slug": "villkor"
+        },
+        {
+          "id": 83,
+          "title": "Integritetspolicy",
+          "slug": "integritetspolicy"
+        },
+        {
+          "id": 84,
+          "title": "Kontakt",
+          "slug": "kontakt"
+        }
+      ]
     }
   ]
 }
