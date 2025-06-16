@@ -112,14 +112,13 @@
           "id": 74,
           "title": "Integritetspolicy",
           "slug": "integritetspolicy"
+        },
+        {
+          "id": 75,
+          "title": "Kontakt",
+          "slug": "kontakt"
         }
       ]
-    },
-    {
-      "id": 8,
-      "title": "Kontakt",
-      "slug": "kontakt",
-      "submenuItems": []
     }
   ]
 }
