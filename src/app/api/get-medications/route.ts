@@ -17,8 +17,6 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    console.log('getting medications: ', user.profile.medications);
-
     return NextResponse.json(
       { medications: user.profile.medications },
       { status: 200 }
