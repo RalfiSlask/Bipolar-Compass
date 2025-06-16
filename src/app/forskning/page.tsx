@@ -468,7 +468,10 @@ const ScienceArticles = () => {
               Ange en sökterm för att hitta forskningsartiklar om bipolär
               sjukdom och dess olika aspekter.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <form
+              onSubmit={handleSearch}
+              className="flex flex-col sm:flex-row gap-3"
+            >
               <div className="flex-1">
                 <input
                   type="text"
@@ -479,16 +482,11 @@ const ScienceArticles = () => {
                   className="primary-input !h-12 w-full"
                   value={additionalSearch}
                   onChange={(e) => setAdditionalSearch(e.target.value)}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      handleSearch();
-                    }
-                  }}
                 />
               </div>
               <button
                 className="px-8 py-3 bg-primary-dark hover:bg-secondary-dark text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
-                onClick={handleSearch}
+                type="submit"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -506,7 +504,7 @@ const ScienceArticles = () => {
                 </svg>
                 Sök
               </button>
-            </div>
+            </form>
             <div className="mt-4 text-sm text-gray-500">
               Din sökning kommer att kombineras med &quot;bipolar disorder&quot;
               för att hitta relevanta artiklar.
