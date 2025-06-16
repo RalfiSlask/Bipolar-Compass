@@ -22,7 +22,7 @@ export const renderStarsFromRating = (rating: number): React.ReactNode[] => {
   if (hasHalfStar) {
     stars.push(
       <span key="half" className="text-yellow-400">
-        ⭐
+        {/* Need to add a half star */}
       </span>
     );
   }
