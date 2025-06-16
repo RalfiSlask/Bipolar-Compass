@@ -2,12 +2,16 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import arrowRightIcon from '../assets/icons/arrow-right.svg';
 import menuData from '../data/json/menu.json';
 import { IMenuItem } from '../types/menu/menu';
 
-const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
+const findBreadcrumbs = (
+  pathname: string,
+  menu: IMenuItem[],
+  searchParams: URLSearchParams | null
+): IMenuItem[] => {
   const breadcrumbs: IMenuItem[] = [
     {
       id: 0,
@@ -19,17 +23,40 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
 
   const segments = pathname.split('/').filter(Boolean);
   let currentMenu: IMenuItem[] = menu;
+  let currentPath = '';
 
   // This loop is used to find the breadcrumbs based on the pathname.
   for (const segment of segments) {
+    currentPath += `/${segment}`;
     const match = currentMenu.find((item) => item.slug === segment);
 
     // If a match is found, the match is added to the breadcrumbs array and the currentMenu is updated to the submenuItems of the match.
     if (match) {
-      breadcrumbs.push(match);
+      breadcrumbs.push({
+        ...match,
+        slug: currentPath, // Override the slug with the full path
+      });
       currentMenu = match.submenuItems || [];
     } else {
-      console.warn(`No match found for segment: ${segment}`);
+      if (pathname.includes('/multimedia/bocker/')) {
+        const bockerMatch = currentMenu.find((item) => item.slug === 'bocker');
+        if (bockerMatch) {
+          breadcrumbs.push({
+            ...bockerMatch,
+            slug: '/multimedia/bocker', // Set the full path for böcker
+          });
+        }
+
+        if (segments.length >= 3) {
+          const originalTitle = searchParams?.get('title') || segment;
+          breadcrumbs.push({
+            id: -1,
+            title: originalTitle,
+            slug: pathname,
+            submenuItems: [],
+          });
+        }
+      }
       break;
     }
   }
@@ -38,6 +65,7 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   if (
     pathname === '/' ||
@@ -50,7 +78,7 @@ const Breadcrumbs = () => {
 
   let breadcrumbs;
   if (pathname !== null) {
-    breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems);
+    breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems, searchParams);
   }
 
   return (
@@ -66,7 +94,7 @@ const Breadcrumbs = () => {
             <li key={breadcrumb.id} className="flex items-center ">
               {!isLast ? (
                 <Link
-                  href={`/${breadcrumb.slug}`}
+                  href={breadcrumb.slug}
                   className="font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {breadcrumb.title}
