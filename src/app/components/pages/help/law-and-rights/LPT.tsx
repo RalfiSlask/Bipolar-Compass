@@ -26,6 +26,7 @@ const LPT = () => {
                 eller andra
               </li>
               <li>När frivillig vård inte är möjlig</li>
+              <li>Självmordsrisken är hög</li>
             </ul>
           </div>
           <div>
