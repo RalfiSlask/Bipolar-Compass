@@ -1,15 +1,17 @@
 import {
-  ResponsiveContainer,
+  ENGLISH_DAYS_OF_THE_WEEK,
+  SWEDISH_DAYS_OF_THE_WEEK,
+} from '@/app/data/dashboard/daysOfTheWeek';
+import { IMoodValue } from '@/app/types/moodtracker';
+import {
+  Bar,
   BarChart,
   CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Bar,
 } from 'recharts';
-import { IMoodValue } from '@/app/types/moodtracker';
-import { SWEDISH_DAYS_OF_THE_WEEK } from '@/app/data/daysOfTheWeek';
-import { ENGLISH_DAYS_OF_THE_WEEK } from '@/app/data/daysOfTheWeek';
 
 interface IDailyAverageMoodChartProps {
   moodValues: IMoodValue[] | undefined;

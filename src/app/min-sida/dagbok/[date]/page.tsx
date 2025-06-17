@@ -4,7 +4,7 @@ import DeleteModal from '@/app/components/dashboard/diary/DeleteModal';
 import Lightbox from '@/app/components/header/Lightbox';
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import Spinner from '@/app/components/shared/Spinner';
-import { diaryMoods } from '@/app/data/diary';
+import { DIARY_MOODS } from '@/app/data/dashboard/diary';
 import { ICustomSession } from '@/app/types/authoptions';
 import { IDiaryEntry } from '@/app/types/diary';
 import axios from 'axios';
@@ -210,7 +210,7 @@ const DiaryNote = () => {
                         Dagens humör
                       </label>
                       <CustomSelect
-                        options={Object.entries(diaryMoods).map(
+                        options={Object.entries(DIARY_MOODS).map(
                           ([key, value]) => ({
                             value: key,
                             label: value,

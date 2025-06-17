@@ -1,5 +1,5 @@
 import MainPageImageGrid from '../components/shared/MainPageImageGrid';
-import { bipolarLinks } from '../data/bipolarLinks';
+import { bipolarLinks } from '../data/bipolar/bipolarLinks';
 
 const BipolarPage = () => {
   return (

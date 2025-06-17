@@ -1,4 +1,4 @@
-import { ANXIETY_COLORS } from '@/app/data/dashboard';
+import { ANXIETY_COLORS } from '@/app/data/dashboard/dashboard';
 import { useEffect, useState } from 'react';
 import {
   FaFrown,

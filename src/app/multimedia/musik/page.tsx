@@ -1,19 +1,20 @@
 'use client';
 
 import SpotifySection from '@/app/components/pages/resources/music/SpotifySection';
-import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import Spinner from '@/app/components/shared/Spinner';
-import { MUSIC_TABS } from '@/app/data/musicTabs';
+import { MUSIC_TABS } from '@/app/data/multimedia/musicTabs';
 import {
   PLAYLIST_BIPOLAR,
   PLAYLIST_CALM,
   PLAYLIST_ENERGY,
   PLAYLIST_MEDITATION,
   PLAYLIST_SLEEP,
-} from '@/app/data/playlists';
+} from '@/app/data/multimedia/playlists';
 
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { MUSIC_INTRO } from '@/app/data/pageIntros';
+import { MULTIMEDIA_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { Suspense, useState } from 'react';
 
 const MusicPage = () => {
@@ -55,7 +56,7 @@ const MusicPage = () => {
       <Suspense fallback={<Spinner />}>
         <SpotifySection activePlaylist={activePlaylist} />
       </Suspense>
-      <MultimediaRelatedContent currentPage="musik" />
+      <RelatedLinks linksInfo={MULTIMEDIA_RELATED_LINKS} currentPage="musik" />
     </section>
   );
 };

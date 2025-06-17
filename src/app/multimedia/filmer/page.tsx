@@ -2,11 +2,12 @@
 
 import ActorQuote from '@/app/components/pages/multimedia/movies/ActorQuote';
 import MovieContainer from '@/app/components/pages/resources/MovieContainer';
-import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import moviesData from '@/app/data/json/movies.json';
-import { ACTORS } from '@/app/data/movies';
+import { ACTORS } from '@/app/data/multimedia/movies';
 import { MOVIES_INTRO } from '@/app/data/pageIntros';
+import { MULTIMEDIA_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { IMovieOrSeriesResponseData } from '@/app/types/api/movieTypes';
 
 const MoviesPage = () => {
@@ -33,7 +34,7 @@ const MoviesPage = () => {
           <MovieContainer key={movie.id} movie={movie} />
         ))}
       </nav>
-      <MultimediaRelatedContent currentPage="filmer" />
+      <RelatedLinks linksInfo={MULTIMEDIA_RELATED_LINKS} currentPage="filmer" />
     </section>
   );
 };

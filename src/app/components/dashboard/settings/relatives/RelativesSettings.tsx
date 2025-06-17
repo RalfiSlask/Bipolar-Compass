@@ -1,7 +1,7 @@
 import CaregiverInfoContainer from '@/app/components/shared/CaregiverInfoContainer';
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
 import VerficationMessage from '@/app/components/shared/VerficationMessage';
-import { notificationFrequencies } from '@/app/data/notifications';
+import { NOTIFICATION_FREQUENCIES } from '@/app/data/dashboard/notifications';
 import { RELATIVE_FEATURES, RELATIVE_TYPES } from '@/app/data/relatives';
 import { IRelative } from '@/app/types/relative';
 import { IUser } from '@/app/types/user';
@@ -248,7 +248,7 @@ const RelativesSettings = ({
                         Frekvens för utskick
                       </label>
                       <CustomSelect
-                        options={Object.entries(notificationFrequencies).map(
+                        options={Object.entries(NOTIFICATION_FREQUENCIES).map(
                           ([key, value]) => ({
                             value: key,
                             label: value,

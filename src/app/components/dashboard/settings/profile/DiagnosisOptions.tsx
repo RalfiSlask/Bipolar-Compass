@@ -1,5 +1,5 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { DIAGNOSIS_OPTIONS } from '@/app/data/settings';
+import { DIAGNOSIS_OPTIONS } from '@/app/data/dashboard/settings';
 import { IProfileFormValues } from '@/app/types/profile';
 import { ErrorMessage, Field, FieldProps } from 'formik';
 

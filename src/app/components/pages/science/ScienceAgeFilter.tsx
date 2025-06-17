@@ -1,4 +1,4 @@
-import { AGE_FILTERS } from '@/app/data/science';
+import { AGE_FILTERS } from '@/app/data/science/science';
 import { IoChevronForward } from 'react-icons/io5';
 
 interface IScienceAgesFilterProps {

@@ -1,7 +1,7 @@
 import { Field } from 'formik';
 
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { GENDER_OPTIONS } from '@/app/data/settings';
+import { GENDER_OPTIONS } from '@/app/data/dashboard/settings';
 import { IProfileFormValues } from '@/app/types/profile';
 import { ErrorMessage, FieldProps } from 'formik';
 

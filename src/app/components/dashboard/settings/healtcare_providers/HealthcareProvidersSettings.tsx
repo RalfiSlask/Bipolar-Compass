@@ -4,8 +4,8 @@ import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import {
   HEALTHCARE_PROVIDER_FEATURES,
   HEALTHCARE_PROVIDER_TYPES,
-} from '@/app/data/healtcareProviders';
-import { notificationFrequencies } from '@/app/data/notifications';
+} from '@/app/data/dashboard/healtcareProviders';
+import { NOTIFICATION_FREQUENCIES } from '@/app/data/dashboard/notifications';
 import { IHealthcareProvider } from '@/app/types/healthcareProvider';
 import { IUser } from '@/app/types/user';
 import { relativeValidationSchema } from '@/app/utils/validationSchemas';
@@ -254,7 +254,7 @@ const HealthcareProvidersSettings = ({
                         Frekvens för utskick
                       </label>
                       <CustomSelect
-                        options={Object.entries(notificationFrequencies).map(
+                        options={Object.entries(NOTIFICATION_FREQUENCIES).map(
                           ([key, value]) => ({
                             value: key,
                             label: value,

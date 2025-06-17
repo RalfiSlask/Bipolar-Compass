@@ -1,5 +1,5 @@
 import MainPageImageGrid from '../components/shared/MainPageImageGrid';
-import { treatmentLinks } from '../data/treatmentLinks';
+import { TREATMENT_LINKS } from '../data/treatment/treatmentLinks';
 
 const TreatmentPage = () => {
   return (
@@ -27,7 +27,7 @@ const TreatmentPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl">
-          {treatmentLinks.map((item) => (
+          {TREATMENT_LINKS.map((item) => (
             <MainPageImageGrid key={item.href} item={item} />
           ))}
         </div>

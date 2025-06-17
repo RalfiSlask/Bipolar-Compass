@@ -1,7 +1,7 @@
 import { BiFirstAid, BiHelpCircle, BiLogIn } from 'react-icons/bi';
 import { MdMood } from 'react-icons/md';
 
-export const questionSuggestions = [
+export const CHAT_SUGGESTIONS = [
   {
     text: 'Vad är bipolaritet?',
     icon: MdMood,

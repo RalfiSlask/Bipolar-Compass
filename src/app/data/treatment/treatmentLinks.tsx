@@ -1,4 +1,4 @@
-export const treatmentLinks = [
+export const TREATMENT_LINKS = [
   {
     title: 'Medicin',
     href: '/behandling/medicinska-behandlingar',

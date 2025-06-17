@@ -1,5 +1,5 @@
 import MainPageImageGrid from '../components/shared/MainPageImageGrid';
-import { MULTIMEDIA_LINKS } from '../data/multimediaLinks';
+import { MULTIMEDIA_LINKS } from '../data/multimedia/multimediaLinks';
 
 const MultiMediaPage = () => {
   return (

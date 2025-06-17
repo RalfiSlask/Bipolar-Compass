@@ -1,4 +1,4 @@
-import { IActor } from '../types/movies';
+import { IActor } from '../../types/movies';
 
 export const MOVIE_TITLES = [
   'The Year Between',

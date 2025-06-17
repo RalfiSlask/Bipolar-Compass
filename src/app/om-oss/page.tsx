@@ -1,5 +1,5 @@
 import MainPageImageGrid from '../components/shared/MainPageImageGrid';
-import { ABOUT_LINKS } from '../data/aboutLinks';
+import { ABOUT_LINKS } from '../data/about/aboutLinks';
 
 const AboutPage = () => {
   return (

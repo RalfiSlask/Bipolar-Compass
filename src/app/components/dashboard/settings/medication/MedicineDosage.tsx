@@ -1,5 +1,5 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { DOSE_UNIT_OPTIONS } from '@/app/data/medications';
+import { DOSE_UNIT_OPTIONS } from '@/app/data/dashboard/medications';
 import { useField } from 'formik';
 
 const MedicineDosage = () => {

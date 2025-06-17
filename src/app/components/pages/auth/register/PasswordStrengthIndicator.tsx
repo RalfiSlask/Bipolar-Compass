@@ -2,7 +2,7 @@ import {
   PASSWORD_COLORS,
   PASSWORD_STRENGTH_MESSAGES,
   PASSWORD_TEXT_COLORS,
-} from '@/app/data/passwordIndicator';
+} from '@/app/data/account/passwordIndicator';
 import { useEffect, useState } from 'react';
 
 interface PasswordStrengthIndicatorProps {

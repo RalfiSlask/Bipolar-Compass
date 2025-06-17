@@ -1,5 +1,5 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { MEDICATION_CATEGORIES } from '@/app/data/medications';
+import { MEDICATION_CATEGORIES } from '@/app/data/dashboard/medications';
 import { useField } from 'formik';
 
 const MedicationCategoryDropdown = () => {

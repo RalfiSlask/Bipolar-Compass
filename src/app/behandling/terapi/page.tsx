@@ -2,8 +2,9 @@ import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer
 import HighlightList from '@/app/components/shared/HighlightList';
 import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { THEAPY_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Image from 'next/image';
 
 const TherapyPage = () => {
@@ -354,7 +355,10 @@ const TherapyPage = () => {
           </div>
         </div>
         <EncouragmentContainer text="Terapier är ett värdefullt verktyg för att hantera bipolär sjukdom. Oavsett vilken terapiform du väljer är det viktigaste att du tar första steget mot att söka hjälp. Vi är här för att stödja dig på din resa mot bättre hälsa och balans i livet." />
-        <RelatedTreatmentContent currentPage="terapi" />
+        <RelatedLinks
+          linksInfo={TREATMENT_RELATED_LINKS}
+          currentPage="terapi"
+        />
       </div>
     </section>
   );

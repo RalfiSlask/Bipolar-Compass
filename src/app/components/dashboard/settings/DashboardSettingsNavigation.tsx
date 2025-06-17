@@ -1,4 +1,4 @@
-import { settingsTabs } from '@/app/data/settingsTabs';
+import { SETTINGS_TABS } from '@/app/data/dashboard/settingsTabs';
 
 interface IDashboardSettingsNavigationProps {
   changeActiveTab: (tab: string) => void;
@@ -15,7 +15,7 @@ const DashboardSettingsNavigation = ({
       aria-label="Inställningar navigation"
     >
       <ul className="flex gap-8 list-none p-0 m-0">
-        {settingsTabs.map((tab) => (
+        {SETTINGS_TABS.map((tab) => (
           <li key={tab.id}>
             <button
               onClick={() => changeActiveTab(tab.id)}

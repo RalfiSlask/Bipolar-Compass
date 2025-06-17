@@ -3,7 +3,7 @@ import VerficationMessage from '@/app/components/shared/VerficationMessage';
 import {
   MEDICATION_OPTIONS,
   MEDICATION_PAGE_LIST,
-} from '@/app/data/medications';
+} from '@/app/data/dashboard/medications';
 import { Reminder } from '@/app/models/Medication';
 import { IHistory, IMedication, ISchedule } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
