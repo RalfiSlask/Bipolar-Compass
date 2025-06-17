@@ -19,7 +19,16 @@ const BenefitCard = ({
     {icon}
     <h4 className="font-semibold text-lg text-tertiary-dark mb-2">{title}</h4>
     <p className="text-tertiary-dark text-base mb-4">{description}</p>
-    <LinkWithArrow link={link} text={linkText} color="tertiary" />
+    <LinkWithArrow
+      link={link}
+      text={
+        <>
+          {linkText}
+          <span className="sr-only"> för {title}</span>
+        </>
+      }
+      color="tertiary"
+    />
   </div>
 );
 
