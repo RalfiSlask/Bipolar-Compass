@@ -15,7 +15,7 @@ export const LAW_RIGHTS_FLOW_CHART: ILawFlowChartStep[] = [
   {
     icon: <FaExclamationTriangle className="text-2xl text-primary-accent" />,
     title: 'Rättighetskränkning',
-    description: 'Identifiera och dokumentera situationen',
+    description: 'Dokumentera situationen',
     tooltip: {
       title: 'Rättighetskränkning',
       tips: [
@@ -189,4 +189,10 @@ export const LAW_RIGHTS_LINKS = [
   'Rätt till en andra åsikt',
   'Rätt till tillgång till din journal',
   'Rätt till överklagande av vårdbeslut',
+];
+
+export const JOURNAL_HANDLING_LINKS = [
+  'Kontakta din vårdgivare direkt',
+  'Använda 1177:s tjänst för journalutlämning',
+  'Begära ändringar om informationen är felaktig',
 ];
