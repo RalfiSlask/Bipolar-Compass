@@ -1,15 +1,18 @@
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
 import LinkWithArrow from '@/app/components/shared/links/LinkWithArrow';
-import { LAW_RIGHTS_LINKS } from '@/app/data/help/lawRights';
+import {
+  JOURNAL_HANDLING_LINKS,
+  LAW_RIGHTS_LINKS,
+} from '@/app/data/help/lawRights';
 import { FaUserMd } from 'react-icons/fa';
 
 const PatientRights = () => {
   return (
-    <div className="content-container text-center sm:text-left">
+    <div className="content-container">
       <SectionTitle icon={<FaUserMd />}>Patienträttigheter</SectionTitle>
       <div className="flex flex-col gap-6">
-        <div className="bg-primary-light/50 rounded-lg p-6">
+        <div>
           <h4 className="font-semibold text-lg mb-4">
             Dina rättigheter enligt Patientlagen
           </h4>
@@ -25,17 +28,13 @@ const PatientRights = () => {
             />
           </div>
         </div>
-        <div className="bg-primary-light/50 rounded-lg p-6">
+        <div>
           <h4 className="font-semibold text-lg mb-4">Journalhantering</h4>
           <p className="mb-4">
             Du har rätt att ta del av din journal och begära ändringar om
             informationen är felaktig. För att begära ut din journal kan du:
           </p>
-          <ul className="list-disc list-inside flex flex-col gap-2">
-            <li>Kontakta din vårdgivare direkt</li>
-            <li>Använda 1177:s tjänst för journalutlämning</li>
-            <li>Begära ändringar om informationen är felaktig</li>
-          </ul>
+          <HighlightList list={JOURNAL_HANDLING_LINKS} />
           <div className="mt-4">
             <LinkWithArrow
               link="https://www.1177.se/sa-fungerar-varden/sa-skyddas-och-hanteras-dina-uppgifter/din-journal/"

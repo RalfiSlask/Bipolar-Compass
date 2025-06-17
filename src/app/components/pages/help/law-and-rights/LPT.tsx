@@ -4,11 +4,11 @@ import { FaShieldAlt } from 'react-icons/fa';
 
 const LPT = () => {
   return (
-    <div className="content-container text-center sm:text-left">
+    <div className="content-container">
       <SectionTitle icon={<FaShieldAlt />}>
         Psykiatrisk tvångsvård (LPT)
       </SectionTitle>
-      <div className="bg-primary-light/50 rounded-lg p-6">
+      <div className="bg-primary-light/50 rounded-lg p-4 sm:p-6">
         <p className="mb-4">
           Lagen om psykiatrisk tvångsvård (LPT) reglerar när tvångsvård kan
           tillämpas. Detta är en känslig fråga som påverkar både patientens

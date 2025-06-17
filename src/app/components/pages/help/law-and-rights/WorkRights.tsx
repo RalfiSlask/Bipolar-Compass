@@ -4,7 +4,7 @@ import SectionTitle from '../../../shared/headings/SectionTitle';
 
 const WorkRights = () => {
   return (
-    <div className="content-container text-center sm:text-left">
+    <div className="content-container">
       <SectionTitle icon={<FaBriefcase />}>
         Arbetsliv och rättigheter
       </SectionTitle>
@@ -38,7 +38,8 @@ const WorkRights = () => {
           </h4>
           <p className="mb-4">
             Arbetsgivaren har skyldighet att göra anpassningar för att
-            möjliggöra för dig att arbeta. Detta kan inkludera:
+            möjliggöra för dig att arbeta, oavsett om det gäller fysiska eller
+            psykiska behov. Detta kan inkludera:
           </p>
           <ul className="list-disc list-inside flex flex-col gap-2">
             <li>Anpassad arbetstid</li>

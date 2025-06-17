@@ -23,7 +23,7 @@ const LegalRightsPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={LAWS_AND_RIGHTS_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <div className="content-container text-center sm:text-left">
+        <div className="content-container text-left">
           <SectionTitle icon={<FaBook />}>
             Officiella källor och information
           </SectionTitle>
@@ -41,7 +41,7 @@ const LegalRightsPage = () => {
         <PatientRights />
         <LPT />
         <WorkRights />
-        <div className="content-container text-center sm:text-left">
+        <div className="content-container">
           <SectionTitle icon={<FaHandshake />} type="tertiary">
             Ekonomiskt stöd och ersättningar
           </SectionTitle>
@@ -51,15 +51,18 @@ const LegalRightsPage = () => {
             ))}
           </div>
         </div>
-        <div className="content-container text-center sm:text-left">
+        <div className="content-container">
           <SectionTitle icon={<FaFileAlt />}>
             Lag om avtal under psykisk påverkan
           </SectionTitle>
           <AgreementRights />
         </div>
         <LawFirms />
-        <div className="content-container text-center sm:text-left">
-          <SectionTitle icon={<FaBalanceScale />}>
+        <div className="content-container">
+          <SectionTitle
+            icon={<FaBalanceScale />}
+            extraClasses="justify-center xl:justify-start"
+          >
             Hur hanterar man rättighetskränkningar?
           </SectionTitle>
           <RightsFlowChart />

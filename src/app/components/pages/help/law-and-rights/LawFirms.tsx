@@ -5,7 +5,7 @@ import LawFirm from './LawFirm';
 
 const LawFirms = () => {
   return (
-    <div className="content-container text-center sm:text-left">
+    <div className="content-container">
       <SectionTitle icon={<FaGavel />}>Juridisk hjälp och stöd</SectionTitle>
       <div className="bg-primary-light/50 rounded-lg p-4 sm:p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -31,10 +31,10 @@ const LawFirms = () => {
           </div>
         </div>
         <div className="mt-6 bg-white p-4 rounded-lg shadow-sm">
-          <h4 className="font-semibold mb-2">
+          <h4 className="font-semibold mb-4 text-lg">
             Tips för att välja juridisk hjälp
           </h4>
-          <ul className="list-disc list-inside text-sm flex flex-col gap-2">
+          <ul className="list-disc list-inside flex flex-col gap-2">
             <li>
               Kontrollera specialisering på socialförsäkringsrätt och psykisk
               ohälsa

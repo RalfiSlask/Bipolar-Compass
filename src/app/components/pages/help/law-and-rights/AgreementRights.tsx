@@ -2,7 +2,7 @@ import LinkWithArrow from '@/app/components/shared/links/LinkWithArrow';
 
 const AgreementRights = () => {
   return (
-    <div className="bg-primary-light/50 rounded-lg p-6">
+    <div className="bg-primary-light/50 rounded-lg p-4 sm:p-6">
       <h4 className="font-semibold text-lg mb-4">
         Lagen (1924:323) om verkan av avtal under psykisk påverkan
       </h4>

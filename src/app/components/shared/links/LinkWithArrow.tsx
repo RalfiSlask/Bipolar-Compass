@@ -3,7 +3,7 @@ import { HiArrowRight } from 'react-icons/hi';
 
 interface ILinkWithArrowProps {
   link: string;
-  text: string;
+  text: string | React.ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary';
   size?: 'sm' | 'lg' | 'xl';
 }
@@ -22,7 +22,7 @@ const LinkWithArrow = ({ link, text, color, size }: ILinkWithArrowProps) => {
       rel="noopener noreferrer"
       className={`text-${
         size ?? 'base'
-      } font-semibold inline-flex gap-1 text- items-center group ${
+      } font-semibold inline-flex gap-1 text- items-center text-center sm:text-left group ${
         colorClasses[color ?? 'primary']
       }`}
     >

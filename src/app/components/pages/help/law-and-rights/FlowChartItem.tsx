@@ -3,14 +3,13 @@ import { useState } from 'react';
 
 interface IFlowChartItemProps {
   step: ILawFlowChartStep;
-  isLast: boolean;
 }
 
-const FlowChartItem = ({ step, isLast }: IFlowChartItemProps) => {
+const FlowChartItem = ({ step }: IFlowChartItemProps) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   return (
-    <div className="flex flex-col items-center relative w-full">
+    <div className="flex flex-col items-center relative xl:h-36 w-full">
       <div
         className="bg-primary-light rounded-full p-4 mb-4 shadow-md cursor-help relative hover:bg-primary-accent/10 transition-colors"
         onMouseEnter={() => setIsTooltipVisible(true)}
@@ -18,7 +17,7 @@ const FlowChartItem = ({ step, isLast }: IFlowChartItemProps) => {
       >
         {step.icon}
         {isTooltipVisible && (
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 bg-white rounded-lg shadow-lg p-4 z-10">
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 bg-white rounded-xl shadow-xl p-4 z-10">
             <h4 className="font-semibold text-primary-dark mb-2">
               {step.tooltip.title}
             </h4>
@@ -31,13 +30,10 @@ const FlowChartItem = ({ step, isLast }: IFlowChartItemProps) => {
           </div>
         )}
       </div>
-      <div className="text-center max-w-[200px] mb-8">
+      <div className="text-center max-w-[200px]">
         <h4 className="font-semibold text-primary-dark mb-1">{step.title}</h4>
         <p className="text-sm text-gray-600">{step.description}</p>
       </div>
-      {!isLast && (
-        <div className="absolute top-[calc(100%-24px)] left-1/2 -translate-x-1/2 w-0.5 h-8 bg-primary-accent" />
-      )}
     </div>
   );
 };
