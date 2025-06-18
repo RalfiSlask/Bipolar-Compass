@@ -8,7 +8,7 @@ import { Reminder } from '@/app/models/Medication';
 import { IHistory, IMedication, ISchedule } from '@/app/types/medication';
 import { IUser } from '@/app/types/user';
 import { getNumberOfTimes } from '@/app/utils/medicineUtils';
-import { medicineValidationSchema } from '@/app/utils/validationSchemas';
+import { medicineValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikErrors } from 'formik';
 import { useState } from 'react';

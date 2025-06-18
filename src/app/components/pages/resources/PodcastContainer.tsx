@@ -1,4 +1,4 @@
-import { IPodcast } from '@/app/types/podcast';
+import { IPodcast } from '@/app/types/api/podcast';
 import { formatDurationToMinutesAndSeconds } from '@/app/utils/dateUtils';
 import { stripHtml } from '@/app/utils/securityUtils';
 import { formatDistanceToNow } from 'date-fns';

@@ -8,7 +8,7 @@ import {
 import { NOTIFICATION_FREQUENCIES } from '@/app/data/dashboard/notifications';
 import { IHealthcareProvider } from '@/app/types/healthcareProvider';
 import { IUser } from '@/app/types/user';
-import { relativeValidationSchema } from '@/app/utils/validationSchemas';
+import { relativeValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';

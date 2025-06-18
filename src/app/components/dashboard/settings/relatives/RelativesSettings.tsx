@@ -6,7 +6,7 @@ import { RELATIVE_FEATURES, RELATIVE_TYPES } from '@/app/data/relatives';
 import { IRelative } from '@/app/types/relative';
 import { IUser } from '@/app/types/user';
 import { getLabelByValue } from '@/app/utils/generalUtils';
-import { relativeValidationSchema } from '@/app/utils/validationSchemas';
+import { relativeValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import { Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import toast from 'react-hot-toast';

@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { useState } from 'react';
-import { contactValidationSchema } from '../../../utils/validationSchemas';
+import { contactValidationSchema } from '../../../utils/schemas/validationSchemas';
 
 interface IContactFormValues {
   name: string;
