@@ -1,4 +1,4 @@
-export const threeSections = [
+export const THREE_SECTIONS = [
   {
     title: 'Jag är nydiagnostiserad',
     description:

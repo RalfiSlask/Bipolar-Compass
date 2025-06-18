@@ -4,8 +4,9 @@ import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer
 import HighlightList from '@/app/components/shared/HighlightList';
 import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Link from 'next/link';
 
 const SymptomsPage = () => {
@@ -216,7 +217,7 @@ const SymptomsPage = () => {
           </div>
         </div>
         <EncouragmentContainer text="Det är alltid bättre att söka hjälp en gång för mycket än en gång för lite. Vårdpersonal är van vid att möta personer i kris och finns där för att hjälpa utan att döma." />
-        <RelatedContent currentPage="symptom" />
+        <RelatedLinks linksInfo={BIPOLAR_RELATED_LINKS} currentPage="symptom" />
       </div>
     </section>
   );

@@ -3,11 +3,12 @@
 import Guide from '@/app/components/pages/treatment/Guide';
 import Questionaire from '@/app/components/pages/treatment/Questionaire';
 import ToolsModal from '@/app/components/pages/treatment/ToolsModal';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import {
-  scoringInfo,
-  selfAssessmentForms,
-} from '@/app/data/selfAssesmentForms';
+  SCORING_INFO,
+  SELF_ASSESSMENT_FORMS,
+} from '@/app/data/treatment/selfAssesmentForms';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -55,7 +56,7 @@ const DocumentsPage = () => {
           Klicka på &quot;Poängsystem&quot; för att se hur formulären ska tolkas
         </p>
         <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
-          {selfAssessmentForms.map((form) => (
+          {SELF_ASSESSMENT_FORMS.map((form) => (
             <Questionaire
               key={form.scoringId}
               form={form}
@@ -67,11 +68,14 @@ const DocumentsPage = () => {
 
       {activeModal && (
         <ToolsModal
-          info={scoringInfo[activeModal]}
+          info={SCORING_INFO[activeModal]}
           onClose={() => setActiveModal(null)}
         />
       )}
-      <RelatedTreatmentContent currentPage="dokument" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="dokument"
+      />
     </section>
   );
 };

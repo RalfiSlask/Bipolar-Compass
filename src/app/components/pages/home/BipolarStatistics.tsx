@@ -1,6 +1,9 @@
 'use client';
 
-import { BIPOLAR_TYPES, GENDER_DATA } from '@/app/data/bipolarStatistics';
+import {
+  BIPOLAR_TYPES,
+  GENDER_DATA,
+} from '@/app/data/bipolar/bipolarStatistics';
 import Link from 'next/link';
 import { HiArrowRight } from 'react-icons/hi';
 import {

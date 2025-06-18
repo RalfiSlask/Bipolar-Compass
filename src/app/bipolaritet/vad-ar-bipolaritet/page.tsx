@@ -7,8 +7,9 @@ import TreatmentSupport from '@/app/components/pages/bipolar/TreatmentSupport';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import HighlightList from '@/app/components/shared/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { WHAT_IS_BIPOLAR_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { MdPeople, MdTimeline, MdWarning } from 'react-icons/md';
 
 const WhatIsBipolarityPage = () => {
@@ -78,7 +79,10 @@ const WhatIsBipolarityPage = () => {
               stöd kan personer med bipolär sjukdom leva ett meningsfullt och
               produktivt liv."
       />
-      <RelatedContent currentPage="vad-ar-bipolaritet" />
+      <RelatedLinks
+        linksInfo={BIPOLAR_RELATED_LINKS}
+        currentPage="vad-ar-bipolaritet"
+      />
     </section>
   );
 };

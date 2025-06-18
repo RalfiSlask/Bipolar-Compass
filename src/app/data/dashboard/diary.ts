@@ -1,4 +1,4 @@
-export const diaryMoods = {
+export const DIARY_MOODS = {
   '': 'Välj humör',
   happy: 'Glad 😊',
   neutral: 'Neutral 😐',

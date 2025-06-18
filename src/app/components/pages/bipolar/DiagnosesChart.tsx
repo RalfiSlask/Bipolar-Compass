@@ -16,7 +16,7 @@ import {
   GRAPH_DATA,
   GRAPH_EXACT_LEVELS,
   GRAPH_MOOD_LEVELS,
-} from '@/app/data/bipolarStatistics';
+} from '@/app/data/bipolar/bipolarStatistics';
 
 const getMoodLevel = (
   value: number,

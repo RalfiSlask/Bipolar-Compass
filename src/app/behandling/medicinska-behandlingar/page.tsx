@@ -4,8 +4,9 @@ import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer
 import HighlightList from '@/app/components/shared/HighlightList';
 import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { MEDICINE_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
 
 const MedicinePage = () => {
@@ -318,10 +319,12 @@ const MedicinePage = () => {
             </div>
           </div>
         </div>
-
         <EncouragmentContainer text="Kom ihåg: Många med bipolär sjukdom hittar en medicinering som hjälper dem att leva ett stabilt och balanserat liv. Med rätt stöd och uppföljning finns det goda chanser att du också kommer att må bättre." />
       </div>
-      <RelatedTreatmentContent currentPage="medicinska-behandlingar" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="medicinska-behandlingar"
+      />
     </section>
   );
 };

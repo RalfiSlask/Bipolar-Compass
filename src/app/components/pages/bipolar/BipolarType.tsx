@@ -1,4 +1,4 @@
-import { IBipolarType } from '@/app/data/bipolarDiagnoses';
+import { IBipolarType } from '@/app/data/bipolar/bipolarDiagnoses';
 import Image from 'next/image';
 
 interface IBipolarTypeProps {
