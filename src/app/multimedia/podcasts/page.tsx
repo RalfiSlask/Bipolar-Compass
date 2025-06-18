@@ -8,7 +8,7 @@ import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
 import { PODCASTS_INTRO } from '@/app/data/pageIntros';
 import { MULTIMEDIA_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
-import { IPodcastResult } from '@/app/types/podcast';
+import { IPodcastResult } from '@/app/types/api/podcast';
 import { useEffect, useState } from 'react';
 
 const PodcastPage = () => {
