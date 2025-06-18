@@ -1,13 +1,14 @@
 'use client';
 
 import PodcastContainer from '@/app/components/pages/resources/PodcastContainer';
-import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import Spinner from '@/app/components/shared/Spinner';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
 import { PODCASTS_INTRO } from '@/app/data/pageIntros';
-import { IPodcastResult } from '@/app/types/podcast';
+import { MULTIMEDIA_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
+import { IPodcastResult } from '@/app/types/api/podcast';
 import { useEffect, useState } from 'react';
 
 const PodcastPage = () => {
@@ -60,7 +61,10 @@ const PodcastPage = () => {
           </div>
         </div>
       </div>
-      <MultimediaRelatedContent currentPage="podcasts" />
+      <RelatedLinks
+        linksInfo={MULTIMEDIA_RELATED_LINKS}
+        currentPage="podcasts"
+      />
     </section>
   );
 };

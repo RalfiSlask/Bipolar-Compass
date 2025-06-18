@@ -1,4 +1,4 @@
-import { threeSections } from '@/app/data/home';
+import { THREE_SECTIONS } from '@/app/data/home';
 import Image from 'next/image';
 import Section from './Section';
 
@@ -18,7 +18,7 @@ const ThreeSections = () => {
           />
         </div>
         <div className="w-full md:w-3/4 flex flex-col h-full md:rounded-r-3xl overflow-hidden max-h-[600px]">
-          {threeSections.map((section, index) => (
+          {THREE_SECTIONS.map((section, index) => (
             <Section key={index} {...section} />
           ))}
         </div>

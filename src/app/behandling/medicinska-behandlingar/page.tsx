@@ -1,11 +1,12 @@
 import ECT from '@/app/components/pages/treatment/ECT';
 import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
-import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { MEDICINE_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
 
 const MedicinePage = () => {
@@ -13,10 +14,15 @@ const MedicinePage = () => {
     <section className="page-section">
       <PageIntroContainer intro={MEDICINE_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <InfoSection
-          title="Stämningsstabiliserande mediciner"
-          description="Stämningsstabiliserare används för att balansera humöret hos personer med bipolär sjukdom. De är särskilt effektiva för att förebygga återfall i maniska och depressiva episoder. Genom att påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel de kraftiga humörsvängningar som är typiska för sjukdomen."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle>Stämningsstabiliserande mediciner</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Stämningsstabiliserare används för att balansera humöret hos
+            personer med bipolär sjukdom. De är särskilt effektiva för att
+            förebygga återfall i maniska och depressiva episoder. Genom att
+            påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel de
+            kraftiga humörsvängningar som är typiska för sjukdomen.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
@@ -36,12 +42,17 @@ const MedicinePage = () => {
               'Lamotrigin används främst för att förebygga depression och är ett alternativ för personer som inte tolererar lithium.',
             ]}
           />
-        </InfoSection>
+        </div>
 
-        <InfoSection
-          title="Antipsykotiska mediciner"
-          description="Antipsykotika verkar genom att reglera nivåerna av dopamin och serotonin i hjärnan. Dessa signalsubstanser spelar en viktig roll i humör, beteende och tänkande. Antipsykotiska mediciner kan snabbt lindra symtom vid akuta maniska episoder och används också som långtidsbehandling för att stabilisera humöret."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle>{'Antipsykotiska mediciner'}</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Antipsykotika verkar genom att reglera nivåerna av dopamin och
+            serotonin i hjärnan. Dessa signalsubstanser spelar en viktig roll i
+            humör, beteende och tänkande. Antipsykotiska mediciner kan snabbt
+            lindra symtom vid akuta maniska episoder och används också som
+            långtidsbehandling för att stabilisera humöret.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
@@ -60,12 +71,16 @@ const MedicinePage = () => {
               'Quetiapin (Seroquel) är ett mångsidigt läkemedel som kan behandla både mani och depression.',
             ]}
           />
-        </InfoSection>
+        </div>
 
-        <InfoSection
-          title="Antidepressiva mediciner"
-          description="Antidepressiva mediciner påverkar hjärnans serotoninnivåer och ibland även noradrenalin och dopamin, vilket hjälper till att lindra symtom vid depression. De används för att återställa balansen i hjärnans signalsubstanser och förbättra humöret."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle>Antidepressiva mediciner</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Antidepressiva mediciner påverkar hjärnans serotoninnivåer och
+            ibland även noradrenalin och dopamin, vilket hjälper till att lindra
+            symtom vid depression. De används för att återställa balansen i
+            hjärnans signalsubstanser och förbättra humöret.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
@@ -77,7 +92,6 @@ const MedicinePage = () => {
               återkommande depressioner som inte svarar på andra behandlingar.
             </p>
           </div>
-
           <HighlightList
             title="Exempel:"
             list={[
@@ -85,7 +99,7 @@ const MedicinePage = () => {
               'Bupropion (Wellbutrin) är ett alternativ för personer som inte tolererar traditionella SSRI och kan också förbättra energinivåer.',
             ]}
           />
-        </InfoSection>
+        </div>
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
@@ -318,10 +332,12 @@ const MedicinePage = () => {
             </div>
           </div>
         </div>
-
         <EncouragmentContainer text="Kom ihåg: Många med bipolär sjukdom hittar en medicinering som hjälper dem att leva ett stabilt och balanserat liv. Med rätt stöd och uppföljning finns det goda chanser att du också kommer att må bättre." />
       </div>
-      <RelatedTreatmentContent currentPage="medicinska-behandlingar" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="medicinska-behandlingar"
+      />
     </section>
   );
 };

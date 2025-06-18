@@ -1,7 +1,7 @@
 import { IScoringInfo } from '@/app/types/documents';
 import { IToolForm } from '@/app/types/tools/tools';
 
-export const selfAssessmentForms: IToolForm[] = [
+export const SELF_ASSESSMENT_FORMS: IToolForm[] = [
   {
     title: 'MADRS - Montgomery-Åsberg Depression Rating Scale',
     description:
@@ -49,7 +49,7 @@ export const selfAssessmentForms: IToolForm[] = [
   },
 ];
 
-export const scoringInfo: Record<string, IScoringInfo> = {
+export const SCORING_INFO: Record<string, IScoringInfo> = {
   MADRS: {
     title: 'MADRS Poängsystem',
     content: [

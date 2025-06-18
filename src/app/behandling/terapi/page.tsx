@@ -1,9 +1,10 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
-import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { THEAPY_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Image from 'next/image';
 
 const TherapyPage = () => {
@@ -11,91 +12,90 @@ const TherapyPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={THEAPY_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <InfoSection title="Psykoterapi: Samtalsterapi som verktyg">
-          <div>
-            <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-              Kognitiv beteendeterapi (KBT)
-            </h4>
-            <div className="flex flex-col gap-4">
-              <div>
-                <h5 className="font-semibold text-primary-dark mb-2">
-                  Vad är KBT?
-                </h5>
-                <p>
-                  KBT är en vanlig terapiform vid bipolär sjukdom i Sverige. Den
-                  fokuserar på att identifiera och förändra negativa
-                  tankemönster och beteenden. Behandlingen kan ges individuellt
-                  eller i grupp, oftast en gång i veckan, och längden på
-                  behandlingen varierar beroende på individuella behov.
-                </p>
-              </div>
-
-              <HighlightList
-                title="Hur kan det hjälpa?"
-                list={[
-                  'Förstå och hantera triggers som kan orsaka episoder.',
-                  'Lära sig strategier för att minska stress och förbättra relationer.',
-                  'Bygga hälsosamma rutiner för att stabilisera humöret.',
-                ]}
-              />
+        <SectionTitle>Psykoterapi: Samtalsterapi som verktyg</SectionTitle>
+        <div>
+          <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
+            Kognitiv beteendeterapi (KBT)
+          </h4>
+          <div className="flex flex-col gap-4">
+            <div>
+              <h5 className="font-semibold text-primary-dark mb-2">
+                Vad är KBT?
+              </h5>
+              <p>
+                KBT är en vanlig terapiform vid bipolär sjukdom i Sverige. Den
+                fokuserar på att identifiera och förändra negativa tankemönster
+                och beteenden. Behandlingen kan ges individuellt eller i grupp,
+                oftast en gång i veckan, och längden på behandlingen varierar
+                beroende på individuella behov.
+              </p>
             </div>
+
+            <HighlightList
+              title="Hur kan det hjälpa?"
+              list={[
+                'Förstå och hantera triggers som kan orsaka episoder.',
+                'Lära sig strategier för att minska stress och förbättra relationer.',
+                'Bygga hälsosamma rutiner för att stabilisera humöret.',
+              ]}
+            />
           </div>
+        </div>
 
-          <div>
-            <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-              Interpersonell och social rytmterapi (IPSRT)
-            </h4>
-            <div className="flex flex-col gap-4">
-              <div>
-                <h5 className="font-semibold text-primary-dark mb-2">
-                  Vad är IPSRT?
-                </h5>
-                <p>
-                  En terapi som kombinerar interpersonella strategier med en
-                  fokusering på dagliga rutiner.
-                </p>
-              </div>
-
-              <HighlightList
-                title="Hur kan det hjälpa?"
-                list={[
-                  'Förbättra relationer och minska konflikter.',
-                  'Skapa regelbundna rutiner för sömn, mat och aktiviteter.',
-                  'Förebygga humörsvängningar genom att hantera livshändelser och stress.',
-                ]}
-              />
+        <div>
+          <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
+            Interpersonell och social rytmterapi (IPSRT)
+          </h4>
+          <div className="flex flex-col gap-4">
+            <div>
+              <h5 className="font-semibold text-primary-dark mb-2">
+                Vad är IPSRT?
+              </h5>
+              <p>
+                En terapi som kombinerar interpersonella strategier med en
+                fokusering på dagliga rutiner.
+              </p>
             </div>
+
+            <HighlightList
+              title="Hur kan det hjälpa?"
+              list={[
+                'Förbättra relationer och minska konflikter.',
+                'Skapa regelbundna rutiner för sömn, mat och aktiviteter.',
+                'Förebygga humörsvängningar genom att hantera livshändelser och stress.',
+              ]}
+            />
           </div>
+        </div>
 
-          <div>
-            <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
-              Psykoedukation
-            </h4>
-            <div className="flex flex-col gap-4">
-              <div>
-                <h5 className="font-semibold text-primary-dark mb-2">
-                  Vad är psykoedukation?
-                </h5>
-                <p>
-                  Psykoedukation, även kallad patient- och närståendeutbildning,
-                  är en viktig del av behandlingen vid bipolär sjukdom i
-                  Sverige. Den syftar till att öka förståelsen för sjukdomen,
-                  hur läkemedel fungerar och vad man själv kan göra för att
-                  minska risken för nya sjukdomsskov.
-                </p>
-              </div>
-
-              <HighlightList
-                title="Hur kan det hjälpa?"
-                list={[
-                  'Öka insikten om bipolär sjukdom.',
-                  'Förbättra samarbetet med vårdpersonal och närstående.',
-                  'Förbättra behandlingsföljsamhet, exempelvis medicinering.',
-                ]}
-              />
+        <div>
+          <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
+            Psykoedukation
+          </h4>
+          <div className="flex flex-col gap-4">
+            <div>
+              <h5 className="font-semibold text-primary-dark mb-2">
+                Vad är psykoedukation?
+              </h5>
+              <p>
+                Psykoedukation, även kallad patient- och närståendeutbildning,
+                är en viktig del av behandlingen vid bipolär sjukdom i Sverige.
+                Den syftar till att öka förståelsen för sjukdomen, hur läkemedel
+                fungerar och vad man själv kan göra för att minska risken för
+                nya sjukdomsskov.
+              </p>
             </div>
+
+            <HighlightList
+              title="Hur kan det hjälpa?"
+              list={[
+                'Öka insikten om bipolär sjukdom.',
+                'Förbättra samarbetet med vårdpersonal och närstående.',
+                'Förbättra behandlingsföljsamhet, exempelvis medicinering.',
+              ]}
+            />
           </div>
-        </InfoSection>
+        </div>
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
@@ -354,7 +354,10 @@ const TherapyPage = () => {
           </div>
         </div>
         <EncouragmentContainer text="Terapier är ett värdefullt verktyg för att hantera bipolär sjukdom. Oavsett vilken terapiform du väljer är det viktigaste att du tar första steget mot att söka hjälp. Vi är här för att stödja dig på din resa mot bättre hälsa och balans i livet." />
-        <RelatedTreatmentContent currentPage="terapi" />
+        <RelatedLinks
+          linksInfo={TREATMENT_RELATED_LINKS}
+          currentPage="terapi"
+        />
       </div>
     </section>
   );

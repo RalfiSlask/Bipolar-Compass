@@ -1,6 +1,6 @@
 import PasswordStrengthIndicator from '@/app/components/pages/auth/register/PasswordStrengthIndicator';
 import useSettingsContext from '@/app/hooks/useSettingsContext';
-import { passwordChangeValidationSchema } from '@/app/utils/validationSchemas';
+import { passwordChangeValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';

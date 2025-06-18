@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { IRegisterFormValues } from '../../../../types/auth';
-import { registrationValidationSchema } from '../../../../utils/validationSchemas';
+import { registrationValidationSchema } from '../../../../utils/schemas/validationSchemas';
 import PasswordStrengthIndicator from './PasswordStrengthIndicator';
 
 const RegisterForm = () => {

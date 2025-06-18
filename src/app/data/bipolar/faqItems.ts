@@ -1,6 +1,6 @@
-import { IFaqItem } from '../types/faq';
+import { IFaqItem } from '../../types/faq';
 
-export const faqItems: IFaqItem[] = [
+export const FAQ_ITEMS: IFaqItem[] = [
   {
     'question': 'Vad är bipolär sjukdom?',
     'answer':

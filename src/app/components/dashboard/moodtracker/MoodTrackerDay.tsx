@@ -1,4 +1,4 @@
-import { moodTrackerValuesData } from '@/app/data/moodtracker';
+import { MOOD_TRACKER_VALUES_DATA } from '@/app/data/dashboard/moodtracker';
 import { DayId, IMoodValue, MoodId } from '@/app/types/moodtracker';
 import { getMoodIcon } from '@/app/utils/moodtrackerUtils';
 import { format } from 'date-fns';
@@ -70,7 +70,7 @@ const MoodTrackerDay = ({
   };
 
   const getMoodData = (moodId: string) => {
-    const moodData = moodTrackerValuesData.moodValues.find(
+    const moodData = MOOD_TRACKER_VALUES_DATA.moodValues.find(
       (mood) => mood.id === moodId
     );
     return {

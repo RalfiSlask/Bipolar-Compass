@@ -1,22 +1,39 @@
 'use client';
 
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
-import InfoSection from '@/app/components/shared/InfoSection';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Link from 'next/link';
+import { FaChild } from 'react-icons/fa';
+import {
+  MdBolt,
+  MdHelpOutline,
+  MdLocalHospital,
+  MdOutlineMoodBad,
+  MdPsychology,
+  MdSyncAlt,
+  MdVisibilityOff,
+  MdWarning,
+  MdWbSunny,
+} from 'react-icons/md';
 
 const SymptomsPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={SYMPTOMS_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <InfoSection
-          title="Symptom under maniska episoder"
-          description="En manisk episod innebär ett förhöjt, expansivt eller irritabelt humör som varar i minst en vecka och påverkar vardagen betydligt."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle icon={<MdBolt />}>
+            Symptom under maniska episoder
+          </SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            En manisk episod innebär ett förhöjt, expansivt eller irritabelt
+            humör som varar i minst en vecka och påverkar vardagen betydligt.
+          </p>
           <HighlightList
             list={[
               'Överdrivet självförtroende: Personen kan känna sig grandios och osårbar',
@@ -32,12 +49,17 @@ const SymptomsPage = () => {
             Efter en manisk episod kan det vara känslomässigt tungt att inse
             vilka konsekvenser ens beteende har fått.
           </p>
-        </InfoSection>
+        </div>
 
-        <InfoSection
-          title="Symptom under hypomaniska episoder"
-          description="Hypomani är en lindrigare form av mani, som inte leder till samma grad av funktionsnedsättning. Symptomen liknar de vid mani men är mindre intensiva och kortvariga (minst fyra dagar)."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle icon={<MdWbSunny />}>
+            Symptom under hypomaniska episoder
+          </SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Hypomani är en lindrigare form av mani, som inte leder till samma
+            grad av funktionsnedsättning. Symptomen liknar de vid mani men är
+            mindre intensiva och kortvariga (minst fyra dagar).
+          </p>
           <HighlightList
             list={[
               'Förhöjt humör: Personen känner sig positiv och entusiastisk',
@@ -50,12 +72,12 @@ const SymptomsPage = () => {
             Hypomaniska episoder kan ofta passera obemärkta av individen själv
             men kan ibland övergå i fullständig mani.
           </p>
-        </InfoSection>
+        </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <SectionTitle icon={<MdOutlineMoodBad />}>
             Symptom under depressiva episoder
-          </h3>
+          </SectionTitle>
           <p className="mb-6 ">
             Depressiva episoder innebär en kraftig nedstämdhet och minskad
             energi som varar i minst två veckor. Dessa symptom inkluderar:
@@ -78,7 +100,7 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">Blandade episoder</h3>
+          <SectionTitle icon={<MdSyncAlt />}>Blandade episoder</SectionTitle>
           <p className="mb-6 ">
             En blandad episod innebär att symptom på mani och depression
             uppträder samtidigt. Till exempel kan personen känna sig rastlös och
@@ -89,7 +111,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">Psykotiska symptom</h3>
+          <SectionTitle icon={<MdVisibilityOff />}>
+            Psykotiska symptom
+          </SectionTitle>
           <p className="mb-6 ">
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
             såsom:
@@ -106,9 +130,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <SectionTitle icon={<MdWarning />}>
             Tidiga tecken och varningstecken
-          </h3>
+          </SectionTitle>
           <p className="mb-6 ">
             Många med bipolär sjukdom upplever tidiga tecken innan en ny episod.
             Det är viktigt att känna igen dessa tecken för att söka vård i tid:
@@ -124,9 +148,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <SectionTitle icon={<MdHelpOutline />}>
             När bör du söka hjälp?
-          </h3>
+          </SectionTitle>
           <p className="">
             Om du eller någon i din närhet upplever ovanstående symptom och de
             påverkar vardagen negativt, bör vård sökas så snart som möjligt. Vid
@@ -136,9 +160,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <SectionTitle icon={<FaChild />}>
             Symptom hos barn och ungdomar
-          </h3>
+          </SectionTitle>
           <p className="mb-6 ">
             Bipolär sjukdom kan vara särskilt utmanande att identifiera hos barn
             och ungdomar. Det kan vara svårt att skilja mellan normala
@@ -160,9 +184,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">
+          <SectionTitle icon={<MdPsychology />}>
             Att känna igen när du behöver hjälp
-          </h3>
+          </SectionTitle>
           <p className="mb-6 ">
             Många personer med bipolär sjukdom kan ha svårt att inse hur mycket
             deras humörsvängningar påverkar dem själva och deras närstående.
@@ -187,7 +211,9 @@ const SymptomsPage = () => {
         </div>
 
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-4">Vid akuta situationer</h3>
+          <SectionTitle icon={<MdLocalHospital />}>
+            Vid akuta situationer
+          </SectionTitle>
           <p className="mb-6 ">
             Om du eller någon i din närhet har akuta självmordstankar eller
             planer på att skada sig själv är det viktigt att agera omedelbart.
@@ -216,7 +242,7 @@ const SymptomsPage = () => {
           </div>
         </div>
         <EncouragmentContainer text="Det är alltid bättre att söka hjälp en gång för mycket än en gång för lite. Vårdpersonal är van vid att möta personer i kris och finns där för att hjälpa utan att döma." />
-        <RelatedContent currentPage="symptom" />
+        <RelatedLinks linksInfo={BIPOLAR_RELATED_LINKS} currentPage="symptom" />
       </div>
     </section>
   );

@@ -1,8 +1,9 @@
 import Stress from '@/app/components/pages/treatment/Stress';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { SELF_HELP_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Image from 'next/image';
 
 const SelfHelpPage = () => {
@@ -612,7 +613,10 @@ const SelfHelpPage = () => {
         </div>
         <EncouragmentContainer text="Kom ihåg, du är inte ensam. Denna sida är här för att ge dig stöd och inspiration. Ta det ett steg i taget, och tveka inte att söka hjälp när du behöver det." />
       </div>
-      <RelatedTreatmentContent currentPage="sjalvhjalp" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="sjalvhjalp"
+      />
     </section>
   );
 };

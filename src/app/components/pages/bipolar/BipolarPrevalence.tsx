@@ -1,6 +1,6 @@
 'use client';
 
-import { Y_AXIS_LABELS } from '@/app/data/bipolarStatistics';
+import { Y_AXIS_LABELS } from '@/app/data/bipolar/bipolarStatistics';
 import { useEffect, useState } from 'react';
 import {
   Bar,

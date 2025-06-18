@@ -2,7 +2,7 @@ import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { DASHBOARD_NAVIGATION_LINKS } from '../../data/dashboard';
+import { DASHBOARD_NAVIGATION_LINKS } from '../../data/dashboard/dashboard';
 
 interface IDashboardNavigationProps {
   isMobile: boolean;

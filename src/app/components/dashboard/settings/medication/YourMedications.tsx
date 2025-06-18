@@ -1,4 +1,4 @@
-import { MEDICATION_OPTIONS } from '@/app/data/medications';
+import { MEDICATION_OPTIONS } from '@/app/data/dashboard/medications';
 import { IMedication } from '@/app/types/medication';
 import { useState } from 'react';
 import { FiEdit, FiInfo } from 'react-icons/fi';

@@ -5,10 +5,12 @@ import CommonSigns from '@/app/components/pages/bipolar/CommonSigns';
 import Genetics from '@/app/components/pages/bipolar/Genetics';
 import TreatmentSupport from '@/app/components/pages/bipolar/TreatmentSupport';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { WHAT_IS_BIPOLAR_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { MdPeople, MdTimeline, MdWarning } from 'react-icons/md';
 
 const WhatIsBipolarityPage = () => {
@@ -18,12 +20,9 @@ const WhatIsBipolarityPage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
-          <div className="flex items-center gap-4 mb-6">
-            <MdTimeline className="text-4xl text-primary-dark" />
-            <h3 className="h-xs text-primary-dark">
-              De olika typerna av bipolär sjukdom
-            </h3>
-          </div>
+          <SectionTitle icon={<MdTimeline />} type="primary">
+            De olika typerna av bipolär sjukdom
+          </SectionTitle>
           <p className="mb-6 ">
             Bipolär sjukdom är inte en enhetlig diagnos utan kan delas in i
             flera olika typer beroende på symptomens svårighetsgrad och mönster:
@@ -39,10 +38,9 @@ const WhatIsBipolarityPage = () => {
         </div>
         <CommonSigns />
         <div className="md:col-span-2 content-container-tertiary">
-          <div className="flex items-center gap-4 mb-6">
-            <MdPeople className="text-4xl text-tertiary-dark" />
-            <h3 className="h-xs ">Vem drabbas av bipolaritet?</h3>
-          </div>
+          <SectionTitle icon={<MdPeople />} type="tertiary">
+            Vem drabbas av bipolaritet?
+          </SectionTitle>
           <p className="mb-6 text-tertiary-dark">
             Bipolaritet kan drabba vem som helst, oavsett ålder, kön eller
             bakgrund. Sjukdomen debuterar ofta i sena tonåren eller tidig vuxen
@@ -56,11 +54,10 @@ const WhatIsBipolarityPage = () => {
         </div>
         <TreatmentSupport />
         <BipolarPrevalenceInfo />
-        <div className="md:col-span-2 bg-tertiary-light rounded-xl p-8 shadow-lg">
-          <div className="flex items-center gap-4 mb-6">
-            <MdWarning className="text-4xl text-tertiary-dark" />
-            <h3 className="h-xs text-tertiary-dark">Viktigt att notera</h3>
-          </div>
+        <div className="md:col-span-2 bg-tertiary-light rounded-xl p-4 sm:p-8 shadow-lg">
+          <SectionTitle icon={<MdWarning />} type="tertiary">
+            Viktigt att notera
+          </SectionTitle>
           <div className="flex flex-col">
             <p className="text-tertiary-dark">
               Eftersom många individer inte söker vård eller får korrekt
@@ -78,7 +75,10 @@ const WhatIsBipolarityPage = () => {
               stöd kan personer med bipolär sjukdom leva ett meningsfullt och
               produktivt liv."
       />
-      <RelatedContent currentPage="vad-ar-bipolaritet" />
+      <RelatedLinks
+        linksInfo={BIPOLAR_RELATED_LINKS}
+        currentPage="vad-ar-bipolaritet"
+      />
     </section>
   );
 };

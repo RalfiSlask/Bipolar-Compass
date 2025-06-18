@@ -1,6 +1,6 @@
 'use client';
 
-import { userPasswordValidationSchema } from '@/app/utils/validationSchemas';
+import { userPasswordValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { useRouter, useSearchParams } from 'next/navigation';

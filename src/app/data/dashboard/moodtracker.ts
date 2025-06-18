@@ -1,4 +1,4 @@
-export const moodTrackerValuesData = {
+export const MOOD_TRACKER_VALUES_DATA = {
   amountOfMoods: 10,
   moodValues: [
     {
