@@ -4,6 +4,7 @@ import {
   FaExclamationTriangle,
   FaHandsHelping,
   FaHeartbeat,
+  FaQuestionCircle,
   FaRegHeart,
   FaUserShield,
 } from 'react-icons/fa';
@@ -11,6 +12,7 @@ import Challenges from '../components/pages/relatives/Challenges';
 import Hospitalization from '../components/pages/relatives/Hospitalization';
 import Organizations from '../components/pages/relatives/Organizations';
 import EncouragmentContainer from '../components/shared/EncouragmentContainer';
+import SectionTitle from '../components/shared/headings/SectionTitle';
 import HighlightList from '../components/shared/HighlightList';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
 import { RELATIVES_INTRO } from '../data/pageIntros';
@@ -22,9 +24,9 @@ const RelativePage = () => {
       <PageIntroContainer intro={RELATIVES_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
         <div className="flex flex-col content-container">
-          <h3 className="h-xs text-primary-dark mb-2">
+          <SectionTitle icon={<FaQuestionCircle />} iconClasses="text-2xl">
             Vad innebär bipolär sjukdom?
-          </h3>
+          </SectionTitle>
           <p>
             Bipolär sjukdom är en kronisk psykisk sjukdom som påverkar humöret.
             Det innebär att en person växlar mellan maniska eller hypomaniska
@@ -41,10 +43,9 @@ const RelativePage = () => {
         </div>
 
         <div className="content-container">
-          <h3 className="text-primary-dark h-xs font-bold flex items-center gap-3">
-            <FaHandsHelping className="text-primary-dark" />
+          <SectionTitle icon={<FaHandsHelping />}>
             Din roll som anhörig
-          </h3>
+          </SectionTitle>
           <p className="mt-4">
             Din närstående behöver både kärlek och praktiskt stöd, men din roll
             som anhörig handlar också om att hitta en balans mellan att hjälpa
@@ -165,10 +166,9 @@ const RelativePage = () => {
         </div>
 
         <div className="content-container">
-          <h3 className="flex-col sm:flex-row text-primary-dark h-xs font-bold flex items-center gap-3">
-            <FaHeartbeat className="text-primary-accent" />
+          <SectionTitle icon={<FaHeartbeat />} iconClasses="text-2xl">
             Mobila psykiatriska team och läkarbedömning på plats
-          </h3>
+          </SectionTitle>
           <p className="mt-4">
             I många regioner i Sverige finns det mobila psykiatriska team som
             kan åka ut till personer i behov av akut psykiatrisk vård. Dessa

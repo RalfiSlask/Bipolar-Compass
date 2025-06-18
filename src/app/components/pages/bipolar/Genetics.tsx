@@ -1,17 +1,15 @@
 import Image from 'next/image';
 import { MdOutlineScience } from 'react-icons/md';
+import SectionTitle from '../../shared/headings/SectionTitle';
 
 const Genetics = () => {
   return (
     <div className="flex flex-col gap-6 bg-primary-light rounded-lg p-4 md:p-8 shadow-md ">
       <div className="w-full flex lg:flex-row  flex-col items-center justify-end gap-10 ">
         <div className="flex-1 h-full flex flex-col gap-4 items-center">
-          <div className="flex items-center gap-4 mb-6">
-            <MdOutlineScience className="text-4xl text-primary-dark" />
-            <h3 className="h-xs md:text-xl text-primary-dark">
-              Genetiska och miljömässiga faktorer
-            </h3>
-          </div>
+          <SectionTitle icon={<MdOutlineScience />}>
+            Genetiska och miljömässiga faktorer
+          </SectionTitle>
           <div className="w-full rounded-lg overflow-hidden">
             <Image
               src="/images/bipolar/flower-brains.webp"
