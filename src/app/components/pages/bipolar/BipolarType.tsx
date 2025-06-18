@@ -1,5 +1,6 @@
 import { IBipolarType } from '@/app/data/bipolar/bipolarDiagnoses';
 import Image from 'next/image';
+import SectionTitle from '../../shared/headings/SectionTitle';
 
 interface IBipolarTypeProps {
   bipolarType: IBipolarType;
@@ -11,7 +12,7 @@ const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
     <div className="content-container">
       <div className="flex flex-col lg:flex-row items-start gap-6">
         <div className="flex-1">
-          <h3 className="h-xs text-primary-dark mb-4">{title}</h3>
+          <SectionTitle icon={icon}>{title}</SectionTitle>
           <p className="mb-0 text-primary-dark">{description}</p>
         </div>
         {imageUrl && (
@@ -31,7 +32,6 @@ const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
       <div className="bg-primary-light/50 rounded-md p-4 w-full mt-4">
         <div className="flex items-center gap-2 mb-4">
           <div className="flex flex-col w-full text-center sm:text-left sm:flex-row items-center gap-2">
-            {icon}
             <h4 className="font-semibold text-primary-dark">{subtitle}</h4>
           </div>
         </div>

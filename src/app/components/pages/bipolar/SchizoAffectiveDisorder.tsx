@@ -1,9 +1,12 @@
 import { FaUserMd } from 'react-icons/fa';
+import SectionTitle from '../../shared/headings/SectionTitle';
 
 const SchizoAffectiveDisorder = () => {
   return (
     <div className="flex flex-col content-container-tertiary">
-      <h3 className="h-xs text-tertiary-dark mb-4">Schizoaffektivt syndrom</h3>
+      <SectionTitle icon={<FaUserMd />} type="tertiary">
+        Schizoaffektivt syndrom
+      </SectionTitle>
       <p className="mb-6 text-dark">
         Schizoaffektivt syndrom är ett psykiskt tillstånd som kombinerar symtom
         från schizofreni (som psykos, hallucinationer eller vanföreställningar)
@@ -21,7 +24,6 @@ const SchizoAffectiveDisorder = () => {
       <div className="bg-tertiary-light rounded-md p-4 flex flex-col gap-4 border border-tertiary-dark">
         <div className="flex items-center gap-2 mb-3">
           <div className="flex flex-col w-full text-center sm:text-left sm:flex-row items-center gap-2">
-            <FaUserMd className="w-6 h-6 text-tertiary-dark" />
             <h4 className="font-semibold text-tertiary-dark">
               Karaktäristiska drag för schizoaffektivt syndrom
             </h4>
