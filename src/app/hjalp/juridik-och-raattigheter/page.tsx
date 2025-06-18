@@ -1,4 +1,3 @@
-import HelpRelatedContent from '@/app/components/pages/help/HelpRelatedContent';
 import AgreementRights from '@/app/components/pages/help/law-and-rights/AgreementRights';
 import BenefitCard from '@/app/components/pages/help/law-and-rights/BenefitCard';
 import LPT from '@/app/components/pages/help/law-and-rights/LPT';
@@ -9,6 +8,7 @@ import RightsFlowChart from '@/app/components/pages/help/law-and-rights/RightsFl
 import WorkRights from '@/app/components/pages/help/law-and-rights/WorkRights';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import {
   LAW_RIGHTS_BENEFITS,
@@ -16,6 +16,7 @@ import {
   OFFICIAL_LAWS,
 } from '@/app/data/help/lawRights';
 import { LAWS_AND_RIGHTS_INTRO } from '@/app/data/pageIntros';
+import { LAW_RIGHTS_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { FaBalanceScale, FaBook, FaFileAlt, FaHandshake } from 'react-icons/fa';
 
 const LegalRightsPage = () => {
@@ -68,7 +69,10 @@ const LegalRightsPage = () => {
           <RightsFlowChart />
         </div>
         <EncouragmentContainer text="Att känna till dina rättigheter är ett viktigt steg i att ta kontroll över din situation. Kom ihåg att du har rätt till stöd och hjälp, och att det finns många resurser tillgängliga för dig. Var inte rädd för att söka hjälp eller ställa frågor när du behöver det." />
-        <HelpRelatedContent currentPage="juridik-och-raattigheter" />
+        <RelatedLinks
+          linksInfo={LAW_RIGHTS_RELATED_LINKS}
+          currentPage="juridik-och-raattigheter"
+        />
       </div>
     </section>
   );
