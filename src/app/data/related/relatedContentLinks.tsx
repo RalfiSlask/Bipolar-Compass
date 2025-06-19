@@ -123,3 +123,17 @@ export const LAW_RIGHTS_RELATED_LINKS = {
     },
   ] as IRelatedLink[],
 };
+
+export const AUTHORITIES_RELATED_LINKS = {
+  title: 'Relaterat innehåll',
+  description: 'Utforska mer information om myndigheter genom dessa länkar.',
+  links: [
+    {
+      id: 'myndigheter',
+      label: 'Myndigheter',
+      href: '/myndigheter',
+      icon: <BiBrain className="w-10 h-10" />,
+      ariaLabel: 'Gå till myndigheter',
+    },
+  ] as IRelatedLink[],
+};
