@@ -54,7 +54,7 @@
 }
 
 .page-section {
-  @apply w-full space-y-4 sm:space-y-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
+  @apply w-full flex flex-col gap-4 sm:gap-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
 }
 
 .treatment-container {

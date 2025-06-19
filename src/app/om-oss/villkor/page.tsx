@@ -167,7 +167,7 @@ const TermsOfUsePage = () => {
                 <br />
                 <strong>Kontaktformulär</strong>:{' '}
                 <Link
-                  href="/kontakt"
+                  href="/om-oss/kontakt"
                   aria-label="Kontakta oss"
                   className="nav-link text-primary-dark font-normal"
                 >

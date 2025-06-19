@@ -3,19 +3,29 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
+import { MediumImageWithText } from '@/app/components/shared/MediumImageWithText';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import { RoundedImageWithList } from '@/app/components/shared/RoundedImageWithList';
+import {
+  CHILDREN_YOUTH_SYMPTOMS,
+  DEPRESSIVE_SYMPTOMS,
+  EARLY_WARNING_SIGNS,
+  EMERGENCY_HELP_OPTIONS,
+  HYPOMANIC_SYMPTOMS,
+  IMPORTANT_WARNING_SIGNS,
+  MANIC_SYMPTOMS,
+  PSYCHOTIC_SYMPTOMS,
+} from '@/app/data/bipolar/symptoms/symptoms';
 import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
 import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Link from 'next/link';
-import { FaChild } from 'react-icons/fa';
+import { HiInformationCircle } from 'react-icons/hi';
 import {
   MdBolt,
-  MdHelpOutline,
   MdLocalHospital,
   MdOutlineMoodBad,
   MdPsychology,
-  MdSyncAlt,
   MdVisibilityOff,
   MdWarning,
   MdWbSunny,
@@ -34,17 +44,7 @@ const SymptomsPage = () => {
             En manisk episod innebär ett förhöjt, expansivt eller irritabelt
             humör som varar i minst en vecka och påverkar vardagen betydligt.
           </p>
-          <HighlightList
-            list={[
-              'Överdrivet självförtroende: Personen kan känna sig grandios och osårbar',
-              'Ökad energi och aktivitetsnivå: Man tar sig an flera projekt samtidigt, ofta utan att slutföra dem',
-              'Minskat sömnbehov: Sömn upplevs som överflödigt; personen kan känna sig pigg efter bara ett par timmars sömn',
-              'Snabbt och intensivt tal: Svårt för andra att avbryta eller hänga med',
-              'Tankeflykt: Tankarna rusar, vilket kan leda till impulsiva beslut',
-              'Riskfyllt beteende: Kan inkludera överdrivet spenderande, farliga situationer eller oansvarigt sexuellt beteende',
-              'Irritabilitet: Personen kan snabbt bli frustrerad eller arg',
-            ]}
-          />
+          <HighlightList list={MANIC_SYMPTOMS} />
           <p className="lg:text-lg">
             Efter en manisk episod kan det vara känslomässigt tungt att inse
             vilka konsekvenser ens beteende har fått.
@@ -60,14 +60,7 @@ const SymptomsPage = () => {
             grad av funktionsnedsättning. Symptomen liknar de vid mani men är
             mindre intensiva och kortvariga (minst fyra dagar).
           </p>
-          <HighlightList
-            list={[
-              'Förhöjt humör: Personen känner sig positiv och entusiastisk',
-              'Ökad energi och kreativitet: Produktiviteten ökar, ofta i arbete eller hobbyprojekt',
-              'Minskat sömnbehov: Mindre sömn behövs utan att känna trötthet',
-              'Social utåtriktning: Personen kan vara mer pratglad och sällskaplig än vanligt',
-            ]}
-          />
+          <HighlightList list={HYPOMANIC_SYMPTOMS} />
           <p className="lg:text-lg">
             Hypomaniska episoder kan ofta passera obemärkta av individen själv
             men kan ibland övergå i fullständig mani.
@@ -82,33 +75,21 @@ const SymptomsPage = () => {
             Depressiva episoder innebär en kraftig nedstämdhet och minskad
             energi som varar i minst två veckor. Dessa symptom inkluderar:
           </p>
-          <HighlightList
-            list={[
-              'Ihållande nedstämdhet: Känslor av sorg, hopplöshet eller irritabilitet',
-              'Förlorat intresse: Oförmåga att njuta av tidigare uppskattade aktiviteter',
-              'Trötthet och energilöshet: Vardagsaktiviteter känns överväldigande',
-              'Sömnstörningar: Svårigheter att somna, tidiga uppvaknanden eller överdriven sömn',
-              'Ändrad aptit: Kan leda till viktförlust eller viktuppgång',
-              'Koncentrationssvårigheter: Svårt att fatta beslut eller fokusera',
-              'Tankar på döden: Återkommande tankar på döden eller självmord',
-            ]}
-          />
+          <HighlightList list={DEPRESSIVE_SYMPTOMS} />
           <p className="mt-6">
             Depression vid bipolär sjukdom är ofta djupare och mer långvarig än
             vid en &quot;vanlig&quot; depression.
           </p>
         </div>
 
-        <div className="flex flex-col content-container">
-          <SectionTitle icon={<MdSyncAlt />}>Blandade episoder</SectionTitle>
-          <p className="mb-6 ">
-            En blandad episod innebär att symptom på mani och depression
-            uppträder samtidigt. Till exempel kan personen känna sig rastlös och
-            upprymd, men samtidigt uppleva en djup nedstämdhet och hopplöshet.
-            Dessa episoder är särskilt svåra att hantera och kräver ofta
-            omedelbar vård.
-          </p>
-        </div>
+        <MediumImageWithText
+          title="Blandade episoder"
+          description="En blandad episod innebär att symptom på mani och depression uppträder samtidigt. Till exempel kan personen känna sig rastlös och upprymd, men samtidigt uppleva en djup nedstämdhet och hopplöshet. Dessa episoder är särskilt svåra att hantera och kräver ofta omedelbar vård."
+          image="/images/bipolar/mixed.webp"
+          imageAlt="Ligger fyra stycken emojis av olika mående och en manshand tar bort en ledsen emoji"
+          type="tertiary"
+          halfSize={true}
+        />
 
         <div className="flex flex-col content-container">
           <SectionTitle icon={<MdVisibilityOff />}>
@@ -118,12 +99,7 @@ const SymptomsPage = () => {
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
             såsom:
           </p>
-          <HighlightList
-            list={[
-              'Vanföreställningar: Personen kan tro att de har övermänskliga förmågor (vid mani) eller att de är förföljda (vid depression)',
-              'Hallucinationer: Kan inkludera röster eller syner som inte är verkliga',
-            ]}
-          />
+          <HighlightList list={PSYCHOTIC_SYMPTOMS} />
           <p className="mt-6 ">
             Dessa symptom försvinner vanligtvis med behandling.
           </p>
@@ -137,51 +113,15 @@ const SymptomsPage = () => {
             Många med bipolär sjukdom upplever tidiga tecken innan en ny episod.
             Det är viktigt att känna igen dessa tecken för att söka vård i tid:
           </p>
-          <HighlightList
-            list={[
-              'Sömnproblem (svårt att somna eller minskat sömnbehov)',
-              'Förändrad aptit',
-              'Ökad irritabilitet eller rastlöshet',
-              'Ovanlig energinivå',
-            ]}
-          />
+          <HighlightList list={EARLY_WARNING_SIGNS} />
         </div>
 
-        <div className="flex flex-col content-container">
-          <SectionTitle icon={<MdHelpOutline />}>
-            När bör du söka hjälp?
-          </SectionTitle>
-          <p className="">
-            Om du eller någon i din närhet upplever ovanstående symptom och de
-            påverkar vardagen negativt, bör vård sökas så snart som möjligt. Vid
-            akuta situationer, som tankar på att skada sig själv eller andra,
-            ska du kontakta psykiatrisk akutmottagning eller ringa 112.
-          </p>
-        </div>
-
-        <div className="flex flex-col content-container">
-          <SectionTitle icon={<FaChild />}>
-            Symptom hos barn och ungdomar
-          </SectionTitle>
-          <p className="mb-6 ">
-            Bipolär sjukdom kan vara särskilt utmanande att identifiera hos barn
-            och ungdomar. Det kan vara svårt att skilja mellan normala
-            humörsvängningar under uppväxten och tecken på bipolär sjukdom.
-          </p>
-          <HighlightList
-            list={[
-              'Snabbare humörsvängningar än hos vuxna',
-              'Mer frekventa episoder med kortare duration',
-              'Svårare att uttrycka känslor och upplevelser verbalt',
-              'Kan uppvisa irritabilitet snarare än klassisk mani eller depression',
-              'Symptom kan förväxlas med andra tillstånd som ADHD',
-            ]}
-          />
-          <p className="mt-6 ">
-            Det är viktigt att söka professionell hjälp för korrekt diagnos och
-            behandling, då tidig intervention kan förbättra prognosen avsevärt.
-          </p>
-        </div>
+        <MediumImageWithText
+          title="När bör du söka hjälp?"
+          description="Om du eller någon i din närhet upplever ovanstående symptom och de påverkar vardagen negativt, bör vård sökas så snart som möjligt. Vid akuta situationer, som tankar på att skada sig själv eller andra, ska du kontakta psykiatrisk akutmottagning eller ringa 112."
+          image="/images/bipolar/help-heart.webp"
+          imageAlt="Person som sträcker ut en hand med ett hjärta"
+        />
 
         <div className="flex flex-col content-container">
           <SectionTitle icon={<MdPsychology />}>
@@ -196,12 +136,7 @@ const SymptomsPage = () => {
           </p>
           <HighlightList
             title="Viktiga varningssignaler:"
-            list={[
-              'När humörsvängningar börjar påverka relationer negativt',
-              'Om du fattar impulsiva beslut som får allvarliga konsekvenser',
-              'När vardagliga rutiner blir svåra att upprätthålla',
-              'Om du upplever återkommande perioder av hopplöshet',
-            ]}
+            list={IMPORTANT_WARNING_SIGNS}
           />
           <p className="mt-6 ">
             Det är viktigt att komma ihåg att bipolär sjukdom är en
@@ -209,6 +144,16 @@ const SymptomsPage = () => {
             Sjukdomen går inte över av sig själv.
           </p>
         </div>
+
+        <RoundedImageWithList
+          title="Symptom hos barn och ungdomar"
+          desc="Bipolär sjukdom kan vara särskilt utmanande att identifiera hos barn och ungdomar. Det kan vara svårt att skilja mellan normala humörsvängningar under uppväxten och tecken på bipolär sjukdom."
+          image="/images/bipolar/child.webp"
+          imageAlt="Ett barn som håller i två olika bilder med röda munnar, en ledsen och en glad"
+          type="tertiary"
+          listItems={CHILDREN_YOUTH_SYMPTOMS}
+          listIcon={HiInformationCircle}
+        />
 
         <div className="flex flex-col content-container">
           <SectionTitle icon={<MdLocalHospital />}>
@@ -224,10 +169,9 @@ const SymptomsPage = () => {
               Här kan du få akut hjälp:
             </h4>
             <ul className="flex flex-col gap-2 list-disc list-inside mb-6">
-              <li>Ring 112 vid akuta situationer</li>
-              <li>Kontakta närmaste psykiatriska akutmottagning</li>
-              <li>Ring Mind Självmordslinjen på 90101</li>
-              <li>Prata med en närstående som kan hjälpa dig söka vård</li>
+              {EMERGENCY_HELP_OPTIONS.map((option, index) => (
+                <li key={index}>{option}</li>
+              ))}
             </ul>
             <p>
               Om du inte hittar det du söker kan du gå in på vår hjälpsida:
