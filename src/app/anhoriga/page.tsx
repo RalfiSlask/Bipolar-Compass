@@ -1,97 +1,32 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import {
   FaExclamationTriangle,
-  FaHandsHelping,
   FaHeartbeat,
-  FaQuestionCircle,
   FaRegHeart,
   FaUserShield,
-} from 'react-icons/fa';
-import Organizations from '../components/pages/relatives/Organizations';
-import EncouragmentContainer from '../components/shared/EncouragmentContainer';
-import SectionTitle from '../components/shared/headings/SectionTitle';
-import HighlightList from '../components/shared/HighlightList';
-import PageIntroContainer from '../components/shared/PageIntroContainer';
-import RoundedImageWithHeadingList from '../components/shared/RoundedImageWithHeadingList';
-import RoundedImageWithList from '../components/shared/RoundedImageWithList';
-import { RELATIVES_INTRO } from '../data/pageIntros';
-import { RELATIVE_TIPS } from '../data/relatives';
+} from "react-icons/fa";
+import Organizations from "../components/pages/relatives/Organizations";
+import EncouragmentContainer from "../components/shared/EncouragmentContainer";
+import SectionTitle from "../components/shared/headings/SectionTitle";
+import HighlightList from "../components/shared/HighlightList";
+import PageIntroContainer from "../components/shared/PageIntroContainer";
+// import RoundedImageWithHeadingList from "../components/shared/RoundedImageWithHeadingList";
+import RoundedImageWithList from "../components/shared/RoundedImageWithList";
+import { RELATIVES_INTRO } from "../data/pageIntros";
+import WhatIsBipolar from "./WhatIsBipolar";
+import RoleAsRelative from "./RoleAsRelative";
+import ChallengesForRelatives from "./ChallengesForRelatives";
 
 const RelativePage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={RELATIVES_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <div className="flex flex-col content-container">
-          <SectionTitle icon={<FaQuestionCircle />} iconClasses="text-2xl">
-            Vad innebär bipolär sjukdom?
-          </SectionTitle>
-          <p>
-            Bipolär sjukdom är en kronisk psykisk sjukdom som påverkar humöret.
-            Det innebär att en person växlar mellan maniska eller hypomaniska
-            faser (förhöjt humör och energi) och depressiva faser (nedstämdhet
-            och låg energi). Mellan dessa episoder kan personen ofta ha långa
-            perioder av stabilitet.
-          </p>
-          <p className=" mt-4">
-            Som anhörig är det viktigt att förstå att dessa humörsvängningar
-            inte är något din närstående kan kontrollera. Det handlar inte om
-            att &quot;ta sig samman&quot; – det är en sjukdom som kräver
-            professionell behandling och ett långsiktigt stöd från omgivningen.
-          </p>
-        </div>
+        <WhatIsBipolar />
+        <RoleAsRelative />
+        <ChallengesForRelatives />
 
-        <div className="content-container">
-          <SectionTitle icon={<FaHandsHelping />}>
-            Din roll som anhörig
-          </SectionTitle>
-          <p className="mt-4">
-            Din närstående behöver både kärlek och praktiskt stöd, men din roll
-            som anhörig handlar också om att hitta en balans mellan att hjälpa
-            andra och ta hand om dig själv. Här är några konkreta sätt du kan
-            göra skillnad:
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            {RELATIVE_TIPS.map((item, index) => (
-              <div
-                key={index}
-                className="bg-primary-light rounded-lg p-4 shadow-md"
-              >
-                <h4 className="text-lg mb-2 text-primary-dark font-semibold">
-                  {item.title}
-                </h4>
-                <p className="text-base">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <RoundedImageWithHeadingList
-          title=" Vanliga utmaningar för anhöriga"
-          headingsList={[
-            {
-              title: 'Känslomässig belastning',
-              description:
-                'Du kan känna frustration eller maktlöshet när din närstående inte mår bra. Det är viktigt att erkänna dessa känslor som normala och söka stöd vid behov.',
-            },
-            {
-              title: 'Oro för framtiden',
-              description:
-                'Det är naturligt att känna oro för hur sjukdomen kommer påverka er relation, din närståendes arbete eller ekonomi. Genom att skapa en stabil stödstruktur kan ni minska dessa risker.',
-            },
-            {
-              title: 'Social isolering',
-              description:
-                'Många anhöriga upplever att de själva blir isolerade när deras närstående är sjuk. Det är viktigt att du hittar egna sociala sammanhang där du kan få energi.',
-            },
-          ]}
-          image="/images/relatives/struggle.webp"
-          type="tertiary"
-          imageAlt="Stress"
-          linkText="själv hjälp"
-          link="/behandling/sjalvhjalp"
-        />
         <RoundedImageWithList
           title="När tvångsvård kan bli nödvändig"
           desc="I vissa situationer, särskilt när din närstående befinner sig i ett maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att ansöka om tvångsvård. Detta är ofta en sista utväg när personen inte kan förstå sin egen situation eller är en fara för sig själv eller andra. Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:"
@@ -100,13 +35,13 @@ const RelativePage = () => {
           imageAlt="Stress"
           listItems={[
             {
-              text: 'Personen lider av en allvarlig psykisk störning (som bipolär sjukdom i mani eller psykos).',
+              text: "Personen lider av en allvarlig psykisk störning (som bipolär sjukdom i mani eller psykos).",
             },
             {
-              text: 'Personen behöver psykiatrisk vård som inte kan ges frivilligt.',
+              text: "Personen behöver psykiatrisk vård som inte kan ges frivilligt.",
             },
             {
-              text: 'Personen utgör en fara för sig själv eller andra, eller riskerar att allvarligt försämras utan vård.',
+              text: "Personen utgör en fara för sig själv eller andra, eller riskerar att allvarligt försämras utan vård.",
             },
           ]}
         />
@@ -121,15 +56,15 @@ const RelativePage = () => {
                 Om du misstänker att din närstående behöver tvångsvård ska du
                 kontakta psykiatrin i din region. De flesta regioner har
                 jourmottagningar för psykiatri som är öppna dygnet runt. Om
-                situationen är akut kan du antigen söka hjälp via vår{' '}
+                situationen är akut kan du antigen söka hjälp via vår{" "}
                 <Link
                   href="/akut"
                   className="nav-link text-primary-dark font-semibold"
                 >
-                  akut sida {''}
+                  akut sida {""}
                 </Link>
-                {''}
-                eller direkt ringa{' '}
+                {""}
+                eller direkt ringa{" "}
                 <span className="text-primary-dark font-semibold">112</span>
               </p>
             </div>
@@ -141,9 +76,9 @@ const RelativePage = () => {
               </p>
               <HighlightList
                 list={[
-                  'Uppvisar farligt eller riskabelt beteende',
-                  'Har hallucinationer eller vanföreställningar',
-                  'Vägrar vård trots att de tydligt mår mycket dåligt',
+                  "Uppvisar farligt eller riskabelt beteende",
+                  "Har hallucinationer eller vanföreställningar",
+                  "Vägrar vård trots att de tydligt mår mycket dåligt",
                 ]}
               />
             </div>
@@ -245,8 +180,8 @@ const RelativePage = () => {
               </h4>
               <ul className="list-disc list-inside flex flex-col gap-2">
                 <li>
-                  Ring psykiatriska jourmottagningen eller titta på vår sida om{' '}
-                  {''}
+                  Ring psykiatriska jourmottagningen eller titta på vår sida om{" "}
+                  {""}
                   <Link
                     href="/akut"
                     className="nav-link text-primary-dark font-semibold"
@@ -260,7 +195,7 @@ const RelativePage = () => {
                   nödvändig.
                 </li>
                 <li>
-                  Vid omedelbar fara, ring{' '}
+                  Vid omedelbar fara, ring{" "}
                   <span className="font-semibold">112</span>.
                 </li>
               </ul>
@@ -301,7 +236,7 @@ const RelativePage = () => {
                 </li>
                 <li className="flex gap-2 flex-col">
                   <h4 className="font-semibold">
-                    {' '}
+                    {" "}
                     Transport till vårdinrättning:
                   </h4>
                   <p>
