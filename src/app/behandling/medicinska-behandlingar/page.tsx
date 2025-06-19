@@ -3,6 +3,7 @@ import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
+import { MediumImageWithText } from '@/app/components/shared/MediumImageWithText';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { MEDICINE_INTRO } from '@/app/data/pageIntros';
@@ -57,7 +58,7 @@ const MedicinePage = () => {
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
             </h4>
-            <p>
+            <p className="mb-4">
               De används för att hantera både maniska episoder och blandade
               episoder (en kombination av mani och depression). Vissa
               antipsykotika kan också vara effektiva vid behandling av bipolär
@@ -85,7 +86,7 @@ const MedicinePage = () => {
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
             </h4>
-            <p>
+            <p className="mb-4">
               Vid bipolär sjukdom används antidepressiva ofta tillsammans med
               stämningsstabiliserare för att undvika att de triggar en manisk
               episod. De är särskilt effektiva för att behandla långvariga eller
@@ -101,28 +102,14 @@ const MedicinePage = () => {
           />
         </div>
 
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
-            Kombination av mediciner
-          </h3>
-          <div className="flex flex-col gap-6 lg:text-lg">
-            <p>
-              I många fall används en kombination av mediciner från olika
-              grupper för att uppnå bästa möjliga effekt. Till exempel kan en
-              person med återkommande depressioner och maniska episoder använda
-              både en stämningsstabiliserare och ett antipsykotikum. Den
-              individuella behandlingen anpassas efter symtomens svårighetsgrad,
-              tidigare erfarenheter av medicinering och eventuella andra
-              medicinska tillstånd.
-            </p>
-
-            <p>
-              Behandlingen syftar inte bara till att minska akuta symtom utan
-              också till att förebygga framtida episoder och förbättra
-              livskvaliteten över tid.
-            </p>
-          </div>
-        </div>
+        <MediumImageWithText
+          title="Kombination av mediciner"
+          description="I många fall används en kombination av mediciner från olika grupper för att uppnå bästa möjliga effekt. Till exempel kan en person med återkommande depressioner och maniska episoder använda både en stämningsstabiliserare och ett antipsykotikum."
+          image="/images/treatments/combination-medication.webp"
+          imageAlt="Kombination av mediciner på ett bord av olika storlek och färg"
+          alignment="right"
+          halfSize={true}
+        />
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">

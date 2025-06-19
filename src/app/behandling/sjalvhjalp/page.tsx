@@ -1,7 +1,7 @@
-import Stress from '@/app/components/pages/treatment/Stress';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import RoundedImageWithHeadingList from '@/app/components/shared/RoundedImageWithHeadingList';
 import { SELF_HELP_INTRO } from '@/app/data/pageIntros';
 import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Image from 'next/image';
@@ -196,7 +196,28 @@ const SelfHelpPage = () => {
             </div>
           </div>
         </div>
-        <Stress />
+        <RoundedImageWithHeadingList
+          title="Hantera stress"
+          headingsList={[
+            {
+              title: 'Identifiera stressfaktorer',
+              description:
+                'Identifiera stressfaktorer genom att föra dagbok över situationer som ökar din stressnivå. Var uppmärksam på tecken som irritabilitet och sömnsvårigheter, och utveckla strategier för att hantera dem.',
+            },
+            {
+              title: 'Mindfulness och meditation',
+              description:
+                'Meditation och mindfulness kan hjälpa dig att känna dig mer bekväm och lugn. Det kan också hjälpa dig att se stressfaktorer som du inte kunde se tidigare.',
+            },
+            {
+              title: 'Fysisk aktivitet',
+              description:
+                'Fysisk aktivitet kan hjälpa dig att slappna av och känna dig lugnare. Det kan också hjälpa dig att känna dig mer energisk och frisk.',
+            },
+          ]}
+          image="/images/treatments/stress-relief.webp"
+          imageAlt="Kvinna som står och har stängda ögon med händerna på hjärtat"
+        />
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Relationsstöd

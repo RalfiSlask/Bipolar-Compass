@@ -8,13 +8,13 @@ import {
   FaRegHeart,
   FaUserShield,
 } from 'react-icons/fa';
-import Challenges from '../components/pages/relatives/Challenges';
-import Hospitalization from '../components/pages/relatives/Hospitalization';
 import Organizations from '../components/pages/relatives/Organizations';
 import EncouragmentContainer from '../components/shared/EncouragmentContainer';
 import SectionTitle from '../components/shared/headings/SectionTitle';
 import HighlightList from '../components/shared/HighlightList';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
+import RoundedImageWithHeadingList from '../components/shared/RoundedImageWithHeadingList';
+import RoundedImageWithList from '../components/shared/RoundedImageWithList';
 import { RELATIVES_INTRO } from '../data/pageIntros';
 import { RELATIVE_TIPS } from '../data/relatives';
 
@@ -66,8 +66,50 @@ const RelativePage = () => {
             ))}
           </div>
         </div>
-        <Challenges />
-        <Hospitalization />
+
+        <RoundedImageWithHeadingList
+          title=" Vanliga utmaningar för anhöriga"
+          headingsList={[
+            {
+              title: 'Känslomässig belastning',
+              description:
+                'Du kan känna frustration eller maktlöshet när din närstående inte mår bra. Det är viktigt att erkänna dessa känslor som normala och söka stöd vid behov.',
+            },
+            {
+              title: 'Oro för framtiden',
+              description:
+                'Det är naturligt att känna oro för hur sjukdomen kommer påverka er relation, din närståendes arbete eller ekonomi. Genom att skapa en stabil stödstruktur kan ni minska dessa risker.',
+            },
+            {
+              title: 'Social isolering',
+              description:
+                'Många anhöriga upplever att de själva blir isolerade när deras närstående är sjuk. Det är viktigt att du hittar egna sociala sammanhang där du kan få energi.',
+            },
+          ]}
+          image="/images/relatives/struggle.webp"
+          type="tertiary"
+          imageAlt="Stress"
+          linkText="själv hjälp"
+          link="/behandling/sjalvhjalp"
+        />
+        <RoundedImageWithList
+          title="När tvångsvård kan bli nödvändig"
+          desc="I vissa situationer, särskilt när din närstående befinner sig i ett maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att ansöka om tvångsvård. Detta är ofta en sista utväg när personen inte kan förstå sin egen situation eller är en fara för sig själv eller andra. Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:"
+          subdesc="Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:"
+          image="/images/relatives/hospital.webp"
+          imageAlt="Stress"
+          listItems={[
+            {
+              text: 'Personen lider av en allvarlig psykisk störning (som bipolär sjukdom i mani eller psykos).',
+            },
+            {
+              text: 'Personen behöver psykiatrisk vård som inte kan ges frivilligt.',
+            },
+            {
+              text: 'Personen utgör en fara för sig själv eller andra, eller riskerar att allvarligt försämras utan vård.',
+            },
+          ]}
+        />
         <div className="flex flex-col content-container">
           <h3 className="h-xs text-primary-dark mb-2">
             Hur går man tillväga för att ansöka om tvångsvård?
@@ -126,7 +168,7 @@ const RelativePage = () => {
         </div>
 
         <div className="flex flex-col items-center content-container gap-6 p-6 rounded-xl shadow-lg">
-          <h3 className="h-xs text-primary-dark font-bold">
+          <h3 className="h-xs text-tertiary-dark font-bold">
             Att tänka på som anhörig vid tvångsvård
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
@@ -240,7 +282,7 @@ const RelativePage = () => {
             <h3 className="h-xs text-primary-dark ">
               Vad händer när läkaren kommer till platsen?
             </h3>
-            <div className="bg-primary-light/50 rounded-md">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li className="flex gap-2 flex-col">
                   <h4 className="font-semibold">Initial bedömning:</h4>
@@ -278,7 +320,7 @@ const RelativePage = () => {
             <h3 className="h-xs text-primary-dark">
               Vad kan du som anhörig göra under tiden?
             </h3>
-            <div className="bg-primary-light/50 rounded-md">
+            <div className="bg-primary-light/50 rounded-md p-4">
               <ul className="flex flex-col gap-2 list-disc list-inside">
                 <li className="flex gap-2 flex-col">
                   <h4 className="font-semibold">Håll dig lugn:</h4>
