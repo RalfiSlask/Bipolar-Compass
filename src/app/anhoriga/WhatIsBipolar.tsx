@@ -1,4 +1,3 @@
-import React from "react";
 import SectionTitle from "../components/shared/headings/SectionTitle";
 import { FaQuestionCircle } from "react-icons/fa";
 
