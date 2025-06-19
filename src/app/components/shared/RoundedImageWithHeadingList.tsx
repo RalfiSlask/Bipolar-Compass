@@ -65,7 +65,6 @@ const RoundedImageWithHeadingList = ({
           <Image
             src={image}
             alt={imageAlt}
-            aria-label={imageAlt}
             width={1200}
             height={800}
             quality={80}
