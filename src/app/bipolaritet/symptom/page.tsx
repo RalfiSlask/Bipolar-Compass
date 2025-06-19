@@ -86,7 +86,7 @@ const SymptomsPage = () => {
           title="Blandade episoder"
           description="En blandad episod innebär att symptom på mani och depression uppträder samtidigt. Till exempel kan personen känna sig rastlös och upprymd, men samtidigt uppleva en djup nedstämdhet och hopplöshet. Dessa episoder är särskilt svåra att hantera och kräver ofta omedelbar vård."
           image="/images/bipolar/mixed.webp"
-          imageAlt="En kvinna som ligger ner på golvet med konfetti av olika färger som symboliserar blandat humör"
+          imageAlt="Ligger fyra stycken emojis av olika mående och en manshand tar bort en ledsen emoji"
           type="tertiary"
           halfSize={true}
         />
