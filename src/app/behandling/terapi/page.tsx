@@ -1,5 +1,4 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
-import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import HighlightList from '@/app/components/shared/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
@@ -12,8 +11,7 @@ const TherapyPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={THEAPY_INTRO} />
       <div className="flex flex-col gap-4 sm:gap-10">
-        <SectionTitle>Psykoterapi: Samtalsterapi som verktyg</SectionTitle>
-        <div>
+        <div className="flex flex-col content-container">
           <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
             Kognitiv beteendeterapi (KBT)
           </h4>
@@ -42,7 +40,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col content-container">
           <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
             Interpersonell och social rytmterapi (IPSRT)
           </h4>
@@ -68,7 +66,7 @@ const TherapyPage = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col content-container">
           <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
             Psykoedukation
           </h4>
