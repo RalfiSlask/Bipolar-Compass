@@ -1,3 +1,4 @@
+import { ColorType } from '@/app/types/colorTypes';
 import Image from 'next/image';
 import { FaExclamationCircle } from 'react-icons/fa';
 
@@ -12,7 +13,7 @@ interface IRoundedImageWithListProps {
   listItems: IListItem[];
   image: string;
   imageAlt: string;
-  type?: 'primary' | 'tertiary';
+  type?: ColorType;
   alignment?: 'left' | 'right';
   listIcon?: React.ComponentType<{ className?: string }>;
 }

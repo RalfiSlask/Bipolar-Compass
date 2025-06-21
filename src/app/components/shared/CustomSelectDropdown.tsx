@@ -7,7 +7,7 @@ interface IOption {
   label: string;
 }
 
-interface CustomSelectProps {
+interface ICustomSelectProps {
   options: IOption[];
   value: string;
   onChange: (value: string) => void;
@@ -27,7 +27,7 @@ const CustomSelect = ({
   touched,
   size = 'medium',
   placeholder = 'Välj...',
-}: CustomSelectProps) => {
+}: ICustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLabel, setSelectedLabel] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);

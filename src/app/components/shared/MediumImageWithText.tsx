@@ -1,3 +1,4 @@
+import { ColorType } from '@/app/types/colorTypes';
 import Image from 'next/image';
 
 interface IMediumImageWithTextProps {
@@ -5,7 +6,7 @@ interface IMediumImageWithTextProps {
   description: string;
   image: string;
   imageAlt: string;
-  type?: 'primary' | 'tertiary';
+  type?: ColorType;
   alignment?: 'left' | 'right';
   halfSize?: boolean;
 }
