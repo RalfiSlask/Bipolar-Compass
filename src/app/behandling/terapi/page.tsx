@@ -1,5 +1,5 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
-import HighlightList from '@/app/components/shared/HighlightList';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { THEAPY_INTRO } from '@/app/data/pageIntros';

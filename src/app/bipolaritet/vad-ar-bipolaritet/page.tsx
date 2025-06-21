@@ -6,7 +6,7 @@ import Genetics from '@/app/components/pages/bipolar/Genetics';
 import TreatmentSupport from '@/app/components/pages/bipolar/TreatmentSupport';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
-import HighlightList from '@/app/components/shared/HighlightList';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { WHAT_IS_BIPOLAR_INTRO } from '@/app/data/pageIntros';

@@ -2,7 +2,7 @@
 
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
-import HighlightList from '@/app/components/shared/HighlightList';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import { MediumImageWithText } from '@/app/components/shared/MediumImageWithText';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';

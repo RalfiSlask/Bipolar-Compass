@@ -11,7 +11,7 @@ import {
 import Organizations from '../components/pages/relatives/Organizations';
 import EncouragmentContainer from '../components/shared/EncouragmentContainer';
 import SectionTitle from '../components/shared/headings/SectionTitle';
-import HighlightList from '../components/shared/HighlightList';
+import HighlightList from '../components/shared/lists/HighlightList';
 import PageIntroContainer from '../components/shared/PageIntroContainer';
 import RoundedImageWithHeadingList from '../components/shared/RoundedImageWithHeadingList';
 import RoundedImageWithList from '../components/shared/RoundedImageWithList';
