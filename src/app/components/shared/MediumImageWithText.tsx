@@ -22,7 +22,7 @@ export const MediumImageWithText = ({
 }: IMediumImageWithTextProps) => {
   return (
     <section
-      className={`flex flex-col lg:flex-row items-center gap-8 bg-${type}-light rounded-xl shadow-lg overflow-hidden ${
+      className={`flex flex-col lg:flex-row items-center lg:gap-8 bg-${type}-light rounded-xl shadow-lg overflow-hidden ${
         alignment === 'right' ? 'lg:flex-row-reverse' : ''
       }`}
     >
@@ -40,7 +40,7 @@ export const MediumImageWithText = ({
           }`}
         />
       </div>
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-4 lg:p-8">
         <h2 className={`text-2xl font-bold text-${type}-dark mb-2`}>{title}</h2>
         <p className={`text-${type}-dark`}>{description}</p>
       </div>
