@@ -78,6 +78,15 @@ const MULTIMEDIA_LINKS = [
   },
 ];
 
+const HELP_LINKS = [
+  {
+    title: 'Juridik och rättigheter',
+    href: '/hjalp/juridik-och-raattigheter',
+    description: 'Lär dig mer om vad juridik och rättigheter innebär',
+    image: '/images/help/law/law.webp',
+  },
+];
+
 const BIPOLAR_LINKS = [
   {
     title: 'Vad är bipolaritet?',
@@ -137,5 +146,13 @@ export const PAGE_LAYOUT_DATA: Record<string, IPageLayoutData> = {
     subDescription:
       'Vårt mål är att göra vardagen enklare och mer hanterbar för dem som lever med bipolär sjukdom – och deras anhöriga.',
     links: ABOUT_LINKS,
+  },
+  help: {
+    title: 'Hjälp',
+    description:
+      'Här hittar du vägledning och stöd kring praktiska frågor som rör livet med bipolär sjukdom. Vi samlar information om juridiska rättigheter, kontakt med myndigheter, ekonomisk rådgivning och annat samhällsstöd som kan vara viktigt för dig eller dina anhöriga.',
+    subDescription:
+      'Få hjälp att navigera i kontakten med myndigheter, förstå dina rättigheter, hitta ekonomiskt stöd och ta del av resurser som underlättar vardagen vid bipolär sjukdom.',
+    links: HELP_LINKS,
   },
 };
