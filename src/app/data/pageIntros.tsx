@@ -15,7 +15,7 @@ export const AUTHORITIES_INTRO = {
   descriptionBold:
     'Här hittar du information om vilka myndigheter som kan vara relevanta för dig, vad de kan hjälpa dig med, och hur du kommer i kontakt med dem.',
   image: '/images/help/authorities/riksdag.webp',
-  color: 'green' as const,
+  color: 'brown' as const,
 };
 
 export const LAWS_AND_RIGHTS_INTRO = {
