@@ -51,15 +51,19 @@ const CustomSelect = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const smallHeight = 'max-h-40';
+  const mediumHeight = 'max-h-60';
+  const largeHeight = 'max-h-96';
+
+  const largeWidth = 'sm:w-full min-w-[240px]';
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         type="button"
-        className={`w-full sm:w-[160px] ${
-          size === 'large' ? 'sm:w-full min-w-[240px]' : 'sm:w-[160px]'
-        } h-[44px] px-3 text-left bg-white rounded-md border primary-input
-          ${error && touched ? 'border-red-500' : ''}
-          flex items-center justify-between`}
+        className={`w-full sm:w-[160px] h-[44px] px-3 text-left bg-white rounded-md border primary-input flex items-center justify-between
+          ${size === 'large' ? largeWidth : ''}
+          ${error && touched ? 'border-red-500' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="truncate">{selectedLabel || placeholder}</span>
@@ -86,7 +90,15 @@ const CustomSelect = ({
             size === 'large' ? 'sm:w-full' : 'sm:w-[160px]'
           } mt-1 bg-white border border-gray-200 rounded-md shadow-lg`}
         >
-          <ul className="py-1 max-h-60 overflow-auto">
+          <ul
+            className={`py-1 ${
+              size === 'small'
+                ? smallHeight
+                : size === 'medium'
+                ? mediumHeight
+                : largeHeight
+            } overflow-auto`}
+          >
             {options.map((option) => (
               <li
                 key={option.value}
