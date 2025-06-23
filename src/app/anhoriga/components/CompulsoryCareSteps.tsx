@@ -1,5 +1,5 @@
-import Link from "next/link";
-import HighlightList from "../../components/shared/HighlightList";
+import Link from 'next/link';
+import HighlightList from '../../components/shared/lists/HighlightList';
 
 const CompulsoryCareSteps = () => {
   return (
@@ -14,15 +14,15 @@ const CompulsoryCareSteps = () => {
             Om du misstänker att din närstående behöver tvångsvård ska du
             kontakta psykiatrin i din region. De flesta regioner har
             jourmottagningar för psykiatri som är öppna dygnet runt. Om
-            situationen är akut kan du antigen söka hjälp via vår{" "}
+            situationen är akut kan du antigen söka hjälp via vår{' '}
             <Link
               href="/akut"
               className="nav-link text-primary-dark font-semibold"
             >
-              akut sida {""}
+              akut sida {''}
             </Link>
-            {""}
-            eller direkt ringa{" "}
+            {''}
+            eller direkt ringa{' '}
             <span className="text-primary-dark font-semibold">112</span>.
           </p>
         </div>
@@ -34,9 +34,9 @@ const CompulsoryCareSteps = () => {
           </p>
           <HighlightList
             list={[
-              "Uppvisar farligt eller riskabelt beteende",
-              "Har hallucinationer eller vanföreställningar",
-              "Vägrar vård trots att de tydligt mår mycket dåligt",
+              'Uppvisar farligt eller riskabelt beteende',
+              'Har hallucinationer eller vanföreställningar',
+              'Vägrar vård trots att de tydligt mår mycket dåligt',
             ]}
           />
         </div>
