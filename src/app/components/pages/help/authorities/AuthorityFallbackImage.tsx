@@ -7,9 +7,7 @@ interface IAuthorityFallbackImageProps {
 
 const AuthorityFallbackImage = ({ type }: IAuthorityFallbackImageProps) => {
   return (
-    <div
-      className={`w-full h-32 bg-${type}-light/40 rounded-lg flex items-center justify-center`}
-    >
+    <div className={`w-full h-20 bg-${type}-light/40 rounded-lg`}>
       <FaBuilding className={`w-16 h-16 text-${type}-dark`} />
     </div>
   );

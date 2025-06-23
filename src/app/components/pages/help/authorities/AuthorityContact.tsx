@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fa';
 
 interface IAuthorityContactProps {
+  title: string;
   website: string;
   phone: string;
   email: string;
@@ -16,6 +17,7 @@ interface IAuthorityContactProps {
 }
 
 const AuthorityContact = ({
+  title,
   website,
   phone,
   email,
@@ -24,7 +26,7 @@ const AuthorityContact = ({
 }: IAuthorityContactProps) => {
   return (
     <div className="flex flex-col gap-4 mb-6">
-      <div className="flex gap-8 items-center">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 sm:items-center">
         {website && (
           <Link
             href={website}
@@ -33,7 +35,12 @@ const AuthorityContact = ({
             className={`authority-link text-${type}-dark hover:text-${type}-accent`}
           >
             <FaGlobe className="w-4 h-4" />
-            <span className="text-sm">Officiell webbplats</span>
+            <span className="text-sm">
+              Officiell webbplats
+              <>
+                <span className="sr-only">för {title}</span>
+              </>
+            </span>
             <FaExternalLinkAlt className="w-4 h-4" />
           </Link>
         )}
@@ -44,7 +51,7 @@ const AuthorityContact = ({
             className={`authority-link text-${type}-dark hover:text-${type}-accent `}
           >
             <FaPhone className="w-4 h-4" />
-            <span className="text-sm">{phone}</span>
+            <span>{phone}</span>
           </a>
         )}
       </div>
@@ -55,7 +62,7 @@ const AuthorityContact = ({
           className={`authority-link text-${type}-dark hover:text-${type}-accent`}
         >
           <FaEnvelope className="w-4 h-4" />
-          <span className="text-sm">{email}</span>
+          <span>{email}</span>
         </a>
       )}
       {contact && (
@@ -64,7 +71,7 @@ const AuthorityContact = ({
           className={`authority-link text-${type}-dark hover:text-${type}-accent`}
         >
           <FaGlobe className="w-4 h-4" />
-          <span className="text-sm">{contact}</span>
+          <span>{contact}</span>
         </a>
       )}
     </div>

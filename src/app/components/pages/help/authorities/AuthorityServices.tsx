@@ -18,9 +18,9 @@ const AuthorityServices = ({ services, type }: IAuthorityServicesProps) => {
         {services.map((service) => (
           <div
             key={service.id}
-            className={`bg-${type}-light/40 rounded-lg p-3 border border-${type}-light/50`}
+            className={`bg-${type}-light/50 rounded-lg p-3 border border-${type}-light shadow-sm h-24 flex flex-col justify-center`}
           >
-            <h5 className={`font-medium text-${type}-dark text-sm mb-1`}>
+            <h5 className={`font-semibold text-${type}-dark text-sm mb-1`}>
               {service.title}
             </h5>
             <p className={`text-${type}-dark text-xs leading-relaxed`}>
