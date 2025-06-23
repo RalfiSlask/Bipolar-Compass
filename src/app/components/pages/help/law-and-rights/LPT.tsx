@@ -6,7 +6,7 @@ const LPT = () => {
   return (
     <div className="content-container">
       <SectionTitle icon={<FaShieldAlt />}>
-        Psykiatrisk tvångsvård (LPT)
+        Lagen om psykiatrisk tvångsvård (LPT)
       </SectionTitle>
       <div className="bg-primary-light/50 rounded-lg p-4 sm:p-6">
         <p className="mb-4">
@@ -20,13 +20,10 @@ const LPT = () => {
               När kan tvångsvård tillämpas?
             </h4>
             <ul className="list-disc list-inside flex flex-col gap-2">
-              <li>Vid allvarlig psykisk störning</li>
-              <li>
-                När vård behövs för att förhindra att personen skadar sig själv
-                eller andra
-              </li>
+              <li>När allvarlig psykisk störning finns</li>
+              <li>När personen kan skada sig själv eller andra</li>
               <li>När frivillig vård inte är möjlig</li>
-              <li>Självmordsrisken är hög</li>
+              <li>När självmordsrisken är hög</li>
             </ul>
           </div>
           <div>
