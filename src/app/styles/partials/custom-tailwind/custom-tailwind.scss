@@ -18,6 +18,9 @@
 
 .authority-link {
   @apply flex items-center gap-2 transition-colors duration-200;
+  span {
+    @apply text-sm break-words max-w-[225px] sm:max-w-full;
+  }
 }
 
 .content-container {
