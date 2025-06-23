@@ -7,7 +7,7 @@ import {
   BiMicrophone,
   BiMusic,
 } from 'react-icons/bi';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FaQuestionCircle, FaUserShield } from 'react-icons/fa';
 import { MdLocalMovies, MdOutlineWavingHand } from 'react-icons/md';
 
 export const BIPOLAR_RELATED_LINKS = {
@@ -106,6 +106,20 @@ export const MULTIMEDIA_RELATED_LINKS = {
       href: '/multimedia/filmer',
       icon: <MdLocalMovies className="w-10 h-10" />,
       ariaLabel: 'Gå till filmer',
+    },
+  ] as IRelatedLink[],
+};
+
+export const LAW_RIGHTS_RELATED_LINKS = {
+  title: 'Relaterat innehåll',
+  description: 'Utforska mer information om juridik och rättigheter.',
+  links: [
+    {
+      id: 'juridik-och-raattigheter',
+      label: 'Juridik och rättigheter',
+      href: '/juridik-och-raattigheter',
+      icon: <FaUserShield className="w-10 h-10" />,
+      ariaLabel: 'Gå till juridik och rättigheter',
     },
   ] as IRelatedLink[],
 };
