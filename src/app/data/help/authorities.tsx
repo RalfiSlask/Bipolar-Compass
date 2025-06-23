@@ -56,24 +56,28 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     contact: 'https://www.1177.se/kontakt/',
     services: [
       {
+        id: 1,
         title: 'Vårdinformation',
         description: 'Information om sjukdomar, symptom och behandlingar',
       },
       {
+        id: 2,
         title: 'Vårdkontakter',
         description:
           'Hitta närmaste vårdcentral, sjukhus eller specialistklinik',
       },
       {
+        id: 3,
         title: 'Digitala tjänster',
         description: 'Boka tid, se journaler och kommunicera med vården',
       },
       {
+        id: 4,
         title: 'Akut rådgivning',
         description: 'Få råd om när du ska söka vård',
       },
     ],
-    image: '/images/help/authorities/1177.webp',
+    image: '/images/help/authorities/logos/1177.webp',
   },
   {
     name: 'Folkhälsomyndigheten',
@@ -84,23 +88,27 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'info@folkhalsomyndigheten.se',
     services: [
       {
+        id: 1,
         title: 'Folkhälsostatistik',
         description: 'Statistik och rapporter om folkhälsa och sjukdomar',
       },
       {
+        id: 2,
         title: 'Förebyggande arbete',
         description: 'Program och riktlinjer för att förebygga sjukdomar',
       },
       {
+        id: 3,
         title: 'Psykisk hälsa',
         description: 'Arbete för att främja psykisk hälsa och välbefinnande',
       },
       {
+        id: 4,
         title: 'Forskning',
         description: 'Folkhälsovetenskaplig forskning och utveckling',
       },
     ],
-    image: '/images/help/authorities/folkhalsomyndigheten.webp',
+    image: '/images/help/authorities/logos/folkhalsomyndigheten.webp',
   },
   {
     name: 'Socialstyrelsen',
@@ -111,23 +119,27 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'socialstyrelsen@socialstyrelsen.se',
     services: [
       {
+        id: 1,
         title: 'Kvalitetsregister',
         description: 'Statistik och kvalitetsdata för olika sjukdomar',
       },
       {
+        id: 2,
         title: 'Riktlinjer',
         description: 'Nationella riktlinjer för vård och behandling',
       },
       {
+        id: 3,
         title: 'Tillsyn',
         description: 'Övervakar vårdens kvalitet och säkerhet',
       },
       {
+        id: 4,
         title: 'Statistik',
         description: 'Officiell statistik om hälsa och sjukdomar',
       },
     ],
-    image: '/images/help/authorities/socialstyrelsen.webp',
+    image: '/images/help/authorities/logos/socialstyrelsen.webp',
   },
   {
     name: 'Inspektionen för vård och omsorg (IVO)',
@@ -138,23 +150,27 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'registrator@ivo.se',
     services: [
       {
+        id: 1,
         title: 'Klagomål',
         description: 'Ta emot och utreda klagomål om vård',
       },
       {
+        id: 2,
         title: 'Tillsyn',
         description: 'Kontrollera att vården följer lagar och regler',
       },
       {
+        id: 3,
         title: 'Rapporter',
         description: 'Publicera rapporter om vårdkvalitet',
       },
       {
+        id: 4,
         title: 'Rådgivning',
         description: 'Ge råd om patienträttigheter',
       },
     ],
-    image: '/images/help/authorities/ivo.webp',
+    image: '/images/help/authorities/logos/ivo.webp',
   },
   {
     name: 'eHälsomyndigheten',
@@ -165,28 +181,33 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'registrator@ehalsomyndigheten.se',
     services: [
       {
+        id: 1,
         title: 'Digitala journaler',
         description:
           'Tillgång till dina digitala journaler och vårdinformation',
       },
       {
+        id: 2,
         title: 'E-recept',
         description: 'Digitala recept som kan hämtas på alla apotek',
       },
       {
+        id: 3,
         title: 'Digitala vårdtjänster',
         description: 'Stöd för digitala möten och vårdkontakter',
       },
       {
+        id: 4,
         title: 'Säker informationsöverföring',
         description: 'Säker överföring av vårdinformation mellan vårdgivare',
       },
       {
+        id: 5,
         title: 'Patientportaler',
         description: 'Stöd för digitala patientportaler och e-tjänster',
       },
     ],
-    image: '/images/help/authorities/ehalsomyndigheten.webp',
+    image: '/images/help/authorities/logos/ehälsomyndigheten.webp',
   },
 ];
 
@@ -200,33 +221,39 @@ export const SOCIAL_INSURANCE_AUTHORITIES: IAuthority[] = [
     contact: 'https://www.forsakringskassan.se/kontakta-forsakringskassan',
     services: [
       {
+        id: 1,
         title: 'Sjukersättning',
         description:
           'Ersättning vid långvarig sjukdom som påverkar arbetsförmågan',
       },
       {
+        id: 2,
         title: 'Aktivitetsersättning',
         description:
           'Stöd för att delta i aktiviteter trots funktionsnedsättning',
       },
       {
+        id: 3,
         title: 'Rehabilitering',
         description: 'Stöd för att återgå till arbete eller studier',
       },
       {
+        id: 4,
         title: 'Bostadsbidrag',
         description: 'Ekonomiskt stöd för bostadskostnader',
       },
       {
+        id: 5,
         title: 'Assistansersättning',
         description: 'Stöd för personlig assistans',
       },
       {
+        id: 6,
         title: 'Bil- och transportstöd',
         description: 'Stöd för anpassade fordon och transporter',
       },
     ],
-    image: '/images/help/authorities/forsakringskassan.webp',
+    image: '/images/help/authorities/logos/forsakringskassan.webp',
   },
 ];
 
@@ -240,23 +267,27 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
     email: 'do@do.se',
     services: [
       {
+        id: 1,
         title: 'Diskrimineringsärenden',
         description: 'Ta emot och utreda anmälningar om diskriminering',
       },
       {
+        id: 2,
         title: 'Rådgivning',
         description: 'Ge råd om diskrimineringslagstiftning',
       },
       {
+        id: 3,
         title: 'Medling',
         description: 'Försöka lösa diskrimineringsärenden genom medling',
       },
       {
+        id: 4,
         title: 'Information',
         description: 'Sprida kunskap om diskrimineringslagstiftning',
       },
     ],
-    image: '/images/help/authorities/do.webp',
+    image: '/images/help/authorities/logos/do.webp',
   },
   {
     name: 'Justitieombudsmannen (JO)',
@@ -267,23 +298,27 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
     email: 'justitieombudsmannen@jo.se',
     services: [
       {
+        id: 1,
         title: 'Myndighetskontroll',
         description: 'Övervaka att myndigheter följer lagar och regler',
       },
       {
+        id: 2,
         title: 'Klagomål',
         description: 'Ta emot klagomål på myndigheters agerande',
       },
       {
+        id: 3,
         title: 'Rapporter',
         description: 'Publicera rapporter om myndighetsfel',
       },
       {
+        id: 4,
         title: 'Rådgivning',
         description: 'Ge råd om hur man klagar på myndigheter',
       },
     ],
-    image: '/images/help/authorities/jo.webp',
+    image: '/images/help/authorities/logos/jo.webp',
   },
 ];
 
@@ -295,27 +330,32 @@ export const MUNICIPAL_SERVICES: IAuthority[] = [
     website: 'https://www.socialstyrelsen.se/socialtjanst',
     services: [
       {
+        id: 1,
         title: 'Ekonomiskt bistånd',
         description: 'Stöd vid ekonomiska svårigheter',
       },
       {
+        id: 2,
         title: 'Bostadsstöd',
         description: 'Hjälp med bostadsfrågor och boende',
       },
       {
+        id: 3,
         title: 'Stöd och service',
         description: 'Personlig assistans och hemtjänst',
       },
       {
+        id: 4,
         title: 'Skyddat boende',
         description: 'Särskilda boendeformer för personer med psykisk ohälsa',
       },
       {
+        id: 5,
         title: 'Rådgivning',
         description: 'Rådgivning om sociala rättigheter och stöd',
       },
     ],
-    image: '/images/help/authorities/socialtjansten.webp',
+    image: '/images/help/authorities/logos/socialtjansten.webp',
   },
   {
     name: 'Arbetsförmedlingen',
@@ -325,23 +365,27 @@ export const MUNICIPAL_SERVICES: IAuthority[] = [
     contact: 'https://arbetsformedlingen.se/kontakt',
     services: [
       {
+        id: 1,
         title: 'Arbetsförmedling',
         description: 'Hjälp med att hitta arbete',
       },
       {
+        id: 2,
         title: 'Arbetslivsinriktad rehabilitering',
         description: 'Stöd för att återgå till arbete',
       },
       {
+        id: 3,
         title: 'Utbildning',
         description: 'Stöd för utbildning och omskolning',
       },
       {
+        id: 4,
         title: 'Anpassningar',
         description: 'Hjälp med anpassningar i arbetslivet',
       },
     ],
-    image: '/images/help/authorities/arbetsformedlingen.webp',
+    image: '/images/help/authorities/logos/arbetsförmedlingen.webp',
   },
 ];
 
@@ -355,23 +399,27 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'info@mucf.se',
     services: [
       {
+        id: 1,
         title: 'Ungdomsrådgivning',
         description: 'Stöd och rådgivning för unga människor',
       },
       {
+        id: 2,
         title: 'Civilsamhällsstöd',
         description: 'Stöd för ideella organisationer och föreningar',
       },
       {
+        id: 3,
         title: 'Ungdomsinflytande',
         description: 'Arbete för att stärka ungas röst i samhället',
       },
       {
+        id: 4,
         title: 'Forskning',
         description: 'Forskning om unga och civilsamhället',
       },
     ],
-    image: '/images/help/authorities/mucf.webp',
+    image: '/images/help/authorities/logos/mucf.webp',
   },
   {
     name: 'Nationellt centrum för suicidforskning och prevention (NASP)',
@@ -382,27 +430,32 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'nasp@ki.se',
     services: [
       {
+        id: 1,
         title: 'Suicidforskning',
         description: 'Forskning om självmord och självmordsförsök',
       },
       {
+        id: 2,
         title: 'Prevention',
         description: 'Program och metoder för att förebygga självmord',
       },
       {
+        id: 3,
         title: 'Utbildning',
         description: 'Utbildning för vårdpersonal och andra yrkesgrupper',
       },
       {
+        id: 4,
         title: 'Stöd',
         description: 'Stöd för anhöriga och personer som drabbats av självmord',
       },
       {
+        id: 5,
         title: 'Rådgivning',
         description: 'Rådgivning om suicidprevention och krisstöd',
       },
     ],
-    image: '/images/help/authorities/nasp.webp',
+    image: '/images/help/authorities/logos/nasp.webp',
   },
   {
     name: 'Uppdrag Psykisk Hälsa (SKR)',
@@ -413,23 +466,27 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
     email: 'uppdragpsykiskhalsa@skr.se',
     services: [
       {
+        id: 1,
         title: 'Samverkan',
         description: 'Samverkan mellan kommuner och regioner för psykisk hälsa',
       },
       {
+        id: 2,
         title: 'Kunskapsutveckling',
         description: 'Utveckling av kunskap och metoder för psykisk hälsa',
       },
       {
+        id: 3,
         title: 'Riktlinjer',
         description: 'Riktlinjer för psykisk hälsa i kommuner och regioner',
       },
       {
+        id: 4,
         title: 'Stöd',
         description: 'Stöd till kommuner och regioner i psykisk hälsa',
       },
     ],
-    image: '/images/help/authorities/skr.webp',
+    image: '/images/help/authorities/logos/skr.webp',
   },
 ];
 
@@ -443,23 +500,27 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
     email: 'spsm@spsm.se',
     services: [
       {
+        id: 1,
         title: 'Specialpedagogiskt stöd',
         description: 'Stöd för elever med särskilda behov',
       },
       {
+        id: 2,
         title: 'Specialskolor',
         description: 'Särskilda skolor för elever med funktionsnedsättningar',
       },
       {
+        id: 3,
         title: 'Rådgivning',
         description: 'Rådgivning för skolor och föräldrar',
       },
       {
+        id: 4,
         title: 'Utbildning',
         description: 'Utbildning för lärare och specialpedagoger',
       },
     ],
-    image: '/images/help/authorities/spsm.webp',
+    image: '/images/help/authorities/logos/spsm.webp',
   },
   {
     name: 'Skolverket',
@@ -470,23 +531,27 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
     email: 'registrator@skolverket.se',
     services: [
       {
+        id: 1,
         title: 'Läroplaner',
         description: 'Utveckling av läroplaner och kursplaner',
       },
       {
+        id: 2,
         title: 'Kvalitet',
         description: 'Arbete för att förbättra skolans kvalitet',
       },
       {
+        id: 3,
         title: 'Statistik',
         description: 'Statistik och rapporter om skolväsendet',
       },
       {
+        id: 4,
         title: 'Stöd',
         description: 'Stöd till skolor och förskolor',
       },
     ],
-    image: '/images/help/authorities/skolverket.webp',
+    image: '/images/help/authorities/logos/skolverket.webp',
   },
 ];
 
@@ -500,23 +565,27 @@ export const WORK_ENVIRONMENT_AUTHORITIES: IAuthority[] = [
     email: 'arbetsmiljoverket@av.se',
     services: [
       {
+        id: 1,
         title: 'Arbetsmiljöinspektion',
         description: 'Inspektion av arbetsplatser för att säkerställa säkerhet',
       },
       {
+        id: 2,
         title: 'Föreskrifter',
         description: 'Föreskrifter och riktlinjer för arbetsmiljö',
       },
       {
+        id: 3,
         title: 'Rådgivning',
         description: 'Rådgivning om arbetsmiljöfrågor',
       },
       {
+        id: 4,
         title: 'Statistik',
         description: 'Statistik om arbetsskador och arbetsmiljö',
       },
     ],
-    image: '/images/help/authorities/arbetsmiljoverket.webp',
+    image: '/images/help/authorities/logos/arbetsmiljöverket.webp',
   },
 ];
 
@@ -530,23 +599,27 @@ export const EQUALITY_AUTHORITIES: IAuthority[] = [
     email: 'info@jamstalldhetsmyndigheten.se',
     services: [
       {
+        id: 1,
         title: 'Jämställdhet',
         description: 'Arbete för att främja jämställdhet i samhället',
       },
       {
+        id: 2,
         title: 'Diskriminering',
         description: 'Motverka diskriminering på olika grunder',
       },
       {
+        id: 3,
         title: 'Rådgivning',
         description: 'Rådgivning om jämställdhet och diskriminering',
       },
       {
+        id: 4,
         title: 'Forskning',
         description: 'Forskning om jämställdhet och diskriminering',
       },
     ],
-    image: '/images/help/authorities/jamstallhetsmyndigheten.webp',
+    image: '/images/help/authorities/logos/jämställdhetsmyndigheten.webp',
   },
 ];
 

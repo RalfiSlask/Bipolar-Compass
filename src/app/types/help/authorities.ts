@@ -1,6 +1,7 @@
 import { ColorType } from '../colorTypes';
 
-interface IAuthorityService {
+export interface IAuthorityService {
+  id: number;
   title: string;
   description: string;
 }
