@@ -7,7 +7,7 @@ export interface IAuthorityService {
 }
 
 export interface IAuthority {
-  name: string;
+  title: string;
   description: string;
   website?: string;
   phone?: string;
@@ -17,4 +17,5 @@ export interface IAuthority {
   image?: string;
   type?: ColorType;
   logoAttribution?: string;
+  imageReplacementText?: string; // If we have not been authorized to use the image, we use this text of the authority name to display instead.
 }
