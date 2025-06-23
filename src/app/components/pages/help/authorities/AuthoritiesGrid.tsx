@@ -2,6 +2,7 @@ import { AuthoritiesSearchProvider } from '@/app/context/AuthoritiesSearchContex
 import { ColorType } from '@/app/types/colorTypes';
 import Authorities from './Authorities';
 import AuthoritiesFilter from './AuthoritiesFilter';
+import AuthoritiesGridIntro from './AuthoritiesGridIntro';
 import AuthoritiesResultsCount from './AuthoritiesResultsCount';
 import AuthoritiesSearch from './AuthoritiesSearch';
 
@@ -22,18 +23,12 @@ const AuthoritiesGrid = ({
         className={`bg-${type}-light rounded-xl p-4 sm:p-6 shadow-lg border-2 border-${type}-light/50`}
       >
         {(title || description) && (
-          <div className="mb-6">
-            {title && (
-              <h2 className={`text-2xl font-bold text-${type}-dark mb-2`}>
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p className={`text-${type}-dark`}>{description}</p>
-            )}
-          </div>
+          <AuthoritiesGridIntro
+            title={title}
+            description={description}
+            type={type}
+          />
         )}
-
         <AuthoritiesSearch type={type} />
         <AuthoritiesFilter type={type} />
         <AuthoritiesResultsCount type={type} />
