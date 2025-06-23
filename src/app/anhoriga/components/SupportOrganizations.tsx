@@ -1,4 +1,4 @@
-import Organizations from "../components/pages/relatives/Organizations";
+import Organizations from "../../components/pages/relatives/Organizations";
 
 const SupportOrganizations = () => {
   return (

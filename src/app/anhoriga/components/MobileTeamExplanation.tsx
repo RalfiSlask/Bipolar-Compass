@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FaHeartbeat } from "react-icons/fa";
-import SectionTitle from "../components/shared/headings/SectionTitle";
+import SectionTitle from "../../components/shared/headings/SectionTitle";
 
 const MobileTeamExplanation = () => {
   return (

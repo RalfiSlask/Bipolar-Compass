@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HighlightList from "../components/shared/HighlightList";
+import HighlightList from "../../components/shared/HighlightList";
 
 const CompulsoryCareSteps = () => {
   return (

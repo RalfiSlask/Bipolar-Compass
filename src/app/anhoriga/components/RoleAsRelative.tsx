@@ -1,6 +1,6 @@
-import SectionTitle from "../components/shared/headings/SectionTitle";
+import SectionTitle from "../../components/shared/headings/SectionTitle";
 import { FaHandsHelping } from "react-icons/fa";
-import { RELATIVE_TIPS } from "../data/relatives";
+import { RELATIVE_TIPS } from "../../data/relatives";
 
 const RoleAsRelative = () => {
   return (

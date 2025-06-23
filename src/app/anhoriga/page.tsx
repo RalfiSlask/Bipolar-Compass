@@ -3,14 +3,14 @@ import PageIntroContainer from "../components/shared/PageIntroContainer";
 import RoundedImageWithHeadingList from "../components/shared/RoundedImageWithHeadingList";
 import RoundedImageWithList from "../components/shared/RoundedImageWithList";
 import { RELATIVES_INTRO } from "../data/pageIntros";
-import WhatIsBipolar from "./WhatIsBipolar";
-import RoleAsRelative from "./RoleAsRelative";
-import CompulsoryCareSteps from "./CompulsoryCareSteps";
-import TipsCards from "./TipsCards";
-import MobileTeamExplanation from "./MobileTeamExplanation";
-import WhatToDoDuringVisit from "./WhatToDoDuringVisit";
-import FinalNoteOnAccess from "./FinalNoteOnAccess";
-import SupportOrganizations from "./SupportOrganizations";
+import WhatIsBipolar from "./components/WhatIsBipolar";
+import RoleAsRelative from "./components/RoleAsRelative";
+import CompulsoryCareSteps from "./components/CompulsoryCareSteps";
+import TipsCards from "./components/TipsCards";
+import MobileTeamExplanation from "./components/MobileTeamExplanation";
+import WhatToDoDuringVisit from "./components/WhatToDoDuringVisit";
+import FinalNoteOnAccess from "./components/FinalNoteOnAccess";
+import SupportOrganizations from "./components/SupportOrganizations";
 
 const RelativePage = () => {
   return (
