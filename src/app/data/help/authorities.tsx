@@ -23,7 +23,7 @@ export const PREPARE_LIST_BEFORE_CALLING = {
   ],
 };
 
-export const WHAT_TO_EXPECT = {
+export const WHAT_TO_EXPECT_LIST = {
   title: 'Vad du kan förvänta dig',
   type: 'tertiary' as const,
   listItems: [
@@ -48,7 +48,7 @@ export const WHAT_TO_EXPECT = {
 
 export const HEALTH_AUTHORITIES: IAuthority[] = [
   {
-    name: '1177 Vårdguiden',
+    title: '1177 Vårdguiden',
     description:
       'Sveriges officiella vårdportal med information om sjukdomar, behandlingar och vårdkontakter.',
     website: 'https://www.1177.se',
@@ -80,9 +80,9 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     image: '/images/help/authorities/logos/1177.webp',
   },
   {
-    name: 'Folkhälsomyndigheten',
+    title: 'Folkhälsomyndigheten',
     description:
-      'Nationell myndighet som arbetar för att främja folkhälsa och förebygga sjukdomar.',
+      'Nationell myndighet som arbetar för att främja folkhälsa och förebygga sjukdomar i samhället.',
     website: 'https://www.folkhalsomyndigheten.se',
     phone: '010-205 20 00',
     email: 'info@folkhalsomyndigheten.se',
@@ -108,43 +108,13 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
         description: 'Folkhälsovetenskaplig forskning och utveckling',
       },
     ],
-    image: '/images/help/authorities/logos/folkhalsomyndigheten.webp',
+    image: '/images/help/authorities/logos/folkhälsomyndigheten.webp',
   },
+
   {
-    name: 'Socialstyrelsen',
+    title: 'Inspektionen för vård och omsorg (IVO)',
     description:
-      'Myndighet som ansvarar för statistik, kvalitet och utveckling inom hälso- och sjukvård.',
-    website: 'https://www.socialstyrelsen.se',
-    phone: '075-247 30 00',
-    email: 'socialstyrelsen@socialstyrelsen.se',
-    services: [
-      {
-        id: 1,
-        title: 'Kvalitetsregister',
-        description: 'Statistik och kvalitetsdata för olika sjukdomar',
-      },
-      {
-        id: 2,
-        title: 'Riktlinjer',
-        description: 'Nationella riktlinjer för vård och behandling',
-      },
-      {
-        id: 3,
-        title: 'Tillsyn',
-        description: 'Övervakar vårdens kvalitet och säkerhet',
-      },
-      {
-        id: 4,
-        title: 'Statistik',
-        description: 'Officiell statistik om hälsa och sjukdomar',
-      },
-    ],
-    image: '/images/help/authorities/logos/socialstyrelsen.webp',
-  },
-  {
-    name: 'Inspektionen för vård och omsorg (IVO)',
-    description:
-      'Tillsynsmyndighet som övervakar kvaliteten i hälso- och sjukvård.',
+      'Tillsynsmyndighet som övervakar kvaliteten och säkerheten i hälso- och sjukvård.',
     website: 'https://www.ivo.se',
     phone: '010-730 30 00',
     email: 'registrator@ivo.se',
@@ -173,9 +143,9 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     image: '/images/help/authorities/logos/ivo.webp',
   },
   {
-    name: 'eHälsomyndigheten',
+    title: 'E-Hälsomyndigheten',
     description:
-      'Myndighet som ansvarar för digitala tjänster inom hälso- och sjukvård, inklusive digitala journaler och e-recept.',
+      'Myndighet som ansvarar för digitala tjänster inom hälso- och sjukvård, inklusive journaler och e-recept.',
     website: 'https://www.ehalsomyndigheten.se',
     phone: '0771-766 200',
     email: 'registrator@ehalsomyndigheten.se',
@@ -198,22 +168,48 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
       },
       {
         id: 4,
-        title: 'Säker informationsöverföring',
-        description: 'Säker överföring av vårdinformation mellan vårdgivare',
-      },
-      {
-        id: 5,
         title: 'Patientportaler',
         description: 'Stöd för digitala patientportaler och e-tjänster',
       },
     ],
     image: '/images/help/authorities/logos/ehälsomyndigheten.webp',
   },
+  {
+    title: 'Socialstyrelsen',
+    description:
+      'Myndighet som ansvarar för statistik, kvalitet och utveckling inom hälso- och sjukvård i Sverige.',
+    website: 'https://www.socialstyrelsen.se',
+    phone: '075-247 30 00',
+    email: 'socialstyrelsen@socialstyrelsen.se',
+    services: [
+      {
+        id: 1,
+        title: 'Kvalitetsregister',
+        description: 'Statistik och kvalitetsdata för olika sjukdomar',
+      },
+      {
+        id: 2,
+        title: 'Riktlinjer',
+        description: 'Nationella riktlinjer för vård och behandling',
+      },
+      {
+        id: 3,
+        title: 'Tillsyn',
+        description: 'Övervakar vårdens kvalitet och säkerhet',
+      },
+      {
+        id: 4,
+        title: 'Statistik',
+        description: 'Officiell statistik om hälsa och sjukdomar',
+      },
+    ],
+    imageReplacementText: 'Socialstyrelsen',
+  },
 ];
 
 export const SOCIAL_INSURANCE_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Försäkringskassan',
+    title: 'Försäkringskassan',
     description:
       'Ansvarar för socialförsäkringen och betalar ut ersättningar vid sjukdom och funktionsnedsättning.',
     website: 'https://www.forsakringskassan.se',
@@ -242,57 +238,16 @@ export const SOCIAL_INSURANCE_AUTHORITIES: IAuthority[] = [
         title: 'Bostadsbidrag',
         description: 'Ekonomiskt stöd för bostadskostnader',
       },
-      {
-        id: 5,
-        title: 'Assistansersättning',
-        description: 'Stöd för personlig assistans',
-      },
-      {
-        id: 6,
-        title: 'Bil- och transportstöd',
-        description: 'Stöd för anpassade fordon och transporter',
-      },
     ],
-    image: '/images/help/authorities/logos/forsakringskassan.webp',
+    imageReplacementText: 'Försäkringskassan',
   },
 ];
 
 export const RIGHTS_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Diskrimineringsombudsmannen (DO)',
+    title: 'Justitieombudsmannen (JO)',
     description:
-      'Övervakar att Diskrimineringslagen följs och arbetar mot diskriminering.',
-    website: 'https://www.do.se',
-    phone: '08-508 825 00',
-    email: 'do@do.se',
-    services: [
-      {
-        id: 1,
-        title: 'Diskrimineringsärenden',
-        description: 'Ta emot och utreda anmälningar om diskriminering',
-      },
-      {
-        id: 2,
-        title: 'Rådgivning',
-        description: 'Ge råd om diskrimineringslagstiftning',
-      },
-      {
-        id: 3,
-        title: 'Medling',
-        description: 'Försöka lösa diskrimineringsärenden genom medling',
-      },
-      {
-        id: 4,
-        title: 'Information',
-        description: 'Sprida kunskap om diskrimineringslagstiftning',
-      },
-    ],
-    image: '/images/help/authorities/logos/do.webp',
-  },
-  {
-    name: 'Justitieombudsmannen (JO)',
-    description:
-      'Övervakar att myndigheter och tjänstemän följer lagar och regler.',
+      'Övervakar att myndigheter och tjänstemän följer lagar och regler i sitt dagliga arbete.',
     website: 'https://www.jo.se',
     phone: '08-786 40 00',
     email: 'justitieombudsmannen@jo.se',
@@ -320,46 +275,44 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
     ],
     image: '/images/help/authorities/logos/jo.webp',
   },
+  {
+    title: 'Diskrimineringsombudsmannen (DO)',
+    description:
+      'Övervakar att Diskrimineringslagen följs och arbetar mot diskriminering i samhället.',
+    website: 'https://www.do.se',
+    phone: '08-508 825 00',
+    email: 'do@do.se',
+    services: [
+      {
+        id: 1,
+        title: 'Diskrimineringsärenden',
+        description: 'Ta emot och utreda anmälningar om diskriminering',
+      },
+      {
+        id: 2,
+        title: 'Rådgivning',
+        description: 'Ge råd om diskrimineringslagstiftning',
+      },
+      {
+        id: 3,
+        title: 'Medling',
+        description: 'Försöka lösa diskrimineringsärenden genom medling',
+      },
+      {
+        id: 4,
+        title: 'Information',
+        description: 'Sprida kunskap om diskrimineringslagstiftning',
+      },
+    ],
+    imageReplacementText: 'Diskrimineringsombudsmannen',
+  },
 ];
 
 export const MUNICIPAL_SERVICES: IAuthority[] = [
   {
-    name: 'Socialtjänsten',
+    title: 'Arbetsförmedlingen',
     description:
-      'Kommunal myndighet som ansvarar för sociala insatser och stöd.',
-    website: 'https://www.socialstyrelsen.se/socialtjanst',
-    services: [
-      {
-        id: 1,
-        title: 'Ekonomiskt bistånd',
-        description: 'Stöd vid ekonomiska svårigheter',
-      },
-      {
-        id: 2,
-        title: 'Bostadsstöd',
-        description: 'Hjälp med bostadsfrågor och boende',
-      },
-      {
-        id: 3,
-        title: 'Stöd och service',
-        description: 'Personlig assistans och hemtjänst',
-      },
-      {
-        id: 4,
-        title: 'Skyddat boende',
-        description: 'Särskilda boendeformer för personer med psykisk ohälsa',
-      },
-      {
-        id: 5,
-        title: 'Rådgivning',
-        description: 'Rådgivning om sociala rättigheter och stöd',
-      },
-    ],
-    image: '/images/help/authorities/logos/socialtjansten.webp',
-  },
-  {
-    name: 'Arbetsförmedlingen',
-    description: 'Myndighet som hjälper människor att komma i arbete.',
+      'Myndighet som hjälper människor att komma i arbete och utveckla sin karriär.',
     website: 'https://arbetsformedlingen.se',
     phone: '0771-416 416',
     contact: 'https://arbetsformedlingen.se/kontakt',
@@ -387,11 +340,40 @@ export const MUNICIPAL_SERVICES: IAuthority[] = [
     ],
     image: '/images/help/authorities/logos/arbetsförmedlingen.webp',
   },
+  {
+    title: 'Socialtjänsten',
+    description:
+      'Kommunal myndighet som ansvarar för sociala insatser, stöd och ekonomiskt bistånd.',
+    website: 'https://www.socialstyrelsen.se/om-socialtjansten/',
+    services: [
+      {
+        id: 1,
+        title: 'Ekonomiskt bistånd',
+        description: 'Stöd vid ekonomiska svårigheter',
+      },
+      {
+        id: 2,
+        title: 'Bostadsstöd',
+        description: 'Hjälp med bostadsfrågor och boende',
+      },
+      {
+        id: 3,
+        title: 'Stöd och service',
+        description: 'Personlig assistans och hemtjänst',
+      },
+      {
+        id: 4,
+        title: 'Rådgivning',
+        description: 'Rådgivning om sociala rättigheter och stöd',
+      },
+    ],
+    imageReplacementText: 'Socialtjänsten',
+  },
 ];
 
 export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Myndigheten för ungdoms- och civilsamhällsfrågor (MUCF)',
+    title: 'Myndigheten för ungdoms- och civilsamhällsfrågor (MUCF)',
     description:
       'Myndighet som arbetar för att stärka ungas inflytande och delaktighet i samhället.',
     website: 'https://www.mucf.se',
@@ -422,45 +404,9 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
     image: '/images/help/authorities/logos/mucf.webp',
   },
   {
-    name: 'Nationellt centrum för suicidforskning och prevention (NASP)',
+    title: 'Uppdrag Psykisk Hälsa (SKR)',
     description:
-      'Centrum som arbetar för att förebygga självmord genom forskning, utbildning och stöd.',
-    website: 'https://ki.se/nasp',
-    phone: '08-524 800 00',
-    email: 'nasp@ki.se',
-    services: [
-      {
-        id: 1,
-        title: 'Suicidforskning',
-        description: 'Forskning om självmord och självmordsförsök',
-      },
-      {
-        id: 2,
-        title: 'Prevention',
-        description: 'Program och metoder för att förebygga självmord',
-      },
-      {
-        id: 3,
-        title: 'Utbildning',
-        description: 'Utbildning för vårdpersonal och andra yrkesgrupper',
-      },
-      {
-        id: 4,
-        title: 'Stöd',
-        description: 'Stöd för anhöriga och personer som drabbats av självmord',
-      },
-      {
-        id: 5,
-        title: 'Rådgivning',
-        description: 'Rådgivning om suicidprevention och krisstöd',
-      },
-    ],
-    image: '/images/help/authorities/logos/nasp.webp',
-  },
-  {
-    name: 'Uppdrag Psykisk Hälsa (SKR)',
-    description:
-      'Sveriges Kommuner och Regioner arbetar för att förbättra psykisk hälsa genom samverkan mellan kommuner och regioner.',
+      'Sveriges kommuner och regioner arbetar för att förbättra psykisk hälsa genom samverkan.',
     website: 'https://www.uppdragpsykiskhalsa.se/',
     phone: '020-491 000',
     email: 'uppdragpsykiskhalsa@skr.se',
@@ -492,9 +438,9 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
 
 export const EDUCATION_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Specialpedagogiska skolmyndigheten (SPSM)',
+    title: 'Specialpedagogiska skolmyndigheten (SPSM)',
     description:
-      'Myndighet som ansvarar för specialpedagogiskt stöd och specialskolor.',
+      'Myndighet som ansvarar för specialpedagogiskt stöd och specialskolor för elever med behov.',
     website: 'https://www.spsm.se',
     phone: '010-473 30 00',
     email: 'spsm@spsm.se',
@@ -523,9 +469,9 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
     image: '/images/help/authorities/logos/spsm.webp',
   },
   {
-    name: 'Skolverket',
+    title: 'Skolverket',
     description:
-      'Myndighet som ansvarar för utveckling av skolväsendet och förskolan.',
+      'Myndighet som ansvarar för utveckling av skolväsendet och förskolan i Sverige.',
     website: 'https://www.skolverket.se',
     phone: '020-491 000',
     email: 'registrator@skolverket.se',
@@ -557,7 +503,7 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
 
 export const WORK_ENVIRONMENT_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Arbetsmiljöverket',
+    title: 'Arbetsmiljöverket',
     description:
       'Myndighet som arbetar för att förbättra arbetsmiljön och förebygga arbetsskador.',
     website: 'https://www.av.se',
@@ -591,9 +537,9 @@ export const WORK_ENVIRONMENT_AUTHORITIES: IAuthority[] = [
 
 export const EQUALITY_AUTHORITIES: IAuthority[] = [
   {
-    name: 'Jämställdhetsmyndigheten',
+    title: 'Jämställdhetsmyndigheten',
     description:
-      'Myndighet som arbetar för att främja jämställdhet och motverka diskriminering.',
+      'Myndighet som arbetar för att främja jämställdhet och motverka diskriminering i samhället.',
     website: 'https://jamstalldhetsmyndigheten.se/',
     phone: '010-495 50 00',
     email: 'info@jamstalldhetsmyndigheten.se',
@@ -625,39 +571,65 @@ export const EQUALITY_AUTHORITIES: IAuthority[] = [
 
 export const ALL_AUTHORITIES = [
   ...HEALTH_AUTHORITIES,
-  ...SOCIAL_INSURANCE_AUTHORITIES,
   ...RIGHTS_AUTHORITIES,
-  ...MUNICIPAL_SERVICES,
   ...MENTAL_HEALTH_AUTHORITIES,
   ...EDUCATION_AUTHORITIES,
   ...WORK_ENVIRONMENT_AUTHORITIES,
   ...EQUALITY_AUTHORITIES,
+  ...SOCIAL_INSURANCE_AUTHORITIES,
+  ...MUNICIPAL_SERVICES,
 ];
 
-export const EMERGENCY_CONTACTS = [
+export const QUICK_GUIDE_DATA = [
   {
-    title: 'Akut psykisk hjälp',
-    description: 'Vid akuta psykiska kriser eller självmordstankar',
-    phoneNumber: '112',
-    availability: 'Dygnet runt',
-    isEmergency: true,
+    id: 1,
+    title: 'Vård och behandling',
+    description:
+      'Behöver du hjälp med vårdkontakter, andra åsikter eller klagomål?',
+    contacts: ['1177 Vårdguiden', 'IVO (klagomål)', 'Din vårdgivare'],
+    type: 'primary' as const,
   },
   {
-    title: 'Jourhavande präst',
-    description: 'Andlig och emotionell stöd vid kriser',
-    phoneNumber: '112',
-    availability: 'Dygnet runt',
+    id: 2,
+    title: 'Ekonomiskt stöd',
+    description:
+      'Behöver du hjälp med ersättningar, bidrag eller ekonomiskt bistånd?',
+    contacts: ['Försäkringskassan', 'Socialtjänsten', 'Arbetsförmedlingen'],
+    type: 'tertiary' as const,
   },
   {
-    title: 'BRIS - Barnens rätt i samhället',
-    description: 'Stöd för barn och unga under 18 år',
-    phoneNumber: '116 111',
-    availability: 'Dygnet runt',
+    id: 3,
+    title: 'Rättigheter och diskriminering',
+    description:
+      'Har du blivit diskriminerad eller känner att dina rättigheter kränkts?',
+    contacts: ['Diskrimineringsombudsmannen', 'Justitieombudsmannen', 'IVO'],
+    type: 'secondary' as const,
   },
   {
-    title: 'Mind - Riksförbundet för psykisk hälsa',
-    description: 'Stöd och rådgivning för personer med psykisk ohälsa',
-    phoneNumber: '020-240 240',
-    availability: 'Vardagar 09:00-17:00',
+    id: 4,
+    title: 'Utbildning och skola',
+    description:
+      'Behöver du hjälp med skolfrågor eller specialpedagogiskt stöd?',
+    contacts: ['SPSM (specialpedagogik)', 'Skolverket', 'Din skola/kommun'],
+    type: 'primary' as const,
+  },
+  {
+    id: 5,
+    title: 'Psykisk hälsa',
+    description: 'Behöver du stöd för psykisk hälsa eller ungdomsrådgivning?',
+    contacts: [
+      'MUCF (ungdomsrådgivning)',
+      'Uppdrag Psykisk Hälsa',
+      'Folkhälsomyndigheten',
+    ],
+    type: 'tertiary' as const,
+  },
+  {
+    id: 6,
+    title: 'Arbetsmiljö och arbete',
+    description:
+      'Har du problem på jobbet eller behöver hjälp med arbetsmiljö?',
+    contacts: ['Arbetsmiljöverket', 'Arbetsförmedlingen', 'Facket'],
+    type: 'secondary' as const,
   },
 ];
