@@ -1,1 +1,1 @@
-export type ColorType = 'primary' | 'tertiary';
+export type ColorType = 'primary' | 'secondary' | 'tertiary';
