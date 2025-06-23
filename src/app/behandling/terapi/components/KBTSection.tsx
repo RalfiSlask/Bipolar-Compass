@@ -1,4 +1,4 @@
-import HighlightList from "@/app/components/shared/HighlightList";
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 
 const KBTSection = () => {
   return (
@@ -21,9 +21,9 @@ const KBTSection = () => {
         <HighlightList
           title="Hur kan det hjälpa?"
           list={[
-            "Förstå och hantera triggers som kan orsaka episoder.",
-            "Lära sig strategier för att minska stress och förbättra relationer.",
-            "Bygga hälsosamma rutiner för att stabilisera humöret.",
+            'Förstå och hantera triggers som kan orsaka episoder.',
+            'Lära sig strategier för att minska stress och förbättra relationer.',
+            'Bygga hälsosamma rutiner för att stabilisera humöret.',
           ]}
         />
       </div>
