@@ -28,6 +28,8 @@
 
 ## Uppdrag Psykisk Hälsa (SKR): https://www.uppdragpsykiskhalsa.se/?s=logga
 
+## Distriktombudsmannen (DO) - (approved by email)
+
 # In contact with (waiting for confirmation through e-mail) placeholder texts used for the time being.
 
 ## Försäkringskassan: https://www.forsakringskassan.se/om-forsakringskassan/forsakringskassans-grafiska-profil
@@ -35,5 +37,3 @@
 ## Socialtjänsten
 
 ## Socialstyrelsen
-
-## Distriktombudsmannen (DO)
