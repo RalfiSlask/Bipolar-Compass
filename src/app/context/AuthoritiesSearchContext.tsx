@@ -2,7 +2,7 @@
 
 import { ALL_AUTHORITIES } from '@/app/data/help/authorities';
 import { IAuthority } from '@/app/types/help/authorities';
-import { createContext, ReactNode, useContext, useMemo, useState } from 'react';
+import { createContext, ReactNode, useMemo, useState } from 'react';
 
 interface IAuthoritiesSearchContextValue {
   searchTerm: string;
@@ -72,14 +72,14 @@ export const AuthoritiesSearchProvider = ({
 
   const filteredAuthorities = useMemo(() => {
     return ALL_AUTHORITIES.filter((authority) => {
-      const { name, description, services } = authority;
-      const authorityName = name.toLowerCase();
+      const { title, description, services } = authority;
+      const authorityName = title.toLowerCase();
       const authorityDescription = description.toLowerCase();
       const authorityServices = services.map((service) =>
         service.title.toLowerCase()
       );
 
-      // We check if the searchTerm is in the name, description or in the services of the authority
+      // We check if the searchTerm is in the title, description or in the services of the authority
       const doesAuthorityNameMatch = authorityName.includes(
         searchTerm.toLowerCase()
       );
@@ -131,12 +131,4 @@ export const AuthoritiesSearchProvider = ({
   );
 };
 
-export const useAuthoritiesSearchContext = () => {
-  const context = useContext(AuthoritiesSearchContext);
-  if (context === undefined) {
-    throw new Error(
-      'useAuthoritiesSearchContext must be used within an AuthoritiesSearchProvider'
-    );
-  }
-  return context;
-};
+export default AuthoritiesSearchContext;
