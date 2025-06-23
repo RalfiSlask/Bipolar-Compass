@@ -41,7 +41,7 @@ const LawFirms = () => {
             </li>
             <li>Förfråga om tidigare erfarenhet av liknande ärenden</li>
             <li>
-              Kolla om de erbjuder personliga möten eller online-konsultationer
+              Se om de erbjuder personliga möten eller online-konsultationer
             </li>
             <li>
               Förstå kostnadsstrukturen (fast pris, timarvode eller via

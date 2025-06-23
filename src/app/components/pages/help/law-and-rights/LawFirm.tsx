@@ -13,12 +13,7 @@ const LawFirm = ({ name, description, link }: LawFirmProps) => {
       <p className="text-sm mb-2">{description}</p>
       <LinkWithArrow
         link={link}
-        text={
-          <>
-            Besök hemsida
-            <span className="sr-only"> för {name}</span>
-          </>
-        }
+        text={<>Besök {name}</>}
         color="primary"
         size="sm"
       />
