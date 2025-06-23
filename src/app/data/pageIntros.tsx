@@ -8,6 +8,16 @@ export const THEAPY_INTRO = {
   color: 'brown' as const,
 };
 
+export const LAWS_AND_RIGHTS_INTRO = {
+  title: 'Juridik och rättigheter',
+  description:
+    'Som person med bipolär sjukdom har du vissa rättigheter och skydd enligt svensk lag. Det är viktigt att känna till dessa rättigheter för att kunna göra dina val och ta del av de stöd som finns tillgängligt. Detta gäller allt från rätten till vård och stöd till skydd mot diskriminering i arbetslivet.',
+  descriptionBold:
+    'Här kan du läsa om dina rättigheter, vilka lagar som skyddar dig, och hur du kan få hjälp om du känner att dina rättigheter inte respekteras.',
+  image: '/images/help/law/law-club.webp',
+  color: 'brown' as const,
+};
+
 export const SELF_HELP_INTRO = {
   title: 'Självhjälp',
   description:
