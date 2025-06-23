@@ -1,32 +1,29 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
+import useAuthoritiesContext from '@/app/hooks/useAuthoritiesContext';
 import { ColorType } from '@/app/types/colorTypes';
 import { FaFilter } from 'react-icons/fa';
 
-interface IAuthorititesFilterProps {
+interface IAuthoritiesFilterProps {
   type?: ColorType;
-  selectedService: string;
-  allServices: string[];
-  onServiceChange: (service: string) => void;
 }
 
-const AuthoritiesFilter = ({
-  type = 'primary',
-  selectedService,
-  allServices,
-  onServiceChange,
-}: IAuthorititesFilterProps) => {
+const AuthoritiesFilter = ({ type = 'primary' }: IAuthoritiesFilterProps) => {
+  const { selectedService, allServices, handleServiceFilterChange } =
+    useAuthoritiesContext();
+
+  // The custom select component expects an array of objects with value and label properties.
   const serviceOptions = [
     { value: '', label: 'Alla tjänster' },
     ...allServices.map((service) => ({ value: service, label: service })),
   ];
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="mb-4 flex items-center gap-4">
       <FaFilter className={`text-${type}-dark/60`} />
       <CustomSelect
         options={serviceOptions}
         value={selectedService}
-        onChange={onServiceChange}
+        onChange={handleServiceFilterChange}
         name="service-filter"
         placeholder="Alla tjänster"
         size="large"
