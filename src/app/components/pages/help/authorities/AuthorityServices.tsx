@@ -1,8 +1,8 @@
 import { ColorType } from '@/app/types/colorTypes';
-import { IAuthority } from '@/app/types/help/authorities';
+import { IAuthorityService } from '@/app/types/help/authorities';
 
 interface IAuthorityServicesProps {
-  services: IAuthority['services'];
+  services: IAuthorityService[];
   type: ColorType;
 }
 
@@ -15,10 +15,10 @@ const AuthorityServices = ({ services, type }: IAuthorityServicesProps) => {
         Vad kan de hjälpa dig med:
       </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div
-            key={index}
-            className={`bg-${type}-light/40 rounded-lg p-3 border border-${type}-light/60`}
+            key={service.id}
+            className={`bg-${type}-light/40 rounded-lg p-3 border border-${type}-light/50`}
           >
             <h5 className={`font-medium text-${type}-dark text-sm mb-1`}>
               {service.title}
