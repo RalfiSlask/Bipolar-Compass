@@ -12,8 +12,6 @@
 
 ## Myndigheten för ungdoms- och civilsamhällsfrågor (MUCF): https://via.tt.se/pressrum/1219910/myndigheten-for-ungdoms--och-civilsamhallesfragor/mi?item=image-1246198
 
-## Försäkringskassan: https://www.forsakringskassan.se/om-forsakringskassan/forsakringskassans-grafiska-profil
-
 ## Nationellt centrum för suicidforskning och prevention (NASP): https://medarbetare.ki.se/stod-och-verktyg/kommunikationsstod/varumarkesplattform-och-grafisk-profil/kis-logotyp
 
 ### NASP är myndighet av Karolinska, detta gäller nog: https://medarbetare.ki.se/stod-och-verktyg/kommunikationsstod/varumarkesplattform-och-grafisk-profil/kis-logotyp
@@ -30,7 +28,9 @@
 
 ## Uppdrag Psykisk Hälsa (SKR): https://www.uppdragpsykiskhalsa.se/?s=logga
 
-# In contact with (waiting for confirmation through e-mail) placeholder used for the time being.
+# In contact with (waiting for confirmation through e-mail) placeholder texts used for the time being.
+
+## Försäkringskassan: https://www.forsakringskassan.se/om-forsakringskassan/forsakringskassans-grafiska-profil
 
 ## Socialtjänsten
 
