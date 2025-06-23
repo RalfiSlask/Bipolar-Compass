@@ -23,7 +23,7 @@ const AuthoritiesPageContent = () => {
         <SectionTitle icon={<FaPhone />} iconClasses="text-2xl">
           Tips för att kontakta myndigheter
         </SectionTitle>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           <ListWithHeading listInfo={PREPARE_LIST_BEFORE_CALLING} />
           <ListWithHeading listInfo={WHAT_TO_EXPECT_LIST} />
         </div>

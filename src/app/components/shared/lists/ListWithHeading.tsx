@@ -24,7 +24,7 @@ const ListWithHeading = ({ listInfo }: IListWithHeadingProps) => {
     type === 'primary' ? 'bg-primary-dark' : 'bg-tertiary-dark';
 
   return (
-    <div className={`bg-${type}-light rounded-lg p-6 shadow-md`}>
+    <div className={`bg-${type}-light rounded-lg p-4 sm:p-6 shadow-md`}>
       <h3 className={`text-lg font-bold text-${type}-dark mb-4`}>{title}</h3>
       <ul className={`flex flex-col gap-2 text-${type}-dark`}>
         {listItems.map((item) => {
