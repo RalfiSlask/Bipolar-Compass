@@ -239,7 +239,7 @@ export const SOCIAL_INSURANCE_AUTHORITIES: IAuthority[] = [
         description: 'Ekonomiskt stöd för bostadskostnader',
       },
     ],
-    imageReplacementText: 'Försäkringskassan',
+    image: '/images/help/authorities/logos/försäkringskassan.webp',
   },
 ];
 
@@ -304,7 +304,7 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
         description: 'Sprida kunskap om diskrimineringslagstiftning',
       },
     ],
-    imageReplacementText: 'Diskrimineringsombudsmannen',
+    image: '/images/help/authorities/logos/do.webp',
   },
 ];
 
