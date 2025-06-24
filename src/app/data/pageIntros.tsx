@@ -28,6 +28,16 @@ export const LAWS_AND_RIGHTS_INTRO = {
   color: 'brown' as const,
 };
 
+export const ECONOMIC_HELP_INTRO = {
+  title: 'Ekonomisk hjälp',
+  description:
+    'Ekonomiska svårigheter är vanliga vid bipolär sjukdom. Det finns flera skyddsåtgärder och stödformer som kan hjälpa dig att bevara din ekonomi och undvika ekonomiska problem. Detta inkluderar allt från att sätta upp god man-arrangemang och kontrakt med familj och vänner, till ekonomiskt stöd från myndigheter och strategier för att hantera pengar säkert.',
+  descriptionBold:
+    'Här hittar du praktiska råd om hur du kan skydda din ekonomi, vilka stöd som finns tillgängliga, och hur du kan bygga upp en stabil ekonomisk framtid.',
+  image: '/images/help/economic/piggy-bank.webp',
+  color: 'green' as const,
+};
+
 export const SELF_HELP_INTRO = {
   title: 'Självhjälp',
   description:
