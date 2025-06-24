@@ -1,4 +1,4 @@
-# Links for how we should use logotypes from authorities
+# HOW TO USE LOGOTYPES
 
 ## Arbetsförmedlingen: https://arbetsformedlingen.se/om-oss/press/logotyp
 
@@ -30,9 +30,9 @@
 
 ## Distriktombudsmannen (DO) - (approved by email)
 
-# In contact with (waiting for confirmation through e-mail) placeholder texts used for the time being.
+## Försäkringskassan - (approved by email): https://www.forsakringskassan.se/om-forsakringskassan/forsakringskassans-grafiska-profil
 
-## Försäkringskassan: https://www.forsakringskassan.se/om-forsakringskassan/forsakringskassans-grafiska-profil
+# CANT USE (NOT AUTHORIZED)
 
 ## Socialtjänsten
 
