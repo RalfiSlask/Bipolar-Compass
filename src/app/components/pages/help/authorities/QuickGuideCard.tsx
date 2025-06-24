@@ -1,6 +1,6 @@
 import { ColorType } from '@/app/types/colorTypes';
 
-interface QuickGuideCardProps {
+interface IQuickGuideCardProps {
   title: string;
   description: string;
   contacts: string[];
@@ -12,7 +12,7 @@ const QuickGuideCard = ({
   description,
   contacts,
   type,
-}: QuickGuideCardProps) => {
+}: IQuickGuideCardProps) => {
   return (
     <div
       className={`bg-${type}-light border text-${type}-dark border-${type}-dark rounded-lg p-4 sm:p-6 shadow-md`}

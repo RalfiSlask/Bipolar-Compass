@@ -19,7 +19,7 @@ const CompulsoryCareSteps = () => {
               href="/akut"
               className="nav-link text-primary-dark font-semibold"
             >
-              akut sida {''}
+              akutsida {''}
             </Link>
             {''}
             eller direkt ringa{' '}
