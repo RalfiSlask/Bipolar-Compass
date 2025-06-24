@@ -1,4 +1,5 @@
 import { ColorType } from '@/app/types/colorTypes';
+import { IAuthority } from '@/app/types/help/authorities';
 import Link from 'next/link';
 import {
   FaEnvelope,
@@ -8,22 +9,13 @@ import {
 } from 'react-icons/fa';
 
 interface IAuthorityContactProps {
-  title: string;
-  website: string;
-  phone: string;
-  email: string;
-  contact: string;
+  authority: IAuthority;
   type: ColorType;
 }
 
-const AuthorityContact = ({
-  title,
-  website,
-  phone,
-  email,
-  contact,
-  type,
-}: IAuthorityContactProps) => {
+const AuthorityContact = ({ authority, type }: IAuthorityContactProps) => {
+  const { title, website, phone, email, contact } = authority;
+
   return (
     <div className="flex flex-col gap-4 mb-6">
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 sm:items-center">
