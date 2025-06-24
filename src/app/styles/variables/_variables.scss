@@ -21,10 +21,6 @@ $light: #b0d9d566;
 // Debugging mode
 $debugging: false;
 
-// Debugging mode
-
-$debugging: false;
-
 div {
   @if ($debugging) {
     border: 1px solid hotpink;
