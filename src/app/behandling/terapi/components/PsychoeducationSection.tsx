@@ -1,4 +1,4 @@
-import HighlightList from "@/app/components/shared/HighlightList";
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 
 const PsychoeducationSection = () => {
   return (
@@ -22,9 +22,9 @@ const PsychoeducationSection = () => {
         <HighlightList
           title="Hur kan det hjälpa?"
           list={[
-            "Öka insikten om bipolär sjukdom.",
-            "Förbättra samarbetet med vårdpersonal och närstående.",
-            "Förbättra behandlingsföljsamhet, exempelvis medicinering.",
+            'Öka insikten om bipolär sjukdom.',
+            'Förbättra samarbetet med vårdpersonal och närstående.',
+            'Förbättra behandlingsföljsamhet, exempelvis medicinering.',
           ]}
         />
       </div>

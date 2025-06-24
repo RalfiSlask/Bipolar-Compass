@@ -1,6 +1,6 @@
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
-import HighlightList from '@/app/components/shared/HighlightList';
 import LinkWithArrow from '@/app/components/shared/links/LinkWithArrow';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import {
   JOURNAL_HANDLING_LINKS,
   LAW_RIGHTS_LINKS,

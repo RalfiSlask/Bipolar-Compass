@@ -1,4 +1,4 @@
-import HighlightList from "@/app/components/shared/HighlightList";
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 
 const IPSRTSection = () => {
   return (
@@ -20,9 +20,9 @@ const IPSRTSection = () => {
         <HighlightList
           title="Hur kan det hjälpa?"
           list={[
-            "Förbättra relationer och minska konflikter.",
-            "Skapa regelbundna rutiner för sömn, mat och aktiviteter.",
-            "Förebygga humörsvängningar genom att hantera livshändelser och stress.",
+            'Förbättra relationer och minska konflikter.',
+            'Skapa regelbundna rutiner för sömn, mat och aktiviteter.',
+            'Förebygga humörsvängningar genom att hantera livshändelser och stress.',
           ]}
         />
       </div>

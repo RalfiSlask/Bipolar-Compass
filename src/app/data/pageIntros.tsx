@@ -8,6 +8,16 @@ export const THEAPY_INTRO = {
   color: 'brown' as const,
 };
 
+export const AUTHORITIES_INTRO = {
+  title: 'Myndigheter',
+  description:
+    'Det finns flera myndigheter och organisationer som kan erbjuda stöd och hjälp för dig som lever med bipolär sjukdom. Dessa kan hjälpa dig med allt från ekonomiskt stöd och bostadsfrågor till rehabilitering och arbetslivsinriktad insats.',
+  descriptionBold:
+    'Här hittar du information om vilka myndigheter som kan vara relevanta för dig, vad de kan hjälpa dig med, och hur du kommer i kontakt med dem.',
+  image: '/images/help/authorities/riksdag.webp',
+  color: 'brown' as const,
+};
+
 export const LAWS_AND_RIGHTS_INTRO = {
   title: 'Juridik och rättigheter',
   description:

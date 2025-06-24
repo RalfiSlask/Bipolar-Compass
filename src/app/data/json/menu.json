@@ -100,7 +100,12 @@
       "submenuItems": [
         {
           "id": 71,
-          "title": "Juridik & Rättigheter",
+          "title": "Myndigheter",
+          "slug": "myndigheter"
+        },
+        {
+          "id": 72,
+          "title": "Juridik och rättigheter",
           "slug": "juridik-och-raattigheter"
         }
       ]

@@ -1,5 +1,5 @@
-import HighlightList from '@/app/components/shared/HighlightList';
 import SectionTitle from '@/app/components/shared/headings/SectionTitle';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import { MdMedicalServices } from 'react-icons/md';
 
 const TreatmentSupport = () => {

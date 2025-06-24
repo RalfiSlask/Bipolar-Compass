@@ -1,3 +1,4 @@
+import { ColorType } from '@/app/types/colorTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -5,7 +6,7 @@ interface IRoundedImageWithHeadingsProps {
   title: string;
   image: string;
   imageAlt: string;
-  type?: 'primary' | 'tertiary';
+  type?: ColorType;
   link?: string;
   linkText?: string;
   alignment?: 'left' | 'right';

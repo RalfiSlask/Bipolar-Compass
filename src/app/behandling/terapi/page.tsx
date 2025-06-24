@@ -1,17 +1,17 @@
-import EncouragmentContainer from "@/app/components/shared/EncouragmentContainer";
-import PageIntroContainer from "@/app/components/shared/PageIntroContainer";
-import RelatedLinks from "@/app/components/shared/RelatedLinks";
-import { THEAPY_INTRO } from "@/app/data/pageIntros";
-import { TREATMENT_RELATED_LINKS } from "@/app/data/related/relatedContentLinks";
-import KBTSection from "./components/KBTSection";
-import IPSRTSection from "./components/IPSRTSection";
-import PsychoeducationSection from "./components/PsychoeducationSection";
-import GroupTherapySection from "./components/GroupTherapySection";
-import DigitalTherapySection from "./components/DigitalTherapySection";
-import ChoosingTherapySection from "./components/ChoosingTherapySection";
-import CombinedTreatmentSection from "./components/CombinedTreatmentSection";
-import SelfHelpSection from "./components/SelfHelpSection";
-import AccessToTherapySection from "./components/AccessToTherapySection";
+import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
+import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import { THEAPY_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
+import AccessToTherapySection from './components/AccessToTherapySection';
+import ChoosingTherapySection from './components/ChoosingTherapySection';
+import CombinedTreatmentSection from './components/CombinedTreatmentSection';
+import DigitalTherapySection from './components/DigitalTherapySection';
+import GroupTherapySection from './components/GroupTherapySection';
+import IPSRTSection from './components/IPSRTSection';
+import KBTSection from './components/KBTSection';
+import PsychoeducationSection from './components/PsychoeducationSection';
+import SelfHelpSection from './components/SelfHelpSection';
 
 const TherapyPage = () => {
   return (

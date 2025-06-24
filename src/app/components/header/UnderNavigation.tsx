@@ -146,6 +146,7 @@ const UnderNavigation = ({
                       alt={`${activeMenuItem.title} image`}
                       quality={80}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 400px"
                       className="w-full h-auto object-cover rounded-xl shadow-lg"
                     />
                   </div>

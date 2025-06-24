@@ -1,0 +1,25 @@
+@use '../../variables/variables';
+
+.border-secondary-dark {
+  border: 1px solid variables.$secondary-dark;
+}
+
+.border-secondary-light {
+  border: 1px solid variables.$secondary-light;
+}
+
+.border-primary-dark {
+  border: 1px solid variables.$primary-dark;
+}
+
+.border-primary-light {
+  border: 1px solid variables.$primary-light;
+}
+
+.border-tertiary-dark {
+  border: 1px solid variables.$tertiary-dark;
+}
+
+.border-tertiary-light {
+  border: 1px solid variables.$tertiary-light;
+}
