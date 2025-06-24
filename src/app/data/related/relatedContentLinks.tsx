@@ -110,28 +110,21 @@ export const MULTIMEDIA_RELATED_LINKS = {
   ] as IRelatedLink[],
 };
 
-export const LAW_RIGHTS_RELATED_LINKS = {
+export const HELP_RELATED_LINKS = {
   title: 'Relaterat innehåll',
-  description: 'Utforska mer information om juridik och rättigheter.',
+  description: 'Utforska mer information om hjälp genom dessa länkar.',
   links: [
     {
       id: 'juridik-och-raattigheter',
       label: 'Juridik och rättigheter',
-      href: '/juridik-och-raattigheter',
+      href: '/hjalp/juridik-och-raattigheter',
       icon: <FaUserShield className="w-10 h-10" />,
       ariaLabel: 'Gå till juridik och rättigheter',
     },
-  ] as IRelatedLink[],
-};
-
-export const AUTHORITIES_RELATED_LINKS = {
-  title: 'Relaterat innehåll',
-  description: 'Utforska mer information om myndigheter genom dessa länkar.',
-  links: [
     {
       id: 'myndigheter',
       label: 'Myndigheter',
-      href: '/myndigheter',
+      href: '/hjalp/myndigheter',
       icon: <BiBrain className="w-10 h-10" />,
       ariaLabel: 'Gå till myndigheter',
     },

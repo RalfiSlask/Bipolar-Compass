@@ -16,7 +16,7 @@ import {
   OFFICIAL_LAWS,
 } from '@/app/data/help/lawRights';
 import { LAWS_AND_RIGHTS_INTRO } from '@/app/data/pageIntros';
-import { LAW_RIGHTS_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
+import { HELP_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { FaBalanceScale, FaBook, FaFileAlt, FaHandshake } from 'react-icons/fa';
 
 const LegalRightsPage = () => {
@@ -70,7 +70,7 @@ const LegalRightsPage = () => {
         </div>
         <EncouragmentContainer text="Att känna till dina rättigheter är ett viktigt steg i att ta kontroll över din situation. Kom ihåg att du har rätt till stöd och hjälp, och att det finns många resurser tillgängliga för dig. Var inte rädd för att söka hjälp eller ställa frågor när du behöver det." />
         <RelatedLinks
-          linksInfo={LAW_RIGHTS_RELATED_LINKS}
+          linksInfo={HELP_RELATED_LINKS}
           currentPage="juridik-och-raattigheter"
         />
       </div>
