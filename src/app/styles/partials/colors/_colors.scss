@@ -1,0 +1,49 @@
+@use '../../variables/variables';
+
+.bg-primary-dark {
+  background-color: variables.$primary-dark;
+}
+
+.bg-primary-light {
+  background-color: variables.$primary-light;
+}
+
+.bg-secondary-dark {
+  background-color: variables.$secondary-dark;
+}
+
+.bg-secondary-light {
+  background-color: variables.$secondary-light;
+}
+
+.bg-tertiary-dark {
+  background-color: variables.$tertiary-dark;
+}
+
+.bg-tertiary-light {
+  background-color: variables.$tertiary-light;
+}
+
+.text-primary-dark {
+  color: variables.$primary-dark;
+}
+
+.text-primary-light {
+  color: variables.$primary-light;
+}
+
+.text-secondary-dark {
+  color: variables.$secondary-dark;
+}
+
+.text-secondary-light {
+  color: variables.$secondary-light;
+}
+
+.text-tertiary-dark {
+  color: variables.$tertiary-dark;
+}
+
+.text-tertiary-light {
+  color: variables.$tertiary-light;
+}
