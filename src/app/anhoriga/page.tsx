@@ -3,6 +3,7 @@ import PageIntroContainer from '../components/shared/PageIntroContainer';
 import RoundedImageWithHeadingList from '../components/shared/RoundedImageWithHeadingList';
 import RoundedImageWithList from '../components/shared/RoundedImageWithList';
 import { RELATIVES_INTRO } from '../data/pageIntros';
+import { COMPULSORY_CARE_SECTION_DATA } from '../data/relatives';
 import CompulsoryCareSteps from './components/CompulsoryCareSteps';
 import FinalNoteOnAccess from './components/FinalNoteOnAccess';
 import MobileTeamExplanation from './components/MobileTeamExplanation';
@@ -44,24 +45,7 @@ const RelativePage = () => {
           linkText="självhjälp"
           link="/behandling/sjalvhjalp"
         />
-        <RoundedImageWithList
-          title="När tvångsvård kan bli nödvändig"
-          desc="I vissa situationer, särskilt när din närstående befinner sig i ett maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att ansöka om tvångsvård. Detta är ofta en sista utväg när personen inte kan förstå sin egen situation eller är en fara för sig själv eller andra. Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:"
-          subdesc="Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:"
-          image="/images/relatives/hospital.webp"
-          imageAlt="Stress"
-          listItems={[
-            {
-              text: 'Personen lider av en allvarlig psykisk störning (som bipolär sjukdom i mani eller psykos).',
-            },
-            {
-              text: 'Personen behöver psykiatrisk vård som inte kan ges frivilligt.',
-            },
-            {
-              text: 'Personen utgör en fara för sig själv eller andra, eller riskerar att allvarligt försämras utan vård.',
-            },
-          ]}
-        />
+        <RoundedImageWithList data={COMPULSORY_CARE_SECTION_DATA} />
         <CompulsoryCareSteps />
         <TipsCards />
         <MobileTeamExplanation />
