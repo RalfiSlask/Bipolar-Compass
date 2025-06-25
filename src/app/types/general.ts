@@ -13,5 +13,6 @@ export interface IRoundedImageWithListData {
   imageAlt: string;
   type?: ColorType;
   alignment?: 'left' | 'right';
+  subTitle?: string;
   listIcon?: React.ComponentType<{ className?: string }>;
 }

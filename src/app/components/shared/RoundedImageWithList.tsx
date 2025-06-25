@@ -16,6 +16,7 @@ export const RoundedImageWithList = ({ data }: IRoundedImageWithListProps) => {
     imageAlt,
     type = 'primary',
     alignment = 'left',
+    subTitle = '',
     listIcon: IconComponent = FaExclamationCircle,
   } = data;
 
@@ -31,16 +32,16 @@ export const RoundedImageWithList = ({ data }: IRoundedImageWithListProps) => {
             {title}
           </h2>
         )}
-        {desc && (
-          <p className={`text-base leading-relaxed text-${type}-dark`}>
-            {desc}
-          </p>
+
+        {desc && <p className={`text-${type}-dark`}>{desc}</p>}
+        {subTitle && (
+          <h3
+            className={`text-center xl:text-left text-${type}-dark font-semibold`}
+          >
+            {subTitle}
+          </h3>
         )}
-        {subdesc && (
-          <p className={`text-base leading-relaxed text-${type}-dark`}>
-            {subdesc}
-          </p>
-        )}
+        {subdesc && <p className={`text-${type}-dark`}>{subdesc}</p>}
 
         <div
           className={`bg-${type}-light/40 border-l-4 border-${type}-dark rounded-lg p-4 sm:p-6`}
