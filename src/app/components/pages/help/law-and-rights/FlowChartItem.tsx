@@ -1,8 +1,8 @@
-import { ILawFlowChartStep } from '@/app/types/help/law';
+import { IFlowChartStep } from '@/app/types/flowchart';
 import { useState } from 'react';
 
 interface IFlowChartItemProps {
-  step: ILawFlowChartStep;
+  step: IFlowChartStep;
 }
 
 const FlowChartItem = ({ step }: IFlowChartItemProps) => {
