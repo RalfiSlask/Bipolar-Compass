@@ -1,34 +1,24 @@
-import { ColorType } from '@/app/types/colorTypes';
+import { IRoundedImageWithListData } from '@/app/types/general';
 import Image from 'next/image';
 import { FaExclamationCircle } from 'react-icons/fa';
 
-interface IListItem {
-  text: string;
-}
-
 interface IRoundedImageWithListProps {
-  title?: string;
-  desc: string;
-  subdesc?: string;
-  listItems: IListItem[];
-  image: string;
-  imageAlt: string;
-  type?: ColorType;
-  alignment?: 'left' | 'right';
-  listIcon?: React.ComponentType<{ className?: string }>;
+  data: IRoundedImageWithListData;
 }
 
-export const RoundedImageWithList = ({
-  title,
-  desc,
-  subdesc,
-  listItems,
-  image,
-  imageAlt,
-  type = 'primary',
-  alignment = 'left',
-  listIcon: IconComponent = FaExclamationCircle,
-}: IRoundedImageWithListProps) => {
+export const RoundedImageWithList = ({ data }: IRoundedImageWithListProps) => {
+  const {
+    title,
+    desc,
+    subdesc,
+    listItems,
+    image,
+    imageAlt,
+    type = 'primary',
+    alignment = 'left',
+    listIcon: IconComponent = FaExclamationCircle,
+  } = data;
+
   return (
     <div
       className={`bg-${type}-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-10 px-4 md:px-8 py-4 sm:py-10 animate-modal-slide-up ${
@@ -57,7 +47,7 @@ export const RoundedImageWithList = ({
         >
           <ul className="flex flex-col gap-4 list-disc list-inside">
             {listItems.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li key={index} className="flex items-start text-sm gap-3">
                 <span className="w-4 h-4">
                   <IconComponent className={`text-${type}-dark mt-1`} />
                 </span>
@@ -68,7 +58,7 @@ export const RoundedImageWithList = ({
         </div>
       </div>
 
-      <div className="flex-1 h-full flex flex-col gap-6 items-center">
+      <div className="flex-1 h-full flex flex-col gap-6 items-center justify-center">
         <div className="w-full">
           <Image
             src={image}
