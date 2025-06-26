@@ -1,6 +1,5 @@
 import { ColorType } from '@/app/types/colorTypes';
 import { IAuthority } from '@/app/types/help/authorities';
-import Link from 'next/link';
 import {
   FaEnvelope,
   FaExternalLinkAlt,
@@ -20,11 +19,11 @@ const AuthorityContact = ({ authority, type }: IAuthorityContactProps) => {
     <div className="flex flex-col gap-4 mb-6">
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 sm:items-center">
         {website && (
-          <Link
+          <a
             href={website}
             target="_blank"
             rel="noopener noreferrer"
-            className={`authority-link text-${type}-dark hover:text-${type}-accent`}
+            className={`logo-website-link text-${type}-dark hover:text-${type}-accent`}
           >
             <FaGlobe className="w-4 h-4" />
             <span className="text-sm">
@@ -34,13 +33,13 @@ const AuthorityContact = ({ authority, type }: IAuthorityContactProps) => {
               </>
             </span>
             <FaExternalLinkAlt className="w-4 h-4" />
-          </Link>
+          </a>
         )}
 
         {phone && (
           <a
             href={`tel:${phone}`}
-            className={`authority-link text-${type}-dark hover:text-${type}-accent `}
+            className={`logo-website-link text-${type}-dark hover:text-${type}-accent `}
           >
             <FaPhone className="w-4 h-4" />
             <span>{phone}</span>
