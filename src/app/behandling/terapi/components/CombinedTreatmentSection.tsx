@@ -21,7 +21,7 @@ const CombinedTreatmentSection = () => {
           </ul>
         </div>
 
-        <div className="bg-primary-light/50 rounded-md p-4">
+        <div className="lightest-list-container">
           <p>
             Att kombinera terapi med medicinering kan ge långsiktiga resultat
             och minska risken för återfall.

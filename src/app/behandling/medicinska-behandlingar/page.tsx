@@ -14,7 +14,7 @@ const MedicinePage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={MEDICINE_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <div className="flex flex-col content-container">
           <SectionTitle>Stämningsstabiliserande mediciner</SectionTitle>
           <p className="mb-6 lg:text-lg">
@@ -184,7 +184,7 @@ const MedicinePage = () => {
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-10">
             <p className="lg:text-lg">
               Förutom mediciner finns det andra behandlingsmetoder som kan vara
               effektiva vid bipolär sjukdom, särskilt om mediciner inte ger
@@ -194,7 +194,7 @@ const MedicinePage = () => {
             </p>
             <ECT />
             <TMS />
-            <div className="rounded-xl mt-8">
+            <div>
               <h4 className="font-semibold h-xs lg:text-xl text-primary-dark mb-4">
                 Jämförelse
               </h4>
@@ -254,8 +254,10 @@ const MedicinePage = () => {
                     <span>Övergående minnesproblem och huvudvärk</span>
                   </div>
 
-                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
-                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                  <div className="mt-6 p-4 bg-primary-dark rounded-lg text-white">
+                    <p className="font-semibold text-white">
+                      Rekommenderas särskilt vid:
+                    </p>
                     <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Svår depression som inte svarar på mediciner</li>
                       <li>Akuta maniska episoder</li>
@@ -306,8 +308,10 @@ const MedicinePage = () => {
                     </span>
                   </div>
 
-                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
-                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                  <div className="mt-6 p-4 bg-primary-dark rounded-lg text-white">
+                    <p className="font-semibold text-white">
+                      Rekommenderas särskilt vid:
+                    </p>
                     <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Måttlig depression som inte svarar på mediciner</li>
                       <li>När man vill undvika biverkningar från mediciner</li>

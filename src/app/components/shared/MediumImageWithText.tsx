@@ -22,7 +22,7 @@ export const MediumImageWithText = ({
 }: IMediumImageWithTextProps) => {
   return (
     <section
-      className={`flex flex-col lg:flex-row items-center lg:gap-8 bg-${type}-light rounded-xl shadow-lg overflow-hidden ${
+      className={`flex flex-col lg:flex-row items-center lg:gap-8 bg-${type}-light rounded-xl shadow-md shadow-${type}-dark/20 overflow-hidden responsive-margin-bottom ${
         alignment === 'right' ? 'lg:flex-row-reverse' : ''
       }`}
     >

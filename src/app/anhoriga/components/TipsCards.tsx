@@ -2,12 +2,12 @@ import {
   FaExclamationTriangle,
   FaRegHeart,
   FaUserShield,
-} from "react-icons/fa";
-import TipCard from "./TipCard";
+} from 'react-icons/fa';
+import TipCard from './TipCard';
 
 const TipsCards = () => {
   return (
-    <div className="flex flex-col items-center content-container gap-6 p-6 rounded-xl shadow-lg">
+    <div className="flex flex-col items-center content-container gap-6">
       <h3 className="h-xs text-tertiary-dark font-bold">
         Att tänka på som anhörig vid tvångsvård
       </h3>

@@ -13,7 +13,7 @@ const DiagnosesPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={DIAGNOSIS_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10 items-center">
+      <div className="flex flex-col page-gaps items-center">
         {BIPOLAR_TYPES.map((type) => (
           <BipolarType key={type.title} bipolarType={type} />
         ))}

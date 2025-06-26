@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const AccessToTherapySection = () => {
   return (
@@ -17,7 +17,7 @@ const AccessToTherapySection = () => {
             stämningsläget har stabiliserats.
           </p>
 
-          <div className="bg-primary-light/50 rounded-md p-4">
+          <div className="lightest-list-container">
             <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
               Tillgång till terapi i Sverige
             </h4>
@@ -32,7 +32,7 @@ const AccessToTherapySection = () => {
         </div>
       </div>
 
-      <div className="bg-primary-light shadow-primary-dark/20 shadow-md sm:gap-10 treatment-container">
+      <div className="bg-primary-light shadow-primary-dark/20 shadow-md sm:gap-10 treatment-container responsive-margin-bottom">
         <div className="flex-1 h-full flex flex-col gap-4 items-center">
           <h3 className="font-bold text-xl md:text-2xl text-primary-dark mb-3">
             Resurser och hjälp att börja
@@ -70,7 +70,7 @@ const AccessToTherapySection = () => {
             </h5>
             <p className="text-primary-dark">
               Webbplatser som erbjuder information om terapi och behandling. Om
-              du söker på{" "}
+              du söker på{' '}
               <a
                 href="https://www.1177.se/"
                 className="nav-link"
@@ -78,9 +78,9 @@ const AccessToTherapySection = () => {
                 aria-label="1177:s hemsida, allmän sida för vård"
               >
                 1177:s hemsida
-              </a>{" "}
+              </a>{' '}
               så kan du läsa mer om terapi och behandling. Om du är ung
-              rekommenderas att du läser mer på{" "}
+              rekommenderas att du läser mer på{' '}
               <a
                 href="https://www.umo.se/att-ta-hjalp/att-prata-med-nagon/att-ga-i-terapi"
                 className="nav-link"

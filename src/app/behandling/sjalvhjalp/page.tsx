@@ -10,7 +10,7 @@ const SelfHelpPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={SELF_HELP_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Förstå din sjukdom
@@ -54,7 +54,7 @@ const SelfHelpPage = () => {
               </ul>
             </div>
 
-            <div className="bg-primary-light/50 rounded-md p-4">
+            <div className="lightest-list-container">
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Vikten av kunskap:
               </h4>
@@ -440,7 +440,7 @@ const SelfHelpPage = () => {
               </div>
             </div>
 
-            <div className="bg-primary-light/50 rounded-md p-4">
+            <div className="lightest-list-container p-4">
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Nödkontakter
               </h4>
@@ -473,7 +473,7 @@ const SelfHelpPage = () => {
                 Artiklar och böcker
               </h4>
               <div className="flex flex-col gap-3">
-                <p className="text-base xl:text-lg">
+                <p>
                   Att fördjupa din kunskap om bipolär sjukdom genom
                   kvalitetsgranskad litteratur kan ge dig värdefulla insikter
                   och verktyg. Vetenskapliga artiklar och böcker skrivna av
@@ -482,7 +482,7 @@ const SelfHelpPage = () => {
                   uppmärksam på material som är granskat av medicinska experter
                   och publicerat av erkända institutioner.
                 </p>
-                <p className="text-base xl:text-lg">
+                <p>
                   Personliga berättelser och memoarer från andra som lever med
                   bipolär sjukdom kan också vara mycket värdefulla. Dessa kan ge
                   praktiska tips och strategier som andra har funnit hjälpsamma,

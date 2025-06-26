@@ -18,12 +18,12 @@ const WhatIsBipolarityPage = () => {
     <section className="page-section">
       <PageIntroContainer intro={WHAT_IS_BIPOLAR_INTRO} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-10">
-        <div className="flex flex-col content-container">
+      <div className="grid grid-cols-1 md:grid-cols-2 page-gaps">
+        <div className="flex flex-col content-container mr-10 justify-between">
           <SectionTitle icon={<MdTimeline />} type="primary">
             De olika typerna av bipolär sjukdom
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4">
             Bipolär sjukdom är inte en enhetlig diagnos utan kan delas in i
             flera olika typer beroende på symptomens svårighetsgrad och mönster:
           </p>
@@ -37,7 +37,7 @@ const WhatIsBipolarityPage = () => {
           />
         </div>
         <CommonSigns />
-        <div className="md:col-span-2 content-container-tertiary">
+        <div className="md:col-span-2 content-container-tertiary bg-tertiary-light">
           <SectionTitle icon={<MdPeople />} type="tertiary">
             Vem drabbas av bipolaritet?
           </SectionTitle>
@@ -54,7 +54,7 @@ const WhatIsBipolarityPage = () => {
         </div>
         <TreatmentSupport />
         <BipolarPrevalenceInfo />
-        <div className="md:col-span-2 bg-tertiary-light rounded-xl p-4 sm:p-8 shadow-lg">
+        <div className="md:col-span-2 bg-tertiary-light rounded-xl p-4 sm:p-8 shadow-lg responsive-margin-bottom">
           <SectionTitle icon={<MdWarning />} type="tertiary">
             Viktigt att notera
           </SectionTitle>

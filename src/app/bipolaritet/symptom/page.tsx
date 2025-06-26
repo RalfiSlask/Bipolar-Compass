@@ -35,17 +35,17 @@ const SymptomsPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={SYMPTOMS_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <div className="flex flex-col content-container">
           <SectionTitle icon={<MdBolt />}>
             Symptom under maniska episoder
           </SectionTitle>
-          <p className="mb-6 lg:text-lg">
+          <p className="mb-4 ">
             En manisk episod innebär ett förhöjt, expansivt eller irritabelt
             humör som varar i minst en vecka och påverkar vardagen betydligt.
           </p>
           <HighlightList list={MANIC_SYMPTOMS} />
-          <p className="lg:text-lg">
+          <p className=" mt-4">
             Efter en manisk episod kan det vara känslomässigt tungt att inse
             vilka konsekvenser ens beteende har fått.
           </p>
@@ -55,13 +55,13 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdWbSunny />}>
             Symptom under hypomaniska episoder
           </SectionTitle>
-          <p className="mb-6 lg:text-lg">
+          <p className="mb-4 ">
             Hypomani är en lindrigare form av mani, som inte leder till samma
             grad av funktionsnedsättning. Symptomen liknar de vid mani men är
             mindre intensiva och kortvariga (minst fyra dagar).
           </p>
           <HighlightList list={HYPOMANIC_SYMPTOMS} />
-          <p className="lg:text-lg">
+          <p className=" mt-4">
             Hypomaniska episoder kan ofta passera obemärkta av individen själv
             men kan ibland övergå i fullständig mani.
           </p>
@@ -71,12 +71,12 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdOutlineMoodBad />}>
             Symptom under depressiva episoder
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4 ">
             Depressiva episoder innebär en kraftig nedstämdhet och minskad
             energi som varar i minst två veckor. Dessa symptom inkluderar:
           </p>
           <HighlightList list={DEPRESSIVE_SYMPTOMS} />
-          <p className="mt-6">
+          <p className="mt-4">
             Depression vid bipolär sjukdom är ofta djupare och mer långvarig än
             vid en &quot;vanlig&quot; depression.
           </p>
@@ -95,12 +95,12 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdVisibilityOff />}>
             Psykotiska symptom
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4 ">
             Vid allvarlig mani eller depression kan psykotiska symptom uppstå,
             såsom:
           </p>
           <HighlightList list={PSYCHOTIC_SYMPTOMS} />
-          <p className="mt-6 ">
+          <p className="mt-6">
             Dessa symptom försvinner vanligtvis med behandling.
           </p>
         </div>
@@ -109,7 +109,7 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdWarning />}>
             Tidiga tecken och varningstecken
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4 ">
             Många med bipolär sjukdom upplever tidiga tecken innan en ny episod.
             Det är viktigt att känna igen dessa tecken för att söka vård i tid:
           </p>
@@ -127,7 +127,7 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdPsychology />}>
             Att känna igen när du behöver hjälp
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4 ">
             Många personer med bipolär sjukdom kan ha svårt att inse hur mycket
             deras humörsvängningar påverkar dem själva och deras närstående.
             Särskilt under maniska perioder kan det vara svårt att se behovet av
@@ -159,16 +159,16 @@ const SymptomsPage = () => {
           <SectionTitle icon={<MdLocalHospital />}>
             Vid akuta situationer
           </SectionTitle>
-          <p className="mb-6 ">
+          <p className="mb-4 ">
             Om du eller någon i din närhet har akuta självmordstankar eller
             planer på att skada sig själv är det viktigt att agera omedelbart.
             Du är inte ensam och det finns hjälp att få.
           </p>
-          <div className="bg-primary-light/50 rounded-md p-4">
+          <div className="lightest-list-container">
             <h4 className="font-semibold text-primary-dark mb-3">
               Här kan du få akut hjälp:
             </h4>
-            <ul className="flex flex-col gap-2 list-disc list-inside mb-6">
+            <ul className="flex flex-col gap-2 list-disc list-inside mb-4">
               {EMERGENCY_HELP_OPTIONS.map((option, index) => (
                 <li key={index}>{option}</li>
               ))}
