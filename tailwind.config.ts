@@ -23,7 +23,7 @@ export default {
 
         'tertiary-light': '#fff5f0',
         'tertiary-medium': '#d6c4a8',
-        'tertiary-dark': '#8f4626',
+        'tertiary-dark': '#7d3819',
 
         'dark': '#202020',
 
