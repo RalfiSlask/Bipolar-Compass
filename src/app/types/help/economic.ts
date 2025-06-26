@@ -30,3 +30,12 @@ export interface IImportantReminder {
   description: string;
   type: ColorType;
 }
+
+export interface IBank {
+  id: number;
+  title: string;
+  type: ColorType;
+  website?: string;
+  phone?: string;
+  image?: string;
+}
