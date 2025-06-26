@@ -25,13 +25,15 @@ const FlowChart = ({
           {description}
         </p>
       )}
-      <div className="w-full max-w-6xl mx-auto sm:mx-0">
+      <div className="w-full mx-auto sm:mx-0">
         <h2
-          className={`text-xl font-bold text-${type}-dark mb-6 xl:pb-6 xl:mb-6 text-center xl:border-b xl:border-${type}-accent xl:text-left`}
+          className={`text-xl font-bold text-${type}-dark mb-4 xl:mb-6 text-center xl:text-left`}
         >
           {title}
         </h2>
-        <div className="flex flex-col xl:grid xl:grid-cols-[2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr] items-center pb-2 xl:pb-0">
+        <div
+          className={`flex flex-col xl:border-y xl:border-${type}-accent xl:grid xl:grid-cols-[2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr] items-center pb-2 xl:py-6`}
+        >
           {flowChartSteps.map((step, index) => (
             <React.Fragment key={index}>
               <div className="w-full">

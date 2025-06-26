@@ -15,6 +15,7 @@ const GodManSection = () => {
         <SectionTitle
           icon={<FaUser />}
           extraClasses="justify-center xl:justify-start"
+          type="tertiary"
         >
           Hur ansöker du om god man?
         </SectionTitle>
@@ -22,6 +23,7 @@ const GodManSection = () => {
           description="Nedan följer ett steg-för-steg flödesschema som visar hur du kan ansöka om god man."
           title="Din väg till god man"
           flowChartSteps={GOD_MAN_FLOW_CHART}
+          type="tertiary"
         />
       </div>
     </>

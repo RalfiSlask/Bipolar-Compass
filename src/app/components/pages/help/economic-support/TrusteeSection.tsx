@@ -14,7 +14,6 @@ const TrusteeSection = () => {
       <div className="content-container">
         <SectionTitle
           icon={<FaBalanceScale />}
-          type="tertiary"
           extraClasses="justify-center xl:justify-start"
         >
           Hur ansöker du om förvaltare?
@@ -23,7 +22,6 @@ const TrusteeSection = () => {
           description="Nedan följer ett steg-för-steg flödesschema som visar hur du kan ansöka om förvaltare."
           title="Din väg till förvaltare"
           flowChartSteps={TRUSTEE_FLOW_CHART}
-          type="tertiary"
         />
       </div>
 

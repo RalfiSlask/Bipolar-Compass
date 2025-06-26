@@ -17,7 +17,7 @@ const EconomicHelpPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={ECONOMIC_HELP_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gap">
         <div className="content-container">
           <SectionTitle icon={<FaShieldAlt />}>
             Skyddsåtgärder för din ekonomi
