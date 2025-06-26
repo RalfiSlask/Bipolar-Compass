@@ -1,4 +1,5 @@
 import { IFlowChartStep } from '@/app/types/flowchart';
+import { IBank } from '@/app/types/help/economic';
 import {
   FaBalanceScale,
   FaCheckCircle,
@@ -358,7 +359,7 @@ export const TRUSTEE_SECTION_DATA = {
   alignment: 'right' as const,
   listItems: [
     {
-      text: 'Vid allvarliga maniska episoder med stora ekonomiska förluster',
+      text: 'Om du har allvarliga maniska episoder med stora ekonomiska förluster',
     },
     {
       text: 'Om du inte kan hantera din ekonomi alls',
@@ -367,7 +368,7 @@ export const TRUSTEE_SECTION_DATA = {
       text: 'Om du är i risk att förlora bostad eller andra viktiga tillgångar',
     },
     {
-      text: 'Om du är i risk att förlora bostad eller andra viktiga tillgångar',
+      text: 'Om du har upprepade episoder av ekonomiskt vårdslöshet trots tidigare hjälp',
     },
   ],
 };
@@ -395,3 +396,94 @@ export const PROXY_SECTION_DATA = {
     },
   ],
 };
+
+export const BANKS: IBank[] = [
+  {
+    id: 1,
+    title: 'Swedbank',
+    type: 'primary' as const,
+    website:
+      'https://www.swedbank.se/privat/juridiska-tjanster/fullmakter.html',
+    phone: '0771‑22 11 22',
+    image: '',
+  },
+  {
+    id: 2,
+    title: 'SEB',
+    type: 'primary' as const,
+    website: 'https://seb.se/privat/livet/prata-om-ekonomi/anhorigekonomi',
+    phone: '0771‑62 10 00',
+    image: '/images/help/economic/banks/seb.webp',
+  },
+  {
+    id: 3,
+    title: 'Nordea',
+    type: 'primary' as const,
+    website:
+      'https://www.nordea.se/privat/liv/familj/fullmakt-for-bankaranden.html',
+    phone: '0771‑22 44 88',
+    image: '/images/help/economic/banks/nordea.webp',
+  },
+  {
+    id: 4,
+    title: 'Handelsbanken',
+    type: 'primary' as const,
+    website:
+      'https://www.handelsbanken.se/sv/ekonomi-i-livet/privatekonomi/vardagshjalp/vardagsjuridik/hur-fungerar-en-framtidsfullmakt',
+    phone: '0771‑77 88 99',
+    image: '/images/help/economic/banks/handelsbanken.webp',
+  },
+  {
+    id: 5,
+    title: 'ICA Banken',
+    type: 'primary' as const,
+    website:
+      'https://www.icabanken.se/kundservice/fragor-och-svar/konto/fullmakt-for-ombud/',
+    phone: '033-47 47 90',
+    image: '/images/help/economic/banks/icabanken.webp',
+  },
+  {
+    id: 6,
+    title: 'Länsförsäkringar',
+    type: 'primary' as const,
+    website:
+      'https://www.lansforsakringar.se/stockholm/privat/bank/fullmakter-bank/',
+    image: '/images/help/economic/banks/lf.webp',
+  },
+  {
+    id: 7,
+    title: 'Sparkbanken Nord',
+    type: 'primary' as const,
+    website:
+      'https://www.handelsbanken.se/sv/ekonomi-i-livet/privatekonomi/vardagshjalp/vardagsjuridik/hur-fungerar-en-framtidsfullmakt',
+    phone: '0771‑23 00 23',
+    image: '/images/help/economic/banks/sparbanken.webp',
+  },
+];
+
+export const PROXY_TEMPLATE_TEXT = `FULLMAKT
+
+Jag, [Fullständigt namn], personnummer [ååååmmdd-xxxx], ger härmed [Fullständigt namn på fullmaktshavare], personnummer [ååååmmdd-xxxx], fullmakt att:
+
+☐ Betala räkningar i mitt namn  
+☐ Kontakta min bank i ärenden som rör mina konton  
+☐ Göra överföringar mellan mina konton  
+☐ Hantera kontakter med Försäkringskassan, socialtjänst eller andra myndigheter  
+☐ [Ange annat om så önskas: t.ex. spärra kort, pausa autogiro osv.]
+
+Fullmakten gäller från och med: [datum]  
+Tills vidare ☐ eller till och med: [datum] ☐
+
+Ort och datum: ______________________
+
+Fullmaktsgivarens underskrift: ______________________  
+Namnförtydligande: ______________________
+
+Fullmaktshavarens underskrift (valfritt): ______________________  
+Namnförtydligande: ______________________
+
+VIKTIGT ATT KOMMA IHÅG:
+• Skriv under för hand för att fullmakten ska vara giltig
+• Ta med legitimation när du lämnar in till bank eller myndighet
+• Du kan när som helst återkalla fullmakten
+• Kontrollera med din bank vad som krävs specifikt`;
