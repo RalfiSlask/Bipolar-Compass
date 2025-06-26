@@ -122,7 +122,7 @@ export const SOCIAL_SUPPORT_BENEFITS = [
 
 export const GOD_MAN_FLOW_CHART: IFlowChartStep[] = [
   {
-    icon: <FaPhone className="text-2xl text-primary-accent" />,
+    icon: <FaPhone className="text-2xl" />,
     title: 'Kontakt',
     description: 'Kontakta socialtjänsten i din kommun',
     tooltip: {
@@ -135,7 +135,7 @@ export const GOD_MAN_FLOW_CHART: IFlowChartStep[] = [
     },
   },
   {
-    icon: <FaFileAlt className="text-2xl text-primary-accent" />,
+    icon: <FaFileAlt className="text-2xl" />,
     title: 'Ansökningsblankett',
     description: 'Be om en blankett för ansökan om god man',
     tooltip: {
@@ -148,9 +148,9 @@ export const GOD_MAN_FLOW_CHART: IFlowChartStep[] = [
     },
   },
   {
-    icon: <FaClipboardList className="text-2xl text-primary-accent" />,
+    icon: <FaClipboardList className="text-2xl" />,
     title: 'Fyll i ansökan',
-    description: 'Fyll i ansökan med information om varför du behöver hjälp',
+    description: 'Fyll i ansökan med information',
     tooltip: {
       title: 'Fyll i ansökan',
       tips: [
@@ -161,7 +161,7 @@ export const GOD_MAN_FLOW_CHART: IFlowChartStep[] = [
     },
   },
   {
-    icon: <FaUser className="text-2xl text-primary-accent" />,
+    icon: <FaUser className="text-2xl" />,
     title: 'Välj god man',
     description: 'Ange vem du vill ska vara din god man',
     tooltip: {
@@ -174,7 +174,7 @@ export const GOD_MAN_FLOW_CHART: IFlowChartStep[] = [
     },
   },
   {
-    icon: <FaCheckCircle className="text-2xl text-primary-accent" />,
+    icon: <FaCheckCircle className="text-2xl" />,
     title: 'Lämna in ansökan',
     description: 'Lämna in ansökan till socialtjänsten',
     tooltip: {
@@ -205,8 +205,7 @@ export const TRUSTEE_FLOW_CHART: IFlowChartStep[] = [
   {
     icon: <FaFileAlt className="text-2xl" />,
     title: 'Läkarintyg',
-    description:
-      'Du behöver läkarintyg som visar att du inte kan hantera din ekonomi',
+    description: 'Du behöver få ett intyg från din läkare',
     tooltip: {
       title: 'Läkarintyg',
       tips: [
@@ -331,7 +330,7 @@ export const GOD_MAN_SECTION_DATA = {
   subTitle: 'När kan en god man vara aktuell?',
   image: '/images/help/economic/legal-guardian.webp',
   imageAlt: 'Stress',
-  type: 'primary' as const,
+  type: 'tertiary' as const,
   alignment: 'left' as const,
   listItems: [
     {
@@ -355,7 +354,7 @@ export const TRUSTEE_SECTION_DATA = {
   subTitle: 'När kan en förvaltare vara aktuell?',
   image: '/images/help/economic/trustee.webp',
   imageAlt: 'Stress',
-  type: 'tertiary' as const,
+  type: 'primary' as const,
   alignment: 'right' as const,
   listItems: [
     {
