@@ -50,7 +50,7 @@ const WhatToDoDuringVisit = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 md:gap-8 content-container">
+      <div className="flex flex-col sm:flex-row gap-4 md:gap-6 content-container">
         <div className="flex flex-1 flex-col gap-4 md:justify-center">
           <h3 className="h-xs text-primary-dark">
             Vad kan du som anhörig göra under tiden?
