@@ -1,5 +1,73 @@
-.intro-container-brown{@apply w-full flex lg:flex-row bg-tertiary-light text-tertiary-dark flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10}.intro-container{@apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 sm:px-8 sm:py-10 gap-4 sm:gap-10}.intro-image{@apply flex-1 rounded-lg overflow-hidden w-full}.nav-link{@apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full}.logo-website-link{@apply flex items-center gap-2 transition-colors duration-200}.logo-website-link span{@apply text-sm break-words max-w-[225px] sm:max-w-full}.content-container{@apply bg-white/80 rounded-lg px-4 py-4 md:px-8 md:py-8 shadow-md border-2 border-primary-light}.content-container-tertiary{@apply bg-tertiary-light text-tertiary-dark rounded-lg px-4 py-4 md:px-8 md:py-8 shadow-md shadow-tertiary-dark/20 border-2 border-tertiary-light}.related-container{@apply flex justify-center items-center bg-primary-dark hover:bg-primary-medium cursor-pointer transition-all duration-300 text-primary-light hover:text-dark p-8 rounded-lg shadow-md shadow-primary-dark/20 border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2}.related-container a{@apply flex flex-col items-center gap-4}.account-section{@apply w-full h-[100dvh] grid place-items-center relative px-4 py-4 sm:py-20 md:py-24}.organization-container{@apply rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
+.intro-container-brown {
+  @apply w-full flex lg:flex-row bg-tertiary-light text-tertiary-dark flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10 mb-4 sm:mb-10;
+}
+.intro-container {
+  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 sm:px-8 sm:py-10 gap-4 sm:gap-10 mb-4 sm:mb-10;
+}
+.intro-image {
+  @apply flex-1 rounded-lg overflow-hidden w-full;
+}
+.nav-link {
+  @apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full;
+}
+.authority-link {
+  @apply flex items-center gap-2 transition-colors duration-200;
+}
+.authority-link span {
+  @apply text-sm break-words max-w-[225px] sm:max-w-full;
+}
+.responsive-margin-bottom {
+  @apply mb-4 sm:mb-10;
+}
+.lightest-list-container {
+  @apply bg-primary-light/50 rounded-md p-4 text-primary-dark shadow-md shadow-primary-dark/20;
+}
+.content-container {
+  @apply rounded-lg mb-4 sm:mb-10;
+}
+.content-container-tertiary {
+  @apply bg-tertiary-light text-tertiary-dark  rounded-lg mb-4 sm:mb-10  px-4 py-4 md:px-8 md:py-8 shadow-md shadow-tertiary-dark/20 border-2 border-tertiary-light;
+}
+.related-container {
+  @apply flex justify-center items-center bg-primary-dark hover:bg-primary-medium cursor-pointer transition-all duration-300 text-primary-light hover:text-dark p-8 rounded-lg shadow-md shadow-primary-dark/20 border border-primary-light/60 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-dark focus:ring-offset-2;
+}
+.related-container a {
+  @apply flex flex-col items-center gap-4;
+}
+.page-gaps {
+  @apply gap-0;
+}
+.account-section {
+  @apply w-full h-[100dvh] grid place-items-center relative px-4 py-4 sm:py-20 md:py-24;
+}
+.organization-container {
+  @apply rounded-lg max-w-sm h-full bg-white/50 backdrop-blur-sm 
         border border-secondary-light shadow-md shadow-primary-dark/20 hover:shadow-md hover:bg-primary-light/70 
         transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 
         after:h-[2px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 
-        hover:after:w-full}.organization-container a{@apply flex flex-col gap-4 p-6}.organization-container a p{@apply text-base}.organization-container-home{@apply rounded-full bg-white p-4 w-[150px] sm:w-[120px] lg:w-[100px] xl:w-full xl:min-w-[140px] xl:max-w-[150px] aspect-square hover:shadow-lg transition-all duration-300 hover:scale-105 flex justify-center items-center cursor-pointer}.page-section{@apply w-full flex flex-col gap-4 sm:gap-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20}.treatment-container{@apply w-full flex lg:flex-row flex-col items-center shadow-sm rounded-lg justify-end gap-6 px-4 py-4 md:px-10 md:py-10}.mood-score-scale-container{@apply max-w-4xl bg-white rounded-2xl shadow-md p-6 border-2 border-primary-light}.mood-score-scale-container__item{@apply flex flex-col sm:h-[130px] md:h-[120px] sm:flex-row gap-4 pr-4 bg-primary-light/20}.mood-score-scale-container__item h3{@apply h-full text-white px-4 py-2 text-center font-semibold flex items-center justify-center}/*# sourceMappingURL=custom-tailwind.css.map */
+        hover:after:w-full;
+}
+.organization-container a {
+  @apply flex flex-col gap-4 p-6;
+}
+.organization-container a p {
+  @apply text-base;
+}
+.organization-container-home {
+  @apply rounded-full bg-white p-4 w-[150px] sm:w-[120px] lg:w-[100px] xl:w-full xl:min-w-[140px] xl:max-w-[150px] aspect-square hover:shadow-lg transition-all duration-300 hover:scale-105 flex justify-center items-center cursor-pointer;
+}
+.page-section {
+  @apply w-full flex flex-col max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
+}
+.treatment-container {
+  @apply w-full flex lg:flex-row flex-col items-center rounded-lg justify-end gap-6 px-4 py-4 md:px-10 md:py-10 shadow-md;
+}
+.mood-score-scale-container {
+  @apply max-w-4xl bg-white rounded-2xl shadow-md p-6 border-2 border-primary-light;
+}
+.mood-score-scale-container__item {
+  @apply flex flex-col sm:h-[130px] md:h-[120px] sm:flex-row gap-4 pr-4 bg-primary-light/20;
+}
+.mood-score-scale-container__item h3 {
+  @apply h-full text-white px-4 py-2 text-center font-semibold flex items-center justify-center;
+} /*# sourceMappingURL=custom-tailwind.css.map */

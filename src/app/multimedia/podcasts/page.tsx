@@ -25,7 +25,7 @@ const PodcastPage = () => {
 
   return (
     <section className="page-section">
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <PageIntroContainer intro={PODCASTS_INTRO} />
 
         <div className="flex flex-col gap-6">

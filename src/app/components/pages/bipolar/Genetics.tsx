@@ -4,7 +4,7 @@ import SectionTitle from '../../shared/headings/SectionTitle';
 
 const Genetics = () => {
   return (
-    <div className="flex flex-col gap-6 bg-primary-light rounded-lg p-4 md:p-8 shadow-md ">
+    <div className="flex flex-col gap-6 bg-primary-light rounded-lg p-4 md:p-8 shadow-md responsive-margin-bottom">
       <div className="w-full flex lg:flex-row  flex-col items-center justify-end gap-10 ">
         <div className="flex-1 h-full flex flex-col gap-4 items-center">
           <SectionTitle icon={<MdOutlineScience />}>

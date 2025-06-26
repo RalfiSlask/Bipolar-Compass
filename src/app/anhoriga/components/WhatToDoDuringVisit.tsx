@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const WhatToDoDuringVisit = () => {
   return (
     <>
-      <div className="flex flex-col sm:flex-row gap-4 px-4 md:px-8 md:gap-8 content-container">
+      <div className="flex flex-col md:flex-row gap-4 md:gap-6 content-container">
         <div className="flex flex-1">
           <Image
             src="/images/relatives/doctor.webp"
@@ -13,11 +13,11 @@ const WhatToDoDuringVisit = () => {
             className="w-full h-auto object-cover rounded-md"
           />
         </div>
-        <div className="flex flex-1 flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4 md:justify-center">
           <h3 className="h-xs text-primary-dark ">
             Vad händer när läkaren kommer till platsen?
           </h3>
-          <div className="bg-primary-light/50 rounded-md p-4">
+          <div className="lightest-list-container p-4">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li className="flex gap-2 flex-col">
                 <h4 className="font-semibold">Initial bedömning:</h4>
@@ -36,7 +36,7 @@ const WhatToDoDuringVisit = () => {
               </li>
               <li className="flex gap-2 flex-col">
                 <h4 className="font-semibold">
-                  {" "}
+                  {' '}
                   Transport till vårdinrättning:
                 </h4>
                 <p>
@@ -50,12 +50,12 @@ const WhatToDoDuringVisit = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row px-4 md:px-8 gap-4 md:gap-8 content-container">
-        <div className="flex flex-1 flex-col gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 md:gap-6 content-container">
+        <div className="flex flex-1 flex-col gap-4 md:justify-center">
           <h3 className="h-xs text-primary-dark">
             Vad kan du som anhörig göra under tiden?
           </h3>
-          <div className="bg-primary-light/50 rounded-md p-4">
+          <div className="lightest-list-container">
             <ul className="flex flex-col gap-2 list-disc list-inside">
               <li className="flex gap-2 flex-col">
                 <h4 className="font-semibold">Håll dig lugn:</h4>

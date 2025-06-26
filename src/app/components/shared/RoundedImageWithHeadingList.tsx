@@ -28,7 +28,7 @@ const RoundedImageWithHeadingList = ({
 }: IRoundedImageWithHeadingsProps) => {
   return (
     <div
-      className={`bg-${type}-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-6 lg:gap-10 px-4 md:px-10 py-4 md:py-10 animate-modal-slide-up ${
+      className={`bg-${type}-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-6 lg:gap-10 px-4 md:px-10 py-4 md:py-10 responsive-margin-bottom ${
         alignment === 'right' ? '' : 'lg:flex-row-reverse'
       }`}
     >

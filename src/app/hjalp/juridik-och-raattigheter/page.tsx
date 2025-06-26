@@ -24,7 +24,7 @@ const LegalRightsPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={LAWS_AND_RIGHTS_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <div className="content-container text-left">
           <SectionTitle icon={<FaBook />}>
             Officiella källor och information

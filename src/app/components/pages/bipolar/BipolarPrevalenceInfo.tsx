@@ -15,7 +15,7 @@ const BipolarPrevalenceInfo = () => {
           Här är en sammanfattning av vad forskningen säger om prevalensen:
         </p>
 
-        <div className="bg-primary-light/50 rounded-md p-4">
+        <div className="lightest-list-container">
           <ul className="flex flex-col gap-4 list-disc list-inside">
             <li>
               <span className="font-semibold">Global prevalens:</span> Cirka 1–2

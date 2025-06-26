@@ -1,7 +1,7 @@
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
-import { THEAPY_INTRO } from '@/app/data/pageIntros';
+import { THERAPY_INTRO } from '@/app/data/pageIntros';
 import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import AccessToTherapySection from './components/AccessToTherapySection';
 import ChoosingTherapySection from './components/ChoosingTherapySection';
@@ -16,8 +16,8 @@ import SelfHelpSection from './components/SelfHelpSection';
 const TherapyPage = () => {
   return (
     <section className="page-section">
-      <PageIntroContainer intro={THEAPY_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <PageIntroContainer intro={THERAPY_INTRO} />
+      <div className="flex flex-col page-gaps">
         <KBTSection />
         <IPSRTSection />
         <PsychoeducationSection />

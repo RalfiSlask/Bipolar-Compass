@@ -10,10 +10,10 @@ const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
   const { title, subtitle, description, icon, list, imageUrl } = bipolarType;
   return (
     <div className="content-container">
-      <div className="flex flex-col lg:flex-row items-start gap-6">
+      <div className="flex flex-col lg:flex-row items-start gap-6 mb-4">
         <div className="flex-1">
           <SectionTitle icon={icon}>{title}</SectionTitle>
-          <p className="mb-0 text-primary-dark">{description}</p>
+          <p className="text-primary-dark">{description}</p>
         </div>
         {imageUrl && (
           <div className="flex-shrink-0 flex justify-center items-center w-full max-w-xs lg:max-w-xs rounded-lg overflow-hidden mx-auto lg:mx-0 max-h-40">
@@ -29,7 +29,7 @@ const BipolarType = ({ bipolarType }: IBipolarTypeProps) => {
           </div>
         )}
       </div>
-      <div className="bg-primary-light/50 rounded-md p-4 w-full mt-4">
+      <div className="lightest-list-container">
         <div className="flex items-center gap-2 mb-4">
           <div className="flex flex-col w-full text-center sm:text-left sm:flex-row items-center gap-2">
             <h4 className="font-semibold text-primary-dark">{subtitle}</h4>

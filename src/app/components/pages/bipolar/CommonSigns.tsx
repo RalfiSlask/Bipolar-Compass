@@ -5,7 +5,7 @@ const CommonSigns = () => {
   return (
     <div className="flex flex-col content-container ">
       <SectionTitle icon={<MdPsychology />}>Vanliga kännetecken</SectionTitle>
-      <div className="bg-primary-light/50 rounded-md p-4 mb-6">
+      <div className="lightest-list-container mb-6">
         <h4 className="font-semibold text-primary-dark mb-3">
           Under maniska eller hypomaniska episoder kan personer känna sig:
         </h4>
@@ -17,7 +17,7 @@ const CommonSigns = () => {
         </ul>
       </div>
 
-      <div className="bg-primary-light/50 rounded-md p-4">
+      <div className="lightest-list-container">
         <h4 className="font-semibold text-primary-dark mb-3">
           Under depressiva episoder kan personer uppleva:
         </h4>

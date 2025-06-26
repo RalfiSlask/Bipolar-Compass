@@ -1,13 +1,15 @@
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import Link from 'next/link';
+import { MdPsychology } from 'react-icons/md';
 import HighlightList from '../../components/shared/lists/HighlightList';
 
 const CompulsoryCareSteps = () => {
   return (
     <div className="flex flex-col content-container">
-      <h3 className="h-xs text-primary-dark mb-2">
+      <SectionTitle icon={<MdPsychology />}>
         Hur går man tillväga för att ansöka om tvångsvård?
-      </h3>
-      <div className="flex flex-col gap-6">
+      </SectionTitle>
+      <div className="flex flex-col gap-6 text-primary-dark">
         <div>
           <h4 className="font-semibold mb-2">Kontakta sjukvården</h4>
           <p>
@@ -28,7 +30,7 @@ const CompulsoryCareSteps = () => {
         </div>
         <div>
           <h4 className="font-semibold mb-2">Beskriv situationen</h4>
-          <p className=" mb-2">
+          <p className="mb-4">
             Var tydlig när du pratar med vårdpersonal. Förklara varför du tror
             att din närstående behöver tvångsvård, till exempel om de:
           </p>

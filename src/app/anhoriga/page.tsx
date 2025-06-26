@@ -17,7 +17,7 @@ const RelativePage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={RELATIVES_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <WhatIsBipolar />
         <RoleAsRelative />
         <RoundedImageWithHeadingList

@@ -3,7 +3,7 @@ import SectionTitle from '../../shared/headings/SectionTitle';
 
 const SchizoAffectiveDisorder = () => {
   return (
-    <div className="flex flex-col content-container-tertiary">
+    <div className="flex flex-col content-container">
       <SectionTitle icon={<FaUserMd />} type="tertiary">
         Schizoaffektivt syndrom
       </SectionTitle>
@@ -21,15 +21,7 @@ const SchizoAffectiveDisorder = () => {
         tidslinjen för symtom och deras samband.
       </p>
 
-      <div className="bg-tertiary-light rounded-md p-4 flex flex-col gap-4 border border-tertiary-dark">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex flex-col w-full text-center sm:text-left sm:flex-row items-center gap-2">
-            <h4 className="font-semibold text-tertiary-dark">
-              Karaktäristiska drag för schizoaffektivt syndrom
-            </h4>
-          </div>
-        </div>
-
+      <div className="bg-tertiary-light rounded-md p-4 flex flex-col gap-4 shadow-md shadow-tertiary-dark/20">
         <div>
           <h5 className="font-semibold text-tertiary-dark mb-3">
             Typer av schizoaffektivt syndrom:
