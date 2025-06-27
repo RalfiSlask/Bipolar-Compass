@@ -81,7 +81,7 @@ export const ECONOMIC_SUPPORT_RECOMMENDATION_LIST_ITEMS = [
       { id: 2, title: 'Behov av regelbunden hjälp' },
       { id: 3, title: 'När fullmakt inte räcker' },
     ],
-    type: 'tertiary' as const,
+    type: 'primary' as const,
   },
   {
     id: 3,
@@ -92,9 +92,24 @@ export const ECONOMIC_SUPPORT_RECOMMENDATION_LIST_ITEMS = [
       { id: 2, title: 'Risk för stora förluster' },
       { id: 3, title: 'Som sista utväg' },
     ],
-    type: 'secondary' as const,
+    type: 'primary' as const,
   },
 ];
+
+export const PROXY_TEMPLATE_LIST_ITEMS = {
+  id: 1,
+  title: 'Viktiga punkter:',
+  listItems: [
+    { id: 1, title: 'Skriv under för hand för att fullmakten ska vara giltig' },
+    {
+      id: 2,
+      title: 'Ta med legitimation när du lämnar in till bank eller myndighet',
+    },
+    { id: 3, title: 'Du kan när som helst återkalla fullmakten' },
+    { id: 4, title: 'Kontrollera med din bank vad som krävs specifikt' },
+  ],
+  type: 'primary' as const,
+};
 
 export const SOCIAL_SUPPORT_BENEFITS = [
   {
