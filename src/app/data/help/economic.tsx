@@ -4,6 +4,7 @@ import {
   FaBalanceScale,
   FaCheckCircle,
   FaClipboardList,
+  FaExclamationCircle,
   FaFileAlt,
   FaFileSignature,
   FaHome,
@@ -95,21 +96,6 @@ export const ECONOMIC_SUPPORT_RECOMMENDATION_LIST_ITEMS = [
     type: 'primary' as const,
   },
 ];
-
-export const PROXY_TEMPLATE_LIST_ITEMS = {
-  id: 1,
-  title: 'Viktiga punkter:',
-  listItems: [
-    { id: 1, title: 'Skriv under för hand för att fullmakten ska vara giltig' },
-    {
-      id: 2,
-      title: 'Ta med legitimation när du lämnar in till bank eller myndighet',
-    },
-    { id: 3, title: 'Du kan när som helst återkalla fullmakten' },
-    { id: 4, title: 'Kontrollera med din bank vad som krävs specifikt' },
-  ],
-  type: 'primary' as const,
-};
 
 export const SOCIAL_SUPPORT_BENEFITS = [
   {
@@ -475,6 +461,35 @@ export const BANKS: IBank[] = [
   },
 ];
 
+export const FAMILY_PROXY_SYMPTOMS = [
+  {
+    text: 'Överenskommelse om att gå igenom utgifter vid tidiga tecken på skov',
+  },
+  {
+    text: 'Plan för att pausa onödiga köp under maniska perioder',
+  },
+  {
+    text: 'Användning av budgetappar eller system',
+  },
+  {
+    text: 'Kontakt med vård eller socialtjänst vid behov',
+  },
+  {
+    text: 'Övervägande av god man om situationen förvärras',
+  },
+];
+
+export const FAMILY_PROXY_SECTION_DATA = {
+  title: 'Familjeavtal och planering',
+  desc: 'Även om informella avtal inte är juridiskt bindande kan de vara en viktig del av planeringen för att hantera ekonomiska utmaningar vid bipolär sjukdom. De skapar tydlighet och trygghet för alla inblandade.',
+  image: '/images/help/economic/family-proxy.webp',
+  imageAlt: 'En familj som går nerför en kulle',
+  type: 'primary' as const,
+  alignment: 'left' as const,
+  listIcon: FaExclamationCircle,
+  listItems: FAMILY_PROXY_SYMPTOMS,
+};
+
 export const PROXY_TEMPLATE_TEXT = `FULLMAKT
 
 Jag, [Fullständigt namn], personnummer [ååååmmdd-xxxx], ger härmed [Fullständigt namn på fullmaktshavare], personnummer [ååååmmdd-xxxx], fullmakt att:
@@ -501,3 +516,21 @@ VIKTIGT ATT KOMMA IHÅG:
 • Ta med legitimation när du lämnar in till bank eller myndighet
 • Du kan när som helst återkalla fullmakten
 • Kontrollera med din bank vad som krävs specifikt`;
+
+export const FAMILY_PLAN_TEMPLATE_TEXT = `FAMILJEVIS PLAN FÖR EKONOMISKT STÖD VID SKOV
+
+Jag, [ditt namn], har bipolär sjukdom. Under perioder då jag upplever maniska eller hypomana symtom kan jag fatta beslut som påverkar min ekonomi negativt.
+
+Därför har jag tillsammans med [namn på anhörig] kommit överens om följande:
+
+☐ Vid tidiga tecken på skov ska vi tillsammans gå igenom mina utgifter
+☐ [Namn] får påminna mig om att pausa onödiga köp eller ta bort kreditkortstillgång
+☐ Vi använder [app/budgetsystem] för att följa min ekonomi
+☐ Om jag själv inte kan ta ansvar, kommer vi kontakta vård eller socialtjänst
+☐ Vi har övervägt att ansöka om god man om situationen förvärras
+
+Datum: ______________________
+Underskrift: ______________________ (du själv)
+Underskrift: ______________________ (anhörig)
+
+Denna plan revideras vid behov.`;
