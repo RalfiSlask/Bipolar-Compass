@@ -14,6 +14,11 @@ const ComparisonTable = () => {
       <SectionTitle icon={<FaTable />}>
         Jämförelse av ekonomiska skyddsåtgärder
       </SectionTitle>
+      <p className="text-primary-dark mb-4">
+        Det finns flera olika sätt att skydda din ekonomi vid bipolär sjukdom.
+        Från enkla fullmakter till mer omfattande arrangemang som god man eller
+        förvaltare. Välj det som passar din situation bäst.
+      </p>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-300">
           <TableHeader rowItems={ECONOMIC_SUPPORT_TABLE_HEADER_DATA} />
@@ -31,9 +36,12 @@ const ComparisonTable = () => {
       </div>
       <Recommendations />
       <p className="text-primary-dark mt-4">
-        Börja alltid med den minst ingripande åtgärden (fullmakt) och uppgradera
-        endast om det behövs. Du kan alltid gå från en mindre till en mer
-        omfattande skyddsåtgärd, men det är svårare att gå tillbaka.
+        Börja alltid med den{' '}
+        <span className="font-semibold">
+          minst ingripande åtgärden (fullmakt)
+        </span>{' '}
+        och uppgradera endast om det behövs. Du kan alltid gå från en mindre
+        till en mer omfattande skyddsåtgärd, men det är svårare att gå tillbaka.
       </p>
     </div>
   );
