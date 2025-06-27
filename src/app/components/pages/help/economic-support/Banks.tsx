@@ -11,7 +11,9 @@ const Banks = ({ banks, type }: IBanksProps) => {
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
       {banks.map((bank) => (
-        <BankCard key={bank.id} bank={bank} type={type} />
+        <li key={bank.id}>
+          <BankCard bank={bank} type={type} />
+        </li>
       ))}
     </ul>
   );

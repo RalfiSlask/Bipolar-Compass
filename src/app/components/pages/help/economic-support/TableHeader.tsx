@@ -17,6 +17,7 @@ const TableHeader = ({
         {rowItems.map((item) => (
           <th
             key={item.id}
+            scope="col"
             className={`border border-${borderColor} p-3 text-left font-semibold`}
           >
             {item.title}
