@@ -35,7 +35,7 @@ export const ECONOMIC_HELP_INTRO = {
   descriptionBold:
     'Här hittar du praktiska råd om hur du kan skydda din ekonomi, vilka stöd som finns tillgängliga, och hur du kan bygga upp en stabil ekonomisk framtid.',
   image: '/images/help/economic/piggy-bank.webp',
-  color: 'green' as const,
+  color: 'brown' as const,
 };
 
 export const SELF_HELP_INTRO = {
