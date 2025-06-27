@@ -7,7 +7,7 @@ const LawFirms = () => {
   return (
     <div className="content-container">
       <SectionTitle icon={<FaGavel />}>Juridisk hjälp och stöd</SectionTitle>
-      <div className="bg-primary-light/50 rounded-lg p-4 sm:p-6">
+      <div className="lightest-list-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h4 className="font-semibold text-lg mb-4">
