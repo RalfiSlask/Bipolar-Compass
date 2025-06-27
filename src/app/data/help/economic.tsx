@@ -1,12 +1,16 @@
 import { IFlowChartStep } from '@/app/types/flowchart';
+import { IContactCard } from '@/app/types/general';
 import { IBank } from '@/app/types/help/economic';
 import {
   FaBalanceScale,
+  FaBuilding,
+  FaCalculator,
   FaCheckCircle,
   FaClipboardList,
   FaExclamationCircle,
   FaFileAlt,
   FaFileSignature,
+  FaHandHoldingHeart,
   FaHome,
   FaIdCard,
   FaPhone,
@@ -534,3 +538,34 @@ Underskrift: ______________________ (du själv)
 Underskrift: ______________________ (anhörig)
 
 Denna plan revideras vid behov.`;
+
+export const ECONOMIC_CONTACTS: IContactCard[] = [
+  {
+    id: 1,
+    title: 'Försäkringskassan',
+    description: 'För sjukersättning, aktivitetsersättning och bostadsbidrag',
+    website: 'https://www.forsakringskassan.se',
+    icon: FaBuilding,
+  },
+  {
+    id: 2,
+    title: 'Konsumentverket',
+    description: 'För råd om privatekonomi och konsumentskydd',
+    website: 'https://www.konsumentverket.se',
+    icon: FaCalculator,
+  },
+  {
+    id: 3,
+    title: 'Din kommuns socialtjänst',
+    description: 'För försörjningsstöd, budgetrådgivning och god man',
+    website: '',
+    icon: FaHandHoldingHeart,
+  },
+  {
+    id: 4,
+    title: 'Kronofogden',
+    description: 'För hjälp med skulder och ekonomiska avtal',
+    website: 'https://www.kronofogden.se',
+    icon: FaBalanceScale,
+  },
+];
