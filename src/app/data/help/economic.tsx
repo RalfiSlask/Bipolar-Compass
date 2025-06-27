@@ -332,7 +332,7 @@ export const GOD_MAN_SECTION_DATA = {
   image: '/images/help/economic/legal-guardian.webp',
   imageAlt: 'Stress',
   type: 'tertiary' as const,
-  alignment: 'right' as const,
+  alignment: 'left' as const,
   listItems: [
     {
       text: 'Under maniska eller hypomana perioder när du kan fatta impulsiva ekonomiska beslut',
@@ -356,7 +356,7 @@ export const TRUSTEE_SECTION_DATA = {
   image: '/images/help/economic/trustee.webp',
   imageAlt: 'Stress',
   type: 'primary' as const,
-  alignment: 'left' as const,
+  alignment: 'right' as const,
   listItems: [
     {
       text: 'Om du har allvarliga maniska episoder med stora ekonomiska förluster',
@@ -380,7 +380,7 @@ export const PROXY_SECTION_DATA = {
   image: '/images/help/economic/proxy.webp',
   imageAlt: 'Ekonomisk planering',
   type: 'primary' as const,
-  alignment: 'left' as const,
+  alignment: 'right' as const,
   listItems: [
     {
       text: 'Som preventivt skydd innan maniska episoder',
@@ -485,7 +485,7 @@ export const FAMILY_PROXY_SECTION_DATA = {
   image: '/images/help/economic/family-proxy.webp',
   imageAlt: 'En familj som går nerför en kulle',
   type: 'tertiary' as const,
-  alignment: 'right' as const,
+  alignment: 'left' as const,
   listIcon: FaExclamationCircle,
   listItems: FAMILY_PROXY_SYMPTOMS,
 };
