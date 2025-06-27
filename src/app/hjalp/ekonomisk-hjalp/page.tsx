@@ -8,27 +8,14 @@ import TrusteeSection from '@/app/components/pages/help/economic-support/Trustee
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
-import SectionTitle from '@/app/components/shared/headings/SectionTitle';
 import { ECONOMIC_HELP_INTRO } from '@/app/data/pageIntros';
 import { HELP_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
-import { FaShieldAlt } from 'react-icons/fa';
 
 const EconomicHelpPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={ECONOMIC_HELP_INTRO} />
       <div className="flex flex-col page-gap">
-        <div className="content-container">
-          <SectionTitle icon={<FaShieldAlt />}>
-            Skyddsåtgärder för din ekonomi
-          </SectionTitle>
-          <p>
-            Det finns flera olika sätt att skydda din ekonomi vid bipolär
-            sjukdom. Från enkla fullmakter till mer omfattande arrangemang som
-            god man eller förvaltare. Välj det som passar din situation bäst.
-          </p>
-        </div>
-
         <ComparisonTable />
         <ProxySection />
         <ProxyTemplate />
