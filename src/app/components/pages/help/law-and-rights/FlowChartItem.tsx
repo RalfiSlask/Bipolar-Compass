@@ -11,7 +11,7 @@ const FlowChartItem = ({ step, type }: IFlowChartItemProps) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   return (
-    <div className="flex flex-col items-center relative xl:h-40 w-full">
+    <div className="flex flex-col items-center justify-center relative xl:h-40 w-full">
       <div
         className={`bg-${type}-light rounded-full p-4 mb-4 shadow-md cursor-help relative hover:bg-${type}-accent/10 transition-colors`}
         onMouseEnter={() => setIsTooltipVisible(true)}

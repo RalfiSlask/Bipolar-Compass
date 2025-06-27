@@ -32,7 +32,7 @@ const FlowChart = ({
           {title}
         </h2>
         <div
-          className={`flex flex-col xl:border-y xl:border-${type}-accent xl:grid xl:grid-cols-[2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr] items-center pb-2 xl:py-6`}
+          className={`flex flex-col xl:border-y xl:border-${type}-dark xl:grid xl:grid-cols-[2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr_0.5fr_2fr] items-center pb-2 xl:py-6`}
         >
           {flowChartSteps.map((step, index) => (
             <React.Fragment key={index}>
@@ -43,7 +43,7 @@ const FlowChart = ({
               {index < flowChartSteps.length - 1 && (
                 <div className="w-full flex justify-center items-center">
                   <div
-                    className={`w-0.5 h-8 bg-${type}-accent flex-shrink-0 my-2 xl:w-8 xl:h-0.5 xl:mx-4 xl:my-0`}
+                    className={`w-0.5 h-8 bg-${type}-dark flex-shrink-0 my-2 xl:w-8 xl:h-0.5 xl:mx-4 xl:my-0`}
                     aria-hidden="true"
                   />
                 </div>
