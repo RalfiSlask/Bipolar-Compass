@@ -29,3 +29,12 @@ export interface IListWithLeftBorderContainer {
   listItems: IListWithLeftBorderListItem[];
   type: ColorType;
 }
+
+export interface IContactCard {
+  id: number;
+  title: string;
+  description: string;
+  website: string;
+  icon: React.ComponentType<{ className?: string }>;
+  phone?: string;
+}
