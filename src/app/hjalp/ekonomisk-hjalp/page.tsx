@@ -30,7 +30,7 @@ const EconomicHelpPage = () => {
           title="Budget- och skuldrådgivning"
           description="Många kommuner erbjuder gratis budget- och skuldrådgivning. Detta kan vara särskilt värdefullt om du har svårt att hålla koll på din ekonomi eller har hamnat i ekonomiska svårigheter."
           image="/images/help/economic/budget.webp"
-          imageAlt="En miniräknare, penna, ett par gem och en blomväxt ovanpå ett papper är placerad på ett bord"
+          imageAlt="En miniräknare, penna, ett glas, en dator samt några blomväxter som ligger på ett bord och ses snett ovanifrån"
         />
         <ContactCardsContainer contacts={ECONOMIC_CONTACTS} />
         <EncouragmentContainer
