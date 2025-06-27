@@ -1,13 +1,11 @@
-import { IRecommendationContainer } from '@/app/types/help/economic';
+import { IListWithLeftBorderContainer } from '@/app/types/general';
 
-interface IRecommendationContainerProps {
-  recommendation: IRecommendationContainer;
+interface IListWithLeftBorderProps {
+  list: IListWithLeftBorderContainer;
 }
 
-const RecommendationContainer = ({
-  recommendation,
-}: IRecommendationContainerProps) => {
-  const { title, description, listItems, type } = recommendation;
+const ListWithLeftBorder = ({ list }: IListWithLeftBorderProps) => {
+  const { title, description, listItems, type } = list;
   return (
     <div
       className={`bg-${type}-light border-l-4 border-${type}-dark text-${type}-dark p-4`}
@@ -26,4 +24,4 @@ const RecommendationContainer = ({
   );
 };
 
-export default RecommendationContainer;
+export default ListWithLeftBorder;
