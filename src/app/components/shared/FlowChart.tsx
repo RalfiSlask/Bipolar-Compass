@@ -21,13 +21,15 @@ const FlowChart = ({
   return (
     <div className="rounded-xl">
       {description && (
-        <p className={`text-center xl:text-left mb-6 text-${type}-dark`}>
+        <p
+          className={`text-center xl:text-left mb-4 xl:mb-6 text-${type}-dark`}
+        >
           {description}
         </p>
       )}
       <div className="w-full mx-auto sm:mx-0">
         <h2
-          className={`text-xl font-bold text-${type}-dark mb-4 xl:mb-6 text-center xl:text-left`}
+          className={`font-bold text-${type}-dark mb-4 xl:mb-6 text-center xl:text-left`}
         >
           {title}
         </h2>
