@@ -16,3 +16,16 @@ export interface IRoundedImageWithListData {
   subTitle?: string;
   listIcon?: React.ComponentType<{ className?: string }>;
 }
+
+export interface IListWithLeftBorderListItem {
+  id: number;
+  title: string;
+}
+
+export interface IListWithLeftBorderContainer {
+  id: number;
+  title: string;
+  description?: string;
+  listItems: IListWithLeftBorderListItem[];
+  type: ColorType;
+}

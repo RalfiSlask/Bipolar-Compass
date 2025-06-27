@@ -12,19 +12,6 @@ export interface ITableRow {
   borderColor?: string;
 }
 
-export interface IRecommendationListItem {
-  id: number;
-  title: string;
-}
-
-export interface IRecommendationContainer {
-  id: number;
-  title: string;
-  description: string;
-  listItems: IRecommendationListItem[];
-  type: ColorType;
-}
-
 export interface IImportantReminder {
   title: string;
   description: string;
