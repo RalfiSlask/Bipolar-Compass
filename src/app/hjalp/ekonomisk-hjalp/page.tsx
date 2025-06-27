@@ -22,7 +22,7 @@ const EconomicHelpPage = () => {
           <SectionTitle icon={<FaShieldAlt />}>
             Skyddsåtgärder för din ekonomi
           </SectionTitle>
-          <p className="mb-6">
+          <p>
             Det finns flera olika sätt att skydda din ekonomi vid bipolär
             sjukdom. Från enkla fullmakter till mer omfattande arrangemang som
             god man eller förvaltare. Välj det som passar din situation bäst.
