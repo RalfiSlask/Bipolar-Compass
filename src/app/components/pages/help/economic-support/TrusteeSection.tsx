@@ -24,20 +24,6 @@ const TrusteeSection = () => {
           flowChartSteps={TRUSTEE_FLOW_CHART}
         />
       </div>
-
-      <div className="content-container">
-        <SectionTitle icon={<FaBalanceScale />}>
-          Skillnader mot god man:
-        </SectionTitle>
-        <div className="bg-red-50 border-l-4 border-red-400 p-4">
-          <ul className="list-disc list-inside space-y-1 text-red-800 text-sm">
-            <li>Du förlorar rätten att ta ekonomiska beslut</li>
-            <li>Förvaltaren kontrollerar alla dina pengar</li>
-            <li>Du kan inte göra köp utan förvaltarens godkännande</li>
-            <li>Svårare att avsluta än god man-arrangemang</li>
-          </ul>
-        </div>
-      </div>
     </>
   );
 };
