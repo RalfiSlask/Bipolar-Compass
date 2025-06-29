@@ -1,4 +1,4 @@
-import { ILawFlowChartStep } from '@/app/types/help/law';
+import { IFlowChartStep } from '@/app/types/flowchart';
 import {
   FaBalanceScale,
   FaCheckCircle,
@@ -11,7 +11,7 @@ import {
   FaUserShield,
 } from 'react-icons/fa';
 
-export const LAW_RIGHTS_FLOW_CHART: ILawFlowChartStep[] = [
+export const LAW_RIGHTS_FLOW_CHART: IFlowChartStep[] = [
   {
     icon: <FaExclamationTriangle className="text-2xl text-primary-accent" />,
     title: 'Rättighetskränkning',

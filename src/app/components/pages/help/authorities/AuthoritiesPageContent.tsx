@@ -13,7 +13,7 @@ import QuickGuide from './QuickGuide';
 
 const AuthoritiesPageContent = () => {
   return (
-    <div className="flex flex-col gap-4 sm:gap-10">
+    <div className="flex flex-col page-gaps">
       <AuthoritiesGrid
         title="Alla myndigheter"
         description="Sök och filtrera bland alla myndigheter som kan hjälpa dig. Använd sökfältet för att hitta specifika myndigheter eller tjänster, eller använd filtret för att se myndigheter som erbjuder vissa tjänster."

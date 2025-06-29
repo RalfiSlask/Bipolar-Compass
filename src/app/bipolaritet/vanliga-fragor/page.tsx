@@ -25,7 +25,7 @@ const FAQPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={FAQ_INTRO} />
-      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {questions.map((item, index) => (
           <motion.div
             initial={false}

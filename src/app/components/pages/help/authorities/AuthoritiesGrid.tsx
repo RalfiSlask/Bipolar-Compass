@@ -20,7 +20,7 @@ const AuthoritiesGrid = ({
   return (
     <AuthoritiesSearchProvider>
       <div
-        className={`bg-${type}-light rounded-xl p-4 sm:p-6 shadow-lg border-2 border-${type}-light/50`}
+        className={`bg-${type}-light rounded-xl p-4 sm:p-6 shadow-lg border-2 border-${type}-light/50 responsive-margin-bottom`}
       >
         {(title || description) && (
           <AuthoritiesGridIntro

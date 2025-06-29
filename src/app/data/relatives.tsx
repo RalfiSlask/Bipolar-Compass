@@ -51,3 +51,25 @@ export const RELATIVE_TIPS = [
       'Många anhöriga blir med tiden bra på att se tecken på att en manisk eller depressiv period är på väg. Tidig intervention kan hjälpa till att förhindra att episoden förvärras.',
   },
 ];
+
+export const COMPULSORY_CARE_SECTION_DATA = {
+  title: 'När tvångsvård kan bli nödvändig',
+  desc: 'I vissa situationer, särskilt när din närstående befinner sig i ett maniskt eller psykotiskt tillstånd, kan det bli nödvändigt att ansöka om tvångsvård. Detta är ofta en sista utväg när personen inte kan förstå sin egen situation eller är en fara för sig själv eller andra. Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:',
+  subdesc:
+    'Tvångsvård regleras av Lagen om psykiatrisk tvångsvård (LPT) och kan bli aktuellt om följande kriterier är uppfyllda:',
+  image: '/images/relatives/hospital.webp',
+  imageAlt: 'Stress',
+  type: 'primary' as const,
+  alignment: 'left' as const,
+  listItems: [
+    {
+      text: 'Personen lider av en allvarlig psykisk störning (som bipolär sjukdom i mani eller psykos).',
+    },
+    {
+      text: 'Personen behöver psykiatrisk vård som inte kan ges frivilligt.',
+    },
+    {
+      text: 'Personen utgör en fara för sig själv eller andra, eller riskerar att allvarligt försämras utan vård.',
+    },
+  ],
+};

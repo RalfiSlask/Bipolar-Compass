@@ -9,7 +9,7 @@ const QuickGuide = () => {
       <SectionTitle icon={<FaSearch />} iconClasses="text-2xl">
         Snabbguide - Vad behöver du hjälp med?
       </SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {QUICK_GUIDE_DATA.map((card) => {
           const { id, title, description, contacts, type } = card;
 

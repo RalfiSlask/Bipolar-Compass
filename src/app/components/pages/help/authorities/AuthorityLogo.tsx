@@ -1,8 +1,9 @@
+import FallbackLogo from '@/app/components/shared/FallbackLogo';
 import { ColorType } from '@/app/types/colorTypes';
 import { IAuthority } from '@/app/types/help/authorities';
 import Image from 'next/image';
 import { useState } from 'react';
-import AuthorityFallbackImage from './AuthorityFallbackImage';
+import { FaBuilding } from 'react-icons/fa';
 
 interface IAuthorityLogoProps {
   authority: IAuthority;
@@ -36,7 +37,10 @@ const AuthorityLogo = ({ authority, type }: IAuthorityLogoProps) => {
       )}
 
       {((!image && !imageReplacementText) || imageError) && (
-        <AuthorityFallbackImage type={type} />
+        <FallbackLogo
+          type={type}
+          icon={<FaBuilding className={`w-8 h-8 text-${type}-dark`} />}
+        />
       )}
     </>
   );

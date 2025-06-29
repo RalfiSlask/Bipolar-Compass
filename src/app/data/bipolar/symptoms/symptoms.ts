@@ -1,3 +1,5 @@
+import { HiInformationCircle } from 'react-icons/hi';
+
 export const MANIC_SYMPTOMS = [
   'Överdrivet självförtroende: Personen kan känna sig grandios och osårbar',
   'Ökad energi och aktivitetsnivå: Man tar sig an flera projekt samtidigt, ofta utan att slutföra dem',
@@ -68,3 +70,15 @@ export const EMERGENCY_HELP_OPTIONS = [
   'Ring Mind Självmordslinjen på 90101',
   'Prata med en närstående som kan hjälpa dig söka vård',
 ];
+
+export const CHILDREN_YOUTH_SECTION_DATA = {
+  title: 'Symptom hos barn och ungdomar',
+  desc: 'Bipolär sjukdom kan vara särskilt utmanande att identifiera hos barn och ungdomar. Det kan vara svårt att skilja mellan normala humörsvängningar under uppväxten och tecken på bipolär sjukdom.',
+  image: '/images/bipolar/child.webp',
+  imageAlt:
+    'Ett barn som håller i två olika bilder med röda munnar, en ledsen och en glad',
+  type: 'tertiary' as const,
+  alignment: 'left' as const,
+  listIcon: HiInformationCircle,
+  listItems: CHILDREN_YOUTH_SYMPTOMS,
+};

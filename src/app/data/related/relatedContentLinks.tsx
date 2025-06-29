@@ -128,5 +128,12 @@ export const HELP_RELATED_LINKS = {
       icon: <BiBrain className="w-10 h-10" />,
       ariaLabel: 'Gå till myndigheter',
     },
+    {
+      id: 'ekonomisk-hjalp',
+      label: 'Ekonomiskt stöd',
+      href: '/hjalp/ekonomisk-hjalp',
+      icon: <BiBookHeart className="w-10 h-10" />,
+      ariaLabel: 'Gå till ekonomiskt stöd',
+    },
   ] as IRelatedLink[],
 };
