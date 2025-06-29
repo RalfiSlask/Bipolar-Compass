@@ -22,11 +22,11 @@ export const RoundedImageWithList = ({ data }: IRoundedImageWithListProps) => {
 
   return (
     <div
-      className={`bg-${type}-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-10 px-4 md:px-8 py-4 sm:py-10 responsive-margin-bottom ${
+      className={`bg-${type}-light w-full flex flex-col lg:flex-row items-center shadow-lg rounded-2xl gap-4 lg:gap-10 px-4 md:px-8 py-4 sm:py-10 responsive-margin-bottom ${
         alignment === 'right' ? 'lg:flex-row-reverse' : ''
       }`}
     >
-      <div className={`flex-1 flex flex-col gap-6 text-${type}-dark`}>
+      <div className={`flex-1 flex flex-col gap-4 lg:gap-6 text-${type}-dark`}>
         {title && (
           <h2 className={`h-xs lg:text-2xl font-bold text-${type}-dark`}>
             {title}

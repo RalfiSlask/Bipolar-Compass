@@ -59,7 +59,7 @@ const AuthorityContact = ({ authority, type }: IAuthorityContactProps) => {
       {contact && (
         <a
           href={contact}
-          className={`authority-link text-${type}-dark hover:text-${type}-accent`}
+          className={`authority-link text-${type}-dark hover:text-${type}-accent break-words`}
         >
           <FaGlobe className="w-4 h-4" />
           <span>{contact}</span>
