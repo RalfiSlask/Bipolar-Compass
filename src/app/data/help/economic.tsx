@@ -404,23 +404,6 @@ export const PROXY_SECTION_DATA = {
 export const BANKS: IBank[] = [
   {
     id: 1,
-    title: 'Swedbank',
-    type: 'primary' as const,
-    website:
-      'https://www.swedbank.se/privat/juridiska-tjanster/fullmakter.html',
-    phone: '0771‑22 11 22',
-    image: '',
-  },
-  {
-    id: 2,
-    title: 'SEB',
-    type: 'primary' as const,
-    website: 'https://seb.se/privat/livet/prata-om-ekonomi/anhorigekonomi',
-    phone: '0771‑62 10 00',
-    image: '/images/help/economic/banks/seb.webp',
-  },
-  {
-    id: 3,
     title: 'Nordea',
     type: 'primary' as const,
     website:
@@ -429,7 +412,7 @@ export const BANKS: IBank[] = [
     image: '/images/help/economic/banks/nordea.webp',
   },
   {
-    id: 4,
+    id: 2,
     title: 'Handelsbanken',
     type: 'primary' as const,
     website:
@@ -438,7 +421,7 @@ export const BANKS: IBank[] = [
     image: '/images/help/economic/banks/handelsbanken.webp',
   },
   {
-    id: 5,
+    id: 3,
     title: 'ICA Banken',
     type: 'primary' as const,
     website:
@@ -447,7 +430,7 @@ export const BANKS: IBank[] = [
     image: '/images/help/economic/banks/icabanken.webp',
   },
   {
-    id: 6,
+    id: 4,
     title: 'Länsförsäkringar',
     type: 'primary' as const,
     website:
@@ -455,13 +438,30 @@ export const BANKS: IBank[] = [
     image: '/images/help/economic/banks/lf.webp',
   },
   {
-    id: 7,
+    id: 5,
     title: 'Sparkbanken Nord',
     type: 'primary' as const,
     website:
       'https://www.handelsbanken.se/sv/ekonomi-i-livet/privatekonomi/vardagshjalp/vardagsjuridik/hur-fungerar-en-framtidsfullmakt',
     phone: '0771‑23 00 23',
     image: '/images/help/economic/banks/sparbanken.webp',
+  },
+  {
+    id: 6,
+    title: 'SEB',
+    type: 'primary' as const,
+    website: 'https://seb.se/privat/livet/prata-om-ekonomi/anhorigekonomi',
+    phone: '0771‑62 10 00',
+    image: '/images/help/economic/banks/seb.webp',
+  },
+  {
+    id: 7,
+    title: 'Swedbank',
+    type: 'primary' as const,
+    website:
+      'https://www.swedbank.se/privat/juridiska-tjanster/fullmakter.html',
+    phone: '0771‑22 11 22',
+    image: '/images/help/economic/banks/swedbank.webp',
   },
 ];
 
