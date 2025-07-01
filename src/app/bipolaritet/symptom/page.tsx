@@ -8,7 +8,7 @@ import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
 import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { RoundedImageWithList } from '@/app/components/shared/RoundedImageWithList';
 import {
-  CHILDREN_YOUTH_SYMPTOMS,
+  CHILDREN_YOUTH_SECTION_DATA,
   DEPRESSIVE_SYMPTOMS,
   EARLY_WARNING_SIGNS,
   EMERGENCY_HELP_OPTIONS,
@@ -20,7 +20,6 @@ import {
 import { SYMPTOMS_INTRO } from '@/app/data/pageIntros';
 import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Link from 'next/link';
-import { HiInformationCircle } from 'react-icons/hi';
 import {
   MdBolt,
   MdLocalHospital,
@@ -145,15 +144,7 @@ const SymptomsPage = () => {
           </p>
         </div>
 
-        <RoundedImageWithList
-          title="Symptom hos barn och ungdomar"
-          desc="Bipolär sjukdom kan vara särskilt utmanande att identifiera hos barn och ungdomar. Det kan vara svårt att skilja mellan normala humörsvängningar under uppväxten och tecken på bipolär sjukdom."
-          image="/images/bipolar/child.webp"
-          imageAlt="Ett barn som håller i två olika bilder med röda munnar, en ledsen och en glad"
-          type="tertiary"
-          listItems={CHILDREN_YOUTH_SYMPTOMS}
-          listIcon={HiInformationCircle}
-        />
+        <RoundedImageWithList data={CHILDREN_YOUTH_SECTION_DATA} />
 
         <div className="flex flex-col content-container">
           <SectionTitle icon={<MdLocalHospital />}>

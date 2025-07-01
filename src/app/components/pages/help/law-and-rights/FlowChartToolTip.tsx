@@ -1,7 +1,6 @@
-import { ILawFlowChartStep } from '@/app/types/help/law';
-
+import { IFlowChartStep } from '@/app/types/flowchart';
 interface IFlowChartToolTipProps {
-  step: ILawFlowChartStep;
+  step: IFlowChartStep;
 }
 
 const FlowChartToolTip = ({ step }: IFlowChartToolTipProps) => {

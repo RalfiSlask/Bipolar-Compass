@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export interface ILawFlowChartStep {
+export interface IFlowChartStep {
   icon: ReactNode;
   title: string;
   description: string;

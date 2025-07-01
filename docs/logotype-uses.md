@@ -1,5 +1,7 @@
 # HOW TO USE LOGOTYPES
 
+# FOR AUTHORITIES:
+
 ## Arbetsförmedlingen: https://arbetsformedlingen.se/om-oss/press/logotyp
 
 ## Inspektionen för vård och omsorg (IVO): https://www.ivo.se/kontakt/press/
@@ -37,3 +39,20 @@
 ## Socialtjänsten
 
 ## Socialstyrelsen
+
+# FOR BANKS:
+
+## Länsförsäkringar:
+
+## Sparbanken Nord: https://www.sparbankennord.se/om-oss/pressrum/lanka-till-sparbanken-nord.html
+
+## ICA Banken: https://sv.m.wikipedia.org/wiki/Fil:Icabanken-logo-top.png
+
+## Handelsbanken: https://www.handelsbanken.com/sv/press-och-media/mediabank/ladda-ner-logotyp
+
+## SEB: https://sebgroup.com/sv/press/pressfoton/logotyp
+
+## Nordea: https://sv.m.wikipedia.org/wiki/Fil:Icabanken-logo-top.png
+# CANT USE (NOT AUTHORIZED)
+
+## Swedbank: https://www.swedbank.com/sv/newsroom/logotype.html

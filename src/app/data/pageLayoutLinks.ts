@@ -85,6 +85,18 @@ const HELP_LINKS = [
     description: 'Lär dig mer om vad juridik och rättigheter innebär',
     image: '/images/help/law/law.webp',
   },
+  {
+    title: 'Myndigheter',
+    href: '/hjalp/myndigheter',
+    description: 'Lär dig mer om vilka myndigheter som kan hjälpa dig',
+    image: '/images/help/authorities/riksdagen.webp',
+  },
+  {
+    title: 'Ekonomisk hjälp',
+    href: '/hjalp/ekonomisk-hjalp',
+    description: 'Lär dig mer om ekonomisk hjälp och stöd',
+    image: '/images/help/economic/money-plant.webp',
+  },
 ];
 
 const BIPOLAR_LINKS = [

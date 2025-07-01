@@ -9,7 +9,7 @@ const Authorities = ({ type = 'primary' }: { type?: ColorType }) => {
   return (
     <>
       {filteredAuthorities.length > 0 ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           {filteredAuthorities.map((authority, index) => (
             <AuthorityCard key={index} authority={authority} type={type} />
           ))}
