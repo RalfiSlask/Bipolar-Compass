@@ -8,13 +8,19 @@ interface IAuthoritiesFilterProps {
 }
 
 const AuthoritiesFilter = ({ type = 'primary' }: IAuthoritiesFilterProps) => {
-  const { selectedService, allServices, handleServiceFilterChange } =
-    useAuthoritiesContext();
+  const {
+    selectedServiceCategory,
+    allServiceCategories,
+    handleServiceCategoryChange,
+  } = useAuthoritiesContext();
 
   // The custom select component expects an array of objects with value and label properties.
   const serviceOptions = [
-    { value: '', label: 'Alla tjänster' },
-    ...allServices.map((service) => ({ value: service, label: service })),
+    { value: '', label: 'Alla kategorier' },
+    ...allServiceCategories.map((category) => ({
+      value: category.id,
+      label: category.name,
+    })),
   ];
 
   return (
@@ -22,10 +28,10 @@ const AuthoritiesFilter = ({ type = 'primary' }: IAuthoritiesFilterProps) => {
       <FaFilter className={`text-${type}-dark/60`} />
       <CustomSelect
         options={serviceOptions}
-        value={selectedService}
-        onChange={handleServiceFilterChange}
+        value={selectedServiceCategory}
+        onChange={handleServiceCategoryChange}
         name="service-filter"
-        placeholder="Alla tjänster"
+        placeholder="Alla kategorier"
         size="large"
       />
     </div>
