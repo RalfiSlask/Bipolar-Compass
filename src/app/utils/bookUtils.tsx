@@ -110,3 +110,23 @@ export const sortBooksByRating = (books: IBook[]): IBook[] => {
     return countB - countA;
   });
 };
+
+/**
+ * Function for increasing the zoom level (image quality) in the uri for google books
+ *
+ * @param {string} thumbnail - thumbnail link to image
+ * @returns {string} - thumbnail uri
+ */
+export const increaseThumbnailQualityByZoom = (thumbnail: string): string => {
+  return thumbnail?.replace(/zoom=\d/, 'zoom=3');
+};
+
+/**
+ * Checks if the provided ISBN is valid (13 digits).
+ *
+ * @param {string} isbn
+ * @returns {boolean} - if isbn is valid or not
+ */
+export const isISBNValid = (isbn: string): boolean => {
+  return /^\d{13}$/.test(isbn || '');
+};
