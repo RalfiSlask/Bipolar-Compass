@@ -38,15 +38,21 @@ const UnderNavigation = ({
     setMounted(true);
   }, []);
 
-  // Handle body scroll lock when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.classList.add('overflow-hidden');
+      // Prevent body scrolling without moving content
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
-      document.body.classList.remove('overflow-hidden');
+      // Restore scrolling
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
+
     return () => {
-      document.body.classList.remove('overflow-hidden');
+      // Cleanup on unmount
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     };
   }, [isMenuOpen]);
 
@@ -55,19 +61,19 @@ const UnderNavigation = ({
   // Render mobile menu header
   const renderMobileMenuHeader = () => (
     <>
-      <div className="sm:hidden flex justify-between items-center w-full py-4 h-[94px]">
+      <div className="xl:hidden flex justify-between items-center w-full h-[94px] flex-shrink-0">
         <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
-          className="hidden xl:static text-2xl hover:text-primary-medium transition-colors z-[9999]"
+          className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
           onClick={toggleMenuOpen}
           aria-label="Toggle menu"
         >
           <HiX />
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-2 border-b border-primary-light pt-4 pb-4 sm:pt-0 mb-2 lg:mb-10 xl:mb-2">
-        <div className="flex items-center gap-6 sm:px-3 xl:px-2 py-4">
+      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-4 lg:gap-2 border-b border-primary-light pt-4 lg:pt-0 pb-4 mb-2 lg:mb-10 xl:mb-2 flex-shrink-0">
+        <div className="flex items-center gap-6 xl:px-2">
           <Link
             href="/akut"
             className="font-semibold text-base flex items-center gap-2 text-primary-dark"
@@ -140,6 +146,7 @@ const UnderNavigation = ({
                       alt={`${activeMenuItem.title} image`}
                       quality={80}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 400px, 400px"
                       className="w-full h-auto object-cover rounded-xl shadow-lg"
                     />
                   </div>
@@ -153,12 +160,14 @@ const UnderNavigation = ({
   };
 
   return (
-    <nav className="w-full flex justify-between items-center max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold py-4 h-[94px]">
+    <nav className="w-full flex justify-between items-center max-w-[1440px] px-4 sm:px-6 xl:px-8 text-secondary-dark font-semibold h-full">
       <BipolarLogo />
 
       {/* Mobile menu toggle button */}
       <button
-        className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
+        className={`xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999] ${
+          isMenuOpen ? 'hidden' : ''
+        }`}
         onClick={toggleMenuOpen}
         aria-label="Toggle menu"
       >
@@ -172,7 +181,7 @@ const UnderNavigation = ({
           flex flex-col xl:flex-row gap-1 lg:gap-4 xl:gap-2 lg:items-center xl:min-w-[910px] xl:max-w-[910px]
           ${
             isMenuOpen
-              ? 'fixed xl:relative left-0 top-0 sm:top-[96px] w-full h-screen sm:h-[calc(100vh-96px)] items-start bg-white pb-4 px-4 sm:p-6 shadow-lg z-[999] overflow-y-auto'
+              ? 'fixed xl:relative left-0 top-0 w-full h-screen items-start bg-white pb-4 px-4 shadow-lg z-[9999] overflow-y-auto touch-pan-y'
               : 'hidden xl:flex'
           }`}
         onClick={(e) => e.stopPropagation()}

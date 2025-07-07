@@ -1,13 +1,13 @@
-import HighlightList from '@/app/components/shared/HighlightList';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
 import { MdMedicalServices } from 'react-icons/md';
 
 const TreatmentSupport = () => {
   return (
     <div className="md:col-span-2 content-container">
-      <div className="flex items-center gap-4 mb-6">
-        <MdMedicalServices className="text-4xl text-primary-dark" />
-        <h3 className="h-xs text-primary-dark">Behandling och stöd</h3>
-      </div>
+      <SectionTitle icon={<MdMedicalServices />}>
+        Behandling och stöd
+      </SectionTitle>
       <p className="mb-6 ">
         Bipolär sjukdom är en kronisk sjukdom, men det finns effektiva
         behandlingar som kan hjälpa till att stabilisera humöret och förbättra

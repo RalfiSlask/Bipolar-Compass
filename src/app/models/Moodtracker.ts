@@ -1,4 +1,4 @@
-import { moodTrackerValuesData } from '../data/moodtracker';
+import { MOOD_TRACKER_VALUES_DATA } from '@/app/data/dashboard/moodtracker';
 import {
   DayId,
   IDayValue,
@@ -92,7 +92,7 @@ export class MoodValue implements IMoodValue {
 
   static createDefaultMoodValues(): MoodValue[] {
     const defaultDays = DayValue.createDefaultWeek(new Date());
-    return moodTrackerValuesData.moodValues.map(
+    return MOOD_TRACKER_VALUES_DATA.moodValues.map(
       (mood) =>
         new MoodValue({
           ...(mood as IMoodValue),
@@ -142,7 +142,7 @@ export class MoodtrackerWeek implements IMoodTrackerWeek {
       year: year,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
-      mood_values: moodTrackerValuesData.moodValues.map(
+      mood_values: MOOD_TRACKER_VALUES_DATA.moodValues.map(
         (mood) =>
           new MoodValue({
             ...(mood as IMoodValue),

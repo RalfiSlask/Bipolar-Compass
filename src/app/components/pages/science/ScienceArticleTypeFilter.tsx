@@ -1,4 +1,4 @@
-import { PUBLICATION_TYPE_FILTERS } from '@/app/data/science';
+import { PUBLICATION_TYPE_FILTERS } from '@/app/data/science/science';
 import { IoChevronForward } from 'react-icons/io5';
 
 interface IScienceArticleTypeFilterProps {

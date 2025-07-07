@@ -1,15 +1,16 @@
-import Stress from '@/app/components/pages/treatment/Stress';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import RoundedImageWithHeadingList from '@/app/components/shared/RoundedImageWithHeadingList';
 import { SELF_HELP_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import Image from 'next/image';
 
 const SelfHelpPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={SELF_HELP_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Förstå din sjukdom
@@ -53,7 +54,7 @@ const SelfHelpPage = () => {
               </ul>
             </div>
 
-            <div className="bg-primary-light/50 rounded-md p-4">
+            <div className="lightest-list-container">
               <h4 className="lg:text-lg text-lg font-semibold text-primary-dark mb-3">
                 Vikten av kunskap:
               </h4>
@@ -195,7 +196,28 @@ const SelfHelpPage = () => {
             </div>
           </div>
         </div>
-        <Stress />
+        <RoundedImageWithHeadingList
+          title="Hantera stress"
+          headingsList={[
+            {
+              title: 'Identifiera stressfaktorer',
+              description:
+                'Identifiera stressfaktorer genom att föra dagbok över situationer som ökar din stressnivå. Var uppmärksam på tecken som irritabilitet och sömnsvårigheter, och utveckla strategier för att hantera dem.',
+            },
+            {
+              title: 'Mindfulness och meditation',
+              description:
+                'Meditation och mindfulness kan hjälpa dig att känna dig mer bekväm och lugn. Det kan också hjälpa dig att se stressfaktorer som du inte kunde se tidigare.',
+            },
+            {
+              title: 'Fysisk aktivitet',
+              description:
+                'Fysisk aktivitet kan hjälpa dig att slappna av och känna dig lugnare. Det kan också hjälpa dig att känna dig mer energisk och frisk.',
+            },
+          ]}
+          image="/images/treatments/stress-relief.webp"
+          imageAlt="Kvinna som står och har stängda ögon med händerna på hjärtat"
+        />
         <div className="flex flex-col content-container">
           <h3 className="h-xs md:text-2xl text-primary-dark mb-4">
             Relationsstöd
@@ -418,7 +440,7 @@ const SelfHelpPage = () => {
               </div>
             </div>
 
-            <div className="bg-primary-light/50 rounded-md p-4">
+            <div className="lightest-list-container p-4">
               <h4 className="lg:text-lg font-semibold text-primary-dark mb-3">
                 Nödkontakter
               </h4>
@@ -451,7 +473,7 @@ const SelfHelpPage = () => {
                 Artiklar och böcker
               </h4>
               <div className="flex flex-col gap-3">
-                <p className="text-base xl:text-lg">
+                <p>
                   Att fördjupa din kunskap om bipolär sjukdom genom
                   kvalitetsgranskad litteratur kan ge dig värdefulla insikter
                   och verktyg. Vetenskapliga artiklar och böcker skrivna av
@@ -460,7 +482,7 @@ const SelfHelpPage = () => {
                   uppmärksam på material som är granskat av medicinska experter
                   och publicerat av erkända institutioner.
                 </p>
-                <p className="text-base xl:text-lg">
+                <p>
                   Personliga berättelser och memoarer från andra som lever med
                   bipolär sjukdom kan också vara mycket värdefulla. Dessa kan ge
                   praktiska tips och strategier som andra har funnit hjälpsamma,
@@ -612,7 +634,10 @@ const SelfHelpPage = () => {
         </div>
         <EncouragmentContainer text="Kom ihåg, du är inte ensam. Denna sida är här för att ge dig stöd och inspiration. Ta det ett steg i taget, och tveka inte att söka hjälp när du behöver det." />
       </div>
-      <RelatedTreatmentContent currentPage="sjalvhjalp" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="sjalvhjalp"
+      />
     </section>
   );
 };

@@ -4,15 +4,16 @@ import BipolarType from '@/app/components/pages/bipolar/BipolarType';
 import DiagnosesChart from '@/app/components/pages/bipolar/DiagnosesChart';
 import SchizoAffectiveDisorder from '@/app/components/pages/bipolar/SchizoAffectiveDisorder';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
-import { BIPOLAR_TYPES } from '@/app/data/bipolarDiagnoses';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import { BIPOLAR_TYPES } from '@/app/data/bipolar/bipolarDiagnoses';
 import { DIAGNOSIS_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 
 const DiagnosesPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={DIAGNOSIS_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10 items-center">
+      <div className="flex flex-col page-gaps items-center">
         {BIPOLAR_TYPES.map((type) => (
           <BipolarType key={type.title} bipolarType={type} />
         ))}
@@ -25,7 +26,7 @@ const DiagnosesPage = () => {
           description="Denna skala illustrerar olika humörlägen och de beteenden som kan förekomma vid bipolär sjukdom, från depression till mani."
         />
       </div>
-      <RelatedContent currentPage="diagnoser" />
+      <RelatedLinks linksInfo={BIPOLAR_RELATED_LINKS} currentPage="diagnoser" />
     </section>
   );
 };

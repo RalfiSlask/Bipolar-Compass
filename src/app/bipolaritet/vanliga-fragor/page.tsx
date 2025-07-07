@@ -1,9 +1,10 @@
 'use client';
 
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedContent from '@/app/components/shared/RelatedContent';
-import { faqItems } from '@/app/data/faqItems';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
+import { FAQ_ITEMS } from '@/app/data/bipolar/faqItems';
 import { FAQ_INTRO } from '@/app/data/pageIntros';
+import { BIPOLAR_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { IFaqItem } from '@/app/types/faq';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ import { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 
 const FAQPage = () => {
-  const [questions, setQuestions] = useState<IFaqItem[]>(faqItems);
+  const [questions, setQuestions] = useState<IFaqItem[]>(FAQ_ITEMS);
 
   const toggleOpen = (id: string) => {
     setQuestions((prev) =>
@@ -24,7 +25,7 @@ const FAQPage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={FAQ_INTRO} />
-      <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {questions.map((item, index) => (
           <motion.div
             initial={false}
@@ -79,7 +80,10 @@ const FAQPage = () => {
           </motion.div>
         ))}
       </div>
-      <RelatedContent currentPage="vanliga-fragor" />
+      <RelatedLinks
+        linksInfo={BIPOLAR_RELATED_LINKS}
+        currentPage="vanliga-fragor"
+      />
     </section>
   );
 };

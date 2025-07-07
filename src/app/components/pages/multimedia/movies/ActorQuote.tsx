@@ -1,4 +1,4 @@
-import { IActor } from '@/app/types/movies';
+import { IActor } from '@/app/types/api/movies';
 import Image from 'next/image';
 
 interface IActorQuoteProps {

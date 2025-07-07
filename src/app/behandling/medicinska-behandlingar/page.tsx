@@ -1,22 +1,29 @@
 import ECT from '@/app/components/pages/treatment/ECT';
 import TMS from '@/app/components/pages/treatment/TMS';
 import EncouragmentContainer from '@/app/components/shared/EncouragmentContainer';
-import HighlightList from '@/app/components/shared/HighlightList';
-import InfoSection from '@/app/components/shared/InfoSection';
+import SectionTitle from '@/app/components/shared/headings/SectionTitle';
+import HighlightList from '@/app/components/shared/lists/HighlightList';
+import { MediumImageWithText } from '@/app/components/shared/MediumImageWithText';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
-import RelatedTreatmentContent from '@/app/components/shared/RelatedTreatmentContent';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import { MEDICINE_INTRO } from '@/app/data/pageIntros';
+import { TREATMENT_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
 import { MdElectricBolt, MdWaves } from 'react-icons/md';
 
 const MedicinePage = () => {
   return (
     <section className="page-section">
       <PageIntroContainer intro={MEDICINE_INTRO} />
-      <div className="flex flex-col gap-4 sm:gap-10">
-        <InfoSection
-          title="Stämningsstabiliserande mediciner"
-          description="Stämningsstabiliserare används för att balansera humöret hos personer med bipolär sjukdom. De är särskilt effektiva för att förebygga återfall i maniska och depressiva episoder. Genom att påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel de kraftiga humörsvängningar som är typiska för sjukdomen."
-        >
+      <div className="flex flex-col page-gaps">
+        <div className="flex flex-col content-container">
+          <SectionTitle>Stämningsstabiliserande mediciner</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Stämningsstabiliserare används för att balansera humöret hos
+            personer med bipolär sjukdom. De är särskilt effektiva för att
+            förebygga återfall i maniska och depressiva episoder. Genom att
+            påverka signalsubstanser i hjärnan stabiliserar dessa läkemedel de
+            kraftiga humörsvängningar som är typiska för sjukdomen.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
@@ -36,17 +43,22 @@ const MedicinePage = () => {
               'Lamotrigin används främst för att förebygga depression och är ett alternativ för personer som inte tolererar lithium.',
             ]}
           />
-        </InfoSection>
+        </div>
 
-        <InfoSection
-          title="Antipsykotiska mediciner"
-          description="Antipsykotika verkar genom att reglera nivåerna av dopamin och serotonin i hjärnan. Dessa signalsubstanser spelar en viktig roll i humör, beteende och tänkande. Antipsykotiska mediciner kan snabbt lindra symtom vid akuta maniska episoder och används också som långtidsbehandling för att stabilisera humöret."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle>{'Antipsykotiska mediciner'}</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Antipsykotika verkar genom att reglera nivåerna av dopamin och
+            serotonin i hjärnan. Dessa signalsubstanser spelar en viktig roll i
+            humör, beteende och tänkande. Antipsykotiska mediciner kan snabbt
+            lindra symtom vid akuta maniska episoder och används också som
+            långtidsbehandling för att stabilisera humöret.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
             </h4>
-            <p>
+            <p className="mb-4">
               De används för att hantera både maniska episoder och blandade
               episoder (en kombination av mani och depression). Vissa
               antipsykotika kan också vara effektiva vid behandling av bipolär
@@ -60,24 +72,27 @@ const MedicinePage = () => {
               'Quetiapin (Seroquel) är ett mångsidigt läkemedel som kan behandla både mani och depression.',
             ]}
           />
-        </InfoSection>
+        </div>
 
-        <InfoSection
-          title="Antidepressiva mediciner"
-          description="Antidepressiva mediciner påverkar hjärnans serotoninnivåer och ibland även noradrenalin och dopamin, vilket hjälper till att lindra symtom vid depression. De används för att återställa balansen i hjärnans signalsubstanser och förbättra humöret."
-        >
+        <div className="flex flex-col content-container">
+          <SectionTitle>Antidepressiva mediciner</SectionTitle>
+          <p className="mb-6 lg:text-lg">
+            Antidepressiva mediciner påverkar hjärnans serotoninnivåer och
+            ibland även noradrenalin och dopamin, vilket hjälper till att lindra
+            symtom vid depression. De används för att återställa balansen i
+            hjärnans signalsubstanser och förbättra humöret.
+          </p>
           <div className="lg:text-lg">
             <h4 className="font-semibold text-primary-dark mb-3">
               Varför används de?
             </h4>
-            <p>
+            <p className="mb-4">
               Vid bipolär sjukdom används antidepressiva ofta tillsammans med
               stämningsstabiliserare för att undvika att de triggar en manisk
               episod. De är särskilt effektiva för att behandla långvariga eller
               återkommande depressioner som inte svarar på andra behandlingar.
             </p>
           </div>
-
           <HighlightList
             title="Exempel:"
             list={[
@@ -85,30 +100,16 @@ const MedicinePage = () => {
               'Bupropion (Wellbutrin) är ett alternativ för personer som inte tolererar traditionella SSRI och kan också förbättra energinivåer.',
             ]}
           />
-        </InfoSection>
-
-        <div className="flex flex-col content-container">
-          <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
-            Kombination av mediciner
-          </h3>
-          <div className="flex flex-col gap-6 lg:text-lg">
-            <p>
-              I många fall används en kombination av mediciner från olika
-              grupper för att uppnå bästa möjliga effekt. Till exempel kan en
-              person med återkommande depressioner och maniska episoder använda
-              både en stämningsstabiliserare och ett antipsykotikum. Den
-              individuella behandlingen anpassas efter symtomens svårighetsgrad,
-              tidigare erfarenheter av medicinering och eventuella andra
-              medicinska tillstånd.
-            </p>
-
-            <p>
-              Behandlingen syftar inte bara till att minska akuta symtom utan
-              också till att förebygga framtida episoder och förbättra
-              livskvaliteten över tid.
-            </p>
-          </div>
         </div>
+
+        <MediumImageWithText
+          title="Kombination av mediciner"
+          description="I många fall används en kombination av mediciner från olika grupper för att uppnå bästa möjliga effekt. Till exempel kan en person med återkommande depressioner och maniska episoder använda både en stämningsstabiliserare och ett antipsykotikum."
+          image="/images/treatments/combination-medication.webp"
+          imageAlt="Kombination av mediciner på ett bord av olika storlek och färg"
+          alignment="right"
+          halfSize={true}
+        />
 
         <div className="flex flex-col content-container">
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
@@ -183,7 +184,7 @@ const MedicinePage = () => {
           <h3 className="h-xs lg:text-xl text-primary-dark mb-4">
             ECT och TMS – Behandlingar vid bipolär sjukdom
           </h3>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-10">
             <p className="lg:text-lg">
               Förutom mediciner finns det andra behandlingsmetoder som kan vara
               effektiva vid bipolär sjukdom, särskilt om mediciner inte ger
@@ -193,7 +194,7 @@ const MedicinePage = () => {
             </p>
             <ECT />
             <TMS />
-            <div className="rounded-xl mt-8">
+            <div>
               <h4 className="font-semibold h-xs lg:text-xl text-primary-dark mb-4">
                 Jämförelse
               </h4>
@@ -253,8 +254,10 @@ const MedicinePage = () => {
                     <span>Övergående minnesproblem och huvudvärk</span>
                   </div>
 
-                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
-                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                  <div className="mt-6 p-4 bg-primary-dark rounded-lg text-white">
+                    <p className="font-semibold text-white">
+                      Rekommenderas särskilt vid:
+                    </p>
                     <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Svår depression som inte svarar på mediciner</li>
                       <li>Akuta maniska episoder</li>
@@ -305,8 +308,10 @@ const MedicinePage = () => {
                     </span>
                   </div>
 
-                  <div className="mt-6 p-4 bg-primary-dark/10 rounded-lg">
-                    <p className="font-medium">Rekommenderas särskilt vid:</p>
+                  <div className="mt-6 p-4 bg-primary-dark rounded-lg text-white">
+                    <p className="font-semibold text-white">
+                      Rekommenderas särskilt vid:
+                    </p>
                     <ul className="list-disc list-inside mt-2 flex flex-col gap-1">
                       <li>Måttlig depression som inte svarar på mediciner</li>
                       <li>När man vill undvika biverkningar från mediciner</li>
@@ -318,10 +323,12 @@ const MedicinePage = () => {
             </div>
           </div>
         </div>
-
         <EncouragmentContainer text="Kom ihåg: Många med bipolär sjukdom hittar en medicinering som hjälper dem att leva ett stabilt och balanserat liv. Med rätt stöd och uppföljning finns det goda chanser att du också kommer att må bättre." />
       </div>
-      <RelatedTreatmentContent currentPage="medicinska-behandlingar" />
+      <RelatedLinks
+        linksInfo={TREATMENT_RELATED_LINKS}
+        currentPage="medicinska-behandlingar"
+      />
     </section>
   );
 };

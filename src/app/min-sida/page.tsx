@@ -21,8 +21,8 @@ import MoodScoreContainer from '../components/dashboard/home/MoodScoreContainer'
 import LongestStreakContainer from '../components/dashboard/LongestStreakContainer';
 import MoodScoreScale from '../components/dashboard/MoodScoreScale';
 import SleepGraph from '../components/dashboard/SleepGraph';
-import { WEIGHTS } from '../data/dashboard';
-import { HEALTHCARE_PROVIDER_TYPES } from '../data/healtcareProviders';
+import { WEIGHTS } from '../data/dashboard/dashboard';
+import { HEALTHCARE_PROVIDER_TYPES } from '../data/dashboard/healtcareProviders';
 import { RELATIVE_TYPES } from '../data/relatives';
 import { ICustomSession } from '../types/authoptions';
 import { INormalizedAnxietyData } from '../types/dashboard/data';

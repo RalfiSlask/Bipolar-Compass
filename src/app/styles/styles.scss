@@ -13,6 +13,8 @@
 @use './partials/sliders/sliders';
 @use './partials/chat/chat';
 @use './partials/moodscale/moodscale';
+@use './partials/borders/borders';
+@use './partials/colors/colors';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,13 +1,14 @@
 'use client';
 
 import PodcastContainer from '@/app/components/pages/resources/PodcastContainer';
-import MultimediaRelatedContent from '@/app/components/shared/MultimediaRelatedContent';
 import PageIntroContainer from '@/app/components/shared/PageIntroContainer';
+import RelatedLinks from '@/app/components/shared/RelatedLinks';
 import Spinner from '@/app/components/shared/Spinner';
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
 import { PODCASTS_INTRO } from '@/app/data/pageIntros';
-import { IPodcastResult } from '@/app/types/podcast';
+import { MULTIMEDIA_RELATED_LINKS } from '@/app/data/related/relatedContentLinks';
+import { IPodcastResult } from '@/app/types/api/podcast';
 import { useEffect, useState } from 'react';
 
 const PodcastPage = () => {
@@ -24,7 +25,7 @@ const PodcastPage = () => {
 
   return (
     <section className="page-section">
-      <div className="flex flex-col gap-4 sm:gap-10">
+      <div className="flex flex-col page-gaps">
         <PageIntroContainer intro={PODCASTS_INTRO} />
 
         <div className="flex flex-col gap-6">
@@ -49,7 +50,7 @@ const PodcastPage = () => {
               Engelska
             </button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {currentTab === 'sv'
               ? swedishPodcasts.results.map((podcast) => (
                   <PodcastContainer key={podcast.id} podcastData={podcast} />
@@ -60,7 +61,10 @@ const PodcastPage = () => {
           </div>
         </div>
       </div>
-      <MultimediaRelatedContent currentPage="podcasts" />
+      <RelatedLinks
+        linksInfo={MULTIMEDIA_RELATED_LINKS}
+        currentPage="podcasts"
+      />
     </section>
   );
 };

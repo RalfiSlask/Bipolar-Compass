@@ -1,7 +1,7 @@
 'use client';
 
 import { ILoginFormValues } from '@/app/types/auth';
-import { signInValidationSchema } from '@/app/utils/validationSchemas';
+import { signInValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';

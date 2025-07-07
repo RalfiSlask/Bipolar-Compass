@@ -1,5 +1,5 @@
 import CustomSelect from '@/app/components/shared/CustomSelectDropdown';
-import { MEDICATION_FREQUENCY_OPTIONS } from '@/app/data/medications';
+import { MEDICATION_FREQUENCY_OPTIONS } from '@/app/data/dashboard/medications';
 import { useField } from 'formik';
 
 const MedicationFrequencyDropdown = () => {

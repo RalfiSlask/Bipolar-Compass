@@ -1,6 +1,6 @@
 'use client';
 
-import { questionSuggestions } from '@/app/data/chatSuggestions';
+import { CHAT_SUGGESTIONS } from '@/app/data/chat/chatSuggestions';
 import { IMessage } from '@/app/types/chat';
 import Image from 'next/image';
 import {
@@ -173,7 +173,7 @@ const Chat = () => {
   };
 
   // memoizes the question suggestions to prevent unnecessary re-renders
-  const memoizedSuggestions = useMemo(() => questionSuggestions, []);
+  const memoizedSuggestions = useMemo(() => CHAT_SUGGESTIONS, []);
 
   return (
     <>

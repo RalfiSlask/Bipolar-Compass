@@ -1,6 +1,6 @@
 'use client';
 
-import { forgotPasswordValidationSchema } from '@/app/utils/validationSchemas';
+import { forgotPasswordValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik, FormikValues } from 'formik';
 import { useEffect, useState } from 'react';

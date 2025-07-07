@@ -1,23 +1,21 @@
 import { MdBarChart } from 'react-icons/md';
+import SectionTitle from '../../shared/headings/SectionTitle';
 import BipolarPrevalence from './BipolarPrevalence';
 
 const BipolarPrevalenceInfo = () => {
   return (
     <div className="md:col-span-2">
       <div className="content-container">
-        <div className="flex items-center gap-4 mb-4">
-          <MdBarChart className="text-4xl text-primary-dark" />
-          <h3 className="h-xs text-primary-dark">
-            Prevalens av bipolär sjukdom
-          </h3>
-        </div>
+        <SectionTitle icon={<MdBarChart />}>
+          Prevalens av bipolär sjukdom
+        </SectionTitle>
         <p className="mb-6 ">
           Bipolär sjukdom är en relativt vanlig psykisk sjukdom som förekommer
           över hela världen, oavsett kulturella eller geografiska skillnader.
           Här är en sammanfattning av vad forskningen säger om prevalensen:
         </p>
 
-        <div className="bg-primary-light/50 rounded-md p-4">
+        <div className="lightest-list-container">
           <ul className="flex flex-col gap-4 list-disc list-inside">
             <li>
               <span className="font-semibold">Global prevalens:</span> Cirka 1–2

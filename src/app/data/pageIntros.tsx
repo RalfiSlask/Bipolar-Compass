@@ -1,17 +1,47 @@
-export const THEAPY_INTRO = {
+export const THERAPY_INTRO = {
   title: 'Terapier för Bipolär Sjukdom',
   description:
-    'Bipolär sjukdom är en komplex diagnos som påverkar både humör och energi. Terapier spelar en avgörande roll i att hantera symtom, förebygga episoder och förbättra livskvaliteten.',
+    'Bipolär sjukdom är en komplex diagnos som påverkar både humör och energi. Terapier spelar en avgörande roll i att hantera symtom, förebygga episoder och förbättra livskvaliteten. Genom att kombinera olika terapiformer som KBT, interpersonell terapi och mindfulness kan du lära dig att känna igen varningstecken och utveckla copingstrategier.',
   descriptionBold:
     'Här kan du läsa om olika terapiformer som används för att behandla bipolär sjukdom och hur de kan hjälpa dig att skapa en stabil vardag.',
   image: '/images/treatments/kbt.webp',
   color: 'brown' as const,
 };
 
+export const AUTHORITIES_INTRO = {
+  title: 'Myndigheter',
+  description:
+    'Det finns flera myndigheter och organisationer som kan erbjuda stöd och hjälp för dig som lever med bipolär sjukdom. Dessa kan hjälpa dig med allt från ekonomiskt stöd och bostadsfrågor till rehabilitering och arbetslivsinriktad insats. Det är viktigt att känna till vilka resurser som finns tillgängliga för att få den hjälp du behöver.',
+  descriptionBold:
+    'Här hittar du information om vilka myndigheter som kan vara relevanta för dig, vad de kan hjälpa dig med, och hur du kommer i kontakt med dem.',
+  image: '/images/help/authorities/riksdag.webp',
+  color: 'brown' as const,
+};
+
+export const LAWS_AND_RIGHTS_INTRO = {
+  title: 'Juridik och rättigheter',
+  description:
+    'Som person med bipolär sjukdom har du vissa rättigheter och skydd enligt svensk lag. Det är viktigt att känna till dessa rättigheter för att kunna göra dina val och ta del av de stöd som finns tillgängligt. Detta gäller allt från rätten till vård och stöd till skydd mot diskriminering i arbetslivet.',
+  descriptionBold:
+    'Här kan du läsa om dina rättigheter, vilka lagar som skyddar dig, och hur du kan få hjälp om du känner att dina rättigheter inte respekteras.',
+  image: '/images/help/law/law-club.webp',
+  color: 'brown' as const,
+};
+
+export const ECONOMIC_HELP_INTRO = {
+  title: 'Ekonomisk hjälp',
+  description:
+    'Ekonomiska svårigheter är vanliga vid bipolär sjukdom. Det finns flera skyddsåtgärder och stödformer som kan hjälpa dig att bevara din ekonomi och undvika ekonomiska problem. Detta inkluderar allt från att sätta upp god man-arrangemang och kontrakt med familj och vänner, till ekonomiskt stöd från myndigheter och strategier för att hantera pengar säkert.',
+  descriptionBold:
+    'Här hittar du praktiska råd om hur du kan skydda din ekonomi, vilka stöd som finns tillgängliga, och hur du kan bygga upp en stabil ekonomisk framtid.',
+  image: '/images/help/economic/piggy-bank.webp',
+  color: 'brown' as const,
+};
+
 export const SELF_HELP_INTRO = {
   title: 'Självhjälp',
   description:
-    'Här har vi sammanställt information om metoder som kommer underlätta din vardag. Här hittar du verktyg, strategier och resurser för att bättre förstå och hantera dina symtom. Genom att utveckla goda rutiner, lära dig känna igen tidiga varningstecken och använda olika copingstrategier kan du ta en mer aktiv roll i din återhämtning. Vi går igenom allt från sömnhygien och stresshantering till mindfulness och fysisk aktivitet.',
+    'Här har vi sammanställt information om metoder som kommer underlätta din vardag. Du hittar verktyg, strategier och resurser för att bättre förstå och hantera dina symtom. Genom att utveckla goda rutiner och lära dig känna igen varningstecken kan du ta en mer aktiv roll i din återhämtning.',
   descriptionBold:
     'Målet är att hjälpa dig skapa en stabil och meningsfull vardag genom att ge dig praktiska verktyg som du kan använda på egen hand eller som komplement till din övriga behandling.',
   image: '/images/treatments/yoga.webp',
@@ -41,7 +71,7 @@ export const RELATIVES_INTRO = {
 export const FAQ_INTRO = {
   title: 'Frågor och svar',
   description:
-    'Här har vi samlat de vanligaste frågorna om bipolär sjukdom. Du hittar svar på allt från grundläggande information om diagnosen till praktiska råd om behandling och vardagshantering. ',
+    'Här har vi samlat de vanligaste frågorna om bipolär sjukdom. Du hittar svar på allt från grundläggande information om diagnosen till praktiska råd om behandling och vardagshantering. Varje svar innehåller detaljerad information och länkar till fördjupad kunskap på relevanta sidor.',
   descriptionBold:
     'Varje svar innehåller länkar till fördjupad information på relevanta sidor på vår webbplats.',
   image: '/images/faq.webp',
@@ -61,7 +91,7 @@ export const MOVIES_INTRO = {
 export const PODCASTS_INTRO = {
   title: 'Podcasts',
   description:
-    'Podcasts är en annan bra resurs för att få insikter om bipolaritet. Genom att lyssna på dessa berättelser kan du både känna igen dig själv och få större empati för andra. Podcasts kan vara en bra möjlighet att lära sig mer om bipolaritet och få insikter om hur andra hanterar sina symtom.',
+    'Podcasts är en annan bra resurs för att få insikter om bipolaritet. Genom att lyssna på dessa berättelser kan du både känna igen dig själv och få större empati för andra. Podcasts kan vara en bra möjlighet att lära sig mer om bipolaritet och få insikter om hur andra hanterar sina symtom i vardagen.',
   descriptionBold:
     'Här har vi samlat några av våra favoriter, men det finns många fler att utforska.',
   image: '/images/multimedia/podcast-1.webp',
@@ -72,7 +102,7 @@ export const MUSIC_INTRO = {
   title: 'Spellistor',
   image: '/images/multimedia/listening-music.webp',
   description:
-    'Här finns en samling noggrant utvalda spellistor som kan vara till hjälp för dig som lever med bipolär sjukdom. Oavsett om du befinner dig i en balanserad remission, känner av en energifylld period, eller kämpar med en tyngre, deppig fas, så finns här musik anpassad för ditt sinnestillstånd. Musiken kan fungera som stöd i vardagen – hjälpa dig att varva ner, hitta fokus eller helt enkelt ge dig ett tryggt sällskap genom olika känslolägen.',
+    'Här finns en samling noggrant utvalda spellistor som kan vara till hjälp för dig som lever med bipolär sjukdom. Oavsett om du befinner dig i en balanserad remission eller kämpar med en tyngre fas, så finns här musik anpassad för ditt sinnestillstånd. Musiken kan fungera som stöd i vardagen.',
   descriptionBold:
     'Musik kan vara ett kraftfullt verktyg för både återhämtning och välmående.',
   color: 'brown' as const,
@@ -81,7 +111,7 @@ export const MUSIC_INTRO = {
 export const WHAT_IS_BIPOLAR_INTRO = {
   title: 'Vad är bipolaritet?',
   description:
-    'Bipolaritet, även kallad bipolär sjukdom, är en psykisk sjukdom som kännetecknas av extrema förändringar i humör, energi och aktivitetsnivå. Dessa förändringar går ofta mellan perioder av mani eller hypomani (förhöjt, euforiskt eller irritabelt humör) och perioder av depression (sänkt eller nedstämt humör).',
+    'Bipolaritet, även kallad bipolär sjukdom, är en psykisk sjukdom som kännetecknas av extrema förändringar i humör, energi och aktivitetsnivå. Dessa förändringar går ofta mellan perioder av mani eller hypomani och perioder av depression. Sjukdomen påverkar inte bara den psykiska hälsan utan kan också ha stor inverkan på relationer och det dagliga livet.',
   descriptionBold:
     'Bipolaritet påverkar inte bara den psykiska hälsan utan kan också ha stor inverkan på relationer, arbetsliv och det dagliga livet.',
   image: '/images/bipolar/sad-happy.webp',
@@ -91,7 +121,7 @@ export const WHAT_IS_BIPOLAR_INTRO = {
 export const SYMPTOMS_INTRO = {
   title: 'Symptom vid bipolär sjukdom',
   description:
-    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',
+    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person. Viktigt att tillägga är att mellan dessa perioder kan många leva ett stabilt liv med rätt behandling.',
   descriptionBold:
     'Viktigt att tillägga är att mellan dessa perioder kan många leva ett stabilt liv med rätt behandling.',
   image: '/images/bipolar/bipolar-redgreen.webp',
@@ -101,7 +131,7 @@ export const SYMPTOMS_INTRO = {
 export const DIAGNOSIS_INTRO = {
   title: 'Diagnoser',
   description:
-    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person.',
+    'Bipolär sjukdom kännetecknas av kraftiga förändringar i humör, energi och beteenden, som växlar mellan maniska eller hypomaniska episoder och depressiva episoder. Dessa humörsvängningar är kärnan i sjukdomen och kan variera i intensitet och längd från person till person. En korrekt diagnos är avgörande för att få rätt behandling och stöd.',
   descriptionBold:
     'Viktigt att tillägga är att mellan dessa perioder kan många leva ett stabilt liv med rätt behandling.',
   image: '/images/bipolar/diagnosis.webp',

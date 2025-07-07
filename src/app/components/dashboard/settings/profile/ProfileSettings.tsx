@@ -3,7 +3,7 @@
 import useSettingsContext from '@/app/hooks/useSettingsContext';
 import { IProfileFormValues } from '@/app/types/profile';
 import { getCreateDateAsMonthDayAndYear } from '@/app/utils/dateUtils';
-import { userSettingsValidationSchema } from '@/app/utils/validationSchemas';
+import { userSettingsValidationSchema } from '@/app/utils/schemas/validationSchemas';
 import { Form, Formik } from 'formik';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';

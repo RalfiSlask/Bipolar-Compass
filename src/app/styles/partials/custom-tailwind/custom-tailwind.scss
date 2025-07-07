@@ -1,11 +1,11 @@
 @use '../../variables/variables' as *;
 
 .intro-container-brown {
-  @apply w-full flex lg:flex-row bg-tertiary-light text-tertiary-dark flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10;
+  @apply w-full flex lg:flex-row bg-tertiary-light text-tertiary-dark flex-col items-center shadow-sm rounded-lg justify-end px-10 py-10 gap-10 mb-4 sm:mb-10;
 }
 
 .intro-container {
-  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 sm:px-8 sm:py-10 gap-4 sm:gap-10;
+  @apply w-full flex lg:flex-row flex-col items-center shadow-md md:rounded-lg justify-end p-4 sm:px-8 sm:py-10 gap-4 sm:gap-10 mb-4 sm:mb-10;
 }
 
 .intro-image {
@@ -16,12 +16,27 @@
   @apply font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full;
 }
 
+.logo-website-link {
+  @apply flex items-center gap-2 transition-colors duration-200;
+  span {
+    @apply text-sm break-words max-w-[225px] sm:max-w-full;
+  }
+}
+
+.responsive-margin-bottom {
+  @apply mb-4 sm:mb-10;
+}
+
+.lightest-list-container {
+  @apply bg-primary-light/50 rounded-md p-4 text-primary-dark shadow-md shadow-primary-dark/20;
+}
+
 .content-container {
-  @apply bg-white/80 rounded-lg px-4 py-4 md:px-8 md:py-8 shadow-md border-2 border-primary-light;
+  @apply rounded-lg mb-4 sm:mb-10;
 }
 
 .content-container-tertiary {
-  @apply bg-tertiary-light text-tertiary-dark rounded-lg px-4 py-4 md:px-8 md:py-8 shadow-md shadow-tertiary-dark/20 border-2 border-tertiary-light;
+  @apply bg-tertiary-light text-tertiary-dark  rounded-lg mb-4 sm:mb-10  px-4 py-4 md:px-8 md:py-8 shadow-md shadow-tertiary-dark/20 border-2 border-tertiary-light;
 }
 
 .related-container {
@@ -29,6 +44,11 @@
   a {
     @apply flex flex-col items-center gap-4;
   }
+}
+
+.page-gaps {
+  /*   @apply gap-4 sm:gap-10; */
+  @apply gap-0;
 }
 
 .account-section {
@@ -54,11 +74,11 @@
 }
 
 .page-section {
-  @apply w-full space-y-4 sm:space-y-10 max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
+  @apply w-full flex flex-col max-w-[1440px] px-4 md:px-10 pt-4 sm:pt-10 pb-16 sm:pb-20;
 }
 
 .treatment-container {
-  @apply w-full flex lg:flex-row flex-col items-center shadow-sm rounded-lg justify-end gap-6 px-4 py-4 md:px-10 md:py-10;
+  @apply w-full flex lg:flex-row flex-col items-center rounded-lg justify-end gap-6 px-4 py-4 md:px-10 md:py-10 shadow-md;
 }
 
 .mood-score-scale-container {

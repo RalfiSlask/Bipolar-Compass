@@ -19,7 +19,7 @@ import {
   SWEDISH_UNIVERSITIES_FILTERS,
   TEXT_AVAILABILITY_FILTERS,
   YEARS_OF_PUBLICATION_FILTERS,
-} from '@/app/data/science';
+} from '@/app/data/science/science';
 import { IScienceArticle } from '@/app/types/science';
 import {
   getDateFilterQuery,

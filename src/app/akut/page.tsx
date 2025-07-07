@@ -7,7 +7,7 @@ import { IoMdHeart } from 'react-icons/io';
 import { MdWarning } from 'react-icons/md';
 import EmergencyService from '../components/pages/acute/EmergencyService';
 import Hospital from '../components/pages/acute/Hospital';
-import { emergencyServices } from '../data/emegencyServices';
+import { emergencyServices } from '../data/acute/emegencyServices';
 
 const UrgentHelpPage = () => {
   const [hospitalLink, setHospitalLink] = useState('');

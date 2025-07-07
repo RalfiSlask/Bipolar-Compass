@@ -2,7 +2,7 @@
 
 import EnglishPodcasts from '@/app/data/json/english-podcasts.json';
 import SwedishPodcasts from '@/app/data/json/swedish-podcasts.json';
-import { IPodcastResult } from '@/app/types/podcast';
+import { IPodcastResult } from '@/app/types/api/podcast';
 import { useState } from 'react';
 import PodcastContainer from './PodcastContainer';
 

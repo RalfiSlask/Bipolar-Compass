@@ -23,13 +23,14 @@ export default {
 
         'tertiary-light': '#fff5f0',
         'tertiary-medium': '#d6c4a8',
-        'tertiary-dark': '#8f4626',
+        'tertiary-dark': '#7d3819',
 
-        'light': '#b0d9d566',
         'dark': '#202020',
 
         'footer-color': '#1a1f20',
-        'beige': '#f5f5dc',
+
+        /* Replaces tailwinds custom colors */
+
         'gray-700': '#374151',
         'gray-300': '#d1d5db',
       },
