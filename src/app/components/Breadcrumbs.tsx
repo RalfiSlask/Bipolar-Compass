@@ -86,7 +86,7 @@ const Breadcrumbs = () => {
       className="py-4 bg-primary-light flex justify-center border-b"
       aria-label="Breadcrumb"
     >
-      <ol className="flex max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
+      <ol className="flex flex-wrap max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
         {breadcrumbs?.map((breadcrumb, index) => {
           const isLast = index === breadcrumbs.length - 1;
 
