@@ -109,7 +109,7 @@ const Footer = () => {
                 </li>
                 <li className="cursor-pointer">
                   <Link
-                    href="/kontakt"
+                    href="/om-oss/kontakt"
                     className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-200 w-fit"
                   >
                     Kontakt
