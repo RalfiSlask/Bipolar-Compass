@@ -70,7 +70,11 @@
 }
 
 .organization-container-home {
-  @apply rounded-full bg-white p-4 w-[150px] sm:w-[120px] lg:w-[100px] xl:w-full xl:min-w-[140px] xl:max-w-[150px] aspect-square hover:shadow-lg transition-all duration-300 hover:scale-105 flex justify-center items-center cursor-pointer;
+  @apply rounded-full bg-white p-4 w-[150px] sm:w-[120px] lg:w-[100px] xl:w-full xl:min-w-[140px] xl:max-w-[150px] aspect-square hover:shadow-lg transition-all duration-300 hover:scale-105 flex justify-center items-center cursor-pointer transform-gpu will-change-transform;
+
+  img {
+    @apply transition-none;
+  }
 }
 
 .page-section {
