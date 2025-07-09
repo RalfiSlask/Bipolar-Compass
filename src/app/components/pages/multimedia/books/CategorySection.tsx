@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { memo, useCallback } from 'react';
 import BookCard from './BookCard';
 import CarouselChevrons from './CarouselChevrons';
+import Spinner from '@/app/components/shared/Spinner';
 
 type Language = 'en' | 'sv';
 
@@ -41,11 +42,7 @@ const CategorySection = memo(
         key={categoryIndex}
         className="bg-primary-light/50 rounded-lg p-6 relative border border-primary-light"
       >
-        {isLoadingCategory && (
-          <div className="absolute top-2 right-2">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary-dark"></div>
-          </div>
-        )}
+        {isLoadingCategory && <Spinner />}
 
         <div className="flex items-center justify-between mb-4 border-b border-primary-dark/30 pb-4">
           <div className="flex items-center gap-4">

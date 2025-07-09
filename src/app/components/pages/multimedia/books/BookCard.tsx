@@ -4,6 +4,7 @@ import { IBook } from '@/app/types/api/googleBookTypes';
 import {
   getBookTitleAsSlug,
   getISBNFromIdentifiers,
+  increaseThumbnailQualityByZoom,
 } from '@/app/utils/bookUtils';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -56,7 +57,9 @@ const BookCard = memo(
               }}
             >
               <Image
-                src={volumeInfo.imageLinks.thumbnail}
+                src={increaseThumbnailQualityByZoom(
+                  volumeInfo.imageLinks.thumbnail
+                )}
                 alt={volumeInfo.title}
                 fill
                 className="object-cover rounded w-full"
