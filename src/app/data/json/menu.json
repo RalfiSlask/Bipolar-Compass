@@ -117,27 +117,33 @@
     },
     {
       "id": 8,
+      "title": "Forum",
+      "slug": "forum",
+      "submenuItems": []
+    },
+    {
+      "id": 9,
       "title": "Om oss",
       "slug": "om-oss",
       "image": "/images/menu/about.webp",
       "submenuItems": [
         {
-          "id": 81,
+          "id": 91,
           "title": "Vision",
           "slug": "vision"
         },
         {
-          "id": 82,
+          "id": 92,
           "title": "Villkor",
           "slug": "villkor"
         },
         {
-          "id": 83,
+          "id": 93,
           "title": "Integritetspolicy",
           "slug": "integritetspolicy"
         },
         {
-          "id": 84,
+          "id": 94,
           "title": "Kontakt",
           "slug": "kontakt"
         }
