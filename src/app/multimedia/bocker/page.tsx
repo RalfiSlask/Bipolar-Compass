@@ -1,9 +1,10 @@
 'use client';
 
-import BooksLoadingSkeleton from '@/app/components/pages/multimedia/books/BooksLoadingSkeleton';
 import BooksSearchContainer from '@/app/components/pages/multimedia/books/BooksSearchContainer';
+import BookCardsLoadingSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookCardsLoadingSkeleton';
+import BookCategoryPanelSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookCategoryPanelSkeleton';
 import Spinner from '@/app/components/shared/Spinner';
-import { BOOK_CATEGORIES } from '@/app/data/books';
+import { BOOK_CATEGORIES } from '@/app/data/multimedia/books';
 import {
   IBook,
   IBookCategory,
@@ -217,7 +218,7 @@ const BooksPage = () => {
   return (
     <>
       {showGlobalSpinner && (
-        <div className="absolute inset-0 bg-white/80 z-10 flex items-center justify-center">
+        <div className="lightbox-loading-container">
           <Spinner />
         </div>
       )}
@@ -250,8 +251,12 @@ const BooksPage = () => {
             </p>
           </div>
         )}
-        {/* Placeholder skeleton for book rows when loading */}
-        {showGlobalSpinner && <BooksLoadingSkeleton />}
+        {showGlobalSpinner && (
+          <div className="bg-primary-light/50 rounded-lg p-6 relative border border-primary-light">
+            <BookCategoryPanelSkeleton />
+            <BookCardsLoadingSkeleton />
+          </div>
+        )}
       </div>
     </>
   );
