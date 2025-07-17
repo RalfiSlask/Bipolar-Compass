@@ -57,24 +57,24 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Vårdinformation',
-        description: 'Information om sjukdomar, symptom och behandlingar',
+        title: 'Symptomguide',
+        description: 'Sök på symptom och få råd om när du ska söka vård',
       },
       {
         id: 2,
-        title: 'Vårdkontakter',
+        title: 'Vårdcentraler & sjukhus',
         description:
           'Hitta närmaste vårdcentral, sjukhus eller specialistklinik',
       },
       {
         id: 3,
-        title: 'Digitala tjänster',
-        description: 'Boka tid, se journaler och kommunicera med vården',
+        title: 'Digitala journaler',
+        description: 'Se dina journaler, provsvar och läkemedelslistor',
       },
       {
         id: 4,
-        title: 'Akut rådgivning',
-        description: 'Få råd om när du ska söka vård',
+        title: 'Boka tid digitalt',
+        description: 'Boka vårdtid online hos din vårdcentral',
       },
     ],
     image: '/images/help/authorities/logos/1177.webp',
@@ -89,23 +89,24 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Folkhälsostatistik',
-        description: 'Statistik och rapporter om folkhälsa och sjukdomar',
+        title: 'Smittskydd',
+        description: 'Information om smittsamma sjukdomar och vaccinering',
       },
       {
         id: 2,
-        title: 'Förebyggande arbete',
-        description: 'Program och riktlinjer för att förebygga sjukdomar',
+        title: 'Miljöhälsa',
+        description: 'Rapporter om miljöfaktorer som påverkar hälsan',
       },
       {
         id: 3,
         title: 'Psykisk hälsa',
-        description: 'Arbete för att främja psykisk hälsa och välbefinnande',
+        description:
+          'Nationella program för psykisk hälsa och suicidprevention',
       },
       {
         id: 4,
-        title: 'Forskning',
-        description: 'Folkhälsovetenskaplig forskning och utveckling',
+        title: 'Folkhälsostatistik',
+        description: 'Officiell statistik om folkhälsa och sjukdomar i Sverige',
       },
     ],
     image: '/images/help/authorities/logos/folkhälsomyndigheten.webp',
@@ -122,22 +123,22 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Klagomål',
-        description: 'Ta emot och utreda klagomål om vård',
+        description: 'Anmäl brister i vårdkvalitet eller patienthantering',
       },
       {
         id: 2,
-        title: 'Tillsyn',
-        description: 'Kontrollera att vården följer lagar och regler',
+        title: 'Tillsynsrapporter',
+        description: 'Läs rapporter om vårdkvalitet på olika vårdgivare',
       },
       {
         id: 3,
-        title: 'Rapporter',
-        description: 'Publicera rapporter om vårdkvalitet',
+        title: 'Patienträttigheter',
+        description: 'Information om dina rättigheter som patient',
       },
       {
         id: 4,
-        title: 'Rådgivning',
-        description: 'Ge råd om patienträttigheter',
+        title: 'Vårdgivarregistret',
+        description: 'Sök information om vårdgivare och deras tillstånd',
       },
     ],
     image: '/images/help/authorities/logos/ivo.webp',
@@ -152,24 +153,23 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Digitala journaler',
-        description:
-          'Tillgång till dina digitala journaler och vårdinformation',
+        title: 'E-recept',
+        description: 'Digitala recept som kan hämtas på alla apotek i Sverige',
       },
       {
         id: 2,
-        title: 'E-recept',
-        description: 'Digitala recept som kan hämtas på alla apotek',
+        title: 'Digitala journaler',
+        description: 'Säker hantering av digital vårdinformation',
       },
       {
         id: 3,
-        title: 'Digitala vårdtjänster',
-        description: 'Stöd för digitala möten och vårdkontakter',
+        title: 'Digitala vårdmöten',
+        description: 'Tekniskt stöd för videomöten med vårdpersonal',
       },
       {
         id: 4,
         title: 'Patientportaler',
-        description: 'Stöd för digitala patientportaler och e-tjänster',
+        description: 'Stöd för kommunikation mellan patient och vårdgivare',
       },
     ],
     image: '/images/help/authorities/logos/ehälsomyndigheten.webp',
@@ -185,22 +185,23 @@ export const HEALTH_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Kvalitetsregister',
-        description: 'Statistik och kvalitetsdata för olika sjukdomar',
+        description: 'Nationella register för olika sjukdomar och behandlingar',
       },
       {
         id: 2,
-        title: 'Riktlinjer',
-        description: 'Nationella riktlinjer för vård och behandling',
+        title: 'Vårdriktlinjer',
+        description:
+          'Nationella riktlinjer för vård och behandling av olika sjukdomar',
       },
       {
         id: 3,
-        title: 'Tillsyn',
-        description: 'Övervakar vårdens kvalitet och säkerhet',
+        title: 'Vårdstatistik',
+        description: 'Officiell statistik om vårdkvalitet och patientutfall',
       },
       {
         id: 4,
-        title: 'Statistik',
-        description: 'Officiell statistik om hälsa och sjukdomar',
+        title: 'Tillsyn av vård',
+        description: 'Övervakar att vården följer lagar och regler',
       },
     ],
     imageReplacementText: 'Socialstyrelsen',
@@ -218,25 +219,24 @@ export const SOCIAL_INSURANCE_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Sjukersättning',
-        description:
-          'Ersättning vid långvarig sjukdom som påverkar arbetsförmågan',
+        title: 'Sjukpenning',
+        description: 'Ersättning när du är sjuk och inte kan arbeta',
       },
       {
         id: 2,
+        title: 'Sjukersättning',
+        description: 'Långvarig ersättning vid permanent nedsatt arbetsförmåga',
+      },
+      {
+        id: 3,
         title: 'Aktivitetsersättning',
         description:
           'Stöd för att delta i aktiviteter trots funktionsnedsättning',
       },
       {
-        id: 3,
-        title: 'Rehabilitering',
-        description: 'Stöd för att återgå till arbete eller studier',
-      },
-      {
         id: 4,
-        title: 'Bostadsbidrag',
-        description: 'Ekonomiskt stöd för bostadskostnader',
+        title: 'Rehabiliteringsersättning',
+        description: 'Stöd under rehabilitering för att återgå till arbete',
       },
     ],
     image: '/images/help/authorities/logos/försäkringskassan.webp',
@@ -254,23 +254,24 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Myndighetskontroll',
-        description: 'Övervaka att myndigheter följer lagar och regler',
+        title: 'Klagomål på myndigheter',
+        description: 'Anmäl när myndigheter inte följer lagar eller regler',
       },
       {
         id: 2,
-        title: 'Klagomål',
-        description: 'Ta emot klagomål på myndigheters agerande',
+        title: 'Myndighetskontroll',
+        description:
+          'Övervakar att polis, domstolar och myndigheter följer lagen',
       },
       {
         id: 3,
-        title: 'Rapporter',
-        description: 'Publicera rapporter om myndighetsfel',
+        title: 'JO-rapporter',
+        description: 'Läs rapporter om myndighetsfel och rekommendationer',
       },
       {
         id: 4,
-        title: 'Rådgivning',
-        description: 'Ge råd om hur man klagar på myndigheter',
+        title: 'Rättsäkerhet',
+        description: 'Arbetar för att stärka rättssäkerheten i samhället',
       },
     ],
     image: '/images/help/authorities/logos/jo.webp',
@@ -285,23 +286,24 @@ export const RIGHTS_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Diskrimineringsärenden',
-        description: 'Ta emot och utreda anmälningar om diskriminering',
+        title: 'Anmäl diskriminering',
+        description:
+          'Anmäl diskriminering på grund av kön, etnicitet, funktionsnedsättning',
       },
       {
         id: 2,
-        title: 'Rådgivning',
-        description: 'Ge råd om diskrimineringslagstiftning',
+        title: 'Diskrimineringslagar',
+        description: 'Information om lagar som skyddar mot diskriminering',
       },
       {
         id: 3,
-        title: 'Medling',
-        description: 'Försöka lösa diskrimineringsärenden genom medling',
+        title: 'Medling i ärenden',
+        description: 'Hjälp att lösa diskrimineringsärenden genom medling',
       },
       {
         id: 4,
-        title: 'Information',
-        description: 'Sprida kunskap om diskrimineringslagstiftning',
+        title: 'Kunskapsutveckling',
+        description: 'Utbildning och information om diskriminering',
       },
     ],
     image: '/images/help/authorities/logos/do.webp',
@@ -320,22 +322,23 @@ export const MUNICIPAL_SERVICES: IAuthority[] = [
       {
         id: 1,
         title: 'Arbetsförmedling',
-        description: 'Hjälp med att hitta arbete',
+        description: 'Hjälp med att hitta arbete och söka jobb',
       },
       {
         id: 2,
         title: 'Arbetslivsinriktad rehabilitering',
-        description: 'Stöd för att återgå till arbete',
+        description: 'Stöd för att återgå till arbete efter sjukdom',
       },
       {
         id: 3,
-        title: 'Utbildning',
-        description: 'Stöd för utbildning och omskolning',
+        title: 'Utbildningsstöd',
+        description: 'Ekonomiskt stöd för utbildning och omskolning',
       },
       {
         id: 4,
-        title: 'Anpassningar',
-        description: 'Hjälp med anpassningar i arbetslivet',
+        title: 'Anpassningar på arbetsplats',
+        description:
+          'Hjälp med anpassningar för personer med funktionsnedsättning',
       },
     ],
     image: '/images/help/authorities/logos/arbetsförmedlingen.webp',
@@ -349,21 +352,22 @@ export const MUNICIPAL_SERVICES: IAuthority[] = [
       {
         id: 1,
         title: 'Ekonomiskt bistånd',
-        description: 'Stöd vid ekonomiska svårigheter',
+        description: 'Försörjningsstöd när du inte har tillräckligt med pengar',
       },
       {
         id: 2,
         title: 'Bostadsstöd',
-        description: 'Hjälp med bostadsfrågor och boende',
+        description:
+          'Hjälp med bostadsfrågor och boende för personer med särskilda behov',
       },
       {
         id: 3,
-        title: 'Stöd och service',
-        description: 'Personlig assistans och hemtjänst',
+        title: 'Personlig assistans',
+        description: 'Stöd för personer med funktionsnedsättning i vardagen',
       },
       {
         id: 4,
-        title: 'Rådgivning',
+        title: 'Rådgivning om sociala rättigheter',
         description: 'Rådgivning om sociala rättigheter och stöd',
       },
     ],
@@ -383,22 +387,24 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Ungdomsrådgivning',
-        description: 'Stöd och rådgivning för unga människor',
+        description:
+          'Stöd och rådgivning för unga människor med psykiska problem',
       },
       {
         id: 2,
         title: 'Civilsamhällsstöd',
-        description: 'Stöd för ideella organisationer och föreningar',
+        description:
+          'Ekonomiskt stöd för ideella organisationer som arbetar med unga',
       },
       {
         id: 3,
         title: 'Ungdomsinflytande',
-        description: 'Arbete för att stärka ungas röst i samhället',
+        description: 'Program för att stärka ungas röst i samhället',
       },
       {
         id: 4,
         title: 'Forskning',
-        description: 'Forskning om unga och civilsamhället',
+        description: 'Forskning om ungas livsvillkor och psykiska hälsa',
       },
     ],
     image: '/images/help/authorities/logos/mucf.webp',
@@ -413,23 +419,23 @@ export const MENTAL_HEALTH_AUTHORITIES: IAuthority[] = [
     services: [
       {
         id: 1,
-        title: 'Samverkan',
-        description: 'Samverkan mellan kommuner och regioner för psykisk hälsa',
+        title: 'Samverkan vård',
+        description: 'Samverkan mellan kommuner och regioner för psykisk vård',
       },
       {
         id: 2,
         title: 'Kunskapsutveckling',
-        description: 'Utveckling av kunskap och metoder för psykisk hälsa',
+        description: 'Utveckling av metoder för psykisk hälsa i kommuner',
       },
       {
         id: 3,
-        title: 'Riktlinjer',
-        description: 'Riktlinjer för psykisk hälsa i kommuner och regioner',
+        title: 'Vårdriktlinjer',
+        description: 'Riktlinjer för psykisk vård i kommuner och regioner',
       },
       {
         id: 4,
-        title: 'Stöd',
-        description: 'Stöd till kommuner och regioner i psykisk hälsa',
+        title: 'Stöd till kommuner',
+        description: 'Stöd till kommuner i arbetet med psykisk hälsa',
       },
     ],
     image: '/images/help/authorities/logos/skr.webp',
@@ -448,7 +454,8 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Specialpedagogiskt stöd',
-        description: 'Stöd för elever med särskilda behov',
+        description:
+          'Stöd för elever med läs- och skrivsvårigheter, ADHD, autism',
       },
       {
         id: 2,
@@ -457,13 +464,13 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
       },
       {
         id: 3,
-        title: 'Rådgivning',
-        description: 'Rådgivning för skolor och föräldrar',
+        title: 'Specialpedagogisk rådgivning',
+        description: 'Rådgivning för skolor och föräldrar om specialpedagogik',
       },
       {
         id: 4,
         title: 'Utbildning',
-        description: 'Utbildning för lärare och specialpedagoger',
+        description: 'Utbildning för lärare inom specialpedagogik',
       },
     ],
     image: '/images/help/authorities/logos/spsm.webp',
@@ -479,22 +486,23 @@ export const EDUCATION_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Läroplaner',
-        description: 'Utveckling av läroplaner och kursplaner',
+        description:
+          'Utveckling av läroplaner och kursplaner för alla skolformer',
       },
       {
         id: 2,
-        title: 'Kvalitet',
-        description: 'Arbete för att förbättra skolans kvalitet',
+        title: 'Skolans kvalitet',
+        description: 'Arbete för att förbättra skolans kvalitet och resultat',
       },
       {
         id: 3,
-        title: 'Statistik',
-        description: 'Statistik och rapporter om skolväsendet',
+        title: 'Skolstatistik',
+        description: 'Officiell statistik om skolväsendet och elevers resultat',
       },
       {
         id: 4,
-        title: 'Stöd',
-        description: 'Stöd till skolor och förskolor',
+        title: 'Stöd till skolor',
+        description: 'Stöd till skolor för utveckling och förbättring',
       },
     ],
     image: '/images/help/authorities/logos/skolverket.webp',
@@ -518,17 +526,17 @@ export const WORK_ENVIRONMENT_AUTHORITIES: IAuthority[] = [
       {
         id: 2,
         title: 'Föreskrifter',
-        description: 'Föreskrifter och riktlinjer för arbetsmiljö',
+        description: 'Föreskrifter och riktlinjer för säker arbetsmiljö',
       },
       {
         id: 3,
-        title: 'Rådgivning',
-        description: 'Rådgivning om arbetsmiljöfrågor',
+        title: 'arbetsmiljörådgivning',
+        description: 'Rådgivning om arbetsmiljöfrågor och säkerhet',
       },
       {
         id: 4,
-        title: 'Statistik',
-        description: 'Statistik om arbetsskador och arbetsmiljö',
+        title: 'Arbetsmiljöstatistik',
+        description: 'Statistik om arbetsskador och olyckor på arbetsplatser',
       },
     ],
     image: '/images/help/authorities/logos/arbetsmiljöverket.webp',
@@ -547,7 +555,8 @@ export const EQUALITY_AUTHORITIES: IAuthority[] = [
       {
         id: 1,
         title: 'Jämställdhet',
-        description: 'Arbete för att främja jämställdhet i samhället',
+        description:
+          'Arbete för att främja jämställdhet mellan kvinnor och män',
       },
       {
         id: 2,
@@ -556,16 +565,130 @@ export const EQUALITY_AUTHORITIES: IAuthority[] = [
       },
       {
         id: 3,
-        title: 'Rådgivning',
+        title: 'Rådgivning om diskriminering',
         description: 'Rådgivning om jämställdhet och diskriminering',
       },
       {
         id: 4,
         title: 'Forskning',
-        description: 'Forskning om jämställdhet och diskriminering',
+        description: 'Forskning om jämställdhet och diskriminering i samhället',
       },
     ],
     image: '/images/help/authorities/logos/jämställdhetsmyndigheten.webp',
+  },
+];
+
+export const SERVICE_CATEGORIES = [
+  {
+    id: 'vard',
+    name: 'Vård',
+    keywords: [
+      'vård',
+      'sjukhus',
+      'vårdcentral',
+      'journal',
+      'recept',
+      'patient',
+      'behandling',
+      'symptom',
+      'smittskydd',
+      'miljöhälsa',
+      'psykisk hälsa',
+      'vårdriktlinjer',
+      'kvalitetsregister',
+      'tillsyn av vård',
+      'vårdmöten',
+      'patientportaler',
+    ],
+  },
+  {
+    id: 'ersattning',
+    name: 'Ersättning',
+    keywords: [
+      'ersättning',
+      'sjukpenning',
+      'sjukersättning',
+      'aktivitetsersättning',
+      'rehabiliteringsersättning',
+    ],
+  },
+  {
+    id: 'stod',
+    name: 'Stöd',
+    keywords: [
+      'stöd',
+      'bistånd',
+      'civilsamhällsstöd',
+      'personlig assistans',
+      'bostadsstöd',
+      'ekonomiskt bistånd',
+      'ekonomiskt stöd',
+      'stöd till kommuner',
+      'specialpedagogiskt stöd',
+      'utbildningsstöd',
+    ],
+  },
+  {
+    id: 'skola',
+    name: 'Skola',
+    keywords: [
+      'skola',
+      'specialskolor',
+      'skolutveckling',
+      'läroplaner',
+      'specialpedagogiskt',
+      'utbildning',
+      'skolans kvalitet',
+    ],
+  },
+  {
+    id: 'arbete',
+    name: 'Arbete',
+    keywords: [
+      'arbete',
+      'arbetsförmedling',
+      'arbetslivsinriktad',
+      'arbetsmiljö',
+      'anpassningar på arbetsplats',
+      'rehabilitering',
+      'föreskrifter',
+    ],
+  },
+  {
+    id: 'rattigheter',
+    name: 'Rättigheter',
+    keywords: [
+      'rättigheter',
+      'klagomål',
+      'diskriminering',
+      'patienträttigheter',
+      'myndighetskontroll',
+      'rättsäkerhet',
+      'medling',
+      'jämställdhet',
+      'ungdomsinflytande',
+    ],
+  },
+  {
+    id: 'statistik',
+    name: 'Statistik',
+    keywords: ['statistik', 'rapporter', 'register', 'skolstatistik'],
+  },
+  {
+    id: 'radgivning',
+    name: 'Rådgivning',
+    keywords: [
+      'rådgivning',
+      'ungdomsrådgivning',
+      'specialpedagogisk rådgivning',
+      'rådgivning om sociala rättigheter',
+      'arbetsmiljörådgivning',
+    ],
+  },
+  {
+    id: 'forskning',
+    name: 'Forskning',
+    keywords: ['forskning', 'kunskapsutveckling'],
   },
 ];
 

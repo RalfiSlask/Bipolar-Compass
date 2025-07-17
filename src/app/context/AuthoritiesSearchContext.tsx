@@ -1,18 +1,23 @@
 'use client';
 
-import { ALL_AUTHORITIES } from '@/app/data/help/authorities';
+import {
+  ALL_AUTHORITIES,
+  SERVICE_CATEGORIES,
+} from '@/app/data/help/authorities';
 import { IAuthority } from '@/app/types/help/authorities';
 import { createContext, ReactNode, useMemo, useState } from 'react';
 
+// Define broader service categories with fuzzy matching
+
 interface IAuthoritiesSearchContextValue {
   searchTerm: string;
-  selectedService: string;
-  allServices: string[];
+  selectedServiceCategory: string;
+  allServiceCategories: typeof SERVICE_CATEGORIES;
   filteredAuthorities: IAuthority[];
   filteredCount: number;
   totalCount: number;
   handleSearchChange: (value: string) => void;
-  handleServiceFilterChange: (service: string) => void;
+  handleServiceCategoryChange: (categoryId: string) => void;
   clearSearch: () => void;
   clearFilter: () => void;
   clearAll: () => void;
@@ -30,14 +35,14 @@ export const AuthoritiesSearchProvider = ({
   children,
 }: IAuthoritiesSearchProviderProps) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedService, setSelectedService] = useState('');
+  const [selectedServiceCategory, setSelectedServiceCategory] = useState('');
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
   };
 
-  const handleServiceFilterChange = (service: string) => {
-    setSelectedService(service);
+  const handleServiceCategoryChange = (categoryId: string) => {
+    setSelectedServiceCategory(categoryId);
   };
 
   const clearSearch = () => {
@@ -45,30 +50,13 @@ export const AuthoritiesSearchProvider = ({
   };
 
   const clearFilter = () => {
-    setSelectedService('');
+    setSelectedServiceCategory('');
   };
 
   const clearAll = () => {
     setSearchTerm('');
-    setSelectedService('');
+    setSelectedServiceCategory('');
   };
-
-  const allServices = useMemo(() => {
-    // flatMap flattens all arrays to one array
-    // Example: [["Vårdinfo", "Klagomål"], ["Tillsyn", "Rapporter"]] -> ["Vårdinfo", "Klagomål", "Tillsyn", "Rapporter"]
-    const flattedAuthorities = ALL_AUTHORITIES.flatMap((auth) =>
-      auth.services.map((service) => service.title)
-    );
-
-    // Here we remove duplicated values by using Set
-    const authoritiesSet = new Set(flattedAuthorities);
-
-    // We convert back to array and sort it (cant sort Set)
-    const authoritiesArray = Array.from(authoritiesSet);
-    const sortedServices = authoritiesArray.sort();
-
-    return sortedServices;
-  }, []);
 
   const filteredAuthorities = useMemo(() => {
     return ALL_AUTHORITIES.filter((authority) => {
@@ -79,7 +67,7 @@ export const AuthoritiesSearchProvider = ({
         service.title.toLowerCase()
       );
 
-      // We check if the searchTerm is in the title, description or in the services of the authority
+      // Check if the searchTerm is in the title, description or in the services of the authority
       const doesAuthorityNameMatch = authorityName.includes(
         searchTerm.toLowerCase()
       );
@@ -90,10 +78,19 @@ export const AuthoritiesSearchProvider = ({
         service.includes(searchTerm.toLowerCase())
       );
 
-      // Check if this authority has the service that user selected in the filter dropdown
-      const isSomeServiceMatch = services.some(
-        (service) => service.title === selectedService
+      // Check if this authority has services that match the selected category
+      const selectedCategory = SERVICE_CATEGORIES.find(
+        (cat) => cat.id === selectedServiceCategory
       );
+      const isServiceCategoryMatch =
+        !selectedCategory ||
+        services.some((service) =>
+          selectedCategory.keywords.some(
+            (keyword) =>
+              service.title.toLowerCase().includes(keyword.toLowerCase()) ||
+              service.description.toLowerCase().includes(keyword.toLowerCase())
+          )
+        );
 
       const matchesSearch =
         !searchTerm ||
@@ -101,24 +98,25 @@ export const AuthoritiesSearchProvider = ({
         doesAuthorityDescriptionMatch ||
         doesAuthorityServiceMatch;
 
-      const matchesService = selectedService === '' || isSomeServiceMatch;
+      const matchesServiceCategory =
+        selectedServiceCategory === '' || isServiceCategoryMatch;
 
-      return matchesSearch && matchesService;
+      return matchesSearch && matchesServiceCategory;
     });
-  }, [searchTerm, selectedService]);
+  }, [searchTerm, selectedServiceCategory]);
 
   const filteredCount = filteredAuthorities.length;
   const totalCount = ALL_AUTHORITIES.length;
 
   const contextValue: IAuthoritiesSearchContextValue = {
     searchTerm,
-    selectedService,
-    allServices,
+    selectedServiceCategory,
+    allServiceCategories: SERVICE_CATEGORIES,
     filteredAuthorities,
     filteredCount,
     totalCount,
     handleSearchChange,
-    handleServiceFilterChange,
+    handleServiceCategoryChange,
     clearSearch,
     clearFilter,
     clearAll,

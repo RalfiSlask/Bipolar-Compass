@@ -54,8 +54,7 @@ const ProxyTemplate = () => {
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-4 md:mb-6">
         <p className="flex-1">
           Här kan du ladda ner en mall för en enkel fullmakt som du kan anpassa
-          efter dina behov. Kom ihåg att kontrollera med din bank vad som krävs
-          specifikt. Kontrollera med din bank vad som krävs specifikt. Kom ihåg
+          efter dina behov. Kontrollera med din bank vad som krävs specifikt. Kom ihåg
           att du när som helst kan återkalla fullmakten.
         </p>
         <div className="flex flex-1 md:justify-center">
