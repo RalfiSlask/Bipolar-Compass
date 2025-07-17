@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const HeroSection = () => {
   return (
@@ -7,18 +7,18 @@ const HeroSection = () => {
       <div className="w-full min-h-[calc(100vh-130px)] flex relative mx-auto px-4 md:px-10 max-w-[1440px] z-20">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-8 pb-10 md:gap-10 lg:py-0">
           <div className="flex-1 text-center lg:text-left z-10 lg:max-w-[600px] mt-20">
-            <div className="flex flex-col gap-6 md:gap-10 animate-fadeIn bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md">
+            <div className="flex flex-col animate-fadeIn bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm">
               <h2 className="text-3xl sm:text-4xl lg:text-3xl text-primary-dark font-bold leading-tight">
                 Din digitala följeslagare för att hantera bipolär sjukdom
               </h2>
-              <p className="text-base sm:text-lg md:text-xl lg:text-xl text-primary-dark max-w-2xl">
-                BipolärKompassen erbjuder verktyg och stöd för att hjälpa dig
+              <p className="text-base sm:text-lg md:text-xl lg:text-xl text-primary-dark max-w-2xl mt-2 md:mt-4">
+                Bipolärkompassen erbjuder verktyg och stöd för att hjälpa dig
                 hantera din vardag. Med din egna sida, kunskapsbank och senaste
                 forskning står du aldrig ensam i din resa.
               </p>
               <Link
                 href="/konto/logga-in"
-                className="main-button w-fit mx-auto lg:mx-0 hover:scale-105 transition-transform"
+                className="main-button w-fit mx-auto mt-6 md:mt-10 lg:mx-0 hover:scale-105 transition-transform"
               >
                 <span className="button-border"></span>
                 <span className="button-text">STARTA DIN RESA</span>
