@@ -82,7 +82,7 @@ const UnderNavigation = ({
             <MdEmergency /> Akut hjälp
           </Link>
           <Link
-            href="/kontakt"
+            href="/om-oss/kontakt"
             className="font-semibold text-base flex items-center gap-2 text-primary-dark"
             onClick={closeMenu}
           >
