@@ -16,7 +16,7 @@ import { sortBooksByRating } from '@/app/utils/bookUtils';
 import { removeDuplicatesFromArray } from '@/app/utils/generalUtils';
 import axios from 'axios';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { Suspense, useCallback, useEffect, useState } from 'react';
 
 const BASE_URL = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL;
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
@@ -24,7 +24,8 @@ const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
 const MAX_RESULTS = 10;
 const ITEMS_PER_PAGE = 10;
 
-const BooksSearchPage = () => {
+// Separate component that uses useSearchParams
+const BooksSearchContent = () => {
   const searchParams = useSearchParams();
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [books, setBooks] = useState<IBook[]>([]);
@@ -133,86 +134,92 @@ const BooksSearchPage = () => {
   }, [searchQuery, searchBooks, sortBy, language, currentPage]);
 
   return (
-    <>
-      <section className="w-full min-h-screen flex flex-col items-center">
-        <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:pt-8">
-          <BooksSearchContainer
-            searchQuery={additionalSearch}
-            setSearchQuery={setAdditionalSearch}
-            onSubmit={(query) => {
-              setSearchQuery(query);
-              setCurrentPage(1);
-            }}
-          />
-        </div>
+    <section className="w-full min-h-screen flex flex-col items-center">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:pt-8">
+        <BooksSearchContainer
+          searchQuery={additionalSearch}
+          setSearchQuery={setAdditionalSearch}
+          onSubmit={(query) => {
+            setSearchQuery(query);
+            setCurrentPage(1);
+          }}
+        />
+      </div>
 
-        <div className="max-w-[1440px] w-full px-4 md:px-10 pb-4 md:pb-8">
-          {isInitialLoading ? (
-            <div className="relative">
-              <div className="lightbox-loading-container">
-                <Spinner />
-              </div>
-              <div className="text-center mb-6">
-                <h1 className="text-3xl font-bold">
-                  Sökresultat för &quot;{searchQuery}&quot;
-                </h1>
-              </div>
-              <BookSearchFilterSkeleton />
-              <BookCardsSearchLoadingSkeleton />
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pb-4 md:pb-8">
+        {isInitialLoading ? (
+          <div className="relative">
+            <div className="lightbox-loading-container">
+              <Spinner />
             </div>
-          ) : (
-            <>
-              {books.length > 0 && (
-                <>
-                  <div className="text-center mb-6">
-                    <h1 className="text-3xl font-bold">
-                      Sökresultat för &quot;{searchQuery}&quot;
-                    </h1>
-                  </div>
+            <div className="text-center mb-6">
+              <h1 className="text-3xl font-bold">
+                Sökresultat för &quot;{searchQuery}&quot;
+              </h1>
+            </div>
+            <BookSearchFilterSkeleton />
+            <BookCardsSearchLoadingSkeleton />
+          </div>
+        ) : (
+          <>
+            {books.length > 0 && (
+              <>
+                <div className="text-center mb-6">
+                  <h1 className="text-3xl font-bold">
+                    Sökresultat för &quot;{searchQuery}&quot;
+                  </h1>
+                </div>
 
-                  <div className="mb-6 flex justify-center">
-                    <div className="bg-white rounded-lg p-4 shadow-md border flex flex-col sm:flex-row gap-4">
-                      <LanguageSwitcher
-                        language={language}
-                        handleLanguageChange={handleLanguageChange}
-                        isInitialLoading={isInitialLoading}
-                      />
-                      <BookSorting
-                        sortBy={sortBy}
-                        handleSortChange={handleSortChange}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                    {books.map((book, index) => (
-                      <BookCard
-                        key={book.id || index}
-                        book={book}
-                        categoryId={0}
-                        categoryName="search"
-                        bookIndex={index}
-                        language={language}
-                      />
-                    ))}
-                  </div>
-
-                  {books.length > 0 && (
-                    <BookPagination
-                      currentPage={currentPage}
-                      handlePageChange={handlePageChange}
-                      hasMoreResults={hasMoreResults}
+                <div className="mb-6 flex justify-center">
+                  <div className="bg-white rounded-lg p-4 shadow-md border flex flex-col sm:flex-row gap-4">
+                    <LanguageSwitcher
+                      language={language}
+                      handleLanguageChange={handleLanguageChange}
+                      isInitialLoading={isInitialLoading}
                     />
-                  )}
-                </>
-              )}
+                    <BookSorting
+                      sortBy={sortBy}
+                      handleSortChange={handleSortChange}
+                    />
+                  </div>
+                </div>
 
-              {books.length === 0 && <SearchNoResults />}
-            </>
-          )}
-        </div>
-      </section>
-    </>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                  {books.map((book, index) => (
+                    <BookCard
+                      key={book.id || index}
+                      book={book}
+                      categoryId={0}
+                      categoryName="search"
+                      bookIndex={index}
+                      language={language}
+                    />
+                  ))}
+                </div>
+
+                {books.length > 0 && (
+                  <BookPagination
+                    currentPage={currentPage}
+                    handlePageChange={handlePageChange}
+                    hasMoreResults={hasMoreResults}
+                  />
+                )}
+              </>
+            )}
+
+            {books.length === 0 && <SearchNoResults />}
+          </>
+        )}
+      </div>
+    </section>
+  );
+};
+
+const BooksSearchPage = () => {
+  return (
+    <Suspense fallback={null}>
+      <BooksSearchContent />
+    </Suspense>
   );
 };
 
