@@ -1,4 +1,5 @@
-import { BOOK_CATEGORIES } from '../data/books';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { BOOK_CATEGORIES } from '../data/multimedia/books';
 import { IBook } from '../types/api/googleBookTypes';
 
 /**
@@ -9,30 +10,27 @@ import { IBook } from '../types/api/googleBookTypes';
  */
 export const renderStarsFromRating = (rating: number): React.ReactNode[] => {
   const stars = [];
+
+  // If no rating is provided, return 5 empty stars
+  if (!rating || rating === 0) {
+    for (let i = 0; i < 5; i++) {
+      stars.push(<FaStar key={`empty-${i}`} className="text-gray-300" />);
+    }
+    return stars;
+  }
+
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
 
   for (let i = 0; i < fullStars; i++) {
-    stars.push(
-      <span key={i} className="text-yellow-400">
-        ★
-      </span>
-    );
+    stars.push(<FaStar key={i} className="text-yellow-500" />);
   }
   if (hasHalfStar) {
-    stars.push(
-      <span key="half" className="text-yellow-400">
-        {/* Need to add a half star */}
-      </span>
-    );
+    stars.push(<FaStarHalfAlt key="half" className="text-yellow-500" />);
   }
   const remainingStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
   for (let i = 0; i < remainingStars; i++) {
-    stars.push(
-      <span key={`empty-${i}`} className="text-gray-300">
-        ★
-      </span>
-    );
+    stars.push(<FaStar key={`empty-${i}`} className="text-gray-300" />);
   }
 
   return stars;
@@ -117,8 +115,11 @@ export const sortBooksByRating = (books: IBook[]): IBook[] => {
  * @param {string} thumbnail - thumbnail link to image
  * @returns {string} - thumbnail uri
  */
-export const increaseThumbnailQualityByZoom = (thumbnail: string): string => {
-  return thumbnail?.replace(/zoom=\d/, 'zoom=3');
+export const increaseThumbnailQualityByZoom = (
+  thumbnail: string,
+  zoom: number = 1
+): string => {
+  return thumbnail?.replace(/zoom=\d/, `zoom=${zoom}`);
 };
 
 /**
