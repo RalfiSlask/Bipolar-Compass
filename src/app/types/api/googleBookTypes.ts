@@ -33,6 +33,7 @@ export interface IBook {
       currencyCode: string;
     };
     buyLink?: string;
+    saleability?: Saleability;
   };
   searchInfo?: {
     textSnippet?: string;
@@ -50,6 +51,14 @@ export interface IBook {
     };
   };
 }
+
+type Saleability =
+  | 'FOR_SALE'
+  | 'FOR_RENTAL_ONLY'
+  | 'FOR_SALE_AND_RENTAL'
+  | 'FREE'
+  | 'NOT_FOR_SALE'
+  | 'FOR_PREORDER';
 
 export interface IBookCategory {
   id: number;
