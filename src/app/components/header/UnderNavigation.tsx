@@ -61,8 +61,8 @@ const UnderNavigation = ({
   // Render mobile menu header
   const renderMobileMenuHeader = () => (
     <>
-      <div className="xl:hidden flex justify-between items-center w-full h-[94px] flex-shrink-0">
-        <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
+      <div className="xl:hidden flex justify-between items-center w-full h-[68px] flex-shrink-0">
+        <div className="absolute top-[68px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
           className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
