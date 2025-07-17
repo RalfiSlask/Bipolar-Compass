@@ -4,11 +4,10 @@ import { IBook } from '@/app/types/api/googleBookTypes';
 import {
   getBookTitleAsSlug,
   getISBNFromIdentifiers,
-  increaseThumbnailQualityByZoom,
 } from '@/app/utils/bookUtils';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
+import BookCardImage from './BookCardImage';
 
 type Language = 'en' | 'sv';
 
@@ -49,25 +48,7 @@ const BookCard = memo(
       >
         <div className="flex flex-col gap-3">
           {volumeInfo.imageLinks?.thumbnail && (
-            <div
-              className="relative w-full aspect-[2/3] flex-shrink-0 transition-transform duration-200 group-hover:rotate-x-0 group-hover:shadow-lg"
-              style={{
-                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
-                transform: 'rotateX(12deg)',
-              }}
-            >
-              <Image
-                src={increaseThumbnailQualityByZoom(
-                  volumeInfo.imageLinks.thumbnail
-                )}
-                alt={volumeInfo.title}
-                fill
-                className="object-cover rounded w-full"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-                unoptimized
-              />
-            </div>
+            <BookCardImage volumeInfo={volumeInfo} />
           )}
           <div className="flex-1">
             <h3 className="font-semibold text-sm line-clamp-2 mb-1">
