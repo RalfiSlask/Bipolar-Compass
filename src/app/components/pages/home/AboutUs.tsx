@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const AboutUs = () => {
   return (
@@ -8,7 +8,7 @@ const AboutUs = () => {
         <div className="w-full flex text-tertiary-dark flex-1 flex-col gap-4 items-center lg:items-start justify-center text-center lg:text-left">
           <h3 className="text-4xl sm:text-5xl lg:text-6xl font-bold">Om oss</h3>
           <p className="text-base sm:text-lg font-medium text-tertiary-dark">
-            BipolärKompassen är gjord av människor som har kommit i kontakt med
+            Bipolärkompassen är gjord av människor som har kommit i kontakt med
             bipolär sjukdom och sett behovet av en digital resurs för att hjälp
             personer i utsatthet. Detta arbete är ideellt och görs av
             frivilliga.
