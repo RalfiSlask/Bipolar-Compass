@@ -45,7 +45,7 @@ const EmailTemplate = ({ verificationLink }: IEmailTemplateProps): string => `
     <!-- Footer -->
     <div style="text-align: center; font-size: 0.85em; color: #777; background-color: #f1f1f1; padding: 10px;">
       <p style="margin: 0;">Detta är ett automatiskt meddelande från <strong>Bipolärkompassen</strong>.</p>
-      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
+      <p style="margin: 5px 0;">Har du frågor? Besök vår <a href="${baseUrl}/om-oss/kontakt" style="color: #6ba292; text-decoration: none;">kontaktsida</a>.</p>
     </div>
   </div>
 `;
