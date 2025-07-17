@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
+import { Suspense } from 'react';
 import Breadcrumbs from './components/Breadcrumbs';
 import ChatWrapper from './components/chat/ChatWrapper';
 import Footer from './components/footer/Footer';
@@ -110,7 +111,9 @@ export default function RootLayout({
         <Providers>
           <Header />
           <div className="main-container flex flex-col h-full min-h-screen">
-            <Breadcrumbs />
+            <Suspense fallback={null}>
+              <Breadcrumbs />
+            </Suspense>
             <main className="flex flex-1 justify-center w-full">
               {children}
             </main>
