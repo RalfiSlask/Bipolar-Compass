@@ -27,11 +27,14 @@ const BookPurchaseLinks = ({ book, isbn }: IBookPurchaseLinksProps) => {
     ),
   };
 
+  const canYouBuyOnGoogle =
+    links.googleBooks && book.saleInfo?.saleability !== 'NOT_FOR_SALE';
+
   return (
     <div>
-      <h3 className="font-medium mb-2">Köp boken</h3>
+      <h3 className="font-semibold mb-2 text-primary-dark">Köp boken</h3>
       <div className="flex flex-wrap gap-3">
-        {links.googleBooks && (
+        {canYouBuyOnGoogle && (
           <a
             href={links.googleBooks}
             target="_blank"
@@ -88,7 +91,7 @@ const BookPurchaseLinks = ({ book, isbn }: IBookPurchaseLinksProps) => {
             width={20}
             height={20}
             className="rounded-full"
-          />{' '}
+          />
           Bokus
         </a>
         <a
@@ -103,7 +106,7 @@ const BookPurchaseLinks = ({ book, isbn }: IBookPurchaseLinksProps) => {
             width={30}
             height={30}
             className="rounded-full"
-          />{' '}
+          />
           Akademibokhandeln
         </a>
       </div>
