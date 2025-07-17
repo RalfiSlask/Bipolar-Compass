@@ -134,12 +134,7 @@ const BooksSearchPage = () => {
 
   return (
     <>
-      {isInitialLoading && (
-        <div className="lightbox-loading-container">
-          <Spinner />
-        </div>
-      )}
-      <section className="w-full min-h-screen flex flex-col items-center bg-primary-light">
+      <section className="w-full min-h-screen flex flex-col items-center">
         <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:pt-8">
           <BooksSearchContainer
             searchQuery={additionalSearch}
@@ -153,7 +148,10 @@ const BooksSearchPage = () => {
 
         <div className="max-w-[1440px] w-full px-4 md:px-10 pb-4 md:pb-8">
           {isInitialLoading ? (
-            <>
+            <div className="relative">
+              <div className="lightbox-loading-container">
+                <Spinner />
+              </div>
               <div className="text-center mb-6">
                 <h1 className="text-3xl font-bold">
                   Sökresultat för &quot;{searchQuery}&quot;
@@ -161,7 +159,7 @@ const BooksSearchPage = () => {
               </div>
               <BookSearchFilterSkeleton />
               <BookCardsSearchLoadingSkeleton />
-            </>
+            </div>
           ) : (
             <>
               {books.length > 0 && (

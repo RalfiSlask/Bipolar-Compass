@@ -1,21 +1,30 @@
+import SearchButton from '@/app/components/shared/buttons/SearchButton';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const BooksSearchContainer = ({
   searchQuery,
   setSearchQuery,
+  onSubmit,
 }: {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
+  showExplanatoryText?: boolean;
+  onSubmit?: (query: string) => void;
 }) => {
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(
-        `/multimedia/bocker/sok?q=${encodeURIComponent(searchQuery.trim())}`
-      );
+    const trimmedQuery = searchQuery.trim();
+    if (trimmedQuery) {
+      if (onSubmit) {
+        onSubmit(trimmedQuery);
+      } else {
+        router.push(
+          `/multimedia/bocker/sok?q=${encodeURIComponent(trimmedQuery)}`
+        );
+      }
     }
   };
 
@@ -35,7 +44,7 @@ const BooksSearchContainer = ({
         <h2 className="text-xl md:text-2xl font-semibold text-primary-dark mb-4">
           Sök bland böcker om bipolaritet
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-2">
           Ange en sökterm för att hitta böcker om bipolär sjukdom och dess olika
           aspekter.
         </p>
@@ -55,27 +64,13 @@ const BooksSearchContainer = ({
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="px-8 py-3 bg-primary-dark hover:bg-secondary-dark text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-            Sök
-          </button>
+          <SearchButton />
         </form>
+
+        <div className="mt-4 text-sm text-gray-500">
+          Din sökning kommer att kombineras med &quot;bipolar&quot; för att
+          hitta relevanta böcker.
+        </div>
       </div>
     </div>
   );

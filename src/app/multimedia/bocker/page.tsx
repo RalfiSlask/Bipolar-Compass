@@ -98,7 +98,7 @@ const BooksPage = () => {
     async (
       category: IBookCategory,
       orderBy: SortOption = 'relevance',
-      lang: Language = 'en'
+      lang: Language = 'sv'
     ): Promise<ICategoryBooks> => {
       try {
         const specificTerm = lang === 'sv' ? 'bipolär' : 'bipolar';
@@ -117,6 +117,44 @@ const BooksPage = () => {
       }
     },
     []
+  );
+
+  const searchByCategoryBothLanguages = useCallback(
+    async (
+      category: IBookCategory,
+      orderBy: SortOption = 'relevance'
+    ): Promise<ICategoryBooks> => {
+      try {
+        // Sök först svenska böcker
+        const swedishResult = await searchByCategory(category, orderBy, 'sv');
+
+        // Sök sedan engelska böcker
+        const englishResult = await searchByCategory(category, orderBy, 'en');
+
+        // Kombinera resultaten med svenska först
+        const combinedBooks = [...swedishResult.books, ...englishResult.books];
+
+        // Ta bort duplicerade böcker baserat på title och authors
+        const uniqueBooks = removeDuplicatesFromArray<IBook>(combinedBooks);
+
+        return {
+          category,
+          books: uniqueBooks,
+          totalFound: swedishResult.totalFound + englishResult.totalFound,
+        };
+      } catch (err) {
+        console.log(
+          `Error searching for "${category.name}" in both languages:`,
+          err
+        );
+        return {
+          category,
+          books: [],
+          totalFound: 0,
+        };
+      }
+    },
+    [searchByCategory]
   );
 
   const updateCategoryLoadingState = (
@@ -165,7 +203,7 @@ const BooksPage = () => {
   };
 
   const searchAllCategories = useCallback(
-    async (orderBy: SortOption = 'relevance', lang: Language = 'en') => {
+    async (orderBy: SortOption = 'relevance') => {
       setIsInitialLoading(true);
       setCategoryResults([]);
 
@@ -173,7 +211,7 @@ const BooksPage = () => {
 
       const searchPromises = BOOK_CATEGORIES.map(async (category) => {
         try {
-          const result = await searchByCategory(category, orderBy, lang);
+          const result = await searchByCategoryBothLanguages(category, orderBy);
           updateCategoryLoadingState(
             category.id,
             false,
@@ -205,7 +243,7 @@ const BooksPage = () => {
         setCategoryLoadingStates({});
       }
     },
-    [searchByCategory]
+    [searchByCategoryBothLanguages]
   );
 
   useEffect(() => {
@@ -217,46 +255,48 @@ const BooksPage = () => {
 
   return (
     <>
-      {showGlobalSpinner && (
-        <div className="lightbox-loading-container">
-          <Spinner />
-        </div>
-      )}
       <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:py-8">
         <BooksSearchContainer
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        {!showGlobalSpinner && categoryResults.length > 0 && (
-          <div className="flex flex-col gap-6">
-            {categoryResults.map((categoryData, categoryIndex) => {
-              const isLoadingCategory =
-                categoryLoadingStates[categoryData.category.id];
+        <div className="relative">
+          {showGlobalSpinner && (
+            <div className="lightbox-loading-container">
+              <Spinner />
+            </div>
+          )}
+          {!showGlobalSpinner && categoryResults.length > 0 && (
+            <div className="flex flex-col gap-6">
+              {categoryResults.map((categoryData, categoryIndex) => {
+                const isLoadingCategory =
+                  categoryLoadingStates[categoryData.category.id];
 
-              return (
-                <CategorySection
-                  key={categoryData.category.id}
-                  categoryData={categoryData}
-                  isLoadingCategory={isLoadingCategory}
-                  categoryIndex={categoryIndex}
-                />
-              );
-            })}
-          </div>
-        )}
-        {!showGlobalSpinner && !isLoading && categoryResults.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-gray-600">
-              Inga böcker hittades för de valda kategorierna.
-            </p>
-          </div>
-        )}
-        {showGlobalSpinner && (
-          <div className="bg-primary-light/50 rounded-lg p-6 relative border border-primary-light">
-            <BookCategoryPanelSkeleton />
-            <BookCardsLoadingSkeleton />
-          </div>
-        )}
+                return (
+                  <CategorySection
+                    key={categoryData.category.id}
+                    categoryData={categoryData}
+                    isLoadingCategory={isLoadingCategory}
+                    categoryIndex={categoryIndex}
+                  />
+                );
+              })}
+            </div>
+          )}
+          {!showGlobalSpinner && !isLoading && categoryResults.length === 0 && (
+            <div className="text-center py-8">
+              <p className="text-gray-600">
+                Inga böcker hittades för de valda kategorierna.
+              </p>
+            </div>
+          )}
+          {showGlobalSpinner && (
+            <div className="bg-primary-light/50 rounded-lg p-6 relative border shadow-md border-primary-light">
+              <BookCategoryPanelSkeleton />
+              <BookCardsLoadingSkeleton />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

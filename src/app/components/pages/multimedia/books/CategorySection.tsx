@@ -1,13 +1,12 @@
 'use client';
 
+import Spinner from '@/app/components/shared/Spinner';
 import { IBook, ICategoryBooks } from '@/app/types/api/googleBookTypes';
+import { Language } from '@/app/types/languages';
 import useEmblaCarousel from 'embla-carousel-react';
 import { memo, useCallback } from 'react';
 import BookCard from './BookCard';
 import CarouselChevrons from './CarouselChevrons';
-import Spinner from '@/app/components/shared/Spinner';
-
-type Language = 'en' | 'sv';
 
 interface ICategorySectionProps {
   categoryData: ICategoryBooks;
@@ -40,16 +39,18 @@ const CategorySection = memo(
     return (
       <div
         key={categoryIndex}
-        className="bg-primary-light/50 rounded-lg p-6 relative border border-primary-light"
+        className="bg-primary-light/50 rounded-lg p-6 relative border shadow-md border-primary-light"
       >
         {isLoadingCategory && <Spinner />}
 
-        <div className="flex items-center justify-between mb-4 border-b border-primary-dark/30 pb-4">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 items-center justify-between mb-4 border-b border-primary-dark/30 pb-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
             <h2 className="text-2xl font-semibold text-primary-dark">
               {category.label}
             </h2>
-            <button className="nav-link font-normal">Se alla</button>
+            <button className="nav-link font-normal text-primary-dark">
+              Se alla
+            </button>
           </div>
           <CarouselChevrons scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>

@@ -11,14 +11,14 @@ const CarouselChevrons = ({
     <div className="flex gap-2">
       <button
         onClick={scrollPrev}
-        className="p-2 rounded-full hover:bg-primary-dark transition-colors hover:text-white"
+        className="p-2 rounded-full bg-secondary-light hover:bg-primary-dark transition-colors hover:text-white"
         aria-label="Previous books"
       >
         <IoChevronBack className="w-5 h-5 " />
       </button>
       <button
         onClick={scrollNext}
-        className="p-2 rounded-full hover:bg-primary-dark transition-colors hover:text-white"
+        className="p-2 rounded-full bg-secondary-light hover:bg-primary-dark transition-colors hover:text-white"
         aria-label="Next books"
       >
         <IoChevronForward className="w-5 h-5 " />

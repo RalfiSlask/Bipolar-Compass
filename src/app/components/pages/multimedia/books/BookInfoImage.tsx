@@ -1,6 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
 import { increaseThumbnailQualityByZoom } from '@/app/utils/bookUtils';
+import Image from 'next/image';
 
 interface IBookInfoImageProps {
   thumbnail: string;
@@ -11,7 +10,7 @@ const BookInfoImage = ({ thumbnail, alt }: IBookInfoImageProps) => {
   return (
     <div className="sm:w-1/3 xl:w-1/4">
       {thumbnail ? (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center max-w-80 shadow-sm">
           <Image
             src={increaseThumbnailQualityByZoom(thumbnail)}
             alt={alt}
