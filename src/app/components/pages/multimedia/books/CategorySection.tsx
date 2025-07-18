@@ -1,9 +1,13 @@
 'use client';
 
 import Spinner from '@/app/components/shared/Spinner';
-import { IBook, ICategoryBooks } from '@/app/types/api/googleBookTypes';
-import { Language } from '@/app/types/languages';
+import {
+  IBook,
+  ICategoryBooks,
+  Language,
+} from '@/app/types/api/googleBookTypes';
 import useEmblaCarousel from 'embla-carousel-react';
+import Link from 'next/link';
 import { memo, useCallback } from 'react';
 import BookCard from './BookCard';
 import CarouselChevrons from './CarouselChevrons';
@@ -48,9 +52,12 @@ const CategorySection = memo(
             <h2 className="text-2xl font-semibold text-primary-dark">
               {category.label}
             </h2>
-            <button className="nav-link font-normal text-primary-dark">
+            <Link
+              className="nav-link font-normal text-primary-dark"
+              href={`/multimedia/bocker/kategori/${category.slug}`}
+            >
               Se alla
-            </button>
+            </Link>
           </div>
           <CarouselChevrons scrollPrev={scrollPrev} scrollNext={scrollNext} />
         </div>
