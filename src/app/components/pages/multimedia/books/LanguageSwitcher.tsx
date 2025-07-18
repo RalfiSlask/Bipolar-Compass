@@ -18,6 +18,17 @@ const LanguageSwitcher = ({
       </label>
       <div className="flex gap-4">
         <button
+          onClick={() => handleLanguageChange('all')}
+          disabled={isInitialLoading}
+          className={`px-4 py-2 rounded transition-colors ${
+            language === 'all'
+              ? 'bg-primary-dark text-white'
+              : 'bg-white border border-primary-border text-primary-dark hover:bg-primary-light'
+          } ${isInitialLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+          Alla
+        </button>
+        <button
           onClick={() => handleLanguageChange('en')}
           disabled={isInitialLoading}
           className={`px-4 py-2 rounded transition-colors ${
