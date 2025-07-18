@@ -1,7 +1,12 @@
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { BOOK_CATEGORIES } from '../data/multimedia/books';
-import { IBook } from '../types/api/googleBookTypes';
-
+import {
+  BOOK_CATEGORIES,
+  GOOGLE_BOOKS_API_KEY,
+  GOOGLE_BOOKS_BASE_URL,
+  MAX_RESULTS,
+} from '../data/multimedia/books';
+import { IBook, Language } from '../types/api/googleBookTypes';
+import { SortOption } from '../types/multimedia/books/sort';
 /**
  * Renders stars based on book rating
  *
@@ -130,4 +135,80 @@ export const increaseThumbnailQualityByZoom = (
  */
 export const isISBNValid = (isbn: string): boolean => {
   return /^\d{13}$/.test(isbn || '');
+};
+
+export const removeDuplicateBooks = (books: IBook[]): IBook[] => {
+  const seen = new Set<string>();
+  return books.filter((book) => {
+    const title = book.volumeInfo.title?.toLowerCase().trim() || '';
+    const authors =
+      book.volumeInfo.authors?.join(', ').toLowerCase().trim() || '';
+    const key = `${title}|${authors}`;
+
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+};
+
+/**
+ * Builds Google Books API url based on relevant queries
+ *
+ * Takes in account if we should restrict url by language
+ * @param {string} searchQuery - users search term
+ * @param {SortOption} orderBy - sorting options like latest / newest etc
+ * @param {Language} lang - language that also includes an all option
+ * @param {number} startIndex
+ * @returns {string} - built api url
+ */
+export const buildApiUrl = (
+  searchQuery: string,
+  orderBy: SortOption,
+  lang: Language,
+  startIndex: number
+): string => {
+  let apiUrl = `${GOOGLE_BOOKS_BASE_URL}/volumes?q=${encodeURIComponent(
+    searchQuery
+  )}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&printType=books`;
+
+  // Only add langRestrict if language is not 'all'
+  if (lang !== 'all') {
+    apiUrl += `&langRestrict=${lang}`;
+  }
+
+  if (orderBy !== 'rating') {
+    apiUrl += `&orderBy=${orderBy}`;
+  }
+
+  apiUrl += `&key=${GOOGLE_BOOKS_API_KEY}`;
+  return apiUrl;
+};
+
+/**
+ * Builds a search query for Google Books API
+ *
+ * Takes in account if we should restrict url by language by checking if the language is not 'all'
+ * If we provide a category, we add it to the search query
+ * If we provide an additional query, we add it to the search query
+ * @param {string} lang - The language to search in
+ * @param {string} additionalQuery - Additional search query
+ * @param {string} category - The category to search in
+ * @returns {string} - The built search query
+ */
+export const getBuiltSearchQuery = (
+  lang: string,
+  additionalQuery: string,
+  category?: string
+) => {
+  const specificBipolarTerm = lang === 'sv' ? 'bipolär' : 'bipolar';
+  const categorySubject = category ? `subject:"${category}"+` : '';
+  let searchQuery = `${categorySubject}(intitle:${specificBipolarTerm} OR "${specificBipolarTerm}")`;
+
+  if (additionalQuery.trim()) {
+    searchQuery += ` AND ${additionalQuery}`;
+  }
+
+  return searchQuery;
 };
