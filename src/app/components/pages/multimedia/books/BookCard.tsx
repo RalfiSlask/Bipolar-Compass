@@ -9,14 +9,11 @@ import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import BookCardImage from './BookCardImage';
 
-type Language = 'en' | 'sv';
-
 interface IBookCardProps {
   book: IBook;
   categoryId: number;
   categoryName: string;
   bookIndex: number;
-  language?: Language;
 }
 
 // Memoized BookCard component to prevent unnecessary re-renders
