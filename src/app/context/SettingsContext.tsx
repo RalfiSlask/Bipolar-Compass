@@ -19,7 +19,7 @@ interface ISettingsContext {
     values: IFormValues,
     originalEmail: string
   ) => Promise<void>;
-  deleteAccount: (email: string) => Promise<void>;
+  deleteAccount: (userId: string) => Promise<void>;
   saveRelativesSettings: (
     relatives: IRelative[],
     email: string
@@ -138,10 +138,10 @@ export const SettingsProvider = ({
     }
   };
 
-  const deleteAccount = async (email: string): Promise<void> => {
+  const deleteAccount = async (userId: string): Promise<void> => {
     try {
       await axios.delete('/api/settings/delete', {
-        data: { email },
+        data: { userId },
       });
       setUser(null);
     } catch (err) {

@@ -1,4 +1,3 @@
-import useSettingsContext from '@/app/hooks/useSettingsContext';
 import Link from 'next/link';
 import { useState } from 'react';
 import ChangePasswordForm from './ChangePasswordForm';
@@ -6,10 +5,6 @@ import EraseAccountModal from './EraseAccountModal';
 
 const SecuritySettings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const context = useSettingsContext();
-
-  const { user } = context;
-  const email = user?.email || '';
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -20,9 +15,7 @@ const SecuritySettings = () => {
       className="max-w-2xl p-4 sm:p-6 pb-16 flex flex-col items-center gap-10"
       aria-labelledby="security-heading"
     >
-      {isModalOpen && (
-        <EraseAccountModal email={email} toggleModal={toggleModal} />
-      )}
+      {isModalOpen && <EraseAccountModal toggleModal={toggleModal} />}
       {isModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full z-20 bg-black bg-opacity-50"></div>
       )}
@@ -64,9 +57,7 @@ const SecuritySettings = () => {
               Ta bort mitt konto
             </button>
           </div>
-          {isModalOpen && (
-            <EraseAccountModal email={email} toggleModal={toggleModal} />
-          )}
+          {isModalOpen && <EraseAccountModal toggleModal={toggleModal} />}
         </div>
       </div>
     </div>

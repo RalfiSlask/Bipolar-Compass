@@ -3,12 +3,11 @@ import useSidebarContext from '@/app/hooks/useSidebarContext';
 import { signOut } from 'next-auth/react';
 
 interface IEraseAccountModalProps {
-  email: string;
   toggleModal: () => void;
 }
 
-const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
-  const { deleteAccount } = useSettingsContext();
+const EraseAccountModal = ({ toggleModal }: IEraseAccountModalProps) => {
+  const { deleteAccount, user } = useSettingsContext();
   const { isSidebarOpen } = useSidebarContext();
 
   const handleSignOut = async () => {
@@ -20,10 +19,10 @@ const EraseAccountModal = ({ email, toggleModal }: IEraseAccountModalProps) => {
   };
 
   const handleDeleteAccount = async () => {
-    if (!email) return;
+    if (!user?._id) return;
 
     try {
-      await deleteAccount(email);
+      await deleteAccount(user._id.toString());
       await handleSignOut();
     } catch (err) {
       console.error('could not delete account: ', err);
