@@ -64,6 +64,7 @@ export interface IBookCategory {
   id: number;
   name: string;
   label: string;
+  slug: string;
 }
 
 export interface ICategoryBooks {
@@ -72,4 +73,4 @@ export interface ICategoryBooks {
   totalFound: number;
 }
 
-export type Language = 'en' | 'sv';
+export type Language = 'all' | 'en' | 'sv';
