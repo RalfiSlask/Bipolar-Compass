@@ -3,6 +3,7 @@ export interface IMenuItem {
   title: string;
   slug: string;
   submenuItems?: ISubmenuItem[];
+  image?: string;
 }
 
 export interface ISubmenuItem {
