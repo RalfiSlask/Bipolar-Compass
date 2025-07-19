@@ -6,6 +6,8 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import arrowRightIcon from '../assets/icons/arrow-right.svg';
 import menuData from '../data/json/menu.json';
 import { IMenuItem } from '../types/menu/menu';
+import { getBreadcrumbTitle } from '../utils/breadcrumbs';
+import { capitalizeFirstLetter } from '../utils/textUtils';
 
 const findBreadcrumbs = (
   pathname: string,
@@ -30,6 +32,8 @@ const findBreadcrumbs = (
     currentPath += `/${segment}`;
     const match = currentMenu.find((item) => item.slug === segment);
 
+    console.log('match', match);
+
     // If a match is found, the match is added to the breadcrumbs array and the currentMenu is updated to the submenuItems of the match.
     if (match) {
       breadcrumbs.push({
@@ -37,26 +41,19 @@ const findBreadcrumbs = (
         slug: currentPath, // Override the slug with the full path
       });
       currentMenu = match.submenuItems || [];
-    } else {
-      if (pathname.includes('/multimedia/bocker/')) {
-        const bockerMatch = currentMenu.find((item) => item.slug === 'bocker');
-        if (bockerMatch) {
-          breadcrumbs.push({
-            ...bockerMatch,
-            slug: '/multimedia/bocker', // Set the full path for böcker
-          });
-        }
 
-        if (segments.length >= 3) {
-          const originalTitle = searchParams?.get('title') || segment;
-          breadcrumbs.push({
-            id: -1,
-            title: originalTitle,
-            slug: pathname,
-            submenuItems: [],
-          });
-        }
-      }
+      console.log('currentMenu', currentMenu);
+    } else {
+      // Handle dynamic segments (like search, categories, etc.)
+      let dynamicTitle = searchParams?.get('title') || segment;
+      dynamicTitle = capitalizeFirstLetter(dynamicTitle);
+
+      breadcrumbs.push({
+        id: -1,
+        title: dynamicTitle,
+        slug: pathname,
+        submenuItems: [],
+      });
       break;
     }
   }
@@ -89,6 +86,10 @@ const Breadcrumbs = () => {
       <ol className="flex flex-wrap max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
         {breadcrumbs?.map((breadcrumb, index) => {
           const isLast = index === breadcrumbs.length - 1;
+          const displayTitle = getBreadcrumbTitle(
+            breadcrumb.slug,
+            breadcrumb.title
+          );
 
           return (
             <li key={breadcrumb.id} className="flex items-center ">
@@ -97,10 +98,10 @@ const Breadcrumbs = () => {
                   href={breadcrumb.slug}
                   className="font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full"
                 >
-                  {breadcrumb.title}
+                  {displayTitle}
                 </Link>
               ) : (
-                <span className="">{breadcrumb.title}</span>
+                <span className="">{displayTitle}</span>
               )}
               {!isLast && (
                 <span className="mx-1">
