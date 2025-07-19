@@ -9,20 +9,13 @@ import SearchNoResults from '@/app/components/pages/multimedia/books/SearchNoRes
 import BookCardsSearchLoadingSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookCardsSearchLoadingSkeleton';
 import BookSearchFilterSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookSearchFilterSkeleton';
 import Spinner from '@/app/components/shared/Spinner';
-import { IBook } from '@/app/types/api/googleBookTypes';
-import { Language } from '@/app/types/languages';
+import { IBook, Language } from '@/app/types/api/googleBookTypes';
 import { SortOption } from '@/app/types/multimedia/books/sort';
-import { sortBooksByRating } from '@/app/utils/bookUtils';
-import { removeDuplicatesFromArray } from '@/app/utils/generalUtils';
-import axios from 'axios';
+import { removeDuplicateBooks } from '@/app/utils/bookUtils';
+import { ITEMS_PER_PAGE } from '@/app/data/multimedia/books';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useCallback, useEffect, useState } from 'react';
-
-const BASE_URL = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL;
-const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
-
-const MAX_RESULTS = 10;
-const ITEMS_PER_PAGE = 10;
+import useBookSearchByLanguage from '@/app/hooks/useBookSearchByLanguage';
 
 // Separate component that uses useSearchParams
 const BooksSearchContent = () => {
@@ -30,30 +23,12 @@ const BooksSearchContent = () => {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [books, setBooks] = useState<IBook[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
-  const [language, setLanguage] = useState<Language>('sv');
+  const [language, setLanguage] = useState<Language>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [additionalSearch, setAdditionalSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreResults, setHasMoreResults] = useState(true);
-
-  // Helper function to build the API URL
-  const buildApiUrl = (
-    searchQuery: string,
-    orderBy: SortOption,
-    lang: Language,
-    startIndex: number
-  ): string => {
-    let apiUrl = `${BASE_URL}/volumes?q=${encodeURIComponent(
-      searchQuery
-    )}&langRestrict=${lang}&maxResults=${MAX_RESULTS}&startIndex=${startIndex}&printType=books`;
-
-    if (orderBy !== 'rating') {
-      apiUrl += `&orderBy=${orderBy}`;
-    }
-
-    apiUrl += `&key=${API_KEY}`;
-    return apiUrl;
-  };
+  const { searchBooksByLanguage } = useBookSearchByLanguage();
 
   const searchBooks = useCallback(
     async (
@@ -64,26 +39,40 @@ const BooksSearchContent = () => {
     ) => {
       setIsInitialLoading(true);
       try {
-        const specificTerm = lang === 'sv' ? 'bipolär' : 'bipolar';
-        const searchQuery = `(intitle:${specificTerm} OR "${specificTerm}") AND ${query}`;
-        const startIndex = (page - 1) * ITEMS_PER_PAGE;
-        const apiUrl = buildApiUrl(searchQuery, orderBy, lang, startIndex);
-        const response = await axios.get(apiUrl);
-        const data = response.data;
+        if (lang === 'all') {
+          // For 'all' language, make two separate API calls and combine results
+          const swedishResult = await searchBooksByLanguage(
+            query,
+            orderBy,
+            'sv',
+            page
+          );
+          const englishResult = await searchBooksByLanguage(
+            query,
+            orderBy,
+            'en',
+            page
+          );
 
-        if (data?.items) {
-          let results = [...data.items];
+          // Combine results with Swedish books first, then English books
+          const combinedBooks = [...swedishResult, ...englishResult];
+          const uniqueBooks = removeDuplicateBooks(combinedBooks);
 
-          if (orderBy === 'rating') {
-            results = sortBooksByRating(results);
-          }
-
-          const uniqueBooks = removeDuplicatesFromArray<IBook>(results);
           setBooks(uniqueBooks);
-          setHasMoreResults(results.length === ITEMS_PER_PAGE);
+          setHasMoreResults(
+            swedishResult.length === ITEMS_PER_PAGE ||
+              englishResult.length === ITEMS_PER_PAGE
+          );
         } else {
-          setBooks([]);
-          setHasMoreResults(false);
+          // For specific language, use single API call
+          const results = await searchBooksByLanguage(
+            query,
+            orderBy,
+            lang,
+            page
+          );
+          setBooks(results);
+          setHasMoreResults(results.length === ITEMS_PER_PAGE);
         }
       } catch (error) {
         console.error('Error searching books:', error);
@@ -169,7 +158,6 @@ const BooksSearchContent = () => {
                     Sökresultat för &quot;{searchQuery}&quot;
                   </h1>
                 </div>
-
                 <div className="mb-6 flex justify-center">
                   <div className="bg-white rounded-lg p-4 shadow-md border flex flex-col sm:flex-row gap-4">
                     <LanguageSwitcher
@@ -185,16 +173,27 @@ const BooksSearchContent = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                  {books.map((book, index) => (
-                    <BookCard
-                      key={book.id || index}
-                      book={book}
-                      categoryId={0}
-                      categoryName="search"
-                      bookIndex={index}
-                      language={language}
-                    />
-                  ))}
+                  {books.map((book, index) => {
+                    // Create a unique key based on title and authors
+                    const title =
+                      book.volumeInfo.title?.toLowerCase().trim() || '';
+                    const authors =
+                      book.volumeInfo.authors
+                        ?.join(', ')
+                        .toLowerCase()
+                        .trim() || '';
+                    const uniqueKey = `${title}|${authors}|${index}`;
+
+                    return (
+                      <BookCard
+                        key={uniqueKey}
+                        book={book}
+                        categoryId={0}
+                        categoryName="search"
+                        bookIndex={index}
+                      />
+                    );
+                  })}
                 </div>
 
                 {books.length > 0 && (
