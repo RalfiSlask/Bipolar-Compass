@@ -5,3 +5,7 @@ export const shortenUrl = (url: string) => {
 export const stripHtmlTags = (input: string): string => {
   return input.replace(/<[^>]*>/g, '');
 };
+
+export const capitalizeFirstLetter = (text: string): string => {
+  return text.substring(0, 1).toUpperCase() + text.substring(1);
+};
