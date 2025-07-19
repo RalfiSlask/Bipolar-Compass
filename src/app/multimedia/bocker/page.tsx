@@ -17,6 +17,7 @@ import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import CategorySection from '../../components/pages/multimedia/books/CategorySection';
 import { SortOption } from '@/app/types/multimedia/books/sort';
+import { useRouter } from 'next/navigation';
 
 const BASE_URL = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL;
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
@@ -38,6 +39,7 @@ const BooksPage = () => {
   const [categoryLoadingStates, setCategoryLoadingStates] =
     useState<CategoryLoadingState>({});
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   /**
    * Helper function to build the google books api url
@@ -245,6 +247,16 @@ const BooksPage = () => {
     searchAllCategories('relevance');
   }, [searchAllCategories]);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmedQuery = searchQuery.trim();
+    if (trimmedQuery) {
+      router.push(
+        `/multimedia/bocker/sok?q=${encodeURIComponent(trimmedQuery)}`
+      );
+    }
+  };
+
   const showGlobalSpinner = isInitialLoading && categoryResults.length === 0;
   const isLoading = Object.values(categoryLoadingStates).some(Boolean);
 
@@ -254,6 +266,7 @@ const BooksPage = () => {
         <BooksSearchContainer
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          handleSearch={handleSearch}
         />
         <div className="relative">
           {showGlobalSpinner && (

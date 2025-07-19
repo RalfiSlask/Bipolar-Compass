@@ -9,26 +9,28 @@ import SearchNoResults from '@/app/components/pages/multimedia/books/SearchNoRes
 import BookCardsSearchLoadingSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookCardsSearchLoadingSkeleton';
 import BookSearchFilterSkeleton from '@/app/components/pages/multimedia/books/skeletons/BookSearchFilterSkeleton';
 import Spinner from '@/app/components/shared/Spinner';
+import { ITEMS_PER_PAGE } from '@/app/data/multimedia/books';
+import useBookSearchByLanguage from '@/app/hooks/useBookSearchByLanguage';
 import { IBook, Language } from '@/app/types/api/googleBookTypes';
 import { SortOption } from '@/app/types/multimedia/books/sort';
 import { removeDuplicateBooks } from '@/app/utils/bookUtils';
-import { ITEMS_PER_PAGE } from '@/app/data/multimedia/books';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useCallback, useEffect, useState } from 'react';
-import useBookSearchByLanguage from '@/app/hooks/useBookSearchByLanguage';
 
 // Separate component that uses useSearchParams
 const BooksSearchContent = () => {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [books, setBooks] = useState<IBook[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>('relevance');
   const [language, setLanguage] = useState<Language>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [additionalSearch, setAdditionalSearch] = useState('');
+  const [localSearchQuery, setLocalSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMoreResults, setHasMoreResults] = useState(true);
   const { searchBooksByLanguage } = useBookSearchByLanguage();
+  const router = useRouter();
 
   const searchBooks = useCallback(
     async (
@@ -87,15 +89,17 @@ const BooksSearchContent = () => {
 
   const handleSortChange = (newSortBy: SortOption) => {
     setSortBy(newSortBy);
+    setCurrentPage(1);
     if (searchQuery) {
-      searchBooks(searchQuery, newSortBy, language, currentPage);
+      searchBooks(searchQuery, newSortBy, language, 1);
     }
   };
 
   const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);
+    setCurrentPage(1);
     if (searchQuery) {
-      searchBooks(searchQuery, sortBy, newLanguage, currentPage);
+      searchBooks(searchQuery, sortBy, newLanguage, 1);
     }
   };
 
@@ -112,7 +116,7 @@ const BooksSearchContent = () => {
     const query = searchParams.get('q');
     if (query) {
       setSearchQuery(query);
-      setAdditionalSearch(query);
+      setLocalSearchQuery(query);
     }
   }, [searchParams]);
 
@@ -122,16 +126,21 @@ const BooksSearchContent = () => {
     }
   }, [searchQuery, searchBooks, sortBy, language, currentPage]);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmedQuery = localSearchQuery.trim();
+    if (trimmedQuery && pathname) {
+      router.push(`${pathname}?q=${encodeURIComponent(trimmedQuery)}`);
+    }
+  };
+
   return (
     <section className="w-full min-h-screen flex flex-col items-center">
       <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:pt-8">
         <BooksSearchContainer
-          searchQuery={additionalSearch}
-          setSearchQuery={setAdditionalSearch}
-          onSubmit={(query) => {
-            setSearchQuery(query);
-            setCurrentPage(1);
-          }}
+          searchQuery={localSearchQuery}
+          setSearchQuery={setLocalSearchQuery}
+          handleSearch={handleSearch}
         />
       </div>
 
