@@ -11,16 +11,15 @@ import {
   ICategoryBooks,
   Language,
 } from '@/app/types/api/googleBookTypes';
-import { sortBooksByRating } from '@/app/utils/bookUtils';
+import { getBuiltSearchQuery, sortBooksByRating } from '@/app/utils/bookUtils';
 import { removeDuplicatesFromArray } from '@/app/utils/generalUtils';
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import CategorySection from '../../components/pages/multimedia/books/CategorySection';
+import { SortOption } from '@/app/types/multimedia/books/sort';
 
 const BASE_URL = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_BASE_URL;
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
-
-type SortOption = 'relevance' | 'newest' | 'rating';
 
 interface CategoryLoadingState {
   [key: string]: boolean;
@@ -101,8 +100,10 @@ const BooksPage = () => {
       lang: Language = 'sv'
     ): Promise<ICategoryBooks> => {
       try {
-        const specificTerm = lang === 'sv' ? 'bipolär' : 'bipolar';
-        const searchQuery = `subject:"${category.name}"+(intitle:${specificTerm} OR "${specificTerm}")`;
+        const searchQuery = getBuiltSearchQuery({
+          lang,
+          category: category.name,
+        });
 
         const apiUrl = buildGoogleBooksApiUrl(searchQuery, orderBy, lang);
         const response = await axios.get(apiUrl);
@@ -125,16 +126,10 @@ const BooksPage = () => {
       orderBy: SortOption = 'relevance'
     ): Promise<ICategoryBooks> => {
       try {
-        // Sök först svenska böcker
         const swedishResult = await searchByCategory(category, orderBy, 'sv');
-
-        // Sök sedan engelska böcker
         const englishResult = await searchByCategory(category, orderBy, 'en');
 
-        // Kombinera resultaten med svenska först
         const combinedBooks = [...swedishResult.books, ...englishResult.books];
-
-        // Ta bort duplicerade böcker baserat på title och authors
         const uniqueBooks = removeDuplicatesFromArray<IBook>(combinedBooks);
 
         return {
