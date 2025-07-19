@@ -1,33 +1,17 @@
 import SearchButton from '@/app/components/shared/buttons/SearchButton';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+
+interface IBookSearchContainerProps {
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  handleSearch: (e: React.FormEvent) => void;
+}
 
 const BooksSearchContainer = ({
   searchQuery,
   setSearchQuery,
-  onSubmit,
-}: {
-  searchQuery: string;
-  setSearchQuery: (value: string) => void;
-  showExplanatoryText?: boolean;
-  onSubmit?: (query: string) => void;
-}) => {
-  const router = useRouter();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmedQuery = searchQuery.trim();
-    if (trimmedQuery) {
-      if (onSubmit) {
-        onSubmit(trimmedQuery);
-      } else {
-        router.push(
-          `/multimedia/bocker/sok?q=${encodeURIComponent(trimmedQuery)}`
-        );
-      }
-    }
-  };
-
+  handleSearch,
+}: IBookSearchContainerProps) => {
   return (
     <div className="w-full lg:h-[350px] shadow-md bg-white rounded-lg p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10 mb-8">
       <Image
