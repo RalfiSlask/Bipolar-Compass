@@ -39,7 +39,7 @@ const MusicPage = () => {
   return (
     <section className="page-section ">
       <PageIntroContainer intro={MUSIC_INTRO} />
-      <div className="flex flex-wrap gap-4 items-center">
+      <div className="flex flex-wrap gap-4 items-center mb-4 sm:mb-10">
         {MUSIC_TABS.map((tab) => (
           <button
             key={tab.id}

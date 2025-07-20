@@ -5,12 +5,14 @@ interface IBookSearchContainerProps {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   handleSearch: (e: React.FormEvent) => void;
+  searchText: string;
 }
 
 const BooksSearchContainer = ({
   searchQuery,
   setSearchQuery,
   handleSearch,
+  searchText,
 }: IBookSearchContainerProps) => {
   return (
     <div className="w-full lg:h-[350px] shadow-md bg-white rounded-lg p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10 mb-8">
@@ -50,11 +52,9 @@ const BooksSearchContainer = ({
           </div>
           <SearchButton />
         </form>
-
-        <div className="mt-4 text-sm text-gray-500">
-          Din sökning kommer att kombineras med &quot;bipolar&quot; för att
-          hitta relevanta böcker.
-        </div>
+        {searchText && (
+          <div className="mt-4 text-sm text-gray-500">{searchText}</div>
+        )}
       </div>
     </div>
   );

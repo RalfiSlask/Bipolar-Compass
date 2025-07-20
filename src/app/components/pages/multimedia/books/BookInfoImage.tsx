@@ -10,7 +10,7 @@ const BookInfoImage = ({ thumbnail, alt }: IBookInfoImageProps) => {
   return (
     <div className="sm:w-1/3 xl:w-1/4">
       {thumbnail ? (
-        <div className="w-full flex justify-center max-w-80 shadow-sm">
+        <div className="w-full flex justify-center max-w-40 sm:max-w-80 shadow-sm">
           <Image
             src={increaseThumbnailQualityByZoom(thumbnail)}
             alt={alt}
