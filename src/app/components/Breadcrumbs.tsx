@@ -32,8 +32,6 @@ const findBreadcrumbs = (
     currentPath += `/${segment}`;
     const match = currentMenu.find((item) => item.slug === segment);
 
-    console.log('match', match);
-
     // If a match is found, the match is added to the breadcrumbs array and the currentMenu is updated to the submenuItems of the match.
     if (match) {
       breadcrumbs.push({
@@ -41,8 +39,6 @@ const findBreadcrumbs = (
         slug: currentPath, // Override the slug with the full path
       });
       currentMenu = match.submenuItems || [];
-
-      console.log('currentMenu', currentMenu);
     } else {
       // Handle dynamic segments (like search, categories, etc.)
       let dynamicTitle = searchParams?.get('title') || segment;
