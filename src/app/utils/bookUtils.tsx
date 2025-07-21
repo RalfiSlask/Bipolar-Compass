@@ -119,13 +119,21 @@ export const sortBooksByRating = (books: IBook[]): IBook[] => {
  * Function for increasing the zoom level (image quality) in the uri for google books
  *
  * @param {string} thumbnail - thumbnail link to image
+ * @param {number} zoomWithCurl - zoom-nivå om edge=curl finns (default 3)
+ * @param {number} zoomWithoutCurl - zoom-nivå om edge=curl saknas (default 1)
  * @returns {string} - thumbnail uri
  */
 export const increaseThumbnailQualityByZoom = (
   thumbnail: string,
-  zoom: number = 1
+  zoomWithCurl: number = 3,
+  zoomWithoutCurl: number = 1
 ): string => {
-  return thumbnail?.replace(/zoom=\d/, `zoom=${zoom}`);
+  if (!thumbnail) return '';
+
+  if (thumbnail.includes('edge=curl')) {
+    return thumbnail.replace(/zoom=\d/, `zoom=${zoomWithCurl}`);
+  }
+  return thumbnail.replace(/zoom=\d/, `zoom=${zoomWithoutCurl}`);
 };
 
 /**
