@@ -154,7 +154,7 @@ const BooksSearchContent = () => {
               <Spinner />
             </div>
             <div className="text-center mb-6">
-              <h1 className="text-3xl font-bold">
+              <h1 className="text-3xl font-bold text-primary-dark">
                 Sökresultat för &quot;{searchQuery}&quot;
               </h1>
             </div>

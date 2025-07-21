@@ -217,7 +217,7 @@ const CategoryPageContent = () => {
             {books.length > 0 && (
               <>
                 <div className="text-center mb-4 sm:mb-6">
-                  <h1 className="text-3xl font-bold">
+                  <h1 className="text-3xl font-bold text-primary-dark">
                     {category.label}
                     {searchQuery && ` - "${searchQuery}"`}
                   </h1>
