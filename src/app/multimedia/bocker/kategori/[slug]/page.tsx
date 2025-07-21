@@ -184,6 +184,8 @@ const CategoryPageContent = () => {
           searchQuery={localSearchQuery}
           setSearchQuery={setLocalSearchQuery}
           handleSearch={handleSearch}
+          searchText={`Din sökning kommer att kombineras med "bipolar" inom kategorin ${category.label} för att
+            hitta relevanta böcker.`}
         />
       </div>
 

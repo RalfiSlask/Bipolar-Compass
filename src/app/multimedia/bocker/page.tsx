@@ -262,11 +262,13 @@ const BooksPage = () => {
 
   return (
     <>
-      <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:py-8">
+      <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:py-8 mb-4 sm:mb-16">
         <BooksSearchContainer
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           handleSearch={handleSearch}
+          searchText='Din sökning kommer att kombineras med "bipolar" för att
+            hitta relevanta böcker.'
         />
         <div className="relative">
           {showGlobalSpinner && (
@@ -275,7 +277,7 @@ const BooksPage = () => {
             </div>
           )}
           {!showGlobalSpinner && categoryResults.length > 0 && (
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 sm:gap-8">
               {categoryResults.map((categoryData, categoryIndex) => {
                 const isLoadingCategory =
                   categoryLoadingStates[categoryData.category.id];

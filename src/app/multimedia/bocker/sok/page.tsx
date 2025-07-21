@@ -141,6 +141,8 @@ const BooksSearchContent = () => {
           searchQuery={localSearchQuery}
           setSearchQuery={setLocalSearchQuery}
           handleSearch={handleSearch}
+          searchText='Din sökning kommer att kombineras med "bipolar" för att
+            hitta relevanta böcker.'
         />
       </div>
 
