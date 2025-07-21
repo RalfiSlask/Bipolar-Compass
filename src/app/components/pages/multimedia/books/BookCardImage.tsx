@@ -24,7 +24,6 @@ const BookCardImage = ({ volumeInfo }: IBookCardImageProps) => {
         className="object-cover rounded w-full"
         sizes="(max-width: 768px) 100vw, 50vw"
         loading="lazy"
-        unoptimized
       />
     </div>
   );

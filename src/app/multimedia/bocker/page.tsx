@@ -81,6 +81,8 @@ const BooksPage = () => {
 
       const uniqueBooks = removeDuplicatesFromArray<IBook>(books);
 
+      console.log('books:', uniqueBooks);
+
       return {
         category,
         books: uniqueBooks,

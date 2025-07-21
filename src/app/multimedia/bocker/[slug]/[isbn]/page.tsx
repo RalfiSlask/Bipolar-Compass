@@ -74,7 +74,7 @@ const BookPage = () => {
               thumbnail={bookDetails.volumeInfo.imageLinks?.thumbnail || ''}
               alt={bookDetails.volumeInfo.title}
             />
-            <div className="md:w-2/3 flex flex-col gap-4">
+            <div className="md:w-2/3 xl:w-3/4 flex flex-col gap-4">
               <div>
                 <h2 className="text-2xl font-semibold mb-2 text-primary-dark">
                   {bookDetails.volumeInfo?.title}
