@@ -1,6 +1,7 @@
 import { capitalizeFirstLetter } from './textUtils';
 
 const slugToBreadcrumbTitle: Record<string, string> = {
+  'sok': 'Sök',
   'anhoriga': 'Anhöriga',
   'hjalp': 'Hjälp',
   'behandling': 'Behandling',
