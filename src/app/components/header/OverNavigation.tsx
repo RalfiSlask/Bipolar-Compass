@@ -23,7 +23,7 @@ const OverNavigation = ({ resetMenu }: IOverNavigationProps) => {
           </Link>
           <Link
             className="rounded-lg py-1 px-2 flex items-center gap-2 text-primary-dark hover:bg-white/80 transition-all duration-200 group"
-            href="/kontakt"
+            href="/om-oss/kontakt"
             onClick={resetMenu}
           >
             <MdContactSupport className="transition-transform duration-200" />

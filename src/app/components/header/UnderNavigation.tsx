@@ -61,8 +61,8 @@ const UnderNavigation = ({
   // Render mobile menu header
   const renderMobileMenuHeader = () => (
     <>
-      <div className="xl:hidden flex justify-between items-center w-full h-[94px] flex-shrink-0">
-        <div className="absolute top-[94px] left-0 w-full h-[2px] bg-primary-medium" />
+      <div className="xl:hidden flex justify-between items-center w-full h-[68px] flex-shrink-0">
+        <div className="absolute top-[68px] left-0 w-full h-[2px] bg-primary-medium" />
         <BipolarLogo />
         <button
           className="xl:hidden text-2xl hover:text-primary-medium transition-colors z-[9999]"
@@ -72,7 +72,7 @@ const UnderNavigation = ({
           <HiX />
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-4 lg:gap-2 border-b border-primary-light pt-4 lg:pt-0 pb-4 mb-2 lg:mb-10 xl:mb-2 flex-shrink-0">
+      <div className="flex flex-col sm:flex-row px-3 w-full xl:hidden justify-between gap-4 lg:gap-2 border border-primary-light rounded-sm pt-4 pb-4 mb-2 lg:mb-10 xl:mb-2 flex-shrink-0">
         <div className="flex items-center gap-6 xl:px-2">
           <Link
             href="/akut"
@@ -82,7 +82,7 @@ const UnderNavigation = ({
             <MdEmergency /> Akut hjälp
           </Link>
           <Link
-            href="/kontakt"
+            href="/om-oss/kontakt"
             className="font-semibold text-base flex items-center gap-2 text-primary-dark"
             onClick={closeMenu}
           >

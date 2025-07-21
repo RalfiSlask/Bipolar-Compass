@@ -2,12 +2,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import arrowRightIcon from '../assets/icons/arrow-right.svg';
 import menuData from '../data/json/menu.json';
 import { IMenuItem } from '../types/menu/menu';
+import { getBreadcrumbTitle } from '../utils/breadcrumbs';
+import { capitalizeFirstLetter } from '../utils/textUtils';
 
-const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
+const findBreadcrumbs = (
+  pathname: string,
+  menu: IMenuItem[],
+  searchParams: URLSearchParams | null
+): IMenuItem[] => {
   const breadcrumbs: IMenuItem[] = [
     {
       id: 0,
@@ -19,17 +25,31 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
 
   const segments = pathname.split('/').filter(Boolean);
   let currentMenu: IMenuItem[] = menu;
+  let currentPath = '';
 
   // This loop is used to find the breadcrumbs based on the pathname.
   for (const segment of segments) {
+    currentPath += `/${segment}`;
     const match = currentMenu.find((item) => item.slug === segment);
 
     // If a match is found, the match is added to the breadcrumbs array and the currentMenu is updated to the submenuItems of the match.
     if (match) {
-      breadcrumbs.push(match);
+      breadcrumbs.push({
+        ...match,
+        slug: currentPath, // Override the slug with the full path
+      });
       currentMenu = match.submenuItems || [];
     } else {
-      console.warn(`No match found for segment: ${segment}`);
+      // Handle dynamic segments (like search, categories, etc.)
+      let dynamicTitle = searchParams?.get('title') || segment;
+      dynamicTitle = capitalizeFirstLetter(dynamicTitle);
+
+      breadcrumbs.push({
+        id: -1,
+        title: dynamicTitle,
+        slug: pathname,
+        submenuItems: [],
+      });
       break;
     }
   }
@@ -38,6 +58,7 @@ const findBreadcrumbs = (pathname: string, menu: IMenuItem[]): IMenuItem[] => {
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   if (
     pathname === '/' ||
@@ -50,7 +71,7 @@ const Breadcrumbs = () => {
 
   let breadcrumbs;
   if (pathname !== null) {
-    breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems);
+    breadcrumbs = findBreadcrumbs(pathname, menuData.menuItems, searchParams);
   }
 
   return (
@@ -58,21 +79,25 @@ const Breadcrumbs = () => {
       className="py-4 bg-primary-light flex justify-center border-b"
       aria-label="Breadcrumb"
     >
-      <ol className="flex max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
+      <ol className="flex flex-wrap max-w-[1440px] px-4 md:px-10 w-full items-center text-primary-dark">
         {breadcrumbs?.map((breadcrumb, index) => {
           const isLast = index === breadcrumbs.length - 1;
+          const displayTitle = getBreadcrumbTitle(
+            breadcrumb.slug,
+            breadcrumb.title
+          );
 
           return (
             <li key={breadcrumb.id} className="flex items-center ">
               {!isLast ? (
                 <Link
-                  href={`/${breadcrumb.slug}`}
+                  href={breadcrumb.slug}
                   className="font-bold relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary-dark after:transition-all after:duration-300 hover:after:w-full"
                 >
-                  {breadcrumb.title}
+                  {displayTitle}
                 </Link>
               ) : (
-                <span className="">{breadcrumb.title}</span>
+                <span className="">{displayTitle}</span>
               )}
               {!isLast && (
                 <span className="mx-1">

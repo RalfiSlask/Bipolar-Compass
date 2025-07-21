@@ -1,6 +1,6 @@
-# BipolärKompassen
+# Bipolärkompassen
 
-![BipolärKompassen](https://github.com/user-attachments/assets/27244180-f6c8-4ed0-af25-67dddd1ae403)
+![Bipolärkompassen](https://github.com/user-attachments/assets/27244180-f6c8-4ed0-af25-67dddd1ae403)
 
 ## Tech Stack
 

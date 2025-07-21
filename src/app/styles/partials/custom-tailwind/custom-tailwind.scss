@@ -47,7 +47,6 @@
 }
 
 .page-gaps {
-  /*   @apply gap-4 sm:gap-10; */
   @apply gap-0;
 }
 
@@ -94,4 +93,24 @@
       @apply h-full text-white px-4 py-2 text-center font-semibold flex items-center justify-center;
     }
   }
+}
+
+.skeleton-pulse {
+  @apply bg-gray-300 rounded animate-pulse;
+}
+
+.book-info-container {
+  div {
+    @apply flex gap-2;
+    div {
+      @apply w-[88px] font-medium text-primary-dark;
+    }
+    p {
+      @apply font-medium;
+    }
+  }
+}
+
+.lightbox-loading-container {
+  @apply absolute inset-0 bg-white/70 z-10 flex items-center justify-center;
 }

@@ -92,7 +92,7 @@ const BipolarLogo = ({
               footer ? 'text-tertiary-light' : 'text-secondary-dark'
             }`}
           >
-            Kompassen
+            kompassen
           </span>
         </h1>
       </div>

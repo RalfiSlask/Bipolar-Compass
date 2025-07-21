@@ -76,6 +76,13 @@ const MULTIMEDIA_LINKS = [
     description: 'Utforska podcasts om bipolär sjukdom och mental hälsa',
     image: '/images/multimedia/podcasts.webp',
   },
+  {
+    title: 'Böcker',
+    href: '/multimedia/böcker',
+    description:
+      'Här kan du välja från ett stort urval av böcker för att få mer kunskap om bipolär sjukdom',
+    image: '/images/multimedia/books-links.webp',
+  },
 ];
 
 const HELP_LINKS = [

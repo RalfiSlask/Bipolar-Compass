@@ -35,7 +35,6 @@ export const POST = async (req: NextRequest) => {
       .find({
         user_id: user._id.toString(),
       })
-
       .toArray();
 
     const responseData = {

@@ -82,6 +82,11 @@
           "id": 53,
           "title": "Musik",
           "slug": "musik"
+        },
+        {
+          "id": 54,
+          "title": "Böcker",
+          "slug": "bocker"
         }
       ]
     },

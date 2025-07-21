@@ -22,3 +22,22 @@ export const getLabelByValue = (
 export const formatPhoneForTel = (phoneNumber: string): string => {
   return phoneNumber.replace(/[\s-]/g, '');
 };
+
+/**
+ * Removes duplicates from an array of objects based on the id property
+ *
+ * @param array - The array of objects to remove duplicates from
+ * @returns The array with duplicates removed
+ */
+export const removeDuplicatesFromArray = <T extends { id: string }>(
+  array: T[]
+): T[] => {
+  return array.filter(
+    (item: T, index: number, arr: T[]) =>
+      arr.findIndex((i) => i.id === item.id) === index
+  );
+};
+
+export const getLowerCaseStringsFromArray = (stringArray: string[]) => {
+  return stringArray ? stringArray.join(', ').toLowerCase().trim() : '';
+};

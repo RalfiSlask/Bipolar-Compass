@@ -24,6 +24,16 @@ const nextConfig: NextConfig = {
         hostname: 'bipolar-compass-image-storage.s3.eu-north-1.amazonaws.com',
         pathname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 'books.google.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'books.google.com',
+        pathname: '**',
+      },
     ],
   },
 };

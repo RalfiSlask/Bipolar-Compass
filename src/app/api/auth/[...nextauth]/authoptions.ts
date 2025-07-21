@@ -134,6 +134,29 @@ export const authOptions: NextAuthOptions = {
       token: ICustomToken;
     }) {
       if (session.user && token) {
+        try {
+          const db = (await clientPromise).db('thesis');
+          const usersCollection = db.collection('users');
+
+          const actualUser = await usersCollection.findOne({
+            email: token.email,
+          });
+
+          if (actualUser) {
+            const actualUserId = actualUser._id.toString();
+
+            // If the token user ID doesn't match the actual user ID, we update it
+            if (token.id !== actualUserId) {
+              console.log(
+                `Session user ID mismatch: ${token.id} vs ${actualUserId}`
+              );
+              token.id = actualUserId;
+            }
+          }
+        } catch (error) {
+          console.error('Error validating session user ID:', error);
+        }
+
         (session.user as ICustomUser).id = token.id as string;
         (session.user as ICustomUser).email = token.email;
         (session.user as ICustomUser).isVerified = token.isVerified ?? false;
