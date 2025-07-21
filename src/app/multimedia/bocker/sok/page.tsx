@@ -14,6 +14,7 @@ import useBookSearchByLanguage from '@/app/hooks/useBookSearchByLanguage';
 import { IBook, Language } from '@/app/types/api/googleBookTypes';
 import { SortOption } from '@/app/types/multimedia/books/sort';
 import { removeDuplicateBooks } from '@/app/utils/bookUtils';
+import { getLowerCaseStringsFromArray } from '@/app/utils/generalUtils';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useCallback, useEffect, useState } from 'react';
 
@@ -164,12 +165,12 @@ const BooksSearchContent = () => {
           <>
             {books.length > 0 && (
               <>
-                <div className="text-center mb-6">
+                <div className="text-center mb-4 sm:mb-6">
                   <h1 className="text-3xl font-bold">
                     Sökresultat för &quot;{searchQuery}&quot;
                   </h1>
                 </div>
-                <div className="mb-6 flex justify-center">
+                <div className="mb-4 sm:mb-6 flex justify-center">
                   <div className="bg-white rounded-lg p-4 shadow-md border flex flex-col sm:flex-row gap-4">
                     <LanguageSwitcher
                       language={language}
@@ -188,11 +189,9 @@ const BooksSearchContent = () => {
                     // Create a unique key based on title and authors
                     const title =
                       book.volumeInfo.title?.toLowerCase().trim() || '';
-                    const authors =
-                      book.volumeInfo.authors
-                        ?.join(', ')
-                        .toLowerCase()
-                        .trim() || '';
+                    const authors = getLowerCaseStringsFromArray(
+                      book.volumeInfo.authors || []
+                    );
                     const uniqueKey = `${title}|${authors}|${index}`;
 
                     return (

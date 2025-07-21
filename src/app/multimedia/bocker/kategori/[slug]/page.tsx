@@ -19,6 +19,7 @@ import {
 } from '@/app/types/api/googleBookTypes';
 import { SortOption } from '@/app/types/multimedia/books/sort';
 import { removeDuplicateBooks } from '@/app/utils/bookUtils';
+import { getLowerCaseStringsFromArray } from '@/app/utils/generalUtils';
 import {
   useParams,
   usePathname,
@@ -177,6 +178,13 @@ const CategoryPageContent = () => {
     }
   };
 
+  books.forEach((book) => {
+    console.log(
+      'hej:',
+      book.volumeInfo.authors?.join(', ').toLowerCase().trim() || ''
+    );
+  });
+
   return (
     <section className="w-full min-h-screen flex flex-col items-center">
       <div className="max-w-[1440px] w-full px-4 md:px-10 pt-4 md:pt-8">
@@ -208,14 +216,14 @@ const CategoryPageContent = () => {
           <>
             {books.length > 0 && (
               <>
-                <div className="text-center mb-6">
+                <div className="text-center mb-4 sm:mb-6">
                   <h1 className="text-3xl font-bold">
                     {category.label}
                     {searchQuery && ` - "${searchQuery}"`}
                   </h1>
                 </div>
 
-                <div className="mb-6 flex justify-center">
+                <div className="mb-4 sm:mb-6 flex justify-center">
                   <div className="bg-white rounded-lg p-4 shadow-md border flex flex-col sm:flex-row gap-4">
                     <LanguageSwitcher
                       language={language}
@@ -234,11 +242,9 @@ const CategoryPageContent = () => {
                     // Create a unique key based on title and authors
                     const title =
                       book.volumeInfo.title?.toLowerCase().trim() || '';
-                    const authors =
-                      book.volumeInfo.authors
-                        ?.join(', ')
-                        .toLowerCase()
-                        .trim() || '';
+                    const authors = getLowerCaseStringsFromArray(
+                      book.volumeInfo.authors || []
+                    );
                     const uniqueKey = `${title}|${authors}|${index}`;
 
                     return (
