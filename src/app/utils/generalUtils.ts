@@ -37,3 +37,7 @@ export const removeDuplicatesFromArray = <T extends { id: string }>(
       arr.findIndex((i) => i.id === item.id) === index
   );
 };
+
+export const getLowerCaseStringsFromArray = (stringArray: string[]) => {
+  return stringArray ? stringArray.join(', ').toLowerCase().trim() : '';
+};
