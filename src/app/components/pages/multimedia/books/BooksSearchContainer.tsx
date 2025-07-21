@@ -15,7 +15,7 @@ const BooksSearchContainer = ({
   searchText,
 }: IBookSearchContainerProps) => {
   return (
-    <div className="w-full lg:h-[350px] shadow-md bg-white rounded-lg p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-10 mb-8">
+    <div className="w-full lg:h-[350px] shadow-md bg-white rounded-lg p-4 md:px-10 py-6 flex flex-col lg:flex-row justify-between gap-4 sm:gap-10 mb-4 sm:mb-8">
       <Image
         src="/images/multimedia/books/books.webp"
         alt="böcker"
