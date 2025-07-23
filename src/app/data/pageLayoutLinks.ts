@@ -78,7 +78,7 @@ const MULTIMEDIA_LINKS = [
   },
   {
     title: 'Böcker',
-    href: '/multimedia/böcker',
+    href: '/multimedia/bocker',
     description:
       'Här kan du välja från ett stort urval av böcker för att få mer kunskap om bipolär sjukdom',
     image: '/images/multimedia/books-links.webp',
