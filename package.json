@@ -19,6 +19,7 @@
     "@fullcalendar/timegrid": "^6.1.15",
     "@types/bcryptjs": "^2.4.6",
     "@types/nodemailer": "^6.4.17",
+    "@types/swagger-jsdoc": "^6.0.4",
     "@upstash/qstash": "^2.7.20",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
@@ -28,6 +29,7 @@
     "embla-carousel-react": "^8.6.0",
     "formik": "^2.4.6",
     "framer-motion": "^11.18.0",
+    "jsdom": "^26.1.0",
     "lodash": "^4.17.21",
     "mongodb": "^6.13.0",
     "mysql2": "^2.3.3",
@@ -45,6 +47,7 @@
     "recharts": "^2.15.0",
     "sass": "^1.83.0",
     "spotify-web-api-js": "^1.5.2",
+    "swagger-jsdoc": "^6.2.8",
     "uuid": "^11.0.5",
     "xss": "^1.0.15",
     "yup": "^1.6.1"
@@ -52,6 +55,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/dom-speech-recognition": "^0.0.6",
+    "@types/jsdom": "^21.1.7",
     "@types/lodash": "^4.17.14",
     "@types/next-auth": "^3.13.0",
     "@types/node": "^20",
