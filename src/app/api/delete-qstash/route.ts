@@ -10,6 +10,131 @@ const qstashClient = new Client({
 });
 
 /**
+ * @swagger
+ * /api/delete-qstash:
+ *   post:
+ *     summary: Delete QStash messages and update medication schedules
+ *     description: Deletes scheduled QStash messages from Upstash and updates the user's medication schedule accordingly. Cancelled schedules are moved to history with 'cancelled' status.
+ *     tags:
+ *       - Medication
+ *       - QStash
+ *       - Scheduling
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - messageIds
+ *               - userId
+ *               - medicationName
+ *             properties:
+ *               messageIds:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 description: Array of QStash message IDs to delete
+ *                 example: ["msg_123456789", "msg_987654321"]
+ *               userId:
+ *                 type: string
+ *                 description: The unique identifier of the user
+ *                 example: "507f1f77bcf86cd799439011"
+ *               medicationName:
+ *                 type: string
+ *                 description: The name of the medication whose schedules are being cancelled
+ *                 example: "Sertraline"
+ *     responses:
+ *       200:
+ *         description: Messages deleted successfully and medication schedule updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   description: Indicates if the operation was successful
+ *                   example: true
+ *                 results:
+ *                   type: array
+ *                   description: Results of the QStash message deletion operations
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         description: The message ID that was processed
+ *                       status:
+ *                         type: string
+ *                         enum: [success, error]
+ *                         description: The status of the deletion operation
+ *                       error:
+ *                         type: string
+ *                         description: Error message if deletion failed
+ *                 updatedMedications:
+ *                   type: array
+ *                   description: Updated medication list with cancelled schedules moved to history
+ *                   items:
+ *                     $ref: '#/components/schemas/Medication'
+ *       400:
+ *         description: Bad request - missing required parameters
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Missing required parameters"
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "User not found"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Failed to delete messages"
+ *     security: []
+ *     x-code-samples:
+ *       - lang: JavaScript
+ *         source: |
+ *           const response = await fetch('/api/delete-qstash', {
+ *             method: 'POST',
+ *             headers: {
+ *               'Content-Type': 'application/json',
+ *             },
+ *             body: JSON.stringify({
+ *               messageIds: ['msg_123456789', 'msg_987654321'],
+ *               userId: '507f1f77bcf86cd799439011',
+ *               medicationName: 'Sertraline'
+ *             })
+ *           });
+ *           const data = await response.json();
+ *       - lang: cURL
+ *         source: |
+ *           curl -X POST /api/delete-qstash \
+ *             -H "Content-Type: application/json" \
+ *             -d '{
+ *               "messageIds": ["msg_123456789", "msg_987654321"],
+ *               "userId": "507f1f77bcf86cd799439011",
+ *               "medicationName": "Sertraline"
+ *             }'
+ */
+
+/**
  * This route is used to delete QStash messages on upstash qstash that is connected to vercel.
  * @param {NextRequest} req - The request object which contains the messageId to delete.
  * @returns {NextResponse} Response object with success or error.

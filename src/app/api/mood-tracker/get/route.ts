@@ -5,6 +5,91 @@ import { Document, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * @swagger
+ * /api/mood-tracker/get:
+ *   post:
+ *     summary: Hämta mood tracker-data
+ *     description: Hämtar mood tracker-data för en användare, med möjlighet att filtrera på vecka och år
+ *     tags:
+ *       - Mood Tracker
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - user_id
+ *             properties:
+ *               user_id:
+ *                 type: string
+ *                 description: Användarens ID
+ *                 example: "user123"
+ *               week:
+ *                 type: number
+ *                 description: Veckonummer (valfritt, för att filtrera på specifik vecka)
+ *                 example: 3
+ *               year:
+ *                 type: number
+ *                 description: År (valfritt, för att filtrera på specifikt år)
+ *                 example: 2024
+ *     responses:
+ *       200:
+ *         description: Mood tracker-data hämtad framgångsrikt
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                   description: Unikt ID för veckodata
+ *                 user_id:
+ *                   type: string
+ *                   description: Användarens ID
+ *                 week_number:
+ *                   type: number
+ *                   description: Veckonummer
+ *                 year:
+ *                   type: number
+ *                   description: År
+ *                 created_at:
+ *                   type: string
+ *                   format: date-time
+ *                   description: När data skapades
+ *                 updated_at:
+ *                   type: string
+ *                   format: date-time
+ *                   description: När data senast uppdaterades
+ *                 mood_values:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                     minimum: 1
+ *                     maximum: 10
+ *                   description: Humörvärden för veckan (7 värden)
+ *       400:
+ *         description: Felaktig begäran - saknad user_id
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "User ID is required"
+ *       500:
+ *         description: Internt serverfel
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ */
+
+/**
  * This route is used to get the mood tracker data to display in the mood tracker page.
  * @param {NextRequest} req - The request object which contains the user_id, week and year.
  * @returns {NextResponse} Response object with the mood tracker data or error.

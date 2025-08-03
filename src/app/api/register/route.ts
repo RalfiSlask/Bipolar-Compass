@@ -6,6 +6,73 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCollection } from '../../utils/databaseUtils';
 
 /**
+ * @swagger
+ * /api/register:
+ *   post:
+ *     summary: Registrera ny användare
+ *     description: Skapar en ny användare med verifieringsmail och initial mood tracker-data
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *               - password
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Användarens namn
+ *                 example: "John Doe"
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: Användarens e-postadress
+ *                 example: "user@example.com"
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 minLength: 8
+ *                 description: Lösenord (minst 8 tecken)
+ *                 example: "securepassword123"
+ *     responses:
+ *       201:
+ *         description: Användare skapad framgångsrikt
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "User created, verification link sent"
+ *       400:
+ *         description: Felaktig begäran - e-postadress redan använd
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "E-posten är redan använd."
+ *       500:
+ *         description: Internt serverfel
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Could not create user"
+ */
+
+/**
  * This route is used to register a new user.
  * @param {NextRequest} req - The request object which contains the name, email and password.
  * @returns {NextResponse} Response object with success or error.

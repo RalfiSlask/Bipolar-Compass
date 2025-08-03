@@ -8,6 +8,73 @@ import { ObjectId, WithId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * @swagger
+ * /api/mood-tracker/save:
+ *   post:
+ *     summary: Spara mood tracker-data
+ *     description: Sparar eller uppdaterar mood tracker-data för en specifik vecka
+ *     tags:
+ *       - Mood Tracker
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - user_id
+ *               - weekData
+ *             properties:
+ *               user_id:
+ *                 type: string
+ *                 description: Användarens ID
+ *                 example: "user123"
+ *               weekData:
+ *                 type: object
+ *                 required:
+ *                   - week_number
+ *                   - year
+ *                   - mood_values
+ *                 properties:
+ *                   week_number:
+ *                     type: number
+ *                     description: Veckonummer (1-52)
+ *                     example: 3
+ *                   year:
+ *                     type: number
+ *                     description: År
+ *                     example: 2024
+ *                   mood_values:
+ *                     type: array
+ *                     items:
+ *                       type: number
+ *                       minimum: 1
+ *                       maximum: 10
+ *                     description: Humörvärden för veckan (7 värden)
+ *                     example: [7, 8, 6, 9, 7, 8, 6]
+ *     responses:
+ *       200:
+ *         description: Mood tracker-data sparat framgångsrikt
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *       500:
+ *         description: Internt serverfel
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ */
+
+/**
  * This route is used to save the mood tracker data by week.
  * @param {NextRequest} req - The request object which contains the user_id and weekData.
  * @returns {NextResponse} Response object with success or error.

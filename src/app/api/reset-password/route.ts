@@ -4,6 +4,93 @@ import bcryptjs from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * @swagger
+ * /api/reset-password:
+ *   post:
+ *     summary: Reset user password
+ *     description: Resets a user's password using a valid reset token. The token must be valid and not expired. After successful password reset, the token is invalidated for security.
+ *     tags:
+ *       - Authentication
+ *       - Password Reset
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - password
+ *               - token
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 minLength: 8
+ *                 description: The new password (minimum 8 characters)
+ *                 example: "newSecurePassword123"
+ *               token:
+ *                 type: string
+ *                 description: The reset token received via email
+ *                 example: "abc123def456ghi789"
+ *     responses:
+ *       200:
+ *         description: Password reset successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message confirming password reset
+ *                   example: "Password reset successful"
+ *       400:
+ *         description: Bad request - invalid or expired token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Invalid or expired token"
+ *                   description: Error message when token is invalid, expired, or missing
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Internal server error"
+ *     security: []
+ *     x-code-samples:
+ *       - lang: JavaScript
+ *         source: |
+ *           const response = await fetch('/api/reset-password', {
+ *             method: 'POST',
+ *             headers: {
+ *               'Content-Type': 'application/json',
+ *             },
+ *             body: JSON.stringify({
+ *               password: 'newSecurePassword123',
+ *               token: 'abc123def456ghi789'
+ *             })
+ *           });
+ *           const result = await response.json();
+ *       - lang: cURL
+ *         source: |
+ *           curl -X POST /api/reset-password \
+ *             -H "Content-Type: application/json" \
+ *             -d '{
+ *               "password": "newSecurePassword123",
+ *               "token": "abc123def456ghi789"
+ *             }'
+ */
+
+/**
  * This route is used to reset the user's password.
  * @param {NextRequest} req - The request object which contains the password and token.
  * @returns {NextResponse} Response object with success or error.

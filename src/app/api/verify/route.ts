@@ -3,6 +3,60 @@ import { getCollection } from '@/app/utils/databaseUtils';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
+ * @swagger
+ * /api/verify:
+ *   get:
+ *     summary: Verifiera användares e-postadress
+ *     description: Verifierar en användares e-postadress med hjälp av en verifieringstoken
+ *     tags:
+ *       - Authentication
+ *     parameters:
+ *       - in: query
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Verifieringstoken som skickades via e-post
+ *         example: "abc123def456ghi789"
+ *     responses:
+ *       200:
+ *         description: E-postadress verifierad framgångsrikt
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "E-mail address has been verified"
+ *                 email:
+ *                   type: string
+ *                   format: email
+ *                   description: Den verifierade e-postadressen
+ *                   example: "user@example.com"
+ *       400:
+ *         description: Felaktig begäran - saknad token eller ogiltig token
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Verification token is missing"
+ *       500:
+ *         description: Internt serverfel
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Server error during verification process"
+ */
+
+/**
  * This route is used to verify the user's email.
  * @param {NextRequest} req - The request object which contains the token.
  * @returns {NextResponse} Response object with success or error.
