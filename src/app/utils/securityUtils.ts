@@ -1,5 +1,3 @@
-import DOMPurify from 'dompurify';
-import { JSDOM } from 'jsdom';
 import { NextRequest, NextResponse } from 'next/server';
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
@@ -7,9 +5,24 @@ const FIVE_MINUTES = 5 * 60 * 1000;
 const AMOUNT_OF_REQUESTS_PER_USER = 10;
 const AMOUNT_OF_VOTES_PER_USER = 100;
 
-// Create a JSDOM instance for server-side DOMPurify
-const window = new JSDOM('').window;
-const purify = DOMPurify(window);
+// Simple HTML sanitization without JSDOM
+const sanitizeHtmlSimple = (html: string): string => {
+  if (!html || typeof html !== 'string') {
+    return '';
+  }
+
+  // Remove potentially dangerous HTML tags and attributes
+  return html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
+    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '')
+    .replace(/<embed\b[^<]*(?:(?!<\/embed>)<[^<]*)*<\/embed>/gi, '')
+    .replace(/<form\b[^<]*(?:(?!<\/form>)<[^<]*)*<\/form>/gi, '')
+    .replace(/javascript:/gi, '')
+    .replace(/on\w+\s*=/gi, '')
+    .replace(/<a[^>]*href\s*=\s*["']?javascript:/gi, '<a href="#"')
+    .replace(/<a[^>]*href\s*=\s*["']?data:/gi, '<a href="#"');
+};
 
 /**
  * We sanitize html by stripping it of text content
@@ -20,42 +33,6 @@ export const stripHtml = (html: string) => {
   const tmp = document.createElement('DIV');
   tmp.innerHTML = html;
   return tmp.textContent || tmp.innerText || '';
-};
-
-// Configuration for DOMPurify - allow only safe HTML tags and attributes
-const purifyConfig = {
-  ALLOWED_TAGS: [
-    'p',
-    'br',
-    'strong',
-    'b',
-    'em',
-    'i',
-    'u',
-    's',
-    'strike',
-    'code',
-    'pre',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'ul',
-    'ol',
-    'li',
-    'blockquote',
-    'span',
-    'div',
-  ],
-  ALLOWED_ATTR: ['class', 'style', 'href', 'target', 'rel'],
-  ALLOWED_URI_REGEXP:
-    /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
-  KEEP_CONTENT: true,
-  RETURN_DOM: false,
-  RETURN_DOM_FRAGMENT: false,
-  RETURN_TRUSTED_TYPE: false,
 };
 
 /**
@@ -70,8 +47,7 @@ export const sanitizeHtml = (html: string): string => {
   }
 
   try {
-    const sanitized = purify.sanitize(html, purifyConfig);
-    return sanitized;
+    return sanitizeHtmlSimple(html);
   } catch (error) {
     console.error('Error sanitizing HTML:', error);
     return '';
@@ -91,7 +67,7 @@ export const isHtmlSafe = (html: string): boolean => {
   }
 
   try {
-    const sanitized = purify.sanitize(html, purifyConfig);
+    const sanitized = sanitizeHtmlSimple(html);
     return sanitized === html;
   } catch (error) {
     console.error('Error validating HTML:', error);
