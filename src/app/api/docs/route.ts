@@ -12,13 +12,12 @@ const options = {
     },
     servers: [
       {
-        url:
-          process.env.NODE_ENV === 'production'
-            ? 'bipolar-compass-git-staging-matthias-nilssons-projects.vercel.app'
-            : 'http://localhost:3000',
+        url: process.env.NEXTAUTH_URL || 'http://localhost:3000',
         description:
           process.env.NODE_ENV === 'production'
             ? 'Produktionsserver'
+            : process.env.VERCEL_ENV === 'preview'
+            ? 'Staging-server'
             : 'Utvecklingsserver',
       },
     ],

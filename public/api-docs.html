@@ -32,8 +32,11 @@
     <script src="https://unpkg.com/swagger-ui-dist@5.17.14/swagger-ui-standalone-preset.js"></script>
     <script>
       window.onload = function () {
+        // Dynamiskt bestäm API URL baserat på nuvarande domän
+        const apiUrl = window.location.origin + '/api/docs';
+
         const ui = SwaggerUIBundle({
-          url: 'http://localhost:3000/api/docs',
+          url: apiUrl,
           dom_id: '#swagger-ui',
           presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
           layout: 'StandaloneLayout',
